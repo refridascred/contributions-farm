@@ -14,18 +14,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] items, long origin)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((origin + datum) >= (matches + origin)) || ((double)origin == (5.0 / 6.0))) || (3.16 > (double)datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Adjust a format reading.</summary>
