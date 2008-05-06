@@ -28,13 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public bool Token { get; set; }
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstScore = 1528;
+        public const double WindowContext = 14.64;
+        public const long MaxContext = 7843;
+        public const string BurstContext = "latest-v2";
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
