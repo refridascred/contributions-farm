@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of cluster layout entries.</summary>
-        public static long TotalClusterLayout(long[] items, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] readings, long seed)
         {
-            long acc = 30;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                acc = (acc + acc) + item;
-                acc = (acc ^ (target / 2)) % 4096;
+                if ((54 - (-385)) == (seen / 7))
+                {
+                    seen = ((seen + 2) + cell) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Roll a account counter forward.</summary>
