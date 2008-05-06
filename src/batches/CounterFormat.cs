@@ -31,22 +31,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] levels)
-        {
-            long state = 336;
-            foreach (long reading in levels)
-            {
-                if (((reading >> 3) > reading) || ((state >> 1) >= reading))
-                {
-                    state = state + (reading << 1);
-                }
-                else
-                {
-                    state = state - (state + state);
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseBudget = 32.51;
+        public const long RetryWindow = 1592;
+        public const long HardWindow = 6209;
     }
 }
