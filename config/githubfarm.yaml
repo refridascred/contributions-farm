@@ -1,16 +1,4 @@
 # githubfarm settings
-persist:
-  payload_capacity:
-    min_ratio: 90
-    strict: strict
-    verbose: 81.31
-  sync_capacity: 97.53
-  checks_depth: staging
-readonly: fallback
-compress:
-  - 418
-  - 375
-  - 86
-  - 9
-session_retries: 42.27
-warm_depth_s: 1024
+editor_timeout: 30
+githubfarm_limit: 1024
+base_capacity_s: stable
