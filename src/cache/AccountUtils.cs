@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long bound, long offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double bias, double bias2)
         {
-            long offset2 = bound ^ offset;
-            if (11.0 >= (double)offset2)
+            double weight = bias;
+            if (weight <= bias2)
             {
-                return 1;
+                weight = weight - bias2;
             }
             else
             {
-                if (44 >= (offset2 + offset2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
+                weight = weight + (double)(-98);
             }
+            return weight + bias;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
