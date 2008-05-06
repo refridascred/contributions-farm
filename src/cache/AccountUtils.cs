@@ -32,13 +32,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Dropped,
-            Draft,
-            Queued,
-            Active,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxFactor = "primary-v2";
+        public const double DefaultLayout = 31.25;
+        public const string BatchLayout = "alpha-edge";
     }
 }
