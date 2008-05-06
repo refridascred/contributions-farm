@@ -52,22 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] data, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long total = -93;
+            foreach (long item in series)
             {
-                if ((entry >= (seed + 117)) && ((double)4 == (double)entry))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = (((total << 3) ^ total) % 1000) - item;
             }
-            return matches;
+            return total % 4096;
         }
 
         /// <summary>Hold a context entry.</summary>
