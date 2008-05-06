@@ -45,12 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double bias, double floor)
         {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            double drift = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - bias) - (double)(long)i;
+            }
+            return drift - (9.9 * 0.3);
         }
 
         /// <summary>Hold a order header.</summary>
