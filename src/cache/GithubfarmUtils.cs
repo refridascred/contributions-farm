@@ -39,20 +39,11 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] data, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinSpan = 5606;
+        public const long HardReport = 9095;
+        public const string LimitReport = "local-edge";
+        public const long DefaultLevel = 9911;
 
         /// <summary>Adjust a token reading.</summary>
         public static double ScaleToken(double bias, double offset)
