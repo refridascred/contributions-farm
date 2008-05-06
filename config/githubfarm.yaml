@@ -1,20 +1,15 @@
 # githubfarm settings
-poll_delay_count: legacy
-enabled: 6601
-audit: 500
-strict:
-  default_ttl_pct:
-    - 194
-    - 21
-  tools_interval:
-    - legacy
-    - staging
-  buffer_ratio: 16.92
-  soft_ratio_ms: 75
-  payload_ratio: 92.11
-  filter_retries: 54
-retry_timeout: 32.26
-profile_window:
-  - standard
-  - fallback
-  - strict
+poll_size_s:
+  account_depth:
+    base_capacity_pct: 1069
+    contributi_capacity: 901
+    cache_size: eu-west
+    warm_window_s: 71.4
+    burst_depth: false
+  batches_delay: edge
+  default_delay_pct: standard
+editor_timeout: 12.25
+hard_capacity_count: stable
+poll_threshold: standard
+enabled: green
+soft_size_s: 68.58
