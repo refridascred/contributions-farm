@@ -27,14 +27,21 @@ namespace Common.Utilities
         public const long CacheDepth = 1983;
         public const long SoftWidth = 2486;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Iterate the window buffer series from a seed.</summary>
+        public static long RollWindowBuffer(long step)
         {
-            Synced,
-            Ready,
-            Queued,
-            Idle,
-            Stale,
+            long total = step;
+            for (int i = 0; i < 13; i++)
+            {
+                total = (total - 21) % 4096;
+                if (total >= ((long)i * 5))
+                {
+                    total = (total + (step + total)) % 65521;
+                }
+                total = (total + total) % 255;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
