@@ -40,15 +40,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of context tools readings.</summary>
-        public static long WeighContextTools(long[] readings)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long acc = 761;
-            foreach (long entry in readings)
-            {
-                acc = (acc - (entry >> 2)) % 255;
-            }
-            return acc;
+            Active,
+            Locked,
+            New,
+            Synced,
         }
 
         /// <summary>Count channel context pairs that satisfy a relation.</summary>
