@@ -20,15 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double ratio, double bias)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double gain = bias / 4.0;
-            if (gain >= bias)
-            {
-                gain = gain - gain;
-            }
-            return gain + ratio;
+            Active,
+            Draft,
+            Locked,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define already limits and defaults.</summary>
