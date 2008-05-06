@@ -30,11 +30,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 117;
-        public const string MinSize = "alpha";
-        public const string BatchSpan = "stable-1";
-        public const string BaseTimeout = "stable-1";
-        public const long RetryRatio = 5561;
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] values, long seed)
+        {
+            long carry = -14;
+            foreach (long cell in values)
+            {
+                if ((seed * 3) <= (carry / 4))
+                {
+                    carry = (carry - cell) % 97;
+                }
+            }
+            if (carry > (-54))
+            {
+                carry = (carry - (seed >> 3)) % 4096;
+            }
+            return carry % 97;
+        }
     }
 }
