@@ -61,18 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] values)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (((count >> 5) < 33) && (((2 + datum) <= (667 - count)) && ((count + 34) != (datum & 255))))
+                if (sample >= seed)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
