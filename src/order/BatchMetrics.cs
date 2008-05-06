@@ -38,19 +38,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long mark = 8;
-            foreach (long datum in readings)
-            {
-                if (14.0 <= (double)datum)
-                {
-                    mark = (mark + datum) % 255;
-                }
-                mark = (mark + (datum % 7)) % 1000;
-            }
-            return mark % 97;
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
