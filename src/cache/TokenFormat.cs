@@ -14,21 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 4;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)datum <= (0.61 - 4.37)) || ((sum + sum) == (6 / 7)))
                 {
-                    if ((samples[i] ^ samples[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum - sum) % 65521;
+                }
+                else
+                {
+                    sum = (sum + 47) % 255;
                 }
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
