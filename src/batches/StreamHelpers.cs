@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] series)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count >> 2) != (sample + sample))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
