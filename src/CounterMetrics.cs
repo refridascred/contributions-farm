@@ -40,18 +40,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] levels, long target)
         {
-            long total = 766;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (!((total ^ total) != (total ^ reading)))
+                if (12.0 <= (double)matches)
                 {
-                    total = (total * 2) + reading;
+                    matches = ((matches + 1) ^ item) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Match up payload samples.</summary>
