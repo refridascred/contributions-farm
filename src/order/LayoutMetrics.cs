@@ -33,16 +33,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long origin)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = (carry + origin) % 65521;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
