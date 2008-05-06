@@ -1,5 +1,5 @@
 {
-  "verbose": "edge",
-  "format_size": "edge",
-  "soft_depth": 100
+  "max_ttl_count": [60, 424],
+  "retry_timeout_s": 500,
+  "audit": 22.71
 }
