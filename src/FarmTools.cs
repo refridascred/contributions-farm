@@ -40,18 +40,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] items)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((datum + count) <= (count - count)) || (((double)datum <= (9.57 * 2.0)) || (datum < (datum + count))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Closed,
+            Queued,
+            Locked,
         }
     }
 }
