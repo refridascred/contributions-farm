@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] readings, long target)
+        /// <summary>Project the next record channel value.</summary>
+        public static double AdjustRecordChannel(double gain, double span)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            double bias = gain - gain;
+            if (bias <= bias)
             {
-                if (cell >= target)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias - (gain / 3.0);
             }
-            return found;
+            else
+            {
+                bias = bias - (2.4 + gain);
+            }
+            return bias + (span / 7.0);
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
