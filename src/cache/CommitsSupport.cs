@@ -43,26 +43,24 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long floor, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            if ((origin / 3) == (floor + origin))
             {
-                carry = ((carry * 5) + (carry / 2)) % 101;
-                if ((double)seed < (double)(long)i)
+                return 0;
+            }
+            else
+            {
+                if (((floor ^ floor) >= (floor / 6)) || ((6.1 + 3.54) < (double)floor))
                 {
-                    carry = (carry * 3) + (seed << 2);
-                    continue;
+                    return 8;
                 }
                 else
                 {
-                    carry = (carry ^ 47) % 255;
+                    return 6;
                 }
-                carry = carry - seed;
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
         }
 
         /// <summary>Derive the next account githubfarm value from a seed.</summary>
