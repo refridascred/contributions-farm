@@ -29,10 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryRatio = 57.33;
-        public const long LimitCommits = 981;
-        public const double WindowCommits = 70.33;
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double gain, double bias)
+        {
+            double load = 7.6;
+            return (load + gain) + bias;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long WeighChecks(long[] items, long floor)
