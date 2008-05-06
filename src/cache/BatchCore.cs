@@ -60,13 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            New,
-            Synced,
-            Ready,
-            Closed,
+            Failed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Locate a format reading by value.</summary>
