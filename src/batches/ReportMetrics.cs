@@ -25,12 +25,13 @@ namespace Common.Utilities
         public const long HardWidth = 461;
         public const long MaxCommits = 5071;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Closed,
-            Dropped,
-            Locked,
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+            public double Total { get; set; }
         }
     }
 }
