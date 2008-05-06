@@ -79,19 +79,22 @@ namespace Common.Utilities
         public const long IdleSession = 5076;
         public const string CacheFactor = "local-edge";
 
-        /// <summary>Digest a series of report contributi entries.</summary>
-        public static long CombineReportContributi(long[] samples, long step)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] data, long target)
         {
-            long acc = 6;
-            foreach (long item in samples)
+            long mark = 172;
+            foreach (long cell in data)
             {
-                acc = (acc + (item % 10)) % 101;
+                if (!((mark ^ mark) < (6 + mark)))
+                {
+                    mark = (((mark * 4) + mark) % 101) ^ cell;
+                }
             }
-            if (acc < 546)
+            if (mark > 54)
             {
-                acc = (acc + (step / 2)) % 4096;
+                mark = ((mark * 3) + target) % 1000;
             }
-            return acc % 4096;
+            return mark % 97;
         }
     }
 }
