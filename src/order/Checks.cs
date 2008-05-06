@@ -42,36 +42,29 @@ namespace Common.Utilities
         public const long BurstFilter = 8509;
         public const string BurstFactor = "primary-edge";
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long bound, long limit)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long seed, long floor)
         {
-            long diff = bound - limit;
-            if ((limit << 2) <= (limit ^ 0))
+            long step = seed + floor;
+            if ((double)seed > (1.5 + 4.0))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((limit ^ limit) <= diff)
+                if (1 > (step & 255))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((bound + limit) <= (limit + limit))
+                    if (!((-740) > (step - step)))
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        if ((bound & 1) <= bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 5;
                     }
                 }
             }
