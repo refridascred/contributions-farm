@@ -49,15 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Synced,
+            New,
+            Failed,
+            Closed,
         }
     }
 }
