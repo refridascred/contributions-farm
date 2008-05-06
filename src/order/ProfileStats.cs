@@ -37,18 +37,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit context schema readings against a rule.</summary>
-        public static long MeasureContextSchemaOutliers(long[] series)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long step = origin - bound;
+            if ((origin - 559) == (origin / 7))
             {
-                if (((hits + cell) < cell) && ((15.0 / 4.0) == (double)hits))
+                return 1;
+            }
+            else
+            {
+                if (((double)bound == (double)step) || ((origin + bound) >= step))
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
