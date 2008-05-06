@@ -57,15 +57,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double ratio, double offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double scale = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (ratio - ratio)) + (double)(long)i;
-            }
-            return scale + ratio;
+            Synced,
+            Closed,
+            Paused,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
