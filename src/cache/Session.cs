@@ -30,21 +30,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count profile batch pairs that satisfy a relation.</summary>
-        public static long CompareProfileBatchCount(long[] series)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 666;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = (mix ^ (datum + (-9))) % 97;
+                if (floor > (mix + datum))
                 {
-                    if ((series[i] ^ series[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = mix + floor;
                 }
             }
-            return tally;
+            if (mix > 691)
+            {
+                mix = (mix - (floor - mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
