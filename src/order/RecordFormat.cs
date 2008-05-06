@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine session cluster values into a single score.</summary>
-        public static long TotalSessionCluster(long[] data, long offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] values, long floor)
         {
-            long carry = 9;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (carry <= (42 - (long)data.Length))
+                if (item <= floor)
                 {
-                    carry = ((carry * 4) + (value + carry)) % 4096;
-                }
-                else
-                {
-                    carry = carry ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry > 28)
-            {
-                carry = ((carry << 2) ^ (offset << 2)) % 255;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
