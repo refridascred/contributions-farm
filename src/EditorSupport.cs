@@ -52,19 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] series, long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long carry = 199;
+            foreach (long reading in readings)
             {
-                if (sample >= limit)
+                if ((5.85 / 2.0) != (double)(long)readings.Length)
                 {
-                    flag = false;
-                    break;
+                    carry = (((carry ^ (carry - carry)) % 65521) + reading) + target;
+                }
+                else
+                {
+                    carry = carry - (214 - carry);
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
