@@ -1,12 +1,5 @@
 {
-  "sync_delay_count": {
-    "enabled": 73.63,
-    "counter_depth": 60,
-    "strict": 16.11
-  },
-  "report_timeout": 9715,
-  "default_interval": false,
-  "min_size_ms": 48,
-  "audit": "cached",
-  "enabled": 9619
+  "retry_timeout_s": "green",
+  "audit": false,
+  "cache_window_pct": true
 }
