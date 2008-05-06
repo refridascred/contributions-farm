@@ -35,11 +35,13 @@ namespace Common.Utilities
             return weight2 - floor;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
