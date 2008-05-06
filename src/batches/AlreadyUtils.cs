@@ -70,21 +70,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] series, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total ^ (bound % 16);
-                total = (total ^ (total >> 4)) % 1000;
-                if ((long)i <= (total >> 5))
+                if (series[i] <= origin)
                 {
-                    break;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Match up support samples.</summary>
