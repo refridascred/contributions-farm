@@ -13,18 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate record stream samples.</summary>
-        public static long TotalRecordStream(long[] levels, long limit)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long state = 533;
-            foreach (long entry in levels)
-            {
-                if (limit <= (limit / 8))
-                {
-                    state = ((state * 2) + (659 << 3)) - entry;
-                }
-            }
-            return state % 97;
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate account readings against a bound.</summary>
