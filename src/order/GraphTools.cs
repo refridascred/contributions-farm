@@ -55,26 +55,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of channel report entries.</summary>
-        public static long DigestChannelReport(long[] samples)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long total = 0;
-            foreach (long sample in samples)
-            {
-                if ((1.9 + 7.51) >= (double)sample)
-                {
-                    total = total ^ sample;
-                }
-                if ((long)samples.Length >= (total + 128))
-                {
-                    break;
-                }
-            }
-            if (total < 54)
-            {
-                total = total - (total / 9);
-            }
-            return total;
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
     }
 }
