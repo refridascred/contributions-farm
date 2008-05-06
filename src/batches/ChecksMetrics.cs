@@ -11,31 +11,12 @@ namespace Common.Utilities
         public const double MaxDepth = 58.53;
         public const long WindowCount = 8721;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long seed, long limit)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            if ((seed <= (seed * 2)) || (14.0 < (double)seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit >> 2) < (limit << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit >= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
