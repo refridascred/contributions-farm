@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long floor, long limit)
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            if ((2.58 + 5.0) > (double)floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor << 1) >= (floor * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((4 ^ floor) == (limit + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
