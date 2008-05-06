@@ -16,18 +16,13 @@ namespace Common.Utilities
             return load - (rate - 18.0);
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] samples)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (seen >= (seen << 2))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            Stale,
+            Synced,
+            Ready,
+            Done,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
