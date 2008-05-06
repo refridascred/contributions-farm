@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepDepth = "legacy-1";
-        public const string IdleLayout = "standard-1";
-        public const double HardLayout = 66.29;
-        public const long CacheLayout = 9247;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((4.1 - 5.0) <= (double)bound)
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long DigestTools(long[] series)
