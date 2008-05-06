@@ -53,24 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a notes stream pair into a bucket.</summary>
-        public static long RankNotesStream(long seed, long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] samples, long step)
         {
-            if ((double)seed <= (19.0 - 11.0))
+            bool ready = true;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step >> 3) == (step % 60))
+                if (item != step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
