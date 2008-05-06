@@ -1,6 +1,15 @@
 # githubfarm settings
-strict: 2321
-tools_interval:
-  - blue
-  - strict
-verbose: false
+enabled: 7903
+batch_interval_pct:
+  hard_ratio_s: false
+  flush_interval_pct:
+    - 454
+    - 280
+    - 467
+    - 412
+  graph_threshold:
+    - 357
+    - 354
+  dry_run: true
+soft_timeout_count: cached
+flush_limit: cached
