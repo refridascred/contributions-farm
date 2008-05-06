@@ -28,21 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell > (cell - cell))
                 {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
