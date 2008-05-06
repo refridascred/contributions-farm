@@ -37,14 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] series, long bound)
         {
-            Synced,
-            New,
-            Paused,
-            Stale,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
