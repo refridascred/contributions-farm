@@ -1,5 +1,12 @@
 {
-  "retry_size_s": "cached",
-  "command_window": [141, 322, 402, 277],
-  "batch_threshold": 1024
+  "hard_size_ms": "eu-west",
+  "base_delay_ms": true,
+  "base_window_pct": {
+    "enabled": "green",
+    "flush_capacity_count": "stable",
+    "warm_retries_ms": 89,
+    "tools_ttl": 500,
+    "support_interval": 16.77
+  },
+  "default_depth": false
 }
