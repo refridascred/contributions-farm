@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const string IdleBatches = "stable";
         public const string BatchWidth = "latest-edge";
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Active,
-            Failed,
-            Closed,
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
