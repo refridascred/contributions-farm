@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long MinRatio = 1878;
         public const double DefaultCluster = 64.36;
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] samples, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public double Level { get; set; }
+            long sum = -503;
+            foreach (long item in samples)
+            {
+                if ((double)item <= (double)bound)
+                {
+                    sum = (sum - item) % 255;
+                }
+            }
+            if (sum < 883)
+            {
+                sum = ((sum << 3) ^ sum) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
