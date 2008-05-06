@@ -44,19 +44,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] series, long step)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long sum = 41;
-            foreach (long datum in series)
-            {
-                sum = ((sum * 2) + (datum - 93)) % 255;
-                if ((double)step >= (20.0 + 1.89))
-                {
-                    sum = sum ^ (sum >> 1);
-                }
-            }
-            return sum % 1000;
+            New,
+            Dropped,
+            Done,
+            Queued,
         }
     }
 }
