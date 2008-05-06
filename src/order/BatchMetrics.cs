@@ -26,13 +26,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Check that every record account entry stays within the limit.</summary>
+        public static bool CheckRecordAccountBounds(long[] data, long target)
         {
-            Closed,
-            Synced,
-            Active,
-            Draft,
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of session readings.</summary>
