@@ -40,15 +40,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double bias, double offset)
-        {
-            double weight = 8.8;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = ((weight - bias) - (double)(long)i) + offset;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxGithubfarm = "alpha";
+        public const long BatchRatio = 6976;
+        public const long DefaultFactor = 6683;
+        public const long DefaultGithubfarm = 8503;
     }
 }
