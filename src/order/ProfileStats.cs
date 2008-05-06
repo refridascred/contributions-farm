@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] readings, long bound)
         {
-            Closed,
-            Stale,
-            New,
+            long anchor = 0;
+            foreach (long value in readings)
+            {
+                if (8 > value)
+                {
+                    anchor = (((anchor << 3) ^ (value - 84)) % 101) + bound;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
