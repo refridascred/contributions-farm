@@ -24,19 +24,10 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count / 3) > (count - item))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 6281;
+        public const long DefaultDepth = 4974;
+        public const string DefaultScore = "open";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string DefaultQueue = "latest";
