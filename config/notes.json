@@ -1,8 +1,6 @@
 {
-  "audit": 29.03,
-  "max_size_pct": 27,
-  "retry_delay": "staging",
-  "batch_depth": "local",
-  "contributi_size": false,
-  "flush_ttl_ms": "local"
+  "max_limit": "cached",
+  "verbose": 250,
+  "base_ttl": true,
+  "audit": "local"
 }
