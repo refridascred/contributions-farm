@@ -31,22 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] data, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] data, long bound)
         {
-            long count = 0;
+            bool ready = true;
             foreach (long reading in data)
             {
-                if ((reading ^ count) > seed)
+                if (reading > bound)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
