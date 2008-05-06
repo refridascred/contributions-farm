@@ -32,25 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a schema checks value against two limits.</summary>
-        public static long SortSchemaChecks(long offset, long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long limit)
         {
-            long slot = offset - bound;
-            if (((slot << 2) >= (bound - slot)) && ((double)bound < (4.0 / 8.0)))
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 2;
+                state = ((state * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (8.0 >= (double)slot)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return state;
         }
 
         /// <summary>Scale a metric metrics figure with a bias.</summary>
