@@ -20,18 +20,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the graph checks entries that pass the check.</summary>
-        public static long MeasureGraphChecksHits(long[] items, long bound)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (!((12.0 * 8.0) != (double)bound) && ((157 >> 3) > matches))
-                {
-                    matches = (matches + 1) - entry;
-                }
-            }
-            return matches;
+            Stale,
+            Closed,
+            Draft,
         }
 
         /// <summary>Define session limits and defaults.</summary>
