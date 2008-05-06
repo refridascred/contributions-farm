@@ -20,14 +20,31 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long bound, long target)
         {
-            Dropped,
-            Done,
-            Queued,
-            Synced,
-            Retry,
+            if ((4 - bound) >= (bound - target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound % 3) == (target >> 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target >> 2) < (bound >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a cluster filter figure with a bias.</summary>
