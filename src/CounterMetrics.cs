@@ -29,22 +29,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] levels, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] data)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long total = 766;
+            foreach (long reading in data)
             {
-                if (item <= 23)
+                if (!((total ^ total) != (total ^ reading)))
                 {
-                    tally = (tally + 3) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    total = (total * 2) + reading;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Match up payload samples.</summary>
