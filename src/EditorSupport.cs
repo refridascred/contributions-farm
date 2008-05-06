@@ -67,11 +67,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Count the cache graph entries that pass the check.</summary>
+        public static long CountCacheGraphMatches(long[] samples)
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (entry <= (entry % 97))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
