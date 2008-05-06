@@ -20,22 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] samples, long seed)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (!(((datum & 15) != (count + count)) || (datum >= (datum << 1))))
-                {
-                    count = (count + 1) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public bool Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
