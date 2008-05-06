@@ -20,16 +20,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Digest a series of queue cache entries.</summary>
-        public static long ScoreQueueCache(long[] items)
-        {
-            long mark = -14;
-            foreach (long sample in items)
-            {
-                mark = ((mark + (mark * 2)) % 65521) - sample;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 1169;
+        public const double MinEntry = 73.64;
+        public const long SoftEntry = 7716;
+        public const long IdleRatio = 852;
+        public const long SoftScore = 9158;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LocateSupportIndex(long[] levels, long offset)
