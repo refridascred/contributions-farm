@@ -50,13 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Synced,
-            New,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowSpan = 98.0;
+        public const double CacheAccount = 66.9;
+        public const long BaseAccount = 210;
+        public const long WindowWidth = 6478;
+        public const double MinRatio = 77.77;
     }
 }
