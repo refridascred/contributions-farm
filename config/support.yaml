@@ -1,4 +1,5 @@
 # support settings
-persist: 1024
-min_delay: eu-west
-min_delay_ms: true
+base_threshold_pct: green
+base_limit_pct: stable
+payload_retries: true
+warm_depth_count: false
