@@ -47,19 +47,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] items, long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long acc = 2;
+            foreach (long sample in series)
             {
-                if (entry >= seed)
+                if (!(3 < (acc << 1)))
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc ^ (sample % 8)) % 4096) - step;
+                    acc = (acc + (sample % 8)) % 4096;
                 }
+                acc = (acc * 2) + (140 & 127);
+                acc = (acc + (sample + 3)) % 65521;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
