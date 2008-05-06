@@ -65,39 +65,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long offset, long step)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long next = offset ^ step;
-            if ((3 - next) < (944 - offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset / 3) < offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)next < (8.48 + 11.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)offset <= 8.7)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Project the next githubfarm buffer value.</summary>
