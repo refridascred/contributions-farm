@@ -53,14 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Draft,
-            New,
             Retry,
-            Idle,
-            Stale,
+            Paused,
+            Draft,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
