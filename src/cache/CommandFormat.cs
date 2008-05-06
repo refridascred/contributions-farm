@@ -24,10 +24,14 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 9630;
-        public const long BatchSize = 8816;
-        public const double StepCount = 76.57;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public bool Score { get; set; }
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long HardFarm = 545;
