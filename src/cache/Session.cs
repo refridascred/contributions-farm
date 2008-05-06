@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a stats metrics reading.</summary>
-        public static double ProjectStatsMetrics(double rate, double floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] levels)
         {
-            double mean = rate + (rate - floor);
-            if (mean <= (double)(-254))
+            long count = 0;
+            foreach (long value in levels)
             {
-                mean = mean + (rate + mean);
+                if ((double)value >= (double)count)
+                {
+                    count = count + 2;
+                }
             }
-            return mean - (double)91;
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
