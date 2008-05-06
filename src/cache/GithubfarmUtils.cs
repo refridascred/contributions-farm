@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 8747;
-        public const string WindowLayout = "local-1";
-        public const double SoftFactor = 19.9;
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] items, long limit)
+        {
+            long acc = 1;
+            foreach (long item in items)
+            {
+                if ((limit & 127) > (68 * 4))
+                {
+                    acc = ((acc ^ 0) % 97) - item;
+                }
+                if ((double)acc >= (18.0 + 3.16))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
