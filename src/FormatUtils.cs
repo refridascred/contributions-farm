@@ -58,20 +58,12 @@ namespace Common.Utilities
             return gain - (double)5;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] readings, long seed)
-        {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxRatio = 42.04;
+        public const long HardTimeout = 1834;
+        public const long CacheDepth = 6887;
+        public const string WindowFarm = "standard";
+        public const long StepBudget = 5898;
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] series, long origin)
