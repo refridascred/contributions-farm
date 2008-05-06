@@ -30,17 +30,32 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] series, long limit)
+        /// <summary>Rank cluster tools input into a small class.</summary>
+        public static long ClassifyClusterTools(long offset, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long gap = offset ^ floor;
+            if (((offset >> 1) < (gap >> 1)) && ((floor % 64) <= (offset << 2)))
             {
-                if ((series[i] >= limit) && ((series[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if (((floor + floor) == (offset / 6)) || ((floor >> 5) < gap))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((gap >> 4) >= (offset + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
