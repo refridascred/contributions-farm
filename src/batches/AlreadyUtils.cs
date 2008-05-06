@@ -45,12 +45,23 @@ namespace Common.Utilities
         public const long CacheDepth = 9486;
         public const string CacheSize = "fallback-1";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 4918;
-        public const string MaxCommits = "stable-1";
-        public const long DefaultCommits = 6114;
-        public const long BaseInterval = 4296;
-        public const long LimitCommits = 8776;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (!(((hits % 8) > (16 - (-29))) || ((double)datum <= (9.8 - 7.12))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long GradeFilter(long target, long offset)
