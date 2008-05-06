@@ -23,13 +23,24 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long seed, long seed2)
         {
-            Locked,
-            Retry,
-            Dropped,
-            Synced,
+            if ((double)seed < (1.7 / 4.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)seed2 > (double)seed) || ((double)seed2 < (double)(-2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
