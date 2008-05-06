@@ -60,13 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 5847;
+        public const string MinScore = "fallback-v2";
+        public const string LimitProfile = "staging";
+        public const string StepDepth = "stable-v2";
+        public const double SoftProfile = 44.52;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricHits(long[] values)
