@@ -20,13 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Dropped,
-            Idle,
-            Closed,
-            New,
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit checks stream readings against a rule.</summary>
