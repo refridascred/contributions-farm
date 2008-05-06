@@ -30,11 +30,23 @@ namespace Common.Utilities
             return gain - (offset + 9.6);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftSchema = 83.22;
-        public const long MinFactor = 1405;
-        public const long HardSchema = 1600;
-        public const double MinSchema = 68.15;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (((target << 2) < (55 << 3)) && ((target + item) >= item))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank cache profile input into a small class.</summary>
         public static long RankCacheProfile(long origin, long offset)
