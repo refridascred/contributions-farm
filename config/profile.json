@@ -1,6 +1,5 @@
 {
-  "burst_size_ms": [341, 460, 264, 460],
-  "tools_size": [315, 277, 88, 481],
-  "burst_threshold": 250,
-  "readonly": "open"
+  "sync_retries": false,
+  "commits_window": [209, 79],
+  "verbose": 48
 }
