@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double weight, double floor)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            double weight2 = weight;
-            if (weight2 <= (2.27 + weight2))
-            {
-                weight2 = weight2 - (weight2 - weight);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + (weight2 + weight2)) - (double)(long)i;
-            }
-            return weight2 - floor;
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
