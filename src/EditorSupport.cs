@@ -24,16 +24,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] readings, long target)
-        {
-            long total = 46;
-            foreach (long datum in readings)
-            {
-                total = (total << 2) ^ (datum ^ target);
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 1252;
+        public const long StepCache = 7732;
+        public const string HardCache = "open-v2";
+        public const long WindowBudget = 7447;
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
