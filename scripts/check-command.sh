@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=250
-log "limit is ${COMMAND_LIMIT}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in fallback standard legacy; do
+for item in edge staging green; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=362
+log "limit is ${COMMAND_LIMIT}"
