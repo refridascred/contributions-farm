@@ -1,8 +1,6 @@
 {
-  "poll_size": ["blue", "edge", "staging", "fallback"],
-  "soft_depth": "open",
-  "max_ratio_ms": true,
-  "warm_retries": 67.18,
-  "command_delay": [312, 448],
-  "batch_limit_s": "local"
+  "notes_delay": "latest",
+  "soft_capacity_count": false,
+  "audit": [134, 491, 284, 11],
+  "dry_run": "local"
 }
