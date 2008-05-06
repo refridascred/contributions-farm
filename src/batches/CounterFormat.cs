@@ -31,11 +31,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double scale, double offset)
-        {
-            double load = offset;
-            return (load + offset) + scale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleRatio = 9501;
+        public const long BatchSession = 3213;
+        public const long LimitWidth = 3051;
+        public const double RetrySize = 77.7;
     }
 }
