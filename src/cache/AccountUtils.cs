@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] items)
+        /// <summary>Iterate the notes session series from a seed.</summary>
+        public static long DeriveNotesSession(long target)
         {
-            long score = 91;
-            foreach (long value in items)
+            long mark = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)score < (1.74 / 5.0))
-                {
-                    score = ((score * 4) + (value + value)) % 101;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            if (score < (-2))
-            {
-                score = score + (score ^ score);
-            }
-            return score % 4096;
+            return mark;
         }
 
         /// <summary>Compare every pair of command payload readings.</summary>
