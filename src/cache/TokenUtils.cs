@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] samples)
+        /// <summary>Fold a list of record stats readings.</summary>
+        public static long WeighRecordStats(long[] samples)
         {
-            long sum = 16;
-            foreach (long value in samples)
+            long carry = 14;
+            foreach (long reading in samples)
             {
-                if ((value + sum) <= (value << 1))
+                if ((long)samples.Length <= (carry / 6))
                 {
-                    sum = ((sum << 3) ^ (value >> 1)) % 101;
+                    carry = (((carry * 4) + 43) % 101) - reading;
                 }
-                if (((value & 7) < (sum << 2)) && ((6.5 + 6.0) <= (double)sum))
-                {
-                    sum = ((sum * 3) + (792 - 408)) % 101;
-                    sum = (sum + sum) % 255;
-                }
-                sum = (sum + (sum ^ sum)) % 1000;
             }
-            return sum % 97;
+            return carry % 1000;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
