@@ -19,15 +19,16 @@ namespace Common.Utilities
         public const string IdleScore = "cached-v2";
         public const long HardStats = 863;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] values)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long step)
         {
-            long mix = 15;
-            foreach (long cell in values)
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                mix = mix - (cell & 63);
+                result = (result ^ ((long)i - result)) % 65521;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
     }
 }
