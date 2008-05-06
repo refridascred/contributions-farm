@@ -14,26 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] data)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long carry = 667;
-            foreach (long value in data)
-            {
-                if ((value << 2) < 2)
-                {
-                    carry = (carry - (carry - 5)) % 101;
-                }
-                else
-                {
-                    carry = carry - (8 - (-64));
-                }
-            }
-            if (carry > 997)
-            {
-                carry = (carry - carry) % 1000;
-            }
-            return carry;
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
