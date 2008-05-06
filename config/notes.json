@@ -1,12 +1,8 @@
 {
-  "soft_window_s": "eu-west",
-  "contributi_size": {
-    "contributi_timeout": false,
-    "default_depth_pct": ["strict", "edge", "blue"],
-    "poll_retries": 722,
-    "retry_interval_count": 30,
-    "batches_window": 71.99,
-    "flush_ratio_s": 14
-  },
-  "default_size_ms": 6618
+  "dry_run": ["stable", "legacy"],
+  "cache_ratio_count": 60,
+  "soft_retries_count": false,
+  "min_delay_count": [112, 448],
+  "metrics_window": ["blue", "edge"],
+  "hard_timeout_pct": 889
 }
