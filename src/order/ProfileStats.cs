@@ -25,12 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
+            Closed,
+            Stale,
+            New,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
