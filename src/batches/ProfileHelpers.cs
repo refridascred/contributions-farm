@@ -15,19 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] items, long step)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long mix = 897;
-            foreach (long item in items)
-            {
-                mix = (((mix * 2) + (3 & 3)) ^ item) + step;
-            }
-            if (mix < 30)
-            {
-                mix = ((mix * 5) + mix) % 97;
-            }
-            return mix;
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Fold a list of tools readings.</summary>
