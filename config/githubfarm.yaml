@@ -1,6 +1,6 @@
 # githubfarm settings
-base_interval_s: fallback
-idle_delay: false
-retry_size: false
-default_depth_s: 33
-default_window_ms: 8645
+retry_size_s: standard
+strict: stable
+flush_size: stable
+sync_delay_count: false
+session_retries: fallback
