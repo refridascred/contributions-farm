@@ -1,5 +1,17 @@
 {
-  "flush_size_ms": 100,
-  "hard_size": 30,
-  "sync_limit_pct": "cached"
+  "readonly": 68.95,
+  "soft_timeout": false,
+  "enabled": 3605,
+  "max_delay_count": {
+    "cache_limit": 5361,
+    "sync_interval_pct": [283, 470, 391],
+    "record_threshold": {
+      "schema_ttl": ["fallback", "standard", "legacy"],
+      "max_limit": true,
+      "persist": ["latest", "legacy", "primary", "fallback"],
+      "warm_delay_s": 1024
+    },
+    "batch_retries_ms": [39, 448]
+  },
+  "contributi_retries": 81.41
 }
