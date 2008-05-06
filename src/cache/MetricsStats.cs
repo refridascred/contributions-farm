@@ -26,38 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long seed, long origin)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double ratio, double offset)
         {
-            if (((70 + origin) > (seed ^ 6)) && ((origin ^ seed) == (6 << 1)))
+            double gain = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                gain = ((gain + (ratio + gain)) + (double)(long)i) + offset;
             }
-            else
-            {
-                if (!((seed << 2) >= (-7)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (origin >= (seed - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)seed > 7.6) || ((1 - origin) >= seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return gain + (gain / 3.0);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
