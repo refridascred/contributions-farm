@@ -1,7 +1,14 @@
 {
-  "persist": true,
-  "githubfarm_window": "eu-west",
-  "dry_run": 3343,
-  "strict": 60,
-  "audit": 1024
+  "default_size_count": true,
+  "window_capacity": 500,
+  "already_size": 24.19,
+  "poll_threshold_count": "staging",
+  "poll_capacity": {
+    "soft_capacity_pct": 4885,
+    "persist": "latest",
+    "strict": [93, 453, 322, 225],
+    "dry_run": 4249,
+    "graph_size": "latest",
+    "counter_depth": false
+  }
 }
