@@ -16,12 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            Idle,
+            Active,
+            Synced,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
