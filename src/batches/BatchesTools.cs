@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] levels, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] readings)
         {
-            long score = -85;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                score = ((score << 2) ^ (score / 5)) % 4096;
-                if ((datum >> 2) <= (datum & 63))
+                if (cell < (cell + count))
                 {
-                    score = (score << 3) ^ (bound ^ bound);
+                    count = count + 1;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Roll a record counter forward.</summary>
