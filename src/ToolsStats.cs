@@ -22,12 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowLevel = 7087;
-        public const double StepRatio = 24.13;
-        public const long BatchScore = 7154;
-        public const long StepSize = 3952;
-        public const long StepLevel = 9266;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] values)
+        {
+            long state = 19;
+            foreach (long sample in values)
+            {
+                if (sample > (state >> 4))
+                {
+                    state = (state ^ 869) % 255;
+                }
+                else
+                {
+                    state = (state + (sample - state)) % 65521;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Audit command support readings against a rule.</summary>
         public static long CountCommandSupportOutliers(long[] samples)
