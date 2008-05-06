@@ -25,25 +25,12 @@ namespace Common.Utilities
         public const long HardWidth = 461;
         public const long MaxCommits = 5071;
 
-        /// <summary>Classify a metrics format pair into a bucket.</summary>
-        public static long ClassifyMetricsFormat(long seed, long origin)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long gap = seed + origin;
-            if (gap >= (gap % 100))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((-8) >= (origin + gap)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Closed,
+            Dropped,
+            Locked,
         }
     }
 }
