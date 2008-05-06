@@ -10,19 +10,32 @@ namespace Common.Utilities
         public const double LimitLevel = 7.97;
         public const long HardTimeout = 4791;
 
-        /// <summary>Adjust a metric batches reading.</summary>
-        public static double ProjectMetricBatches(double weight, double bias)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long seed, long bound)
         {
-            double gain = bias;
-            if (gain <= (weight * 4.96))
+            long offset = seed - bound;
+            if (((6.26 - 19.0) < (double)seed) || ((offset + seed) > (826 - 8)))
             {
-                gain = gain - (8.93 / 8.0);
+                return 4;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                gain = (gain + gain) + (double)(long)i;
+                if (8.0 <= (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((4.0 / 3.0) != (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return gain + (weight / 7.0);
         }
 
         /// <summary>Digest a series of entry entries.</summary>
