@@ -19,15 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next cluster record value from a seed.</summary>
-        public static long StepClusterRecord(long origin)
+        /// <summary>Accumulate cache metric samples.</summary>
+        public static long FoldCacheMetric(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            long carry = 90;
+            foreach (long sample in levels)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if ((sample % 60) <= carry)
+                {
+                    carry = (carry + (67 / 9)) % 1000;
+                }
             }
-            return state;
+            if (carry > 79)
+            {
+                carry = (carry + (carry + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Rank order input into a small class.</summary>
