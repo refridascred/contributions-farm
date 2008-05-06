@@ -1,6 +1,8 @@
 {
-  "default_threshold": 89,
-  "hard_interval": 9261,
-  "strict": 64,
-  "verbose": true
+  "audit": 29.03,
+  "max_size_pct": 27,
+  "retry_delay": "staging",
+  "batch_depth": "local",
+  "contributi_size": false,
+  "flush_ttl_ms": "local"
 }
