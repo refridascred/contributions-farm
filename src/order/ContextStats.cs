@@ -20,18 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] items)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((item * 5) < (hits % 5))
+                if ((((floor << 3) == (sample << 2)) || ((double)floor > (5.2 / 7.0))) && (floor < (5 * 5)))
                 {
-                    hits = hits + 1;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
