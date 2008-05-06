@@ -60,20 +60,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSession = 73.33;
+        public const string DefaultSize = "stable-1";
+        public const string StepWidth = "local-1";
+        public const long BatchSession = 1508;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
