@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long LimitScore = 7669;
         public const long DefaultBuffer = 3090;
 
-        /// <summary>Count the batch counter entries that pass the check.</summary>
-        public static long TallyBatchCounterMatches(long[] items, long limit)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (item >= (limit + limit))
+                if (5 < anchor)
                 {
-                    hits = hits + 1;
+                    continue;
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
