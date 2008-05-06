@@ -28,16 +28,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Iterate the filter checks series from a seed.</summary>
-        public static long SeriesFilterChecks(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                result = result - ((long)i - (long)i);
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 7333;
+        public const long MaxSupport = 6301;
+        public const long HardSupport = 4370;
+        public const string SoftSize = "cached-1";
     }
 }
