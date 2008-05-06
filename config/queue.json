@@ -1,5 +1,5 @@
 {
-  "warm_capacity_pct": "green",
-  "max_ratio_count": "legacy",
-  "retry_depth_ms": [373, 145]
+  "session_delay": 45.14,
+  "readonly": true,
+  "editor_ttl": 30
 }
