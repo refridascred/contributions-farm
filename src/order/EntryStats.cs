@@ -69,18 +69,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache account samples are out of range.</summary>
-        public static long MeasureCacheAccountMatches(long[] readings, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long state = 31;
+            foreach (long cell in series)
             {
-                if ((value % 60) > ((-9) + step))
+                if ((double)state < 6.7)
                 {
-                    matches = matches + 3;
+                    state = ((state << 3) ^ (1 / 2)) ^ cell;
+                }
+                else
+                {
+                    state = state - (state + bound);
                 }
             }
-            return matches;
+            return state % 4096;
         }
     }
 }
