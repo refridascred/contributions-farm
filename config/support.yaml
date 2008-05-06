@@ -1,6 +1,13 @@
 # support settings
-max_threshold_pct: 60
-retry_ratio_pct: 91
-default_size_s: 5200
-sync_window_count: cached
-burst_ratio_s: 26
+min_capacity: edge
+verbose:
+  cache_threshold_pct: 39
+  burst_capacity_count: 5754
+  token_timeout: 60
+  default_delay_count: 500
+layout_limit: 9551
+warm_window:
+  - 212
+  - 292
+  - 404
+  - 386
