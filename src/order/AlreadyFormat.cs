@@ -47,15 +47,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            Queued,
+            Paused,
+            Done,
+            Failed,
+            Pending,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
