@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] readings, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell % 64) <= (40 % 10))
-                {
-                    hits = (hits + 3) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 5845;
+        public const string BatchDepth = "open";
+        public const double HardMetric = 84.72;
+        public const long DefaultMetric = 4920;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphGaps(long[] samples)
