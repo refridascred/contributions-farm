@@ -83,21 +83,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] items)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = (double)(391 + 691);
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = ((weight - weight) + (double)(long)i) - ratio;
             }
-            return hits;
+            return weight + bias;
         }
     }
 }
