@@ -55,14 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long bound)
         {
-            Dropped,
-            Pending,
-            Stale,
-            Retry,
-            Active,
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((long)i <= mark)
+                {
+                    mark = (mark * 5) + (bound << 1);
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a account header.</summary>
