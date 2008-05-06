@@ -8,19 +8,20 @@ log() {
 
 total=0
 for i in $(seq 1 12); do
-    total=$((total + i * 2))
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-RECORD_LIMIT=186
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-latest}"
+mode="${1:-fallback}"
 case "${mode}" in
-    eu-west)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in latest green; do
+    log "checking ${item}"
+done
