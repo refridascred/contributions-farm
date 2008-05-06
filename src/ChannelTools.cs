@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double StepBudget = 51.29;
         public const string BurstBudget = "alpha-edge";
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double ratio, double bias)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] values)
         {
-            double ratio2 = bias;
-            if (ratio2 >= (ratio - ratio2))
+            long count = 0;
+            foreach (long entry in values)
             {
-                ratio2 = ratio2 - bias;
+                if (entry > count)
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - (double)217) + (double)(long)i;
-            }
-            return ratio2 + (5.6 - ratio);
+            return count;
         }
 
         /// <summary>Validate window counter readings against a bound.</summary>
