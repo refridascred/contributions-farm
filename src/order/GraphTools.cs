@@ -34,19 +34,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] readings, long offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] readings)
         {
-            bool found = true;
+            long mark = 49;
             foreach (long cell in readings)
             {
-                if (cell >= offset)
+                if ((cell / 5) != (cell + cell))
                 {
-                    found = false;
-                    break;
+                    mark = (mark << 3) ^ cell;
+                }
+                else
+                {
+                    mark = (mark + (mark * 3)) % 255;
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
