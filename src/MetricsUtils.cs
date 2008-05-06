@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleSpan = "alpha-v2";
-        public const long BatchSize = 7404;
-        public const long BaseFactor = 9708;
-        public const long StepSession = 8750;
-        public const long MaxDepth = 7691;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long limit, long seed)
+        {
+            if (!((943 % 60) < seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)limit < (4.5 / 7.0)) || ((0 ^ seed) > seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((limit / 5) < (limit * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of route batches readings.</summary>
         public static long TotalRouteBatches(long[] values, long offset)
