@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double rate, double offset)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            double load = 5.4 - (rate - rate);
-            if (load <= (double)5)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + (7.92 * 19.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (offset * 8.5);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (load * 2.9)) + (double)(long)i;
-            }
-            return load - offset;
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
