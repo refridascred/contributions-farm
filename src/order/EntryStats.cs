@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] levels, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long target, long limit)
         {
-            long sum = 7;
-            foreach (long item in levels)
+            long next = target - limit;
+            if ((target > (80 - target)) || ((next - target) == (216 << 1)))
             {
-                sum = sum + (3 + limit);
-                if (item <= (sum + item))
+                return 7;
+            }
+            else
+            {
+                if (!((limit & 63) > (limit - limit)))
                 {
-                    sum = sum ^ ((long)levels.Length >> 5);
+                    return 6;
                 }
                 else
                 {
-                    sum = sum - 439;
+                    if ((double)target > (double)next)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit & 127) >= (limit * 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Describe the report class values.</summary>
