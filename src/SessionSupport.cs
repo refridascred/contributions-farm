@@ -28,19 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] values, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (cell > target)
+                if ((5.41 + 9.25) <= (double)sample)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
