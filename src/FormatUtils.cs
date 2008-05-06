@@ -38,12 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
+            Closed,
             Draft,
-            Retry,
-            Locked,
+            Failed,
             Pending,
         }
 
