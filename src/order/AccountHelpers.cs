@@ -87,15 +87,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Iterate the channel tools series from a seed.</summary>
-        public static long IterateChannelTools(long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] readings, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((((count ^ 9) >= (cell ^ 26)) && (seed > (cell << 3))) && ((count << 3) >= (seed - count)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Accumulate entry counter samples.</summary>
