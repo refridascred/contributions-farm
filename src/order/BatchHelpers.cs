@@ -22,22 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine profile entry values into a single score.</summary>
-        public static long CombineProfileEntry(long[] readings)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long mark = 302;
-            foreach (long cell in readings)
-            {
-                if ((cell ^ 57) <= mark)
-                {
-                    mark = ((mark * 4) + (1 * 5)) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (mark - mark)) % 255;
-                }
-            }
-            return mark;
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
