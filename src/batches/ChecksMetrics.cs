@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double MaxDepth = 58.53;
         public const long WindowCount = 8721;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            Synced,
+            Active,
+            Stale,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
