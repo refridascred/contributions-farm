@@ -30,39 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long seed, long offset)
+        /// <summary>Audit command support readings against a rule.</summary>
+        public static long CountCommandSupportOutliers(long[] samples)
         {
-            long step = seed + offset;
-            if (((offset + offset) < 7) || ((step + seed) >= seed))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed ^ offset) < (seed - step))
+                if ((double)cell >= (0.61 / 4.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((2.6 + 5.47) > (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((1.6 - 14.0) > 9.63) && (step < (step * 3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a graph stats.</summary>
