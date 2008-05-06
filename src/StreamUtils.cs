@@ -65,31 +65,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long target, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] samples, long target)
         {
-            if ((7.0 + 1.71) < (double)offset)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target > (3.0 - 8.0))
+                if (entry > target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((29 ^ 0) > offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Classify a tools notes pair into a bucket.</summary>
