@@ -37,13 +37,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
+            public bool Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
