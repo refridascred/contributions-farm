@@ -64,18 +64,19 @@ namespace Common.Utilities
             return gain - (double)5;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] series)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if (reading <= (90 ^ 828))
+                if (item > seed)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
