@@ -34,11 +34,12 @@ namespace Common.Utilities
         public const string MinFilter = "primary-v2";
         public const long LimitFilter = 1293;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 6148;
-        public const double HardTools = 77.52;
-        public const long RetryLevel = 1848;
-        public const string WindowTools = "cached-v2";
-        public const long LimitBudget = 3270;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
     }
 }
