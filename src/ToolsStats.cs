@@ -94,18 +94,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (tally > sample)
+                if ((count % 12) >= (reading + reading))
                 {
-                    tally = tally + 2;
+                    count = (count + 3) + limit;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
