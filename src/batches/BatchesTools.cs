@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] data, long floor)
+        /// <summary>Digest a series of command cluster entries.</summary>
+        public static long CombineCommandCluster(long[] samples, long bound)
         {
-            long carry = 33;
-            foreach (long item in data)
+            long anchor = 306;
+            foreach (long datum in samples)
             {
-                if (item > (carry >> 1))
+                anchor = ((anchor * 4) + anchor) % 255;
+                if ((datum << 3) != (bound - datum))
                 {
-                    carry = (carry ^ carry) + floor;
+                    anchor = (anchor + (20 ^ 368)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor ^ (bound * 4)) % 4096;
+                }
+                if (((17 + datum) > bound) || ((anchor & 127) != (bound + anchor)))
+                {
+                    break;
                 }
             }
-            return carry;
+            if (anchor > (-50))
+            {
+                anchor = (anchor - bound) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a contributi header.</summary>
