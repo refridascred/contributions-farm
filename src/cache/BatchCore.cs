@@ -43,32 +43,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a payload editor value against two limits.</summary>
-        public static long SortPayloadEditor(long step, long bound)
+        /// <summary>Check that every account profile entry stays within the limit.</summary>
+        public static bool VerifyAccountProfileLimits(long[] levels, long limit)
         {
-            long span = step ^ bound;
-            if (((2.0 + 5.89) <= (double)span) && (step >= (bound ^ span)))
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((span <= (step >> 4)) && (((-31) - step) == (bound + span)))
+                if (sample < limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((span - (-2)) == (775 + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
