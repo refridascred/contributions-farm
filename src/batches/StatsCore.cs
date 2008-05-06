@@ -28,13 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Validate support cache readings against a bound.</summary>
+        public static bool CheckSupportCacheBounds(long[] values, long offset)
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a token summary.</summary>
