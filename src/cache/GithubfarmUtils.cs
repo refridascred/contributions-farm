@@ -39,22 +39,10 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((limit ^ limit) >= ((long)i + 45))
-                {
-                    result = (result * 5) + result;
-                    result = ((result << 3) ^ (result >> 3)) % 1000;
-                    break;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 7491;
+        public const string BurstSize = "staging-v2";
+        public const long BaseSpan = 6754;
 
         /// <summary>Adjust a token reading.</summary>
         public static double ScaleToken(double bias, double offset)
