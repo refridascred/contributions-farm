@@ -43,32 +43,11 @@ namespace Common.Utilities
             return mean + (bias / 6.0);
         }
 
-        /// <summary>Grade a counter notes value against two limits.</summary>
-        public static long ClassifyCounterNotes(long target, long target2)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double scale, double offset)
         {
-            long diff = target ^ target2;
-            if (((target2 << 2) <= (898 / 7)) || ((target - target) >= (target + diff)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((target2 - target) <= diff) || (236 >= target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((target + diff) <= target) || ((7.28 + 5.0) >= (double)diff))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double load = offset;
+            return (load + offset) + scale;
         }
     }
 }
