@@ -1,7 +1,8 @@
-id,level,region
-1,staging,827
-2,4.5,343
-3,48.28,edge
-4,960,20.49
-5,70.29,legacy
-6,928,467
+id,score,state
+1,68.59,102
+2,437,981
+3,stable,72.43
+4,primary,cached
+5,open,53.36
+6,82.92,509
+7,15,37.46
