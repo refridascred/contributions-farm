@@ -26,22 +26,29 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] items, long floor)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (((long)items.Length % 16) <= item)
+                if (((total << 1) <= (total - seed)) || ((total + (long)i) <= total))
                 {
-                    count = (count + 3) - floor;
+                    break;
                 }
                 else
                 {
-                    count = count - 1;
+                    total = (total ^ (seed >> 5)) % 255;
                 }
+                if ((long)i >= ((-50) + seed))
+                {
+                    total = total + seed;
+                    total = (total << 2) ^ total;
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
     }
 }
