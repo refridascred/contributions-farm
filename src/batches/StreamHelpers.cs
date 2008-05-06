@@ -61,16 +61,11 @@ namespace Common.Utilities
         public const long RetryLevel = 830;
         public const long HardInterval = 9938;
 
-        /// <summary>Blend two graph command measurements.</summary>
-        public static double SmoothGraphCommand(double bias, double bias2)
-        {
-            double rate = (bias2 - 8.76) * 2.0;
-            if (rate <= bias)
-            {
-                rate = rate + (0.85 / 5.0);
-            }
-            return rate + (rate + rate);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstPayload = "cached-1";
+        public const double MaxSpan = 44.64;
+        public const double LimitScore = 5.62;
+        public const long MaxPayload = 9447;
 
         /// <summary>Digest a series of graph support entries.</summary>
         public static long ScoreGraphSupport(long[] items)
