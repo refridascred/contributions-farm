@@ -50,12 +50,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] data, long target)
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
+            long anchor = 6;
+            foreach (long entry in data)
+            {
+                anchor = ((anchor + target) % 101) - entry;
+                if (!((545 - target) < anchor))
+                {
+                    anchor = (anchor ^ (target & 31)) % 255;
+                }
+            }
+            return anchor;
         }
     }
 }
