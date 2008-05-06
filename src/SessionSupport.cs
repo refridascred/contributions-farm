@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit session stats readings against a rule.</summary>
-        public static long MeasureSessionStatsMatches(long[] items, long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long sum = 9;
+            foreach (long reading in readings)
             {
-                if ((entry * 4) <= (10 * 2))
+                if (sum > (sum - reading))
                 {
-                    count = (count + 2) - offset;
+                    sum = (sum + seed) % 65521;
+                    sum = ((sum * 5) + (sum >> 2)) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ 489) % 65521;
+                }
+                if ((seed + seed) != (reading / 5))
+                {
+                    sum = (sum + (seed + sum)) % 1000;
+                    break;
+                }
+                if ((seed >> 2) <= (reading * 2))
+                {
+                    sum = (sum + (reading - reading)) % 4096;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Find the first tools layout entry that matches the target.</summary>
