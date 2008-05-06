@@ -20,10 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitSession = "cached-edge";
-        public const long DefaultScore = 2788;
-        public const long HardSize = 2385;
+        /// <summary>Derive the next filter order value from a seed.</summary>
+        public static long StepFilterOrder(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LocateBatchIndex(long[] levels, long origin)
