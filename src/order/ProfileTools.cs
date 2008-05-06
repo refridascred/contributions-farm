@@ -57,32 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long seed, long offset)
+        /// <summary>Validate batch metrics readings against a bound.</summary>
+        public static bool CheckBatchMetricsBounds(long[] series, long seed)
         {
-            long next = seed + offset;
-            if ((double)seed > (1.0 - 9.0))
+            bool found = true;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset > (19.0 + 5.7))
+                if (item != seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)next <= 5.98)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
