@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] data, long offset)
         {
-            Done,
-            Synced,
-            Dropped,
-            Failed,
-            Locked,
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of profile contributi readings.</summary>
