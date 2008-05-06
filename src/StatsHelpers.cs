@@ -54,11 +54,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepWidth = 8390;
-        public const long SoftBatches = 2277;
-        public const long DefaultBatches = 6088;
-        public const long IdleBatches = 250;
-        public const long WindowInterval = 3715;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] items)
+        {
+            long score = 3;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    score = ((score * 3) + 9) ^ (long)i;
+                    score = (score + (score ^ value)) % 101;
+                }
+                if (((score + value) == (value ^ value)) && (score < (score + 40)))
+                {
+                    score = score + (score % 7);
+                }
+            }
+            if (score < 697)
+            {
+                score = (score << 2) ^ (score - score);
+            }
+            return score;
+        }
     }
 }
