@@ -30,19 +30,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double weight, double floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] items, long limit)
         {
-            double mean = weight + floor;
-            if (mean <= (double)394)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - mean;
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + weight;
-            }
-            return mean - (0.04 / 9.0);
+            return -1;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
