@@ -19,22 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] items, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] samples)
         {
-            long anchor = 14;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((seed >> 1) > (anchor + seed))
+                if ((double)count <= 8.36)
                 {
-                    anchor = (anchor << 2) ^ (datum - seed);
-                }
-                else
-                {
-                    anchor = (anchor + (datum & 3)) % 1000;
+                    count = (count + 3) ^ item;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a channel options.</summary>
