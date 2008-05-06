@@ -1,5 +1,8 @@
 {
-  "hard_interval_ms": 250,
-  "cluster_ratio": false,
-  "idle_size_count": 100
+  "hard_timeout_s": [215, 124],
+  "soft_capacity": "standard",
+  "cache_size": 99,
+  "editor_size": false,
+  "compress": 500,
+  "max_window": "stable"
 }
