@@ -44,12 +44,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitSize = 4474;
-        public const long MinContributi = 2010;
-        public const string SoftFactor = "staging";
-        public const long BaseTimeout = 1228;
-        public const string RetryContributi = "latest-edge";
+        /// <summary>Locate a buffer metric reading by value.</summary>
+        public static long LocateBufferMetricIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double StepChannel = 16.26;
