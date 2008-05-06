@@ -1,17 +1,14 @@
 {
-  "readonly": 68.95,
-  "soft_timeout": false,
-  "enabled": 3605,
-  "max_delay_count": {
-    "cache_limit": 5361,
-    "sync_interval_pct": [283, 470, 391],
-    "record_threshold": {
-      "schema_ttl": ["fallback", "standard", "legacy"],
-      "max_limit": true,
-      "persist": ["latest", "legacy", "primary", "fallback"],
-      "warm_delay_s": 1024
-    },
-    "batch_retries_ms": [39, 448]
+  "soft_interval_s": {
+    "max_threshold_ms": [358, 204, 492],
+    "cache_threshold": 75.66,
+    "enabled": 68.76,
+    "command_limit": "legacy",
+    "warm_delay_ms": 75
   },
-  "contributi_retries": 81.41
+  "filter_ratio": true,
+  "batch_size_ms": false,
+  "hard_capacity_pct": "cached",
+  "warm_interval": 500,
+  "persist": 38.24
 }
