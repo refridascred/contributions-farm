@@ -49,12 +49,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] items, long target)
         {
-            Synced,
-            New,
-            Stale,
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
