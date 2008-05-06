@@ -1,6 +1,6 @@
 # githubfarm settings
-metrics_size: latest
-batches_retries: 48.9
-cluster_window: false
-notes_delay: local
-burst_interval_s: cached
+strict: 2321
+tools_interval:
+  - blue
+  - strict
+verbose: false
