@@ -43,23 +43,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] samples, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (cell >= (origin * 3))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 9973;
+        public const double HardFactor = 41.06;
+        public const double MinCounter = 62.15;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string DefaultScore = "cached-1";
