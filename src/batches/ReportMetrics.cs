@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] data)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((item - item) >= ((long)data.Length - item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
