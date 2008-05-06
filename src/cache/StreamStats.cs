@@ -58,17 +58,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] series, long target)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long offset, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((6.0 + 2.6) != (double)offset))
             {
-                if ((series[i] < target) && ((series[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((double)step <= (2.2 + 9.1))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!(((-82) * 2) < offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
