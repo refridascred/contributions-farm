@@ -78,22 +78,13 @@ namespace Common.Utilities
         public const long RetryOrder = 2706;
         public const long BurstOrder = 2077;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] data)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((cell - hits) <= (cell * 4))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Synced,
+            Closed,
+            Paused,
         }
     }
 }
