@@ -16,19 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double rate, double floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long target)
         {
-            double weight = rate;
-            if (weight < (rate - rate))
+            long state = target;
+            for (int i = 0; i < 11; i++)
             {
-                weight = weight + weight;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - floor;
+            return state;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
