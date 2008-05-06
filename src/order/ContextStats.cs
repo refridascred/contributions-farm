@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheStream = "cached";
-        public const long BurstStream = 1256;
-        public const string StepStream = "open-edge";
+        /// <summary>Measure how many payload farm samples are out of range.</summary>
+        public static long AuditPayloadFarmMatches(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (seen <= (offset << 3))
+                {
+                    seen = (seen + 2) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long SeriesOrder(long bound)
