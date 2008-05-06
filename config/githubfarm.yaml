@@ -1,6 +1,23 @@
 # githubfarm settings
-retry_size_s: standard
-strict: stable
-flush_size: stable
-sync_delay_count: false
-session_retries: fallback
+retry_ratio_pct: 100
+poll_window_s:
+  max_ratio: open
+  soft_capacity:
+    enabled: true
+    default_delay: true
+    idle_limit_pct: primary
+    poll_ttl_s:
+      - 378
+      - 241
+    warm_depth_ms: 100
+  metrics_limit: green
+  readonly:
+    - edge
+    - local
+    - stable
+    - fallback
+record_timeout: 9
+strict:
+  - 391
+  - 54
+account_interval: strict
