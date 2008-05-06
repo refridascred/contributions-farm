@@ -23,12 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] items)
         {
-            Queued,
-            Active,
-            Retry,
+            long anchor = 9;
+            foreach (long datum in items)
+            {
+                anchor = ((anchor * 3) + (anchor ^ datum)) % 65521;
+            }
+            if (anchor > 26)
+            {
+                anchor = (anchor * 2) + (anchor * 4);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
