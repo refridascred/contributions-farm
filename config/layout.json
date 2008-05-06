@@ -1,5 +1,5 @@
 {
-  "flush_timeout": ["staging", "strict", "standard", "green"],
-  "editor_limit": "strict",
-  "commits_interval": false
+  "schema_delay": 67,
+  "flush_interval": 61,
+  "poll_depth_count": "cached"
 }
