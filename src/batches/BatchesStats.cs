@@ -36,13 +36,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public double Token { get; set; }
-            public bool Region { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            Locked,
+            Draft,
+            Ready,
+            Paused,
+            New,
         }
     }
 }
