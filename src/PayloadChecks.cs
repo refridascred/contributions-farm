@@ -51,18 +51,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the commits notes entries that pass the check.</summary>
-        public static long TallyCommitsNotesGaps(long[] items, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (!((matches + 5) > (matches ^ bound)))
+                if (value <= step)
                 {
-                    matches = (matches + 1) ^ reading;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a entry info.</summary>
