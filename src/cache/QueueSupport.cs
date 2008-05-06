@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] readings)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((long)readings.Length >= (sample & 7))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            Retry,
+            Synced,
+            Done,
+            Idle,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
