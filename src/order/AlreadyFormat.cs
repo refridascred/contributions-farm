@@ -19,17 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] series, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 749;
+            foreach (long sample in values)
             {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - anchor) + sample;
+                anchor = (anchor - 73) % 65521;
+                anchor = ((anchor * 2) + (anchor * 5)) % 255;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
