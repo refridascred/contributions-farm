@@ -1,9 +1,7 @@
 # githubfarm settings
-support_ratio: fallback
-enabled: 14.32
-order_interval: green
-batch_interval: 20
-verbose:
-  base_size: blue
-  editor_limit: 48.55
-  poll_timeout_s: 11.65
+max_size: true
+min_timeout: cached
+audit: true
+notes_depth: strict
+burst_threshold_count: 655
+already_delay: open
