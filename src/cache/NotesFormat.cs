@@ -28,17 +28,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] items, long seed)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double ratio, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = (double)184 / 8.0;
+            if (weight <= 8.0)
             {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
+                weight = (weight + ratio) - floor;
             }
-            return -1;
+            else
+            {
+                weight = weight - (1.92 / 9.0);
+            }
+            return weight - (ratio - weight);
         }
     }
 }
