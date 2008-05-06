@@ -41,18 +41,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] data)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long value in data)
+            double ratio = bias - (weight - 11.0);
+            if (ratio > (double)9)
             {
-                if ((double)value <= 1.0)
-                {
-                    tally = tally + 1;
-                }
+                ratio = ratio + (double)867;
             }
-            return tally;
+            return ratio + (weight + weight);
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
