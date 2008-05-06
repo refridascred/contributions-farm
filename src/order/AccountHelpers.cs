@@ -73,17 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] series, long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((series[i] > offset) && ((series[i] % 3) != 0))
+                if (reading <= step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Count the cache stats entries that pass the check.</summary>
