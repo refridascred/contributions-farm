@@ -1,8 +1,7 @@
 # support settings
-warm_ttl: staging
-default_ratio_count:
-  - cached
-  - strict
-  - eu-west
-  - fallback
-batch_threshold_count: strict
+default_timeout_ms: 24
+base_capacity_s: legacy
+burst_retries_count: false
+cache_limit_pct: latest
+verbose: fallback
+queue_depth: false
