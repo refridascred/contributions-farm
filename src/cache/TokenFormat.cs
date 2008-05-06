@@ -15,21 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] readings)
+        /// <summary>Combine route channel values into a single score.</summary>
+        public static long CombineRouteChannel(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 558;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((((sum << 3) ^ (sum / 3)) % 65521) ^ value) + floor;
             }
-            return tally;
+            if (sum > (-477))
+            {
+                sum = sum ^ ((long)readings.Length - 7);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a account stats.</summary>
