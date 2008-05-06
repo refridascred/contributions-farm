@@ -36,22 +36,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine schema channel values into a single score.</summary>
-        public static long ScoreSchemaChannel(long[] values)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            long mark = 1;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (mark > item)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark << 2) ^ 31) % 65521;
+                    if ((data[i] + data[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark > 112)
-            {
-                mark = (mark - mark) % 1000;
-            }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
