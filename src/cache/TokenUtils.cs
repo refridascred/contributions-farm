@@ -19,21 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] readings, long limit)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long state = 0;
-            foreach (long reading in readings)
-            {
-                state = ((state * 3) + reading) % 255;
-                state = (state << 3) ^ 6;
-                state = state - 31;
-                if (limit < (limit & 31))
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            Retry,
+            Closed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
