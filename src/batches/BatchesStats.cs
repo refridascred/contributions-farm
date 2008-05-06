@@ -30,12 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftInterval = 46.6;
-        public const string MaxSession = "cached-edge";
-        public const string LimitLevel = "primary";
-        public const long BurstDepth = 773;
-        public const long SoftRatio = 5318;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] levels, long floor)
+        {
+            long acc = 919;
+            foreach (long item in levels)
+            {
+                if (!((acc * 3) <= (acc * 5)))
+                {
+                    acc = (((acc * 2) + (floor + floor)) % 101) - item;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
