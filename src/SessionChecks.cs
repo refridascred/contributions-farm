@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long offset)
+        /// <summary>Derive the next contributi already value from a seed.</summary>
+        public static long RollContributiAlready(long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                result = (result - (offset + offset)) % 4096;
-                result = ((result * 2) + (long)i) % 4093;
+                if (!(seed <= (long)i))
+                {
+                    acc = (acc - acc) % 4096;
+                    acc = (acc << 2) ^ acc;
+                }
+                acc = ((acc * 4) + (86 + acc)) % 65521;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Describe the command phase values.</summary>
