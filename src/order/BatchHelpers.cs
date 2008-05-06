@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (limit >= (limit << 1))
                 {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) + sample;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
