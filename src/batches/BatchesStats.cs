@@ -19,14 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Dropped,
-            Closed,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLayout = "open-edge";
+        public const long IdleBudget = 5014;
+        public const string BaseRatio = "primary-v2";
+        public const long StepLayout = 5847;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
