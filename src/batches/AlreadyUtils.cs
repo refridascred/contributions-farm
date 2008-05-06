@@ -41,11 +41,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepCommand = 13.42;
-        public const string MinCommand = "alpha-1";
-        public const long CacheDepth = 9486;
-        public const string CacheSize = "fallback-1";
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] items)
+        {
+            long carry = 601;
+            foreach (long value in items)
+            {
+                carry = (carry << 2) ^ (value ^ carry);
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchOutliers(long[] items)
