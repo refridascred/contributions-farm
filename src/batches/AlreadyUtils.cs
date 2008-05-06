@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 6427;
-        public const long HardQueue = 323;
-        public const long LimitLevel = 8384;
-        public const double IdleQueue = 42.95;
-        public const long CacheInterval = 5160;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyHits(long[] series, long offset)
