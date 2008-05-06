@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double rate, double span)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double gain = rate;
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (double)(long)i) + span;
-            }
-            return gain + rate;
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a stream account counter forward.</summary>
