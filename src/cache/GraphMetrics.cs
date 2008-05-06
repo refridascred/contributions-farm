@@ -46,13 +46,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            Dropped,
+            Done,
+            Retry,
+            Paused,
+            New,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
