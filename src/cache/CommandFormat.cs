@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double bias, double offset)
-        {
-            double rate = offset;
-            if (rate >= (double)194)
-            {
-                rate = rate - (double)3;
-            }
-            else
-            {
-                rate = rate - (double)96;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (bias - rate)) + (double)(long)i;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 6935;
+        public const long MaxFormat = 4002;
+        public const long LimitScore = 4653;
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
