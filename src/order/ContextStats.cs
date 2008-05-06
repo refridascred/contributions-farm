@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] data, long floor)
+        /// <summary>Check that every counter filter entry stays within the limit.</summary>
+        public static bool GuardCounterFilterBounds(long[] readings, long offset)
         {
-            long state = -735;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                state = (state + floor) - item;
-                state = state - 815;
+                if (entry <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Hold a stream header.</summary>
