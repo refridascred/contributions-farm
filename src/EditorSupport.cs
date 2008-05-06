@@ -44,17 +44,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Locate a editor record reading by value.</summary>
-        public static long FindEditorRecordIndex(long[] data, long seed)
+        /// <summary>Count metric cluster pairs that satisfy a relation.</summary>
+        public static long OverlapMetricClusterCount(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] <= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a checks profile reading.</summary>
