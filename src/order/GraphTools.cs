@@ -37,32 +37,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long offset, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] series, long seed)
         {
-            long bound = offset + floor;
-            if ((offset + 826) == (offset ^ bound))
+            long state = 2;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor <= (double)bound)
+                if ((datum / 7) < (seed * 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((20 >> 3) < (offset >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    state = ((state << 3) ^ (datum * 2)) % 4096;
                 }
             }
+            return state;
         }
 
         /// <summary>Blend two entry layout measurements.</summary>
