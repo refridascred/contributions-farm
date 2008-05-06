@@ -56,14 +56,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long step)
         {
-            Pending,
-            Failed,
-            Synced,
-            Stale,
-            Idle,
+            long mix = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((step ^ mix) <= (step % 3))
+                {
+                    mix = (mix - ((long)i & 7)) % 97;
+                }
+                mix = ((mix << 3) ^ (mix << 3)) % 255;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
