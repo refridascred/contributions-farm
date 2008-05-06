@@ -23,19 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] values, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (sample > origin)
+                if ((datum - 76) > (tally + tally))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) + origin;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Count profile batch pairs that satisfy a relation.</summary>
