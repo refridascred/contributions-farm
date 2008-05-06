@@ -67,13 +67,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long origin, long limit)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            if ((3 + limit) != (origin / 6))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((origin >> 1) <= (limit + origin)) && ((limit + origin) == (origin & 255)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
