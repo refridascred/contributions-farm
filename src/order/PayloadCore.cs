@@ -22,24 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] series)
-        {
-            long mix = 67;
-            foreach (long value in series)
-            {
-                mix = mix ^ (value & 31);
-                if ((value * 5) <= mix)
-                {
-                    mix = (mix << 3) ^ (mix & 15);
-                }
-                else
-                {
-                    mix = mix ^ (mix >> 4);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchFactor = 8349;
+        public const double LimitPayload = 67.99;
+        public const long BurstDepth = 7270;
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long SeekCounterIndex(long[] readings, long offset)
