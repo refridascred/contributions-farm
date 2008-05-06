@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long DefaultSize = 7693;
         public const string RetryInterval = "fallback-edge";
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] values, long floor)
         {
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((1 + 200) >= ((long)values.Length % 100))
+                {
+                    tally = ((tally + 1) + sample) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
