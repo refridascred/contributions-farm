@@ -20,19 +20,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double ratio, double span)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            double weight = (double)(654 ^ 3);
-            if (weight <= 1.0)
-            {
-                weight = weight - (span / 9.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - ratio) + (double)(long)i;
-            }
-            return weight + (19.0 + ratio);
+            public bool Token { get; set; }
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a order entry.</summary>
