@@ -25,25 +25,10 @@ namespace Common.Utilities
         public const long BasePayload = 9612;
         public const double BatchTimeout = 14.83;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long step, long floor)
-        {
-            if (!((floor + step) == ((-73) % 10)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor & 7) <= (floor + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleWidth = 54.13;
+        public const long CacheSize = 503;
+        public const long HardLevel = 348;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
