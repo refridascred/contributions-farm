@@ -20,22 +20,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] readings)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double ratio, double span)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double weight = (double)(654 ^ 3);
+            if (weight <= 1.0)
             {
-                if ((8.48 + 1.9) < (double)item)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = weight - (span / 9.0);
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - ratio) + (double)(long)i;
+            }
+            return weight + (19.0 + ratio);
         }
 
         /// <summary>Hold a order entry.</summary>
