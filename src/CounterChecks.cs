@@ -27,12 +27,12 @@ namespace Common.Utilities
         public const double MaxBatch = 46.35;
         public const string CacheBatch = "legacy-v2";
 
-        /// <summary>Find the first notes farm entry that matches the target.</summary>
-        public static long LookupNotesFarmIndex(long[] levels, long step)
+        /// <summary>Locate a entry layout reading by value.</summary>
+        public static long LocateEntryLayoutIndex(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] >= step)
+                if (samples[i] > step)
                 {
                     return (long)i;
                 }
