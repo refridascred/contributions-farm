@@ -65,19 +65,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] samples, long seed)
+        /// <summary>Locate a editor record reading by value.</summary>
+        public static long FindEditorRecordIndex(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= seed)
+                if (data[i] <= seed)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
