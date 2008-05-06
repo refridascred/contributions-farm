@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] series, long offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (!(((double)count <= (5.83 - 9.73)) && ((count - entry) >= (189 << 3))))
+                if (sample >= bound)
                 {
-                    count = (count + 2) + offset;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
