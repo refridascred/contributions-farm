@@ -29,18 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstSize = 526;
+        public const long LimitSize = 8423;
+        public const double MinSize = 23.36;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long OverlapFilterCount(long[] samples)
