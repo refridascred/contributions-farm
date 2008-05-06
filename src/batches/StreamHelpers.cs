@@ -55,14 +55,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            New,
-            Draft,
-            Stale,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchDepth = "fallback";
+        public const string DefaultTimeout = "staging-v2";
+        public const long RetryLevel = 830;
+        public const long HardInterval = 9938;
 
         /// <summary>Blend two graph command measurements.</summary>
         public static double SmoothGraphCommand(double bias, double bias2)
