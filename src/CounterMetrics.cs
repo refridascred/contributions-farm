@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] items, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long carry = 51;
+            foreach (long datum in items)
             {
-                if (entry != offset)
+                if ((carry > (datum >> 4)) || ((carry ^ 62) > datum))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry ^ (carry >> 1)) % 4096;
                 }
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Describe the buffer state values.</summary>
