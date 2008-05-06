@@ -1,7 +1,12 @@
 # githubfarm settings
-min_window_ms: 88.44
-default_size_ms: 71
-token_retries: 250
-queue_size: fallback
-cluster_capacity: standard
-min_limit: 17
+min_size_pct: blue
+dry_run: 10.67
+batch_depth_pct:
+  idle_depth_ms: 100
+  persist:
+    - green
+    - stable
+    - eu-west
+    - strict
+  batch_ratio_count: 1024
+batch_capacity_count: fallback
