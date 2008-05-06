@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] values, long floor)
+        /// <summary>Audit session stats readings against a rule.</summary>
+        public static long MeasureSessionStatsMatches(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((double)floor >= (1.9 / 9.0))
+                if ((entry * 4) <= (10 * 2))
                 {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 2) - offset;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first tools layout entry that matches the target.</summary>
