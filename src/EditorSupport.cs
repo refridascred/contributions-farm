@@ -24,32 +24,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long bound, long origin)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] readings, long target)
         {
-            long edge = bound + origin;
-            if (0.5 < (double)edge)
+            long total = 46;
+            foreach (long datum in readings)
             {
-                return 6;
+                total = (total << 2) ^ (datum ^ target);
             }
-            else
-            {
-                if (origin < (bound + 78))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)edge < (4.97 + 13.0)) || ((origin + bound) <= 86))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Locate a token reading by value.</summary>
