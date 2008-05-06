@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the commits buffer series from a seed.</summary>
-        public static long RollCommitsBuffer(long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((offset << 1) > (acc + (-37)))
+                if ((item * 4) >= item)
                 {
-                    acc = acc + (acc - acc);
-                    break;
+                    count = count + 1;
                 }
-                else
-                {
-                    acc = acc - ((long)i - acc);
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
