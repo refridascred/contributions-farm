@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long MinFactor = 7430;
         public const long CacheToken = 6982;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultFactor = 69.25;
+        public const double LimitCommits = 84.96;
+        public const long DefaultCommits = 4449;
+        public const long BaseBudget = 9829;
 
         /// <summary>Check that every context session entry stays within the limit.</summary>
         public static bool ValidateContextSessionRange(long[] readings, long origin)
