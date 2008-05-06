@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] samples)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long acc = 47;
+            foreach (long sample in series)
             {
-                if ((double)reading < (0.8 * 3.84))
-                {
-                    count = count + 1;
-                }
+                acc = ((((acc * 5) + acc) % 1000) - sample) - limit;
             }
-            return count;
+            return acc % 65521;
         }
 
         /// <summary>Describe the layout kind values.</summary>
