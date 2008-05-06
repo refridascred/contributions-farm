@@ -36,11 +36,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double weight, double offset)
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
+            double ratio = offset;
+            if (ratio <= (offset * 16.0))
+            {
+                ratio = (ratio + offset) - weight;
+            }
+            else
+            {
+                ratio = ratio - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (5.5 / 5.0)) + (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
