@@ -1,6 +1,9 @@
-id,count,ratio,score,active
-1,strict,718,15.71,staging
-2,legacy,staging,269,primary
-3,standard,strict,813,26.8
-4,32.58,70.12,582,local
-5,43.81,262,112,62.17
+id,token,label,active,level
+1,686,staging,737,eu-west
+2,cached,55.98,51,521
+3,657,6,standard,green
+4,666,38.71,806,latest
+5,453,blue,edge,legacy
+6,441,522,36.48,10
+7,17.5,cached,378,58.43
+8,40.0,97.97,88.14,277
