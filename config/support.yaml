@@ -1,33 +1,24 @@
 # support settings
-hard_capacity_pct:
-  batch_interval:
-    burst_delay_count: 250
-    hard_window_count:
-      - latest
-      - fallback
-      - staging
-      - legacy
-    sync_capacity_pct:
-      - 9
-      - 384
-      - 100
-      - 77
-  profile_size:
-    flush_ratio_ms: local
-    enabled: false
-    persist: standard
-  flush_timeout:
-    idle_threshold_s:
-      - 164
-      - 185
-    payload_delay:
-      - eu-west
-      - open
-      - green
-      - strict
-    checks_ratio: 5697
-    stats_ttl: local
-    audit: 1024
-    strict: 6261
-cache_delay_s: 81.16
-session_limit: fallback
+queue_threshold:
+  - local
+  - edge
+hard_limit_count: 60
+sync_delay_pct:
+  - fallback
+  - latest
+batches_delay: 6104
+command_window:
+  sync_limit_pct: 66.22
+  context_size: latest
+  min_ttl_s: standard
+  readonly: 100
+  counter_retries: legacy
+  base_delay_count:
+    buffer_depth: false
+    default_ratio_ms: 30
+    audit: true
+    poll_capacity:
+      - 475
+      - 240
+      - 320
+      - 358
