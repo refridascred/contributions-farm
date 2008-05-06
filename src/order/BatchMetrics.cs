@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultRatio = 3643;
-        public const long MinCommits = 3389;
-        public const long MaxDepth = 5578;
-        public const long SoftRatio = 3497;
-        public const long IdleCommits = 4074;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long CompareChannelCount(long[] readings)
