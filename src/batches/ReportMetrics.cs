@@ -32,12 +32,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 25.93;
+        public const string MaxRatio = "legacy";
+        public const long IdleSupport = 3776;
     }
 }
