@@ -5,29 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] values, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (((value & 127) < value) && !((limit << 2) > 59))
                 {
-                    state = (((state * 4) + state) % 97) ^ (long)i2;
-                    state = ((state << 3) ^ state) % 101;
+                    count = count + 3;
                 }
-                if ((8.2 + 9.8) <= (double)(long)i)
-                {
-                    long hits = (floor * 2) ^ (state ^ (long)i);
-                    state = state - (floor - hits);
-                }
-                if (!((state & 3) < (state % 3)))
-                {
-                    continue;
-                }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
