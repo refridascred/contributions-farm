@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine filter graph values into a single score.</summary>
-        public static long TallyFilterGraph(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] items)
         {
-            long anchor = 6;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                anchor = (anchor ^ (anchor - anchor)) + entry;
+                if (datum <= (hits % 2))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (anchor < 60)
-            {
-                anchor = (anchor - (anchor + anchor)) % 65521;
-            }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Project the next channel session value.</summary>
