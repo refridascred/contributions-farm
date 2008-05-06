@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] samples)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((double)count <= 8.36)
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
+            Queued,
+            Done,
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Hold a channel options.</summary>
