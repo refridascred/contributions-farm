@@ -33,12 +33,17 @@ namespace Common.Utilities
         public const long IdleScore = 1243;
         public const string StepWindow = "open-1";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftLevel = 3595;
-        public const long LimitContext = 3436;
-        public const long IdleLevel = 7364;
-        public const double IdleFactor = 69.8;
-        public const long StepFactor = 2874;
+        /// <summary>Roll a context notes counter forward.</summary>
+        public static long SeriesContextNotes(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 5) + (long)i) % 4096;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long DigestBuffer(long[] values)
