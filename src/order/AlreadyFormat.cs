@@ -29,12 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 7114;
-        public const long WindowSpan = 1691;
-        public const double IdleDepth = 7.44;
-        public const long CacheInterval = 5045;
-        public const string RetryQueue = "standard";
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                result = (result - ((long)i << 3)) % 101;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = (((result << 2) ^ (bound >> 4)) % 1000) + (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] values)
