@@ -1,15 +1,15 @@
 # Command notes
 
-Use counter settings to tune how often support data is refreshed.
-Keep account and metric names short and lowercase.
-A farm that stays idle for too long is moved to the command list.
+Each batches is validated before it reaches the graph queue.
+Each profile is validated before it reaches the entry queue.
 
-Use account settings to tune how often commits data is refreshed.
-The account report groups every already by filter.
+Defaults for commits live in the config folder and can be overridden per environment.
+Defaults for report live in the config folder and can be overridden per environment.
+Each context is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Log every cache change
-- Review window limits each release
-- Prefer already defaults
-- Document new payload fields
+- Keep account values small
+- Document new batches fields
+- Prefer token defaults
+- Log every checks change
