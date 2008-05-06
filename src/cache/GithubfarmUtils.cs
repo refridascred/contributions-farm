@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] items, long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] values, long limit)
         {
-            long acc = 1;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((limit & 127) > (68 * 4))
+                if (sample != limit)
                 {
-                    acc = ((acc ^ 0) % 97) - item;
-                }
-                if ((double)acc >= (18.0 + 3.16))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return acc % 4096;
+            return ok;
         }
 
         /// <summary>Describe the command class values.</summary>
