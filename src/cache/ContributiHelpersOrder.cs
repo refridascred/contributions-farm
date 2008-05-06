@@ -16,16 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] samples)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                mix = (mix * 3) + (seed / 9);
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((491 / 4) > (value % 7))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the stream kind values.</summary>
