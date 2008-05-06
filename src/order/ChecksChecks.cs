@@ -28,14 +28,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Draft,
-            Synced,
-            Retry,
-            Closed,
-            Ready,
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
