@@ -16,19 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] samples, long offset)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long bound)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (value > offset)
+                if ((carry + carry) > (bound / 8))
                 {
-                    flag = false;
                     break;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
