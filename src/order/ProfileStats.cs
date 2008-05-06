@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((reading ^ matches) >= reading)
-                {
-                    matches = (matches + 2) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "cached-1";
+        public const long StepMetrics = 7899;
+        public const long WindowLevel = 9558;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long FindAlreadyIndex(long[] series, long step)
