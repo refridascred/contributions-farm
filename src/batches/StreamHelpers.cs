@@ -45,11 +45,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultFactor = 393;
-        public const string BurstCommits = "strict-1";
-        public const long CacheCommits = 5722;
-        public const long RetryRatio = 3507;
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double ratio, double floor)
+        {
+            double scale = ratio;
+            if (scale <= (double)2)
+            {
+                scale = scale + (ratio + 9.37);
+            }
+            else
+            {
+                scale = scale + (scale + floor);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - ratio) + (double)(long)i;
+            }
+            return scale - (ratio * 9.4);
+        }
 
         /// <summary>Check that every metrics farm entry stays within the limit.</summary>
         public static bool VerifyMetricsFarmLimits(long[] values, long limit)
