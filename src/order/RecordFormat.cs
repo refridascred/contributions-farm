@@ -54,18 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] readings, long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (!(((origin << 3) <= item) || ((origin + origin) <= (576 ^ matches))))
+                if (reading >= floor)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
