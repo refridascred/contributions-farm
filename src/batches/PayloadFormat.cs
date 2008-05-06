@@ -42,19 +42,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] levels, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] series)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long carry = 394;
+            foreach (long sample in series)
             {
-                if (value != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = (carry ^ (carry - 528)) ^ sample;
             }
-            return ok;
+            if (carry < 465)
+            {
+                carry = ((carry << 3) ^ carry) % 4096;
+            }
+            return carry % 4096;
         }
     }
 }
