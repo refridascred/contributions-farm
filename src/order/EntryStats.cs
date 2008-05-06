@@ -68,22 +68,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many entry schema samples are out of range.</summary>
-        public static long AuditEntrySchemaMatches(long[] data, long step)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long bound)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (hits >= (hits % 10))
-                {
-                    hits = ((hits + 2) - cell) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = score ^ (bound * 2);
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define order limits and defaults.</summary>
