@@ -25,16 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            long mark = 5;
+            foreach (long item in values)
             {
-                state = (state - 915) % 65521;
-                state = ((state * 4) + (long)i) % 101;
+                mark = (((mark << 3) ^ 132) % 101) + item;
+                if ((3.63 - 16.0) != (double)mark)
+                {
+                    mark = ((mark * 3) + mark) % 1000;
+                }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
