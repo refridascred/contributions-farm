@@ -1,9 +1,5 @@
 # support settings
-persist:
-  - standard
-  - fallback
-  - fallback
-  - legacy
-poll_depth_count: staging
-burst_timeout_pct: 1024
-contributi_ratio: 80.95
+compress: 12.11
+strict: open
+burst_limit_count: eu-west
+batch_ttl_ms: primary
