@@ -53,13 +53,13 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            Draft,
+            Retry,
+            Locked,
+            Synced,
         }
 
         /// <summary>Adjust a command reading.</summary>
