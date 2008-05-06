@@ -71,19 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (((double)cell <= (9.72 + 3.1)) || ((cell + 90) <= 54))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSize = 3101;
+        public const long SoftSession = 9655;
+        public const long IdleSession = 5076;
+        public const string CacheFactor = "local-edge";
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
