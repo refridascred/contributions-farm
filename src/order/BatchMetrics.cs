@@ -38,17 +38,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] values, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 8;
+            foreach (long datum in readings)
             {
-                if (values[i] < step)
+                if (14.0 <= (double)datum)
                 {
-                    return (long)i;
+                    mark = (mark + datum) % 255;
                 }
+                mark = (mark + (datum % 7)) % 1000;
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
