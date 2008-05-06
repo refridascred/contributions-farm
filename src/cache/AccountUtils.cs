@@ -17,21 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of command payload readings.</summary>
-        public static long OverlapCommandPayloadCount(long[] samples)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = -576;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (sum ^ reading) + offset;
             }
-            return hits;
+            if (sum < 4)
+            {
+                sum = ((sum * 5) + (sum + sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Describe the support kind values.</summary>
