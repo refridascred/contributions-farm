@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
             Failed,
-            Stale,
-            Ready,
+            New,
+            Active,
+            Closed,
+            Done,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
