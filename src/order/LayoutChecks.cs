@@ -17,12 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 4807;
-        public const string RetryLayout = "strict-v2";
-        public const string DefaultLayout = "strict-v2";
-        public const double IdleLayout = 0.45;
-        public const long MinLayout = 6522;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
