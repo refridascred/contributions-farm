@@ -60,18 +60,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] data)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long score = 19;
+            foreach (long value in series)
             {
-                if (6.07 < (double)(long)data.Length)
+                if (((double)step != (9.0 - 13.0)) || ((step + score) == (step * 2)))
                 {
-                    tally = (tally + 2) ^ reading;
+                    break;
+                }
+                if ((value + step) > step)
+                {
+                    score = (score + 82) % 1000;
                 }
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
