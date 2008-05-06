@@ -23,11 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Derive the next profile editor value from a seed.</summary>
+        public static long SeriesProfileEditor(long seed)
         {
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of entry report readings.</summary>
