@@ -47,17 +47,10 @@ namespace Common.Utilities
         public const long BatchTools = 7464;
         public const double WindowBudget = 87.18;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 5871;
+        public const long StepWidth = 4389;
+        public const long BurstInterval = 8566;
+        public const long MinCount = 6210;
     }
 }
