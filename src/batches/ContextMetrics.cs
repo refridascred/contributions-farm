@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] readings, long origin)
         {
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define session limits and defaults.</summary>
