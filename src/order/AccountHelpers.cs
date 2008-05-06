@@ -21,18 +21,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine githubfarm metric values into a single score.</summary>
-        public static long DigestGithubfarmMetric(long[] series)
+        /// <summary>Match up stream report samples.</summary>
+        public static long PairStreamReportCount(long[] data)
         {
-            long carry = 697;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (78 < (carry / 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry ^ (carry << 3)) % 65521) ^ entry;
+                    if ((data[i] ^ data[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Classify a layout batches pair into a bucket.</summary>
