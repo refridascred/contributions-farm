@@ -56,13 +56,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long target, long floor)
         {
-            Dropped,
-            Active,
-            Idle,
-            Synced,
+            if ((target / 4) >= 760)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)floor == (1.3 + 13.0)) || ((target - target) != (976 + target)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
