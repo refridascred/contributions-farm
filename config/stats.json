@@ -1,6 +1,20 @@
 {
-  "cache_size_s": 40.19,
-  "base_delay": 25.81,
-  "notes_threshold": true,
-  "idle_delay_pct": 3046
+  "checks_window": false,
+  "idle_ttl_ms": {
+    "filter_interval": 93,
+    "burst_ttl": {
+      "burst_interval_count": "green",
+      "batch_size_s": 98.64,
+      "max_limit": [218, 462, 499],
+      "strict": "latest",
+      "flush_depth_s": "green"
+    },
+    "schema_depth": {
+      "hard_ratio_count": false,
+      "warm_interval_count": ["open", "latest", "latest", "strict"],
+      "context_capacity": [277, 303]
+    },
+    "cluster_timeout": false
+  },
+  "audit": false
 }
