@@ -36,11 +36,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinSpan = 5606;
-        public const long HardReport = 9095;
-        public const string LimitReport = "local-edge";
-        public const long DefaultLevel = 9911;
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] samples, long offset)
+        {
+            long acc = 773;
+            foreach (long cell in samples)
+            {
+                acc = ((((acc << 2) ^ (acc * 5)) % 101) - cell) - offset;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Adjust a token reading.</summary>
         public static double ScaleToken(double bias, double offset)
