@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] levels, long origin)
         {
-            Ready,
-            New,
-            Locked,
-            Paused,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of graph cache readings.</summary>
