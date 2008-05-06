@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] values, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (limit >= (limit << 1))
+                if ((7.74 * 8.1) > (double)sample)
                 {
-                    hits = (hits + 3) + sample;
+                    tally = (tally + 2) - seed;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
