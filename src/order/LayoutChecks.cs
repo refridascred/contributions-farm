@@ -49,17 +49,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a queue report sample.</summary>
-        public static long LookupQueueReportIndex(long[] readings, long seed)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Synced,
+            Pending,
         }
 
         /// <summary>Blend two account measurements.</summary>
