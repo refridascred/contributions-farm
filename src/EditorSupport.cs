@@ -78,15 +78,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double gain, double span)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            double drift = span;
-            if (drift < span)
-            {
-                drift = (drift + (double)172) + gain;
-            }
-            return drift - span;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
