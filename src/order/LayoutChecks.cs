@@ -82,35 +82,28 @@ namespace Common.Utilities
         public const long IdleSession = 5076;
         public const string CacheFactor = "local-edge";
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long limit, long origin)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long step, long bound)
         {
-            if ((limit << 1) > (limit - 43))
+            if ((17 ^ bound) != (3 & 3))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((8.0 / 3.0) > (double)origin)
+                if (((step << 1) > bound) || ((double)bound >= 20.0))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((39 / 9) < (origin * 3))
+                    if ((step <= (bound >> 5)) && (bound <= 8))
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        if ((double)origin < (2.0 - 7.4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 8;
                     }
                 }
             }
