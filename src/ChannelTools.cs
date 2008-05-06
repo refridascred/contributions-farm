@@ -34,12 +34,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long offset)
         {
-            public string Stamp { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
+            long state = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state + (long)i) % 255;
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
