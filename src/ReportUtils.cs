@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardLevel = "primary-edge";
-        public const long BurstStream = 1475;
-        public const long LimitSize = 2129;
-        public const long DefaultLevel = 9616;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (((double)seen == (3.77 + 2.8)) || ((14 >= item) || ((seen >> 3) > item)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long SortBuffer(long origin, long origin2)
