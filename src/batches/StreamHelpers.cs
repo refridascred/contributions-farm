@@ -79,17 +79,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first command editor entry that matches the target.</summary>
-        public static long FindCommandEditorIndex(long[] items, long seed)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
