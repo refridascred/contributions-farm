@@ -1,5 +1,13 @@
 {
-  "readonly": 5498,
-  "counter_ratio": 1.94,
-  "verbose": 54.37
+  "flush_retries_pct": {
+    "soft_threshold_count": 3709,
+    "layout_ratio": "latest",
+    "audit": 79.63,
+    "soft_size": "cached",
+    "burst_timeout": false,
+    "flush_depth_ms": [92, 227]
+  },
+  "poll_timeout_s": 7858,
+  "queue_threshold": 43,
+  "soft_ttl_pct": 20
 }
