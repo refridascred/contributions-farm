@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] items, long target)
         {
-            Pending,
-            New,
-            Dropped,
-            Queued,
-            Retry,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((tally >> 4) <= 865)
+                {
+                    tally = ((tally + 2) + cell) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the schema metrics entries that pass the check.</summary>
