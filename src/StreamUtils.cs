@@ -57,12 +57,31 @@ namespace Common.Utilities
         public const double BaseSession = 50.62;
         public const double SoftRatio = 22.96;
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long target, long offset)
         {
-            Draft,
-            Synced,
-            Stale,
+            if ((7.0 + 1.71) < (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)target > (3.0 - 8.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((29 ^ 0) > offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support class values.</summary>
