@@ -13,19 +13,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] data, long bound)
+        /// <summary>Grade a farm window value against two limits.</summary>
+        public static long BucketFarmWindow(long bound, long seed)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long delta = bound - seed;
+            if (seed < (seed & 15))
             {
-                if (sample < bound)
+                return 2;
+            }
+            else
+            {
+                if ((double)delta < (6.84 * 5.71))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the window level values.</summary>
