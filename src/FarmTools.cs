@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinLayout = "stable-1";
-        public const string BaseCount = "standard-v2";
-        public const long MinCount = 3384;
+        /// <summary>Iterate the graph account series from a seed.</summary>
+        public static long RollGraphAccount(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Count session entry pairs that satisfy a relation.</summary>
         public static long PairSessionEntryCount(long[] readings)
