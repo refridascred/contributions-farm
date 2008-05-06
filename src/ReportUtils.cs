@@ -22,17 +22,25 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Look up the position of a commits notes sample.</summary>
-        public static long SeekCommitsNotesIndex(long[] data, long limit)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long step, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long lane = step ^ bound;
+            if ((lane >> 2) != (bound - lane))
             {
-                if (data[i] < limit)
+                return 1;
+            }
+            else
+            {
+                if (bound < ((-871) + lane))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate support checks readings against a bound.</summary>
