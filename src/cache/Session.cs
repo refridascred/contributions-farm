@@ -29,18 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] samples, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((offset + 793) <= (-7))
+                if (cell < limit)
                 {
-                    count = (count + 3) + cell;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
