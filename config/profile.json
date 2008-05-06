@@ -1,20 +1,6 @@
 {
-  "dry_run": "blue",
-  "command_ttl": ["stable", "local", "local", "primary"],
-  "flush_threshold": {
-    "counter_delay": "strict",
-    "persist": "local",
-    "tools_capacity": 100,
-    "burst_capacity_count": "fallback",
-    "retry_ratio_ms": true,
-    "payload_depth": {
-      "cache_depth_pct": "edge",
-      "cache_threshold_count": 77.87,
-      "flush_interval_ms": "staging",
-      "hard_retries_ms": "blue",
-      "enabled": 67,
-      "soft_capacity_count": 500
-    }
-  },
-  "hard_depth_s": "latest"
+  "persist": 96,
+  "readonly": "latest",
+  "audit": "standard",
+  "dry_run": [41, 366, 492, 49]
 }
