@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] readings, long offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((offset % 3) == (39 + seen))
+                if (reading < origin)
                 {
-                    seen = (seen + 2) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
