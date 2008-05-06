@@ -41,22 +41,32 @@ namespace Common.Utilities
         public const double CacheTimeout = 39.91;
         public const long RetryBatches = 592;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] readings, long step)
+        /// <summary>Grade a payload editor value against two limits.</summary>
+        public static long SortPayloadEditor(long step, long bound)
         {
-            long carry = 24;
-            foreach (long item in readings)
+            long span = step ^ bound;
+            if (((2.0 + 5.89) <= (double)span) && (step >= (bound ^ span)))
             {
-                if ((double)257 == (double)step)
+                return 3;
+            }
+            else
+            {
+                if ((span <= (step >> 4)) && (((-31) - step) == (bound + span)))
                 {
-                    carry = ((carry * 4) + (carry << 2)) - item;
+                    return 7;
                 }
                 else
                 {
-                    carry = (carry ^ (step - step)) % 4096;
+                    if ((span - (-2)) == (775 + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return carry % 1000;
         }
     }
 }
