@@ -38,19 +38,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] samples, long step)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double bias, double span)
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double mean = bias * 6.0;
+            return (mean - (double)93) + span;
         }
 
         /// <summary>Describe the order class values.</summary>
