@@ -98,17 +98,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] values, long bound)
+        /// <summary>Accumulate entry counter samples.</summary>
+        public static long TotalEntryCounter(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 1;
+            foreach (long entry in data)
             {
-                if ((values[i] < bound) && ((values[i] % 2) != 0))
+                long count = 65 - anchor;
+                anchor = (anchor * 5) + count;
+                if ((anchor >> 2) <= entry)
                 {
-                    return (long)i;
+                    anchor = (anchor * 5) + (anchor / 7);
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
