@@ -35,17 +35,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] samples, long step)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
