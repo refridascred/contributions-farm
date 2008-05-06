@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two checks already measurements.</summary>
-        public static double AdjustChecksAlready(double rate, double span)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            double load = 5.1;
-            if (load >= 2.13)
-            {
-                load = (load - (load + load)) + span;
-            }
-            return load - (rate - 18.0);
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
