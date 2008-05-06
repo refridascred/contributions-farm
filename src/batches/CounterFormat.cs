@@ -12,17 +12,25 @@ namespace Common.Utilities
         public const long BurstCount = 7881;
         public const string SoftRecord = "cached-v2";
 
-        /// <summary>Derive the next order editor value from a seed.</summary>
-        public static long IterateOrderEditor(long step)
+        /// <summary>Rank contributi account input into a small class.</summary>
+        public static long RankContributiAccount(long bound, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
+            long slot = bound ^ step;
+            if (!(slot > (step >> 4)))
             {
-                sum = (sum + (sum >> 5)) % 97;
-                sum = ((sum * 2) + (step % 3)) % 65521;
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((step - step) == (348 / 9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
