@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long MaxFormat = 4002;
         public const long LimitScore = 4653;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Stale,
-            Ready,
-            Pending,
-            Paused,
-            Closed,
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the layout kind values.</summary>
