@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] items, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((total + origin) < (origin + (long)i))
+                if (items[i] >= seed)
                 {
-                    total = total + (9 - (long)i);
-                    continue;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Grade a format farm value against two limits.</summary>
