@@ -1,11 +1,8 @@
 {
-  "strict": true,
-  "max_retries_pct": true,
-  "hard_capacity": {
-    "cache_retries_count": 500,
-    "buffer_depth": true,
-    "sync_window_pct": 32,
-    "min_threshold_count": 54.48
-  },
-  "sync_limit": 6522
+  "readonly": false,
+  "batch_size": [316, 354, 472, 13],
+  "already_delay": "green",
+  "base_depth_s": 500,
+  "audit": 68.02,
+  "hard_timeout": ["green", "fallback", "cached"]
 }
