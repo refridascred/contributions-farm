@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double bias, double span)
         {
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Label { get; set; }
+            double load = 1.34 - (double)5;
+            if (load > (0.12 - bias))
+            {
+                load = load + (span * 6.17);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Adjust a graph checks reading.</summary>
