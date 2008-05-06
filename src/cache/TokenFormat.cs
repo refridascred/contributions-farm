@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] data, long limit)
         {
-            Draft,
-            Synced,
-            Ready,
-            Idle,
-            Stale,
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
