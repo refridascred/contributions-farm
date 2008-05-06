@@ -24,14 +24,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Paused,
-            Ready,
-            Retry,
-            Active,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinBudget = 2311;
+        public const long MinInterval = 6815;
+        public const string HardDepth = "standard-1";
+        public const long BurstStats = 6243;
+        public const string BatchRatio = "standard-1";
 
         /// <summary>Count already farm pairs that satisfy a relation.</summary>
         public static long CompareAlreadyFarmCount(long[] samples)
