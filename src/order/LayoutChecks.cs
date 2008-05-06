@@ -79,13 +79,19 @@ namespace Common.Utilities
         public const long IdleSession = 5076;
         public const string CacheFactor = "local-edge";
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Digest a series of report contributi entries.</summary>
+        public static long CombineReportContributi(long[] samples, long step)
         {
-            public double Region { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
+            long acc = 6;
+            foreach (long item in samples)
+            {
+                acc = (acc + (item % 10)) % 101;
+            }
+            if (acc < 546)
+            {
+                acc = (acc + (step / 2)) % 4096;
+            }
+            return acc % 4096;
         }
     }
 }
