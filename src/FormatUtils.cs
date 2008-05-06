@@ -47,12 +47,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 7574;
-        public const long HardSize = 3895;
-        public const long SoftCount = 8673;
-        public const long IdleRoute = 3736;
-        public const string BurstSpan = "strict-edge";
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultScore = "cached-1";
+        public const long LimitWindow = 5413;
+        public const string RetryCount = "local-1";
+        public const long CacheCount = 5006;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long RankReport(long seed, long step)
