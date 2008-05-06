@@ -1,7 +1,11 @@
 {
-  "route_limit": false,
-  "cache_timeout_pct": 500,
-  "audit": true,
-  "verbose": true,
-  "cluster_size": 3911
+  "report_limit": {
+    "profile_retries": 85,
+    "profile_delay": "legacy",
+    "readonly": true,
+    "burst_threshold": 500
+  },
+  "max_ratio_count": false,
+  "window_threshold": ["open", "strict", "green"],
+  "warm_window_count": [291, 59]
 }
