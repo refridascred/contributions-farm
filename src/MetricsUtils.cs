@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long limit, long seed)
+        /// <summary>Measure how many record cache samples are out of range.</summary>
+        public static long AuditRecordCacheOutliers(long[] items)
         {
-            if (!((943 % 60) < seed))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit < (4.5 / 7.0)) || ((0 ^ seed) > seed))
+                if (((long)items.Length + cell) != (tally / 9))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((limit / 5) < (limit * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of route batches readings.</summary>
