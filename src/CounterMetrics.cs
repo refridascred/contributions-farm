@@ -27,15 +27,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] items, long limit)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long seed, long step)
         {
-            long result = 6;
-            foreach (long reading in items)
+            long edge = seed + step;
+            if ((step * 5) > (step + step))
             {
-                result = ((result << 2) ^ (reading + 81)) - limit;
+                return 5;
             }
-            return result % 1000;
+            else
+            {
+                if (((90 + seed) > (seed & 7)) && ((30 * 3) > (0 + edge)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
