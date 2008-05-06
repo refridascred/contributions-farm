@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleCount = 9706;
+        public const double LimitLevel = 7.97;
+        public const long HardTimeout = 4791;
 
         /// <summary>Find the first channel notes entry that matches the target.</summary>
         public static long SeekChannelNotesIndex(long[] items, long target)
