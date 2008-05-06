@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long floor, long seed)
-        {
-            if (!(seed <= floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((((-56) / 8) > (seed + floor)) && ((floor + seed) < floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor % 64) > (seed / 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((997 + seed) <= (floor ^ seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinFactor = 3.48;
+        public const string BatchRatio = "legacy-edge";
+        public const double BatchCount = 4.27;
+        public const string CacheTimeout = "latest-edge";
+        public const double BurstBuffer = 55.52;
 
         /// <summary>Match up support payload samples.</summary>
         public static long OverlapSupportPayloadCount(long[] samples)
