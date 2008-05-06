@@ -58,12 +58,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long offset)
         {
-            Locked,
-            Draft,
-            Pending,
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = mark - mark;
+                mark = (mark ^ (offset * 5)) % 101;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Describe the queue mode values.</summary>
