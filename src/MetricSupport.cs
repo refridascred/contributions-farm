@@ -36,17 +36,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] levels, long offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Draft,
+            Pending,
+            Done,
+            Retry,
         }
     }
 }
