@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] series)
+        /// <summary>Match up session queue samples.</summary>
+        public static long MatchSessionQueueCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)entry != (8.42 - 6.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((readings[i] + readings[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a layout summary.</summary>
