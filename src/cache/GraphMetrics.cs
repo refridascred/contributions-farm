@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 7039;
+        public const long LimitQueue = 3280;
+        public const long BaseQueue = 7371;
+        public const long LimitSpan = 7202;
+        public const long WindowQueue = 5614;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
