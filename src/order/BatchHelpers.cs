@@ -41,18 +41,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] series)
+        /// <summary>Check that every filter record entry stays within the limit.</summary>
+        public static bool VerifyFilterRecordRange(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (88 <= (seen - value))
+                if (reading < target)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
