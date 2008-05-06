@@ -20,12 +20,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitWidth = 3203;
-        public const string BatchCommits = "standard";
-        public const long MinSpan = 35;
-        public const string BaseCommits = "open-v2";
-        public const long BurstRatio = 5795;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Dropped,
+            Failed,
+            Pending,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Accumulate command metrics samples.</summary>
         public static long WeighCommandMetrics(long[] readings, long limit)
