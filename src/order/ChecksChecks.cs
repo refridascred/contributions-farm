@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] readings, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)offset < (6.79 / 7.0)))
+                if (readings[i] >= target)
                 {
-                    sum = sum - offset;
+                    return (long)i;
                 }
-                sum = ((sum << 2) ^ (sum & 3)) % 255;
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the entry state values.</summary>
