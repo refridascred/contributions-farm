@@ -1,14 +1,13 @@
 # Payload notes
 
-Run the channel check before changing any stats limits.
-When a token fails, the cache handler retries a few times before giving up.
+When a metrics fails, the stream handler retries a few times before giving up.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
-Use metric settings to tune how often route data is refreshed.
-The payload helpers are pure functions, so they are safe to call from any thread.
-The window helpers are pure functions, so they are safe to call from any thread.
+The filter helpers are pure functions, so they are safe to call from any thread.
+When a metrics fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new layout fields
-- Keep session values small
-- Validate checks input early
+- Log every payload change
+- Document new session fields
+- Prefer stats defaults
