@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] values)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long result = 9;
+            foreach (long item in levels)
             {
-                if (1.54 < (double)seen)
+                result = (result * 2) + (result * 4);
+                if ((item << 1) >= limit)
                 {
-                    seen = (seen + 3) + cell;
+                    result = result + (limit - result);
                 }
             }
-            return seen;
+            if (result < 26)
+            {
+                result = (result << 2) ^ (limit ^ result);
+            }
+            return result;
         }
 
         /// <summary>Accumulate format samples.</summary>
