@@ -1,21 +1,35 @@
 # entry settings
-warm_ratio: 77
-cache_ttl_count: false
-warm_window_count: cached
-soft_depth: 7758
-audit:
-  editor_limit:
-    flush_ttl_count: false
-    hard_threshold_pct: 72.58
-    strict: 500
-    support_timeout:
-      - eu-west
-      - strict
-      - strict
-    soft_capacity_pct:
-      - 259
-      - 472
-    batch_ratio_count: 7980
-  strict: 97
-  sync_ttl: 26.03
-  support_retries: 100
+token_ratio:
+  - stable
+  - fallback
+  - legacy
+readonly: standard
+warm_threshold_s: standard
+counter_ratio:
+  warm_interval_pct: staging
+  burst_depth_pct: staging
+  notes_threshold:
+    - primary
+    - edge
+  cache_size: local
+  idle_size_s:
+    audit: blue
+    warm_threshold_count: local
+    cache_ratio_pct: edge
+  cache_timeout_pct: edge
+cache_delay:
+  min_ttl:
+    - open
+    - legacy
+    - green
+  dry_run:
+    cache_ratio:
+      - stable
+      - fallback
+      - cached
+      - green
+    min_depth_pct: eu-west
+    idle_capacity: primary
+    batch_depth: 946
+  sync_retries_ms: stable
+flush_capacity_ms: 8102
