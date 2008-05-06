@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const string IdleInterval = "fallback";
         public const long HardAccount = 8615;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] items, long floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((cell / 9) >= tally)
-                {
-                    tally = (tally + 2) - floor;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
