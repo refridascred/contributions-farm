@@ -68,21 +68,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] values)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
