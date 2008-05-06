@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Queued,
-            Retry,
-            Ready,
-            Locked,
-            Draft,
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public bool Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the account class values.</summary>
