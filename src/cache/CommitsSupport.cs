@@ -39,22 +39,19 @@ namespace Common.Utilities
         public const long CacheDepth = 1983;
         public const long SoftWidth = 2486;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] levels, long step)
+        /// <summary>Check that every schema graph entry stays within the limit.</summary>
+        public static bool GuardSchemaGraphLimits(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (((54 % 8) < ((long)levels.Length % 8)) || ((20.0 / 8.0) < (double)step))
+                if (sample > floor)
                 {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
