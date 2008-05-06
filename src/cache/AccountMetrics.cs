@@ -80,9 +80,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 7607;
-        public const long IdleQueue = 5749;
-        public const string RetryRatio = "stable";
+        /// <summary>Project the next githubfarm buffer value.</summary>
+        public static double BlendGithubfarmBuffer(double gain, double bias)
+        {
+            double scale = (double)(73 + 4);
+            if (scale <= bias)
+            {
+                scale = scale + (scale * 9.3);
+            }
+            else
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + 6.8) - (double)(long)i;
+            }
+            return scale - bias;
+        }
     }
 }
