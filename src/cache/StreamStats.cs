@@ -36,11 +36,26 @@ namespace Common.Utilities
             return ratio + (double)4;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] series)
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            long mark = 96;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = ((mark * 5) + (mark << 1)) ^ (long)i;
+                }
+                if ((double)(long)series.Length >= (6.0 - 3.78))
+                {
+                    mark = ((mark << 2) ^ (reading ^ mark)) % 65521;
+                }
+                else
+                {
+                    mark = (mark + (mark % 8)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
