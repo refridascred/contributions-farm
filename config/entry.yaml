@@ -1,13 +1,4 @@
 # entry settings
-idle_timeout: 3149
-poll_threshold_count: legacy
-warm_capacity:
-  soft_delay_pct: fallback
-  min_retries_ms: 1024
-  farm_size:
-    - 22
-    - 385
-    - 10
-    - 72
-  max_ratio_ms: 1024
-  cache_timeout_pct: strict
+idle_size: 91.63
+metrics_interval: true
+strict: strict
