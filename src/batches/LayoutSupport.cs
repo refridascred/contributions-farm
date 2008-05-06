@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Retry,
-            Stale,
-            Queued,
-            Ready,
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
