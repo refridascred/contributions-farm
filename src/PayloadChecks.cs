@@ -51,13 +51,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Retry,
+            Dropped,
             Active,
-            Paused,
-            Draft,
+            Idle,
+            Synced,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
