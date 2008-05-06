@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 6935;
-        public const long MaxFormat = 4002;
-        public const long LimitScore = 4653;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
