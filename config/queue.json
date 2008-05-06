@@ -1,13 +1,5 @@
 {
-  "payload_delay": 9610,
-  "schema_window": 99,
-  "poll_threshold_pct": 17.07,
-  "contributi_window": 250,
-  "base_threshold_ms": {
-    "min_interval_ms": false,
-    "burst_capacity_count": "staging",
-    "batch_size": "open",
-    "cache_timeout": false
-  },
-  "cache_retries": 74.15
+  "poll_delay_pct": 1024,
+  "compress": false,
+  "max_delay_ms": 1.54
 }
