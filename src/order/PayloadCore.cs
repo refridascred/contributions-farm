@@ -49,11 +49,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 7546;
-        public const long BurstReport = 7066;
-        public const long DefaultScore = 8089;
-        public const long LimitReport = 3237;
-        public const long WindowLevel = 6807;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Failed,
+            Paused,
+            Queued,
+            Ready,
+            Draft,
+        }
     }
 }
