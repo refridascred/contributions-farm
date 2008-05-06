@@ -65,12 +65,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Blend two cluster support measurements.</summary>
+        public static double ScaleClusterSupport(double weight, double bias)
         {
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
-            public long Score { get; set; }
+            double scale = bias;
+            if (scale > bias)
+            {
+                scale = (scale + scale) + weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (double)5) - (double)(long)i;
+            }
+            return scale + (2.0 - 17.0);
         }
     }
 }
