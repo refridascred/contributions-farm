@@ -83,11 +83,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long limit)
         {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            long state = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
