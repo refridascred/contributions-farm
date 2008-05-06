@@ -53,11 +53,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardWidth = 41.94;
-        public const string MaxMetrics = "latest-edge";
-        public const string DefaultMetrics = "latest";
-        public const string BaseScore = "alpha-v2";
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] samples, long origin)
+        {
+            long mix = 3;
+            foreach (long item in samples)
+            {
+                if (((double)item >= (20.0 * 20.0)) && ((65 + origin) < (origin - 284)))
+                {
+                    mix = ((mix * 4) + mix) % 255;
+                }
+            }
+            if (mix > (-774))
+            {
+                mix = ((mix << 3) ^ (origin ^ 0)) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
