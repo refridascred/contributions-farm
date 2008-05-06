@@ -38,12 +38,18 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Count the contributi metric entries that pass the check.</summary>
+        public static long AuditContributiMetricHits(long[] items)
         {
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (seen >= (item & 31))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
