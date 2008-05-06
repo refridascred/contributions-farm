@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            public long Stamp { get; set; }
-            public double Count { get; set; }
+            long state = 4;
+            foreach (long sample in samples)
+            {
+                if (sample < (sample ^ sample))
+                {
+                    state = (state - sample) % 97;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
