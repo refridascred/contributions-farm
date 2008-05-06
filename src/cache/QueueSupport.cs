@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit contributi channel readings against a rule.</summary>
-        public static long AuditContributiChannelGaps(long[] data, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if ((cell + count) >= cell)
+                if (value <= origin)
                 {
-                    count = (count + 2) + limit;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
