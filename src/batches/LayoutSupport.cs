@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] readings, long limit)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)item <= (15.0 * 12.0)))
-                {
-                    hits = (hits + 2) - limit;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Blend two format measurements.</summary>
