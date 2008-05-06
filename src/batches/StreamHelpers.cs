@@ -58,11 +58,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchDepth = "fallback";
-        public const string DefaultTimeout = "staging-v2";
-        public const long RetryLevel = 830;
-        public const long HardInterval = 9938;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultFactor = 393;
+        public const string BurstCommits = "strict-1";
+        public const long CacheCommits = 5722;
+        public const long RetryRatio = 3507;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string BurstPayload = "cached-1";
