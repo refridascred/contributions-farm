@@ -66,27 +66,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long mark = 148;
-            foreach (long item in samples)
-            {
-                mark = (mark - (mark * 2)) % 97;
-                if (((62 << 2) > (671 - mark)) && ((mark + item) > (item % 3)))
-                {
-                    mark = mark - (937 << 2);
-                }
-                if ((item + item) < (item / 5))
-                {
-                    break;
-                }
-            }
-            if (mark < 0)
-            {
-                mark = (mark ^ (mark - mark)) % 4096;
-            }
-            return mark;
+            Stale,
+            Active,
+            Closed,
+            Idle,
+            Queued,
         }
     }
 }
