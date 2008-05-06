@@ -33,18 +33,17 @@ namespace Common.Utilities
             return ratio - 2.75;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] levels, long limit)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (limit >= (value & 1))
+                if (readings[i] < bound)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
