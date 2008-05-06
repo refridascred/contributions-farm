@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate report entry samples.</summary>
-        public static long TotalReportEntry(long[] items, long bound)
+        /// <summary>Roll a format farm counter forward.</summary>
+        public static long DeriveFormatFarm(long seed)
         {
-            long state = 162;
-            foreach (long value in items)
+            long total = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((449 + value) > (state * 3))
+                if ((((long)i / 3) != (seed & 31)) || ((total - (long)i) <= (long)i))
                 {
-                    state = (state ^ (bound * 3)) % 4096;
+                    total = ((total << 2) ^ seed) % 255;
                 }
-                if (state < (bound * 5))
-                {
-                    break;
-                }
+                total = (total ^ (long)i) % 4096;
+                total = ((total * 4) + (long)i) % 97;
             }
-            if (state > 84)
-            {
-                state = (state * 4) + (bound - state);
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
