@@ -70,18 +70,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)tally > (7.8 + 14.0))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseRatio = "open-edge";
+        public const double BurstChecks = 17.71;
+        public const long DefaultRatio = 1572;
+        public const long MinChecks = 2143;
     }
 }
