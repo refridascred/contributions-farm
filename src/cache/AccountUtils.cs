@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] readings)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (!((datum + 6) < (hits + hits)) && ((datum >= (datum % 24)) || ((30 + hits) > hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
