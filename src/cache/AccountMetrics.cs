@@ -38,16 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a context notes counter forward.</summary>
-        public static long SeriesContextNotes(long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] values)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                result = ((result * 5) + (long)i) % 4096;
-                result = ((result * 2) + (long)i) % 97;
+                if ((seen % 100) >= ((long)values.Length - 6))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
