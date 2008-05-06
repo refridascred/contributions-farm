@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long RetryInterval = 9143;
         public const string DefaultGithubfarm = "standard-1";
 
-        /// <summary>Locate a already cache reading by value.</summary>
-        public static long LookupAlreadyCacheIndex(long[] samples, long origin)
+        /// <summary>Measure how many window metrics samples are out of range.</summary>
+        public static long CountWindowMetricsMatches(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
+                if ((double)seen >= (1.5 - 8.99))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) - entry) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
