@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Accumulate farm record samples.</summary>
+        public static long ScoreFarmRecord(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 337;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((entry + 92) < anchor)
                 {
-                    if ((data[i] ^ data[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    long diff = entry;
+                    anchor = anchor ^ diff;
+                }
+                if (((67 + anchor) > (entry % 12)) || ((anchor - entry) < (entry + anchor)))
+                {
+                    anchor = ((anchor * 5) + (41 + entry)) % 65521;
                 }
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Project the next farm value.</summary>
