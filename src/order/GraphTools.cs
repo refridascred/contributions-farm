@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a schema already pair into a bucket.</summary>
-        public static long BucketSchemaAlready(long offset, long seed)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long gap = offset - seed;
-            if (!((double)gap > 5.14))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((gap ^ gap) > (37 * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((14.0 + 4.4) < (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Fold a list of session readings.</summary>
