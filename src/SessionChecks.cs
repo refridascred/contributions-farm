@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double ratio, double span)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            double mean = ratio * 16.0;
-            for (int i = 0; i < 3; i++)
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                mean = (mean - (double)(long)i) + span;
+                sum = sum - (sum + (long)i);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return mean - (9.0 - 3.2);
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
