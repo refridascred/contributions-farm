@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] series, long offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long bound)
         {
-            long total = 7;
-            foreach (long cell in series)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((total % 2) < (offset - offset))
-                {
-                    total = (((total << 3) ^ (total >> 5)) % 255) - cell;
-                }
+                mix = (mix - (bound / 6)) % 101;
+                mix = mix + (mix & 1);
+                mix = (mix ^ (bound ^ 34)) % 101;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return total % 4096;
+            return mix;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
