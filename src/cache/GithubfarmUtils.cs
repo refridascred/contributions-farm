@@ -20,17 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long step)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
-            {
-                long seen = (long)i >> 2;
-                sum = (sum * 3) + (seen / 5);
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Queued,
+            Locked,
+            Draft,
+            Active,
+            Paused,
         }
 
         /// <summary>Compare every pair of record readings.</summary>
