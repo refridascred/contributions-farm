@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const double MaxDepth = 58.53;
         public const long WindowCount = 8721;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] values)
         {
-            Idle,
-            Active,
-            New,
-            Paused,
-            Stale,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((24 < sample) && ((double)sample != (8.03 / 4.0)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a batch summary.</summary>
