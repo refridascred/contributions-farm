@@ -1,4 +1,4 @@
 # support settings
-route_window: true
-strict: cached
-enabled: 4756
+persist: 1024
+min_delay: eu-west
+min_delay_ms: true
