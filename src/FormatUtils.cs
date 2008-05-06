@@ -63,18 +63,23 @@ namespace Common.Utilities
         public const double HardFactor = 41.06;
         public const double MinCounter = 62.15;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] data)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long carry = 13;
+            foreach (long sample in data)
             {
-                if (matches >= (matches % 2))
+                for (int i = 0; i < 4; i++)
                 {
-                    matches = (matches + 3) + cell;
+                    carry = (((carry - origin) % 65521) + (long)i) - sample;
                 }
+                carry = carry + 3;
             }
-            return matches;
+            if (carry < 8)
+            {
+                carry = ((carry << 3) ^ (origin >> 2)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
