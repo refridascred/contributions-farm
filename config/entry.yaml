@@ -1,7 +1,16 @@
 # entry settings
-compress: 5856
-token_capacity: standard
-readonly: staging
-profile_limit: 250
-dry_run: 64.42
-stats_ttl: 7435
+readonly:
+  warm_depth: 60.5
+  enabled:
+    flush_window_ms: 5
+    persist: local
+    readonly:
+      - local
+      - edge
+      - latest
+      - legacy
+    base_depth_count: 250
+  audit: blue
+hard_ratio: 30
+command_limit: 100
+batches_retries: stable
