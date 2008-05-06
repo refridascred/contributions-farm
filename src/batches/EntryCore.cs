@@ -47,9 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultLevel = 7792;
-        public const string BatchRatio = "alpha-edge";
-        public const long HardDepth = 7556;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] values, long bound)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
