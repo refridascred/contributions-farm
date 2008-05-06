@@ -35,19 +35,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a githubfarm route counter forward.</summary>
-        public static long SeriesGithubfarmRoute(long step)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long origin)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)841 >= (double)step)
-                {
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 97;
+                carry = (carry + origin) % 65521;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return result;
+            return carry;
         }
     }
 }
