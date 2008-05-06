@@ -36,19 +36,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] levels, long seed)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long bound)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long total = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
     }
 }
