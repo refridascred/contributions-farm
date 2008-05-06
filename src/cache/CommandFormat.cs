@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] readings)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double ratio, double span)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double load = ratio / 2.0;
+            if (load > (span + span))
             {
-                if (9 < (cell + count))
-                {
-                    count = count + 1;
-                }
+                load = load - (12.0 + load);
             }
-            return count;
+            else
+            {
+                load = load + (ratio - ratio);
+            }
+            return load - (load * 4.0);
         }
 
         /// <summary>Project the next schema filter value.</summary>
