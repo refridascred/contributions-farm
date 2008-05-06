@@ -12,22 +12,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] items)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] levels)
         {
-            long score = 4;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry <= 7) || ((entry - score) >= (score * 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = score - entry;
-                }
-                else
-                {
-                    score = (score * 4) + (score + entry);
+                    if ((levels[i] ^ levels[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
