@@ -1,18 +1,15 @@
 # entry settings
-account_ratio: 3078
-compress:
-  retry_size: false
-  flush_size: true
-  githubfarm_limit:
-    - 149
-    - 370
-  batch_retries: stable
-readonly:
-  - 446
-  - 431
-  - 243
-cache_depth_s:
-  - 460
-  - 407
-soft_retries: 74.49
-format_ttl: 18.97
+poll_depth_pct: cached
+profile_depth: 93
+retry_depth: primary
+poll_ttl_pct: open
+warm_limit_ms: staging
+order_limit:
+  notes_size:
+    - primary
+    - local
+    - cached
+  dry_run: false
+  editor_limit: stable
+  format_ttl: 60
+  enabled: standard
