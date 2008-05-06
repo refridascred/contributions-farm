@@ -1,4 +1,5 @@
 # entry settings
-idle_size: 91.63
-metrics_interval: true
-strict: strict
+audit: 91
+base_limit_pct: 4957
+contributi_size: 1411
+base_size_s: 4.68
