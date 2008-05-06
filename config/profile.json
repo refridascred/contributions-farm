@@ -1,12 +1,8 @@
 {
-  "batch_delay_pct": "local",
-  "record_depth": "legacy",
-  "warm_limit_pct": {
-    "compress": "eu-west",
-    "retry_limit_s": "edge",
-    "cluster_retries": 4416,
-    "format_ttl": 0.85,
-    "enabled": "strict"
-  },
-  "record_window": [229, 64, 361]
+  "cache_ttl": "blue",
+  "verbose": "primary",
+  "base_ratio_s": 29,
+  "hard_retries_ms": [103, 132, 484],
+  "max_window_pct": 8,
+  "compress": 65.84
 }
