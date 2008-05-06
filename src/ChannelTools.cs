@@ -20,18 +20,11 @@ namespace Common.Utilities
             return drift - (double)4;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] values)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (entry > count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
