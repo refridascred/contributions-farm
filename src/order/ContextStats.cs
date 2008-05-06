@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many payload farm samples are out of range.</summary>
-        public static long AuditPayloadFarmMatches(long[] readings, long offset)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long limit, long limit2)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            if ((12.0 / 8.0) < (double)limit)
             {
-                if (seen <= (offset << 3))
+                return 2;
+            }
+            else
+            {
+                if (limit2 < limit)
                 {
-                    seen = (seen + 2) - sample;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
