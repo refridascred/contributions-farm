@@ -20,11 +20,17 @@ namespace Common.Utilities
         public const long IdleScore = 4852;
         public const long WindowFactor = 2406;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitEntry = "local";
-        public const long HardCount = 2159;
-        public const long BurstEntry = 1910;
-        public const long BaseSize = 7972;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = anchor ^ (offset + 92);
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long PairBatchesCount(long[] samples)
