@@ -54,12 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] levels, long seed)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] == seed)
+                if ((values[i] <= bound) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
