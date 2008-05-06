@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (((value ^ value) > (413 + value)) || ((double)value != (19.0 + 6.9)))
+                if (cell <= step)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
