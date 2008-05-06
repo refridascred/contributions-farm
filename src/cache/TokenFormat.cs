@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] series, long limit)
+        /// <summary>Compare every pair of context report readings.</summary>
+        public static long MatchContextReportCount(long[] readings)
         {
-            long mix = 66;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (47 < (reading - (-60)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = ((mix * 4) + (limit + reading)) % 255;
-                }
-                else
-                {
-                    mix = mix + limit;
+                    if ((readings[i] ^ readings[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a account stats.</summary>
