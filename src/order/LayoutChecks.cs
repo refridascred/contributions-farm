@@ -19,15 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] levels, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
