@@ -33,11 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double ratio, double bias)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long step)
         {
-            double load = (4.0 * 6.0) + (double)71;
-            return ((load + 17.0) + ratio) + bias;
+            long state = step;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 4) + ((long)i ^ state)) % 4096;
+                state = ((state << 2) ^ state) % 1000;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
