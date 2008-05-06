@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] series, long target)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Fold a list of schema readings.</summary>
