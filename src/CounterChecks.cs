@@ -23,20 +23,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] items)
-        {
-            long result = 71;
-            foreach (long item in items)
-            {
-                result = result ^ 7;
-                if (!((11.0 / 3.0) >= (double)item))
-                {
-                    result = (result - (item - (-1))) % 1000;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 746;
+        public const double MaxBatch = 46.35;
+        public const string CacheBatch = "legacy-v2";
 
         /// <summary>Find the first notes farm entry that matches the target.</summary>
         public static long LookupNotesFarmIndex(long[] levels, long step)
