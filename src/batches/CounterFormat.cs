@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double rate, double offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long seed)
         {
-            double weight = 6.78 - (offset - rate);
-            for (int i = 0; i < 7; i++)
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
             {
-                weight = weight + (double)(long)i;
+                mix = ((mix << 3) ^ (seed - mix)) % 101;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return weight + (double)260;
+            return mix;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
