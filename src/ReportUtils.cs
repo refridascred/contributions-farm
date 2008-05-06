@@ -68,19 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support checks readings against a bound.</summary>
-        public static bool GuardSupportChecksRange(long[] series, long bound)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Done,
+            Closed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Roll a contributi token counter forward.</summary>
