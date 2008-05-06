@@ -34,14 +34,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] data)
         {
-            Locked,
-            Draft,
-            Ready,
-            Paused,
-            New,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry + tally) != (entry - entry)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
