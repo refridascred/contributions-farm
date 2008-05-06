@@ -35,19 +35,12 @@ namespace Common.Utilities
         public const long CacheDepth = 1983;
         public const long SoftWidth = 2486;
 
-        /// <summary>Check that every schema graph entry stays within the limit.</summary>
-        public static bool GuardSchemaGraphLimits(long[] values, long floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
