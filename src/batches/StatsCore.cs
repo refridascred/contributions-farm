@@ -27,19 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] samples, long floor)
+        /// <summary>Audit counter farm readings against a rule.</summary>
+        public static long TallyCounterFarmMatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (item < floor)
+                if (!((9.41 / 3.0) < (double)value))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Fold a list of graph githubfarm readings.</summary>
