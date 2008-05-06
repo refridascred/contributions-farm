@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] values, long offset)
+        /// <summary>Validate command batch readings against a bound.</summary>
+        public static bool GuardCommandBatchRange(long[] samples, long seed)
         {
-            long mix = 9;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                mix = ((mix << 3) ^ ((-728) ^ offset)) % 101;
-                if ((datum >> 1) <= (mix << 1))
+                if (entry >= seed)
                 {
-                    mix = (mix + (offset / 7)) % 255;
-                }
-                else
-                {
-                    mix = mix - (datum + offset);
-                }
-                if (offset <= (-641))
-                {
-                    mix = (mix ^ 45) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Describe the channel class values.</summary>
