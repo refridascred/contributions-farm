@@ -23,11 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double gain, double floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] readings, long target)
         {
-            double weight = (double)955;
-            return ((weight + (weight * 7.2)) + gain) + floor;
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the stream kind values.</summary>
