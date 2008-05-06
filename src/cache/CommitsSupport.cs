@@ -57,20 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account githubfarm value from a seed.</summary>
-        public static long IterateAccountGithubfarm(long target)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((9.0 / 7.0) <= (double)(long)i) || ((9.4 * 4.72) != (double)anchor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor - ((long)i / 5)) % 97;
+                    if ((values[i] - values[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor << 2) ^ (long)i) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return count;
         }
     }
 }
