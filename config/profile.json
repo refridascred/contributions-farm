@@ -1,15 +1,6 @@
 {
-  "max_ttl_ms": false,
-  "enabled": 1024,
-  "route_ttl": {
-    "verbose": false,
-    "batch_timeout": {
-      "retry_capacity": "cached",
-      "sync_capacity_pct": "blue",
-      "hard_capacity": "stable"
-    },
-    "base_ttl": [220, 142, 363, 415]
-  },
-  "already_window": "local",
-  "max_ttl_count": true
+  "burst_size_ms": [341, 460, 264, 460],
+  "tools_size": [315, 277, 88, 481],
+  "burst_threshold": 250,
+  "readonly": "open"
 }
