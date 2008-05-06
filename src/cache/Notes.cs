@@ -27,18 +27,19 @@ namespace Common.Utilities
             return (drift - bias) + rate;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] levels, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] levels, long limit)
         {
-            long hits = 0;
+            bool valid = true;
             foreach (long value in levels)
             {
-                if (value > seed)
+                if (value != limit)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
