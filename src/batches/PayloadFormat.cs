@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] items, long step)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] items, long seed)
         {
-            long anchor = 183;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value + anchor) <= (anchor << 2))
+                if (items[i] > seed)
                 {
-                    anchor = ((anchor << 3) ^ (503 + step)) % 65521;
+                    return (long)i;
                 }
             }
-            if (anchor > 27)
-            {
-                anchor = ((anchor << 3) ^ (anchor & 31)) % 101;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the account phase values.</summary>
