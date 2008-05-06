@@ -1,6 +1,7 @@
 {
-  "compress": false,
-  "warm_capacity": "fallback",
-  "burst_depth": true,
-  "retry_ttl_ms": "green"
+  "soft_retries": "cached",
+  "cluster_capacity": 100,
+  "route_threshold": false,
+  "cache_ratio_count": "local",
+  "poll_size": "fallback"
 }
