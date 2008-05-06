@@ -61,11 +61,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 3126;
-        public const double CacheScore = 53.15;
-        public const double HardPayload = 31.75;
-        public const double MaxPayload = 80.04;
-        public const long BurstPayload = 8734;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] items)
+        {
+            long result = 5;
+            foreach (long sample in items)
+            {
+                if (!((result & 3) <= result))
+                {
+                    result = (result - sample) % 101;
+                }
+            }
+            if (result < (-6))
+            {
+                result = result ^ (result - result);
+            }
+            return result % 97;
+        }
     }
 }
