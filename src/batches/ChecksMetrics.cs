@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRecord = "standard-v2";
-        public const double BatchDepth = 24.2;
-        public const double MaxDepth = 58.53;
-        public const long WindowCount = 8721;
+        /// <summary>Rank layout order input into a small class.</summary>
+        public static long GradeLayoutOrder(long step, long step2)
+        {
+            long slot = step ^ step2;
+            if (!((step2 + step) != (2 / 9)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((slot < (step2 % 97)) || ((double)slot <= 4.9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
