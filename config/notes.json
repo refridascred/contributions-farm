@@ -1,7 +1,6 @@
 {
-  "idle_ttl": true,
-  "stream_delay": "staging",
-  "retry_ttl_s": "blue",
-  "persist": "fallback",
-  "poll_size": true
+  "strict": "edge",
+  "route_depth": "local",
+  "readonly": 54.78,
+  "warm_size_s": 6.65
 }
