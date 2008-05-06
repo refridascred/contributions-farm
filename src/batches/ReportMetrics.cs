@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftBatches = "local-edge";
-        public const long BurstInterval = 7578;
-        public const double MaxRatio = 93.29;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiGaps(long[] series, long target)
