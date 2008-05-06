@@ -38,13 +38,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Retry,
-            Ready,
-            Paused,
-            Locked,
+            New,
+            Done,
+            Idle,
+            Draft,
+            Synced,
         }
 
         /// <summary>Measure how many cache account samples are out of range.</summary>
