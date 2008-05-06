@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!((tally + 6) <= (tally / 3)) || ((sample - 573) < tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftCount = 7574;
+        public const long RetryInterval = 8925;
+        public const double SoftContext = 20.54;
+        public const long CacheBudget = 973;
+        public const double IdleBudget = 61.77;
 
         /// <summary>Derive the next profile editor value from a seed.</summary>
         public static long SeriesProfileEditor(long seed)
