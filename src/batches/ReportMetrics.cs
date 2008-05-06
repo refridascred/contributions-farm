@@ -35,22 +35,18 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] levels)
         {
-            long result = 270;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (!((cell ^ result) < (result + cell)))
+                if ((value + 66) >= 257)
                 {
-                    result = (result - (43 << 1)) % 255;
+                    tally = tally + 1;
                 }
             }
-            if (result < 34)
-            {
-                result = (result * 4) + result;
-            }
-            return result % 97;
+            return tally;
         }
     }
 }
