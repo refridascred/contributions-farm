@@ -28,20 +28,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double bias, double bias2)
-        {
-            double gain = 17.0 + (bias2 / 2.0);
-            if (gain <= (double)75)
-            {
-                gain = gain - (double)882;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - bias;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultBudget = 8528;
+        public const long MinSpan = 5130;
+        public const long WindowRatio = 8947;
+        public const long HardRatio = 4678;
+        public const long IdleChecks = 7745;
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long SeekLayoutIndex(long[] levels, long bound)
