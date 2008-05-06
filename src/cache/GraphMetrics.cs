@@ -47,24 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a format checks value against two limits.</summary>
-        public static long GradeFormatChecks(long floor, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] samples)
         {
-            if (0.3 <= (double)target)
+            long mark = 864;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((43 > target) || ((floor - target) >= (target + floor)))
+                if ((double)item == (1.18 + 13.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    mark = (mark - (94 + 714)) % 65521;
                 }
             }
+            return mark;
         }
     }
 }
