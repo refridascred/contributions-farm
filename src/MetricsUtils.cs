@@ -23,38 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long floor, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] data)
         {
-            if ((step - 991) == (floor >> 3))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor > (floor ^ (-451))) && ((step - floor) < (step + floor)))
+                if (((matches >> 2) == ((long)data.Length & 3)) && (entry < (matches - entry)))
                 {
-                    return 1;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((3.1 / 4.0) == (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor - floor) > (step >> 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a window info.</summary>
