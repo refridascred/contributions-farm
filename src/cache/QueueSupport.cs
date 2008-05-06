@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleLevel = 3170;
-        public const long MinTimeout = 4965;
-        public const long IdleEntry = 7569;
-        public const long BatchCount = 9605;
-        public const long LimitDepth = 4932;
+        /// <summary>Audit contributi channel readings against a rule.</summary>
+        public static long AuditContributiChannelGaps(long[] data, long limit)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((cell + count) >= cell)
+                {
+                    count = (count + 2) + limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] values, long limit)
