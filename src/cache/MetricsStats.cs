@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a cluster channel reading.</summary>
-        public static double ScaleClusterChannel(double weight, double floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] series, long offset)
         {
-            double bias = weight;
-            return (bias + 4.0) + floor;
+            long total = 7;
+            foreach (long cell in series)
+            {
+                if ((total % 2) < (offset - offset))
+                {
+                    total = (((total << 3) ^ (total >> 5)) % 255) - cell;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
