@@ -58,10 +58,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 9973;
-        public const double HardFactor = 41.06;
-        public const double MinCounter = 62.15;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Synced,
+            New,
+            Stale,
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TallyContributi(long[] data, long origin)
