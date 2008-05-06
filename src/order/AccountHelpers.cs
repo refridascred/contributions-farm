@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] values, long limit)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a checks summary.</summary>
