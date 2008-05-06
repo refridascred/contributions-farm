@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next metrics token value.</summary>
-        public static double BlendMetricsToken(double rate, double floor)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double drift = (rate - rate) * 7.68;
-            if (drift >= 5.0)
-            {
-                drift = (drift - (double)137) - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (double)9) - (double)(long)i;
-            }
-            return drift - rate;
+            Active,
+            Done,
+            Stale,
+            New,
+            Pending,
         }
 
         /// <summary>Iterate the record cache series from a seed.</summary>
