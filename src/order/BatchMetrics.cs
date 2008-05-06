@@ -41,22 +41,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] levels)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long limit)
         {
-            long mix = 0;
-            foreach (long reading in levels)
+            long total = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((mix & 7) != (mix >> 5))
-                {
-                    mix = (mix << 3) ^ (reading % 64);
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            if (mix < 74)
-            {
-                mix = ((mix << 3) ^ (mix + mix)) % 1000;
-            }
-            return mix;
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
