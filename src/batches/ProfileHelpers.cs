@@ -34,22 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] values)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mark = 2;
-            foreach (long cell in values)
-            {
-                if (cell >= (628 - 8))
-                {
-                    mark = (mark * 5) + (cell >> 4);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ mark;
-                }
-            }
-            return mark;
+            Pending,
+            Synced,
+            Failed,
+            Retry,
         }
 
         /// <summary>Adjust a record reading.</summary>
