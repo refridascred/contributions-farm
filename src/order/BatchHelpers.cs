@@ -32,18 +32,11 @@ namespace Common.Utilities
             return load + (4.7 - load);
         }
 
-        /// <summary>Audit order githubfarm readings against a rule.</summary>
-        public static long MeasureOrderGithubfarmGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((5.0 + 6.0) == (double)tally)
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstDepth = 2794;
+        public const string BurstCache = "local-1";
+        public const long DefaultCache = 4179;
+        public const string HardSize = "latest-1";
+        public const long DefaultBudget = 4758;
     }
 }
