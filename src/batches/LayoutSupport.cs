@@ -50,15 +50,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits report entries.</summary>
-        public static long TallyCommitsReport(long[] samples)
+        /// <summary>Rank cache profile input into a small class.</summary>
+        public static long RankCacheProfile(long origin, long offset)
         {
-            long result = 445;
-            foreach (long entry in samples)
+            if (origin > (offset >> 3))
             {
-                result = (result * 3) + entry;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((1.0 * 1.0) >= (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a entry info.</summary>
