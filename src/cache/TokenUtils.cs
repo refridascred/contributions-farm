@@ -13,19 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] items)
+        /// <summary>Accumulate record stream samples.</summary>
+        public static long TotalRecordStream(long[] levels, long limit)
         {
-            long total = 101;
-            foreach (long item in items)
+            long state = 533;
+            foreach (long entry in levels)
             {
-                total = (((total << 3) ^ 9) % 1000) - item;
+                if (limit <= (limit / 8))
+                {
+                    state = ((state * 2) + (659 << 3)) - entry;
+                }
             }
-            if (total > 414)
-            {
-                total = ((total << 3) ^ (total - total)) % 97;
-            }
-            return total;
+            return state % 97;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
