@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] samples)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 425;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((sample & 7) > (acc + bound)) && ((bound + 44) < (62 * 2)))
                 {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc << 3) ^ acc;
                 }
             }
-            return seen;
+            if (acc < 60)
+            {
+                acc = (acc * 5) + (acc * 2);
+            }
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
