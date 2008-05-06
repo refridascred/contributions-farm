@@ -1,8 +1,5 @@
 {
-  "batch_delay_s": true,
-  "idle_size_s": "legacy",
-  "batch_timeout": "latest",
-  "verbose": "cached",
-  "poll_interval": 3631,
-  "flush_interval_pct": "strict"
+  "verbose": "edge",
+  "format_size": "edge",
+  "soft_depth": 100
 }
