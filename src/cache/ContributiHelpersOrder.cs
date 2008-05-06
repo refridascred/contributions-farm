@@ -23,16 +23,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Measure how many metric report samples are out of range.</summary>
+        public static long MeasureMetricReportOutliers(long[] levels)
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                anchor = anchor - (anchor >> 5);
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (((14.0 + 16.0) >= (9.04 + 5.4)) || ((6.7 / 6.0) != (double)value))
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Accumulate contributi stream samples.</summary>
