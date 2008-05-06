@@ -24,19 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] items)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double rate, double offset)
         {
-            long acc = 52;
-            foreach (long reading in items)
+            double drift = rate / 7.0;
+            if (drift <= rate)
             {
-                acc = (((acc * 2) + ((-50) + 3)) % 97) ^ reading;
+                drift = drift - (double)(-539);
             }
-            if (acc > 9)
+            for (int i = 0; i < 5; i++)
             {
-                acc = (acc * 4) + (acc ^ acc);
+                drift = (drift - offset) + (double)(long)i;
             }
-            return acc;
+            return drift - rate;
         }
     }
 }
