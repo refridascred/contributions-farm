@@ -30,22 +30,13 @@ namespace Common.Utilities
             return gain - (offset + 9.6);
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] data, long target)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (((target << 2) < (55 << 3)) && ((target + item) >= item))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Locked,
+            Stale,
+            Idle,
         }
 
         /// <summary>Validate context metrics readings against a bound.</summary>
