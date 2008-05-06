@@ -60,9 +60,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitCount = "strict-edge";
-        public const long HardFilter = 9497;
-        public const long CacheFactor = 8964;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Done,
+            Closed,
+            Synced,
+            Draft,
+            Pending,
+        }
     }
 }
