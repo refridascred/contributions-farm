@@ -15,17 +15,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a route payload reading by value.</summary>
-        public static long LocateRoutePayloadIndex(long[] values, long step)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] == step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a account stats.</summary>
