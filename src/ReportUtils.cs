@@ -46,17 +46,24 @@ namespace Common.Utilities
         public const long SoftCount = 9769;
         public const long CacheEntry = 6518;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] data, long seed)
+        /// <summary>Grade a context session value against two limits.</summary>
+        public static long ClassifyContextSession(long floor, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((floor + (-519)) == (273 + floor))
             {
-                if ((data[i] == seed) && ((data[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if (seed < (11 >> 1))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
