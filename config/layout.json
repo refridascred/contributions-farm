@@ -1,8 +1,8 @@
 {
-  "sync_delay_pct": "edge",
-  "batch_interval": false,
-  "batch_ttl_pct": true,
-  "strict": true,
-  "retry_threshold_count": 500,
-  "persist": "cached"
+  "githubfarm_interval": "edge",
+  "already_size": 34,
+  "readonly": "green",
+  "flush_capacity": ["open", "eu-west", "blue", "green"],
+  "min_ratio_count": true,
+  "warm_timeout": 21
 }
