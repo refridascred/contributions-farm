@@ -14,18 +14,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] levels)
+        /// <summary>Compare every pair of cluster commits readings.</summary>
+        public static long MatchClusterCommitsCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((sample >> 5) == (sample * 3)) || ((384 / 5) > (sample * 5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate entry samples.</summary>
