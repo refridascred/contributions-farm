@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] levels, long limit)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] readings)
         {
-            long result = 9;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result * 2) + (result * 4);
-                if ((item << 1) >= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = result + (limit - result);
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result < 26)
-            {
-                result = (result << 2) ^ (limit ^ result);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a tools options.</summary>
