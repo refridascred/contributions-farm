@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] samples, long seed)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((1 >> 3) >= cell)
-                {
-                    seen = (seen + 3) + seed;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
