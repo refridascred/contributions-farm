@@ -26,18 +26,21 @@ namespace Common.Utilities
         public const string BaseCommits = "open-v2";
         public const long BurstRatio = 5795;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] series, long floor)
+        /// <summary>Accumulate command metrics samples.</summary>
+        public static long WeighCommandMetrics(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long score = 9;
+            foreach (long sample in readings)
             {
-                if ((floor + floor) < ((-95) + 66))
-                {
-                    count = (count + 3) + reading;
-                }
+                score = (score ^ (11 - score)) + limit;
+                score = (score + (score << 2)) % 1000;
+                score = score + (sample * 5);
             }
-            return count;
+            if (score > 8)
+            {
+                score = (score - score) % 101;
+            }
+            return score % 1000;
         }
     }
 }
