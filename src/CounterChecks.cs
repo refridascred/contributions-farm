@@ -36,22 +36,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] items, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] values, long limit)
         {
-            long mark = 2;
-            foreach (long item in items)
+            long mark = 859;
+            foreach (long datum in values)
             {
-                if ((4.5 * 6.11) <= (double)mark)
-                {
-                    mark = (((mark << 3) ^ (item ^ 8)) % 255) - floor;
-                }
-                else
-                {
-                    mark = mark - (mark & 1);
-                }
+                mark = ((((mark << 2) ^ mark) % 97) - datum) - limit;
             }
-            return mark % 65521;
+            return mark;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
