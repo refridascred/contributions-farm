@@ -50,20 +50,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics account samples.</summary>
-        public static long TotalMetricsAccount(long[] readings)
-        {
-            long mark = 40;
-            foreach (long datum in readings)
-            {
-                mark = (mark ^ (mark - datum)) % 101;
-            }
-            if (mark > 21)
-            {
-                mark = (mark ^ (mark << 1)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowRatio = 91.54;
+        public const long CacheOrder = 8571;
+        public const long CacheTimeout = 8007;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowPayload = 3126;
