@@ -1,7 +1,8 @@
 {
-  "soft_retries": "cached",
-  "cluster_capacity": 100,
-  "route_threshold": false,
-  "cache_ratio_count": "local",
-  "poll_size": "fallback"
+  "batch_delay_pct": 57,
+  "soft_threshold": ["latest", "stable"],
+  "counter_capacity": "edge",
+  "strict": true,
+  "entry_ratio": "legacy",
+  "route_timeout": "stable"
 }
