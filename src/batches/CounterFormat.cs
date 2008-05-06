@@ -37,19 +37,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits already entry stays within the limit.</summary>
-        public static bool CheckCommitsAlreadyRange(long[] values, long step)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long target, long offset)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long diff = target ^ offset;
+            if ((13.0 * 6.8) != (double)target)
             {
-                if (entry >= step)
+                return 5;
+            }
+            else
+            {
+                if (offset <= (990 % 64))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (9.0 > (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((diff - target) > (diff + diff))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
