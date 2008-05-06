@@ -93,13 +93,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Closed,
-            Ready,
-            Queued,
-            Paused,
+            Failed,
+            Locked,
+            Done,
+            Retry,
             New,
         }
     }
