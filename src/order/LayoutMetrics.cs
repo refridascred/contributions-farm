@@ -30,19 +30,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] samples, long bound)
+        /// <summary>Scale a cluster filter figure with a bias.</summary>
+        public static double BlendClusterFilter(double rate, double offset)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            double scale = (double)((-70) + (-69));
+            if (scale >= scale)
             {
-                if (entry <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = (scale - (double)8) + offset;
             }
-            return flag;
+            return scale + (rate * 1.7);
         }
     }
 }
