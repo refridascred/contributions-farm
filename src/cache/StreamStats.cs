@@ -33,31 +33,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long offset, long step)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] values)
         {
-            if (!((6.0 + 2.6) != (double)offset))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step <= (2.2 + 9.1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(((-82) * 2) < offset))
+                    if ((values[i] + values[j]) < 7)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
