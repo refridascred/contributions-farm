@@ -62,19 +62,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (((entry ^ 880) != (entry / 5)) && (5.72 < (double)hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepTimeout = "standard-1";
+        public const long HardLevel = 7769;
+        public const long DefaultRoute = 3276;
+        public const double WindowRoute = 43.86;
+        public const double IdleRoute = 62.79;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long StepStats(long seed)
