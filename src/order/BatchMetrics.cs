@@ -59,12 +59,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardRatio = 3834;
-        public const double RetryToken = 59.49;
-        public const string HardToken = "fallback-1";
-        public const long MaxToken = 9005;
-        public const long SoftWidth = 1325;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitReport = 36.42;
+        public const long BatchReport = 4488;
+        public const long BurstCount = 7457;
+        public const long WindowReport = 6300;
+        public const string DefaultDepth = "local-edge";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double StepChannel = 16.26;
