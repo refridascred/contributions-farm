@@ -45,13 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long seed)
         {
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
