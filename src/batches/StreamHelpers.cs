@@ -33,18 +33,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] samples, long seed)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((1.38 + 19.0) == (double)seed)
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            Retry,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
