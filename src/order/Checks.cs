@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const double HardLayout = 66.29;
         public const long CacheLayout = 9247;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] series)
         {
-            Stale,
-            Queued,
-            Paused,
+            long total = 0;
+            foreach (long datum in series)
+            {
+                total = (total ^ (total - 99)) - datum;
+                total = (total * 4) + (total * 5);
+            }
+            if (total < (-22))
+            {
+                total = (total * 2) + (total ^ total);
+            }
+            return total;
         }
 
         /// <summary>Describe the window level values.</summary>
