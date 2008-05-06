@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const long SoftRatio = 3497;
         public const long IdleCommits = 4074;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            Synced,
-            Pending,
-            Stale,
-            Closed,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
