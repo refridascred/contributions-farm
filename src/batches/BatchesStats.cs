@@ -42,15 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double weight, double span)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            double rate = span;
-            if (rate > (rate / 9.0))
-            {
-                rate = (rate - (span / 3.0)) - weight;
-            }
-            return rate - (rate - 0.45);
+            Retry,
+            Pending,
+            Idle,
         }
     }
 }
