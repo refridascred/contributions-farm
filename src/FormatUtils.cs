@@ -63,11 +63,19 @@ namespace Common.Utilities
         public const double HardFactor = 41.06;
         public const double MinCounter = 62.15;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultScore = "cached-1";
-        public const long LimitWindow = 5413;
-        public const string RetryCount = "local-1";
-        public const long CacheCount = 5006;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (matches >= (matches % 2))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandBounds(long[] values, long target)
