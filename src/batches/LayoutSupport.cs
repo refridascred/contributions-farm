@@ -48,24 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cache profile input into a small class.</summary>
-        public static long RankCacheProfile(long origin, long offset)
+        /// <summary>Validate context metrics readings against a bound.</summary>
+        public static bool ValidateContextMetricsRange(long[] items, long origin)
         {
-            if (origin > (offset >> 3))
+            bool stale = true;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((1.0 * 1.0) >= (double)offset)
+                if (sample < origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
