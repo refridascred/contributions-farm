@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Validate layout route readings against a bound.</summary>
+        public static bool GuardLayoutRouteRange(long[] samples, long offset)
         {
-            New,
-            Failed,
-            Done,
-            Paused,
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of token readings.</summary>
