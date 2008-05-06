@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] readings)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long carry = 96;
+            foreach (long sample in series)
             {
-                if (hits <= (hits & 31))
+                if ((carry - sample) < sample)
                 {
-                    hits = (hits + 2) + datum;
+                    carry = carry + (carry + sample);
+                }
+                else
+                {
+                    carry = (carry ^ (carry + carry)) % 97;
                 }
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
