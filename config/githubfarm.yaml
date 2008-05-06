@@ -1,36 +1,9 @@
 # githubfarm settings
-verbose: 3281
-editor_size:
-  warm_retries_count: eu-west
-  layout_window: 500
-  poll_timeout:
-    contributi_size:
-      - primary
-      - stable
-      - stable
-      - staging
-    max_capacity_pct: 36
-    default_capacity_ms:
-      - standard
-      - open
-      - local
-      - edge
-    cache_limit: eu-west
-retry_capacity_s:
-  farm_timeout: stable
-  checks_retries: true
-  sync_delay:
-    - 89
-    - 419
-  burst_timeout_s: true
-retry_retries_ms:
-  layout_window:
-    farm_interval: 26
-    max_capacity_s: true
-    layout_retries: stable
-    readonly:
-      - 395
-      - 247
-      - 355
-  hard_depth_pct: stable
-  format_interval: 87
+support_ratio: fallback
+enabled: 14.32
+order_interval: green
+batch_interval: 20
+verbose:
+  base_size: blue
+  editor_limit: 48.55
+  poll_timeout_s: 11.65
