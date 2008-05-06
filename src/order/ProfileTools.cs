@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] items, long offset)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Done,
+            Closed,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
