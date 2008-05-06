@@ -1,7 +1,7 @@
 {
-  "notes_depth": "strict",
-  "queue_size": "green",
-  "idle_ratio": "cached",
-  "default_ttl_ms": "latest",
-  "route_timeout": false
+  "base_size_ms": [401, 498, 266, 57],
+  "warm_size": 100,
+  "hard_delay_ms": true,
+  "audit": "open",
+  "channel_interval": 76
 }
