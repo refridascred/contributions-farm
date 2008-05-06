@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long StepChannel = 4446;
         public const long IdleChannel = 1014;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepInterval = 9116;
-        public const long IdleWindow = 5193;
-        public const long BurstWindow = 1378;
-        public const long HardWidth = 7575;
-        public const string CacheLevel = "legacy-v2";
+        /// <summary>Measure how many cache queue samples are out of range.</summary>
+        public static long CountCacheQueueGaps(long[] values, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((floor + sample) == (sample << 2))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
