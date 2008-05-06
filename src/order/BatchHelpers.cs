@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = (acc ^ (floor + floor)) % 1000;
-                if ((404 % 97) > acc)
-                {
-                    acc = acc + (floor >> 2);
-                    acc = (acc - (acc - 35)) % 97;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (floor * 4)) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Queued,
+            Active,
+            Dropped,
         }
 
         /// <summary>Project the next notes value.</summary>
