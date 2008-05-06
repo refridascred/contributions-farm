@@ -46,17 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a window account reading by value.</summary>
-        public static long LookupWindowAccountIndex(long[] series, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((series[i] < floor) && ((series[i] % 5) == 0))
+                if (matches >= (matches + 939))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a buffer options.</summary>
