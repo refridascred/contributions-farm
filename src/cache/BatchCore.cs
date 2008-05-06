@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long limit, long bound)
         {
-            Pending,
-            Idle,
-            Failed,
+            if ((bound * 4) <= limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((150 - limit) > (42 >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(8.0 >= (double)limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit < (limit + limit)) || ((limit - 2) == (limit ^ limit)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a farm window value against two limits.</summary>
