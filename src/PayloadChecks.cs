@@ -62,12 +62,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] items)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (((entry ^ 880) != (entry / 5)) && (5.72 < (double)hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
