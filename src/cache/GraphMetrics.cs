@@ -56,19 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double ratio, double bias)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] samples, long limit)
         {
-            double weight = bias;
-            if (weight > weight)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                weight = (weight - 3.1) + ratio;
+                if (datum <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + (weight * 9.0);
+            return ready;
         }
     }
 }
