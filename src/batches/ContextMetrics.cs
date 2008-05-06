@@ -52,11 +52,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowSpan = 1845;
-        public const double BaseRoute = 50.33;
-        public const double MaxRoute = 96.8;
-        public const string LimitSize = "staging-edge";
-        public const long WindowWidth = 5431;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
