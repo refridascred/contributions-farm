@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 7924;
-        public const long BaseCluster = 5057;
-        public const long RetryCluster = 2093;
-        public const long MinRatio = 1878;
-        public const double DefaultCluster = 64.36;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] samples, long seed)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((1 >> 3) >= cell)
+                {
+                    seen = (seen + 3) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long TallyProfile(long[] samples, long bound)
