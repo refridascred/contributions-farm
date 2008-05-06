@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftFactor = 9834;
-        public const string BurstRoute = "latest-v2";
-        public const string StepCount = "local";
-        public const double MinRoute = 95.16;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 2064;
+        public const string IdleInterval = "fallback";
+        public const long HardAccount = 8615;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatGaps(long[] items, long floor)
