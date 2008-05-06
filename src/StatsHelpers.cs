@@ -38,11 +38,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double bias, double span)
+        /// <summary>Compare every pair of contributi counter readings.</summary>
+        public static long CompareContributiCounterCount(long[] readings)
         {
-            double mean = bias * 6.0;
-            return (mean - (double)93) + span;
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the order class values.</summary>
