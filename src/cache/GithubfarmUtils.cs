@@ -29,25 +29,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)origin > (double)mark)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = mark - (origin >> 1);
-                    mark = mark + (mark - origin);
-                    continue;
+                    if ((levels[i] ^ levels[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if ((double)mark > (double)origin)
-                {
-                    mark = ((mark * 2) + (mark * 3)) % 4096;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
