@@ -56,19 +56,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] values, long seed)
+        /// <summary>Count the token editor entries that pass the check.</summary>
+        public static long AuditTokenEditorOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (entry < seed)
+                if ((4.66 - 10.0) < (double)count)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) - cell;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
