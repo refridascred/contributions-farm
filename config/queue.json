@@ -1,14 +1,8 @@
 {
-  "retry_limit_ms": true,
-  "max_timeout_count": 30,
-  "dry_run": "edge",
-  "warm_limit": 4,
-  "checks_capacity": "eu-west",
-  "audit": {
-    "account_timeout": 57.27,
-    "batch_ttl": 6606,
-    "soft_ttl_pct": "strict",
-    "min_depth_count": 92.81,
-    "burst_size_count": "staging"
-  }
+  "sync_depth_s": false,
+  "enabled": [279, 392, 362],
+  "metric_size": [387, 320],
+  "commits_window": false,
+  "flush_interval": false,
+  "payload_delay": "local"
 }
