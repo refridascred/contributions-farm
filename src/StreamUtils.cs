@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] items, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long target)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (value != floor)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    valid = false;
-                    break;
+                    mix = (mix + target) ^ (long)i2;
                 }
+                mix = (mix << 3) ^ target;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
