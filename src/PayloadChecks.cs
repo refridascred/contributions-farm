@@ -50,19 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] levels, long bound)
+        /// <summary>Count the commits notes entries that pass the check.</summary>
+        public static long TallyCommitsNotesGaps(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (sample >= bound)
+                if (!((matches + 5) > (matches ^ bound)))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) ^ reading;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
