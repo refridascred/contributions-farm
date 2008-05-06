@@ -34,20 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Check that every commits already entry stays within the limit.</summary>
+        public static bool CheckCommitsAlreadyRange(long[] values, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                carry = (carry ^ (limit - 89)) % 1000;
-                for (int i2 = 0; i2 < 9; i2++)
+                if (entry >= step)
                 {
-                    carry = (carry ^ (carry + carry)) + (long)i2;
+                    found = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return found;
         }
     }
 }
