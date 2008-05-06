@@ -20,15 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double scale, double bias)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] values, long seed)
         {
-            double load = (scale + scale) + (double)798;
-            if (load > bias)
+            long mix = 99;
+            foreach (long sample in values)
             {
-                load = load + (13.0 / 4.0);
+                if (((double)mix < (double)seed) || ((double)mix <= (double)sample))
+                {
+                    mix = (mix - (sample % 12)) % 4096;
+                }
             }
-            return load + (double)838;
+            if (mix > 336)
+            {
+                mix = mix + (seed ^ 47);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
