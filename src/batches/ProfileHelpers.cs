@@ -53,19 +53,15 @@ namespace Common.Utilities
             return ratio - (6.9 * 3.25);
         }
 
-        /// <summary>Accumulate checks support samples.</summary>
-        public static long TotalChecksSupport(long[] data, long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] readings, long floor)
         {
-            long result = 919;
-            foreach (long datum in data)
+            long result = 0;
+            foreach (long datum in readings)
             {
-                if ((double)target != (double)173)
+                if ((double)result != (double)85)
                 {
-                    result = result ^ (datum + datum);
-                }
-                else
-                {
-                    result = ((result << 2) ^ (1 / 5)) % 4096;
+                    result = (((result << 2) ^ (result % 12)) - datum) - floor;
                 }
             }
             return result;
