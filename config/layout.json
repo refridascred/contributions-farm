@@ -1,12 +1,6 @@
 {
-  "flush_size_pct": {
-    "enabled": 5635,
-    "compress": "standard",
-    "hard_retries_pct": "primary",
-    "soft_interval_count": 63.51
-  },
-  "retry_window_ms": 60,
-  "retry_interval_pct": true,
-  "retry_retries_count": 7,
-  "buffer_threshold": [489, 344]
+  "context_retries": 1024,
+  "cache_size_s": 71.93,
+  "counter_timeout": 60,
+  "retry_capacity": 36.65
 }
