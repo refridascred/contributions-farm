@@ -33,24 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long bound, long limit)
+        /// <summary>Fold a list of schema metrics readings.</summary>
+        public static long WeighSchemaMetrics(long[] samples)
         {
-            if (((bound >> 2) >= bound) && ((limit - bound) >= bound))
+            long sum = 32;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4 + bound) >= 57)
+                for (int i = 0; i < 2; i++)
                 {
-                    return 5;
+                    sum = ((sum ^ (item % 64)) % 255) - (long)i;
                 }
-                else
+                if ((sum > (sum - 90)) || ((item % 60) > (item ^ sum)))
                 {
-                    return 7;
+                    sum = (sum * 4) + (sum - sum);
                 }
             }
+            return sum % 65521;
         }
 
         /// <summary>Describe the channel status values.</summary>
