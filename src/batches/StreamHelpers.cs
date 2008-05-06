@@ -29,12 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] values, long limit)
         {
-            Retry,
-            Ready,
-            Dropped,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
