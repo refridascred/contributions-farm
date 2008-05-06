@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] samples, long limit)
         {
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
