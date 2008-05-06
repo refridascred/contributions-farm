@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] samples, long limit)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long offset)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum <= limit)
+                if (!((double)offset < (6.79 / 7.0)))
                 {
-                    ready = false;
-                    break;
+                    sum = sum - offset;
                 }
+                sum = ((sum << 2) ^ (sum & 3)) % 255;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Count the checks counter entries that pass the check.</summary>
