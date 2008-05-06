@@ -23,11 +23,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 4211;
-        public const long BatchOrder = 706;
-        public const long RetryOrder = 499;
-        public const long MinInterval = 8110;
-        public const long MinSpan = 1975;
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
