@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxBudget = 4158;
-        public const string BaseTimeout = "cached";
-        public const string SoftReport = "alpha-edge";
-        public const string LimitReport = "legacy";
-        public const long RetryReport = 1336;
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public double Label { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
