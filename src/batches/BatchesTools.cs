@@ -34,22 +34,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] readings)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry % 5) != (7 << 1))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
