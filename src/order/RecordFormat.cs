@@ -37,21 +37,14 @@ namespace Common.Utilities
             return ratio2 - 20.0;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Pending,
+            Stale,
+            Retry,
+            Active,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
