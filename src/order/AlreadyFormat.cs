@@ -39,15 +39,18 @@ namespace Common.Utilities
         public const long CacheInterval = 5045;
         public const string RetryQueue = "standard";
 
-        /// <summary>Measure how many route window samples are out of range.</summary>
-        public static long CountRouteWindowHits(long[] values, long seed)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] values)
         {
             long hits = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-826) + seed) < (seed % 12))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) - datum;
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
