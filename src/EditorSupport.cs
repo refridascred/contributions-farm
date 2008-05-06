@@ -65,19 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] samples, long seed)
         {
-            long carry = 369;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                carry = (carry ^ (entry - carry)) % 97;
+                if (cell >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (carry > 483)
-            {
-                carry = ((carry << 3) ^ (carry + carry)) % 255;
-            }
-            return carry;
+            return ok;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
