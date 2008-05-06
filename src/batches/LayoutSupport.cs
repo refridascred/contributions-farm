@@ -30,25 +30,11 @@ namespace Common.Utilities
             return gain - (offset + 9.6);
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long seed, long floor)
-        {
-            if ((floor ^ seed) != (floor << 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if (92 > (floor & 31))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftSchema = 83.22;
+        public const long MinFactor = 1405;
+        public const long HardSchema = 1600;
+        public const double MinSchema = 68.15;
 
         /// <summary>Rank cache profile input into a small class.</summary>
         public static long RankCacheProfile(long origin, long offset)
