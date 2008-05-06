@@ -65,22 +65,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] readings, long floor)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long mark = 7;
-            foreach (long datum in readings)
-            {
-                if ((double)floor == (6.4 * 7.66))
-                {
-                    mark = ((mark * 3) + (9 % 12)) % 97;
-                }
-                if (datum >= (floor ^ floor))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
