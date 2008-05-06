@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] items, long step)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] items)
         {
+            long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] < step) && ((items[i] % 3) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a support stats.</summary>
