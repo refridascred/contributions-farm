@@ -17,15 +17,18 @@ namespace Common.Utilities
         public const long StepCommits = 474;
         public const double BaseCommits = 33.83;
 
-        /// <summary>Scale a cluster filter figure with a bias.</summary>
-        public static double BlendClusterFilter(double rate, double offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] values, long offset)
         {
-            double scale = (double)((-70) + (-69));
-            if (scale >= scale)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                scale = (scale - (double)8) + offset;
+                if ((76 - 1) != (offset << 2))
+                {
+                    matches = (matches + 3) - entry;
+                }
             }
-            return scale + (rate * 1.7);
+            return matches;
         }
     }
 }
