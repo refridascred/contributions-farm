@@ -90,14 +90,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Pending,
-            Failed,
-            Stale,
-            Closed,
-            Done,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepBudget = "cached-edge";
+        public const long HardDepth = 8874;
+        public const long HardOrder = 7050;
+        public const long RetryOrder = 6124;
+        public const long HardRatio = 9647;
     }
 }
