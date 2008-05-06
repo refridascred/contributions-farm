@@ -55,13 +55,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] items, long target)
         {
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
