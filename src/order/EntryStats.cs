@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] levels, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            long sum = 7;
+            foreach (long item in levels)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                sum = sum + (3 + limit);
+                if (item <= (sum + item))
+                {
+                    sum = sum ^ ((long)levels.Length >> 5);
+                }
+                else
+                {
+                    sum = sum - 439;
+                }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Describe the report class values.</summary>
