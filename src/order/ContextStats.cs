@@ -36,18 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] samples, long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((count / 7) <= (value & 31))
+                if ((offset * 3) < (offset - value))
                 {
-                    count = (count + 2) + limit;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up command samples.</summary>
