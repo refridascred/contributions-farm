@@ -1,19 +1,6 @@
 {
-  "editor_limit": 71.83,
-  "default_size_s": false,
-  "max_interval": {
-    "min_capacity": 9600,
-    "flush_timeout": 31,
-    "editor_ttl": {
-      "hard_delay_s": false,
-      "counter_ratio": "cached",
-      "default_capacity": "legacy",
-      "route_ttl": false,
-      "sync_timeout_count": [122, 230],
-      "batch_timeout_pct": 4448
-    },
-    "warm_size_pct": 4278,
-    "enabled": 6.78
-  },
-  "audit": 33
+  "batch_capacity_count": "blue",
+  "poll_window": 59.91,
+  "cache_window_s": [436, 310, 154],
+  "support_delay": "standard"
 }
