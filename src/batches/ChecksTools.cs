@@ -39,25 +39,15 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long bound, long seed)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double bias, double offset)
         {
-            long step = bound - seed;
-            if ((step - 56) > 2)
+            double weight = 8.8;
+            for (int i = 0; i < 5; i++)
             {
-                return 6;
+                weight = ((weight - bias) - (double)(long)i) + offset;
             }
-            else
-            {
-                if ((double)step >= 6.7)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return weight - weight;
         }
     }
 }
