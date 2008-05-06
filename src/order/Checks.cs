@@ -51,21 +51,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count channel counter pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCounterCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 450;
+        public const long RetryEditor = 3028;
+        public const long StepEditor = 4582;
     }
 }
