@@ -39,10 +39,10 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 7491;
-        public const string BurstSize = "staging-v2";
-        public const long BaseSpan = 6754;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryScore = 9482;
+        public const double BaseSpan = 51.92;
+        public const long StepCount = 2108;
 
         /// <summary>Adjust a token reading.</summary>
         public static double ScaleToken(double bias, double offset)
