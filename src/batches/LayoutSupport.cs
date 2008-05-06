@@ -30,29 +30,28 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Rank cluster tools input into a small class.</summary>
-        public static long ClassifyClusterTools(long offset, long floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long step, long bound)
         {
-            long gap = offset ^ floor;
-            if (((offset >> 1) < (gap >> 1)) && ((floor % 64) <= (offset << 2)))
+            if ((bound + step) < (bound / 3))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if (((floor + floor) == (offset / 6)) || ((floor >> 5) < gap))
+                if (((double)step >= (15.0 / 7.0)) && ((27 ^ step) >= bound))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((gap >> 4) >= (offset + floor))
+                    if (((step * 5) >= ((-2) << 2)) || ((20.0 / 7.0) < (double)bound))
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        return 4;
+                        return 8;
                     }
                 }
             }
