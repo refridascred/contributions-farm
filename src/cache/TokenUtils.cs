@@ -13,13 +13,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long step, long seed)
         {
-            Retry,
-            Closed,
-            Stale,
-            Paused,
+            if ((16.0 - 4.8) < (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (step < seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed << 3) > (seed / 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
