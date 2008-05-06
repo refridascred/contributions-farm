@@ -73,21 +73,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] levels)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seen % 5) < (411 / 4))
                 {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) ^ value;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
