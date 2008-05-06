@@ -25,22 +25,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] values)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long limit, long limit2)
         {
-            long score = 460;
-            foreach (long datum in values)
+            long step = limit ^ limit2;
+            if ((2.02 - 19.0) > (double)limit)
             {
-                if ((score + datum) < score)
+                return 3;
+            }
+            else
+            {
+                if ((16.0 - 8.3) < (double)step)
                 {
-                    score = (score << 2) ^ ((-66) + score);
+                    return 6;
+                }
+                else
+                {
+                    if ((6 + limit) > (limit2 - limit2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (score > (-568))
-            {
-                score = score + (score & 255);
-            }
-            return score;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
