@@ -52,15 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] series, long limit)
         {
-            long total = -93;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                total = (((total << 3) ^ total) % 1000) - item;
+                if (sample >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total % 4096;
+            return flag;
         }
 
         /// <summary>Hold a context entry.</summary>
