@@ -44,17 +44,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] levels, long limit)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Draft,
+            Stale,
+            Done,
         }
 
         /// <summary>Blend two graph command measurements.</summary>
