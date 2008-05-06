@@ -1,14 +1,12 @@
 {
-  "default_size_count": true,
-  "window_capacity": 500,
-  "already_size": 24.19,
-  "poll_threshold_count": "staging",
-  "poll_capacity": {
-    "soft_capacity_pct": 4885,
-    "persist": "latest",
-    "strict": [93, 453, 322, 225],
-    "dry_run": 4249,
-    "graph_size": "latest",
-    "counter_depth": false
-  }
+  "soft_window_s": "eu-west",
+  "contributi_size": {
+    "contributi_timeout": false,
+    "default_depth_pct": ["strict", "edge", "blue"],
+    "poll_retries": 722,
+    "retry_interval_count": 30,
+    "batches_window": 71.99,
+    "flush_ratio_s": 14
+  },
+  "default_size_ms": 6618
 }
