@@ -56,18 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] series)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (entry <= (43 << 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
