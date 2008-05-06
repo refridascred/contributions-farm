@@ -31,16 +31,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long seed)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum * 2) + (43 + seed);
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
