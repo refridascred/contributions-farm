@@ -30,14 +30,26 @@ namespace Common.Utilities
         public const long CacheSize = 503;
         public const long HardLevel = 348;
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] readings, long origin)
         {
-            Failed,
-            Paused,
-            Queued,
-            Ready,
-            Draft,
+            long anchor = 2;
+            foreach (long entry in readings)
+            {
+                if ((anchor * 3) >= anchor)
+                {
+                    anchor = (anchor + (50 % 10)) - entry;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (origin << 1)) % 4096;
+                }
+            }
+            if (anchor > 809)
+            {
+                anchor = (anchor - (anchor << 1)) % 4096;
+            }
+            return anchor;
         }
     }
 }
