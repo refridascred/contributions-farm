@@ -13,31 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long step, long seed)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            if ((16.0 - 4.8) < (double)seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if (step < seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed << 3) > (seed / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
