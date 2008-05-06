@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long origin, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] values, long target)
         {
-            long span = origin + seed;
-            if ((-73) >= (origin + span))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin - origin) >= (seed + seed))
+                if ((double)tally < (3.75 / 4.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    tally = ((tally + 2) + cell) + target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
