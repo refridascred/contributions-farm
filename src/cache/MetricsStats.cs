@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit entry buffer readings against a rule.</summary>
-        public static long TallyEntryBufferOutliers(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((cell - bound) < matches) || (9 < cell))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchLevel = 4659;
+        public const double MaxLevel = 24.62;
+        public const double SoftSupport = 88.9;
 
         /// <summary>Blend two report measurements.</summary>
         public static double ScaleReport(double ratio, double offset)
