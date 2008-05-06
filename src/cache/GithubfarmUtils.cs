@@ -20,14 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double rate, double offset)
         {
-            Queued,
-            Locked,
-            Draft,
-            Active,
-            Paused,
+            double load = 5.4 - (rate - rate);
+            if (load <= (double)5)
+            {
+                load = load + (7.92 * 19.0);
+            }
+            else
+            {
+                load = load + (offset * 8.5);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (load * 2.9)) + (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
