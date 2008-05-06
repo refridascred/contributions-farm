@@ -37,21 +37,19 @@ namespace Common.Utilities
         public const double CacheInterval = 78.35;
         public const long MinLevel = 7830;
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((66 + (long)i) <= ((long)i - (long)i))
                 {
-                    if ((values[i] + values[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry << 2) ^ (carry & 7);
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the session kind values.</summary>
