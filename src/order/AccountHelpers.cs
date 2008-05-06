@@ -87,18 +87,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] values)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((datum + datum) >= seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Active,
+            Paused,
+            Done,
         }
     }
 }
