@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double weight, double floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] readings, long origin)
         {
-            double load = (floor / 3.0) - weight;
-            if (load > (double)93)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                load = load + (20.0 + floor);
+                if ((cell % 64) <= (40 % 10))
+                {
+                    hits = (hits + 3) + origin;
+                }
             }
-            else
-            {
-                load = load - floor;
-            }
-            return load - weight;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
