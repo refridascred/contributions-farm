@@ -22,18 +22,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] series)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double ratio = offset;
+            if (ratio < 2.0)
             {
-                if ((datum + 6) == (88 ^ hits))
-                {
-                    hits = hits + 3;
-                }
+                ratio = (ratio - (double)(-5)) + weight;
             }
-            return hits;
+            return ratio - 2.75;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
