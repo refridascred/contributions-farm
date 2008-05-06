@@ -53,19 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] levels, long seed)
+        /// <summary>Scale a metric metrics figure with a bias.</summary>
+        public static double ProjectMetricMetrics(double weight, double span)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            double ratio = (double)(372 << 3);
+            if (ratio >= (ratio * 14.0))
             {
-                if (entry > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = (ratio + (4.5 / 2.0)) + weight;
             }
-            return ok;
+            else
+            {
+                ratio = ratio + span;
+            }
+            return ratio - (double)9;
         }
     }
 }
