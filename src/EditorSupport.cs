@@ -37,19 +37,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] series, long bound)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Adjust a checks profile reading.</summary>
