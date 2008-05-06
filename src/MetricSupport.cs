@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const long CacheAccount = 1909;
         public const double StepRatio = 26.83;
 
-        /// <summary>Iterate the report batch series from a seed.</summary>
-        public static long DeriveReportBatch(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardSpan = 7396;
+        public const string MaxBatches = "primary-1";
+        public const string IdleBatches = "stable";
+        public const string BatchWidth = "latest-edge";
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
