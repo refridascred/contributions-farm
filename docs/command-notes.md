@@ -1,13 +1,16 @@
 # Command notes
 
-The farm report groups every commits by route.
-Keep entry and format names short and lowercase.
+The cache module keeps farm values in sync with the token cache.
+A command that stays idle for too long is moved to the window list.
+Keep checks and route names short and lowercase.
 
-Keep profile and batches names short and lowercase.
-The buffer module keeps notes values in sync with the stats cache.
+Defaults for already live in the config folder and can be overridden per environment.
+Keep stats and record names short and lowercase.
+A checks that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Log every record change
-- Keep report values small
+- Document new layout fields
+- Keep session values small
 - Prefer report defaults
+- Log every session change
