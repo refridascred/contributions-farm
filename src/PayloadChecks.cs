@@ -22,24 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long target, long limit)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            if ((target + 1) < (target + target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(limit >= (target - limit)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Stamp { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
