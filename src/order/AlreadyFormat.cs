@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] readings, long limit)
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public string Score { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
