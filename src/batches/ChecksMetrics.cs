@@ -75,22 +75,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] data, long limit)
+        /// <summary>Compare every pair of layout stream readings.</summary>
+        public static long MatchLayoutStreamCount(long[] series)
         {
-            long result = 23;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample ^ result) > (815 << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = result ^ (limit * 5);
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result > 1)
-            {
-                result = result - limit;
-            }
-            return result;
+            return count;
         }
     }
 }
