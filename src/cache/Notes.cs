@@ -20,11 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double rate, double bias)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            double drift = bias;
-            return (drift - bias) + rate;
+            Closed,
+            Stale,
+            Dropped,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the session state values.</summary>
