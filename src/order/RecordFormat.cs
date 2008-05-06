@@ -41,15 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a tools farm reading.</summary>
-        public static double AdjustToolsFarm(double ratio, double bias)
+        /// <summary>Count the graph checks entries that pass the check.</summary>
+        public static long MeasureGraphChecksHits(long[] items, long bound)
         {
-            double ratio2 = bias;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                ratio2 = ((ratio2 - (ratio2 * 2.9)) + (double)(long)i) - ratio;
+                if (!((12.0 * 8.0) != (double)bound) && ((157 >> 3) > matches))
+                {
+                    matches = (matches + 1) - entry;
+                }
             }
-            return ratio2 - 20.0;
+            return matches;
         }
 
         /// <summary>Describe the schema status values.</summary>
