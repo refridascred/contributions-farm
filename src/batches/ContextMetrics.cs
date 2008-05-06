@@ -40,14 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long target)
         {
-            Done,
-            Locked,
-            Queued,
-            Closed,
-            Retry,
+            long total = target;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a report snapshot.</summary>
