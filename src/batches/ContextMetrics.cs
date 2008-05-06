@@ -59,10 +59,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "strict";
-        public const double BatchSize = 85.42;
-        public const string MinFactor = "alpha-1";
-        public const long CacheTimeout = 9251;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
