@@ -58,18 +58,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] values, long seed)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= (entry + count))
+                if (levels[i] == seed)
                 {
-                    count = (count + 3) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
