@@ -1,22 +1,7 @@
 # entry settings
-account_interval:
-  - 481
-  - 99
-  - 342
-batch_capacity:
-  - edge
-  - latest
-  - standard
-  - legacy
-max_depth:
-  contributi_limit: blue
-  min_limit_count: 20
-  sync_retries_ms:
-    dry_run: stable
-    metric_delay: edge
-    flush_window_pct: 30
-    default_delay: 80
-    record_ttl: eu-west
-  retry_retries_pct: 250
-  verbose: 100
-  metrics_interval: open
+warm_size: 100
+order_ttl: false
+max_timeout_count: 500
+report_capacity: 17.02
+idle_threshold: cached
+min_capacity_s: 8.65
