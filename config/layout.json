@@ -1,6 +1,16 @@
 {
-  "contributi_capacity": true,
-  "soft_size_count": true,
-  "retry_size": "staging",
-  "queue_depth": false
+  "already_ttl": 75,
+  "enabled": false,
+  "idle_retries_s": {
+    "base_window_count": 500,
+    "graph_delay": {
+      "default_size_ms": "green",
+      "poll_ratio_s": "cached",
+      "persist": 78.93
+    },
+    "compress": 89.09,
+    "retry_interval": 3182,
+    "poll_ratio_ms": 100
+  },
+  "verbose": 250
 }
