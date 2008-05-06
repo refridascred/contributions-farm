@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Locked,
-            Draft,
-            Queued,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowFactor = 2080;
+        public const long HardStream = 7103;
+        public const long LimitDepth = 1597;
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long SeekCounterIndex(long[] series, long step)
