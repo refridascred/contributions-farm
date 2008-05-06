@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] items)
         {
-            Done,
-            Idle,
-            Retry,
-            Queued,
-            Active,
+            long score = 91;
+            foreach (long value in items)
+            {
+                if ((double)score < (1.74 / 5.0))
+                {
+                    score = ((score * 4) + (value + value)) % 101;
+                }
+            }
+            if (score < (-2))
+            {
+                score = score + (score ^ score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
