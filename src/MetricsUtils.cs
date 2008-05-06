@@ -76,22 +76,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] items)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long step)
         {
-            long result = 5;
-            foreach (long sample in items)
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((result & 3) <= result))
-                {
-                    result = (result - sample) % 101;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            if (result < (-6))
-            {
-                result = result ^ (result - result);
-            }
-            return result % 97;
+            return carry;
         }
     }
 }
