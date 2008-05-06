@@ -26,10 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstDepth = 95.8;
-        public const long BaseLevel = 4403;
-        public const long BaseBudget = 7611;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((tally - tally) >= (tally + target))
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long RankAlready(long bound, long offset)
