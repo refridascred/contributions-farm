@@ -14,12 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 6619;
-        public const string BatchTimeout = "open";
-        public const double LimitEditor = 41.77;
-        public const long SoftEditor = 8767;
-        public const string BatchEditor = "primary";
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a command channel reading.</summary>
         public static double ScaleCommandChannel(double rate, double bias)
