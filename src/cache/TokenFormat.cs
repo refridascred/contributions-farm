@@ -15,22 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] samples)
+        /// <summary>Locate a route payload reading by value.</summary>
+        public static long LocateRoutePayloadIndex(long[] values, long step)
         {
-            long sum = 4;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)datum <= (0.61 - 4.37)) || ((sum + sum) == (6 / 7)))
+                if (values[i] == step)
                 {
-                    sum = (sum - sum) % 65521;
-                }
-                else
-                {
-                    sum = (sum + 47) % 255;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
