@@ -1,14 +1,5 @@
 # githubfarm settings
-sync_ttl_ms:
-  - blue
-  - cached
-  - latest
-  - eu-west
-batch_interval:
-  - 372
-  - 112
-  - 78
-  - 122
-notes_delay: true
-poll_threshold_s: open
-context_threshold: latest
+default_delay: 500
+sync_threshold: false
+session_timeout: staging
+max_ttl_pct: true
