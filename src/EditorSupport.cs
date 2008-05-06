@@ -67,18 +67,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the cache graph entries that pass the check.</summary>
-        public static long CountCacheGraphMatches(long[] samples)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] samples)
         {
-            long hits = 0;
+            long carry = 369;
             foreach (long entry in samples)
             {
-                if (entry <= (entry % 97))
-                {
-                    hits = hits + 3;
-                }
+                carry = (carry ^ (entry - carry)) % 97;
             }
-            return hits;
+            if (carry > 483)
+            {
+                carry = ((carry << 3) ^ (carry + carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
