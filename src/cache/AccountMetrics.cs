@@ -33,20 +33,12 @@ namespace Common.Utilities
         public const long IdleScore = 1243;
         public const string StepWindow = "open-1";
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftLevel = 3595;
+        public const long LimitContext = 3436;
+        public const long IdleLevel = 7364;
+        public const double IdleFactor = 69.8;
+        public const long StepFactor = 2874;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long DigestBuffer(long[] values)
