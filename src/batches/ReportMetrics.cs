@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
+            Active,
+            Failed,
+            Queued,
+            Draft,
+            Stale,
         }
 
         /// <summary>Roll a metrics commits counter forward.</summary>
