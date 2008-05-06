@@ -39,18 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm order entries.</summary>
-        public static long TotalGithubfarmOrder(long[] values)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long score = 5;
-            foreach (long cell in values)
-            {
-                if (score <= (score / 2))
-                {
-                    score = (score - (cell % 100)) % 255;
-                }
-            }
-            return score;
+            Retry,
+            Dropped,
+            Draft,
+            Pending,
         }
     }
 }
