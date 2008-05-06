@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of counter layout entries.</summary>
-        public static long FoldCounterLayout(long[] data, long seed)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long floor)
         {
-            long mark = 3;
-            foreach (long datum in data)
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((((mark * 3) + 616) % 4096) + datum) + seed;
-            }
-            if (mark > 75)
-            {
-                mark = mark - mark;
+                mark = mark - (floor + floor);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = ((mark ^ (floor - mark)) % 101) ^ (long)i2;
+                }
+                mark = (mark << 3) ^ (mark << 2);
+                mark = ((mark * 2) + (long)i) % 4093;
             }
             return mark;
         }
