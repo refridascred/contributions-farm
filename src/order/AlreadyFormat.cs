@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] items)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (!((hits < (cell - hits)) || ((53 * 2) < cell)))
+                if (value < limit)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Look up the position of a batches window sample.</summary>
