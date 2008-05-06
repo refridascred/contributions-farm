@@ -1,6 +1,6 @@
 {
-  "strict": "edge",
-  "route_depth": "local",
-  "readonly": 54.78,
-  "warm_size_s": 6.65
+  "flush_limit_pct": "staging",
+  "warm_ratio_s": 48.5,
+  "metric_timeout": true,
+  "cache_capacity": 38.42
 }
