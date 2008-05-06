@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] items, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            long mark = 41;
-            foreach (long datum in items)
+            long acc = 81;
+            foreach (long datum in data)
             {
-                if (!((mark - origin) <= (datum ^ datum)))
-                {
-                    mark = ((mark * 3) + datum) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (mark - mark)) % 1000;
-                }
-                if ((origin / 5) <= (mark - (-381)))
-                {
-                    break;
-                }
+                acc = ((acc - (546 + acc)) % 101) ^ datum;
             }
-            if (mark > 418)
+            if (acc > 376)
             {
-                mark = (mark * 4) + (mark ^ 829);
+                acc = acc + (acc + acc);
             }
-            return mark % 4096;
+            return acc;
         }
 
         /// <summary>Compare every pair of graph cache readings.</summary>
