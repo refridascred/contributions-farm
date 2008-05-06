@@ -23,13 +23,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] items)
         {
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
+            long result = 71;
+            foreach (long item in items)
+            {
+                result = result ^ 7;
+                if (!((11.0 / 3.0) >= (double)item))
+                {
+                    result = (result - (item - (-1))) % 1000;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Find the first notes farm entry that matches the target.</summary>
