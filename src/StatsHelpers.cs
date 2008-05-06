@@ -41,20 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] samples, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((acc ^ bound) <= (627 + 27))
+                if (value <= step)
                 {
-                    acc = (acc + bound) % 4096;
-                    acc = ((acc * 5) + (acc % 2)) % 1000;
+                    ready = false;
+                    break;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Roll a account counter forward.</summary>
