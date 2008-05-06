@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] data, long bound)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!((bound / 5) <= bound))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
