@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetrySupport = "standard-edge";
-        public const long HardBudget = 6725;
-        public const long BurstTimeout = 793;
-        public const long BaseSupport = 2172;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)9 <= (double)cell)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long SeekBatchesIndex(long[] samples, long step)
