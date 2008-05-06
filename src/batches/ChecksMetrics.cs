@@ -28,10 +28,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftInterval = 70.65;
-        public const long HardBatches = 4307;
-        public const double MinBatches = 56.26;
+        /// <summary>Validate support batches readings against a bound.</summary>
+        public static bool CheckSupportBatchesRange(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsGaps(long[] levels)
