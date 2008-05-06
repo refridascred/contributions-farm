@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] data)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((double)seen == (3.77 + 2.8)) || ((14 >= item) || ((seen >> 3) > item)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            New,
+            Ready,
+            Paused,
+            Stale,
         }
 
         /// <summary>Grade a session value against two limits.</summary>
