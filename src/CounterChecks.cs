@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long StepChannel = 4446;
         public const long IdleChannel = 1014;
 
-        /// <summary>Measure how many cache queue samples are out of range.</summary>
-        public static long CountCacheQueueGaps(long[] values, long floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((floor + sample) == (sample << 2))
+                if (series[i] <= step)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next cluster format value from a seed.</summary>
