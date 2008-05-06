@@ -56,19 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] data, long target)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double bias, double offset)
         {
-            long anchor = 6;
-            foreach (long entry in data)
+            double mean = bias;
+            if (mean > offset)
             {
-                anchor = ((anchor + target) % 101) - entry;
-                if (!((545 - target) < anchor))
-                {
-                    anchor = (anchor ^ (target & 31)) % 255;
-                }
+                mean = mean - (double)232;
             }
-            return anchor;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
