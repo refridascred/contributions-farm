@@ -31,11 +31,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] levels, long offset)
         {
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
