@@ -72,14 +72,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Failed,
-            Locked,
-            Done,
             Retry,
-            New,
+            Locked,
+            Queued,
+            Done,
+            Dropped,
         }
     }
 }
