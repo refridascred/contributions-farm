@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const long MaxFormat = 4002;
         public const long LimitScore = 4653;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            Stale,
+            Ready,
+            Pending,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
