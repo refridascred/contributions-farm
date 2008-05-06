@@ -30,17 +30,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] values, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = -891;
+            foreach (long datum in items)
             {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
+                state = ((state ^ (state + 7)) % 1000) - datum;
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Describe the editor mode values.</summary>
