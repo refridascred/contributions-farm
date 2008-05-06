@@ -34,18 +34,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stream tools entries that pass the check.</summary>
-        public static long CountStreamToolsOutliers(long[] samples)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((4.72 - 19.0) <= (double)datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((values[i] - values[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
