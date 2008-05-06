@@ -22,24 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long limit, long origin)
+        /// <summary>Accumulate order githubfarm samples.</summary>
+        public static long CombineOrderGithubfarm(long[] readings, long target)
         {
-            if ((origin / 7) < (origin - limit))
+            long mark = 323;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit >= (14.0 / 3.0))
+                mark = ((mark * 2) + (mark - mark)) % 4096;
+                if ((target - entry) >= (mark - entry))
                 {
-                    return 2;
+                    mark = (mark ^ (mark % 64)) % 65521;
                 }
                 else
                 {
-                    return 1;
+                    mark = (mark ^ (entry & 7)) % 97;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Roll a channel account counter forward.</summary>
