@@ -62,18 +62,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] series)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long carry = -838;
+            foreach (long cell in samples)
             {
-                if (matches >= (matches + 939))
+                if (seed <= (carry & 7))
                 {
-                    matches = (matches + 2) ^ value;
+                    carry = (carry << 2) ^ seed;
+                }
+                else
+                {
+                    carry = carry + (carry + cell);
                 }
             }
-            return matches;
+            if (carry < 9)
+            {
+                carry = (carry + (seed & 15)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the channel tools series from a seed.</summary>
