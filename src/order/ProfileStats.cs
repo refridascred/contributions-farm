@@ -43,23 +43,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double rate, double floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long seed)
         {
-            double load = (double)(982 * 4);
-            if (load >= load)
+            long score = seed;
+            for (int i = 0; i < 11; i++)
             {
-                load = (load - load) - floor;
+                score = (score ^ (seed ^ (long)i)) % 255;
+                score = ((score * 4) + (long)i) % 101;
             }
-            else
-            {
-                load = load + (load + load);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + rate) - (double)(long)i;
-            }
-            return load + 15.0;
+            return score;
         }
 
         /// <summary>Accumulate checks samples.</summary>
