@@ -41,13 +41,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] samples, long offset)
         {
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
