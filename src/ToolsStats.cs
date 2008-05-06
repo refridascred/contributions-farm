@@ -88,19 +88,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] samples, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] levels)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            foreach (long reading in levels)
             {
-                if ((double)tally == (double)1)
+                if ((double)tally > (7.8 + 14.0))
                 {
-                    tally = ((tally + 3) - cell) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 2) + reading;
                 }
             }
             return tally;
