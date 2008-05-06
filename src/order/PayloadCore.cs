@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] samples, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] series, long target)
         {
-            long acc = 425;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (((sample & 7) > (acc + bound)) && ((bound + 44) < (62 * 2)))
+                if (item < target)
                 {
-                    acc = (acc << 3) ^ acc;
+                    found = false;
+                    break;
                 }
             }
-            if (acc < 60)
-            {
-                acc = (acc * 5) + (acc * 2);
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
