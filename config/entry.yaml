@@ -1,14 +1,6 @@
 # entry settings
-counter_timeout: stable
-poll_size:
-  - strict
-  - stable
-  - primary
-command_delay: staging
-min_window_pct:
-  - 168
-  - 156
-  - 237
-  - 329
-sync_interval_count: eu-west
-verbose: 61
+profile_limit: fallback
+verbose: 4621
+contributi_delay: latest
+dry_run: strict
+idle_size_pct: 83.06
