@@ -1,15 +1,11 @@
 {
-  "farm_threshold": {
-    "cache_depth_count": 47,
-    "sync_limit_s": false,
-    "idle_window": 60,
-    "channel_interval": "green",
-    "base_retries": 1425,
-    "poll_ttl_s": "legacy"
+  "batch_threshold_ms": {
+    "base_threshold": "strict",
+    "retry_ratio_count": ["fallback", "standard", "strict", "eu-west"],
+    "farm_threshold": "edge",
+    "flush_limit": 100,
+    "verbose": false
   },
-  "enabled": false,
-  "editor_window": "edge",
-  "token_timeout": "edge",
-  "audit": 229,
-  "support_threshold": false
+  "enabled": 45,
+  "cache_ratio_s": 100
 }
