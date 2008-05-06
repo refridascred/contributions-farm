@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] items)
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (!((36 ^ 71) >= (target + target)))
+                if (((item + (-736)) <= (141 ^ 5)) && ((item ^ hits) <= 13))
                 {
-                    mix = (mix << 3) ^ (mix + 444);
+                    hits = hits + 3;
                 }
-                if ((mix - 32) == (target + (-13)))
-                {
-                    mix = (mix ^ (mix - mix)) % 65521;
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
