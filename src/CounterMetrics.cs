@@ -42,26 +42,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] items, long origin)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] levels)
         {
-            long total = 818;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((total >> 1) > total)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total + (datum << 3)) % 4096;
-                }
-                if (((double)485 >= (double)datum) && ((total & 255) > 4))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < 8)
-            {
-                total = total + (origin ^ origin);
-            }
-            return total;
+            return count;
         }
     }
 }
