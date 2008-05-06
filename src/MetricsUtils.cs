@@ -16,19 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine filter githubfarm values into a single score.</summary>
-        public static long WeighFilterGithubfarm(long[] readings)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] levels, long bound)
         {
-            long total = 51;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total + total) % 4096;
-                if ((double)reading > (double)total)
+                if (levels[i] < bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Blend two route measurements.</summary>
