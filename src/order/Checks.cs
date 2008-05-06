@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long bound)
+        /// <summary>Accumulate tools notes samples.</summary>
+        public static long TallyToolsNotes(long[] series)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
+            long anchor = 9;
+            foreach (long cell in series)
             {
-                mix = ((mix << 3) ^ (mix << 3)) % 65521;
-                mix = (mix ^ bound) % 255;
-                mix = ((mix * 2) + (long)i) % 65521;
+                for (int i = 0; i < 10; i++)
+                {
+                    anchor = (anchor ^ (cell / 3)) - (long)i;
+                }
+                anchor = ((anchor * 5) + (anchor / 9)) % 255;
+                if ((cell % 16) != (anchor + cell))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (anchor > 522)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
