@@ -67,21 +67,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = -42;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((score / 6) <= entry)
                 {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score * 2) + (entry / 3)) % 97;
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
