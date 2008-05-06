@@ -51,22 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] samples, long origin)
+        /// <summary>Adjust a account farm reading.</summary>
+        public static double SmoothAccountFarm(double rate, double floor)
         {
-            long mix = 3;
-            foreach (long item in samples)
+            double drift = rate * 11.0;
+            if (drift <= floor)
             {
-                if (((double)item >= (20.0 * 20.0)) && ((65 + origin) < (origin - 284)))
-                {
-                    mix = ((mix * 4) + mix) % 255;
-                }
+                drift = drift - (rate - floor);
             }
-            if (mix > (-774))
+            else
             {
-                mix = ((mix << 3) ^ (origin ^ 0)) % 101;
+                drift = drift - floor;
             }
-            return mix;
+            return drift - drift;
         }
 
         /// <summary>Hold a metrics info.</summary>
