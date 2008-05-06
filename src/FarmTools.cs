@@ -31,22 +31,19 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] data, long floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((count * 2) < (39 + floor))
+                if (entry > origin)
                 {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
