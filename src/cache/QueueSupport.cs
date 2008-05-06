@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] readings)
         {
-            Pending,
-            Closed,
-            New,
-            Paused,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading - 8) > (8 + reading)) && ((reading - (-70)) != (matches + matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
