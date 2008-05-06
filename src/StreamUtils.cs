@@ -57,22 +57,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools stats samples.</summary>
-        public static long TotalToolsStats(long[] items, long origin)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double ratio, double offset)
         {
-            long mark = 529;
-            foreach (long value in items)
+            double scale = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((origin + (-8)) >= (value + value))
-                {
-                    mark = (mark + (value + (long)items.Length)) % 255;
-                }
+                scale = (scale + (ratio - ratio)) + (double)(long)i;
             }
-            if (mark < 36)
-            {
-                mark = ((mark << 3) ^ (mark + origin)) % 1000;
-            }
-            return mark;
+            return scale + ratio;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
