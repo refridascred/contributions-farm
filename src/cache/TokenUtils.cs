@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] samples)
         {
-            Synced,
-            Closed,
-            Stale,
+            long sum = 16;
+            foreach (long value in samples)
+            {
+                if ((value + sum) <= (value << 1))
+                {
+                    sum = ((sum << 3) ^ (value >> 1)) % 101;
+                }
+                if (((value & 7) < (sum << 2)) && ((6.5 + 6.0) <= (double)sum))
+                {
+                    sum = ((sum * 3) + (792 - 408)) % 101;
+                    sum = (sum + sum) % 255;
+                }
+                sum = (sum + (sum ^ sum)) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a schema header.</summary>
