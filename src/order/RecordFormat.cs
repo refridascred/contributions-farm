@@ -53,14 +53,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Locked,
-            Dropped,
-            Queued,
-            Pending,
-            Closed,
+            Failed,
+            Paused,
+            Idle,
+            Active,
         }
     }
 }
