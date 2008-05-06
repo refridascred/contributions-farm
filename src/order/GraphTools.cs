@@ -48,12 +48,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Derive the next command cache value from a seed.</summary>
+        public static long RollCommandCache(long limit)
         {
-            Failed,
-            Locked,
-            Stale,
+            long score = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((limit * 5) == (limit << 2))
+                {
+                    score = (score ^ score) % 4096;
+                    score = ((score << 3) ^ (limit + limit)) % 97;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
