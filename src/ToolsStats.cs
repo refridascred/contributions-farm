@@ -29,13 +29,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long seed, long offset)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            long step = seed + offset;
+            if (((offset + offset) < 7) || ((step + seed) >= seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed ^ offset) < (seed - step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((2.6 + 5.47) > (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((1.6 - 14.0) > 9.63) && (step < (step * 3)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph stats.</summary>
