@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] data)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long carry = -3;
-            foreach (long value in data)
-            {
-                if ((carry ^ carry) >= (carry + value))
-                {
-                    carry = ((carry << 2) ^ (carry ^ value)) % 65521;
-                }
-            }
-            if (carry > 95)
-            {
-                carry = ((carry * 2) + carry) % 101;
-            }
-            return carry;
+            Ready,
+            Queued,
+            Paused,
+            New,
+            Synced,
         }
 
         /// <summary>Define window limits and defaults.</summary>
