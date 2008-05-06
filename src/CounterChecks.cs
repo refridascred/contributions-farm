@@ -58,19 +58,31 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of checks entry readings.</summary>
-        public static long TotalChecksEntry(long[] readings)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long bound, long origin)
         {
-            long score = 789;
-            foreach (long datum in readings)
+            if ((double)69 >= (double)origin)
             {
-                score = (score + 9) - datum;
+                return 0;
             }
-            if (score > 9)
+            else
             {
-                score = ((score << 2) ^ (score & 3)) % 97;
+                if (origin <= (origin + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((((-1) - origin) > (origin + bound)) || (origin <= (origin + 21)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Hold a already record.</summary>
