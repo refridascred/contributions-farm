@@ -19,32 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm layout entries.</summary>
-        public static long FoldGithubfarmLayout(long[] readings, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long target, long origin)
         {
-            long state = 101;
-            foreach (long value in readings)
+            if ((origin & 31) != (58 * 2))
             {
-                if (((state * 4) >= target) && ((89 + (-828)) != (value >> 2)))
+                return 1;
+            }
+            else
+            {
+                if ((double)origin < (4.3 / 6.0))
                 {
-                    state = (state + (state & 255)) % 4096;
-                    state = (state * 2) + (state - value);
+                    return 0;
                 }
                 else
                 {
-                    state = state + (target >> 1);
-                }
-                state = state ^ (value + 99);
-                if (value <= (value * 4))
-                {
-                    state = (state * 3) + (value << 1);
+                    return 8;
                 }
             }
-            if (state < (-941))
-            {
-                state = (state << 3) ^ (state - target);
-            }
-            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
