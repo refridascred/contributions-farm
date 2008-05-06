@@ -48,21 +48,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] series)
+        /// <summary>Adjust a graph checks reading.</summary>
+        public static double ScaleGraphChecks(double gain, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = bias;
+            if (rate <= bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = (rate - (double)3) + gain;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (rate / 9.0)) + (double)(long)i;
+            }
+            return rate + (double)4;
         }
     }
 }
