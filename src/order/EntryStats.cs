@@ -40,12 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] data, long origin)
         {
-            Idle,
-            Active,
-            Synced,
+            long acc = 33;
+            foreach (long entry in data)
+            {
+                if (entry > (origin ^ acc))
+                {
+                    acc = (acc << 3) ^ (157 / 5);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ entry) % 65521;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
