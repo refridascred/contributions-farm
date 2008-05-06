@@ -27,21 +27,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item > limit)
                 {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
