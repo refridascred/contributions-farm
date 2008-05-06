@@ -54,19 +54,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate batch metrics readings against a bound.</summary>
-        public static bool CheckBatchMetricsBounds(long[] series, long seed)
+        /// <summary>Blend two layout counter measurements.</summary>
+        public static double SmoothLayoutCounter(double bias, double offset)
         {
-            bool found = true;
-            foreach (long item in series)
+            double drift = offset;
+            if (drift < bias)
             {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift + bias;
             }
-            return found;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + 5.4) + (double)(long)i;
+            }
+            return drift - (offset / 9.0);
         }
     }
 }
