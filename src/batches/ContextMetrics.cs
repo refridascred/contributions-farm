@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next filter order value from a seed.</summary>
-        public static long StepFilterOrder(long target)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] data, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long score = 80;
+            foreach (long cell in data)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                score = (score - (floor * 3)) + cell;
             }
-            return sum;
+            if (score < 38)
+            {
+                score = (score ^ (long)data.Length) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
