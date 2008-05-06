@@ -46,30 +46,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] levels)
+        /// <summary>Count githubfarm profile pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmProfileCount(long[] items)
         {
-            long mix = -7;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((19.0 * 1.6) <= (double)mix))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix ^ (mix ^ sample)) % 101;
-                }
-                if (!((sample ^ sample) >= (mix >> 4)))
-                {
-                    mix = ((mix << 2) ^ (sample + sample)) % 65521;
-                }
-                if ((mix + mix) <= (mix << 3))
-                {
-                    break;
+                    if ((items[i] + items[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix < 30)
-            {
-                mix = (mix + (mix % 5)) % 1000;
-            }
-            return mix;
+            return count;
         }
     }
 }
