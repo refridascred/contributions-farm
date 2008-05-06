@@ -45,11 +45,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowOrder = 29.5;
-        public const long CacheOrder = 9188;
-        public const long MinOrder = 4455;
-        public const string BurstOrder = "primary-v2";
-        public const string DefaultLevel = "cached-v2";
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                long count = floor;
+                if (((long)i + mix) == (count % 12))
+                {
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
