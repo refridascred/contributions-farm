@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinFactor = 3.48;
-        public const string BatchRatio = "legacy-edge";
-        public const double BatchCount = 4.27;
-        public const string CacheTimeout = "latest-edge";
-        public const double BurstBuffer = 55.52;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Match up support payload samples.</summary>
         public static long OverlapSupportPayloadCount(long[] samples)
