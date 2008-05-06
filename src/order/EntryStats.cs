@@ -58,13 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] samples)
         {
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
