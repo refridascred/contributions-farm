@@ -36,17 +36,21 @@ namespace Common.Utilities
         public const double BurstFactor = 49.9;
         public const string DefaultRatio = "legacy-edge";
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] >= target)
+                long seen = (limit << 2) ^ (anchor + limit);
+                if ((anchor <= ((long)i >> 4)) || (((long)i - seen) < (long)i))
                 {
-                    return (long)i;
+                    seen = ((seen * 4) + (seen & 255)) % 255;
+                    break;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
