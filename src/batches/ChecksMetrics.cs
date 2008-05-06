@@ -75,9 +75,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowNotes = 65.21;
-        public const string RetryNotes = "staging-edge";
-        public const double IdleNotes = 49.0;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] data, long limit)
+        {
+            long result = 23;
+            foreach (long sample in data)
+            {
+                if ((sample ^ result) > (815 << 1))
+                {
+                    result = result ^ (limit * 5);
+                }
+            }
+            if (result > 1)
+            {
+                result = result - limit;
+            }
+            return result;
+        }
     }
 }
