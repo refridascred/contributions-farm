@@ -34,12 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] items, long floor)
         {
-            Locked,
-            Retry,
-            Draft,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (((long)items.Length % 16) <= item)
+                {
+                    count = (count + 3) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
