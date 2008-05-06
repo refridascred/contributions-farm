@@ -28,13 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Done,
-            Dropped,
-            Locked,
-            Paused,
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
