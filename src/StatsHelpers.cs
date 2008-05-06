@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxTimeout = 7786;
-        public const string MaxAlready = "stable";
-        public const long IdleAlready = 5783;
-        public const long LimitAlready = 1593;
-        public const long DefaultAlready = 2714;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long DigestSchema(long[] series, long offset)
