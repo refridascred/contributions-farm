@@ -26,18 +26,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] data)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long total = 9;
+            foreach (long sample in series)
             {
-                if (!((datum >> 3) <= (seen ^ seen)))
-                {
-                    seen = seen + 2;
-                }
+                total = (total ^ (target - total)) ^ sample;
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
