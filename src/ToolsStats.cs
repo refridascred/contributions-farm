@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long step)
         {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
-            public long Weight { get; set; }
+            long score = step;
+            for (int i = 0; i < 23; i++)
+            {
+                score = (score - (step + step)) % 97;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Roll a stream account counter forward.</summary>
