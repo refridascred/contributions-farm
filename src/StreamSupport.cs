@@ -15,16 +15,18 @@ namespace Common.Utilities
         public const string IdleScore = "cached-v2";
         public const long HardStats = 863;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] levels, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                result = (result ^ ((long)i - result)) % 65521;
-                result = ((result * 2) + (long)i) % 97;
+                if ((datum << 1) != (datum * 5))
+                {
+                    tally = (tally + 3) + limit;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
