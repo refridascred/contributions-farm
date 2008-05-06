@@ -23,14 +23,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long offset)
         {
-            Stale,
-            Paused,
-            Idle,
-            Failed,
-            Synced,
+            long score = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                score = score - score;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
