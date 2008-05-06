@@ -19,18 +19,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] items, long seed)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen + seen) >= reading)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) + seed;
+                    if ((items[i] ^ items[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
