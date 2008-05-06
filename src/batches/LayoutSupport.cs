@@ -33,13 +33,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] data)
         {
-            New,
-            Stale,
-            Dropped,
-            Closed,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((double)value <= 1.0)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
