@@ -43,17 +43,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a format farm sample.</summary>
-        public static long LocateFormatFarmIndex(long[] levels, long offset)
+        /// <summary>Check that every schema metrics entry stays within the limit.</summary>
+        public static bool ValidateSchemaMetricsBounds(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (levels[i] >= offset)
+                if (cell > limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the order class values.</summary>
