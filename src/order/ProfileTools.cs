@@ -46,22 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long origin, long offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long bound, long limit)
         {
-            if ((0.7 > (double)origin) && ((origin & 127) <= (offset >> 1)))
+            if (((bound >> 2) >= bound) && ((limit - bound) >= bound))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if (origin <= (offset - (-783)))
+                if ((4 + bound) >= 57)
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    return 3;
+                    return 7;
                 }
             }
         }
