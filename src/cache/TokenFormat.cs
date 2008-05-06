@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Pending,
-            New,
-            Done,
-            Active,
+            Draft,
+            Synced,
+            Ready,
+            Idle,
+            Stale,
         }
 
         /// <summary>Accumulate context samples.</summary>
