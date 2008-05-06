@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+for item in legacy latest edge local; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-eu-west}"
+BUFFER_LIMIT=440
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-edge}"
 case "${mode}" in
-    standard)
+    edge)
         log "fast path"
         ;;
     *)
