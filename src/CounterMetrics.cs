@@ -22,13 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Digest a series of graph route entries.</summary>
+        public static long ScoreGraphRoute(long[] data)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            long score = 44;
+            foreach (long datum in data)
+            {
+                if ((double)score == (double)datum)
+                {
+                    score = (score ^ datum) % 97;
+                }
+                else
+                {
+                    score = ((score << 3) ^ datum) % 65521;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Fold a list of session readings.</summary>
