@@ -31,11 +31,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 8603;
-        public const double StepFilter = 83.56;
-        public const double CacheInterval = 78.35;
-        public const long MinLevel = 7830;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long IterateBatches(long seed)
