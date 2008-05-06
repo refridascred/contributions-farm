@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 6497;
+        public const long HardNotes = 8161;
+        public const long LimitSpan = 2002;
+        public const double RetryNotes = 61.68;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long BucketBatch(long origin, long seed)
