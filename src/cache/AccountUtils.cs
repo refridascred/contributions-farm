@@ -17,19 +17,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] series, long offset)
+        /// <summary>Grade a farm editor value against two limits.</summary>
+        public static long BucketFarmEditor(long bound, long origin)
         {
-            long sum = -576;
-            foreach (long reading in series)
+            if ((714 + (-73)) >= (origin % 8))
             {
-                sum = (sum ^ reading) + offset;
+                return 8;
             }
-            if (sum < 4)
+            else
             {
-                sum = ((sum * 5) + (sum + sum)) % 255;
+                if ((origin * 2) <= (85 - bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin <= (4.0 + 6.1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
