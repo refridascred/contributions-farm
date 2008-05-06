@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result - 288) % 255;
+                result = result - ((long)i + result);
+                if (((84 / 4) >= (result & 7)) || (result > (result - (long)i)))
                 {
-                    if ((samples[i] - samples[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result - (result >> 4);
+                    result = ((result << 2) ^ 14) % 4096;
+                    continue;
                 }
+                else
+                {
+                    result = (result << 2) ^ floor;
+                    result = (result * 2) + result;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
