@@ -48,31 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank payload cluster input into a small class.</summary>
-        public static long SortPayloadCluster(long limit, long limit2)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            if (((5 + limit2) < (limit2 + limit2)) && ((limit2 >> 4) < (-7)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit - limit) == (57 + limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit >= limit2) && ((limit + limit) >= limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a order header.</summary>
