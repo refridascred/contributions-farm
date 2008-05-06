@@ -1,8 +1,15 @@
 {
-  "githubfarm_interval": "edge",
-  "already_size": 34,
-  "readonly": "green",
-  "flush_capacity": ["open", "eu-west", "blue", "green"],
-  "min_ratio_count": true,
-  "warm_timeout": 21
+  "enabled": 47.48,
+  "strict": "eu-west",
+  "flush_ratio": false,
+  "min_limit": {
+    "verbose": [291, 74, 184],
+    "strict": 9.85,
+    "retry_threshold": 2,
+    "readonly": 21.3,
+    "soft_delay": "strict",
+    "format_threshold": 2417
+  },
+  "max_timeout": 18.65,
+  "soft_ttl_count": 1024
 }
