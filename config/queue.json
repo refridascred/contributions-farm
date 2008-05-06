@@ -1,12 +1,5 @@
 {
-  "graph_ttl": 4734,
-  "readonly": {
-    "soft_size_count": 9359,
-    "account_capacity": 9188,
-    "counter_timeout": false,
-    "cache_timeout": 30,
-    "account_timeout": true
-  },
-  "dry_run": 15,
-  "report_interval": 8967
+  "readonly": 5498,
+  "counter_ratio": 1.94,
+  "verbose": 54.37
 }
