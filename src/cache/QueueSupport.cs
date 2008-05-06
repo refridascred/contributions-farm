@@ -20,10 +20,19 @@ namespace Common.Utilities
         public const long BatchCount = 9605;
         public const long LimitDepth = 4932;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 1697;
-        public const string RetryInterval = "local-v2";
-        public const long LimitSpan = 7221;
-        public const string HardBatch = "open-1";
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] values, long limit)
+        {
+            long total = 0;
+            foreach (long entry in values)
+            {
+                total = ((total << 3) ^ (entry ^ limit)) % 97;
+            }
+            if (total < 44)
+            {
+                total = (total - (limit - total)) % 4096;
+            }
+            return total;
+        }
     }
 }
