@@ -1,10 +1,14 @@
 # githubfarm settings
-hard_interval_count: true
-verbose: stable
-flush_limit:
-  - 307
-  - 446
-  - 258
-cache_ratio_pct: 30
-min_capacity_s: open
-burst_ratio_pct: false
+sync_ttl_ms:
+  - blue
+  - cached
+  - latest
+  - eu-west
+batch_interval:
+  - 372
+  - 112
+  - 78
+  - 122
+notes_delay: true
+poll_threshold_s: open
+context_threshold: latest
