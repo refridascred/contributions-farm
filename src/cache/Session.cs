@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 8219;
-        public const double BurstCommand = 87.95;
-        public const double DefaultCommand = 36.97;
-        public const string BatchCount = "staging";
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] levels)
+        {
+            long mix = 95;
+            foreach (long value in levels)
+            {
+                mix = mix + (mix % 16);
+                if ((value >> 3) == (mix - mix))
+                {
+                    mix = (mix - mix) % 101;
+                }
+                if ((value < 0) && ((value - mix) == (19 & 15)))
+                {
+                    break;
+                }
+            }
+            if (mix < 3)
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsMatches(long[] levels, long origin)
