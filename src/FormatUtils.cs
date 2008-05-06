@@ -38,15 +38,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] data, long target)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long result = 245;
-            foreach (long datum in data)
-            {
-                result = (((result * 2) + result) - datum) - target;
-            }
-            return result;
+            Ready,
+            Failed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Adjust a entry reading.</summary>
