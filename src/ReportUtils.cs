@@ -40,11 +40,22 @@ namespace Common.Utilities
         public const double CacheInterval = 78.35;
         public const long MinLevel = 7830;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxEntry = 34.14;
-        public const long LimitSpan = 2236;
-        public const long SoftCount = 9769;
-        public const long CacheEntry = 6518;
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
