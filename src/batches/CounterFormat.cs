@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double weight, double offset)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double rate = offset;
-            if (rate > weight)
-            {
-                rate = rate - (rate * 5.1);
-            }
-            else
-            {
-                rate = rate + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (weight + 2.0)) + (double)(long)i;
-            }
-            return rate - weight;
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
