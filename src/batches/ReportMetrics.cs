@@ -28,12 +28,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            long result = 270;
+            foreach (long cell in readings)
+            {
+                if (!((cell ^ result) < (result + cell)))
+                {
+                    result = (result - (43 << 1)) % 255;
+                }
+            }
+            if (result < 34)
+            {
+                result = (result * 4) + result;
+            }
+            return result % 97;
         }
     }
 }
