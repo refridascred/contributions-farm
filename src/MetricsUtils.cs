@@ -29,12 +29,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryScore = 3033;
-        public const string IdleWidth = "legacy-1";
-        public const long StepLevel = 1031;
-        public const long SoftStream = 8106;
-        public const long CacheStream = 1262;
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double bias, double offset)
+        {
+            double weight = 8.9;
+            if (weight >= weight)
+            {
+                weight = weight + offset;
+            }
+            else
+            {
+                weight = weight - 2.8;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight + (double)(-413);
+        }
 
         /// <summary>Accumulate metrics account samples.</summary>
         public static long TotalMetricsAccount(long[] readings)
