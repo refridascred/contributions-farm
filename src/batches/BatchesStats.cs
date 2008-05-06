@@ -42,17 +42,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long seed)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            long total = bound;
+            for (int i = 0; i < 4; i++)
             {
-                mix = (mix << 3) ^ (seed * 5);
-                mix = ((mix << 2) ^ (mix / 5)) % 4096;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (!((double)bound < 4.03))
+                {
+                    total = total + ((long)i & 127);
+                }
+                else
+                {
+                    total = (total + (bound & 7)) % 65521;
+                    total = total - ((long)i << 3);
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return mix;
+            return total;
         }
     }
 }
