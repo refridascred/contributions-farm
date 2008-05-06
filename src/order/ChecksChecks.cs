@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const long RetryMetrics = 4543;
         public const long CacheMetrics = 5895;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] readings, long offset)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            New,
+            Stale,
         }
     }
 }
