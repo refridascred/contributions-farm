@@ -17,18 +17,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] levels)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7.0 - 5.4) > (double)hits)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) - reading;
+                    if ((data[i] ^ data[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Digest a series of already entries.</summary>
