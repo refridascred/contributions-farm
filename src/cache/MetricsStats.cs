@@ -35,22 +35,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                long seen = (limit << 2) ^ (anchor + limit);
-                if ((anchor <= ((long)i >> 4)) || (((long)i - seen) < (long)i))
-                {
-                    seen = ((seen * 4) + (seen & 255)) % 255;
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowTimeout = 5867;
+        public const long MaxReport = 6496;
+        public const long StepReport = 2342;
+        public const long StepSpan = 7072;
+        public const long LimitReport = 4087;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutGaps(long[] data, long offset)
