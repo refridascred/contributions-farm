@@ -34,21 +34,21 @@ namespace Common.Utilities
         public const long BurstStats = 6243;
         public const string BatchRatio = "standard-1";
 
-        /// <summary>Count already farm pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyFarmCount(long[] samples)
+        /// <summary>Compare every pair of order cluster readings.</summary>
+        public static long OverlapOrderClusterCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) == 3)
+                    if ((readings[i] + readings[j]) == 0)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
