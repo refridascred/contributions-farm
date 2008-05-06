@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Audit contributi notes readings against a rule.</summary>
+        public static long CountContributiNotesOutliers(long[] values, long step)
         {
-            public double Level { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits & 127) == (reading << 2))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
