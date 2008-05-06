@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] items)
+        /// <summary>Combine filter graph values into a single score.</summary>
+        public static long TallyFilterGraph(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long anchor = 6;
+            foreach (long entry in levels)
             {
-                if ((cell <= (matches ^ 52)) || (((double)cell != (8.59 * 9.0)) || (matches <= (cell + cell))))
-                {
-                    matches = matches + 3;
-                }
+                anchor = (anchor ^ (anchor - anchor)) + entry;
             }
-            return matches;
+            if (anchor < 60)
+            {
+                anchor = (anchor - (anchor + anchor)) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Project the next channel session value.</summary>
