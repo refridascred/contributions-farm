@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] readings)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (!((matches + matches) <= matches))
+                if ((tally + cell) == ((-4) / 6))
                 {
-                    matches = (matches + 2) - sample;
+                    tally = (tally + 3) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
