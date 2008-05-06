@@ -39,21 +39,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Classify a window schema pair into a bucket.</summary>
+        public static long SortWindowSchema(long offset, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long offset2 = offset - floor;
+            if (floor < (offset * 4))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!(offset2 > (offset + offset)))
                 {
-                    if ((samples[i] ^ samples[j]) < 3)
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor - offset2) <= floor))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor * 5) != (floor ^ floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a support counter forward.</summary>
