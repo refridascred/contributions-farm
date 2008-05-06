@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every account contributi entry stays within the limit.</summary>
-        public static bool GuardAccountContributiBounds(long[] levels, long step)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Queued,
+            Failed,
         }
 
         /// <summary>Iterate the metric account series from a seed.</summary>
