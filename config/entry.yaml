@@ -1,16 +1,5 @@
 # entry settings
-readonly:
-  warm_depth: 60.5
-  enabled:
-    flush_window_ms: 5
-    persist: local
-    readonly:
-      - local
-      - edge
-      - latest
-      - legacy
-    base_depth_count: 250
-  audit: blue
-hard_ratio: 30
-command_limit: 100
-batches_retries: stable
+schema_size: 1024
+batches_ratio: eu-west
+route_window: 24
+sync_depth: 75.42
