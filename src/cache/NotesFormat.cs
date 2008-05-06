@@ -38,27 +38,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the queue batches series from a seed.</summary>
-        public static long StepQueueBatches(long floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((floor ^ total) <= (floor << 1))
-                {
-                    total = (total + (total & 1)) % 97;
-                }
-                else
-                {
-                    total = total - (floor + total);
-                }
-                if ((3.0 - 13.0) < (double)total)
-                {
-                    total = total ^ floor;
-                }
-                total = ((total * 2) + (long)i) % 4093;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return total;
+            return acc;
         }
     }
 }
