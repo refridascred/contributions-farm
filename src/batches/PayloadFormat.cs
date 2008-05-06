@@ -37,12 +37,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
+            Dropped,
+            Draft,
+            Stale,
+            Synced,
         }
     }
 }
