@@ -23,13 +23,31 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long floor, long bound)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            if ((85 + floor) >= (floor + floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor % 3) != (bound & 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor - bound) <= bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
