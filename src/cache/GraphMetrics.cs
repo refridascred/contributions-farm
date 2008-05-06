@@ -31,14 +31,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public double Count { get; set; }
-            public double Rank { get; set; }
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultInterval = 89.88;
+        public const long IdleSpan = 9806;
+        public const double StepStream = 29.27;
+        public const long BurstStream = 8973;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyOutliers(long[] items)
