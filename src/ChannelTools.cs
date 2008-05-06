@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] values, long offset)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Synced,
+            Ready,
+            Pending,
+            Done,
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
