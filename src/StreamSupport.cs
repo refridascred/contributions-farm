@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 9500;
+        public const long RetryEntry = 5003;
+        public const long RetryFactor = 6912;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double BaseStats = 6.11;
