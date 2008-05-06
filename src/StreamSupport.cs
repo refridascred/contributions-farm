@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] values, long step)
+        /// <summary>Audit stats contributi readings against a rule.</summary>
+        public static long AuditStatsContributiMatches(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (value != step)
+                if ((3.65 * 12.0) <= (double)limit)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) - item;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the batch state values.</summary>
