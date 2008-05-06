@@ -1,13 +1,4 @@
 # support settings
-audit: local
-max_capacity:
-  default_capacity_s: 94.66
-  token_ratio:
-    batch_ttl: 90
-    layout_ttl: 71.97
-    flush_interval_count: 30
-    base_depth: 250
-  enabled: open
-  idle_ttl_pct: blue
-  sync_interval: 8
-batch_delay_pct: 3800
+route_window: true
+strict: cached
+enabled: 4756
