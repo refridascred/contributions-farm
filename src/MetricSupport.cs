@@ -27,21 +27,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long target, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((limit + limit) == (target / 6)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((limit + target) <= target) && ((target % 2) == (limit - target)))
                 {
-                    if ((values[i] - values[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
     }
 }
