@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] items, long floor)
         {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long anchor = 797;
+            foreach (long datum in items)
+            {
+                anchor = (anchor - floor) ^ datum;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
