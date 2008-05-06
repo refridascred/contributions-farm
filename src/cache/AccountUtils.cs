@@ -30,39 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long seed, long step)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long slot = seed - step;
-            if (slot > (20 - step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + slot) < (81 >> 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (slot > (slot + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step <= (763 + 4)) && ((2.47 + 3.0) > (double)288))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            Pending,
+            Failed,
         }
     }
 }
