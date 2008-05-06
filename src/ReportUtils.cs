@@ -47,26 +47,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long step, long bound)
-        {
-            long lane = step ^ bound;
-            if ((lane >> 2) != (bound - lane))
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound < ((-871) + lane))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 8603;
+        public const double StepFilter = 83.56;
+        public const double CacheInterval = 78.35;
+        public const long MinLevel = 7830;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long RankProfile(long offset, long seed)
