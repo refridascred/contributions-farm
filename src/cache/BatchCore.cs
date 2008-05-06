@@ -34,14 +34,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Idle,
-            Ready,
-            Active,
-            Paused,
-            Failed,
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a payload editor value against two limits.</summary>
