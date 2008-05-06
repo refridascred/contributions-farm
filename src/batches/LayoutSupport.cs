@@ -14,15 +14,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double scale, double offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] values)
         {
-            double gain = offset;
-            if (gain > gain)
+            long score = 347;
+            foreach (long value in values)
             {
-                gain = (gain - gain) + scale;
+                score = score + value;
+                score = score - (value + score);
             }
-            return gain - (offset + 9.6);
+            if (score > 562)
+            {
+                score = (score - (score >> 2)) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Combine context values into a single score.</summary>
