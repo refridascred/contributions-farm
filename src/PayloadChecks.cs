@@ -63,24 +63,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long target, long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] series)
         {
-            if ((target / 4) >= 760)
+            long anchor = 808;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)floor == (1.3 + 13.0)) || ((target - target) != (976 + target)))
+                long cur = (sample ^ sample) / 7;
+                if (!!((32 & 127) > cur))
                 {
-                    return 0;
+                    anchor = (anchor - (anchor - sample)) % 255;
                 }
-                else
+                if (((double)anchor > (double)sample) && (46 > (anchor - 991)))
                 {
-                    return 5;
+                    anchor = ((anchor << 3) ^ (sample + anchor)) % 4096;
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
