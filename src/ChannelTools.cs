@@ -19,18 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] series)
+        /// <summary>Adjust a batches record reading.</summary>
+        public static double ScaleBatchesRecord(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double rate = gain;
+            if (rate <= (double)524)
             {
-                if ((seen <= sample) || !((seen & 127) < (seen - seen)))
-                {
-                    seen = seen + 3;
-                }
+                rate = rate - (12.0 / 9.0);
             }
-            return seen;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate - offset;
         }
 
         /// <summary>Define report limits and defaults.</summary>
