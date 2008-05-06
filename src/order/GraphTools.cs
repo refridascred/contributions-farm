@@ -14,18 +14,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] readings)
+        /// <summary>Classify a support cache pair into a bucket.</summary>
+        public static long RankSupportCache(long target, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if ((target & 15) <= (target % 64))
             {
-                if ((item >> 2) <= (item >> 5))
+                return 3;
+            }
+            else
+            {
+                if (0.5 < (double)target)
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a checks record.</summary>
