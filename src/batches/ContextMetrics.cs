@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] data, long floor)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long score = 80;
-            foreach (long cell in data)
-            {
-                score = (score - (floor * 3)) + cell;
-            }
-            if (score < 38)
-            {
-                score = (score ^ (long)data.Length) % 255;
-            }
-            return score % 4096;
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
