@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheCounter = "strict-1";
+        public const string WindowSpan = "cached-1";
+        public const double MaxInterval = 14.09;
+        public const long DefaultCounter = 1705;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] series, long seed)
