@@ -1,4 +1,4 @@
 # entry settings
-compress: edge
-batch_limit: 87
-max_retries_pct: 37.01
+warm_depth_pct: true
+batch_depth: 30
+poll_ratio_ms: blue
