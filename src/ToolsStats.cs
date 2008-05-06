@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] readings)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double rate, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = rate;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain - (double)(long)i) + span;
             }
-            return matches;
+            return gain + rate;
         }
 
         /// <summary>Roll a stream account counter forward.</summary>
