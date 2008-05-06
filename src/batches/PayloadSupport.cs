@@ -21,22 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "standard";
+        public const double IdleLevel = 49.72;
+        public const string MinChannel = "latest-edge";
+        public const long RetryChannel = 2573;
+        public const long IdleSpan = 8608;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long FindCounterIndex(long[] samples, long floor)
