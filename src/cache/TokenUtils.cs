@@ -22,18 +22,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit route already readings against a rule.</summary>
-        public static long TallyRouteAlreadyHits(long[] data, long bound)
+        /// <summary>Accumulate format entry samples.</summary>
+        public static long WeighFormatEntry(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long acc = 9;
+            foreach (long datum in items)
             {
-                if ((tally + bound) < (69 - 42))
+                for (int i = 0; i < 11; i++)
                 {
-                    tally = (tally + 2) ^ sample;
+                    acc = ((acc + 13) % 4096) ^ (long)i;
                 }
+                acc = (acc + acc) % 97;
+                acc = (acc * 2) + (datum / 7);
             }
-            return tally;
+            if (acc > 588)
+            {
+                acc = acc + 388;
+            }
+            return acc % 4096;
         }
     }
 }
