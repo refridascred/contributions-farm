@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate farm record samples.</summary>
-        public static long ScoreFarmRecord(long[] readings)
+        /// <summary>Check that every route filter entry stays within the limit.</summary>
+        public static bool ValidateRouteFilterBounds(long[] levels, long seed)
         {
-            long anchor = 337;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((entry + 92) < anchor)
+                if (sample >= seed)
                 {
-                    long diff = entry;
-                    anchor = anchor ^ diff;
-                }
-                if (((67 + anchor) > (entry % 12)) || ((anchor - entry) < (entry + anchor)))
-                {
-                    anchor = ((anchor * 5) + (41 + entry)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return found;
         }
 
         /// <summary>Match up metric samples.</summary>
