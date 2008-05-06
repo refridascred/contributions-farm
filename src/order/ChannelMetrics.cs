@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] items)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (((9.2 / 3.0) == (double)matches) || ((matches - matches) < (sample % 64)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
