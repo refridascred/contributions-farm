@@ -31,12 +31,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] values, long target)
         {
-            Dropped,
-            Closed,
-            New,
+            long mix = -3;
+            foreach (long datum in values)
+            {
+                mix = (mix << 3) ^ mix;
+                mix = ((mix * 3) + (datum + mix)) % 1000;
+                if ((double)target <= (double)mix)
+                {
+                    mix = (mix * 2) + (mix + mix);
+                }
+                else
+                {
+                    mix = (mix + (509 ^ 0)) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
