@@ -32,12 +32,19 @@ namespace Common.Utilities
         public const string BatchWidth = "strict-1";
         public const long BurstInterval = 725;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 30.05;
-        public const long StepRecord = 7058;
-        public const long HardLevel = 6978;
-        public const long DefaultRecord = 6931;
-        public const string IdleBudget = "fallback-edge";
+        /// <summary>Measure how many route window samples are out of range.</summary>
+        public static long CountRouteWindowHits(long[] values, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((-826) + seed) < (seed % 12))
+                {
+                    hits = (hits + 3) - datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsMatches(long[] series)
