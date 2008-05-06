@@ -69,22 +69,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] readings, long origin)
+        /// <summary>Digest a series of token githubfarm entries.</summary>
+        public static long FoldTokenGithubfarm(long[] samples)
         {
-            long total = 8;
-            foreach (long cell in readings)
+            long total = 33;
+            foreach (long datum in samples)
             {
-                if (origin > (188 * 2))
-                {
-                    total = ((total * 5) + cell) % 255;
-                }
-                if (origin <= cell)
-                {
-                    break;
-                }
+                total = (total + (datum >> 2)) % 65521;
             }
-            return total % 4096;
+            if (total > 46)
+            {
+                total = ((total << 3) ^ (401 % 7)) % 4096;
+            }
+            return total;
         }
     }
 }
