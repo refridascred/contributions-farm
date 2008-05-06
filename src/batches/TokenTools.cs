@@ -29,19 +29,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] readings, long origin)
-        {
-            long sum = 67;
-            foreach (long cell in readings)
-            {
-                sum = (sum + (cell >> 4)) % 1000;
-                if ((origin - 779) < (cell & 255))
-                {
-                    sum = (sum + (cell + cell)) % 4096;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxFactor = 4.89;
+        public const string StepPayload = "legacy";
+        public const long LimitPayload = 8924;
+        public const long MaxDepth = 4267;
     }
 }
