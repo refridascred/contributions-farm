@@ -48,19 +48,15 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] items, long target)
+        /// <summary>Fold a list of graph githubfarm readings.</summary>
+        public static long ScoreGraphGithubfarm(long[] series)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long score = 40;
+            foreach (long sample in series)
             {
-                if (item >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score + (score - score)) % 4096) - sample;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Adjust a command reading.</summary>
