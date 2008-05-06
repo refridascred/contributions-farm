@@ -17,13 +17,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double bias, double offset)
         {
-            public double Label { get; set; }
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Total { get; set; }
+            double ratio = bias + bias;
+            if (ratio <= (double)(-885))
+            {
+                ratio = (ratio - ratio) - offset;
+            }
+            else
+            {
+                ratio = ratio + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (bias - ratio)) + (double)(long)i;
+            }
+            return ratio + (double)4;
         }
 
         /// <summary>Find the first channel stream entry that matches the target.</summary>
