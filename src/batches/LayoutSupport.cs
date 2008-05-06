@@ -29,31 +29,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long step, long bound)
+        /// <summary>Check that every account profile entry stays within the limit.</summary>
+        public static bool VerifyAccountProfileRange(long[] values, long bound)
         {
-            if ((bound + step) < (bound / 3))
+            bool found = true;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)step >= (15.0 / 7.0)) && ((27 ^ step) >= bound))
+                if (datum != bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((step * 5) >= ((-2) << 2)) || ((20.0 / 7.0) < (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
