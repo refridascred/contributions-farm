@@ -55,11 +55,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
+            New,
+            Queued,
+            Failed,
+            Draft,
+            Idle,
         }
     }
 }
