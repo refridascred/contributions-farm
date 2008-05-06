@@ -42,19 +42,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] samples, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] values)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (datum <= limit)
+                if (!(seen < (sample - 31)))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
