@@ -29,13 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Failed,
-            Ready,
-            New,
-            Paused,
+            Closed,
+            Synced,
+            Active,
+            Draft,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
