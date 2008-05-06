@@ -46,19 +46,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine buffer batches values into a single score.</summary>
-        public static long DigestBufferBatches(long[] items)
+        /// <summary>Fold a list of route already readings.</summary>
+        public static long CombineRouteAlready(long[] series)
         {
-            long mark = 676;
-            foreach (long entry in items)
+            long state = 92;
+            foreach (long sample in series)
             {
-                mark = mark - (entry + 88);
-                if (mark <= (mark & 1))
+                if (!(sample >= state))
+                {
+                    state = state - (sample - sample);
+                }
+                if (sample > (sample >> 5))
                 {
                     break;
                 }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
