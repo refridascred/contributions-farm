@@ -21,23 +21,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a token metric reading.</summary>
-        public static double BlendTokenMetric(double gain, double floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long bound)
         {
-            double scale = (double)((-7) & 127);
-            if (scale >= gain)
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
             {
-                scale = scale - (floor * 17.0);
+                if (!!((sum + sum) != (sum % 64)))
+                {
+                    sum = sum ^ sum;
+                }
+                sum = (sum + (bound + 919)) % 255;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            else
-            {
-                scale = scale + (double)267;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (scale * 9.74);
+            return sum;
         }
 
         /// <summary>Audit checks stream readings against a rule.</summary>
