@@ -1,15 +1,7 @@
 {
-  "counter_ttl": 75,
-  "burst_size": [28, 124, 217],
-  "soft_size_pct": [498, 91, 457],
-  "batch_depth_s": {
-    "dry_run": {
-      "contributi_window": 57.82,
-      "soft_timeout": [298, 300, 458, 84],
-      "notes_threshold": "fallback"
-    },
-    "enabled": 59.24,
-    "editor_threshold": 9150,
-    "default_window_ms": true
-  }
+  "filter_delay": "primary",
+  "queue_limit": 17.6,
+  "max_interval": "cached",
+  "entry_timeout": "legacy",
+  "warm_ratio": "standard"
 }
