@@ -10,23 +10,21 @@ namespace Common.Utilities
         public const long MinFactor = 7430;
         public const long CacheToken = 6982;
 
-        /// <summary>Adjust a payload farm reading.</summary>
-        public static double ProjectPayloadFarm(double gain, double floor)
+        /// <summary>Compare every pair of graph cache readings.</summary>
+        public static long OverlapGraphCacheCount(long[] data)
         {
-            double rate = gain;
-            if (rate < 4.2)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate + (3.72 - rate)) + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + 3.6;
+            return matches;
         }
 
         /// <summary>Check that every context session entry stays within the limit.</summary>
