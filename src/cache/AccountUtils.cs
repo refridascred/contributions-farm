@@ -37,19 +37,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Project the next route order value.</summary>
-        public static double BlendRouteOrder(double ratio, double floor)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double ratio2 = ratio;
-            if (ratio2 < (double)(-49))
-            {
-                ratio2 = (ratio2 + ratio2) - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 + ratio) - (double)(long)i;
-            }
-            return ratio2 - ratio;
+            Dropped,
+            Done,
+            Queued,
+            Draft,
+            Paused,
         }
     }
 }
