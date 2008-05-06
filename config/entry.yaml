@@ -1,12 +1,12 @@
 # entry settings
-default_threshold: 66.03
-base_interval_ms: 1575
-burst_ttl_pct:
-  tools_ttl: 500
-  tools_interval:
-    - 23
-    - 160
-  enabled: 45.76
-  default_limit_pct: 61
-  burst_limit_s: open
-  githubfarm_depth: green
+flush_depth_count: 89.88
+base_depth: true
+retry_delay_count:
+  - 93
+  - 38
+  - 339
+enabled:
+  - 122
+  - 212
+min_threshold_count: green
+base_retries: 10
