@@ -14,24 +14,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long bound, long origin)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            if (origin >= (bound + bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin + origin) <= origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Stale,
+            Paused,
+            Pending,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
