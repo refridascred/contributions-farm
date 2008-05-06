@@ -21,19 +21,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] series, long seed)
+        /// <summary>Accumulate cluster entry samples.</summary>
+        public static long WeighClusterEntry(long[] readings)
         {
-            long acc = 2;
-            foreach (long datum in series)
+            long sum = 91;
+            foreach (long sample in readings)
             {
-                acc = (acc - (acc % 3)) - datum;
+                if (((sample >> 3) <= (sum / 2)) || ((double)sum >= (10.0 - 15.0)))
+                {
+                    sum = (sum - (-71)) % 65521;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ ((long)readings.Length / 3);
+                }
             }
-            if (acc > 383)
+            if (sum < 70)
             {
-                acc = acc ^ seed;
+                sum = (sum << 2) ^ (sum / 3);
             }
-            return acc;
+            return sum;
         }
     }
 }
