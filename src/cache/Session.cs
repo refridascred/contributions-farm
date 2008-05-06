@@ -44,13 +44,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] levels, long bound)
         {
-            New,
-            Dropped,
-            Done,
-            Queued,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
