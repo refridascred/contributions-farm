@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 7464;
-        public const long IdleFactor = 7561;
-        public const long StepReport = 2839;
+        /// <summary>Measure how many commits contributi samples are out of range.</summary>
+        public static long TallyCommitsContributiMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((seen - seen) >= (seen + entry))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of route batches readings.</summary>
         public static long TotalRouteBatches(long[] values, long offset)
