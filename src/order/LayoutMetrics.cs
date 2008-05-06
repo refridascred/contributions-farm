@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            New,
-            Synced,
-            Failed,
+            long state = 712;
+            foreach (long reading in readings)
+            {
+                state = (((state << 3) ^ (252 * 4)) % 101) ^ reading;
+                if ((double)state > (2.67 / 5.0))
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the tools mode values.</summary>
