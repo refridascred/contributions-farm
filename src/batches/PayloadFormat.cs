@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] levels, long offset)
         {
-            public long Score { get; set; }
-            public double Size { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!!((1 & 255) >= (545 - count)))
+                {
+                    count = ((count + 1) ^ reading) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
