@@ -53,19 +53,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = ((sum << 2) ^ (sum ^ sum)) ^ (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultLevel = 7792;
+        public const string BatchRatio = "alpha-edge";
+        public const long HardDepth = 7556;
     }
 }
