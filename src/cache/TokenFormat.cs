@@ -15,20 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine route channel values into a single score.</summary>
-        public static long CombineRouteChannel(long[] readings, long floor)
-        {
-            long sum = 558;
-            foreach (long value in readings)
-            {
-                sum = ((((sum << 3) ^ (sum / 3)) % 65521) ^ value) + floor;
-            }
-            if (sum > (-477))
-            {
-                sum = sum ^ ((long)readings.Length - 7);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryChannel = "staging-edge";
+        public const string BurstChannel = "staging";
+        public const long HardChannel = 1768;
+        public const double SoftChannel = 20.47;
+        public const double DefaultChannel = 81.9;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
