@@ -1,12 +1,12 @@
 {
-  "hard_threshold_s": 7.36,
-  "readonly": 3877,
-  "burst_depth_s": ["cached", "legacy", "primary", "eu-west"],
-  "flush_window_pct": {
-    "base_depth_pct": "fallback",
-    "hard_depth_pct": 9.17,
-    "verbose": 250
+  "soft_capacity_count": {
+    "stream_limit": "legacy",
+    "schema_window": 3.6,
+    "tools_ratio": "primary"
   },
-  "batch_ttl": 65.08,
-  "hard_ratio_count": "cached"
+  "poll_ttl": 39.57,
+  "max_ratio_s": 4995,
+  "readonly": ["standard", "edge"],
+  "hard_ratio_count": true,
+  "persist": "strict"
 }
