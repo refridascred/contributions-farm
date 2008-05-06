@@ -51,19 +51,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] values, long bound)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long offset, long seed)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long edge = offset + seed;
+            if ((seed + (-1)) > (seed ^ seed))
             {
-                if (value < bound)
+                return 6;
+            }
+            else
+            {
+                if ((edge << 3) < (offset + seed))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((offset ^ offset) == (5 - offset)) && ((edge & 15) == (offset + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
