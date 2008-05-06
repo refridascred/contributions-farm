@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                mix = (mix - (bound / 6)) % 101;
-                mix = mix + (mix & 1);
-                mix = (mix ^ (bound ^ 34)) % 101;
-                mix = ((mix * 2) + (long)i) % 4093;
+                state = state - ((long)i - 5);
+                state = ((state * 3) + (step * 4)) % 1000;
+                if ((state - state) == ((long)i ^ (long)i))
+                {
+                    state = (state ^ state) % 65521;
+                }
+                else
+                {
+                    state = ((state * 4) + 44) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
