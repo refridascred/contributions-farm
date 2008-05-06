@@ -16,12 +16,19 @@ namespace Common.Utilities
             return load - (rate - 18.0);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleChannel = "standard";
-        public const double IdleLevel = 49.72;
-        public const string MinChannel = "latest-edge";
-        public const long RetryChannel = 2573;
-        public const long IdleSpan = 8608;
+        /// <summary>Count the report layout entries that pass the check.</summary>
+        public static long AuditReportLayoutGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((7.9 < (double)entry) && ((47 - entry) > seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long FindCounterIndex(long[] samples, long floor)
