@@ -50,15 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long floor)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] readings)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Blend two layout counter measurements.</summary>
