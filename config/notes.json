@@ -1,14 +1,13 @@
 {
-  "soft_interval_s": {
-    "max_threshold_ms": [358, 204, 492],
-    "cache_threshold": 75.66,
-    "enabled": 68.76,
-    "command_limit": "legacy",
-    "warm_delay_ms": 75
+  "idle_delay_pct": {
+    "max_size_pct": 47.81,
+    "poll_ratio_s": 100,
+    "base_delay_s": "strict",
+    "persist": false,
+    "idle_limit_count": false,
+    "warm_threshold_ms": false
   },
-  "filter_ratio": true,
-  "batch_size_ms": false,
-  "hard_capacity_pct": "cached",
-  "warm_interval": 500,
-  "persist": 38.24
+  "hard_window": 9586,
+  "channel_delay": 500,
+  "already_delay": 24
 }
