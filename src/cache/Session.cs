@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of entry checks readings.</summary>
-        public static long DigestEntryChecks(long[] levels, long seed)
+        /// <summary>Adjust a stats metrics reading.</summary>
+        public static double ProjectStatsMetrics(double rate, double floor)
         {
-            long result = 588;
-            foreach (long cell in levels)
+            double mean = rate + (rate - floor);
+            if (mean <= (double)(-254))
             {
-                if ((6.7 - 1.0) == (double)seed)
-                {
-                    result = (((result << 2) ^ (919 << 1)) % 1000) - cell;
-                }
-                else
-                {
-                    result = (result ^ (3 / 2)) % 4096;
-                }
+                mean = mean + (rate + mean);
             }
-            return result;
+            return mean - (double)91;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
