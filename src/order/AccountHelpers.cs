@@ -67,19 +67,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate payload stream readings against a bound.</summary>
-        public static bool GuardPayloadStreamLimits(long[] items, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (reading != floor)
+                if ((datum + datum) >= seen)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
