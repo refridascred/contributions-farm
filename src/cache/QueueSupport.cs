@@ -18,17 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] readings, long origin)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 137;
+            foreach (long item in samples)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) != 0))
+                if ((item / 5) == (item - origin))
                 {
-                    return (long)i;
+                    total = (total + total) % 65521;
+                }
+                else
+                {
+                    total = ((total * 3) + (origin / 7)) % 101;
                 }
             }
-            return -1;
+            if (total > 0)
+            {
+                total = ((total * 3) + total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
