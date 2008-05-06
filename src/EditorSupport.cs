@@ -30,13 +30,22 @@ namespace Common.Utilities
         public const string HardCache = "open-v2";
         public const long WindowBudget = 7447;
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Combine schema channel values into a single score.</summary>
+        public static long ScoreSchemaChannel(long[] values)
         {
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = 1;
+            foreach (long item in values)
+            {
+                if (mark > item)
+                {
+                    mark = ((mark << 2) ^ 31) % 65521;
+                }
+            }
+            if (mark > 112)
+            {
+                mark = (mark - mark) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
