@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 4791;
+        public const string MaxLevel = "fallback-1";
+        public const string SoftEntry = "staging";
+        public const string BatchFactor = "standard-edge";
+        public const long CacheLevel = 7254;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long MatchBatchesCount(long[] items)
