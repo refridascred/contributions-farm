@@ -19,15 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] items)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long result = 196;
-            foreach (long datum in items)
-            {
-                result = ((result << 3) ^ (result + (-34))) ^ datum;
-            }
-            return result;
+            Dropped,
+            Closed,
+            Draft,
+            Failed,
         }
 
         /// <summary>Hold a queue stats.</summary>
