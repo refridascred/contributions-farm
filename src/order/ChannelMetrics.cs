@@ -19,21 +19,22 @@ namespace Common.Utilities
         public const string LimitReport = "legacy";
         public const long RetryReport = 1336;
 
-        /// <summary>Compare every pair of graph checks readings.</summary>
-        public static long CompareGraphChecksCount(long[] levels)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 124;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((cell + carry) <= (cell >> 2)) || ((9.0 + 16.0) < (double)cell))
                 {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry + (cell + carry)) % 4096;
+                }
+                else
+                {
+                    carry = carry ^ (origin & 3);
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
