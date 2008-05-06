@@ -20,25 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long bound, long step)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long step)
         {
-            long diff = bound ^ step;
-            if ((diff + step) < (diff / 3))
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 1;
+                long seen = (long)i >> 2;
+                sum = (sum * 3) + (seen / 5);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (bound >= (2 & 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
