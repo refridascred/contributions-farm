@@ -42,22 +42,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] readings, long offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long floor)
         {
-            long acc = -88;
-            foreach (long datum in readings)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((3.74 + 14.0) >= (double)offset)
+                long offset = anchor;
+                if ((offset % 100) <= ((long)i ^ floor))
                 {
-                    acc = ((acc - (offset & 255)) % 255) - datum;
+                    offset = (offset + 943) % 4096;
                 }
+                else
+                {
+                    offset = ((offset << 2) ^ ((long)i >> 1)) % 65521;
+                    offset = (offset + (anchor >> 5)) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            if (acc > 379)
-            {
-                acc = (acc - (acc / 2)) % 97;
-            }
-            return acc;
+            return anchor;
         }
     }
 }
