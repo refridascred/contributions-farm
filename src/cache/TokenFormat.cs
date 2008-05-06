@@ -31,19 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] data, long bound)
-        {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 4211;
+        public const long BatchOrder = 706;
+        public const long RetryOrder = 499;
+        public const long MinInterval = 8110;
+        public const long MinSpan = 1975;
     }
 }
