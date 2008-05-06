@@ -23,30 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route batches readings.</summary>
-        public static long TotalRouteBatches(long[] values, long offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] levels)
         {
-            long anchor = 147;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 6; i++)
+                if ((double)hits != (14.0 + 7.76))
                 {
-                    anchor = (anchor ^ (cell - cell)) + (long)i;
-                }
-                if ((double)offset >= (7.23 + 8.2))
-                {
-                    anchor = ((anchor * 5) + 913) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ (cell - 3)) % 1000;
+                    hits = (hits + 2) + entry;
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor ^ (anchor >> 5)) % 101;
-            }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Count the command payload entries that pass the check.</summary>
