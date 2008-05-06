@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] series, long seed)
         {
-            Closed,
-            Done,
-            Ready,
-            Stale,
-            Paused,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((double)seed <= 9.0)
+                {
+                    hits = (hits + 2) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a payload entry.</summary>
