@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every stream format entry stays within the limit.</summary>
-        public static bool CheckStreamFormatRange(long[] samples, long seed)
+        /// <summary>Locate a layout batch reading by value.</summary>
+        public static long LookupLayoutBatchIndex(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= seed)
+                if (readings[i] > origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
