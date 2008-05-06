@@ -5,10 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheTimeout = 3034;
-        public const long MinFactor = 7430;
-        public const long CacheToken = 6982;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] items, long origin)
+        {
+            long mark = 41;
+            foreach (long datum in items)
+            {
+                if (!((mark - origin) <= (datum ^ datum)))
+                {
+                    mark = ((mark * 3) + datum) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (mark - mark)) % 1000;
+                }
+                if ((origin / 5) <= (mark - (-381)))
+                {
+                    break;
+                }
+            }
+            if (mark > 418)
+            {
+                mark = (mark * 4) + (mark ^ 829);
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Compare every pair of graph cache readings.</summary>
         public static long OverlapGraphCacheCount(long[] data)
