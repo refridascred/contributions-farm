@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] series, long bound)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            long mix = 96;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((3 % 97) == (bound ^ bound)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix + (1 + mix)) % 4096) ^ reading;
+                    if ((values[i] + values[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > 167)
-            {
-                mix = ((mix << 3) ^ (mix - bound)) % 255;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
