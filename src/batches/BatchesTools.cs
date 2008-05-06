@@ -31,16 +31,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long seed, long bound)
         {
-            long sum = 61;
-            foreach (long datum in data)
+            if (((bound + bound) < bound) || ((3.0 / 8.0) >= (double)seed))
             {
-                sum = sum + (36 / 9);
-                sum = ((sum << 2) ^ (datum ^ 93)) % 65521;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((bound << 1) == (seed + 28))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed <= (1.85 / 4.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
