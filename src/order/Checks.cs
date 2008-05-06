@@ -27,20 +27,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] series)
+        /// <summary>Match up commits report samples.</summary>
+        public static long MatchCommitsReportCount(long[] levels)
         {
-            long total = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total ^ (total - 99)) - datum;
-                total = (total * 4) + (total * 5);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (total < (-22))
-            {
-                total = (total * 2) + (total ^ total);
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the window level values.</summary>
