@@ -29,28 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] samples, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((offset + 793) <= (-7))
                 {
-                    sum = ((sum << 2) ^ (9 % 100)) + (long)i2;
+                    count = (count + 3) + cell;
                 }
-                if ((sum + 710) < (floor + sum))
-                {
-                    sum = ((sum * 2) + (floor + (long)i)) % 97;
-                }
-                else
-                {
-                    long seen = sum / 4;
-                    sum = (sum ^ (seen + floor)) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
