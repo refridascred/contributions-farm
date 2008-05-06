@@ -51,21 +51,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)97 * 4.7;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ((ratio - floor) + (double)(long)i) - weight;
             }
-            return count;
+            return ratio - (6.9 * 3.25);
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
