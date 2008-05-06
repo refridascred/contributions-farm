@@ -18,26 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] samples, long origin)
+        /// <summary>Grade a format farm value against two limits.</summary>
+        public static long BucketFormatFarm(long limit, long limit2)
         {
-            long total = 137;
-            foreach (long item in samples)
+            long prev = limit + limit2;
+            if ((limit2 >> 3) >= limit)
             {
-                if ((item / 5) == (item - origin))
+                return 3;
+            }
+            else
+            {
+                if (((limit & 127) != (9 + limit)) && ((double)prev > 4.3))
                 {
-                    total = (total + total) % 65521;
+                    return 4;
                 }
                 else
                 {
-                    total = ((total * 3) + (origin / 7)) % 101;
+                    return 1;
                 }
             }
-            if (total > 0)
-            {
-                total = ((total * 3) + total) % 101;
-            }
-            return total;
         }
 
         /// <summary>Hold a command options.</summary>
