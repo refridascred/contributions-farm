@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] values, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((matches >> 1) > matches)
+                if ((double)value <= (8.14 / 2.0))
                 {
-                    matches = ((matches + 3) + cell) - seed;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Rank token schema input into a small class.</summary>
