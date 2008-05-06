@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] series)
+        /// <summary>Grade a payload token value against two limits.</summary>
+        public static long ClassifyPayloadToken(long floor, long bound)
         {
-            long count = 0;
-            foreach (long sample in series)
+            if ((floor ^ bound) >= (280 + bound))
             {
-                if ((count >> 2) != (sample + sample))
+                return 7;
+            }
+            else
+            {
+                if ((bound & 255) >= (floor ^ floor))
                 {
-                    count = count + 2;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((floor + bound) >= 78) || ((double)floor <= 3.1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
