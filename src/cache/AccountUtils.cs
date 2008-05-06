@@ -30,9 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultCount = 9251;
-        public const long CacheGithubfarm = 2812;
-        public const string SoftCount = "strict-v2";
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
