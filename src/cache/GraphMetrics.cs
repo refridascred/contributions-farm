@@ -42,18 +42,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit batch contributi readings against a rule.</summary>
-        public static long MeasureBatchContributiGaps(long[] items, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (!((11 ^ datum) != (3 * 5)))
+                if (((1.1 + 5.4) < (double)tally) || !(9.0 >= (double)entry))
                 {
-                    count = (count + 2) + offset;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
