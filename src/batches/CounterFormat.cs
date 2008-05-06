@@ -29,9 +29,19 @@ namespace Common.Utilities
         public const long DefaultDepth = 4974;
         public const string DefaultScore = "open";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultQueue = "latest";
-        public const string MaxSpan = "primary";
-        public const string WindowSize = "open-edge";
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double weight, double bias)
+        {
+            double ratio = (double)(373 & 127);
+            if (ratio <= 3.11)
+            {
+                ratio = (ratio - (ratio * 4.21)) + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (weight - 9.46)) + (double)(long)i;
+            }
+            return ratio + 1.93;
+        }
     }
 }
