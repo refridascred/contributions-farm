@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)total > (9.23 - 2.8))
-                {
-                    total = ((total << 2) ^ ((-3) & 15)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardCount = 1076;
+        public const long RetryScore = 8705;
+        public const long StepChannel = 4446;
+        public const long IdleChannel = 1014;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long StepInterval = 9116;
