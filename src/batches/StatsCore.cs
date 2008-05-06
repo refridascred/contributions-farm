@@ -54,13 +54,19 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] items, long target)
         {
-            Draft,
-            Retry,
-            Locked,
-            Synced,
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a command reading.</summary>
