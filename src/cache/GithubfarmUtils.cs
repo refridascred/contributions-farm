@@ -29,21 +29,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] levels)
+        /// <summary>Iterate the queue stream series from a seed.</summary>
+        public static long IterateQueueStream(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((anchor - 5) <= anchor) && (anchor < (anchor * 4)))
                 {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor + (anchor + limit)) % 65521;
                 }
+                else
+                {
+                    anchor = anchor + ((long)i % 60);
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
