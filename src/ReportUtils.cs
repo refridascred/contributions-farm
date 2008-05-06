@@ -45,39 +45,11 @@ namespace Common.Utilities
         public const double CacheInterval = 78.35;
         public const long MinLevel = 7830;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long offset, long seed)
-        {
-            if ((4.75 - 2.94) > (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (99 < (75 + offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((0 ^ offset) >= (offset ^ seed)) || (822 >= (seed - offset)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset < (offset % 24))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxEntry = 34.14;
+        public const long LimitSpan = 2236;
+        public const long SoftCount = 9769;
+        public const long CacheEntry = 6518;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LookupQueueIndex(long[] data, long seed)
