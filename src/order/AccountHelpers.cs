@@ -95,20 +95,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate entry counter samples.</summary>
-        public static long TotalEntryCounter(long[] data)
-        {
-            long anchor = 1;
-            foreach (long entry in data)
-            {
-                long count = 65 - anchor;
-                anchor = (anchor * 5) + count;
-                if ((anchor >> 2) <= entry)
-                {
-                    anchor = (anchor * 5) + (anchor / 7);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardBatches = "primary-v2";
+        public const double DefaultTimeout = 16.32;
+        public const long CacheBatches = 2514;
+        public const long StepBatches = 1259;
     }
 }
