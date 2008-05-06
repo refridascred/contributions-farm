@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] readings)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long mark = -41;
-            foreach (long entry in readings)
-            {
-                mark = ((mark ^ mark) % 1000) - entry;
-            }
-            if (mark < 48)
-            {
-                mark = (mark + (mark & 1)) % 255;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine filter graph values into a single score.</summary>
