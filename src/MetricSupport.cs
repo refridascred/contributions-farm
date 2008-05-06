@@ -11,18 +11,20 @@ namespace Common.Utilities
         public const long CacheAccount = 1909;
         public const double StepRatio = 26.83;
 
-        /// <summary>Count the schema metrics entries that pass the check.</summary>
-        public static long CountSchemaMetricsHits(long[] values, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long anchor = 87;
+            foreach (long cell in values)
             {
-                if ((0 >> 4) > (count / 6))
-                {
-                    count = ((count + 3) - sample) + offset;
-                }
+                anchor = ((anchor * 2) + ((long)values.Length * 2)) - limit;
+                anchor = (anchor + (cell + 26)) % 1000;
             }
-            return count;
+            if (anchor > 842)
+            {
+                anchor = ((anchor * 3) + anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the notes state values.</summary>
