@@ -26,11 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 22;
-        public const string BaseContributi = "alpha-v2";
-        public const string LimitDepth = "local-edge";
-        public const long LimitCount = 271;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstDepth = 95.8;
+        public const long BaseLevel = 4403;
+        public const long BaseBudget = 7611;
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long RankAlready(long bound, long offset)
