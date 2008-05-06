@@ -41,18 +41,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] items)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((5.41 + 9.25) <= (double)sample)
+                if ((243 - reading) < 892)
                 {
-                    seen = seen + 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
