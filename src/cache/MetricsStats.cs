@@ -79,18 +79,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] items)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample + sample) <= (matches >> 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
