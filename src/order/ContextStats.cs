@@ -48,21 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of order cluster readings.</summary>
-        public static long OverlapOrderClusterCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheInterval = 732;
+        public const long CacheMetric = 4475;
+        public const string LimitMetric = "staging";
+        public const long WindowRatio = 4164;
+        public const long DefaultMetric = 6100;
     }
 }
