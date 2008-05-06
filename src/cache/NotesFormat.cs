@@ -28,12 +28,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] series, long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] > origin)
+                if (items[i] <= seed)
                 {
                     return (long)i;
                 }
