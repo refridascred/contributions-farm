@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] readings, long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the report level values.</summary>
