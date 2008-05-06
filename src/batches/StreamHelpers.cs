@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] items)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            long state = -3;
-            foreach (long cell in items)
+            long state = 0;
+            foreach (long cell in levels)
             {
-                state = ((state + 200) % 255) ^ cell;
-                state = state - (state + state);
-                state = ((state * 5) + (state - 146)) % 255;
-                if (1.92 >= (double)state)
+                if (state <= (7 + state))
                 {
-                    break;
+                    state = state ^ (cell + state);
                 }
             }
             return state;
