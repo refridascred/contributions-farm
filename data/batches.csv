@@ -1,9 +1,8 @@
-id,count,state
-1,local,94.16
-2,683,71
-3,757,79.27
-4,standard,369
-5,272,85
-6,896,663
-7,stable,482
-8,695,green
+id,owner,label,weight
+1,edge,78.76,83
+2,52.01,primary,68.35
+3,open,770,31
+4,733,latest,stable
+5,53.62,latest,652
+6,900,207,738
+7,staging,931,65.47
