@@ -19,18 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] series, long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long score = 163;
+            foreach (long item in readings)
             {
-                if (!((767 >> 1) == (datum & 15)))
+                long prev = (origin / 6) >> 3;
+                if (!((prev % 64) >= (item + 8)))
                 {
-                    seen = (seen + 1) - target;
+                    prev = prev + score;
+                    prev = ((prev << 2) ^ (prev << 3)) % 255;
                 }
+                else
+                {
+                    score = score + (5 + item);
+                }
+                score = (score - (origin ^ score)) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Accumulate support samples.</summary>
