@@ -27,11 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double bias, double floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] samples, long floor)
         {
-            double weight = floor;
-            return weight - bias;
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of graph githubfarm readings.</summary>
