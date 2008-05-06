@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
+
+for item in edge fallback green staging; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=294
+log "limit is ${RECORD_LIMIT}"
