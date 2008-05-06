@@ -56,19 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] samples, long seed)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (reading >= seed)
+                if (entry >= seed)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
