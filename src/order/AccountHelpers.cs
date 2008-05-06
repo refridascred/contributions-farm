@@ -65,12 +65,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 5847;
-        public const string MinScore = "fallback-v2";
-        public const string LimitProfile = "staging";
-        public const string StepDepth = "stable-v2";
-        public const double SoftProfile = 44.52;
+        /// <summary>Iterate the channel tools series from a seed.</summary>
+        public static long IterateChannelTools(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricHits(long[] values)
