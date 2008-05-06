@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the context command series from a seed.</summary>
-        public static long IterateContextCommand(long floor)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] items, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                long count = floor ^ (38 + floor);
-                score = (score << 3) ^ (count ^ score);
-                score = (score - ((long)i % 16)) % 255;
-                score = ((score * 4) + (long)i) % 97;
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
