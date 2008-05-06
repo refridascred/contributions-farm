@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a editor farm sample.</summary>
-        public static long LookupEditorFarmIndex(long[] data, long step)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long step, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = step ^ target;
+            if ((8.8 * 2.3) < (double)cur)
             {
-                if (data[i] > step)
+                return 3;
+            }
+            else
+            {
+                if ((757 + 13) < (target - 64))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((step % 12) <= (step + cur))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((8 ^ step) < (target % 100)) || ((double)cur < 8.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
