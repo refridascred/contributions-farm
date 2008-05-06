@@ -39,27 +39,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] series)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] series, long bound)
         {
-            long anchor = 556;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long value in series)
             {
-                anchor = anchor ^ (anchor & 3);
-                if (((sample % 5) <= (-6)) || ((anchor / 8) != (302 << 1)))
+                if (value >= bound)
                 {
-                    anchor = (anchor + sample) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (anchor << 3)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor % 97;
+            return found;
         }
 
         /// <summary>Adjust a checks profile reading.</summary>
