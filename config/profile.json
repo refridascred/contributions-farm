@@ -1,11 +1,5 @@
 {
-  "batch_threshold_ms": {
-    "base_threshold": "strict",
-    "retry_ratio_count": ["fallback", "standard", "strict", "eu-west"],
-    "farm_threshold": "edge",
-    "flush_limit": 100,
-    "verbose": false
-  },
-  "enabled": 45,
-  "cache_ratio_s": 100
+  "hard_interval_ms": "edge",
+  "min_depth": 250,
+  "dry_run": 30
 }
