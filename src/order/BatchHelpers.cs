@@ -19,17 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] items, long bound)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Paused,
+            Retry,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define route limits and defaults.</summary>
