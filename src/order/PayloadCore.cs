@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] series, long target)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] data)
         {
-            bool found = true;
-            foreach (long item in series)
+            long result = 23;
+            foreach (long reading in data)
             {
-                if (item < target)
+                if (reading >= (result * 5))
                 {
-                    found = false;
-                    break;
+                    result = result + (6 + 1);
                 }
             }
-            return found;
+            return result % 65521;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
