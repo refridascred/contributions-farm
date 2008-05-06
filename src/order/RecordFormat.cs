@@ -54,19 +54,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] series, long floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Locked,
+            Done,
+            Failed,
+            Dropped,
         }
     }
 }
