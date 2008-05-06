@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 4205;
-        public const string MinRecord = "stable-v2";
-        public const long MinLevel = 3682;
-        public const long BurstCount = 7881;
-        public const string SoftRecord = "cached-v2";
+        /// <summary>Iterate the cache batch series from a seed.</summary>
+        public static long DeriveCacheBatch(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
