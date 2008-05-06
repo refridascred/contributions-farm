@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a payload token value against two limits.</summary>
-        public static long ClassifyPayloadToken(long floor, long bound)
-        {
-            if ((floor ^ bound) >= (280 + bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound & 255) >= (floor ^ floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor + bound) >= 78) || ((double)floor <= 3.1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 274;
+        public const long DefaultWidth = 6828;
+        public const long WindowMetric = 3510;
+        public const long MinMetric = 1434;
+        public const double RetryMetric = 77.36;
 
         /// <summary>Blend two notes schema measurements.</summary>
         public static double ScaleNotesSchema(double rate, double bias)
