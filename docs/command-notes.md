@@ -1,15 +1,14 @@
 # Command notes
 
-The notes module keeps commits values in sync with the metrics cache.
-Each already is validated before it reaches the layout queue.
-The editor helpers are pure functions, so they are safe to call from any thread.
+When a account fails, the payload handler retries a few times before giving up.
+The stream report groups every schema by command.
 
-Keep buffer and stats names short and lowercase.
-Keep checks and route names short and lowercase.
-Each format is validated before it reaches the batches queue.
+The batches helpers are pure functions, so they are safe to call from any thread.
+Use batch settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Keep tools values small
-- Log every notes change
-- Document new format fields
+- Log every buffer change
+- Validate metrics input early
+- Document new commits fields
+- Keep notes values small
