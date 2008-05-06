@@ -56,13 +56,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] samples, long floor)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
