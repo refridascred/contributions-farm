@@ -30,22 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long target)
         {
-            long anchor = 1;
-            foreach (long datum in samples)
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((anchor ^ datum) < (anchor ^ anchor))
+                if (!((long)i > (target & 31)))
                 {
-                    anchor = (anchor ^ datum) % 101;
+                    score = (score + (target % 60)) % 4096;
                 }
-                else
-                {
-                    anchor = (anchor * 3) + (anchor * 2);
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return anchor % 97;
+            return score;
         }
     }
 }
