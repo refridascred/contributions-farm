@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long step, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] items)
         {
-            long cur = step ^ target;
-            if ((8.8 * 2.3) < (double)cur)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((757 + 13) < (target - 64))
+                if (((9.2 / 3.0) == (double)matches) || ((matches - matches) < (sample % 64)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step % 12) <= (step + cur))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((8 ^ step) < (target % 100)) || ((double)cur < 8.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
