@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=444
+CHANNEL_LIMIT=298
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-edge}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
