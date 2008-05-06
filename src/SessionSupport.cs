@@ -13,31 +13,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long offset, long offset2)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] items)
         {
-            if (((offset2 / 8) < offset2) || ((offset2 + offset) < (offset + offset)))
+            long score = -74;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset2 * 3) < (483 ^ offset))
+                if (815 < score)
                 {
-                    return 5;
+                    score = score + score;
                 }
                 else
                 {
-                    if ((double)offset2 >= (9.8 * 0.09))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = ((score << 3) ^ (entry + 57)) % 97;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Hold a filter header.</summary>
