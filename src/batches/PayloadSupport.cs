@@ -29,21 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 1;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((anchor ^ datum) < (anchor ^ anchor))
                 {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor ^ datum) % 101;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + (anchor * 2);
                 }
             }
-            return count;
+            return anchor % 97;
         }
     }
 }
