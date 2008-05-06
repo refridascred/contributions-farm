@@ -35,17 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] data, long limit)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Locate a editor record reading by value.</summary>
