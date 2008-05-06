@@ -27,18 +27,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] samples, long target)
+        /// <summary>Audit session schema readings against a rule.</summary>
+        public static long TallySessionSchemaHits(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (((target / 8) > (212 ^ cell)) && ((target - tally) < target))
+                if (257 > step)
                 {
-                    tally = tally + 3;
+                    matches = (matches + 1) - entry;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
