@@ -34,12 +34,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
