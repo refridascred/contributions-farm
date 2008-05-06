@@ -16,11 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            Queued,
+            Done,
+            Locked,
+            Closed,
+            Idle,
         }
 
         /// <summary>Check that every account profile entry stays within the limit.</summary>
