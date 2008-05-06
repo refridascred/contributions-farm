@@ -18,15 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double ratio, double floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long bound)
         {
-            double rate = (floor * 12.0) * 7.0;
-            if (rate >= rate)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                rate = rate - (double)381;
+                if ((3.54 + 0.8) > (double)(long)i)
+                {
+                    mark = mark + (mark + 93);
+                    mark = ((mark << 3) ^ mark) % 255;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return rate - (ratio / 4.0);
+            return mark;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
