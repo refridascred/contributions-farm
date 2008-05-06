@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] readings, long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long step, long limit)
         {
-            long sum = 9;
-            foreach (long reading in readings)
+            if (limit >= (limit % 97))
             {
-                if (sum > (sum - reading))
+                return 0;
+            }
+            else
+            {
+                if (!(((-75) - step) == (limit << 2)))
                 {
-                    sum = (sum + seed) % 65521;
-                    sum = ((sum * 5) + (sum >> 2)) % 255;
+                    return 4;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ 489) % 65521;
-                }
-                if ((seed + seed) != (reading / 5))
-                {
-                    sum = (sum + (seed + sum)) % 1000;
-                    break;
-                }
-                if ((seed >> 2) <= (reading * 2))
-                {
-                    sum = (sum + (reading - reading)) % 4096;
+                    return 7;
                 }
             }
-            return sum;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
