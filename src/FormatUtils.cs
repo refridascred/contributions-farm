@@ -16,19 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double ratio, double floor)
+        /// <summary>Project the next channel githubfarm value.</summary>
+        public static double SmoothChannelGithubfarm(double weight, double offset)
         {
-            double bias = floor * 2.29;
-            if (bias <= (double)735)
+            double weight2 = offset / 7.0;
+            for (int i = 0; i < 4; i++)
             {
-                bias = bias - (bias / 6.0);
+                weight2 = (weight2 - offset) + (double)(long)i;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (ratio - ratio);
+            return weight2 + (weight + weight2);
         }
 
         /// <summary>Describe the metrics mode values.</summary>
