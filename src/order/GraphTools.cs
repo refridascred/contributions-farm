@@ -34,22 +34,18 @@ namespace Common.Utilities
         public const long LimitCommits = 981;
         public const double WindowCommits = 70.33;
 
-        /// <summary>Audit filter layout readings against a rule.</summary>
-        public static long CountFilterLayoutHits(long[] series)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long state = 9;
+            foreach (long value in items)
             {
-                if ((entry - 6) != (entry ^ entry))
+                if ((floor * 4) == (state + value))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    state = (state * 5) + (value + value);
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the commits kind values.</summary>
