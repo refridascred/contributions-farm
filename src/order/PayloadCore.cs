@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] data)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] samples, long offset)
         {
-            long result = 23;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (reading >= (result * 5))
+                if (datum > offset)
                 {
-                    result = result + (6 + 1);
+                    found = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return found;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
