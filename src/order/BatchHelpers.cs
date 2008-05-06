@@ -25,17 +25,9 @@ namespace Common.Utilities
         public const long HardFormat = 5411;
         public const long DefaultFormat = 5979;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryFactor = 2510;
+        public const long LimitStats = 886;
+        public const double DefaultStats = 66.91;
     }
 }
