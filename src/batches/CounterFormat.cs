@@ -17,21 +17,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] data)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long target, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((3.2 * 14.0) != (double)bound)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((target - target) > (target ^ target))
                 {
-                    if ((data[i] ^ data[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every commits already entry stays within the limit.</summary>
