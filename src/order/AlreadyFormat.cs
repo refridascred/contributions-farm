@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = (mix - mix) % 1000;
-                if (seed > (mix + seed))
-                {
-                    mix = (mix + mix) % 101;
-                    mix = (mix - seed) % 255;
-                }
-                mix = (mix + mix) % 101;
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 2235;
+        public const long LimitFactor = 2873;
+        public const long StepMetric = 1916;
+        public const long HardDepth = 167;
+        public const double SoftMetric = 5.61;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool GuardRecordLimits(long[] readings, long limit)
