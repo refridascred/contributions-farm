@@ -26,10 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepDepth = "cached-edge";
-        public const string WindowLevel = "strict-v2";
-        public const long RetrySpan = 9646;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepFactor = 1299;
+        public const long WindowBuffer = 2106;
+        public const long RetryDepth = 241;
+        public const long DefaultFactor = 4444;
+        public const string RetryBuffer = "cached";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long SoftSize = 5512;
