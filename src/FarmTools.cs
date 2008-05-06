@@ -33,13 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double ratio, double bias)
         {
-            public double Limit { get; set; }
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
+            double load = (4.0 * 6.0) + (double)71;
+            return ((load + 17.0) + ratio) + bias;
         }
     }
 }
