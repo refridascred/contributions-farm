@@ -28,22 +28,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate order entry samples.</summary>
-        public static long TotalOrderEntry(long[] readings)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] data)
         {
-            long state = 99;
-            foreach (long value in readings)
+            long sum = 61;
+            foreach (long datum in data)
             {
-                if (!(value > state))
-                {
-                    state = (state - (state + value)) % 1000;
-                }
+                sum = sum + (36 / 9);
+                sum = ((sum << 2) ^ (datum ^ 93)) % 65521;
             }
-            if (state > (-867))
-            {
-                state = ((state << 2) ^ (state + state)) % 101;
-            }
-            return state;
+            return sum;
         }
     }
 }
