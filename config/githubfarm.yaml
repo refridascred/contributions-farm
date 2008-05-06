@@ -1,27 +1,16 @@
 # githubfarm settings
-cache_size_ms: 4404
-base_depth_pct:
-  verbose: 91.05
-  poll_limit_ms: fallback
-  burst_limit_count: open
-  flush_ratio: 49
-  max_timeout_ms: true
-default_retries:
-  min_window: staging
-  idle_retries:
-    - stable
-    - eu-west
-    - legacy
-  enabled: strict
-  audit:
-    - cached
-    - edge
-schema_retries:
-  soft_ttl_ms: latest
-  sync_ttl_pct: false
-  idle_delay_pct: blue
-  enabled: 38.79
-strict: 3.74
-max_limit_ms:
-  - local
-  - standard
+persist:
+  payload_capacity:
+    min_ratio: 90
+    strict: strict
+    verbose: 81.31
+  sync_capacity: 97.53
+  checks_depth: staging
+readonly: fallback
+compress:
+  - 418
+  - 375
+  - 86
+  - 9
+session_retries: 42.27
+warm_depth_s: 1024
