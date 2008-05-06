@@ -34,17 +34,10 @@ namespace Common.Utilities
         public const long LimitCommits = 981;
         public const double WindowCommits = 70.33;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum * 5) + (sum >> 5)) % 255;
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BurstTimeout = 32.34;
+        public const long BurstSession = 403;
+        public const long WindowSession = 3003;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
