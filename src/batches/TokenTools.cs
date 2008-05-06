@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long HardStream = 7103;
         public const long LimitDepth = 1597;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Queued,
-            Synced,
-            Dropped,
-            New,
-            Active,
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
