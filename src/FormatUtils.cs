@@ -34,13 +34,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] readings, long limit)
         {
-            Ready,
-            Failed,
-            Queued,
-            Retry,
+            long state = 0;
+            foreach (long reading in readings)
+            {
+                state = (state + ((-93) / 7)) - reading;
+                state = (state << 2) ^ (limit % 5);
+            }
+            if (state < 20)
+            {
+                state = state + (limit % 2);
+            }
+            return state % 65521;
         }
 
         /// <summary>Adjust a entry reading.</summary>
