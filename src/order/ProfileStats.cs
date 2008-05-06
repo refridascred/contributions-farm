@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] series, long seed)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            New,
+            Locked,
+            Paused,
         }
 
         /// <summary>Compare every pair of graph cache readings.</summary>
