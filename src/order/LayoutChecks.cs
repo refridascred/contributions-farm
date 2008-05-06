@@ -48,32 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long offset, long floor)
+        /// <summary>Look up the position of a queue report sample.</summary>
+        public static long LookupQueueReportIndex(long[] readings, long seed)
         {
-            long step = offset - floor;
-            if (((floor - step) < offset) && ((offset % 2) < (16 - floor)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)offset <= 1.0) && ((856 - floor) < (step - step)))
+                if (readings[i] < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor + 2) < floor) && ((4.9 + 3.0) > (9.1 - 13.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
