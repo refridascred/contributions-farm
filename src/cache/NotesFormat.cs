@@ -20,14 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Dropped,
-            Active,
-            Synced,
-            Failed,
-            Retry,
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit graph stats readings against a rule.</summary>
