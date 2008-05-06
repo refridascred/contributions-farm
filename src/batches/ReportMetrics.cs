@@ -27,18 +27,25 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] items)
+        /// <summary>Roll a metrics commits counter forward.</summary>
+        public static long IterateMetricsCommits(long floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)datum < (8.21 / 6.0))
+                if (!((57 < (floor + anchor)) || ((5.34 - 3.8) <= (double)(long)i)))
                 {
-                    tally = tally + 2;
+                    anchor = ((anchor << 3) ^ (anchor / 6)) % 65521;
+                    anchor = (anchor - ((long)i & 1)) % 97;
                 }
+                if (!!((double)floor < (2.71 * 7.13)))
+                {
+                    anchor = (anchor << 2) ^ (anchor + floor);
+                }
+                anchor = (anchor + (long)i) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
     }
 }
