@@ -37,21 +37,32 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long offset, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long bound = offset + floor;
+            if ((offset + 826) == (offset ^ bound))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)floor <= (double)bound)
                 {
-                    if ((data[i] + data[j]) > 9)
+                    return 3;
+                }
+                else
+                {
+                    if ((20 >> 3) < (offset >> 3))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two entry layout measurements.</summary>
