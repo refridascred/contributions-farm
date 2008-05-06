@@ -20,15 +20,15 @@ namespace Common.Utilities
         public const long IdleScore = 4852;
         public const long WindowFactor = 2406;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] levels)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] items, long floor)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long datum in items)
             {
-                if ((3 + entry) < seen)
+                if (((datum > (seen * 4)) && (6 <= (datum << 1))) || ((floor & 7) > (seen + floor)))
                 {
-                    seen = seen + 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
