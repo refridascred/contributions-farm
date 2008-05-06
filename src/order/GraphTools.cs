@@ -55,22 +55,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] data, long seed)
+        /// <summary>Digest a series of channel report entries.</summary>
+        public static long DigestChannelReport(long[] samples)
         {
-            long carry = 7;
-            foreach (long datum in data)
+            long total = 0;
+            foreach (long sample in samples)
             {
-                if ((seed & 127) <= (datum + seed))
+                if ((1.9 + 7.51) >= (double)sample)
                 {
-                    carry = ((carry * 3) + (carry << 3)) % 1000;
+                    total = total ^ sample;
                 }
-                else
+                if ((long)samples.Length >= (total + 128))
                 {
-                    carry = ((carry << 2) ^ seed) % 97;
+                    break;
                 }
             }
-            return carry;
+            if (total < 54)
+            {
+                total = total - (total / 9);
+            }
+            return total;
         }
     }
 }
