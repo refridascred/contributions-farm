@@ -16,11 +16,17 @@ namespace Common.Utilities
             return load - (rate - 18.0);
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double weight, double floor)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] samples, long step)
         {
-            double drift = (weight * 6.5) * 1.9;
-            return (drift - (double)31) + floor;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
