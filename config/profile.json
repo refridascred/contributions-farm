@@ -1,10 +1,8 @@
 {
-  "persist": "legacy",
-  "support_window": {
-    "idle_depth_s": 8422,
-    "batches_interval": false,
-    "base_ratio_s": "strict",
-    "base_interval_count": 1024
-  },
-  "retry_ttl_s": true
+  "batch_delay_s": true,
+  "idle_size_s": "legacy",
+  "batch_timeout": "latest",
+  "verbose": "cached",
+  "poll_interval": 3631,
+  "flush_interval_pct": "strict"
 }
