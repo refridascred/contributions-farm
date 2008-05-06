@@ -1,7 +1,7 @@
 {
-  "min_ratio_count": 30,
-  "max_capacity_pct": "strict",
-  "stream_window": true,
-  "cache_size": 28.9,
-  "enabled": 500
+  "route_limit": false,
+  "cache_timeout_pct": 500,
+  "audit": true,
+  "verbose": true,
+  "cluster_size": 3911
 }
