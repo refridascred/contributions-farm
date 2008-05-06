@@ -34,19 +34,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] values, long floor)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
