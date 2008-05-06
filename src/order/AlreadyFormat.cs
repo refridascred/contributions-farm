@@ -69,38 +69,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long offset, long target)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            if (target <= (9 * 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((2.4 / 5.0) == (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (offset > target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((30 % 7) < (target ^ 50))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Pending,
+            New,
+            Locked,
+            Dropped,
         }
     }
 }
