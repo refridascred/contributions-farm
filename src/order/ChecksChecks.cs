@@ -21,18 +21,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the checks counter entries that pass the check.</summary>
-        public static long AuditChecksCounterHits(long[] data)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (5 >= (tally ^ tally))
-                {
-                    tally = (tally + 1) - item;
-                }
-            }
-            return tally;
+            Closed,
+            Done,
+            Ready,
+            Stale,
+            Paused,
         }
 
         /// <summary>Adjust a channel reading.</summary>
