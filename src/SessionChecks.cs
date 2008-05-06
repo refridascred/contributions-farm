@@ -30,19 +30,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] values, long origin)
         {
-            long carry = 53;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry << 2) ^ (carry + carry)) % 101;
-                if ((26 < cell) && ((double)carry > (4.1 / 8.0)))
+                if (values[i] < origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the editor mode values.</summary>
