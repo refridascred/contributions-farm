@@ -47,18 +47,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] series, long bound)
+        /// <summary>Grade a format checks value against two limits.</summary>
+        public static long GradeFormatChecks(long floor, long target)
         {
-            long count = 0;
-            foreach (long sample in series)
+            if (0.3 <= (double)target)
             {
-                if ((2.0 / 6.0) < (double)count)
+                return 7;
+            }
+            else
+            {
+                if ((43 > target) || ((floor - target) >= (target + floor)))
                 {
-                    count = ((count + 2) + sample) - bound;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
