@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long IdleInterval = 8488;
         public const long MaxToken = 1434;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Closed,
-            Synced,
-            Ready,
-            Pending,
-            Done,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheSpan = "staging-1";
+        public const long LimitSpan = 5526;
+        public const long CacheFactor = 7670;
+        public const string BurstFactor = "stable-1";
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LocateCommandIndex(long[] samples, long origin)
