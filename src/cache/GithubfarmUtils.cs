@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const string WindowLayout = "local-1";
         public const double SoftFactor = 19.9;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] data, long floor)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Failed,
+            Done,
+            Draft,
         }
 
         /// <summary>Fold a list of already readings.</summary>
