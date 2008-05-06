@@ -35,10 +35,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 2938;
-        public const string WindowDepth = "local-v2";
-        public const double DefaultStream = 11.21;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long StepBuffer(long seed)
