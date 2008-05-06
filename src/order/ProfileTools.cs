@@ -34,15 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already checks samples are out of range.</summary>
-        public static long MeasureAlreadyChecksOutliers(long[] readings, long target)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
             long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((8.5 + 4.66) >= (double)target))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) - datum;
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
