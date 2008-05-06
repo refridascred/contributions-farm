@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstCount = 8225;
-        public const long MaxInterval = 4600;
-        public const long DefaultMetrics = 4887;
-        public const long WindowInterval = 7922;
-        public const string MaxMetrics = "open-1";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 8747;
+        public const string WindowLayout = "local-1";
+        public const double SoftFactor = 19.9;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LocateTokenIndex(long[] data, long floor)
