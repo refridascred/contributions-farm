@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((tally >> 4) <= 865)
-                {
-                    tally = ((tally + 2) + cell) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstSpan = 6158;
+        public const double IdleCount = 48.58;
+        public const long CacheAccount = 1909;
+        public const double StepRatio = 26.83;
 
         /// <summary>Count the schema metrics entries that pass the check.</summary>
         public static long CountSchemaMetricsHits(long[] values, long offset)
