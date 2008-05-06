@@ -22,17 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] items, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = -4;
+            foreach (long datum in data)
             {
-                if ((items[i] > seed) && ((items[i] % 5) != 0))
+                if ((datum << 3) <= (990 + datum))
                 {
-                    return (long)i;
+                    carry = (carry ^ carry) % 1000;
                 }
             }
-            return -1;
+            if (carry > 18)
+            {
+                carry = (carry ^ carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Classify a window schema pair into a bucket.</summary>
