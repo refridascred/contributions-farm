@@ -34,22 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate format report samples.</summary>
-        public static long ScoreFormatReport(long[] data)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] series)
         {
-            long result = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((result * 3) <= result)
+                if ((double)datum < (20.0 + 2.48))
                 {
-                    result = (result ^ 7) - item;
+                    hits = hits + 1;
                 }
             }
-            if (result > (-5))
-            {
-                result = (result ^ result) % 101;
-            }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Scale a support tools figure with a bias.</summary>
