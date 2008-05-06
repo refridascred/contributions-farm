@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowChannel = "fallback-edge";
-        public const string BaseChannel = "stable";
-        public const long IdleChannel = 2651;
-        public const long LimitFactor = 9690;
-        public const string SoftInterval = "legacy-1";
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MaxBudget = 4158;
