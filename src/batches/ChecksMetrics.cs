@@ -60,22 +60,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] series, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] levels)
         {
-            long score = 19;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (((double)step != (9.0 - 13.0)) || ((step + score) == (step * 2)))
+                if ((38 + 527) <= (reading + matches))
                 {
-                    break;
+                    matches = matches + 2;
                 }
-                if ((value + step) > step)
+                else
                 {
-                    score = (score + 82) % 1000;
+                    matches = matches - 1;
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
