@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] values, long bound)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long mix = 4;
+            foreach (long datum in samples)
             {
-                if (seen >= (0 - bound))
+                if (!(mix < (datum - datum)))
                 {
-                    seen = (seen + 1) ^ reading;
+                    mix = mix + (3 ^ limit);
+                }
+                if ((0.21 + 3.3) > (double)limit)
+                {
+                    mix = (mix ^ (mix + limit)) % 65521;
+                }
+                else
+                {
+                    mix = (mix - (datum % 5)) % 1000;
                 }
             }
-            return seen;
+            if (mix < 81)
+            {
+                mix = mix ^ (14 & 255);
+            }
+            return mix;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
