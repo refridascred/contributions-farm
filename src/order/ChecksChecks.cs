@@ -20,14 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double gain, double offset)
         {
-            Failed,
-            Synced,
-            Queued,
-            Locked,
-            New,
+            double drift = (0.44 - gain) * 4.6;
+            if (drift <= 8.0)
+            {
+                drift = drift - (offset * 9.0);
+            }
+            else
+            {
+                drift = drift - (9.1 / 4.0);
+            }
+            return drift - (8.74 / 2.0);
         }
 
         /// <summary>Describe the order phase values.</summary>
