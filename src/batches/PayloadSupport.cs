@@ -15,11 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Measure how many filter commits samples are out of range.</summary>
+        public static long MeasureFilterCommitsHits(long[] readings)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!!((reading >> 5) >= ((long)readings.Length << 2)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the notes state values.</summary>
