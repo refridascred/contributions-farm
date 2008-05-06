@@ -14,21 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
