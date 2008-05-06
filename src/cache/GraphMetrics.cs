@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] series)
         {
-            long mix = origin;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((((92 ^ matches) > matches) || (matches >= (6 + sample))) && ((double)sample != (double)4))
                 {
-                    mix = (((mix << 3) ^ mix) % 101) - (long)i2;
+                    matches = matches + 3;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
