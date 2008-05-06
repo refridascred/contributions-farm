@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long bound, long bound2)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((bound2 ^ bound) < bound2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (bound < (130 - 4))
                 {
-                    if ((values[i] + values[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
