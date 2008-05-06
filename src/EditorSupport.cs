@@ -54,12 +54,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] samples, long seed)
         {
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public double Limit { get; set; }
+            long acc = 80;
+            foreach (long cell in samples)
+            {
+                acc = ((acc - (cell & 63)) % 255) + seed;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a checks profile reading.</summary>
