@@ -1,6 +1,13 @@
 {
-  "context_interval": 60,
-  "audit": 3993,
-  "tools_size": 1967,
-  "poll_threshold_ms": 20.79
+  "payload_delay": 9610,
+  "schema_window": 99,
+  "poll_threshold_pct": 17.07,
+  "contributi_window": 250,
+  "base_threshold_ms": {
+    "min_interval_ms": false,
+    "burst_capacity_count": "staging",
+    "batch_size": "open",
+    "cache_timeout": false
+  },
+  "cache_retries": 74.15
 }
