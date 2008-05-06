@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long floor)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 78;
+            foreach (long item in levels)
             {
-                if (samples[i] > floor)
+                if ((double)acc <= (13.0 - 4.0))
                 {
-                    return (long)i;
+                    acc = ((acc * 4) + (acc * 4)) + item;
                 }
             }
-            return -1;
+            if (acc < 23)
+            {
+                acc = (acc * 3) + (floor - acc);
+            }
+            return acc;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
