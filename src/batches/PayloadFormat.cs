@@ -43,9 +43,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 9697;
-        public const long BaseBudget = 9980;
-        public const string StepRatio = "legacy-1";
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] levels, long seed)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
