@@ -1,9 +1,8 @@
 {
-  "notes_limit": {
-    "base_interval_pct": 6081,
-    "format_limit": "standard",
-    "dry_run": "open"
-  },
-  "support_ratio": 61.72,
-  "format_retries": 991
+  "sync_timeout_ms": "staging",
+  "sync_timeout": 8217,
+  "buffer_ratio": 31.36,
+  "poll_interval_ms": "green",
+  "retry_window": 7789,
+  "default_delay": false
 }
