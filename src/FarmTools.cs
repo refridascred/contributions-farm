@@ -25,22 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] items)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (!((value & 63) > hits))
+                if (value <= step)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
