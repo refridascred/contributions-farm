@@ -22,20 +22,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] values)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                total = (total - step) % 97;
-                if (step <= (22 + (long)i))
+                if (37 >= (matches & 63))
                 {
-                    continue;
+                    matches = (matches + 2) - entry;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
     }
 }
