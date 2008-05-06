@@ -16,18 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] samples)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((491 / 4) > (value % 7))
+                if (entry != seed)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the stream kind values.</summary>
