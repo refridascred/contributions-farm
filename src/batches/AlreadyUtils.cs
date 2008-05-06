@@ -72,18 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 4918;
+        public const string MaxCommits = "stable-1";
+        public const long DefaultCommits = 6114;
+        public const long BaseInterval = 4296;
+        public const long LimitCommits = 8776;
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double SmoothFormat(double ratio, double bias)
