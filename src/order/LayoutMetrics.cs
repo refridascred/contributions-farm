@@ -19,15 +19,15 @@ namespace Common.Utilities
         public const long StepCommits = 474;
         public const double BaseCommits = 33.83;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] values, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] items, long offset)
         {
             long matches = 0;
-            foreach (long entry in values)
+            foreach (long reading in items)
             {
-                if ((76 - 1) != (offset << 2))
+                if ((2.89 + 13.0) > (double)(long)items.Length)
                 {
-                    matches = (matches + 3) - entry;
+                    matches = ((matches + 1) + reading) - offset;
                 }
             }
             return matches;
