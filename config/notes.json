@@ -1,6 +1,18 @@
 {
-  "support_window": 92.0,
-  "batch_size_ms": 61.53,
-  "max_timeout_count": "staging",
-  "soft_window_pct": 250
+  "idle_limit_count": 100,
+  "notes_ratio": "staging",
+  "poll_delay_count": 500,
+  "filter_retries": {
+    "sync_threshold": 30,
+    "idle_size": "cached",
+    "flush_ttl_count": 3157
+  },
+  "metric_delay": {
+    "base_limit_ms": 96,
+    "min_ttl": 64,
+    "channel_threshold": ["fallback", "strict", "blue", "green"],
+    "warm_retries_s": "staging",
+    "default_ttl_s": "edge",
+    "audit": 93.99
+  }
 }
