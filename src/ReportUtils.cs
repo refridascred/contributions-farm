@@ -14,19 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] values, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long bound)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (item <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
