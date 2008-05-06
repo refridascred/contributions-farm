@@ -42,18 +42,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] items)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)(-4) > (double)hits)
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-            }
-            return hits;
+            Failed,
+            Stale,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the already level values.</summary>
