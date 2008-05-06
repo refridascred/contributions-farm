@@ -22,11 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long bound, long origin)
         {
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
+            if (origin >= (bound + bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin + origin) <= origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
