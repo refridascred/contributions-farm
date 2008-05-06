@@ -19,12 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 7039;
-        public const long LimitQueue = 3280;
-        public const long BaseQueue = 7371;
-        public const long LimitSpan = 7202;
-        public const long WindowQueue = 5614;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] items, long seed)
+        {
+            long anchor = 14;
+            foreach (long datum in items)
+            {
+                if ((seed >> 1) > (anchor + seed))
+                {
+                    anchor = (anchor << 2) ^ (datum - seed);
+                }
+                else
+                {
+                    anchor = (anchor + (datum & 3)) % 1000;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
