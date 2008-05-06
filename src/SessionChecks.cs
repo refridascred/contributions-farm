@@ -46,14 +46,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Scale a support tools figure with a bias.</summary>
+        public static double ScaleSupportTools(double weight, double span)
         {
-            Active,
-            Locked,
-            Retry,
-            Paused,
-            Closed,
+            double weight2 = (double)(35 >> 1);
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (((weight2 - weight2) - (double)(long)i) - weight) + span;
+            }
+            return weight2 - (1.01 / 8.0);
         }
     }
 }
