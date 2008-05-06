@@ -18,10 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxChannel = 1.28;
-        public const double WindowChannel = 92.16;
-        public const long CacheBudget = 7176;
+        /// <summary>Find the first channel notes entry that matches the target.</summary>
+        public static long SeekChannelNotesIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
