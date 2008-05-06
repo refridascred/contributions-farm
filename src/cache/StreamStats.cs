@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double rate, double offset)
         {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
+            double mean = rate;
+            for (int i = 0; i < 4; i++)
             {
-                score = ((score << 3) ^ (score + 162)) % 4096;
-                score = ((score * 5) + (long)i) % 101;
+                mean = (mean + (double)(long)i) - offset;
             }
-            return score;
+            return mean + mean;
         }
 
         /// <summary>Project the next farm value.</summary>
