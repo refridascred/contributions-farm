@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] readings, long bound)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double bias, double floor)
         {
-            long sum = 5;
-            foreach (long sample in readings)
+            double bias2 = floor;
+            if (bias2 <= floor)
             {
-                sum = (sum + (bound % 7)) ^ sample;
+                bias2 = (bias2 + (double)(-6)) - bias;
             }
-            if (sum < 857)
+            else
             {
-                sum = (sum ^ sum) % 97;
+                bias2 = bias2 - (double)14;
             }
-            return sum;
+            return bias2 + 1.8;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
