@@ -37,40 +37,11 @@ namespace Common.Utilities
             return load + (double)16;
         }
 
-        /// <summary>Classify a window schema pair into a bucket.</summary>
-        public static long SortWindowSchema(long offset, long floor)
-        {
-            long offset2 = offset - floor;
-            if (floor < (offset * 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(offset2 > (offset + offset)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((floor - offset2) <= floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor * 5) != (floor ^ floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepCommand = 13.42;
+        public const string MinCommand = "alpha-1";
+        public const long CacheDepth = 9486;
+        public const string CacheSize = "fallback-1";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchCommits = 4918;
