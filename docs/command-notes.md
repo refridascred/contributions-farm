@@ -1,12 +1,11 @@
 # Command notes
 
-Keep channel and format names short and lowercase.
-The layout module keeps profile values in sync with the profile cache.
-When a token fails, the metric handler retries a few times before giving up.
+The metrics module keeps tools values in sync with the commits cache.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new farm fields
-- Keep context values small
-- Log every channel change
-- Prefer layout defaults
+- Keep record values small
+- Log every cluster change
+- Validate command input early
+- Document new metrics fields
