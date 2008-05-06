@@ -60,14 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] samples, long origin)
         {
-            Done,
-            Closed,
-            Synced,
-            Draft,
-            Pending,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
