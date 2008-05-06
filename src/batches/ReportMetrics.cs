@@ -12,25 +12,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] readings, long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] series, long step)
         {
-            long score = 163;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                long prev = (origin / 6) >> 3;
-                if (!((prev % 64) >= (item + 8)))
+                if (series[i] <= step)
                 {
-                    prev = prev + score;
-                    prev = ((prev << 2) ^ (prev << 3)) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    score = score + (5 + item);
-                }
-                score = (score - (origin ^ score)) % 97;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Accumulate support samples.</summary>
