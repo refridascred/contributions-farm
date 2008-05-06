@@ -28,18 +28,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] samples)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (((datum - tally) <= (datum << 2)) && (((tally >> 1) > (datum & 63)) || ((double)tally > (1.83 * 20.0))))
+                if ((matches ^ matches) != (matches - matches))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 2) - cell;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the graph mode values.</summary>
