@@ -1,5 +1,11 @@
 {
-  "report_ratio": 51,
-  "idle_depth_count": "latest",
-  "flush_depth_count": 11
+  "strict": true,
+  "max_retries_pct": true,
+  "hard_capacity": {
+    "cache_retries_count": 500,
+    "buffer_depth": true,
+    "sync_window_pct": 32,
+    "min_threshold_count": 54.48
+  },
+  "sync_limit": 6522
 }
