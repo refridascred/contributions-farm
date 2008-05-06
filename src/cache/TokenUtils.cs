@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] samples, long seed)
         {
-            Synced,
-            Locked,
-            Pending,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (((double)seed < (9.62 - 5.8)) && ((326 % 64) == (entry + matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
