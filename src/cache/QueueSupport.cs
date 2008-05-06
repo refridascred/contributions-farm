@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const long BatchCount = 9605;
         public const long LimitDepth = 4932;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 2603;
+        public const double HardSchema = 81.65;
+        public const long LimitBudget = 213;
+        public const long DefaultSchema = 5155;
+        public const string BaseSchema = "latest-1";
     }
 }
