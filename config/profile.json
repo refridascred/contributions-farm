@@ -1,7 +1,5 @@
 {
-  "base_size_pct": false,
-  "record_capacity": true,
-  "report_timeout": false,
-  "audit": [419, 429],
-  "cache_ratio": false
+  "batch_size": 69.99,
+  "dry_run": 78,
+  "poll_capacity_pct": "strict"
 }
