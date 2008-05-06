@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] readings)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading - 8) > (8 + reading)) && ((reading - (-70)) != (matches + matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
