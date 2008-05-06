@@ -1,7 +1,10 @@
 # support settings
-already_depth: 30
-profile_ratio: true
-retry_ratio_count: 8115
-channel_limit: stable
-cache_retries: false
-cache_capacity: blue
+soft_window:
+  - 109
+  - 477
+  - 140
+soft_size_s: eu-west
+soft_ttl_count: 60
+enabled: staging
+idle_timeout: primary
+poll_window_ms: 500
