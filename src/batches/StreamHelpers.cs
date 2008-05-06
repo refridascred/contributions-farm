@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] items)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (entry >= (matches % 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
