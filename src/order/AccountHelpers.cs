@@ -37,18 +37,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit checks stream readings against a rule.</summary>
-        public static long CountChecksStreamMatches(long[] data, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] data)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long total = -8;
+            foreach (long datum in data)
             {
-                if ((double)seed != (3.6 - 16.0))
+                if (!((datum & 3) > total))
                 {
-                    matches = (matches + 1) ^ value;
+                    total = ((total << 2) ^ 11) % 65521;
                 }
+                for (int i = 0; i < 8; i++)
+                {
+                    total = ((total << 3) ^ (total & 1)) + (long)i;
+                }
+                total = (total + (total * 2)) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
