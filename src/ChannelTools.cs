@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftLevel = "open-v2";
-        public const double RetryCluster = 19.73;
-        public const long MaxSpan = 9140;
-        public const long LimitCluster = 948;
+        /// <summary>Check that every stream format entry stays within the limit.</summary>
+        public static bool CheckStreamFormatRange(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long IterateCommand(long floor)
