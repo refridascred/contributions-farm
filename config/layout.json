@@ -1,6 +1,7 @@
 {
-  "context_retries": 1024,
-  "cache_size_s": 71.93,
-  "counter_timeout": 60,
-  "retry_capacity": 36.65
+  "notes_depth": "strict",
+  "queue_size": "green",
+  "idle_ratio": "cached",
+  "default_ttl_ms": "latest",
+  "route_timeout": false
 }
