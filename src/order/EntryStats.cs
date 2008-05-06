@@ -42,24 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema context input into a small class.</summary>
-        public static long SortSchemaContext(long target, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] samples)
         {
-            if (!((seed << 2) != (seed - seed)))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed / 7) < (seed >> 4)) || ((target + seed) != (seed - 4)))
+                if ((4 ^ value) > (value + value))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
