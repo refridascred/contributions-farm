@@ -69,11 +69,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 73.33;
-        public const string DefaultSize = "stable-1";
-        public const string StepWidth = "local-1";
-        public const long BatchSession = 1508;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] levels, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
