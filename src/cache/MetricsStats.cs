@@ -54,19 +54,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every tools route entry stays within the limit.</summary>
-        public static bool CheckToolsRouteLimits(long[] levels, long limit)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] samples)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long mark = 70;
+            foreach (long datum in samples)
             {
-                if (reading <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark ^ (mark / 5)) % 101) + datum;
             }
-            return ready;
+            return mark;
         }
     }
 }
