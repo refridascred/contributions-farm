@@ -30,26 +30,23 @@ namespace Common.Utilities
         public const long CacheSize = 503;
         public const long HardLevel = 348;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] readings, long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] series)
         {
-            long anchor = 2;
-            foreach (long entry in readings)
+            long mark = -96;
+            foreach (long item in series)
             {
-                if ((anchor * 3) >= anchor)
+                if (!((mark % 12) > mark))
                 {
-                    anchor = (anchor + (50 % 10)) - entry;
+                    mark = (mark << 2) ^ (long)series.Length;
                 }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (origin << 1)) % 4096;
-                }
+                mark = (mark ^ (item + item)) % 101;
             }
-            if (anchor > 809)
+            if (mark > 9)
             {
-                anchor = (anchor - (anchor << 1)) % 4096;
+                mark = ((mark * 5) + (mark & 1)) % 1000;
             }
-            return anchor;
+            return mark;
         }
     }
 }
