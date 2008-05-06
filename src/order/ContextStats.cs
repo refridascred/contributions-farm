@@ -39,19 +39,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((offset * 3) < (offset - value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 3845;
+        public const long HardBatches = 5460;
+        public const long MinBatches = 7421;
 
         /// <summary>Match up command samples.</summary>
         public static long PairCommandCount(long[] data)
