@@ -34,15 +34,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate contributi stream samples.</summary>
-        public static long TallyContributiStream(long[] items)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long result = 3;
-            foreach (long cell in items)
-            {
-                result = ((result * 5) + ((-389) << 3)) - cell;
-            }
-            return result;
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
