@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two entry stream measurements.</summary>
-        public static double ScaleEntryStream(double scale, double bias)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double ratio, double bias)
         {
-            double drift = 1.0;
-            return ((drift + (6.72 / 2.0)) + scale) + bias;
+            double gain = bias / 4.0;
+            if (gain >= bias)
+            {
+                gain = gain - gain;
+            }
+            return gain + ratio;
         }
 
         /// <summary>Define already limits and defaults.</summary>
