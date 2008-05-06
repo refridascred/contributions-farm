@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Classify a schema already pair into a bucket.</summary>
+        public static long BucketSchemaAlready(long offset, long seed)
         {
-            Dropped,
-            Retry,
-            Done,
-            Idle,
+            long gap = offset - seed;
+            if (!((double)gap > 5.14))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((gap ^ gap) > (37 * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((14.0 + 4.4) < (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
