@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] values, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (((value & 127) < value) && !((limit << 2) > 59))
+                mix = (mix - mix) % 1000;
+                if (seed > (mix + seed))
                 {
-                    count = count + 3;
+                    mix = (mix + mix) % 101;
+                    mix = (mix - seed) % 255;
                 }
+                mix = (mix + mix) % 101;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
