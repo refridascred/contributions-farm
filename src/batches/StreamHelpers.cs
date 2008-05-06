@@ -79,19 +79,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate context queue samples.</summary>
-        public static long CombineContextQueue(long[] levels)
+        /// <summary>Find the first command editor entry that matches the target.</summary>
+        public static long FindCommandEditorIndex(long[] items, long seed)
         {
-            long mix = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix + (cell << 1);
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > (-674))
-            {
-                mix = (mix ^ 9) % 65521;
-            }
-            return mix;
+            return -1;
         }
     }
 }
