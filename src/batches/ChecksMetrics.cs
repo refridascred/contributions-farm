@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const double MaxDepth = 58.53;
         public const long WindowCount = 8721;
 
-        /// <summary>Count buffer profile pairs that satisfy a relation.</summary>
-        public static long MatchBufferProfileCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheBudget = "standard-1";
+        public const double RetryStats = 17.78;
+        public const long LimitBudget = 2631;
+        public const double RetryDepth = 79.2;
 
         /// <summary>Validate support batches readings against a bound.</summary>
         public static bool CheckSupportBatchesRange(long[] data, long bound)
