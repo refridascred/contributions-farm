@@ -1,12 +1,15 @@
 {
-  "cluster_interval": false,
-  "strict": ["standard", "edge"],
-  "retry_window_count": 9942,
-  "warm_limit_pct": {
-    "enabled": "latest",
-    "min_threshold_s": 50.59,
-    "burst_limit_s": [54, 312]
-  },
-  "retry_ttl_ms": 39,
-  "default_ratio_count": true
+  "counter_ttl": 75,
+  "burst_size": [28, 124, 217],
+  "soft_size_pct": [498, 91, 457],
+  "batch_depth_s": {
+    "dry_run": {
+      "contributi_window": 57.82,
+      "soft_timeout": [298, 300, 458, 84],
+      "notes_threshold": "fallback"
+    },
+    "enabled": 59.24,
+    "editor_threshold": 9150,
+    "default_window_ms": true
+  }
 }
