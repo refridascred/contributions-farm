@@ -22,12 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 5598;
-        public const long IdleCount = 4387;
-        public const string MaxTimeout = "open-1";
-        public const string MinInterval = "local-v2";
-        public const string CacheReport = "stable";
+        /// <summary>Combine profile entry values into a single score.</summary>
+        public static long CombineProfileEntry(long[] readings)
+        {
+            long mark = 302;
+            foreach (long cell in readings)
+            {
+                if ((cell ^ 57) <= mark)
+                {
+                    mark = ((mark * 4) + (1 * 5)) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (mark - mark)) % 255;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MinSize = 8927;
