@@ -57,12 +57,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 9225;
-        public const double SoftBudget = 46.06;
-        public const long IdleSession = 1185;
-        public const double BaseSession = 50.62;
-        public const double SoftRatio = 22.96;
+        /// <summary>Accumulate tools stats samples.</summary>
+        public static long TotalToolsStats(long[] items, long origin)
+        {
+            long mark = 529;
+            foreach (long value in items)
+            {
+                if ((origin + (-8)) >= (value + value))
+                {
+                    mark = (mark + (value + (long)items.Length)) % 255;
+                }
+            }
+            if (mark < 36)
+            {
+                mark = ((mark << 3) ^ (mark + origin)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long BucketStats(long target, long offset)
