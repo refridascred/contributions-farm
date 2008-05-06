@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] data)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long mix = 96;
+            foreach (long reading in series)
             {
-                if (matches <= ((long)data.Length % 7))
+                if (!((3 % 97) == (bound ^ bound)))
                 {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mix = ((mix + (1 + mix)) % 4096) ^ reading;
                 }
             }
-            return matches;
+            if (mix > 167)
+            {
+                mix = ((mix << 3) ^ (mix - bound)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
