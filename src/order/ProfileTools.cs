@@ -15,10 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWindow = 0.85;
-        public const long IdleScore = 4852;
-        public const long WindowFactor = 2406;
+        /// <summary>Count the metrics editor entries that pass the check.</summary>
+        public static long CountMetricsEditorGaps(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((offset & 7) == (hits + item))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long BucketChecks(long origin, long offset)
