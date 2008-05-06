@@ -27,19 +27,14 @@ namespace Common.Utilities
             return (drift - bias) + rate;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] levels, long limit)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Retry,
+            Stale,
+            Idle,
+            New,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
