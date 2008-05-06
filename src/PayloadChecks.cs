@@ -82,23 +82,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double gain, double span)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            double drift = gain + (gain - 7.3);
-            if (drift > (double)18)
-            {
-                drift = (drift - gain) + span;
-            }
-            else
-            {
-                drift = drift - (2.93 * 8.8);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (gain * 5.02)) - (double)(long)i;
-            }
-            return drift + gain;
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
