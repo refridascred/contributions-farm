@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] items, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark - (floor + floor);
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((items[i] < step) && ((items[i] % 3) == 0))
                 {
-                    mark = ((mark ^ (floor - mark)) % 101) ^ (long)i2;
+                    return (long)i;
                 }
-                mark = (mark << 3) ^ (mark << 2);
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Adjust a already reading.</summary>
