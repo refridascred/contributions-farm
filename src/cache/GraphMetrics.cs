@@ -42,14 +42,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Audit batch contributi readings against a rule.</summary>
+        public static long MeasureBatchContributiGaps(long[] items, long offset)
         {
-            Dropped,
-            Done,
-            Retry,
-            Paused,
-            New,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!((11 ^ datum) != (3 * 5)))
+                {
+                    count = (count + 2) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
