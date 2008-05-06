@@ -51,24 +51,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double weight, double span)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            double rate = span;
+            if (rate > (rate / 9.0))
             {
-                if (!((double)bound < 4.03))
-                {
-                    total = total + ((long)i & 127);
-                }
-                else
-                {
-                    total = (total + (bound & 7)) % 65521;
-                    total = total - ((long)i << 3);
-                }
-                total = ((total * 5) + (long)i) % 97;
+                rate = (rate - (span / 3.0)) - weight;
             }
-            return total;
+            return rate - (rate - 0.45);
         }
     }
 }
