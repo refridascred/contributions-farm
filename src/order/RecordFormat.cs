@@ -48,13 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] readings, long origin)
         {
-            Failed,
-            Paused,
-            Idle,
-            Active,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (!(((origin << 3) <= item) || ((origin + origin) <= (576 ^ matches))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
