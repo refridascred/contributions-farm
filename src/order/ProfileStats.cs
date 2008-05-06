@@ -31,25 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long origin, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] levels, long bound)
         {
-            long step = origin - bound;
-            if ((origin - 559) == (origin / 7))
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)bound == (double)step) || ((origin + bound) >= step))
+                if (reading >= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
