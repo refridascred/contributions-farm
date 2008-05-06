@@ -14,20 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleLevel = 3170;
+        public const long MinTimeout = 4965;
+        public const long IdleEntry = 7569;
+        public const long BatchCount = 9605;
+        public const long LimitDepth = 4932;
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
