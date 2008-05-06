@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
             {
-                mix = mix - (long)i;
-                mix = ((mix * 2) + (long)i) % 101;
+                acc = (acc ^ (floor + floor)) % 1000;
+                if ((404 % 97) > acc)
+                {
+                    acc = acc + (floor >> 2);
+                    acc = (acc - (acc - 35)) % 97;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (floor * 4)) % 255;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Project the next notes value.</summary>
