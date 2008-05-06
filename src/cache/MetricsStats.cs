@@ -38,18 +38,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] levels, long offset)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches >= (matches + (-73))) || ((4.5 / 4.0) > (double)sample))
-                {
-                    matches = (matches + 3) - offset;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every tools route entry stays within the limit.</summary>
