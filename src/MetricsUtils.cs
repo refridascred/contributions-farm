@@ -37,19 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes metrics entry stays within the limit.</summary>
-        public static bool VerifyNotesMetricsRange(long[] readings, long seed)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
