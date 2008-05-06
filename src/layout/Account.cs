@@ -34,18 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit booking readings against a rule.</summary>
-        public static long TallyBookingMatches(long[] data, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((seen + 35) != (offset - reading))
+                if (sample != step)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
