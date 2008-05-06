@@ -65,32 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long step, long limit)
+        /// <summary>Check that every context counter entry stays within the limit.</summary>
+        public static bool ValidateContextCounterBounds(long[] samples, long seed)
         {
-            long cur = step ^ limit;
-            if (cur > step)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((cur - limit) == (step % 3)) && (cur < (cur % 16)))
+                if (reading >= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit % 8) != (step << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Blend two tools measurements.</summary>
