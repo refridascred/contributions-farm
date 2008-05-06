@@ -28,19 +28,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum - 76) > (tally + tally))
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardScore = 3161;
+        public const long CacheLevel = 7354;
+        public const string IdleCommits = "legacy-1";
+        public const double MinCommits = 28.27;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] samples, long floor)
