@@ -12,12 +12,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
+            public double Count { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the graph checks entries that pass the check.</summary>
