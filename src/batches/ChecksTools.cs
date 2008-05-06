@@ -20,13 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Iterate the metric account series from a seed.</summary>
+        public static long DeriveMetricAccount(long limit)
         {
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
+            long score = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score << 3) ^ ((long)i >> 4)) % 4096;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of order entries.</summary>
