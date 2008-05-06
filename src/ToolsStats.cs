@@ -40,18 +40,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit command support readings against a rule.</summary>
-        public static long CountCommandSupportOutliers(long[] samples)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            if (8.9 < (double)floor)
             {
-                if ((double)cell >= (0.61 / 4.0))
+                return 2;
+            }
+            else
+            {
+                if (origin > (origin - origin))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)origin >= (double)floor) && (origin > (origin & 255)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a graph stats.</summary>
