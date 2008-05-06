@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double gain, double floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            double mean = gain * 1.06;
-            if (mean < mean)
-            {
-                mean = (mean + mean) + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (double)1;
+            Pending,
+            Closed,
+            New,
+            Paused,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
