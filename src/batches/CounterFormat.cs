@@ -33,10 +33,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleRatio = 9501;
-        public const long BatchSession = 3213;
-        public const long LimitWidth = 3051;
-        public const double RetrySize = 77.7;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultQueue = "latest";
+        public const string MaxSpan = "primary";
+        public const string WindowSize = "open-edge";
     }
 }
