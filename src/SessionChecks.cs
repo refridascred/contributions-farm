@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a window queue pair into a bucket.</summary>
-        public static long SortWindowQueue(long limit, long step)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            if ((step & 127) > (limit & 31))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(step < limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            New,
+            Failed,
+            Done,
+            Paused,
         }
 
         /// <summary>Fold a list of token readings.</summary>
