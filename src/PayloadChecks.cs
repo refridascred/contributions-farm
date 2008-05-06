@@ -36,19 +36,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] levels, long origin)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
