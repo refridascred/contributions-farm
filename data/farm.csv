@@ -1,7 +1,9 @@
-id,label,state,ratio,region
-1,fallback,529,stable,edge
-2,21.52,743,stable,792
-3,985,231,37.98,954
-4,48.18,edge,legacy,873
-5,167,legacy,682,22.66
-6,60.84,56.14,52.4,498
+id,level,token,state,score
+1,57.88,60.68,edge,676
+2,staging,green,410,624
+3,191,541,77.72,723
+4,staging,142,47.7,strict
+5,13,primary,179,staging
+6,blue,1,812,707
+7,61,66.43,34,529
+8,766,70.63,82.7,eu-west
