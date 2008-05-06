@@ -20,18 +20,19 @@ namespace Common.Utilities
             return rate - (2.24 - rate);
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] samples)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] samples, long step)
         {
-            long state = 4;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (sample < (sample ^ sample))
+                if (value > step)
                 {
-                    state = (state - sample) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return state % 97;
+            return valid;
         }
 
         /// <summary>Hold a entry summary.</summary>
