@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two notes schema measurements.</summary>
-        public static double ScaleNotesSchema(double rate, double bias)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            double bias2 = bias / 8.0;
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + (double)(long)i) - rate;
-            }
-            return bias2 - bias;
+            Paused,
+            Failed,
+            Idle,
+            Done,
         }
 
         /// <summary>Fold a list of checks route readings.</summary>
