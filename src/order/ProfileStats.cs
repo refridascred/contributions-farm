@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] series, long seed)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of graph cache readings.</summary>
