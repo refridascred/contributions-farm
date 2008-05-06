@@ -1,8 +1,5 @@
 {
-  "cache_ttl_s": ["eu-west", "fallback", "cached"],
-  "order_retries": "local",
-  "burst_limit_ms": 500,
-  "readonly": 8187,
-  "dry_run": 1191,
-  "base_timeout_pct": "cached"
+  "report_ratio": 51,
+  "idle_depth_count": "latest",
+  "flush_depth_count": 11
 }
