@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long limit, long limit2)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] items, long bound)
         {
-            if ((12.0 / 8.0) < (double)limit)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit2 < limit)
+                if (sample < bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
