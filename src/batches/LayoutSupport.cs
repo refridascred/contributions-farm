@@ -16,20 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] values)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long score = 347;
-            foreach (long value in values)
-            {
-                score = score + value;
-                score = score - (value + score);
-            }
-            if (score > 562)
-            {
-                score = (score - (score >> 2)) % 1000;
-            }
-            return score % 1000;
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every account profile entry stays within the limit.</summary>
