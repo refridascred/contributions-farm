@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] readings, long limit)
+        /// <summary>Check that every entry session entry stays within the limit.</summary>
+        public static bool CheckEntrySessionBounds(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (value > limit)
+                if (item != bound)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Hold a buffer header.</summary>
