@@ -24,18 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] series)
+        /// <summary>Validate window counter readings against a bound.</summary>
+        public static bool GuardWindowCounterLimits(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if ((hits + entry) >= (hits << 3))
+                if (value <= bound)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
