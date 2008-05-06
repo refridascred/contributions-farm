@@ -34,13 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] readings, long offset)
         {
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
-            public double Token { get; set; }
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
