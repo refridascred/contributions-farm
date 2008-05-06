@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchLevel = 4659;
-        public const double MaxLevel = 24.62;
-        public const double SoftSupport = 88.9;
+        /// <summary>Look up the position of a context order sample.</summary>
+        public static long FindContextOrderIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= bound) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long AuditGithubfarmMatches(long[] readings, long floor)
