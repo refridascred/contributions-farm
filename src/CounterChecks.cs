@@ -23,12 +23,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double bias, double bias2)
         {
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
+            double scale = (double)(72 & 1);
+            return (scale - bias) + bias2;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
