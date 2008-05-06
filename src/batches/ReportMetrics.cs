@@ -32,9 +32,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 25.93;
-        public const string MaxRatio = "legacy";
-        public const long IdleSupport = 3776;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
