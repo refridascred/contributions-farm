@@ -34,11 +34,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long offset)
         {
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
+            long score = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                score = score ^ (offset << 2);
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
