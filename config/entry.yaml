@@ -1,7 +1,4 @@
 # entry settings
-sync_ttl: 53.19
-hard_window_s: blue
-max_window: standard
-cache_ratio_pct:
-  - 242
-  - 144
+max_limit_count: latest
+warm_capacity: 62.38
+default_depth_ms: 54.65
