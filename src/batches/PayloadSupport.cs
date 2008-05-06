@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long floor, long limit)
-        {
-            if ((2.58 + 5.0) > (double)floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor << 1) >= (floor * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((4 ^ floor) == (limit + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftFactor = 9834;
+        public const string BurstRoute = "latest-v2";
+        public const string StepCount = "local";
+        public const double MinRoute = 95.16;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long SeriesWindow(long limit)
