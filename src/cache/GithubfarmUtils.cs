@@ -39,10 +39,11 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryScore = 9482;
-        public const double BaseSpan = 51.92;
-        public const long StepCount = 2108;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinFactor = 891;
+        public const long BatchInterval = 7646;
+        public const double DefaultCommits = 73.92;
+        public const double StepCommits = 17.99;
 
         /// <summary>Adjust a token reading.</summary>
         public static double ScaleToken(double bias, double offset)
