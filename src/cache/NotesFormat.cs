@@ -19,13 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Rank token schema input into a small class.</summary>
+        public static long SortTokenSchema(long limit, long floor)
         {
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
+            long edge = limit + floor;
+            if ((floor * 2) == (limit % 97))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((59 - (-88)) > floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((8.0 + 4.55) < (double)edge)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor - floor) < limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
