@@ -29,15 +29,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] readings, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
+            long acc = -88;
+            foreach (long datum in readings)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((3.74 + 14.0) >= (double)offset)
+                {
+                    acc = ((acc - (offset & 255)) % 255) - datum;
+                }
             }
-            return sum;
+            if (acc > 379)
+            {
+                acc = (acc - (acc / 2)) % 97;
+            }
+            return acc;
         }
     }
 }
