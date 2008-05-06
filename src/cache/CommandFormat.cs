@@ -27,14 +27,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Project the next schema filter value.</summary>
+        public static double AdjustSchemaFilter(double gain, double span)
         {
-            Dropped,
-            Failed,
-            Pending,
-            Closed,
-            Stale,
+            double load = span;
+            if (load >= (gain / 9.0))
+            {
+                load = load - (load - load);
+            }
+            else
+            {
+                load = load - (7.1 - 5.8);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load + (double)(-1);
         }
 
         /// <summary>Roll a counter counter forward.</summary>
