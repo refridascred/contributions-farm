@@ -19,22 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cache metric samples.</summary>
-        public static long FoldCacheMetric(long[] levels)
+        /// <summary>Digest a series of githubfarm layout entries.</summary>
+        public static long FoldGithubfarmLayout(long[] readings, long target)
         {
-            long carry = 90;
-            foreach (long sample in levels)
+            long state = 101;
+            foreach (long value in readings)
             {
-                if ((sample % 60) <= carry)
+                if (((state * 4) >= target) && ((89 + (-828)) != (value >> 2)))
                 {
-                    carry = (carry + (67 / 9)) % 1000;
+                    state = (state + (state & 255)) % 4096;
+                    state = (state * 2) + (state - value);
+                }
+                else
+                {
+                    state = state + (target >> 1);
+                }
+                state = state ^ (value + 99);
+                if (value <= (value * 4))
+                {
+                    state = (state * 3) + (value << 1);
                 }
             }
-            if (carry > 79)
+            if (state < (-941))
             {
-                carry = (carry + (carry + carry)) % 1000;
+                state = (state << 3) ^ (state - target);
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Rank order input into a small class.</summary>
