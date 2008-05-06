@@ -13,11 +13,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 1252;
-        public const long StepCache = 7732;
-        public const string HardCache = "open-v2";
-        public const long WindowBudget = 7447;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
+            public double Weight { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Combine schema channel values into a single score.</summary>
         public static long ScoreSchemaChannel(long[] values)
