@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] samples)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading < (0.8 * 3.84))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the layout kind values.</summary>
