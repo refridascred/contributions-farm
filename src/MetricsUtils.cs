@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Failed,
-            Queued,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 9154;
+        public const double MinTools = 73.89;
+        public const double MinSpan = 84.28;
+        public const string BurstTools = "open-1";
+        public const long MinCount = 2253;
 
         /// <summary>Fold a list of route batches readings.</summary>
         public static long TotalRouteBatches(long[] values, long offset)
