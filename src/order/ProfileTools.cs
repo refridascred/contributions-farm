@@ -15,12 +15,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 6361;
-        public const string BurstMetric = "strict-1";
-        public const long SoftTimeout = 3557;
-        public const string MaxMetric = "local";
-        public const long BatchInterval = 653;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] items, long offset)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long BucketChecks(long origin, long offset)
