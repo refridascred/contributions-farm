@@ -67,21 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            New,
+            Retry,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
