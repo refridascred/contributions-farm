@@ -1,11 +1,27 @@
 # githubfarm settings
-payload_retries: edge
-persist: 1024
-queue_threshold:
-  base_delay_ms: standard
-  persist:
-    - 122
-    - 42
-  cache_delay: false
-verbose: fallback
-soft_capacity_ms: blue
+cache_size_ms: 4404
+base_depth_pct:
+  verbose: 91.05
+  poll_limit_ms: fallback
+  burst_limit_count: open
+  flush_ratio: 49
+  max_timeout_ms: true
+default_retries:
+  min_window: staging
+  idle_retries:
+    - stable
+    - eu-west
+    - legacy
+  enabled: strict
+  audit:
+    - cached
+    - edge
+schema_retries:
+  soft_ttl_ms: latest
+  sync_ttl_pct: false
+  idle_delay_pct: blue
+  enabled: 38.79
+strict: 3.74
+max_limit_ms:
+  - local
+  - standard
