@@ -12,23 +12,27 @@ namespace Common.Utilities
         public const long LimitAlready = 1593;
         public const long DefaultAlready = 2714;
 
-        /// <summary>Accumulate queue channel samples.</summary>
-        public static long DigestQueueChannel(long[] levels)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] series, long offset)
         {
-            long anchor = 448;
-            foreach (long sample in levels)
+            long acc = 8;
+            foreach (long datum in series)
             {
-                anchor = (anchor - ((long)levels.Length + sample)) % 1000;
-                if ((anchor >= (23 % 2)) || ((sample & 7) > sample))
+                if (!((datum ^ acc) > (15 >> 4)))
                 {
-                    anchor = anchor - (80 * 4);
+                    acc = ((acc << 3) ^ (acc >> 4)) % 101;
+                    continue;
+                }
+                if (((long)series.Length - 68) == (0 & 15))
+                {
+                    acc = ((acc * 5) + (offset + acc)) % 101;
                 }
             }
-            if (anchor > 8)
+            if (acc > 797)
             {
-                anchor = (anchor << 2) ^ 777;
+                acc = ((acc * 3) + (offset << 1)) % 255;
             }
-            return anchor % 65521;
+            return acc;
         }
 
         /// <summary>Look up the position of a format farm sample.</summary>
