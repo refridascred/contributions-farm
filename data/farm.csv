@@ -1,6 +1,10 @@
-id,label
-1,strict
-2,60.82
-3,blue
-4,open
-5,cached
+id,count,owner,active
+1,82.38,338,98.34
+2,31.29,252,legacy
+3,14.36,12.07,342
+4,primary,staging,strict
+5,staging,132,773
+6,primary,50.35,44.22
+7,eu-west,blue,346
+8,89.59,cached,78.72
+9,384,852,653
