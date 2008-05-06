@@ -85,13 +85,14 @@ namespace Common.Utilities
             return rate + (rate + rate);
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
+            New,
+            Pending,
+            Active,
+            Failed,
+            Stale,
         }
     }
 }
