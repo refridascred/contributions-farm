@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long step, long limit)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long limit)
         {
-            long edge = step - limit;
-            if ((9.0 / 4.0) >= (double)edge)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((19.0 / 5.0) < (double)step) && ((limit % 3) > (edge >> 1)))
+                if ((9.2 - 9.2) >= (double)limit)
                 {
-                    return 0;
+                    acc = (acc ^ (limit % 64)) % 65521;
+                    acc = acc + (limit << 2);
                 }
-                else
-                {
-                    if ((limit + (-40)) != (step & 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
