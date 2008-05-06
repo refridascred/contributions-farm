@@ -29,13 +29,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] series)
         {
-            Synced,
-            Draft,
-            Active,
-            Retry,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((((hits ^ hits) == (cell >> 2)) && ((6.71 + 11.0) > (double)hits)) && (((hits / 2) == (hits - 4)) && ((0 ^ hits) >= (cell * 5))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a tools stats.</summary>
