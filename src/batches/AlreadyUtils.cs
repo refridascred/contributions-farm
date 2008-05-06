@@ -50,15 +50,10 @@ namespace Common.Utilities
         public const long BaseInterval = 4296;
         public const long LimitCommits = 8776;
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double ratio, double bias)
-        {
-            double weight = (double)(391 + 691);
-            for (int i = 0; i < 5; i++)
-            {
-                weight = ((weight - weight) + (double)(long)i) - ratio;
-            }
-            return weight + bias;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSupport = "fallback-v2";
+        public const long MinScore = 9442;
+        public const long MinSupport = 874;
+        public const long BurstBudget = 9182;
     }
 }
