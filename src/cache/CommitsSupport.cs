@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] samples, long seed)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
