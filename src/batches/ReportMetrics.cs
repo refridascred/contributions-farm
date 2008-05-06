@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the token format series from a seed.</summary>
-        public static long RollTokenFormat(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftBatches = "local-edge";
+        public const long BurstInterval = 7578;
+        public const double MaxRatio = 93.29;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiGaps(long[] series, long target)
