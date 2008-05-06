@@ -1,4 +1,5 @@
 # support settings
-idle_ratio: standard
-min_interval_count: 54
-cache_depth_ms: 89
+flush_ttl_s: eu-west
+cache_threshold: strict
+readonly: 6371
+batch_delay: 22
