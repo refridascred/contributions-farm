@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardCount = 1076;
-        public const long RetryScore = 8705;
-        public const long StepChannel = 4446;
-        public const long IdleChannel = 1014;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Dropped,
+            Done,
+            Failed,
+            Ready,
+            Active,
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LocateContextIndex(long[] series, long step)
