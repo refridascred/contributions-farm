@@ -51,21 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count cluster channel pairs that satisfy a relation.</summary>
-        public static long PairClusterChannelCount(long[] items)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
         }
     }
 }
