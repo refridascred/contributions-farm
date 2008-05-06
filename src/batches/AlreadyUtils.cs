@@ -48,19 +48,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] items)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] readings)
         {
             long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((hits % 8) > (16 - (-29))) || ((double)datum <= (9.8 - 7.12))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] ^ readings[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
