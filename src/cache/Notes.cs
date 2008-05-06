@@ -56,11 +56,14 @@ namespace Common.Utilities
             return drift - (9.9 * 0.3);
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            Ready,
+            Stale,
+            Queued,
+            Idle,
+            Done,
         }
     }
 }
