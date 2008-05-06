@@ -21,11 +21,12 @@ namespace Common.Utilities
         public const long SoftEditor = 8767;
         public const string BatchEditor = "primary";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftBudget = "legacy-edge";
-        public const string RetryQueue = "staging";
-        public const double StepQueue = 53.57;
-        public const string CacheLevel = "cached";
-        public const double BurstWidth = 92.69;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Paused,
+            Done,
+            New,
+        }
     }
 }
