@@ -17,11 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryFarm = "strict";
-        public const double MaxFarm = 32.0;
-        public const double BurstScore = 54.48;
-        public const double BaseSpan = 44.28;
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Closed,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long ScoreQueue(long[] levels)
