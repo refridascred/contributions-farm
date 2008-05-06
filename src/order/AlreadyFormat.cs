@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] series, long limit)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((limit + 6) < (limit % 12)))
+                if ((items[i] == offset) && ((items[i] % 2) == 0))
                 {
-                    seen = (seen + 2) + datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
