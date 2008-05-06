@@ -40,9 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinSize = 8927;
-        public const long MinBudget = 366;
-        public const string StepScore = "strict-1";
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
