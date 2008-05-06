@@ -33,14 +33,12 @@ namespace Common.Utilities
             return drift + 2.18;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Synced,
-            Ready,
-            Done,
-            Queued,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseWidth = 4.89;
+        public const string BaseStats = "local-edge";
+        public const long MinStats = 2195;
+        public const double StepStats = 0.1;
+        public const long IdleWidth = 5075;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long StepBuffer(long seed)
