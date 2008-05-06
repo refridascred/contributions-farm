@@ -48,12 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] items, long target)
         {
-            Ready,
-            Synced,
-            Paused,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (1.0 <= (double)target)
+                {
+                    hits = (hits + 1) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
