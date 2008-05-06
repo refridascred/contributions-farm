@@ -12,25 +12,12 @@ namespace Common.Utilities
         public const long BurstCount = 7881;
         public const string SoftRecord = "cached-v2";
 
-        /// <summary>Rank contributi account input into a small class.</summary>
-        public static long RankContributiAccount(long bound, long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long slot = bound ^ step;
-            if (!(slot > (step >> 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step - step) == (348 / 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Dropped,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
