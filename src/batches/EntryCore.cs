@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] series, long origin)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long carry = 3;
-            foreach (long datum in series)
-            {
-                carry = (carry ^ (datum & 63)) + origin;
-            }
-            if (carry > 3)
-            {
-                carry = ((carry * 3) + carry) % 4096;
-            }
-            return carry;
+            Done,
+            Idle,
+            Pending,
+            Draft,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
