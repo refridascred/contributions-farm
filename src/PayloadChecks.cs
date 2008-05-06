@@ -73,18 +73,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] levels, long limit)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((-732) >> 1) == (seen / 5)))
-                {
-                    seen = ((seen + 1) ^ sample) + limit;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
