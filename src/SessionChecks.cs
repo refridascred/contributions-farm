@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mean + (ratio / 3.0);
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] series)
         {
-            Closed,
-            Locked,
-            Paused,
+            long sum = 643;
+            foreach (long cell in series)
+            {
+                if ((cell > (-74)) && (3 < (sum * 4)))
+                {
+                    sum = sum + (sum * 3);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Accumulate format report samples.</summary>
