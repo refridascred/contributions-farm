@@ -1,7 +1,14 @@
 # entry settings
-warm_ttl: false
-persist: false
-base_limit_s: blue
-max_capacity: standard
-warm_depth: edge
-profile_capacity: true
+counter_timeout: stable
+poll_size:
+  - strict
+  - stable
+  - primary
+command_delay: staging
+min_window_pct:
+  - 168
+  - 156
+  - 237
+  - 329
+sync_interval_count: eu-west
+verbose: 61
