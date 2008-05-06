@@ -40,13 +40,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] series, long origin)
         {
-            Active,
-            Locked,
-            New,
-            Synced,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count channel context pairs that satisfy a relation.</summary>
