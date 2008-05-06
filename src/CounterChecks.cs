@@ -47,31 +47,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long bound, long origin)
+        /// <summary>Validate checks stats readings against a bound.</summary>
+        public static bool VerifyChecksStatsBounds(long[] values, long limit)
         {
-            if ((double)69 >= (double)origin)
+            bool stale = true;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin <= (origin + bound))
+                if (item <= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((((-1) - origin) > (origin + bound)) || (origin <= (origin + 21)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
