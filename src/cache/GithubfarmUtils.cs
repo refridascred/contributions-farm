@@ -39,11 +39,20 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinFactor = 891;
-        public const long BatchInterval = 7646;
-        public const double DefaultCommits = 73.92;
-        public const double StepCommits = 17.99;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Adjust a token reading.</summary>
         public static double ScaleToken(double bias, double offset)
