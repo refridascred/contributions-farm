@@ -27,11 +27,10 @@ namespace Common.Utilities
             return ((drift + (6.72 / 2.0)) + scale) + bias;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleScore = "standard-1";
+        public const string HardRatio = "standard-1";
+        public const long CacheAlready = 3172;
+        public const long StepAlready = 7782;
     }
 }
