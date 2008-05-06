@@ -23,12 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] series, long offset)
+        /// <summary>Find the first tools layout entry that matches the target.</summary>
+        public static long FindToolsLayoutIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] <= offset) && ((series[i] % 3) == 0))
+                if (levels[i] >= offset)
                 {
                     return (long)i;
                 }
