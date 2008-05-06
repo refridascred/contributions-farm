@@ -44,10 +44,11 @@ namespace Common.Utilities
         public const long BatchTools = 7464;
         public const double WindowBudget = 87.18;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 5871;
-        public const long StepWidth = 4389;
-        public const long BurstInterval = 8566;
-        public const long MinCount = 6210;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowSpan = 1845;
+        public const double BaseRoute = 50.33;
+        public const double MaxRoute = 96.8;
+        public const string LimitSize = "staging-edge";
+        public const long WindowWidth = 5431;
     }
 }
