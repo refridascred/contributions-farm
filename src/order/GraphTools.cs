@@ -51,15 +51,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two entry layout measurements.</summary>
-        public static double BlendEntryLayout(double scale, double offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] data, long seed)
         {
-            double weight = (double)((-17) + 2);
-            if (weight >= weight)
+            long carry = 7;
+            foreach (long datum in data)
             {
-                weight = (weight + weight) - scale;
+                if ((seed & 127) <= (datum + seed))
+                {
+                    carry = ((carry * 3) + (carry << 3)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ seed) % 97;
+                }
             }
-            return weight - offset;
+            return carry;
         }
     }
 }
