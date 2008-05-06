@@ -1,5 +1,7 @@
 {
-  "idle_depth": 1024,
-  "sync_depth_s": 3079,
-  "idle_threshold_pct": "primary"
+  "metrics_retries": 46.21,
+  "min_depth_count": 31.84,
+  "enabled": true,
+  "filter_delay": "standard",
+  "warm_interval_s": 33.35
 }
