@@ -32,12 +32,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Label { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
