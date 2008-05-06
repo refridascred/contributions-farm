@@ -47,19 +47,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two cluster support measurements.</summary>
-        public static double ScaleClusterSupport(double weight, double bias)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] samples)
         {
-            double scale = bias;
-            if (scale > bias)
+            long state = 3;
+            foreach (long value in samples)
             {
-                scale = (scale + scale) + weight;
+                if ((state * 2) < (value * 2))
+                {
+                    state = ((state << 3) ^ value) % 4096;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (double)5) - (double)(long)i;
-            }
-            return scale + (2.0 - 17.0);
+            return state;
         }
     }
 }
