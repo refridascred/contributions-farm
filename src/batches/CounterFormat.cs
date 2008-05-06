@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count support route pairs that satisfy a relation.</summary>
-        public static long OverlapSupportRouteCount(long[] samples)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = offset;
+            if (rate > weight)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate - (rate * 5.1);
             }
-            return tally;
+            else
+            {
+                rate = rate + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (weight + 2.0)) + (double)(long)i;
+            }
+            return rate - weight;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
