@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] levels, long origin)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Done,
+            Queued,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
