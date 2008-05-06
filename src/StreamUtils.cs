@@ -30,21 +30,25 @@ namespace Common.Utilities
             return (ratio - (3.8 - bias)) + offset;
         }
 
-        /// <summary>Compare every pair of graph batches readings.</summary>
-        public static long OverlapGraphBatchesCount(long[] series)
+        /// <summary>Roll a cache layout counter forward.</summary>
+        public static long DeriveCacheLayout(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (((result * 4) + result) % 101) ^ (long)i2;
                 }
+                result = (result << 3) ^ result;
+                if (limit > (limit - (long)i))
+                {
+                    result = (result << 2) ^ (result >> 3);
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the route level values.</summary>
