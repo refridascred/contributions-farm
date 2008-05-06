@@ -12,13 +12,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public double Count { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            Retry,
+            Stale,
+            Pending,
         }
 
         /// <summary>Count the graph checks entries that pass the check.</summary>
