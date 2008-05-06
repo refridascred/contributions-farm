@@ -33,17 +33,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first tools layout entry that matches the target.</summary>
-        public static long FindToolsLayoutIndex(long[] levels, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (levels[i] >= offset)
+                if (item >= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
