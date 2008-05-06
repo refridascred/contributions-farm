@@ -1,8 +1,5 @@
 {
-  "batch_delay_pct": 57,
-  "soft_threshold": ["latest", "stable"],
-  "counter_capacity": "edge",
-  "strict": true,
-  "entry_ratio": "legacy",
-  "route_timeout": "stable"
+  "flush_timeout": ["staging", "strict", "standard", "green"],
+  "editor_limit": "strict",
+  "commits_interval": false
 }
