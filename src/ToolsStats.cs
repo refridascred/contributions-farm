@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a tools command reading by value.</summary>
-        public static long LookupToolsCommandIndex(long[] series, long target)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] series, long bound)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] < target)
+                if (series[i] == bound)
                 {
                     return (long)i;
                 }
