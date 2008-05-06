@@ -30,10 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstToken = 60.84;
-        public const long MaxToken = 8329;
-        public const double MinTimeout = 74.9;
-        public const long LimitScore = 9213;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count * 2) < (39 + floor))
+                {
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
