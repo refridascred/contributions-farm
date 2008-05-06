@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] values)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long result = 23;
-            foreach (long value in values)
-            {
-                if ((result % 64) > (3 + result))
-                {
-                    result = result ^ value;
-                }
-                if (((value + result) > 4) || ((result - 0) >= (value / 4)))
-                {
-                    break;
-                }
-            }
-            if (result > 873)
-            {
-                result = (result - (result + result)) % 4096;
-            }
-            return result;
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
