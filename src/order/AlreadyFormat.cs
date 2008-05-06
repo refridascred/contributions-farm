@@ -37,18 +37,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] series)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!!((double)matches <= (0.58 / 4.0)))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a notes entry.</summary>
