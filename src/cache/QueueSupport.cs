@@ -13,14 +13,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Ready,
-            Retry,
+            Dropped,
             Synced,
+            Paused,
             Done,
-            Idle,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
