@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const double HardLayout = 66.29;
         public const long CacheLayout = 9247;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Queued,
+            Paused,
         }
 
         /// <summary>Describe the window level values.</summary>
