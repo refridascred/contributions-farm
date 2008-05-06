@@ -67,15 +67,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Validate payload stream readings against a bound.</summary>
+        public static bool GuardPayloadStreamLimits(long[] items, long floor)
         {
-            long state = 848;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                state = (((state * 4) + (state / 5)) % 65521) - datum;
+                if (reading != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
     }
 }
