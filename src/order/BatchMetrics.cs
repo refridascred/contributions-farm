@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit batches stream readings against a rule.</summary>
-        public static long MeasureBatchesStreamOutliers(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (!((332 < (long)series.Length) && ((seen / 4) >= (cell * 4))))
-                {
-                    seen = (seen + 3) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultRatio = 3643;
+        public const long MinCommits = 3389;
+        public const long MaxDepth = 5578;
+        public const long SoftRatio = 3497;
+        public const long IdleCommits = 4074;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
