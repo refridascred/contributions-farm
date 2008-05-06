@@ -80,18 +80,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the cache stats entries that pass the check.</summary>
-        public static long AuditCacheStatsOutliers(long[] series)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally != (7.9 - 8.2))
+                if (data[i] < seed)
                 {
-                    tally = (tally + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
