@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long origin)
+        /// <summary>Blend two checks already measurements.</summary>
+        public static double AdjustChecksAlready(double rate, double span)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            double load = 5.1;
+            if (load >= 2.13)
             {
-                if (19.0 < (double)sum)
-                {
-                    sum = sum - (sum + origin);
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                load = (load - (load + load)) + span;
             }
-            return sum;
+            return load - (rate - 18.0);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
