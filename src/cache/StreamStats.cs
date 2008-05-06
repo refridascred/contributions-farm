@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long limit, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] samples, long step)
         {
-            if ((double)bound <= (4.2 * 20.0))
+            long mark = 90;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound * 2) <= (limit * 2))
+                if (8.0 < (double)item)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    mark = (mark + (item >> 1)) - step;
                 }
             }
+            return mark;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
