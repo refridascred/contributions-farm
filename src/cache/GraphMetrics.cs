@@ -35,19 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] series, long step)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Count { get; set; }
+            public double Rank { get; set; }
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
