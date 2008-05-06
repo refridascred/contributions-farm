@@ -37,20 +37,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] series)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                result = (result - ((long)i << 3)) % 101;
-                for (int i2 = 0; i2 < 7; i2++)
+                if (!!((double)matches <= (0.58 / 4.0)))
                 {
-                    result = (((result << 2) ^ (bound >> 4)) % 1000) + (long)i2;
+                    matches = (matches + 3) + value;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
