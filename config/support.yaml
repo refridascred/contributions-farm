@@ -1,5 +1,13 @@
 # support settings
-warm_depth_s: latest
-default_window: 55.75
-poll_timeout: 32.7
-hard_capacity: green
+audit: local
+max_capacity:
+  default_capacity_s: 94.66
+  token_ratio:
+    batch_ttl: 90
+    layout_ttl: 71.97
+    flush_interval_count: 30
+    base_depth: 250
+  enabled: open
+  idle_ttl_pct: blue
+  sync_interval: 8
+batch_delay_pct: 3800
