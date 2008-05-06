@@ -44,13 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Roll a cache entry counter forward.</summary>
+        public static long SeriesCacheEntry(long limit)
         {
-            Failed,
-            Draft,
-            Idle,
-            Closed,
+            long result = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
