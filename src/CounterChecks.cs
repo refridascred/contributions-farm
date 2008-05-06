@@ -81,17 +81,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] items, long seed)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long floor, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long gap = floor + bound;
+            if (((floor >> 3) > (bound + bound)) || ((3.4 * 5.5) > (double)gap))
             {
-                if ((items[i] > seed) && ((items[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if (!((floor * 5) > (140 - 3)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor + 4) <= (gap - floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
