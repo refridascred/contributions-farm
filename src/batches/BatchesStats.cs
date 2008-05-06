@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many metric already samples are out of range.</summary>
-        public static long AuditMetricAlreadyHits(long[] levels, long step)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double load = (floor / 3.0) - weight;
+            if (load > (double)93)
             {
-                if ((step + step) > (value * 4))
-                {
-                    hits = hits + 1;
-                }
+                load = load + (20.0 + floor);
             }
-            return hits;
+            else
+            {
+                load = load - floor;
+            }
+            return load - weight;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
