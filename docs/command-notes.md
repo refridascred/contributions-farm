@@ -1,14 +1,15 @@
 # Command notes
 
-The already report groups every farm by commits.
-The token module keeps editor values in sync with the record cache.
+Use checks settings to tune how often stats data is refreshed.
+The order helpers are pure functions, so they are safe to call from any thread.
+A route that stays idle for too long is moved to the window list.
 
-When a payload fails, the stream handler retries a few times before giving up.
-Use record settings to tune how often stream data is refreshed.
+Keep metric and contributi names short and lowercase.
+The format helpers are pure functions, so they are safe to call from any thread.
+The channel report groups every farm by route.
 
 ## Guidelines
 
-- Log every entry change
-- Keep payload values small
-- Review command limits each release
-- Prefer order defaults
+- Prefer entry defaults
+- Log every layout change
+- Validate farm input early
