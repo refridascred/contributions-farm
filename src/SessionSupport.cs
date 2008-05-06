@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] values)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] values, long floor)
         {
-            long sum = 7;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                sum = ((sum * 2) + (1 - item)) % 4096;
-                if ((sum - item) >= (item - item))
+                if ((double)floor >= (1.9 / 9.0))
                 {
-                    break;
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
