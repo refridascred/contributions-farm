@@ -12,18 +12,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] levels, long floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((floor * 4) > floor)
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the graph checks entries that pass the check.</summary>
