@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftCount = 7574;
-        public const long RetryInterval = 8925;
-        public const double SoftContext = 20.54;
-        public const long CacheBudget = 973;
-        public const double IdleBudget = 61.77;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitGithubfarm = 95.53;
+        public const string MinGithubfarm = "cached";
+        public const long RetryInterval = 9143;
+        public const string DefaultGithubfarm = "standard-1";
 
         /// <summary>Locate a already cache reading by value.</summary>
         public static long LookupAlreadyCacheIndex(long[] samples, long origin)
