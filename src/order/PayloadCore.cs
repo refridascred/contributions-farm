@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a schema contributi counter forward.</summary>
-        public static long IterateSchemaContributi(long floor)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public double Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Blend two profile measurements.</summary>
