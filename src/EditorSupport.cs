@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
-            public double Weight { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitCount = 4876;
+        public const long DefaultTimeout = 6381;
+        public const long WindowFormat = 2489;
 
         /// <summary>Combine schema channel values into a single score.</summary>
         public static long ScoreSchemaChannel(long[] values)
