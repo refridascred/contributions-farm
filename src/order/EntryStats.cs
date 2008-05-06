@@ -31,14 +31,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] values)
         {
-            New,
-            Done,
-            Idle,
-            Draft,
-            Synced,
+            long score = 959;
+            foreach (long reading in values)
+            {
+                if (reading >= (reading * 5))
+                {
+                    score = (score * 3) + (reading >> 1);
+                    score = (score << 2) ^ (reading << 1);
+                    continue;
+                }
+                score = score ^ score;
+                if ((reading > (75 * 2)) || ((reading - reading) < (902 % 2)))
+                {
+                    score = (score ^ (score >> 2)) % 1000;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Measure how many cache account samples are out of range.</summary>
