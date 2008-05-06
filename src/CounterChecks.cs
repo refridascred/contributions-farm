@@ -32,15 +32,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] values, long limit)
+        /// <summary>Find the first notes farm entry that matches the target.</summary>
+        public static long LookupNotesFarmIndex(long[] levels, long step)
         {
-            long mark = 859;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((((mark << 2) ^ mark) % 97) - datum) - limit;
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Validate checks stats readings against a bound.</summary>
