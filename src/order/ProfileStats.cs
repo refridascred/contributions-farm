@@ -24,18 +24,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] readings, long bound)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long anchor = 0;
-            foreach (long value in readings)
-            {
-                if (8 > value)
-                {
-                    anchor = (((anchor << 3) ^ (value - 84)) % 101) + bound;
-                }
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
