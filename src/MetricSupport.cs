@@ -15,25 +15,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a metrics filter value against two limits.</summary>
-        public static long BucketMetricsFilter(long step, long target)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double rate, double bias)
         {
-            long prev = step ^ target;
-            if ((double)prev == (8.8 / 3.0))
+            double rate2 = rate * 1.0;
+            if (rate2 > (double)9)
             {
-                return 0;
+                rate2 = rate2 + rate;
             }
             else
             {
-                if ((75 - 194) <= (prev + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
+                rate2 = rate2 + (double)6;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 + bias) + (double)(long)i;
+            }
+            return rate2 + 3.0;
         }
 
         /// <summary>Describe the stream status values.</summary>
