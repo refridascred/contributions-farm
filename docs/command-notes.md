@@ -1,16 +1,14 @@
 # Command notes
 
-The cache module keeps farm values in sync with the token cache.
-A command that stays idle for too long is moved to the window list.
-Keep checks and route names short and lowercase.
+Each schema is validated before it reaches the notes queue.
+Keep window and layout names short and lowercase.
 
-Defaults for already live in the config folder and can be overridden per environment.
-Keep stats and record names short and lowercase.
-A checks that stays idle for too long is moved to the channel list.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The channel module keeps route values in sync with the tools cache.
 
 ## Guidelines
 
-- Document new layout fields
-- Keep session values small
-- Prefer report defaults
-- Log every session change
+- Validate graph input early
+- Log every farm change
+- Review batch limits each release
+- Prefer context defaults
