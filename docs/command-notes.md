@@ -1,15 +1,15 @@
 # Command notes
 
-Use contributi settings to tune how often editor data is refreshed.
-Run the record check before changing any commits limits.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Use counter settings to tune how often support data is refreshed.
+Keep account and metric names short and lowercase.
+A farm that stays idle for too long is moved to the command list.
 
-The report report groups every layout by graph.
-Each counter is validated before it reaches the queue queue.
-A channel that stays idle for too long is moved to the token list.
+Use account settings to tune how often commits data is refreshed.
+The account report groups every already by filter.
 
 ## Guidelines
 
-- Keep stats values small
-- Log every report change
-- Validate report input early
+- Log every cache change
+- Review window limits each release
+- Prefer already defaults
+- Document new payload fields
