@@ -77,19 +77,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] values, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] values, long target)
         {
-            bool found = true;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (sample < target)
+                if (item != target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
