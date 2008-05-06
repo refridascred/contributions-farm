@@ -1,4 +1,4 @@
 # entry settings
-poll_size: strict
-sync_depth: 8383
-min_depth_ms: stable
+warm_interval: 50.77
+dry_run: 60
+max_delay_ms: false
