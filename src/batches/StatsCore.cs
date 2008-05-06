@@ -61,13 +61,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
+            Done,
+            Queued,
+            Active,
+            Ready,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
