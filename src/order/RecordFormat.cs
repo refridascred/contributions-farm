@@ -54,14 +54,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Retry,
-            Locked,
-            Done,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitWidth = 68.26;
+        public const long DefaultBatches = 7265;
+        public const long WindowBatches = 8975;
+        public const long IdleWidth = 3433;
     }
 }
