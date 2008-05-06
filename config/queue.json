@@ -1,8 +1,7 @@
 {
-  "record_retries": 6611,
-  "dry_run": 3301,
-  "base_depth_count": 100,
-  "retry_capacity_count": 41.7,
-  "persist": false,
-  "order_ttl": 35.98
+  "batch_capacity": false,
+  "base_size": true,
+  "entry_retries": "green",
+  "max_retries_ms": [44, 493, 111],
+  "max_delay": "standard"
 }
