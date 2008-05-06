@@ -20,16 +20,24 @@ namespace Common.Utilities
         public const long IdleScore = 4852;
         public const long WindowFactor = 2406;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long offset)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long origin, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
+            if ((0.7 > (double)origin) && ((origin & 127) <= (offset >> 1)))
             {
-                anchor = anchor ^ (offset + 92);
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (origin <= (offset - (-783)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
