@@ -1,5 +1,12 @@
 # support settings
-base_threshold_pct: green
-base_limit_pct: stable
-payload_retries: true
-warm_depth_count: false
+retry_size: eu-west
+idle_capacity: 47
+session_window: blue
+profile_capacity: 1057
+tools_size:
+  batch_capacity_s: 43
+  poll_interval:
+    queue_window: 1024
+    burst_window: 500
+    hard_retries_ms: true
+  dry_run: true
