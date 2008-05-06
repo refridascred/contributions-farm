@@ -23,11 +23,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double bias, double bias2)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            double scale = (double)(72 & 1);
-            return (scale - bias) + bias2;
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Combine layout values into a single score.</summary>
