@@ -36,18 +36,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] samples, long step)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long floor, long floor2)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            if ((456 + 62) < floor2)
             {
-                if ((double)step > (3.8 / 5.0))
+                return 4;
+            }
+            else
+            {
+                if ((15.0 / 4.0) != (double)floor)
                 {
-                    tally = (tally + 2) + entry;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the commits notes entries that pass the check.</summary>
