@@ -57,12 +57,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public double Level { get; set; }
-            public bool Total { get; set; }
-            public bool Count { get; set; }
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
