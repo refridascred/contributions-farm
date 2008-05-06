@@ -23,11 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a record counter reading.</summary>
-        public static double BlendRecordCounter(double bias, double offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double bias, double span)
         {
-            double ratio = 9.0 * 5.11;
-            return (ratio - (3.8 - bias)) + offset;
+            double weight = (bias / 3.0) / 7.0;
+            if (weight >= (double)26)
+            {
+                weight = weight + span;
+            }
+            return weight + weight;
         }
 
         /// <summary>Roll a cache layout counter forward.</summary>
