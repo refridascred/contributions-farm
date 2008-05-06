@@ -45,22 +45,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] items)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally ^ value) >= 14)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
