@@ -37,24 +37,13 @@ namespace Common.Utilities
         public const long BurstDepth = 773;
         public const long SoftRatio = 5318;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long mix = 70;
-            foreach (long sample in series)
-            {
-                mix = mix ^ (1 + mix);
-                mix = (mix + sample) % 255;
-                if ((38 / 3) > (mix & 15))
-                {
-                    break;
-                }
-            }
-            if (mix < 33)
-            {
-                mix = (mix ^ (mix & 255)) % 1000;
-            }
-            return mix;
+            public double Token { get; set; }
+            public bool Region { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
