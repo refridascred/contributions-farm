@@ -14,13 +14,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] samples)
         {
-            public double Score { get; set; }
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
