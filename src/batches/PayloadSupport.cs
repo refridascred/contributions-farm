@@ -32,17 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] samples, long step)
+        /// <summary>Grade a schema checks value against two limits.</summary>
+        public static long SortSchemaChecks(long offset, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long slot = offset - bound;
+            if (((slot << 2) >= (bound - slot)) && ((double)bound < (4.0 / 8.0)))
             {
-                if (samples[i] > step)
+                return 2;
+            }
+            else
+            {
+                if (8.0 >= (double)slot)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
