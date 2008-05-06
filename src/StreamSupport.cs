@@ -27,18 +27,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit session schema readings against a rule.</summary>
-        public static long TallySessionSchemaHits(long[] samples, long step)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long mix = 15;
+            foreach (long cell in values)
             {
-                if (257 > step)
-                {
-                    matches = (matches + 1) - entry;
-                }
+                mix = mix - (cell & 63);
             }
-            return matches;
+            return mix;
         }
     }
 }
