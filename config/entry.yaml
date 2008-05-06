@@ -1,6 +1,12 @@
 # entry settings
-compress: 3511
-soft_ttl_ms: standard
-readonly: 8237
-hard_interval_count: false
-flush_interval_count: 7425
+default_threshold: 66.03
+base_interval_ms: 1575
+burst_ttl_pct:
+  tools_ttl: 500
+  tools_interval:
+    - 23
+    - 160
+  enabled: 45.76
+  default_limit_pct: 61
+  burst_limit_s: open
+  githubfarm_depth: green
