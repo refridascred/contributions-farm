@@ -14,11 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double gain, double span)
+        /// <summary>Count editor session pairs that satisfy a relation.</summary>
+        public static long CompareEditorSessionCount(long[] series)
         {
-            double weight = gain;
-            return (weight - gain) + span;
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
