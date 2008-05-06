@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit stats contributi readings against a rule.</summary>
-        public static long AuditStatsContributiMatches(long[] values, long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((3.65 * 12.0) <= (double)limit)
+                if (datum > bound)
                 {
-                    count = (count + 3) - item;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
