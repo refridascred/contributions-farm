@@ -85,13 +85,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] items, long seed)
         {
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
