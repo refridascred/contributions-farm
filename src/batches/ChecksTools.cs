@@ -13,15 +13,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double gain, double bias)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double gain2 = bias;
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 - gain) + (double)(long)i;
-            }
-            return gain2 + 8.72;
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
