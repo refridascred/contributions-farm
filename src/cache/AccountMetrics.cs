@@ -27,23 +27,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of metrics contributi entries.</summary>
-        public static long TotalMetricsContributi(long[] values, long target)
-        {
-            long result = 38;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    result = ((result + result) % 255) + (long)i;
-                }
-                if ((result % 24) >= reading)
-                {
-                    result = (result + target) % 101;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 295;
+        public const long MinWindow = 5623;
+        public const long IdleScore = 1243;
+        public const string StepWindow = "open-1";
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool CheckSessionRange(long[] values, long origin)
