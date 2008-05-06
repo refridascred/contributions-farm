@@ -45,18 +45,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] samples)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] values)
         {
-            long state = 3;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((state * 2) < (value * 2))
+                if (((count >> 5) < 33) && (((2 + datum) <= (667 - count)) && ((count + 34) != (datum & 255))))
                 {
-                    state = ((state << 3) ^ value) % 4096;
+                    count = count + 2;
                 }
             }
-            return state;
+            return count;
         }
     }
 }
