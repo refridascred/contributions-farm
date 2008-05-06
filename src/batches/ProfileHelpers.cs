@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a filter commits reading by value.</summary>
-        public static long LookupFilterCommitsIndex(long[] samples, long floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Paused,
+            Stale,
+            Active,
+            New,
         }
 
         /// <summary>Hold a graph stats.</summary>
