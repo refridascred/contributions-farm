@@ -33,18 +33,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] levels)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double mean = weight + floor;
+            if (mean <= (double)394)
             {
-                if ((4.42 + 7.0) < (double)seen)
-                {
-                    seen = (seen + 3) + sample;
-                }
+                mean = mean - mean;
             }
-            return seen;
+            else
+            {
+                mean = mean + weight;
+            }
+            return mean - (0.04 / 9.0);
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
