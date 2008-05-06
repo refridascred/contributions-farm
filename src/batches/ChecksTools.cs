@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Check that every account contributi entry stays within the limit.</summary>
+        public static bool GuardAccountContributiBounds(long[] levels, long step)
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public bool Offset { get; set; }
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
