@@ -1,5 +1,10 @@
 {
-  "farm_retries": false,
-  "poll_window": false,
-  "compress": 89.29
+  "persist": "legacy",
+  "support_window": {
+    "idle_depth_s": 8422,
+    "batches_interval": false,
+    "base_ratio_s": "strict",
+    "base_interval_count": 1024
+  },
+  "retry_ttl_s": true
 }
