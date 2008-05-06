@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=252
+CHANNEL_LIMIT=119
 log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-for item in eu-west legacy open latest; do
+for item in latest legacy open eu-west; do
     log "checking ${item}"
 done
