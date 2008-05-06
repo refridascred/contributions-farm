@@ -40,11 +40,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] samples, long target)
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            long sum = -346;
+            foreach (long entry in samples)
+            {
+                if ((entry >> 1) == (entry + entry))
+                {
+                    sum = ((sum << 3) ^ (entry >> 5)) % 101;
+                }
+                if ((82 * 3) == (long)samples.Length)
+                {
+                    break;
+                }
+            }
+            if (sum > 5)
+            {
+                sum = (sum ^ (sum + target)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
