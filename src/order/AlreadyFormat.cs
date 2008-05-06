@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] items, long offset)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double scale, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((items[i] == offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (20.0 + scale)) + (double)(long)i;
             }
-            return -1;
+            return ratio + floor;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
