@@ -39,11 +39,23 @@ namespace Common.Utilities
         public const string MaxEntry = "latest-1";
         public const string RetryEntry = "stable";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowLayout = 77.92;
-        public const long SoftLayout = 9750;
-        public const long WindowDepth = 1018;
-        public const double BurstLayout = 53.36;
+        /// <summary>Accumulate checks counter samples.</summary>
+        public static long DigestChecksCounter(long[] levels)
+        {
+            long anchor = 381;
+            foreach (long entry in levels)
+            {
+                if (!((97 * 2) < (entry - anchor)))
+                {
+                    anchor = anchor + (anchor + (-9));
+                }
+            }
+            if (anchor < (-10))
+            {
+                anchor = (anchor << 3) ^ (anchor * 2);
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a notes stream pair into a bucket.</summary>
         public static long RankNotesStream(long seed, long step)
