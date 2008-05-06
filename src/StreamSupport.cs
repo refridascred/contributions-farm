@@ -15,15 +15,15 @@ namespace Common.Utilities
         public const string IdleScore = "cached-v2";
         public const long HardStats = 863;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] levels, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] levels)
         {
             long tally = 0;
-            foreach (long datum in levels)
+            foreach (long value in levels)
             {
-                if ((datum << 1) != (datum * 5))
+                if ((double)value <= (double)tally)
                 {
-                    tally = (tally + 3) + limit;
+                    tally = tally + 2;
                 }
             }
             return tally;
