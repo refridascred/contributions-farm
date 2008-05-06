@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of record stats readings.</summary>
-        public static long WeighRecordStats(long[] samples)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long origin, long target)
         {
-            long carry = 14;
-            foreach (long reading in samples)
+            if (!((1 + origin) < (origin + target)))
             {
-                if ((long)samples.Length <= (carry / 6))
+                return 4;
+            }
+            else
+            {
+                if (27 > (target ^ target))
                 {
-                    carry = (((carry * 4) + 43) % 101) - reading;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return carry % 1000;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
