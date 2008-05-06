@@ -25,10 +25,25 @@ namespace Common.Utilities
         public const long HardWidth = 461;
         public const long MaxCommits = 5071;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleScore = 5947;
-        public const string RetrySize = "strict-edge";
-        public const long MinCount = 2953;
-        public const long HardStream = 5839;
+        /// <summary>Classify a metrics format pair into a bucket.</summary>
+        public static long ClassifyMetricsFormat(long seed, long origin)
+        {
+            long gap = seed + origin;
+            if (gap >= (gap % 100))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((-8) >= (origin + gap)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
