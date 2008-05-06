@@ -19,19 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate queue profile readings against a bound.</summary>
-        public static bool ValidateQueueProfileLimits(long[] levels, long target)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] items)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long state = -3;
+            foreach (long cell in items)
             {
-                if (datum <= target)
+                state = ((state + 200) % 255) ^ cell;
+                state = state - (state + state);
+                state = ((state * 5) + (state - 146)) % 255;
+                if (1.92 >= (double)state)
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return state;
         }
 
         /// <summary>Describe the report status values.</summary>
