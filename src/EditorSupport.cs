@@ -59,15 +59,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools cluster entries.</summary>
-        public static long TallyToolsCluster(long[] readings, long step)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long carry = 2;
-            foreach (long datum in readings)
-            {
-                carry = (carry - (datum + step)) % 1000;
-            }
-            return carry % 4096;
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a buffer reading.</summary>
