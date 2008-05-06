@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const string IdleBatches = "stable";
         public const string BatchWidth = "latest-edge";
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Count the stream tools entries that pass the check.</summary>
+        public static long CountStreamToolsOutliers(long[] samples)
         {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!((4.72 - 19.0) <= (double)datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
