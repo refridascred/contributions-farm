@@ -29,10 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstSize = 526;
-        public const long LimitSize = 8423;
-        public const double MinSize = 23.36;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 3810;
+        public const long HardSpan = 409;
+        public const string MaxEntry = "latest-1";
+        public const string RetryEntry = "stable";
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long OverlapFilterCount(long[] samples)
