@@ -57,11 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Adjust a checks profile reading.</summary>
+        public static double ScaleChecksProfile(double rate, double bias)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            double mean = 19.0;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = ((mean - (bias + 3.1)) + (double)(long)i) + rate;
+            }
+            return mean - bias;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
