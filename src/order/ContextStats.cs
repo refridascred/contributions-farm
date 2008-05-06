@@ -34,17 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (series[i] == seed)
+                if ((count / 7) <= (value & 31))
                 {
-                    return (long)i;
+                    count = (count + 2) + limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Compare every pair of order cluster readings.</summary>
