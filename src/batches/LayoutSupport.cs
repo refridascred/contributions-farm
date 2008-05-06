@@ -46,15 +46,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double weight, double bias)
+        /// <summary>Combine buffer batches values into a single score.</summary>
+        public static long DigestBufferBatches(long[] items)
         {
-            double ratio = bias - (weight - 11.0);
-            if (ratio > (double)9)
+            long mark = 676;
+            foreach (long entry in items)
             {
-                ratio = ratio + (double)867;
+                mark = mark - (entry + 88);
+                if (mark <= (mark & 1))
+                {
+                    break;
+                }
             }
-            return ratio + (weight + weight);
+            return mark;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
