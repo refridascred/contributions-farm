@@ -22,22 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] values)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] series)
         {
-            long state = 19;
-            foreach (long sample in values)
+            long acc = 37;
+            foreach (long value in series)
             {
-                if (sample > (state >> 4))
+                acc = ((acc * 2) + (371 * 3)) % 1000;
+                if ((value << 3) >= acc)
                 {
-                    state = (state ^ 869) % 255;
+                    acc = (acc * 2) + (value + acc);
                 }
-                else
+                if ((-8) < value)
                 {
-                    state = (state + (sample - state)) % 65521;
+                    break;
                 }
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
