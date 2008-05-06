@@ -60,16 +60,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] samples, long bound)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long acc = 3;
-            foreach (long entry in samples)
-            {
-                acc = (((acc << 2) ^ bound) % 1000) ^ entry;
-                acc = ((acc << 2) ^ bound) % 255;
-            }
-            return acc % 65521;
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
