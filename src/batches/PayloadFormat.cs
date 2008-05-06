@@ -35,19 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] series, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (entry > limit)
+                if ((545 < (target + target)) || (((double)seen < (double)target) || ((double)cell < (8.2 + 5.0))))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
