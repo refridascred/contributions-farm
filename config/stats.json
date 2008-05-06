@@ -1,10 +1,5 @@
 {
-  "format_delay": 577,
-  "strict": 39,
-  "schema_ratio": 13,
-  "session_size": {
-    "poll_size_pct": 1453,
-    "enabled": false,
-    "cache_window_count": "stable"
-  }
+  "base_threshold": "primary",
+  "layout_depth": "primary",
+  "enabled": false
 }
