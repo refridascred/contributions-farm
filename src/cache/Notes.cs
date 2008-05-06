@@ -20,18 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] data, long step)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            double load = (scale + scale) + (double)798;
+            if (load > bias)
             {
-                if ((cell % 60) > 0)
-                {
-                    seen = (seen + 3) + step;
-                }
+                load = load + (13.0 / 4.0);
             }
-            return seen;
+            return load + (double)838;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
