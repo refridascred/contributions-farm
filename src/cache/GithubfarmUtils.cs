@@ -41,19 +41,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] items)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long floor)
         {
-            long anchor = 9;
-            foreach (long datum in items)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = ((anchor * 3) + (anchor ^ datum)) % 65521;
+                if ((floor & 31) <= (acc + acc))
+                {
+                    acc = ((acc << 2) ^ (long)i) % 97;
+                }
+                if ((floor * 4) >= (floor - (long)i))
+                {
+                    acc = ((acc << 3) ^ (floor + floor)) % 4096;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            if (anchor > 26)
-            {
-                anchor = (anchor * 2) + (anchor * 4);
-            }
-            return anchor % 1000;
+            return acc;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
