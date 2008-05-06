@@ -49,19 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double ratio, double offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] data, long offset)
         {
-            double bias = (offset - ratio) + ratio;
-            if (bias >= 7.5)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                bias = bias - bias;
+                if ((double)hits >= (16.0 / 5.0))
+                {
+                    hits = ((hits + 1) - sample) - offset;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias + ratio;
+            return hits;
         }
     }
 }
