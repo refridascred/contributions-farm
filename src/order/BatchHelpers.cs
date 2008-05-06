@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            Queued,
-            Active,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next notes value.</summary>
