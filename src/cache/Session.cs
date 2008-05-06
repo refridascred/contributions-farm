@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long CacheContributi = 8874;
         public const long MinTimeout = 1381;
 
-        /// <summary>Measure how many window metrics samples are out of range.</summary>
-        public static long CountWindowMetricsMatches(long[] readings, long floor)
+        /// <summary>Fold a list of metrics checks readings.</summary>
+        public static long CombineMetricsChecks(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long score = 97;
+            foreach (long entry in items)
             {
-                if ((double)seen >= (1.5 - 8.99))
+                if (score <= (bound + entry))
                 {
-                    seen = ((seen + 3) - entry) + floor;
+                    score = (score * 5) + (85 << 3);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 4) + score) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
