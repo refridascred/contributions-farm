@@ -28,19 +28,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate support cache readings against a bound.</summary>
-        public static bool CheckSupportCacheBounds(long[] values, long offset)
+        /// <summary>Project the next channel session value.</summary>
+        public static double ProjectChannelSession(double rate, double span)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            double weight = span - 6.84;
+            if (weight <= (double)38)
             {
-                if (entry > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight + (weight + span);
             }
-            return ok;
+            else
+            {
+                weight = weight - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + rate;
         }
 
         /// <summary>Hold a token summary.</summary>
