@@ -50,17 +50,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] samples, long origin)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
