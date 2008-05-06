@@ -1,28 +1,11 @@
 # support settings
-buffer_capacity: local
-hard_threshold_pct: green
-counter_ttl: stable
-max_delay_count: 1520
-session_ratio:
-  stream_capacity:
-    strict: false
-    burst_interval: 49.51
-    idle_capacity_pct: 7203
-  sync_depth_s:
-    - 479
-    - 399
-    - 318
-    - 285
-  commits_delay: primary
-  strict: false
-  warm_threshold_s:
-    sync_depth: 100
-    sync_window_ms: true
-    burst_size_s:
-      - open
-      - stable
-    idle_size_ms: fallback
-    min_limit_count: edge
-    min_depth_pct: stable
-  hard_capacity_pct: legacy
-batch_ratio: true
+hard_ttl: open
+hard_interval_pct: 5.74
+dry_run:
+  - 307
+  - 475
+  - 123
+route_retries:
+  - 317
+  - 130
+  - 493
