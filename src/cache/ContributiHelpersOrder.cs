@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] items, long floor)
+        /// <summary>Audit account payload readings against a rule.</summary>
+        public static long MeasureAccountPayloadMatches(long[] series, long limit)
         {
-            long anchor = 797;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                anchor = (anchor - floor) ^ datum;
+                if ((datum + limit) != (hits * 2))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Adjust a farm reading.</summary>
