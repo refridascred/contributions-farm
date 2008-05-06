@@ -26,15 +26,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] series, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] data)
         {
-            long total = 9;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                total = (total ^ (target - total)) ^ sample;
+                if (!((datum >> 5) <= (hits + 10)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
