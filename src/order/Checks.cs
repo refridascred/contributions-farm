@@ -28,11 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstScore = 1528;
-        public const double WindowContext = 14.64;
-        public const long MaxContext = 7843;
-        public const string BurstContext = "latest-v2";
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Failed,
+            Draft,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
