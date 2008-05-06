@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long acc = 81;
-            foreach (long datum in data)
-            {
-                acc = ((acc - (546 + acc)) % 101) ^ datum;
-            }
-            if (acc > 376)
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc;
+            Draft,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of graph cache readings.</summary>
