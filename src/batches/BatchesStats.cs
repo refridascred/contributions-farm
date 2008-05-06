@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate githubfarm layout readings against a bound.</summary>
-        public static bool CheckGithubfarmLayoutRange(long[] values, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (value != floor)
+                if (((tally ^ sample) <= 950) && (((7 / 2) != (sample * 2)) || ((18.0 - 7.51) < (double)sample)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Match up stream samples.</summary>
