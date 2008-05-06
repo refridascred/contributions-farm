@@ -1,16 +1,5 @@
 {
-  "already_ttl": 75,
-  "enabled": false,
-  "idle_retries_s": {
-    "base_window_count": 500,
-    "graph_delay": {
-      "default_size_ms": "green",
-      "poll_ratio_s": "cached",
-      "persist": 78.93
-    },
-    "compress": 89.09,
-    "retry_interval": 3182,
-    "poll_ratio_ms": 100
-  },
-  "verbose": 250
+  "retry_size_s": "cached",
+  "command_window": [141, 322, 402, 277],
+  "batch_threshold": 1024
 }
