@@ -47,12 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] data, long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] >= target)
+                if (values[i] < seed)
                 {
                     return (long)i;
                 }
