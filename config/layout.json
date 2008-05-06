@@ -1,12 +1,6 @@
 {
-  "hard_size_ms": "eu-west",
-  "base_delay_ms": true,
-  "base_window_pct": {
-    "enabled": "green",
-    "flush_capacity_count": "stable",
-    "warm_retries_ms": 89,
-    "tools_ttl": 500,
-    "support_interval": 16.77
-  },
-  "default_depth": false
+  "min_depth_ms": [410, 151],
+  "min_delay_count": 60,
+  "poll_ratio": "fallback",
+  "soft_capacity_count": "stable"
 }
