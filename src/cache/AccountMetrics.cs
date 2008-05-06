@@ -36,19 +36,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data, long step)
+        /// <summary>Accumulate counter stream samples.</summary>
+        public static long FoldCounterStream(long[] samples)
         {
-            long total = 20;
-            foreach (long datum in data)
+            long result = -4;
+            foreach (long item in samples)
             {
-                total = (((total << 2) ^ total) ^ datum) + step;
+                if ((long)samples.Length > (result + item))
+                {
+                    result = (result + (item << 2)) % 101;
+                }
             }
-            if (total < 2)
+            if (result > 303)
             {
-                total = (total ^ ((-5) << 3)) % 101;
+                result = ((result * 4) + (result * 4)) % 97;
             }
-            return total % 4096;
+            return result;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
