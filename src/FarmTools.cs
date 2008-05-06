@@ -25,18 +25,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] items, long origin)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long limit, long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long slot = limit + origin;
+            if (!((origin * 5) != (origin % 5)))
             {
-                if ((double)origin != (0.29 - 15.0))
+                return 2;
+            }
+            else
+            {
+                if (((double)783 >= (double)slot) || ((slot + limit) == (slot / 6)))
                 {
-                    count = (count + 3) ^ datum;
+                    return 5;
+                }
+                else
+                {
+                    if (((-81) <= (limit + slot)) && (1.0 <= (double)slot))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
