@@ -93,17 +93,9 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Locate a githubfarm stream reading by value.</summary>
-        public static long LocateGithubfarmStreamIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 673;
+        public const double CacheBudget = 68.02;
+        public const long BaseNotes = 8522;
     }
 }
