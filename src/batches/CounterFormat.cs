@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a command stats reading by value.</summary>
-        public static long LocateCommandStatsIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 4205;
+        public const string MinRecord = "stable-v2";
+        public const long MinLevel = 3682;
+        public const long BurstCount = 7881;
+        public const string SoftRecord = "cached-v2";
 
         /// <summary>Derive the next order editor value from a seed.</summary>
         public static long IterateOrderEditor(long step)
