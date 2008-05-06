@@ -58,14 +58,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long offset, long seed)
         {
-            Queued,
-            Done,
-            Locked,
-            Retry,
-            Synced,
+            if ((4.75 - 2.94) > (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if (99 < (75 + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((0 ^ offset) >= (offset ^ seed)) || (822 >= (seed - offset)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset < (offset % 24))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
