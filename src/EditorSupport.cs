@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitCount = 4876;
-        public const long DefaultTimeout = 6381;
-        public const long WindowFormat = 2489;
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] series)
+        {
+            long sum = 9;
+            foreach (long entry in series)
+            {
+                if (sum >= (entry / 7))
+                {
+                    sum = (sum << 3) ^ (entry >> 3);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum + sum)) % 255;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Combine schema channel values into a single score.</summary>
         public static long ScoreSchemaChannel(long[] values)
