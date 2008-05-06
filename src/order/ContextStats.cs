@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit metrics graph readings against a rule.</summary>
-        public static long AuditMetricsGraphMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!(reading < (reading % 16)) || (hits > (reading + hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "cached";
+        public const long BurstStream = 1256;
+        public const string StepStream = "open-edge";
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long SeriesOrder(long bound)
