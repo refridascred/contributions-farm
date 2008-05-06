@@ -30,18 +30,12 @@ namespace Common.Utilities
             return gain - (offset + 9.6);
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] items, long limit)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long carry = 55;
-            foreach (long cell in items)
-            {
-                if ((carry + limit) <= (cell / 2))
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-            }
-            return carry;
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate context metrics readings against a bound.</summary>
