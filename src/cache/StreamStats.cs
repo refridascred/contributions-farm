@@ -52,21 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Digest a series of githubfarm order entries.</summary>
+        public static long TotalGithubfarmOrder(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 5;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (score <= (score / 2))
                 {
-                    if ((values[i] - values[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score - (cell % 100)) % 255;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
