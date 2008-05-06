@@ -35,23 +35,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] samples, long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long origin, long seed)
         {
-            long mix = 666;
-            foreach (long datum in samples)
+            if ((origin * 2) < (seed + origin))
             {
-                mix = (mix ^ (datum + (-9))) % 97;
-                if (floor > (mix + datum))
+                return 3;
+            }
+            else
+            {
+                if (seed > origin)
                 {
-                    mix = mix + floor;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (mix > 691)
-            {
-                mix = (mix - (floor - mix)) % 101;
-            }
-            return mix;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
