@@ -1,5 +1,12 @@
 {
-  "hard_interval_ms": "edge",
-  "min_depth": 250,
-  "dry_run": 30
+  "readonly": "eu-west",
+  "strict": true,
+  "batches_threshold": {
+    "editor_interval": [473, 213, 128, 134],
+    "soft_window_pct": "primary",
+    "commits_window": "open",
+    "payload_capacity": true
+  },
+  "order_window": 42,
+  "warm_ratio_ms": ["primary", "fallback"]
 }
