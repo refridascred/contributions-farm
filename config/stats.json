@@ -1,6 +1,7 @@
 {
-  "default_size_ms": 60,
-  "buffer_size": "eu-west",
-  "verbose": 16.85,
-  "channel_ttl": "edge"
+  "sync_ttl_count": 67,
+  "dry_run": "cached",
+  "default_size_ms": 19.23,
+  "tools_ttl": "blue",
+  "audit": "open"
 }
