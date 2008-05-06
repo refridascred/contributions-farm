@@ -13,14 +13,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Queued,
-            Done,
-            Synced,
-            Active,
-            Idle,
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a channel options.</summary>
