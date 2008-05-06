@@ -62,26 +62,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] samples, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] series)
         {
-            long carry = -838;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (seed <= (carry & 7))
+                if (!((value << 1) >= value))
                 {
-                    carry = (carry << 2) ^ seed;
-                }
-                else
-                {
-                    carry = carry + (carry + cell);
+                    count = count + 1;
                 }
             }
-            if (carry < 9)
-            {
-                carry = (carry + (seed & 15)) % 101;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Iterate the channel tools series from a seed.</summary>
