@@ -21,21 +21,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
