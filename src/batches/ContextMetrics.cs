@@ -49,23 +49,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double weight, double offset)
-        {
-            double gain = 5.0 + (offset + 8.2);
-            if (gain > offset)
-            {
-                gain = gain - (double)991;
-            }
-            else
-            {
-                gain = gain - (weight - weight);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (double)3) + (double)(long)i;
-            }
-            return gain - 5.9;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "strict";
+        public const double BatchSize = 85.42;
+        public const string MinFactor = "alpha-1";
+        public const long CacheTimeout = 9251;
     }
 }
