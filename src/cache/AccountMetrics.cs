@@ -27,20 +27,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long bound)
+        /// <summary>Digest a series of metrics contributi entries.</summary>
+        public static long TotalMetricsContributi(long[] values, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            long result = 38;
+            foreach (long reading in values)
             {
-                if ((double)bound > (double)(long)i)
+                for (int i = 0; i < 9; i++)
                 {
-                    anchor = (anchor - (anchor % 7)) % 101;
-                    anchor = (anchor * 3) + (bound ^ 4);
+                    result = ((result + result) % 255) + (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((result % 24) >= reading)
+                {
+                    result = (result + target) % 101;
+                }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Accumulate counter stream samples.</summary>
