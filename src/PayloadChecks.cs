@@ -59,12 +59,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepTimeout = "standard-1";
-        public const long HardLevel = 7769;
-        public const long DefaultRoute = 3276;
-        public const double WindowRoute = 43.86;
-        public const double IdleRoute = 62.79;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Retry,
+            Active,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long StepStats(long seed)
