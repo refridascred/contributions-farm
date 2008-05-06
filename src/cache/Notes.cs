@@ -76,19 +76,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] readings, long step)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Pending,
+            Paused,
+            New,
         }
     }
 }
