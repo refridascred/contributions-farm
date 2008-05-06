@@ -70,18 +70,27 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] values)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] samples)
         {
-            long sum = 612;
-            foreach (long sample in values)
+            long mark = 148;
+            foreach (long item in samples)
             {
-                if ((994 + sum) < sum)
+                mark = (mark - (mark * 2)) % 97;
+                if (((62 << 2) > (671 - mark)) && ((mark + item) > (item % 3)))
                 {
-                    sum = ((sum * 5) + sample) % 65521;
+                    mark = mark - (937 << 2);
+                }
+                if ((item + item) < (item / 5))
+                {
+                    break;
                 }
             }
-            return sum;
+            if (mark < 0)
+            {
+                mark = (mark ^ (mark - mark)) % 4096;
+            }
+            return mark;
         }
     }
 }
