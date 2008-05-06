@@ -45,19 +45,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] series, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (cell >= target)
+                if ((9.0 / 8.0) < (double)seed)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) + item;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the queue mode values.</summary>
