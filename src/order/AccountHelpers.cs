@@ -21,24 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank command context input into a small class.</summary>
-        public static long SortCommandContext(long origin, long offset)
+        /// <summary>Combine githubfarm metric values into a single score.</summary>
+        public static long DigestGithubfarmMetric(long[] series)
         {
-            if ((-9) >= (offset / 4))
+            long carry = 697;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)(-905) >= (double)origin) || ((810 - origin) != (offset / 6)))
+                if (78 < (carry / 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    carry = ((carry ^ (carry << 3)) % 65521) ^ entry;
                 }
             }
+            return carry % 1000;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
