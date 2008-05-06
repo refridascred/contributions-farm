@@ -1,15 +1,5 @@
 {
-  "cluster_ttl": 74.32,
-  "soft_ratio": 5059,
-  "idle_timeout_s": "latest",
-  "flush_ratio": {
-    "account_ratio": 86,
-    "max_retries_ms": "blue",
-    "flush_capacity_ms": 69.17,
-    "entry_limit": "fallback",
-    "verbose": 59,
-    "layout_timeout": "latest"
-  },
-  "dry_run": "strict",
-  "idle_limit": false
+  "flush_size_ms": 100,
+  "hard_size": 30,
+  "sync_limit_pct": "cached"
 }
