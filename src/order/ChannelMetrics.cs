@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many support window samples are out of range.</summary>
-        public static long AuditSupportWindowMatches(long[] samples, long step)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (!(727 < step))
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
