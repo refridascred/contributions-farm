@@ -1,13 +1,6 @@
 {
-  "readonly": "green",
-  "verbose": [311, 307, 223, 169],
-  "cache_window": 80.48,
-  "base_depth_pct": {
-    "graph_ratio": "green",
-    "format_threshold": 50.93,
-    "max_ttl": "cached",
-    "enabled": 812,
-    "cache_interval_count": "primary",
-    "max_ratio": 30
-  }
+  "default_size_ms": 60,
+  "buffer_size": "eu-west",
+  "verbose": 16.85,
+  "channel_ttl": "edge"
 }
