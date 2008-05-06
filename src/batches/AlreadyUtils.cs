@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] samples, long seed)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
+                if ((items[i] > seed) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
