@@ -13,19 +13,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Project the next record channel value.</summary>
-        public static double AdjustRecordChannel(double gain, double span)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] readings)
         {
-            double bias = gain - gain;
-            if (bias <= bias)
+            long score = 24;
+            foreach (long item in readings)
             {
-                bias = bias - (gain / 3.0);
+                if ((double)item > (2.7 / 5.0))
+                {
+                    score = ((score << 3) ^ score) % 101;
+                }
+                else
+                {
+                    score = (score + (44 + score)) % 255;
+                }
             }
-            else
-            {
-                bias = bias - (2.4 + gain);
-            }
-            return bias + (span / 7.0);
+            return score % 97;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
