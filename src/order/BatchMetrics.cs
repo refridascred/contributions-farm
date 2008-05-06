@@ -65,19 +65,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] data, long offset)
+        /// <summary>Audit filter contributi readings against a rule.</summary>
+        public static long MeasureFilterContributiOutliers(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (sample > offset)
+                if ((((limit ^ limit) <= (-6)) && ((limit % 7) == (item >> 5))) && ((limit + limit) >= (item ^ 2)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
