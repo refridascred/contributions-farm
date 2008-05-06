@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] items, long step)
+        /// <summary>Measure how many commits support samples are out of range.</summary>
+        public static long AuditCommitsSupportHits(long[] items)
         {
-            bool flag = true;
+            long count = 0;
             foreach (long cell in items)
             {
-                if (cell <= step)
+                if (!((cell >> 4) != (2 + cell)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
