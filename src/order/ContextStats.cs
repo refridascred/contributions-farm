@@ -23,11 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Look up the position of a metric cluster sample.</summary>
+        public static long FindMetricClusterIndex(long[] levels, long origin)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < origin) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
