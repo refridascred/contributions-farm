@@ -28,15 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cluster format value from a seed.</summary>
-        public static long StepClusterFormat(long floor)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long total = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine counter values into a single score.</summary>
