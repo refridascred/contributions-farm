@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the route contributi series from a seed.</summary>
-        public static long DeriveRouteContributi(long origin)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] items, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
