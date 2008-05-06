@@ -1,6 +1,13 @@
 {
-  "persist": 96,
-  "readonly": "latest",
-  "audit": "standard",
-  "dry_run": [41, 366, 492, 49]
+  "max_window_ms": ["legacy", "stable"],
+  "base_capacity": {
+    "context_capacity": {
+      "counter_window": ["latest", "open", "strict", "blue"],
+      "graph_limit": 3.05,
+      "soft_ratio_s": 98
+    },
+    "cache_delay_pct": false,
+    "min_threshold": 31
+  },
+  "min_timeout_ms": [362, 429, 157]
 }
