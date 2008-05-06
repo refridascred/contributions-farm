@@ -37,17 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] readings, long offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long step, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((floor + step) == ((-73) % 10)))
             {
-                if (readings[i] <= offset)
+                return 7;
+            }
+            else
+            {
+                if ((floor & 7) <= (floor + floor))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the already kind values.</summary>
