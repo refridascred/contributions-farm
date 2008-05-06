@@ -36,19 +36,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] levels, long bound)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            double ratio = 1.0;
+            if (ratio <= (20.0 * 14.0))
             {
-                if (reading >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ((ratio + (double)2) + gain) - floor;
             }
-            return ok;
+            return ratio - (6.3 / 9.0);
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
