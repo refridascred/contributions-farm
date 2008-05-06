@@ -29,24 +29,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] readings)
+        /// <summary>Check that every payload cluster entry stays within the limit.</summary>
+        public static bool GuardPayloadClusterBounds(long[] series, long bound)
         {
-            long acc = 9;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((value / 6) > (acc / 6))
+                if (entry != bound)
                 {
-                    acc = (acc + (acc - acc)) % 65521;
-                    acc = acc + (value - acc);
-                    continue;
-                }
-                if ((value << 1) >= (acc >> 5))
-                {
-                    acc = (acc ^ (acc - acc)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return found;
         }
     }
 }
