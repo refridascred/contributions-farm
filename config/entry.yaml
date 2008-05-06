@@ -1,12 +1,18 @@
 # entry settings
-flush_depth_count: 89.88
-base_depth: true
-retry_delay_count:
-  - 93
-  - 38
-  - 339
-enabled:
-  - 122
-  - 212
-min_threshold_count: green
-base_retries: 10
+account_ratio: 3078
+compress:
+  retry_size: false
+  flush_size: true
+  githubfarm_limit:
+    - 149
+    - 370
+  batch_retries: stable
+readonly:
+  - 446
+  - 431
+  - 243
+cache_depth_s:
+  - 460
+  - 407
+soft_retries: 74.49
+format_ttl: 18.97
