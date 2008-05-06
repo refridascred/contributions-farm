@@ -45,22 +45,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate counter stream samples.</summary>
-        public static long FoldCounterStream(long[] samples)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long result = -4;
-            foreach (long item in samples)
-            {
-                if ((long)samples.Length > (result + item))
-                {
-                    result = (result + (item << 2)) % 101;
-                }
-            }
-            if (result > 303)
-            {
-                result = ((result * 4) + (result * 4)) % 97;
-            }
-            return result;
+            Retry,
+            Closed,
+            Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
