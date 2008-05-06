@@ -6,24 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+RECORD_LIMIT=186
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-latest}"
 case "${mode}" in
-    local)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
