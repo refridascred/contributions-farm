@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in legacy open; do
+for item in edge blue; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=283
+log "limit is ${BUFFER_LIMIT}"
