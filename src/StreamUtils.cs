@@ -65,20 +65,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] samples, long target)
-        {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowSize = 4773;
+        public const string BurstPayload = "cached-v2";
+        public const long DefaultPayload = 3095;
+        public const double HardBudget = 29.71;
 
         /// <summary>Classify a tools notes pair into a bucket.</summary>
         public static long SortToolsNotes(long origin, long target)
