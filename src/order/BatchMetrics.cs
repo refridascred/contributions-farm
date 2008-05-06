@@ -16,17 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] values, long offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Pending,
+            Stale,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the commits state values.</summary>
