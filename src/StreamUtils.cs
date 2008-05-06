@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = (mix + target) ^ (long)i2;
-                }
-                mix = (mix << 3) ^ target;
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultDepth = 1691;
+        public const long IdleQueue = 4942;
+        public const long MinSize = 1896;
+        public const double BurstQueue = 2.72;
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long step)
