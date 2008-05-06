@@ -34,19 +34,19 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] items, long step)
+        /// <summary>Check that every report githubfarm entry stays within the limit.</summary>
+        public static bool VerifyReportGithubfarmRange(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (entry > step)
+                if (cell != origin)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
