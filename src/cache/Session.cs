@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value >= (double)count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 8219;
+        public const double BurstCommand = 87.95;
+        public const double DefaultCommand = 36.97;
+        public const string BatchCount = "staging";
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsMatches(long[] levels, long origin)
