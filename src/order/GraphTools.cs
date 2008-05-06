@@ -48,14 +48,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            New,
-            Queued,
             Failed,
-            Draft,
-            Idle,
+            Locked,
+            Stale,
         }
     }
 }
