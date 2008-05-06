@@ -48,11 +48,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheInterval = 732;
-        public const long CacheMetric = 4475;
-        public const string LimitMetric = "staging";
-        public const long WindowRatio = 4164;
-        public const long DefaultMetric = 6100;
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
