@@ -19,21 +19,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] items)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
