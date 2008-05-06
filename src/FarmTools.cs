@@ -25,19 +25,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] levels, long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (value <= step)
+                if ((double)origin != (0.29 - 15.0))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) ^ datum;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
