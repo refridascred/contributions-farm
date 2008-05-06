@@ -28,11 +28,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardScore = 3161;
-        public const long CacheLevel = 7354;
-        public const string IdleCommits = "legacy-1";
-        public const double MinCommits = 28.27;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public long Label { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] samples, long floor)
