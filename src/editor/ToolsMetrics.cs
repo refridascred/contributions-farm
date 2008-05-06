@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Adjust a filter channel reading.</summary>
-        public static double BlendFilterChannel(double bias, double offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] samples)
         {
-            double scale = offset;
-            for (int i = 0; i < 8; i++)
+            long carry = 84;
+            foreach (long value in samples)
             {
-                scale = ((scale + offset) + (double)(long)i) + bias;
+                if ((carry + value) < value)
+                {
+                    carry = (carry + (carry - value)) % 4096;
+                }
             }
-            return scale + offset;
+            return carry % 65521;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
