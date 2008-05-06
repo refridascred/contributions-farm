@@ -20,13 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public bool Level { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
-            public double Total { get; set; }
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the format level values.</summary>
