@@ -50,17 +50,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] readings, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (readings[i] > limit)
+                if ((double)origin <= (7.88 - 13.0))
                 {
-                    return (long)i;
+                    count = (count + 3) + sample;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
