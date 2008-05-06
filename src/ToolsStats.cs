@@ -22,23 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Locate a checks batches reading by value.</summary>
+        public static long SeekChecksBatchesIndex(long[] items, long bound)
         {
-            long acc = 37;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 2) + (371 * 3)) % 1000;
-                if ((value << 3) >= acc)
+                if (items[i] <= bound)
                 {
-                    acc = (acc * 2) + (value + acc);
-                }
-                if ((-8) < value)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
