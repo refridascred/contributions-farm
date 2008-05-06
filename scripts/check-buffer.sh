@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west fallback edge cached; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-BUFFER_LIMIT=95
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-eu-west}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
