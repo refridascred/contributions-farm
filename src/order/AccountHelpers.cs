@@ -83,15 +83,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long limit)
+        /// <summary>Count the cache stats entries that pass the check.</summary>
+        public static long AuditCacheStatsOutliers(long[] series)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if ((double)tally != (7.9 - 8.2))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
