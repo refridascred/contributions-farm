@@ -52,22 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] readings, long target)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] data, long limit)
         {
-            long carry = 199;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((5.85 / 2.0) != (double)(long)readings.Length)
+                if (data[i] <= limit)
                 {
-                    carry = (((carry ^ (carry - carry)) % 65521) + reading) + target;
-                }
-                else
-                {
-                    carry = carry - (214 - carry);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
