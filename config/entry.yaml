@@ -1,6 +1,4 @@
 # entry settings
-profile_limit: fallback
-verbose: 4621
-contributi_delay: latest
-dry_run: strict
-idle_size_pct: 83.06
+poll_size: strict
+sync_depth: 8383
+min_depth_ms: stable
