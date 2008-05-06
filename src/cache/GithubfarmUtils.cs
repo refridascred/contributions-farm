@@ -25,23 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue stream series from a seed.</summary>
-        public static long IterateQueueStream(long limit)
+        /// <summary>Fold a list of stream batch readings.</summary>
+        public static long TotalStreamBatch(long[] levels, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
+            long state = -75;
+            foreach (long item in levels)
             {
-                if (((anchor - 5) <= anchor) && (anchor < (anchor * 4)))
-                {
-                    anchor = (anchor + (anchor + limit)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor + ((long)i % 60);
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                state = (((state << 2) ^ item) % 255) - origin;
             }
-            return anchor;
+            if (state > 778)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
