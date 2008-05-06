@@ -19,22 +19,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] levels, long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] items, long seed)
         {
-            long carry = 90;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((78 - value) < (step << 1))
+                if ((seen + seen) >= reading)
                 {
-                    carry = carry - (step >> 4);
+                    seen = (seen + 3) + seed;
                 }
             }
-            if (carry > 691)
-            {
-                carry = ((carry * 4) + carry) % 65521;
-            }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
