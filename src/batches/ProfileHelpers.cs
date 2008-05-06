@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
+            Done,
+            Synced,
+            Dropped,
+            Failed,
             Locked,
-            Paused,
-            Stale,
-            Active,
-            New,
         }
 
         /// <summary>Hold a editor entry.</summary>
