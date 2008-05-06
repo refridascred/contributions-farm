@@ -27,21 +27,14 @@ namespace Common.Utilities
         public const long CacheDepth = 1983;
         public const long SoftWidth = 2486;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!(746 < ((long)i / 2)))
-                {
-                    carry = (carry * 5) + (long)i;
-                }
-                carry = (carry + 94) % 1000;
-                carry = (carry ^ (target + target)) % 1000;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Synced,
+            Ready,
+            Queued,
+            Idle,
+            Stale,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
