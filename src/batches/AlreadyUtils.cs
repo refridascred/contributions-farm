@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every route filter entry stays within the limit.</summary>
-        public static bool ValidateRouteFilterBounds(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 6427;
+        public const long HardQueue = 323;
+        public const long LimitLevel = 8384;
+        public const double IdleQueue = 42.95;
+        public const long CacheInterval = 5160;
 
         /// <summary>Match up metric samples.</summary>
         public static long CompareMetricCount(long[] readings)
