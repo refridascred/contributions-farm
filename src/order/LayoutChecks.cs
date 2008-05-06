@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (floor / 7.0) / 4.0;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean + (9.36 + scale)) + (double)(long)i;
             }
-            return seen;
+            return mean - scale;
         }
 
         /// <summary>Locate a order reading by value.</summary>
