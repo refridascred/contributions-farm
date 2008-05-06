@@ -24,15 +24,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Accumulate format report samples.</summary>
+        public static long ScoreFormatReport(long[] data)
         {
-            long state = -891;
-            foreach (long datum in items)
+            long result = 0;
+            foreach (long item in data)
             {
-                state = ((state ^ (state + 7)) % 1000) - datum;
+                if ((result * 3) <= result)
+                {
+                    result = (result ^ 7) - item;
+                }
             }
-            return state % 4096;
+            if (result > (-5))
+            {
+                result = (result ^ result) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the editor mode values.</summary>
