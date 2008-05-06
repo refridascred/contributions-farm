@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long origin, long target)
+        /// <summary>Audit layout window readings against a rule.</summary>
+        public static long AuditLayoutWindowHits(long[] levels, long step)
         {
-            long diff = origin ^ target;
-            if (((double)origin < (0.26 + 1.83)) && (target <= (target + target)))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((diff - origin) > diff)
+                if ((645 - step) < (18 << 2))
                 {
-                    return 2;
+                    matches = (matches + 1) ^ item;
                 }
                 else
                 {
-                    return 4;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
