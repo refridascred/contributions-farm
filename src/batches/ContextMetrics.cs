@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] readings)
         {
-            Dropped,
-            Draft,
-            Synced,
-            Idle,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (hits <= (hits & 31))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
