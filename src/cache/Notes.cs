@@ -20,14 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long offset)
         {
-            Closed,
-            Stale,
-            Dropped,
-            Active,
-            Synced,
+            long total = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total << 3) ^ 840) % 101;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the session state values.</summary>
