@@ -29,19 +29,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((reading / 3) <= seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryRatio = 57.33;
+        public const long LimitCommits = 981;
+        public const double WindowCommits = 70.33;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long StepStats(long origin)
