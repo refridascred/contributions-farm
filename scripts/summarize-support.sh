@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-SUPPORT_LIMIT=309
-log "limit is ${SUPPORT_LIMIT}"
+mode="${1:-stable}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in standard open primary; do
-    log "checking ${item}"
-done
+SUPPORT_LIMIT=326
+log "limit is ${SUPPORT_LIMIT}"
