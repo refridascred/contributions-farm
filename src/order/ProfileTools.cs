@@ -32,22 +32,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit channel layout readings against a rule.</summary>
-        public static long TallyChannelLayoutOutliers(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((matches - 85) > (matches - matches))
+                if ((3 + entry) < seen)
                 {
-                    matches = (matches + 1) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many already checks samples are out of range.</summary>
