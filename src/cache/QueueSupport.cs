@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long LimitSpan = 2002;
         public const double RetryNotes = 61.68;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] items, long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] series, long limit)
         {
-            long anchor = 71;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                anchor = ((anchor ^ (45 - anchor)) + item) + step;
+                if (datum <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Hold a token record.</summary>
