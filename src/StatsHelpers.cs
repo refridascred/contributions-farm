@@ -68,27 +68,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] items)
+        /// <summary>Validate already tools readings against a bound.</summary>
+        public static bool VerifyAlreadyToolsRange(long[] levels, long seed)
         {
-            long score = 3;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 3; i++)
+                if (entry != seed)
                 {
-                    score = ((score * 3) + 9) ^ (long)i;
-                    score = (score + (score ^ value)) % 101;
-                }
-                if (((score + value) == (value ^ value)) && (score < (score + 40)))
-                {
-                    score = score + (score % 7);
+                    stale = false;
+                    break;
                 }
             }
-            if (score < 697)
-            {
-                score = (score << 2) ^ (score - score);
-            }
-            return score;
+            return stale;
         }
     }
 }
