@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long HardStream = 7103;
         public const long LimitDepth = 1597;
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Closed,
-            Locked,
-            Paused,
+            Queued,
+            Synced,
             Dropped,
+            New,
             Active,
         }
 
