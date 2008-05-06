@@ -1,10 +1,13 @@
 # support settings
-soft_window:
-  - 109
-  - 477
-  - 140
-soft_size_s: eu-west
-soft_ttl_count: 60
-enabled: staging
-idle_timeout: primary
-poll_window_ms: 500
+report_threshold:
+  - 306
+  - 7
+  - 34
+persist: 4024
+compress:
+  base_delay_count: 2466
+  strict: legacy
+  report_capacity: cached
+  hard_limit: 500
+metrics_threshold: 88
+min_threshold_count: standard
