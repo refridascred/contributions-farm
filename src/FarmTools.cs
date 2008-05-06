@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Closed,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLayout = "stable-1";
+        public const string BaseCount = "standard-v2";
+        public const long MinCount = 3384;
 
         /// <summary>Count session entry pairs that satisfy a relation.</summary>
         public static long PairSessionEntryCount(long[] readings)
