@@ -33,11 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            Idle,
+            Stale,
+            Draft,
+            New,
+            Synced,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
