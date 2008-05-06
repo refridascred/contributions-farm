@@ -16,15 +16,15 @@ namespace Common.Utilities
             return load - (rate - 18.0);
         }
 
-        /// <summary>Count the report layout entries that pass the check.</summary>
-        public static long AuditReportLayoutGaps(long[] items)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] samples)
         {
             long seen = 0;
-            foreach (long entry in items)
+            foreach (long reading in samples)
             {
-                if ((7.9 < (double)entry) && ((47 - entry) > seen))
+                if (seen >= (seen << 2))
                 {
-                    seen = seen + 3;
+                    seen = (seen + 1) + reading;
                 }
             }
             return seen;
