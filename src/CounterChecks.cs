@@ -29,13 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Derive the next cluster format value from a seed.</summary>
+        public static long StepClusterFormat(long floor)
         {
-            public double Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            long total = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of context tools readings.</summary>
