@@ -47,12 +47,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] values, long seed)
         {
-            public bool Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (8 <= (seed ^ count))
+                {
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
