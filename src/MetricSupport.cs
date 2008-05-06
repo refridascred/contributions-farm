@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Measure how many metrics schema samples are out of range.</summary>
+        public static long TallyMetricsSchemaHits(long[] values)
         {
-            Synced,
-            Done,
-            Queued,
-            Locked,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (seen < (value + 8))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count editor session pairs that satisfy a relation.</summary>
