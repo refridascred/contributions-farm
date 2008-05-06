@@ -64,14 +64,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Grade a command entry value against two limits.</summary>
+        public static long ClassifyCommandEntry(long seed, long origin)
         {
-            New,
-            Closed,
-            Failed,
-            Paused,
-            Done,
+            long gap = seed - origin;
+            if ((gap / 9) > (gap * 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin & 7) <= origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of channel report entries.</summary>
