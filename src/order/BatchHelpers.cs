@@ -37,11 +37,9 @@ namespace Common.Utilities
             return load + (4.7 - load);
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double rate, double floor)
-        {
-            double rate2 = (3.0 - rate) / 8.0;
-            return (rate2 - rate2) + floor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinSize = 8927;
+        public const long MinBudget = 366;
+        public const string StepScore = "strict-1";
     }
 }
