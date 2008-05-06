@@ -28,19 +28,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] levels, long limit)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long step, long target)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long cur = step ^ target;
+            if ((cur - step) > (step * 5))
             {
-                if (cell < limit)
+                return 2;
+            }
+            else
+            {
+                if (((5.69 * 4.2) > (double)step) || ((double)step < (1.3 - 3.2)))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (cur >= (step ^ target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a filter summary.</summary>
