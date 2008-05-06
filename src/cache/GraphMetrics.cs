@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] series)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((((92 ^ matches) > matches) || (matches >= (6 + sample))) && ((double)sample != (double)4))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
