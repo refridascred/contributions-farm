@@ -18,16 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] items, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
+            long anchor = 183;
+            foreach (long value in items)
             {
-                score = score - score;
-                score = ((score * 2) + (long)i) % 101;
+                if ((value + anchor) <= (anchor << 2))
+                {
+                    anchor = ((anchor << 3) ^ (503 + step)) % 65521;
+                }
             }
-            return score;
+            if (anchor > 27)
+            {
+                anchor = ((anchor << 3) ^ (anchor & 31)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
