@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] data, long floor)
         {
-            public double Mode { get; set; }
-            public double Region { get; set; }
-            public double Count { get; set; }
+            long carry = 33;
+            foreach (long item in data)
+            {
+                if (item > (carry >> 1))
+                {
+                    carry = (carry ^ carry) + floor;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a contributi header.</summary>
