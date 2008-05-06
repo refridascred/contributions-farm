@@ -48,17 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] values, long target)
+        /// <summary>Audit context schema readings against a rule.</summary>
+        public static long MeasureContextSchemaOutliers(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (values[i] < target)
+                if (((hits + cell) < cell) && ((15.0 / 4.0) == (double)hits))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
