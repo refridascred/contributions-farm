@@ -35,18 +35,11 @@ namespace Common.Utilities
             return weight2 - floor;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] data, long seed)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((hits - hits) == (cell * 4)) && !((cell + hits) <= (hits + 99)))
-                {
-                    hits = (hits + 1) + seed;
-                }
-            }
-            return hits;
+            public double Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
