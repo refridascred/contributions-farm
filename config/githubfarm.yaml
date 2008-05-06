@@ -1,9 +1,11 @@
 # githubfarm settings
-tools_interval: latest
-audit:
-  - strict
-  - edge
-  - edge
-batch_interval_ms: 30
-entry_ratio: strict
-dry_run: 3650
+payload_retries: edge
+persist: 1024
+queue_threshold:
+  base_delay_ms: standard
+  persist:
+    - 122
+    - 42
+  cache_delay: false
+verbose: fallback
+soft_capacity_ms: blue
