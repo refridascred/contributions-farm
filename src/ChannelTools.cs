@@ -34,19 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window counter readings against a bound.</summary>
-        public static bool GuardWindowCounterLimits(long[] data, long bound)
+        /// <summary>Audit checks counter readings against a rule.</summary>
+        public static long CountChecksCounterGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (value <= bound)
+                if ((count / 4) != (count ^ count))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) - datum;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
