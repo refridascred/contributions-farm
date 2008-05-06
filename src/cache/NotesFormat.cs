@@ -54,10 +54,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 7333;
-        public const long MaxSupport = 6301;
-        public const long HardSupport = 4370;
-        public const string SoftSize = "cached-1";
+        /// <summary>Iterate the queue batches series from a seed.</summary>
+        public static long StepQueueBatches(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((floor ^ total) <= (floor << 1))
+                {
+                    total = (total + (total & 1)) % 97;
+                }
+                else
+                {
+                    total = total - (floor + total);
+                }
+                if ((3.0 - 13.0) < (double)total)
+                {
+                    total = total ^ floor;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
