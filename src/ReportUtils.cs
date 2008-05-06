@@ -14,22 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long target, long origin)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long offset, long offset2)
         {
-            if ((origin & 31) != (58 * 2))
+            if (((double)offset2 > (8.8 + 1.0)) && ((double)offset2 != (double)37))
             {
                 return 1;
             }
             else
             {
-                if ((double)origin < (4.3 / 6.0))
+                if (offset <= (offset2 + offset2))
                 {
                     return 0;
                 }
                 else
                 {
-                    return 8;
+                    return 6;
                 }
             }
         }
