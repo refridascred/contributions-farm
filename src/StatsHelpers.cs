@@ -69,19 +69,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of token githubfarm entries.</summary>
-        public static long FoldTokenGithubfarm(long[] samples)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long seed)
         {
-            long total = 33;
-            foreach (long datum in samples)
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
             {
-                total = (total + (datum >> 2)) % 65521;
+                mix = ((mix * 5) + (seed - mix)) % 1000;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            if (total > 46)
-            {
-                total = ((total << 3) ^ (401 % 7)) % 4096;
-            }
-            return total;
+            return mix;
         }
     }
 }
