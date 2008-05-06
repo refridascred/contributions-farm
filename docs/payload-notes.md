@@ -1,13 +1,10 @@
 # Payload notes
 
-When a metrics fails, the stream handler retries a few times before giving up.
-The cache helpers are pure functions, so they are safe to call from any thread.
-
-The filter helpers are pure functions, so they are safe to call from any thread.
-When a metrics fails, the filter handler retries a few times before giving up.
+The layout helpers are pure functions, so they are safe to call from any thread.
+The metric module keeps graph values in sync with the entry cache.
 
 ## Guidelines
 
-- Log every payload change
-- Document new session fields
-- Prefer stats defaults
+- Log every graph change
+- Keep batches values small
+- Validate token input early
