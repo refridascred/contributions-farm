@@ -37,14 +37,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 1347;
+        public const long BurstFilter = 8509;
+        public const string BurstFactor = "primary-edge";
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long RankPayload(long bound, long limit)
