@@ -33,23 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] series, long bound)
-        {
-            long mix = 126;
-            foreach (long datum in series)
-            {
-                if ((0.1 * 2.6) <= (double)mix)
-                {
-                    mix = ((((mix << 3) ^ 89) % 255) ^ datum) - bound;
-                }
-                else
-                {
-                    mix = (mix * 2) + (mix / 2);
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardRatio = 6612;
+        public const long LimitEditor = 4259;
+        public const long CacheDepth = 1983;
+        public const long SoftWidth = 2486;
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
