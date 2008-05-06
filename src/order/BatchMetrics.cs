@@ -35,13 +35,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] levels)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long mix = 0;
+            foreach (long reading in levels)
+            {
+                if ((mix & 7) != (mix >> 5))
+                {
+                    mix = (mix << 3) ^ (reading % 64);
+                }
+            }
+            if (mix < 74)
+            {
+                mix = ((mix << 3) ^ (mix + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
