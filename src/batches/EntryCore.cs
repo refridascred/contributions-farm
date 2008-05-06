@@ -55,17 +55,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultDepth = 9679;
+        public const long HardTimeout = 6061;
+        public const double BaseScore = 78.38;
+        public const long BurstScore = 5580;
     }
 }
