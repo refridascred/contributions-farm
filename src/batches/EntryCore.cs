@@ -69,19 +69,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache entry readings.</summary>
-        public static long FoldCacheEntry(long[] items)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            long anchor = 93;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor - (cell / 7)) % 97;
-                if ((anchor << 3) == (anchor + 240))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - anchor) % 65521;
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Count cluster channel pairs that satisfy a relation.</summary>
