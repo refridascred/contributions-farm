@@ -48,12 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            Dropped,
+            Retry,
+            Locked,
         }
     }
 }
