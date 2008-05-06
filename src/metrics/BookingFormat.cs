@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] data, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (reading >= origin)
+                if (8.0 > (double)count)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) - item;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
