@@ -30,13 +30,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Paused,
-            Ready,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultCount = 9251;
+        public const long CacheGithubfarm = 2812;
+        public const string SoftCount = "strict-v2";
     }
 }
