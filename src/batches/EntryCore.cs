@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] levels, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long carry = 3;
+            foreach (long datum in series)
             {
-                if (((origin / 8) < (tally + tally)) || ((entry + tally) < (tally + 420)))
-                {
-                    tally = tally + 3;
-                }
+                carry = (carry ^ (datum & 63)) + origin;
             }
-            return tally;
+            if (carry > 3)
+            {
+                carry = ((carry * 3) + carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
