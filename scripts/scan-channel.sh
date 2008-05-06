@@ -6,11 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green eu-west legacy; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-fallback}"
+mode="${1:-strict}"
 case "${mode}" in
     primary)
         log "fast path"
