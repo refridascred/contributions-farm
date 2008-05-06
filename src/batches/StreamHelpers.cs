@@ -33,10 +33,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseWidth = 7778;
-        public const double BatchCache = 43.98;
-        public const long BaseTimeout = 2695;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] samples, long seed)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((1.38 + 19.0) == (double)seed)
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LookupStreamIndex(long[] levels, long limit)
