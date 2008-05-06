@@ -1,5 +1,5 @@
 {
-  "retry_timeout_s": "green",
-  "audit": false,
-  "cache_window_pct": true
+  "support_depth": "fallback",
+  "sync_window_ms": 99,
+  "idle_retries_count": 6119
 }
