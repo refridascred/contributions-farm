@@ -87,12 +87,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Pending,
-            New,
-            Dropped,
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
