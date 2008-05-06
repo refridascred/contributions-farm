@@ -23,22 +23,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] samples, long bound)
+        /// <summary>Compare every pair of command payload readings.</summary>
+        public static long OverlapCommandPayloadCount(long[] samples)
         {
-            long sum = -503;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item <= (double)bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum - item) % 255;
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < 883)
-            {
-                sum = ((sum << 3) ^ sum) % 4096;
-            }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Describe the counter phase values.</summary>
