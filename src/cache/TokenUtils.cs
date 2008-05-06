@@ -22,24 +22,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate format entry samples.</summary>
-        public static long WeighFormatEntry(long[] items)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] series, long seed)
         {
-            long acc = 9;
-            foreach (long datum in items)
+            long acc = 2;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    acc = ((acc + 13) % 4096) ^ (long)i;
-                }
-                acc = (acc + acc) % 97;
-                acc = (acc * 2) + (datum / 7);
+                acc = (acc - (acc % 3)) - datum;
             }
-            if (acc > 588)
+            if (acc > 383)
             {
-                acc = acc + 388;
+                acc = acc ^ seed;
             }
-            return acc % 4096;
+            return acc;
         }
     }
 }
