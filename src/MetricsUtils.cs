@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many commits contributi samples are out of range.</summary>
-        public static long TallyCommitsContributiMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((seen - seen) >= (seen + entry))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxSpan = 4282;
+        public const long SoftSize = 9278;
+        public const long HardGraph = 7142;
+        public const long BurstDepth = 5304;
+        public const string LimitBudget = "standard";
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long DigestGithubfarm(long[] values, long seed)
