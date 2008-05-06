@@ -33,22 +33,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] levels, long target)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (12.0 <= (double)matches)
-                {
-                    matches = ((matches + 1) ^ item) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Synced,
+            Idle,
+            Active,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
