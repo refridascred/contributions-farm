@@ -1,6 +1,8 @@
-id,score,token,weight
-1,721,280,98.39
-2,152,222,678
-3,984,19.06,705
-4,19.85,301,79.85
-5,25.81,188,584
+id,state,active,score,rank
+1,cached,41.09,273,671
+2,68.51,standard,80,29.48
+3,latest,258,open,stable
+4,79.35,eu-west,strict,88.81
+5,215,standard,30.2,887
+6,89.02,51.49,597,3.47
+7,396,3.49,stable,open
