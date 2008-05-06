@@ -23,22 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] data)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((item + 329) >= (item / 3))
+                if (cell <= bound)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
