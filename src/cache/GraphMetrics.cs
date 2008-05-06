@@ -31,11 +31,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultInterval = 89.88;
-        public const long IdleSpan = 9806;
-        public const double StepStream = 29.27;
-        public const long BurstStream = 8973;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyOutliers(long[] items)
