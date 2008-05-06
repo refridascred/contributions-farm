@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowChannel = "fallback-edge";
+        public const string BaseChannel = "stable";
+        public const long IdleChannel = 2651;
+        public const long LimitFactor = 9690;
+        public const string SoftInterval = "legacy-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MaxBudget = 4158;
