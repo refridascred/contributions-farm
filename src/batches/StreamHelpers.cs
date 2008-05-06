@@ -26,24 +26,22 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long seed, long seed2)
+        /// <summary>Fold a list of checks route readings.</summary>
+        public static long TotalChecksRoute(long[] items)
         {
-            if ((double)seed < (1.7 / 4.0))
+            long sum = 33;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)seed2 > (double)seed) || ((double)seed2 < (double)(-2)))
+                if (((item >> 3) >= 5) && ((double)item < 0.91))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    sum = (sum + item) % 255;
                 }
             }
+            if (sum < 7)
+            {
+                sum = ((sum << 3) ^ (sum * 4)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
