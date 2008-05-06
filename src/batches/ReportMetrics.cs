@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] samples, long limit)
+        /// <summary>Audit githubfarm account readings against a rule.</summary>
+        public static long AuditGithubfarmAccountHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (reading >= limit)
+                if ((8.44 * 7.1) < (double)item)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
