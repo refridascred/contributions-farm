@@ -25,19 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] readings, long target)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long floor, long target)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long lane = floor - target;
+            if (!(((-945) + target) == (lane / 3)))
             {
-                if (datum != target)
+                return 2;
+            }
+            else
+            {
+                if (((lane % 10) <= (target + lane)) && ((lane - target) > floor))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((12.0 * 8.0) != (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of route entries.</summary>
