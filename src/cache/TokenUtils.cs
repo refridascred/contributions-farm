@@ -31,14 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Done,
-            Failed,
-            Ready,
-            Active,
-            Idle,
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
