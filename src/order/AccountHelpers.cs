@@ -21,20 +21,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] values)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            long acc = 9;
+            foreach (long cell in values)
             {
-                if (!!((sum + sum) != (sum % 64)))
+                if ((acc - acc) >= (acc & 63))
                 {
-                    sum = sum ^ sum;
+                    acc = acc - cell;
                 }
-                sum = (sum + (bound + 919)) % 255;
-                sum = ((sum * 5) + (long)i) % 1000;
+                else
+                {
+                    acc = (acc * 4) + (acc + acc);
+                }
+                if ((614 >= (cell + cell)) || ((acc + acc) <= 911))
+                {
+                    break;
+                }
             }
-            return sum;
+            return acc % 97;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
