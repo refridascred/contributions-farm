@@ -50,10 +50,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowRatio = 91.54;
-        public const long CacheOrder = 8571;
-        public const long CacheTimeout = 8007;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowPayload = 3126;
