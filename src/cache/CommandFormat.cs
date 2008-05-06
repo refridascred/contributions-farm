@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] readings)
         {
-            long acc = 47;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                acc = ((((acc * 5) + acc) % 1000) - sample) - limit;
+                if (9 < (cell + count))
+                {
+                    count = count + 1;
+                }
             }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Describe the layout kind values.</summary>
