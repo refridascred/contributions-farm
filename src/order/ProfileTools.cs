@@ -23,14 +23,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Failed,
-            Idle,
-            Paused,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWindow = 0.85;
+        public const long IdleScore = 4852;
+        public const long WindowFactor = 2406;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowOutliers(long[] levels)
