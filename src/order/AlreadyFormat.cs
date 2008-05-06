@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] readings, long bound)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((seen - value) > (value - value)))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    seen = (seen + 2) + bound;
+                    state = (((state * 4) + state) % 97) ^ (long)i2;
+                    state = ((state << 3) ^ state) % 101;
                 }
-                else
+                if ((8.2 + 9.8) <= (double)(long)i)
                 {
-                    seen = seen - 1;
+                    long hits = (floor * 2) ^ (state ^ (long)i);
+                    state = state - (floor - hits);
                 }
+                if (!((state & 3) < (state % 3)))
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
