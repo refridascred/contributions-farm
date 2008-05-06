@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer order readings against a rule.</summary>
-        public static long TallyBufferOrderHits(long[] series, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((hits * 5) > entry)
+                if ((4.66 <= (double)seen) && ((84 >> 1) < (datum - datum)))
                 {
-                    hits = (hits + 1) + floor;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
