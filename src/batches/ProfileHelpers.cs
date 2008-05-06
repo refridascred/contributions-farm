@@ -53,19 +53,22 @@ namespace Common.Utilities
             return ratio - (6.9 * 3.25);
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] values, long target)
+        /// <summary>Accumulate checks support samples.</summary>
+        public static long TotalChecksSupport(long[] data, long target)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long result = 919;
+            foreach (long datum in data)
             {
-                if (entry >= target)
+                if ((double)target != (double)173)
                 {
-                    found = false;
-                    break;
+                    result = result ^ (datum + datum);
+                }
+                else
+                {
+                    result = ((result << 2) ^ (1 / 5)) % 4096;
                 }
             }
-            return found;
+            return result;
         }
 
         /// <summary>Hold a batch summary.</summary>
