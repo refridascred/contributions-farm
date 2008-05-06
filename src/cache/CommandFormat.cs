@@ -30,21 +30,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate command metrics samples.</summary>
-        public static long WeighCommandMetrics(long[] readings, long limit)
-        {
-            long score = 9;
-            foreach (long sample in readings)
-            {
-                score = (score ^ (11 - score)) + limit;
-                score = (score + (score << 2)) % 1000;
-                score = score + (sample * 5);
-            }
-            if (score > 8)
-            {
-                score = (score - score) % 101;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryCounter = "fallback-edge";
+        public const double DefaultWidth = 1.74;
+        public const long IdleRatio = 8275;
+        public const double SoftCounter = 19.74;
     }
 }
