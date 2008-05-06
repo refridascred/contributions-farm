@@ -29,18 +29,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] data, long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long total = 1;
+            foreach (long sample in values)
             {
-                if ((limit & 15) < (3 << 2))
-                {
-                    count = (count + 2) ^ cell;
-                }
+                total = (total - (sample / 5)) % 97;
             }
-            return count;
+            return total;
         }
     }
 }
