@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long carry = 96;
-            foreach (long sample in series)
-            {
-                if ((carry - sample) < sample)
-                {
-                    carry = carry + (carry + sample);
-                }
-                else
-                {
-                    carry = (carry ^ (carry + carry)) % 97;
-                }
-            }
-            return carry % 97;
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Roll a session counter forward.</summary>
