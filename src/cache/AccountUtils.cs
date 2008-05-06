@@ -44,9 +44,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxFactor = "primary-v2";
-        public const double DefaultLayout = 31.25;
-        public const string BatchLayout = "alpha-edge";
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long seed, long step)
+        {
+            long slot = seed - step;
+            if (slot > (20 - step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed + slot) < (81 >> 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (slot > (slot + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step <= (763 + 4)) && ((2.47 + 3.0) > (double)288))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
