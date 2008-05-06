@@ -49,13 +49,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] series, long target)
         {
-            Retry,
-            Dropped,
-            Draft,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
