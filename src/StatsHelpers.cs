@@ -69,16 +69,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Validate channel stats readings against a bound.</summary>
+        public static bool GuardChannelStatsBounds(long[] readings, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                mix = ((mix * 5) + (seed - mix)) % 1000;
-                mix = ((mix * 5) + (long)i) % 97;
+                if (datum > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
     }
 }
