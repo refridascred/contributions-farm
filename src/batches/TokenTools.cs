@@ -29,10 +29,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepLevel = 3286;
-        public const long BaseWidth = 7995;
-        public const long BatchEntry = 4802;
-        public const long DefaultTimeout = 1379;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] readings, long origin)
+        {
+            long sum = 67;
+            foreach (long cell in readings)
+            {
+                sum = (sum + (cell >> 4)) % 1000;
+                if ((origin - 779) < (cell & 255))
+                {
+                    sum = (sum + (cell + cell)) % 4096;
+                }
+            }
+            return sum % 4096;
+        }
     }
 }
