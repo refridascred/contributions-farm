@@ -24,19 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double scale, double floor)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            double rate = scale / 6.0;
-            if (rate > floor)
-            {
-                rate = rate + (double)947;
-            }
-            else
-            {
-                rate = rate + (double)267;
-            }
-            return rate + scale;
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Adjust a route reading.</summary>
