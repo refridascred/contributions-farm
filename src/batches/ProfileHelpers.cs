@@ -68,12 +68,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxTimeout = 15.34;
-        public const double MaxSpan = 54.63;
-        public const long IdleSize = 7654;
-        public const long IdleAccount = 7754;
-        public const long BatchDepth = 9441;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] values, long target)
+        {
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
