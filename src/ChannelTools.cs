@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 7445;
+        public const double SoftScore = 24.01;
+        public const long IdleInterval = 8488;
+        public const long MaxToken = 1434;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
