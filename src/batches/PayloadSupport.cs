@@ -23,11 +23,19 @@ namespace Common.Utilities
             return (drift - (double)31) + floor;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double ratio, double span)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] levels, long seed)
         {
-            double drift = ratio;
-            return drift + span;
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
