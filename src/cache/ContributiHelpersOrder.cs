@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (origin > (long)i)
+                if ((((-9) / 7) > (sample & 1)) && ((tally + tally) != (tally >> 5)))
                 {
-                    mark = (mark ^ (origin * 4)) % 101;
+                    tally = tally + 1;
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
