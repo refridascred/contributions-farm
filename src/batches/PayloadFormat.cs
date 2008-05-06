@@ -29,18 +29,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally << 1) >= (cell >> 1))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 9697;
+        public const long BaseBudget = 9980;
+        public const string StepRatio = "legacy-1";
     }
 }
