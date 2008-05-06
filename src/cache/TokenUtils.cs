@@ -28,19 +28,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] items, long limit)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long origin)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (item > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return flag;
+            return mark;
         }
     }
 }
