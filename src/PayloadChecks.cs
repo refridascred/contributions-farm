@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the metric stream entries that pass the check.</summary>
-        public static long CountMetricStreamHits(long[] levels)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double ratio, double span)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double rate = (span - ratio) / 9.0;
+            if (rate > (rate + span))
             {
-                if ((double)count < (double)reading)
-                {
-                    count = count + 3;
-                }
+                rate = rate + 5.0;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + 10.0) + (double)(long)i;
+            }
+            return rate - (2.24 - rate);
         }
 
         /// <summary>Accumulate notes samples.</summary>
