@@ -45,14 +45,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] values, long origin)
         {
-            Retry,
-            Closed,
-            Done,
-            Idle,
-            Synced,
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
