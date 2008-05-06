@@ -14,14 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] items)
         {
-            Stale,
-            Closed,
-            Active,
-            Dropped,
-            Failed,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell <= (matches ^ 52)) || (((double)cell != (8.59 * 9.0)) || (matches <= (cell + cell))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a command entry.</summary>
