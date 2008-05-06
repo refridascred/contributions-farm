@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up session queue samples.</summary>
-        public static long MatchSessionQueueCount(long[] readings)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long origin, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = origin ^ target;
+            if (((double)origin < (0.26 + 1.83)) && (target <= (target + target)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((diff - origin) > diff)
                 {
-                    if ((readings[i] + readings[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
