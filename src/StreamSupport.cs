@@ -28,19 +28,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every payload cluster entry stays within the limit.</summary>
-        public static bool GuardPayloadClusterBounds(long[] series, long bound)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
     }
 }
