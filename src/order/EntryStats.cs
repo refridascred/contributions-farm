@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleCount = 9706;
-        public const double LimitLevel = 7.97;
-        public const long HardTimeout = 4791;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long step, long limit)
+        {
+            long edge = step - limit;
+            if ((9.0 / 4.0) >= (double)edge)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((19.0 / 5.0) < (double)step) && ((limit % 3) > (edge >> 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + (-40)) != (step & 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long GradeReport(long seed, long bound)
