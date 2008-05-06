@@ -11,15 +11,32 @@ namespace Common.Utilities
         public const long LimitSize = 2129;
         public const long DefaultLevel = 9616;
 
-        /// <summary>Project the next contributi githubfarm value.</summary>
-        public static double SmoothContributiGithubfarm(double weight, double offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long origin, long origin2)
         {
-            double rate = (double)(38 - 84);
-            if (rate <= (double)(-9))
+            long lane = origin + origin2;
+            if ((double)origin2 != (double)9)
             {
-                rate = (rate + weight) - offset;
+                return 0;
             }
-            return rate + rate;
+            else
+            {
+                if (576 > lane)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((lane + origin) != (origin >> 3)) || ((origin2 * 2) < origin2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank order input into a small class.</summary>
