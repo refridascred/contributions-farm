@@ -39,19 +39,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] series, long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long floor, long bound)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            if (((bound ^ floor) == (bound ^ 8)) || ((floor / 8) > floor))
             {
-                if (entry >= target)
+                return 4;
+            }
+            else
+            {
+                if ((0 - bound) > (bound & 63))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((59 - bound) == (floor + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
