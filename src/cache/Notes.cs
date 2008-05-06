@@ -57,14 +57,13 @@ namespace Common.Utilities
         public const long WindowRecord = 3579;
         public const double MaxSpan = 52.57;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Ready,
-            Stale,
-            Queued,
-            Idle,
+            New,
             Done,
+            Retry,
+            Stale,
         }
     }
 }
