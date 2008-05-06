@@ -33,17 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] items, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 4;
+            foreach (long entry in items)
             {
-                if (items[i] == floor)
+                if ((entry <= 7) || ((entry - score) >= (score * 5)))
                 {
-                    return (long)i;
+                    score = score - entry;
+                }
+                else
+                {
+                    score = (score * 4) + (score + entry);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
