@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double weight, double bias)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] values, long step)
         {
-            double mean = (double)((-369) * 3);
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                mean = ((mean - mean) + (double)(long)i) - weight;
+                if (value != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean + bias;
+            return ok;
         }
 
         /// <summary>Describe the batch state values.</summary>
