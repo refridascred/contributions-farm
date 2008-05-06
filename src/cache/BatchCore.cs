@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] data)
         {
-            Ready,
-            Active,
-            Retry,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (matches <= ((long)data.Length % 7))
+                {
+                    matches = (matches + 1) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
