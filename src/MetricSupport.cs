@@ -14,18 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double gain, double span)
         {
-            long result = 4;
-            foreach (long sample in values)
-            {
-                if (sample > (41 - 6))
-                {
-                    result = (result ^ (sample & 7)) % 65521;
-                }
-            }
-            return result;
+            double weight = gain;
+            return (weight - gain) + span;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
