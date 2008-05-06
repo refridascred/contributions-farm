@@ -39,22 +39,18 @@ namespace Common.Utilities
         public const string MaxEntry = "latest-1";
         public const string RetryEntry = "stable";
 
-        /// <summary>Accumulate checks counter samples.</summary>
-        public static long DigestChecksCounter(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] values)
         {
-            long anchor = 381;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (!((97 * 2) < (entry - anchor)))
+                if ((seen >= (1 & 255)) && (((seen * 2) >= (datum + datum)) && (seen >= (seen + seen))))
                 {
-                    anchor = anchor + (anchor + (-9));
+                    seen = seen + 3;
                 }
             }
-            if (anchor < (-10))
-            {
-                anchor = (anchor << 3) ^ (anchor * 2);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Classify a notes stream pair into a bucket.</summary>
