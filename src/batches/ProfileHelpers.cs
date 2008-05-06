@@ -77,18 +77,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit profile support readings against a rule.</summary>
-        public static long MeasureProfileSupportHits(long[] items, long origin)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long seed, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long lane = seed - step;
+            if (!((double)step >= (6.0 - 4.48)))
             {
-                if (((count < (count - sample)) && (count > sample)) && ((65 & 7) == (origin & 1)))
+                return 2;
+            }
+            else
+            {
+                if ((step % 10) == (seed * 2))
                 {
-                    count = count + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)lane <= (0.85 - 4.0)) || ((seed + lane) < (step + seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((-729) - step) > seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
