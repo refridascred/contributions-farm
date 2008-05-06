@@ -71,13 +71,13 @@ namespace Common.Utilities
         public const long IdleAccount = 7754;
         public const long BatchDepth = 9441;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Closed,
-            Draft,
-            Dropped,
-            New,
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
