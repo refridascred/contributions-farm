@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long origin, long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] items, long target)
         {
-            long step = origin ^ offset;
-            if ((origin + 504) > offset)
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step != (7.8 + 5.0))
+                if ((8 + (long)items.Length) >= value)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    matches = (matches + 2) + target;
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two report measurements.</summary>
