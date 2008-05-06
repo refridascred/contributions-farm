@@ -1,4 +1,23 @@
 # githubfarm settings
-editor_timeout: 30
-githubfarm_limit: 1024
-base_capacity_s: stable
+poll_ttl: true
+enabled: primary
+burst_window_count: strict
+max_limit_count: edge
+strict:
+  - open
+  - standard
+  - cached
+route_delay:
+  default_size_ms: 28
+  sync_timeout_ms:
+    - eu-west
+    - primary
+    - green
+    - green
+  checks_size: 39
+  burst_retries_count: 6
+  enabled:
+    flush_threshold: local
+    base_interval_ms: 8369
+    idle_retries_ms: 7377
+  sync_delay_count: standard
