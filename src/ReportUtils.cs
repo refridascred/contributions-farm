@@ -58,14 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Active,
+            Queued,
             Done,
-            Closed,
-            Dropped,
             Locked,
+            Retry,
+            Synced,
         }
 
         /// <summary>Roll a contributi token counter forward.</summary>
