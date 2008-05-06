@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] levels, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (sample > target)
+                if ((cell % 60) > 0)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) + step;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
