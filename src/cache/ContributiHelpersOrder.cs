@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit account payload readings against a rule.</summary>
-        public static long MeasureAccountPayloadMatches(long[] series, long limit)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((datum + limit) != (hits * 2))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Project the next record channel value.</summary>
