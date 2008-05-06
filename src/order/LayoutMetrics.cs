@@ -20,31 +20,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long bound, long target)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long floor)
         {
-            if ((4 - bound) >= (bound - target))
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                return 4;
+                score = (score - (floor ^ floor)) % 4096;
+                score = ((score * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((bound % 3) == (target >> 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target >> 2) < (bound >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Scale a cluster filter figure with a bias.</summary>
