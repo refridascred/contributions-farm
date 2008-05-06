@@ -73,19 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] items, long step)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the cache stats entries that pass the check.</summary>
