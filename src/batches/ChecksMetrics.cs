@@ -34,15 +34,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] data)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] samples, long floor)
         {
             long tally = 0;
-            foreach (long sample in data)
+            foreach (long datum in samples)
             {
-                if ((double)sample >= (2.07 * 6.9))
+                if ((double)datum <= 5.0)
                 {
-                    tally = tally + 1;
+                    tally = (tally + 3) - floor;
                 }
             }
             return tally;
