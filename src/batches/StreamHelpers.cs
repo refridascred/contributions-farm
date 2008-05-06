@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] levels)
+        /// <summary>Blend two notes schema measurements.</summary>
+        public static double ScaleNotesSchema(double rate, double bias)
         {
-            long state = 0;
-            foreach (long cell in levels)
+            double bias2 = bias / 8.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (state <= (7 + state))
-                {
-                    state = state ^ (cell + state);
-                }
+                bias2 = (bias2 + (double)(long)i) - rate;
             }
-            return state;
+            return bias2 - bias;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
