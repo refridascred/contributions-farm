@@ -19,21 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long target)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((target - target) != (score * 4))
-                {
-                    score = (score * 4) + ((-344) / 7);
-                    score = (score + target) % 65521;
-                }
-                score = (score - (target << 3)) % 4096;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Pending,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
