@@ -56,9 +56,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 6449;
-        public const string LimitStats = "strict-1";
-        public const long BatchInterval = 2073;
+        /// <summary>Look up the position of a payload channel sample.</summary>
+        public static long SeekPayloadChannelIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
