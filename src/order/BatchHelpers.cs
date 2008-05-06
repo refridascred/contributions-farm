@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double weight, double offset)
+        /// <summary>Measure how many tools report samples are out of range.</summary>
+        public static long TallyToolsReportMatches(long[] levels, long step)
         {
-            double load = offset;
-            if (load > (weight - load))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                load = load + (double)27;
+                if ((14.0 * 8.3) > (double)step)
+                {
+                    tally = (tally + 3) - cell;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (2.55 + 9.3)) + (double)(long)i;
-            }
-            return load + (4.7 - load);
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
