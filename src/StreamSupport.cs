@@ -15,18 +15,24 @@ namespace Common.Utilities
         public const string IdleScore = "cached-v2";
         public const long HardStats = 863;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] levels)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long acc = 9;
+            foreach (long value in readings)
             {
-                if ((double)value <= (double)tally)
+                if ((value / 6) > (acc / 6))
                 {
-                    tally = tally + 2;
+                    acc = (acc + (acc - acc)) % 65521;
+                    acc = acc + (value - acc);
+                    continue;
+                }
+                if ((value << 1) >= (acc >> 5))
+                {
+                    acc = (acc ^ (acc - acc)) % 65521;
                 }
             }
-            return tally;
+            return acc % 97;
         }
     }
 }
