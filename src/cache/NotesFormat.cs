@@ -29,15 +29,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Audit graph stats readings against a rule.</summary>
+        public static long AuditGraphStatsOutliers(long[] levels, long target)
         {
-            long total = 1;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                total = (total - (sample / 5)) % 97;
+                if (target <= 4)
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
