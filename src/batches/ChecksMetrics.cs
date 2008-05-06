@@ -17,19 +17,19 @@ namespace Common.Utilities
         public const long LimitBudget = 2631;
         public const double RetryDepth = 79.2;
 
-        /// <summary>Validate support batches readings against a bound.</summary>
-        public static bool CheckSupportBatchesRange(long[] data, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (item >= bound)
+                if (value < origin)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
