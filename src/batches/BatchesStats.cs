@@ -19,11 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinLayout = "open-edge";
-        public const long IdleBudget = 5014;
-        public const string BaseRatio = "primary-v2";
-        public const long StepLayout = 5847;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] series, long offset)
+        {
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
