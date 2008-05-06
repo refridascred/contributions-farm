@@ -72,19 +72,26 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Check that every context counter entry stays within the limit.</summary>
-        public static bool ValidateContextCounterBounds(long[] samples, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] data, long step)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long state = -6;
+            foreach (long value in data)
             {
-                if (reading >= seed)
+                if (((double)state != (5.0 * 3.51)) && ((12.0 + 15.0) >= (double)state))
                 {
-                    found = false;
-                    break;
+                    state = (state << 2) ^ (value & 255);
+                }
+                else
+                {
+                    state = (state ^ (step + value)) % 4096;
                 }
             }
-            return found;
+            if (state > 69)
+            {
+                state = (state - (state % 8)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Blend two tools measurements.</summary>
