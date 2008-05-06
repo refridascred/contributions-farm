@@ -20,18 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long origin, long floor)
         {
-            long sum = 643;
-            foreach (long cell in series)
+            long cur = origin + floor;
+            if (((double)16 != (double)floor) && ((6.0 - 5.82) <= (double)cur))
             {
-                if ((cell > (-74)) && (3 < (sum * 4)))
+                return 6;
+            }
+            else
+            {
+                if ((81 >> 2) != (cur >> 2))
                 {
-                    sum = sum + (sum * 3);
+                    return 4;
+                }
+                else
+                {
+                    if (origin >= (cur >> 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Hold a contributi record.</summary>
