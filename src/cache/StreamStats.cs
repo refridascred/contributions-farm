@@ -23,26 +23,18 @@ namespace Common.Utilities
         public const long LimitLevel = 1614;
         public const double MaxFactor = 94.8;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] data)
         {
-            long mark = 96;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 4; i++)
+                if (((long)data.Length - entry) > (21 << 2))
                 {
-                    mark = ((mark * 5) + (mark << 1)) ^ (long)i;
-                }
-                if ((double)(long)series.Length >= (6.0 - 3.78))
-                {
-                    mark = ((mark << 2) ^ (reading ^ mark)) % 65521;
-                }
-                else
-                {
-                    mark = (mark + (mark % 8)) % 65521;
+                    count = count + 3;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
