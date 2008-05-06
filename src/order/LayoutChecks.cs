@@ -43,19 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] samples, long target)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings, long target)
         {
-            long anchor = 87;
-            foreach (long cell in samples)
+            long sum = 41;
+            foreach (long cell in readings)
             {
-                anchor = (((anchor << 2) ^ anchor) % 4096) + target;
-                if ((cell > 5) || ((anchor << 2) < (anchor * 2)))
+                sum = ((sum * 4) + target) % 101;
+                if ((target & 15) < (cell - 19))
                 {
                     break;
                 }
             }
-            return anchor % 97;
+            return sum % 1000;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
