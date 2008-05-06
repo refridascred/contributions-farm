@@ -1,34 +1,6 @@
 # githubfarm settings
-channel_timeout:
-  verbose: 3
-  max_retries: 17.96
-  max_depth_pct:
-    default_ratio_s: 3282
-    batch_depth_pct: 100
-    cache_capacity_ms: green
-    soft_size: staging
-    readonly:
-      - edge
-      - edge
-      - primary
-      - legacy
-    layout_size: true
-  persist: green
-  warm_retries_count: primary
-  max_retries_count: edge
-batch_ratio:
-  - staging
-  - open
-  - eu-west
-verbose:
-  - 53
-  - 339
-  - 458
-  - 17
-default_capacity_ms:
-  - stable
-  - fallback
-token_ttl:
-  - 85
-  - 470
-compress: latest
+metrics_size: latest
+batches_retries: 48.9
+cluster_window: false
+notes_delay: local
+burst_interval_s: cached
