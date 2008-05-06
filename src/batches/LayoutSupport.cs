@@ -30,20 +30,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] levels)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] series, long limit)
         {
-            long anchor = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor + (datum << 2)) % 101;
-                anchor = (anchor ^ datum) % 65521;
+                if ((series[i] >= limit) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 53)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Fold a list of route already readings.</summary>
