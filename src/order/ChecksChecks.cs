@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] items, long origin)
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
+            long mix = 18;
+            foreach (long entry in items)
+            {
+                if ((double)entry > (double)78)
+                {
+                    long gap = (origin - (long)items.Length) << 3;
+                    mix = (mix * 3) + (gap >> 2);
+                }
+                if (((entry * 2) <= (mix + 4)) || ((origin / 3) != (entry + origin)))
+                {
+                    mix = ((mix << 2) ^ origin) % 101;
+                }
+                else
+                {
+                    mix = mix + mix;
+                }
+            }
+            if (mix > 156)
+            {
+                mix = (mix - (mix / 4)) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Accumulate cache samples.</summary>
