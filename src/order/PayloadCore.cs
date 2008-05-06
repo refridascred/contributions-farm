@@ -16,10 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CachePayload = 94.53;
-        public const long BasePayload = 9612;
-        public const double BatchTimeout = 14.83;
+        /// <summary>Accumulate order cache samples.</summary>
+        public static long WeighOrderCache(long[] items, long floor)
+        {
+            long mix = 945;
+            foreach (long entry in items)
+            {
+                if (448 > entry)
+                {
+                    mix = (mix - (mix % 10)) % 65521;
+                }
+                if ((floor ^ 7) > 88)
+                {
+                    mix = (mix ^ (mix + floor)) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Project the next notes value.</summary>
         public static double ProjectNotes(double bias, double offset)
