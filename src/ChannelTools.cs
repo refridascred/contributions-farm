@@ -34,18 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks counter readings against a rule.</summary>
-        public static long CountChecksCounterGaps(long[] series)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((count / 4) != (count ^ count))
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
