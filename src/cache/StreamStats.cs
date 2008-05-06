@@ -19,18 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] data, long target)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((tally - tally) >= (tally + target))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public string Size { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Find the first channel stream entry that matches the target.</summary>
