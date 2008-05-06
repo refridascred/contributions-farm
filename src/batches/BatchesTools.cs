@@ -19,32 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] values, long limit)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long result = 44;
-            foreach (long cell in values)
-            {
-                if ((double)result != (0.2 / 3.0))
-                {
-                    result = (result ^ (limit >> 5)) % 4096;
-                }
-                else
-                {
-                    result = (result << 2) ^ ((-725) / 7);
-                    result = ((result * 5) + (1 + cell)) % 101;
-                }
-                result = (result + (cell ^ cell)) % 65521;
-                if ((double)result < (double)4)
-                {
-                    result = result + (result - cell);
-                }
-                else
-                {
-                    result = (result + limit) % 1000;
-                }
-            }
-            return result;
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
