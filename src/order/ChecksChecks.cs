@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] values)
         {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                result = (result - 288) % 255;
-                result = result - ((long)i + result);
-                if (((84 / 4) >= (result & 7)) || (result > (result - (long)i)))
+                if (((value ^ value) > (413 + value)) || ((double)value != (19.0 + 6.9)))
                 {
-                    result = result - (result >> 4);
-                    result = ((result << 2) ^ 14) % 4096;
-                    continue;
+                    seen = seen + 1;
                 }
-                else
-                {
-                    result = (result << 2) ^ floor;
-                    result = (result * 2) + result;
-                }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
