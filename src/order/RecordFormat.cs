@@ -28,12 +28,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepSession = 79.81;
-        public const long SoftSession = 6550;
-        public const long LimitScore = 536;
-        public const long BatchSize = 2631;
-        public const long StepRatio = 8704;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((2.0 - 0.98) > (double)value)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long MatchBatchesCount(long[] levels)
