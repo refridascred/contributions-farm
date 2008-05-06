@@ -32,11 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinFactor = 654;
-        public const long SoftTimeout = 4357;
-        public const string BatchWidth = "strict-1";
-        public const long BurstInterval = 725;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 7114;
+        public const long WindowSpan = 1691;
+        public const double IdleDepth = 7.44;
+        public const long CacheInterval = 5045;
+        public const string RetryQueue = "standard";
 
         /// <summary>Measure how many route window samples are out of range.</summary>
         public static long CountRouteWindowHits(long[] values, long seed)
