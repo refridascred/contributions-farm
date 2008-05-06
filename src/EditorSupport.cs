@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] samples, long step)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long total = 195;
-            foreach (long entry in samples)
-            {
-                if (((total << 3) < (total + 18)) && (total < step))
-                {
-                    total = ((total - 33) % 1000) - entry;
-                }
-                total = (total * 3) + (total % 10);
-            }
-            if (total > 6)
-            {
-                total = (total - (step ^ (-850))) % 255;
-            }
-            return total;
+            Draft,
+            Active,
+            Pending,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
