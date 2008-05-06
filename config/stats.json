@@ -1,5 +1,10 @@
 {
-  "verbose": 1024,
-  "idle_window_count": 4655,
-  "retry_interval_pct": [438, 174]
+  "format_delay": 577,
+  "strict": 39,
+  "schema_ratio": 13,
+  "session_size": {
+    "poll_size_pct": 1453,
+    "enabled": false,
+    "cache_window_count": "stable"
+  }
 }
