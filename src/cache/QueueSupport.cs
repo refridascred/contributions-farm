@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double scale, double span)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] readings)
         {
-            double weight = 0.4;
-            if (weight >= scale)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                weight = (weight - weight) + span;
+                if ((long)readings.Length >= (sample & 7))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (7.3 + 7.55)) + (double)(long)i;
-            }
-            return weight - scale;
+            return tally;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
