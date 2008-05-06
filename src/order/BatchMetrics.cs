@@ -50,19 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter contributi readings against a rule.</summary>
-        public static long MeasureFilterContributiOutliers(long[] readings, long limit)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((((limit ^ limit) <= (-6)) && ((limit % 7) == (item >> 5))) && ((limit + limit) >= (item ^ 2)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitSize = 4474;
+        public const long MinContributi = 2010;
+        public const string SoftFactor = "staging";
+        public const long BaseTimeout = 1228;
+        public const string RetryContributi = "latest-edge";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double StepChannel = 16.26;
