@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] series, long seed)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seed <= 9.0)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) - cell;
+                    if ((data[i] ^ data[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a payload entry.</summary>
