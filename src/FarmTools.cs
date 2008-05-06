@@ -33,17 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state * 4) + ((long)i ^ state)) % 4096;
-                state = ((state << 2) ^ state) % 1000;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstToken = 60.84;
+        public const long MaxToken = 8329;
+        public const double MinTimeout = 74.9;
+        public const long LimitScore = 9213;
     }
 }
