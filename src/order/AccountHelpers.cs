@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of batches entry readings.</summary>
-        public static long DigestBatchesEntry(long[] items)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] values, long limit)
         {
-            long sum = -62;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((sum + sum) > (sum & 31))
+                if (cell <= limit)
                 {
-                    sum = (sum + (200 >> 5)) % 101;
-                    sum = (sum ^ sum) % 255;
-                }
-                if (!((1 + datum) == (datum - datum)))
-                {
-                    sum = sum + 20;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Describe the command kind values.</summary>
