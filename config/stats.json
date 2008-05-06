@@ -1,11 +1,5 @@
 {
-  "report_limit": {
-    "profile_retries": 85,
-    "profile_delay": "legacy",
-    "readonly": true,
-    "burst_threshold": 500
-  },
-  "max_ratio_count": false,
-  "window_threshold": ["open", "strict", "green"],
-  "warm_window_count": [291, 59]
+  "soft_threshold_count": 56.01,
+  "hard_capacity": [381, 95, 435, 134],
+  "metrics_ratio": 9793
 }
