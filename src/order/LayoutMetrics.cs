@@ -13,11 +13,20 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 1959;
-        public const double DefaultBudget = 86.42;
-        public const long LimitBatches = 5990;
-        public const double BurstBatches = 65.85;
+        /// <summary>Validate context token readings against a bound.</summary>
+        public static bool CheckContextTokenBounds(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Roll a githubfarm route counter forward.</summary>
         public static long SeriesGithubfarmRoute(long step)
