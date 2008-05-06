@@ -22,22 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of graph route entries.</summary>
-        public static long ScoreGraphRoute(long[] data)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] items, long offset)
         {
-            long score = 44;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((double)score == (double)datum)
+                if (entry != offset)
                 {
-                    score = (score ^ datum) % 97;
-                }
-                else
-                {
-                    score = ((score << 3) ^ datum) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return score % 1000;
+            return stale;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
