@@ -36,13 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            Paused,
+            Ready,
+            Synced,
+            New,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
