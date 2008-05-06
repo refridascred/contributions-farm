@@ -43,12 +43,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] data)
         {
-            Idle,
-            Stale,
-            New,
+            long score = 9;
+            foreach (long reading in data)
+            {
+                if (((score ^ reading) == (37 - 4)) && ((double)score >= (5.3 - 8.5)))
+                {
+                    score = (score << 2) ^ (score - score);
+                }
+                if ((reading + score) < reading)
+                {
+                    score = (score - (reading / 4)) % 101;
+                }
+            }
+            if (score > 94)
+            {
+                score = (score + score) % 65521;
+            }
+            return score;
         }
     }
 }
