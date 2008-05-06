@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] series, long limit)
         {
-            Locked,
-            Idle,
-            Done,
+            long result = 78;
+            foreach (long datum in series)
+            {
+                result = ((result << 2) ^ (result >> 3)) % 4096;
+                result = (result - (datum << 2)) % 255;
+                if ((double)limit > (8.4 - 1.5))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Adjust a token metric reading.</summary>
