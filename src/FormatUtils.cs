@@ -53,39 +53,21 @@ namespace Common.Utilities
         public const string RetryCount = "local-1";
         public const long CacheCount = 5006;
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long seed, long step)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] levels)
         {
-            long slot = seed + step;
-            if (!(slot < (slot + seed)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((step / 5) <= (seed % 8)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step <= (2.69 - 4.49))
+                    if ((levels[i] + levels[j]) == 1)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((slot + slot) >= (seed & 255)) || ((step & 255) <= 10))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
