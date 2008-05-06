@@ -1,6 +1,5 @@
 {
-  "flush_limit_pct": "staging",
-  "warm_ratio_s": 48.5,
-  "metric_timeout": true,
-  "cache_capacity": 38.42
+  "idle_depth": 1024,
+  "sync_depth_s": 3079,
+  "idle_threshold_pct": "primary"
 }
