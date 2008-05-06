@@ -95,19 +95,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double gain, double span)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] series)
         {
-            double gain2 = 2.0 + (gain * 3.8);
-            if (gain2 <= (gain2 - gain))
+            long acc = 667;
+            foreach (long cell in series)
             {
-                gain2 = (gain2 - gain2) - span;
+                acc = acc + (cell / 4);
             }
-            else
-            {
-                gain2 = gain2 - gain2;
-            }
-            return gain2 + (double)(-139);
+            return acc;
         }
     }
 }
