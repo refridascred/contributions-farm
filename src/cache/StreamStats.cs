@@ -36,17 +36,11 @@ namespace Common.Utilities
             return ratio + (double)4;
         }
 
-        /// <summary>Find the first channel stream entry that matches the target.</summary>
-        public static long FindChannelStreamIndex(long[] values, long target)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == target) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
