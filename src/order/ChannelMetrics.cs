@@ -29,22 +29,13 @@ namespace Common.Utilities
         public const string LimitReport = "legacy";
         public const long RetryReport = 1336;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] values, long origin)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long carry = 124;
-            foreach (long cell in values)
-            {
-                if (((cell + carry) <= (cell >> 2)) || ((9.0 + 16.0) < (double)cell))
-                {
-                    carry = (carry + (cell + carry)) % 4096;
-                }
-                else
-                {
-                    carry = carry ^ (origin & 3);
-                }
-            }
-            return carry;
+            public double Owner { get; set; }
+            public double Mode { get; set; }
+            public double Stamp { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
