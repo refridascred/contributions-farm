@@ -40,19 +40,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] series, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long mark = 2;
+            foreach (long item in items)
             {
-                if (entry > origin)
+                if ((4.5 * 6.11) <= (double)mark)
                 {
-                    valid = false;
-                    break;
+                    mark = (((mark << 3) ^ (item ^ 8)) % 255) - floor;
+                }
+                else
+                {
+                    mark = mark - (mark & 1);
                 }
             }
-            return valid;
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of checks entry readings.</summary>
