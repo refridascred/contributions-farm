@@ -29,10 +29,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultFilter = 55.91;
-        public const string MinFilter = "primary-v2";
-        public const long LimitFilter = 1293;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)origin > (double)mark)
+                {
+                    mark = mark - (origin >> 1);
+                    mark = mark + (mark - origin);
+                    continue;
+                }
+                if ((double)mark > (double)origin)
+                {
+                    mark = ((mark * 2) + (mark * 3)) % 4096;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
