@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green eu-west latest edge; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=444
+log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+mode="${1:-edge}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
