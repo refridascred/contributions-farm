@@ -37,12 +37,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultTools = "latest-1";
-        public const long SoftTools = 7942;
-        public const double RetrySpan = 61.15;
-        public const long BatchTools = 7464;
-        public const double WindowBudget = 87.18;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long WindowSpan = 1845;
