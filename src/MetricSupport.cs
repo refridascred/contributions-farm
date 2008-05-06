@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long CacheAccount = 1909;
         public const double StepRatio = 26.83;
 
-        /// <summary>Audit channel checks readings against a rule.</summary>
-        public static long MeasureChannelChecksGaps(long[] items, long offset)
+        /// <summary>Iterate the report batch series from a seed.</summary>
+        public static long DeriveReportBatch(long floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((6.0 / 6.0) >= (double)datum)
-                {
-                    hits = (hits + 1) + offset;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the notes state values.</summary>
