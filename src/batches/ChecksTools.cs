@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 4771;
-        public const double IdleBuffer = 16.86;
-        public const string StepScore = "open-v2";
-        public const long LimitScore = 7669;
-        public const long DefaultBuffer = 3090;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] series, long seed)
