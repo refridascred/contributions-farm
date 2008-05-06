@@ -42,15 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 8)
+                    if ((series[i] ^ series[j]) < 15)
                     {
                         hits = hits + 1;
                     }
