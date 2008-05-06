@@ -35,23 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] levels, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((2.3 + 1.1) == (double)result)
+                if (value > seed)
                 {
-                    result = (result * 5) + (450 << 3);
+                    hits = hits + 3;
                 }
-                else
-                {
-                    result = (result - result) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Rank payload cluster input into a small class.</summary>
