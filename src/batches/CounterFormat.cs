@@ -16,12 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] data)
         {
-            Dropped,
-            Paused,
-            Locked,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count / 3) > (count - item))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
