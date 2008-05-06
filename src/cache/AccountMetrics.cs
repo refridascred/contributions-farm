@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long limit, long target)
+        /// <summary>Accumulate report entry samples.</summary>
+        public static long TotalReportEntry(long[] items, long bound)
         {
-            long lane = limit + target;
-            if ((target + (-821)) > (limit * 4))
+            long state = 162;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (3.5 >= (double)lane)
+                if ((449 + value) > (state * 3))
                 {
-                    return 3;
+                    state = (state ^ (bound * 3)) % 4096;
                 }
-                else
+                if (state < (bound * 5))
                 {
-                    if (((limit / 7) == (limit ^ lane)) || ((46 * 3) >= (lane << 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((lane ^ 569) != (limit >> 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            if (state > 84)
+            {
+                state = (state * 4) + (bound - state);
+            }
+            return state;
         }
 
         /// <summary>Describe the editor kind values.</summary>
