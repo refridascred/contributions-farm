@@ -38,14 +38,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long seed, long target)
         {
-            Failed,
-            Draft,
-            Done,
-            Active,
-            Synced,
+            if ((target + seed) > (seed - target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed - seed) == (seed + (-622)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((54 - target) < ((-1) - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
