@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] readings, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (reading > limit)
+                if (!((limit + 6) < (limit % 12)))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
