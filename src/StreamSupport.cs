@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] series, long offset)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            double mean = (double)((-369) * 3);
+            for (int i = 0; i < 6; i++)
             {
-                if (datum >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = ((mean - mean) + (double)(long)i) - weight;
             }
-            return stale;
+            return mean + bias;
         }
 
         /// <summary>Describe the batch state values.</summary>
