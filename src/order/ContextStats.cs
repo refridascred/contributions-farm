@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] items)
         {
-            public bool Rank { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((item * 5) < (hits % 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
