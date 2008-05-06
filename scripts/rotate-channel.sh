@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-green}"
 case "${mode}" in
-    local)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in fallback open edge eu-west; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
