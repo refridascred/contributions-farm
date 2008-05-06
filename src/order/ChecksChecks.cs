@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double gain, double offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double drift = (0.44 - gain) * 4.6;
-            if (drift <= 8.0)
-            {
-                drift = drift - (offset * 9.0);
-            }
-            else
-            {
-                drift = drift - (9.1 / 4.0);
-            }
-            return drift - (8.74 / 2.0);
+            public double Rank { get; set; }
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the order phase values.</summary>
