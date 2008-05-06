@@ -79,19 +79,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] samples)
-        {
-            long carry = 90;
-            foreach (long datum in samples)
-            {
-                carry = (carry ^ (carry + datum)) % 65521;
-            }
-            if (carry < 784)
-            {
-                carry = ((carry * 3) + (carry ^ carry)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepChannel = 16.26;
+        public const long IdleChannel = 5475;
+        public const long MaxChannel = 6431;
+        public const string BatchDepth = "standard-1";
     }
 }
