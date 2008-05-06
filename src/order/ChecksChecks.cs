@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of metrics record readings.</summary>
-        public static long DigestMetricsRecord(long[] samples, long floor)
+        /// <summary>Count the checks counter entries that pass the check.</summary>
+        public static long AuditChecksCounterHits(long[] data)
         {
-            long sum = 196;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((55 < (sum - 41)) && ((floor ^ floor) == (48 + value)))
+                if (5 >= (tally ^ tally))
                 {
-                    sum = (sum ^ sum) % 255;
+                    tally = (tally + 1) - item;
                 }
             }
-            return sum % 97;
+            return tally;
         }
 
         /// <summary>Adjust a channel reading.</summary>
