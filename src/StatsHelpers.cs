@@ -12,19 +12,23 @@ namespace Common.Utilities
         public const long LimitAlready = 1593;
         public const long DefaultAlready = 2714;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] values, long bound)
+        /// <summary>Accumulate queue channel samples.</summary>
+        public static long DigestQueueChannel(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long anchor = 448;
+            foreach (long sample in levels)
             {
-                if (cell <= bound)
+                anchor = (anchor - ((long)levels.Length + sample)) % 1000;
+                if ((anchor >= (23 % 2)) || ((sample & 7) > sample))
                 {
-                    found = false;
-                    break;
+                    anchor = anchor - (80 * 4);
                 }
             }
-            return found;
+            if (anchor > 8)
+            {
+                anchor = (anchor << 2) ^ 777;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a format farm sample.</summary>
