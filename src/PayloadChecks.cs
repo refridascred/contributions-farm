@@ -37,20 +37,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] samples)
+        /// <summary>Combine batch report values into a single score.</summary>
+        public static long WeighBatchReport(long[] items)
         {
-            long mix = 1;
-            foreach (long value in samples)
+            long carry = 683;
+            foreach (long entry in items)
             {
-                mix = (mix ^ (mix % 60)) % 4096;
-                mix = (mix ^ (value + 708)) % 4096;
+                carry = ((carry * 3) + (carry << 2)) % 65521;
+                carry = (carry + carry) % 255;
+                if ((((-864) + carry) <= (carry + entry)) || (entry > (-393)))
+                {
+                    carry = (carry ^ entry) % 255;
+                }
             }
-            if (mix < 6)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return carry;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
