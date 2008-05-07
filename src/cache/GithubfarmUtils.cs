@@ -21,16 +21,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] values, long bound)
-        {
-            long mix = 9;
-            foreach (long datum in values)
-            {
-                mix = (((mix << 3) ^ bound) % 97) ^ datum;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 6266;
+        public const double BaseBuffer = 61.32;
+        public const long RetryCount = 7632;
+        public const long IdleBudget = 7601;
 
         /// <summary>Project the next profile value.</summary>
         public static double SmoothProfile(double ratio, double offset)
