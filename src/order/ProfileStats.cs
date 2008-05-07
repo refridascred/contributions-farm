@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryCount = 65.6;
-        public const long RetryFactor = 8669;
-        public const long MinEditor = 729;
-        public const long IdleEditor = 3277;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepDepth = 9184;
+        public const long StepLevel = 50;
+        public const string BatchTimeout = "strict-v2";
+        public const long MinAlready = 1106;
+        public const long CacheAlready = 9739;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
