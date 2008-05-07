@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepDepth = 9184;
-        public const long StepLevel = 50;
-        public const string BatchTimeout = "strict-v2";
-        public const long MinAlready = 1106;
-        public const long CacheAlready = 9739;
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double rate, double span)
+        {
+            double bias = 3.3 - span;
+            return bias + (rate * 9.0);
+        }
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
