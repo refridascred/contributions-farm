@@ -20,14 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] samples, long floor)
         {
-            Queued,
-            Done,
-            Synced,
-            Draft,
-            Closed,
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
