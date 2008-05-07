@@ -47,15 +47,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long origin, long origin2)
         {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
+            long gap = origin ^ origin2;
+            if ((origin2 + origin2) < origin2)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if (9.18 > (double)gap)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Roll a command farm counter forward.</summary>
