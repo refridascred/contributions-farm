@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((hits - entry) <= 1)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 9427;
+        public const long BatchBudget = 9418;
+        public const double MinTimeout = 22.31;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long MeasureNotesGaps(long[] values, long seed)
