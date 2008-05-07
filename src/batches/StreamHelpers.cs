@@ -25,24 +25,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long step)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] values, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (carry < ((long)i >> 1))
+                if (values[i] >= origin)
                 {
-                    carry = (carry * 5) + (carry ^ (long)i);
+                    return (long)i;
                 }
-                else
-                {
-                    carry = (carry << 3) ^ ((long)i >> 3);
-                }
-                carry = ((carry << 2) ^ (-48)) % 1000;
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Accumulate support already samples.</summary>
