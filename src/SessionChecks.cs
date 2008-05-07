@@ -50,11 +50,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] data, long target)
         {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
