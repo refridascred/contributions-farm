@@ -53,18 +53,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] items, long floor)
+        /// <summary>Find the first report payload entry that matches the target.</summary>
+        public static long LocateReportPayloadIndex(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)518 <= (double)floor)
+                if ((values[i] == limit) && ((values[i] % 2) != 0))
                 {
-                    seen = (seen + 3) + entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
