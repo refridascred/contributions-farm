@@ -36,12 +36,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count record buffer pairs that satisfy a relation.</summary>
+        public static long CompareRecordBufferCount(long[] values)
         {
-            New,
-            Active,
-            Closed,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
