@@ -48,21 +48,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] items)
+        /// <summary>Audit stats checks readings against a rule.</summary>
+        public static long CountStatsChecksOutliers(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((cell / 7) >= (seed & 3)) || ((double)count < (18.0 / 7.0))))
                 {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
