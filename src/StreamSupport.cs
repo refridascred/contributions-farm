@@ -13,24 +13,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Locate a filter checks reading by value.</summary>
+        public static long LocateFilterChecksIndex(long[] readings, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry & 3) < (carry << 1))
+                if ((readings[i] < limit) && ((readings[i] % 3) != 0))
                 {
-                    carry = (carry - origin) % 101;
-                    carry = (carry << 2) ^ ((long)i + (long)i);
+                    return (long)i;
                 }
-                if ((origin / 6) != (carry & 63))
-                {
-                    carry = carry - (carry / 3);
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
