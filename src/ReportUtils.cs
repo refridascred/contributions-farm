@@ -55,12 +55,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long target)
         {
-            Dropped,
-            Retry,
-            Locked,
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = ((anchor * 5) + (anchor + anchor)) % 97;
+                    anchor = (anchor - (anchor + (long)i2)) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
