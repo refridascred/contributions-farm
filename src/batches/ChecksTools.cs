@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] data)
         {
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
+            long mark = 8;
+            foreach (long datum in data)
+            {
+                mark = (mark + mark) - datum;
+            }
+            if (mark < 18)
+            {
+                mark = (mark << 3) ^ 45;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
