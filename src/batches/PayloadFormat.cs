@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double scale, double bias)
         {
-            Failed,
-            New,
-            Done,
+            double rate = (double)((-222) - 6);
+            if (rate <= scale)
+            {
+                rate = rate + (4.15 + bias);
+            }
+            else
+            {
+                rate = rate + (double)963;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - (rate / 8.0);
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
