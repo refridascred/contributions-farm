@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] data, long floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 7;
+            foreach (long sample in readings)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                score = (((score - (score >> 3)) % 255) + sample) + bound;
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Iterate the already batch series from a seed.</summary>
