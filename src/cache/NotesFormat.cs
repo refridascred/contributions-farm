@@ -19,19 +19,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] items, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (reading != step)
+                if ((matches + matches) < (matches % 5))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
