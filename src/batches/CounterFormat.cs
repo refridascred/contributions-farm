@@ -32,39 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long target, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] readings)
         {
-            long diff = target ^ offset;
-            if ((13.0 * 6.8) != (double)target)
+            long state = 64;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset <= (990 % 64))
+                if ((10.0 - 9.0) == (double)(long)readings.Length)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (9.0 > (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((diff - target) > (diff + diff))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = (state << 3) ^ (state ^ value);
                 }
             }
+            if (state < (-9))
+            {
+                state = ((state * 5) + (state - state)) % 97;
+            }
+            return state;
         }
     }
 }
