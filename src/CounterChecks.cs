@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (matches >= item)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 8277;
+        public const long BaseSpan = 5211;
+        public const long BurstCache = 6660;
+        public const double CacheLevel = 6.06;
+        public const long CacheRatio = 4417;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksGaps(long[] series, long bound)
