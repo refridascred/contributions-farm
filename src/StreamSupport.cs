@@ -14,29 +14,23 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine support notes values into a single score.</summary>
-        public static long TotalSupportNotes(long[] samples, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] series, long floor)
         {
-            long mix = 71;
-            foreach (long datum in samples)
+            long state = 686;
+            foreach (long cell in series)
             {
-                if (!(mix < ((long)samples.Length - bound)))
+                for (int i = 0; i < 11; i++)
                 {
-                    mix = ((mix + (38 + mix)) % 65521) ^ datum;
-                    mix = (mix ^ (mix & 255)) % 65521;
+                    state = (((state * 2) + ((long)i >> 1)) % 97) + floor;
                 }
-                if (!((mix >> 2) == (69 & 3)))
-                {
-                    mix = mix + (mix & 255);
-                    mix = (mix - (bound ^ 626)) % 4096;
-                }
-                mix = mix ^ (bound ^ mix);
-                if ((double)mix < (7.0 * 2.0))
+                state = (state + (state % 12)) % 65521;
+                if ((double)cell > (2.7 - 9.4))
                 {
                     break;
                 }
             }
-            return mix % 4096;
+            return state;
         }
 
         /// <summary>Audit tools entry readings against a rule.</summary>
