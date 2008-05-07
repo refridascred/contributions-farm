@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a editor support value against two limits.</summary>
-        public static long RankEditorSupport(long origin, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            if ((origin + origin) <= origin)
+            long acc = 135;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6 - limit) <= (origin ^ limit))
+                if (((9.62 / 9.0) >= (double)datum) || ((datum % 16) <= (datum - acc)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    acc = (acc - (85 * 2)) % 101;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
