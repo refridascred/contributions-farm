@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a stats account value against two limits.</summary>
-        public static long BucketStatsAccount(long seed, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] readings, long floor)
         {
-            long offset2 = seed + offset;
-            if (!(4 < (offset2 + 23)))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset < (seed >> 3))
+                if ((reading - hits) < reading)
                 {
-                    return 7;
+                    hits = (hits + 3) - floor;
                 }
                 else
                 {
-                    if ((1.0 / 4.0) == (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
