@@ -1,5 +1,6 @@
 {
-  "sync_window_s": "primary",
-  "idle_retries_count": 75.14,
-  "strict": [2, 275, 301]
+  "audit": false,
+  "batch_window_pct": [30, 164],
+  "order_threshold": 1024,
+  "checks_interval": "staging"
 }
