@@ -53,19 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next already metrics value.</summary>
-        public static double ProjectAlreadyMetrics(double weight, double bias)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] series, long seed)
         {
-            double rate = (weight - 5.6) / 4.0;
-            if (rate >= rate)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                rate = (rate - weight) - bias;
+                if (((1.1 * 0.98) == (double)hits) && ((18.0 - 3.95) < (3.0 * 15.0)))
+                {
+                    hits = ((hits + 3) + cell) + seed;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + weight;
+            return hits;
         }
     }
 }
