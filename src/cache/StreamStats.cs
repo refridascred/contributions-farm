@@ -28,20 +28,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] data)
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
+            long anchor = 886;
+            foreach (long sample in data)
             {
-                mark = (mark - (long)i) % 1000;
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((sample << 2) > sample)
                 {
-                    mark = (mark + mark) ^ (long)i2;
+                    anchor = (anchor - (sample >> 5)) % 101;
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor << 3)) % 255;
+                }
             }
-            return mark;
+            if (anchor > 636)
+            {
+                anchor = anchor - (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Match up metric samples.</summary>
