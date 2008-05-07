@@ -19,24 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long seed, long offset)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            if ((double)offset <= (7.0 + 2.5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed < (offset >> 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of entry entries.</summary>
