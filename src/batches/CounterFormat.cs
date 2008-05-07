@@ -25,12 +25,10 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public double Ratio { get; set; }
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 202;
+        public const long MaxSession = 5379;
+        public const long HardDepth = 4999;
+        public const string StepBudget = "cached-1";
     }
 }
