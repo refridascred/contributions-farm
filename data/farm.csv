@@ -1,6 +1,10 @@
-id,weight,rank,count
-1,794,21.99,local
-2,995,edge,98.53
-3,212,eu-west,97.45
-4,725,845,404
-5,strict,52.84,127
+id,state,label,owner,active
+1,84.98,191,346,open
+2,860,965,stable,legacy
+3,cached,619,836,72.33
+4,64.57,legacy,874,79.14
+5,36.79,546,232,331
+6,419,staging,strict,61.1
+7,79.74,71.61,primary,606
+8,88.9,102,edge,842
+9,10.14,635,476,primary
