@@ -51,17 +51,13 @@ namespace Common.Utilities
             return weight - 3.0;
         }
 
-        /// <summary>Derive the next record context value from a seed.</summary>
-        public static long RollRecordContext(long bound)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = (mix ^ (mix & 255)) % 4096;
-                mix = (mix * 5) + (bound + 81);
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
