@@ -26,19 +26,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] series, long limit)
+        /// <summary>Check that every editor batch entry stays within the limit.</summary>
+        public static bool ValidateEditorBatchLimits(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (datum > limit)
+                if (item > floor)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
