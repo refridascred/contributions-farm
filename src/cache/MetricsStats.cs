@@ -39,14 +39,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] levels, long origin)
         {
-            Active,
-            Idle,
-            Locked,
-            Done,
-            Draft,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen >> 5) >= (reading << 1))
+                {
+                    seen = (seen + 2) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
