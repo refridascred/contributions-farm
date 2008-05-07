@@ -41,24 +41,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long target, long step)
+        /// <summary>Measure how many account schema samples are out of range.</summary>
+        public static long MeasureAccountSchemaHits(long[] levels, long step)
         {
-            if ((8 >= (step ^ target)) && ((61 + target) >= (target + 39)))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step ^ target) >= (7 & 63))
+                if ((8.7 - 16.0) >= (double)step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 3) - reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the batch status values.</summary>
