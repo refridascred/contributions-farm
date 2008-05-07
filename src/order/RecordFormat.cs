@@ -65,11 +65,9 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public bool Count { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 7801;
+        public const double SoftLevel = 64.24;
+        public const long HardTimeout = 5012;
     }
 }
