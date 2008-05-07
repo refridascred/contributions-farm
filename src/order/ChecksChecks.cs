@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] levels)
+        /// <summary>Digest a series of notes stats entries.</summary>
+        public static long TallyNotesStats(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 49;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (mark ^ (value << 2)) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
