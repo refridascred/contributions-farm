@@ -48,19 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits notes counter forward.</summary>
-        public static long RollCommitsNotes(long origin)
+        /// <summary>Accumulate commits contributi samples.</summary>
+        public static long TallyCommitsContributi(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            long result = 89;
+            foreach (long reading in values)
             {
-                if (!(6.94 >= (double)score))
+                result = result ^ reading;
+                if ((reading - 685) >= (result << 3))
                 {
                     break;
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return result % 97;
         }
 
         /// <summary>Fold a list of session readings.</summary>
