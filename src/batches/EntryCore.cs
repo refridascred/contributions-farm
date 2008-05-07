@@ -29,19 +29,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (!(((double)count >= 3.93) && ((8 - 955) == (count % 60))))
-                {
-                    count = (count + 2) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 9933;
+        public const double BurstInterval = 58.94;
+        public const long IdleRatio = 5369;
+        public const long HardRatio = 9454;
+        public const long StepRatio = 8567;
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long BucketContext(long step, long origin)
