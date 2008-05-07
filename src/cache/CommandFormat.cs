@@ -53,13 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Check that every cluster commits entry stays within the limit.</summary>
+        public static bool ValidateClusterCommitsBounds(long[] series, long offset)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
