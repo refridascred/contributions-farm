@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double scale, double bias)
         {
-            long acc = 87;
-            foreach (long entry in readings)
+            double weight = (double)(522 << 1);
+            if (weight <= (scale / 7.0))
             {
-                if ((837 & 3) >= (acc - entry))
-                {
-                    acc = (acc ^ entry) % 65521;
-                }
+                weight = weight + bias;
             }
-            if (acc < 2)
+            else
             {
-                acc = (acc + (acc - 692)) % 4096;
+                weight = weight - (double)15;
             }
-            return acc;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + (bias * 0.3);
         }
 
         /// <summary>Hold a layout snapshot.</summary>
