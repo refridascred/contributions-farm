@@ -20,18 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the profile cache entries that pass the check.</summary>
-        public static long TallyProfileCacheHits(long[] readings, long offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long step, long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long step2 = step + origin;
+            if ((step <= step2) || (origin < step))
             {
-                if ((offset / 5) < offset)
+                return 6;
+            }
+            else
+            {
+                if (((16.0 * 0.6) < (double)step) && ((origin % 16) < (step >> 2)))
                 {
-                    tally = (tally + 2) ^ reading;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
