@@ -37,19 +37,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Classify a counter filter pair into a bucket.</summary>
+        public static long GradeCounterFilter(long target, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            if (((offset + target) != (target >> 3)) && (target >= (7 * 4)))
             {
-                if (!((long)i > (target & 31)))
-                {
-                    score = (score + (target % 60)) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 65521;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((12.0 >= (double)offset) && (2.0 < (double)offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((2.0 / 3.0) < (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
