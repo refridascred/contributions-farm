@@ -50,19 +50,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] samples)
+        /// <summary>Iterate the session profile series from a seed.</summary>
+        public static long IterateSessionProfile(long floor)
         {
-            long state = -79;
-            foreach (long datum in samples)
+            long sum = floor;
+            for (int i = 0; i < 24; i++)
             {
-                state = (state ^ (state >> 4)) + datum;
+                sum = sum - floor;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            if (state > 857)
-            {
-                state = ((state * 3) + (state ^ state)) % 4096;
-            }
-            return state % 97;
+            return sum;
         }
     }
 }
