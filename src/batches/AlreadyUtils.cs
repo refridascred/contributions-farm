@@ -13,17 +13,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] readings, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 2;
+            foreach (long entry in series)
             {
-                if ((readings[i] == offset) && ((readings[i] % 3) != 0))
+                if (((513 ^ target) < (entry & 15)) && ((968 & 1) < target))
                 {
-                    return (long)i;
+                    sum = (sum + target) % 97;
+                }
+                else
+                {
+                    sum = (sum ^ (72 + target)) % 101;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
