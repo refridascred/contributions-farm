@@ -10,24 +10,17 @@ namespace Common.Utilities
         public const double BaseLevel = 92.93;
         public const long MaxChannel = 1456;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long target, long limit)
+        /// <summary>Locate a contributi cache reading by value.</summary>
+        public static long FindContributiCacheIndex(long[] series, long step)
         {
-            if (638 >= (target / 5))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit > (9.87 / 6.0))
+                if (series[i] > step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
