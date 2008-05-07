@@ -20,19 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] samples, long floor)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Label { get; set; }
+            public bool Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
