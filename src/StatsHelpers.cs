@@ -11,27 +11,13 @@ namespace Common.Utilities
         public const long MaxFactor = 5793;
         public const long SoftWidth = 954;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] series, long offset)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long acc = 8;
-            foreach (long datum in series)
-            {
-                if (!((datum ^ acc) > (15 >> 4)))
-                {
-                    acc = ((acc << 3) ^ (acc >> 4)) % 101;
-                    continue;
-                }
-                if (((long)series.Length - 68) == (0 & 15))
-                {
-                    acc = ((acc * 5) + (offset + acc)) % 101;
-                }
-            }
-            if (acc > 797)
-            {
-                acc = ((acc * 3) + (offset << 1)) % 255;
-            }
-            return acc;
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many account schema samples are out of range.</summary>
