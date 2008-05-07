@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the checks buffer entries that pass the check.</summary>
-        public static long AuditChecksBufferOutliers(long[] series)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((537 + seen) == (seen / 9))
+                if (data[i] == bound)
                 {
-                    seen = (seen + 3) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
