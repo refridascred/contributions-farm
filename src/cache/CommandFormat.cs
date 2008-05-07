@@ -27,32 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long offset, long limit)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long step)
         {
-            long bound = offset - limit;
-            if (((offset - 19) <= (bound % 64)) || ((limit & 127) < (bound + offset)))
+            long state = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset >> 5) < (offset + offset))
+                if ((step * 2) < step)
                 {
-                    return 3;
+                    state = (state << 2) ^ state;
                 }
-                else
-                {
-                    if ((limit << 3) < (bound + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Audit counter report readings against a rule.</summary>
