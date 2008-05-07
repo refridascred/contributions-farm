@@ -75,22 +75,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] items)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long score = 80;
+            foreach (long entry in series)
             {
-                if ((double)seen >= (2.0 / 8.0))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score << 2) ^ (36 + entry)) - seed;
             }
-            return seen;
+            if (score > 345)
+            {
+                score = (score + (score & 3)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Describe the account status values.</summary>
