@@ -28,18 +28,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] series, long step)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double bias = floor;
+            if (bias <= 3.8)
             {
-                if ((matches * 3) < (reading - reading))
-                {
-                    matches = (matches + 2) - step;
-                }
+                bias = bias - (floor * 1.8);
             }
-            return matches;
+            else
+            {
+                bias = bias + (floor + ratio);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - bias;
         }
     }
 }
