@@ -25,31 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster order input into a small class.</summary>
-        public static long SortClusterOrder(long bound, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] data, long limit)
         {
-            if ((55 <= (seed ^ 58)) || ((2.0 + 15.0) <= (double)bound))
+            long sum = 3;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((bound / 7) > (seed - (-4))))
+                if (8.0 > (double)limit)
                 {
-                    return 2;
+                    sum = (sum - reading) % 65521;
                 }
-                else
+                if ((878 + sum) <= (sum + reading))
                 {
-                    if (bound >= (bound + 11))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = (sum + (limit + sum)) % 65521;
                 }
             }
+            return sum;
         }
 
         /// <summary>Describe the account mode values.</summary>
