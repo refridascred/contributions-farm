@@ -51,11 +51,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            Stale,
+            Ready,
+            Failed,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
