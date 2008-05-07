@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up counter contributi samples.</summary>
-        public static long PairCounterContributiCount(long[] series)
+        /// <summary>Grade a schema record value against two limits.</summary>
+        public static long GradeSchemaRecord(long floor, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long bound2 = floor - bound;
+            if ((18 + bound) > (22 >> 4))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (bound2 < (173 - (-8)))
                 {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank context input into a small class.</summary>
