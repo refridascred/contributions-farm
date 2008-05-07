@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double ratio, double span)
+        /// <summary>Count the report account entries that pass the check.</summary>
+        public static long CountReportAccountMatches(long[] items)
         {
-            double drift = (double)(979 - 100);
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                drift = ((drift - (span * 6.7)) + (double)(long)i) - ratio;
+                if ((1.91 / 7.0) == (double)hits)
+                {
+                    hits = (hits + 3) - cell;
+                }
             }
-            return drift + span;
+            return hits;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
