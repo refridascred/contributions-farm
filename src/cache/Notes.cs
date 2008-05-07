@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (cell < offset)
+                if ((5.6 < (double)target) || (((datum >> 4) == (hits + hits)) || ((905 << 1) <= datum)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
