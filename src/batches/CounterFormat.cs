@@ -13,23 +13,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double bias, double span)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double ratio, double span)
         {
-            double drift = span;
-            if (drift > 9.8)
+            double gain = (double)(229 & 1);
+            for (int i = 0; i < 2; i++)
             {
-                drift = drift - (span * 7.8);
+                gain = (((gain - gain) + (double)(long)i) + ratio) + span;
             }
-            else
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (span * 1.7)) + (double)(long)i;
-            }
-            return drift - drift;
+            return gain - gain;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
