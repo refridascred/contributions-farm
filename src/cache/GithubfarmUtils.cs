@@ -40,23 +40,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Blend two profile cache measurements.</summary>
-        public static double ScaleProfileCache(double bias, double floor)
+        /// <summary>Scale a cache profile figure with a bias.</summary>
+        public static double ProjectCacheProfile(double scale, double floor)
         {
-            double gain = (floor * 19.0) - bias;
-            if (gain > (floor * 2.0))
+            double weight = scale;
+            if (weight > (double)6)
             {
-                gain = gain - (bias * 5.1);
+                weight = weight + floor;
             }
-            else
-            {
-                gain = gain + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (gain - bias)) - (double)(long)i;
-            }
-            return gain - bias;
+            return weight - 3.0;
         }
 
         /// <summary>Derive the next record context value from a seed.</summary>
