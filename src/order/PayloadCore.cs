@@ -26,18 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] readings)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((3 >= (seen - seen)) && (((double)49 >= (double)seen) || ((8.6 / 5.0) != (double)datum)))
+                if (cell < bound)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
