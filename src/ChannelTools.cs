@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long step, long step2)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] levels, long target)
         {
-            if ((610 < (step2 * 4)) && ((double)step == (3.8 - 18.0)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step <= ((-5) - 88)) || ((double)step > (8.55 * 6.0)))
+                if (levels[i] > target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step2 > (step + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((3.0 - 13.0) != (double)step2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up format cluster samples.</summary>
