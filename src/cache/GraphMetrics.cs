@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine notes counter values into a single score.</summary>
-        public static long ScoreNotesCounter(long[] levels)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] samples)
         {
-            long total = 9;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                total = ((total * 2) + (long)levels.Length) ^ cell;
+                if ((count < (count ^ count)) && (((double)count >= (13.0 - 15.0)) || ((-36) >= (count - count))))
+                {
+                    count = (count + 2) + cell;
+                }
             }
-            if (total < 3)
-            {
-                total = (total * 5) + (62 - total);
-            }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Hold a schema options.</summary>
