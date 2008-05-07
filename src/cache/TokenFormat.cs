@@ -13,21 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long bound)
+        /// <summary>Derive the next stats command value from a seed.</summary>
+        public static long IterateStatsCommand(long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
             {
-                state = (state << 2) ^ ((long)i << 2);
-                if ((double)bound > (4.06 - 5.6))
-                {
-                    state = (state << 2) ^ (state + bound);
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 4093;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
