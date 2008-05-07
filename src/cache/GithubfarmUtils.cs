@@ -40,21 +40,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Blend two profile cache measurements.</summary>
+        public static double ScaleProfileCache(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (floor * 19.0) - bias;
+            if (gain > (floor * 2.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = gain - (bias * 5.1);
             }
-            return tally;
+            else
+            {
+                gain = gain + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (gain - bias)) - (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Hold a format stats.</summary>
