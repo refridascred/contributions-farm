@@ -1,5 +1,13 @@
 {
-  "flush_ratio": 30,
-  "cache_interval_count": "latest",
-  "hard_delay_s": 68
+  "max_ttl": 56.58,
+  "report_size": {
+    "retry_timeout_ms": 11,
+    "session_threshold": 1871,
+    "min_ttl_pct": 14.75,
+    "profile_ratio": 37.49
+  },
+  "checks_size": "local",
+  "burst_ttl": false,
+  "format_threshold": "fallback",
+  "dry_run": 92
 }
