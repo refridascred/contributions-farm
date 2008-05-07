@@ -46,13 +46,11 @@ namespace Common.Utilities
         public const long RetryRatio = 9155;
         public const long WindowInterval = 9502;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Active,
-            Synced,
-            Locked,
-            Done,
+            public double Count { get; set; }
+            public double Level { get; set; }
         }
     }
 }
