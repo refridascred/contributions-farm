@@ -68,10 +68,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxTimeout = 3080;
-        public const long MinProfile = 2485;
-        public const long WindowProfile = 6091;
-        public const long WindowDepth = 9573;
+        /// <summary>Blend two cache githubfarm measurements.</summary>
+        public static double ProjectCacheGithubfarm(double rate, double span)
+        {
+            double drift = (double)(847 - 777);
+            for (int i = 0; i < 6; i++)
+            {
+                drift = ((drift - (span * 8.51)) + (double)(long)i) + rate;
+            }
+            return drift + (double)60;
+        }
     }
 }
