@@ -38,15 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] items, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] readings)
         {
             long seen = 0;
-            foreach (long datum in items)
+            foreach (long datum in readings)
             {
-                if ((bound / 6) == (seen & 15))
+                if ((3 >= (seen - seen)) && (((double)49 >= (double)seen) || ((8.6 / 5.0) != (double)datum)))
                 {
-                    seen = (seen + 1) ^ datum;
+                    seen = seen + 1;
                 }
             }
             return seen;
