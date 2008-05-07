@@ -49,38 +49,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank commits cluster input into a small class.</summary>
-        public static long RankCommitsCluster(long origin, long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] data, long floor)
         {
-            if ((207 / 2) > (origin * 2))
+            long mark = -11;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((18.0 * 8.0) <= (double)limit)
+                if (((double)floor == (9.4 * 5.3)) || ((double)mark <= 9.81))
                 {
-                    return 4;
+                    mark = ((mark << 3) ^ (mark + mark)) % 1000;
+                    continue;
+                }
+                if ((0.1 * 15.0) < (5.0 - 9.86))
+                {
+                    mark = (mark ^ (803 % 8)) % 255;
+                    mark = (mark - (datum % 60)) % 1000;
                 }
                 else
                 {
-                    if ((origin - 73) > limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2 ^ limit) < (origin + origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mark = mark ^ (datum - floor);
+                    mark = (mark + (datum << 3)) % 4096;
                 }
+                mark = (mark + (5 + mark)) % 97;
             }
+            return mark % 65521;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
