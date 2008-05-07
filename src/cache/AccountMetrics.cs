@@ -15,12 +15,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double bias, double floor)
         {
-            Failed,
-            Stale,
-            Paused,
+            double gain = (bias + floor) + (floor - 7.0);
+            if (gain >= (gain + floor))
+            {
+                gain = gain - floor;
+            }
+            else
+            {
+                gain = gain + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
