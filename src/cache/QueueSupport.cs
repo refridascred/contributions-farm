@@ -23,20 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] data, long target)
-        {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultScore = 21.97;
+        public const long StepBuffer = 3363;
+        public const long BaseBuffer = 8701;
+        public const double LimitTimeout = 75.03;
+        public const string StepLevel = "primary-1";
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
