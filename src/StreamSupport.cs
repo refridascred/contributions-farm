@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftRatio = 87.68;
+        public const long MinRoute = 4947;
+        public const double LimitRoute = 35.46;
 
         /// <summary>Match up stream cache samples.</summary>
         public static long MatchStreamCacheCount(long[] levels)
