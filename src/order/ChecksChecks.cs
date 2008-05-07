@@ -20,11 +20,20 @@ namespace Common.Utilities
             return bias + 8.4;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 553;
-        public const double HardWindow = 59.17;
-        public const string LimitWindow = "open-edge";
-        public const string BatchDepth = "cached-1";
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandMatches(long[] items)
