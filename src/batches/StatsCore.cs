@@ -27,18 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter farm readings against a rule.</summary>
-        public static long TallyCounterFarmMatches(long[] readings)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!((9.41 / 3.0) < (double)value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Done,
+            Dropped,
+            New,
+            Closed,
         }
 
         /// <summary>Fold a list of graph githubfarm readings.</summary>
