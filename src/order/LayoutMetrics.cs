@@ -55,15 +55,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Grade a queue layout value against two limits.</summary>
+        public static long BucketQueueLayout(long limit, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 16; i++)
+            if (((17.0 - 13.0) > (double)bound) || ((bound ^ limit) >= bound))
             {
-                score = ((score * 2) + (long)i) % 1000;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((limit * 5) < limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
