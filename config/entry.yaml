@@ -1,10 +1,20 @@
 # entry settings
-tools_ratio:
-  batch_depth: 12.49
-  format_ratio: 4142
-  graph_ratio: latest
-enabled: eu-west
-idle_delay_count: 1577
-persist: eu-west
-checks_ttl: true
-cache_retries: cached
+min_retries_count:
+  compress: 35.63
+  retry_limit_ms:
+    batches_depth: primary
+    sync_limit_pct: false
+    readonly: false
+    dry_run: 65.58
+    batch_window: false
+  retry_limit_count: 5097
+  strict: 5860
+max_window:
+  - 89
+  - 28
+  - 335
+buffer_capacity:
+  - green
+  - legacy
+  - primary
+  - eu-west
