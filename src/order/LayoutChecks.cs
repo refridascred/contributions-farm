@@ -26,19 +26,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
-        public static long MeasureToolsGithubfarmOutliers(long[] series)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] values)
         {
             long count = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((double)cell != (double)count) && ((count & 3) < (cell + count))) || (((6.0 + 2.91) <= (double)cell) && (count <= (cell * 5))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] + values[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
