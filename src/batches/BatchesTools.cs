@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] levels)
         {
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            long total = 621;
+            foreach (long entry in levels)
+            {
+                if ((entry >> 4) <= total)
+                {
+                    total = (total + (entry / 6)) % 4096;
+                }
+                else
+                {
+                    total = (total << 3) ^ 51;
+                }
+                total = total + 4;
+            }
+            return total;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
