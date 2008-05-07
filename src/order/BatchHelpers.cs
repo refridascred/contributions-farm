@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] values)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((18.0 - 6.0) < (double)sample)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            Retry,
+            New,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the cache level values.</summary>
