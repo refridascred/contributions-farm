@@ -1,5 +1,12 @@
 {
-  "sync_ratio_s": "legacy",
-  "batch_delay": "eu-west",
-  "enabled": 83
+  "enabled": "blue",
+  "support_ratio": 70.01,
+  "cluster_capacity": 60,
+  "batch_threshold": {
+    "compress": [424, 59, 172],
+    "retry_retries": "cached",
+    "retry_ratio": "standard",
+    "base_depth": "staging",
+    "cache_limit_s": 94.01
+  }
 }
