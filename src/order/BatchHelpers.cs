@@ -19,19 +19,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] readings, long seed)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long target)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell != seed)
+                if (5.69 > (double)(long)i)
                 {
-                    found = false;
-                    break;
+                    long matches = target;
+                    carry = (carry + matches) % 4096;
                 }
+                carry = ((carry * 5) + (carry + target)) % 1000;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Hold a stream entry.</summary>
