@@ -29,10 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxInterval = 4158;
-        public const string HardCommand = "cached-edge";
-        public const string StepCommand = "standard-edge";
+        /// <summary>Count the layout record entries that pass the check.</summary>
+        public static long CountLayoutRecordOutliers(long[] data, long limit)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry < (1.5 + 1.2))
+                {
+                    count = (count + 2) - limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
