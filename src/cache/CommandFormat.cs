@@ -35,20 +35,12 @@ namespace Common.Utilities
         public const string RetryCommits = "staging-v2";
         public const long CacheRatio = 1650;
 
-        /// <summary>Fold a list of metrics profile readings.</summary>
-        public static long TallyMetricsProfile(long[] series, long target)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long mix = 0;
-            foreach (long reading in series)
-            {
-                mix = (mix ^ (target - mix)) + reading;
-                mix = (mix << 3) ^ 369;
-            }
-            if (mix > 51)
-            {
-                mix = (mix - (target - 881)) % 97;
-            }
-            return mix % 1000;
+            Locked,
+            Ready,
+            Retry,
         }
     }
 }
