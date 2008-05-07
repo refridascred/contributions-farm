@@ -20,25 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a schema tools value against two limits.</summary>
-        public static long SortSchemaTools(long step, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] items, long limit)
         {
-            long slot = step ^ seed;
-            if (seed > (slot / 4))
+            bool valid = true;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)slot <= (11.0 - 2.07)))
+                if (entry >= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
