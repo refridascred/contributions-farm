@@ -35,18 +35,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] levels, long step)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            if ((double)offset == (6.0 * 12.0))
             {
-                if ((double)cell != (9.7 * 6.5))
+                return 6;
+            }
+            else
+            {
+                if (((double)offset < (double)offset2) || ((574 % 64) == (offset2 >> 1)))
                 {
-                    seen = (seen + 2) - step;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset2 & 31) > offset2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (0.9 * 0.6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a already options.</summary>
