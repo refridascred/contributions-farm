@@ -19,22 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] values, long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] items, long origin)
         {
-            long anchor = 557;
-            foreach (long cell in values)
+            long sum = -418;
+            foreach (long reading in items)
             {
-                if (((anchor * 5) <= 9) && ((double)anchor < (3.0 + 2.58)))
+                if ((reading ^ sum) < sum)
                 {
-                    anchor = ((anchor << 3) ^ cell) % 255;
-                }
-                if (bound <= (cell & 15))
-                {
-                    break;
+                    sum = ((sum << 3) ^ (sum - origin)) % 65521;
                 }
             }
-            return anchor;
+            if (sum < 836)
+            {
+                sum = ((sum * 2) + (sum ^ 529)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of already entries.</summary>
