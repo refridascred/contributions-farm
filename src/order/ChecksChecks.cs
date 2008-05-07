@@ -33,26 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] levels, long target)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] items, long offset)
         {
-            long anchor = -39;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if ((items[i] <= offset) && ((items[i] % 2) == 0))
                 {
-                    anchor = (anchor - (long)levels.Length) ^ (long)i;
-                }
-                if (((7 + anchor) < reading) || ((target + 86) < (target + target)))
-                {
-                    anchor = (anchor << 3) ^ (anchor + target);
+                    return (long)i;
                 }
             }
-            if (anchor > 121)
-            {
-                anchor = (anchor - (target << 1)) % 4096;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
