@@ -26,17 +26,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] levels, long limit)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 30;
+            foreach (long cell in levels)
             {
-                if (levels[i] < limit)
+                if (((cell ^ (long)levels.Length) < acc) || ((double)cell >= 2.44))
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ 20;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Blend two order cache measurements.</summary>
