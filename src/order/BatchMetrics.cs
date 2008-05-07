@@ -43,16 +43,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = (acc - offset) % 65521;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            Failed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define session limits and defaults.</summary>
