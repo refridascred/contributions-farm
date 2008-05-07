@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch filter entries that pass the check.</summary>
-        public static long TallyBatchFilterHits(long[] series)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((hits << 1) < hits)
+                if (((2.3 / 6.0) > (double)seen) || (cell > ((long)series.Length - (-626))))
                 {
-                    hits = (hits + 1) - entry;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate route samples.</summary>
