@@ -52,27 +52,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of session contributi readings.</summary>
-        public static long DigestSessionContributi(long[] levels, long floor)
+        /// <summary>Fold a list of context stats readings.</summary>
+        public static long DigestContextStats(long[] series)
         {
-            long sum = -79;
-            foreach (long sample in levels)
+            long carry = -512;
+            foreach (long entry in series)
             {
-                sum = ((sum * 5) + (floor << 3)) - sample;
-                if ((floor & 1) <= (sum >> 2))
+                if (!((double)carry >= (double)entry))
                 {
-                    sum = (sum - (floor % 12)) % 4096;
+                    carry = (carry - carry) % 97;
+                    carry = (carry * 5) + (carry % 60);
                 }
-                else
-                {
-                    sum = (sum + (122 / 3)) % 101;
-                }
+                carry = (carry + carry) % 65521;
             }
-            if (sum < 573)
-            {
-                sum = (sum ^ floor) % 1000;
-            }
-            return sum % 4096;
+            return carry % 97;
         }
 
         /// <summary>Count the filter stream entries that pass the check.</summary>
