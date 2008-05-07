@@ -23,20 +23,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result ^ result) % 101) ^ (long)i2;
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = result - (target / 8);
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
