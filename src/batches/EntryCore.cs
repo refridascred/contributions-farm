@@ -35,13 +35,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Stale,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 7660;
+        public const long DefaultSize = 4811;
+        public const long MaxFilter = 3797;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long GradeProfile(long target, long bound)
