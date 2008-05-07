@@ -22,14 +22,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Paused,
-            Idle,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryQueue = 57.89;
+        public const long MinCount = 7418;
+        public const double SoftSpan = 25.07;
 
         /// <summary>Scale a support tools figure with a bias.</summary>
         public static double ScaleSupportTools(double weight, double span)
