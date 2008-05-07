@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double bias, double floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long bound, long offset)
         {
-            double bias2 = floor;
-            if (bias2 <= floor)
+            if ((73 + 319) >= (bound * 4))
             {
-                bias2 = (bias2 + (double)(-6)) - bias;
+                return 5;
             }
             else
             {
-                bias2 = bias2 - (double)14;
+                if ((14.0 + 4.3) >= (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((52 >> 5) != (offset * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return bias2 + 1.8;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
