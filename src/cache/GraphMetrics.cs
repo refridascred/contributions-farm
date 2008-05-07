@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] samples)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long origin)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long total = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((count < (count ^ count)) && (((double)count >= (13.0 - 15.0)) || ((-36) >= (count - count))))
+                if (((origin + total) <= (origin / 3)) || ((total / 2) > (-1)))
                 {
-                    count = (count + 2) + cell;
+                    total = (total + total) % 101;
                 }
+                else
+                {
+                    total = (total + (-2)) % 4096;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a contributi record.</summary>
