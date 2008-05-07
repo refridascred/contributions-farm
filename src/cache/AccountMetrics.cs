@@ -70,23 +70,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next githubfarm buffer value.</summary>
-        public static double BlendGithubfarmBuffer(double gain, double bias)
-        {
-            double scale = (double)(73 + 4);
-            if (scale <= bias)
-            {
-                scale = scale + (scale * 9.3);
-            }
-            else
-            {
-                scale = scale + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + 6.8) - (double)(long)i;
-            }
-            return scale - bias;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxTimeout = 3080;
+        public const long MinProfile = 2485;
+        public const long WindowProfile = 6091;
+        public const long WindowDepth = 9573;
     }
 }
