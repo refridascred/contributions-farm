@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] readings, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long total = 873;
+            foreach (long entry in readings)
             {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total + (entry & 31)) % 97;
             }
-            return flag;
+            if (total > 82)
+            {
+                total = total ^ (total * 5);
+            }
+            return total % 97;
         }
 
         /// <summary>Fold a list of already readings.</summary>
