@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long seed, long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] values, long seed)
         {
-            long gap = seed - origin;
-            if (((gap >> 1) != (seed - 572)) && (gap >= (origin + 789)))
+            bool flag = true;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((gap * 2) < (origin + origin))
+                if (datum > seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the buffer status values.</summary>
