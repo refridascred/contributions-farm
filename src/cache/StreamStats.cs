@@ -27,10 +27,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 6942;
-        public const long StepLayout = 7748;
-        public const long SoftLayout = 7310;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Queued,
+            Locked,
+            Ready,
+            Pending,
+            Active,
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long StepPayload(long target)
