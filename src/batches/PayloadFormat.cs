@@ -43,19 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] readings, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (cell >= bound)
+                if (!(((1.4 / 2.0) < (double)tally) || ((reading + reading) < reading)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
