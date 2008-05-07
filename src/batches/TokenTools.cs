@@ -13,11 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] data)
         {
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
+            long result = 96;
+            foreach (long item in data)
+            {
+                if (((17.0 * 9.6) <= (double)item) && ((result >> 3) != (result & 3)))
+                {
+                    result = result - (result ^ (long)data.Length);
+                }
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
