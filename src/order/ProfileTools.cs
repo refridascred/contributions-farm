@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] data, long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (reading <= (reading + bound))
+                if (value <= bound)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
