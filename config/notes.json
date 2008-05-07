@@ -1,5 +1,6 @@
 {
-  "base_ratio_s": 63.51,
-  "session_threshold": ["green", "stable", "eu-west", "stable"],
-  "batch_depth_s": 78
+  "strict": true,
+  "audit": 60.55,
+  "context_limit": 73,
+  "flush_threshold_pct": 93.57
 }
