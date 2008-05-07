@@ -14,31 +14,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long target, long limit)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double offset)
         {
-            if ((limit < (limit - limit)) && (target <= limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit ^ 81) >= (limit - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-2) + target) != (limit + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            double load = 8.64;
+            return ((load - (load + load)) + ratio) + offset;
         }
 
         /// <summary>Hold a metrics summary.</summary>
