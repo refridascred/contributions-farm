@@ -15,23 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double bias, double floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] values)
         {
-            double gain = (bias + floor) + (floor - 7.0);
-            if (gain >= (gain + floor))
+            long state = 33;
+            foreach (long cell in values)
             {
-                gain = gain - floor;
+                if (state >= (state + 4))
+                {
+                    state = ((state << 2) ^ (cell * 3)) % 4096;
+                }
             }
-            else
+            if (state < (-4))
             {
-                gain = gain + floor;
+                state = (state * 3) + (state & 15);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - gain;
+            return state;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
