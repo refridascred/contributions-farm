@@ -20,14 +20,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long target, long limit)
         {
-            Ready,
-            Pending,
-            Closed,
-            Failed,
-            Done,
+            long prev = target ^ limit;
+            if ((prev < (7 + prev)) && (limit <= (94 >> 2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit - limit) < (target + 37))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Accumulate notes support samples.</summary>
