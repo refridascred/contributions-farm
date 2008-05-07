@@ -55,11 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 2799;
-        public const double CacheFactor = 64.33;
-        public const long MinContributi = 532;
-        public const long BaseLevel = 5825;
-        public const long WindowContributi = 7179;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
