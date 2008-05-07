@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] items, long floor)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] == floor) && ((items[i] % 3) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the cache phase values.</summary>
