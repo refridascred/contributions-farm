@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long RetryMetric = 8693;
         public const string BurstMetric = "staging-1";
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] readings, long step)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((0.78 / 3.0) < (double)step)
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
