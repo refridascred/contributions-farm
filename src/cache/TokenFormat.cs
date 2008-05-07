@@ -24,21 +24,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long bound)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = (mark - (mark - bound)) % 1000;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = (((mark * 4) + mark) % 101) ^ (long)i2;
-                    mark = mark - 66;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public double Level { get; set; }
+            public bool Mode { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
