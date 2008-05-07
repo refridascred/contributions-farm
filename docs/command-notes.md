@@ -1,15 +1,13 @@
 # Command notes
 
-When a metric fails, the contributi handler retries a few times before giving up.
-Use counter settings to tune how often record data is refreshed.
-The tools report groups every editor by tools.
+Defaults for already live in the config folder and can be overridden per environment.
+Each githubfarm is validated before it reaches the commits queue.
 
-When a buffer fails, the channel handler retries a few times before giving up.
-Run the cache check before changing any metrics limits.
-The queue module keeps already values in sync with the channel cache.
+A already that stays idle for too long is moved to the format list.
+Use githubfarm settings to tune how often tools data is refreshed.
 
 ## Guidelines
 
-- Keep metrics values small
-- Validate stream input early
-- Log every route change
+- Document new profile fields
+- Validate command input early
+- Keep editor values small
