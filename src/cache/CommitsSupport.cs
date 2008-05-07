@@ -64,21 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardSize = 9580;
+        public const long MaxLevel = 589;
+        public const string DefaultCommand = "staging";
+        public const long LimitCommand = 3202;
     }
 }
