@@ -35,19 +35,19 @@ namespace Common.Utilities
         public const long MaxNotes = 1838;
         public const double MinNotes = 33.62;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] readings, long origin)
+        /// <summary>Adjust a graph notes reading.</summary>
+        public static double SmoothGraphNotes(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            double rate2 = bias - (bias - bias);
+            if (rate2 <= rate)
             {
-                if (datum > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                rate2 = rate2 + bias;
             }
-            return flag;
+            else
+            {
+                rate2 = rate2 - rate2;
+            }
+            return rate2 + (bias + bias);
         }
 
         /// <summary>Rank editor input into a small class.</summary>
