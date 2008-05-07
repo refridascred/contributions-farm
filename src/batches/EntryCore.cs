@@ -34,12 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 9933;
-        public const double BurstInterval = 58.94;
-        public const long IdleRatio = 5369;
-        public const long HardRatio = 9454;
-        public const long StepRatio = 8567;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long BucketContext(long step, long origin)
