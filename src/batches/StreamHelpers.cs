@@ -54,14 +54,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long target, long limit)
         {
-            Active,
-            Ready,
-            New,
-            Retry,
-            Stale,
+            if (((2 + limit) < (target - 1)) || ((target << 2) == (7 * 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit ^ target) == (target << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (target < (limit % 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target / 8) > limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
