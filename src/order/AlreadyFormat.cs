@@ -30,11 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 2068;
-        public const long BaseTimeout = 8752;
-        public const long MaxDepth = 812;
-        public const long WindowRatio = 9666;
+        /// <summary>Find the first batch githubfarm entry that matches the target.</summary>
+        public static long LookupBatchGithubfarmIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long SortToken(long offset, long seed)
