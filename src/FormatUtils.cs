@@ -19,21 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
