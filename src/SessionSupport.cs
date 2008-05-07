@@ -19,25 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the record cache series from a seed.</summary>
-        public static long DeriveRecordCache(long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] values, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark + (origin << 1);
-                if (!((double)origin < (2.0 + 2.0)))
+                if ((values[i] >= limit) && ((values[i] % 2) != 0))
                 {
-                    mark = mark - (-28);
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark - ((long)i << 1)) % 97;
-                    mark = (mark - (8 + mark)) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the stats state values.</summary>
