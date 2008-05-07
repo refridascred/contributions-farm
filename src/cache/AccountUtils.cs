@@ -19,21 +19,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 86;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (5.8 < (double)entry)
                 {
-                    if ((values[i] ^ values[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix ^ origin) % 65521;
+                }
+                if ((15.0 > (double)entry) || (origin <= (mix - (long)samples.Length)))
+                {
+                    mix = (mix + (origin + 890)) % 101;
                 }
             }
-            return seen;
+            return mix % 4096;
         }
     }
 }
