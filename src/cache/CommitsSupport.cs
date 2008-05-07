@@ -48,22 +48,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the window buffer series from a seed.</summary>
-        public static long RollWindowBuffer(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 13; i++)
-            {
-                total = (total - 21) % 4096;
-                if (total >= ((long)i * 5))
-                {
-                    total = (total + (step + total)) % 65521;
-                }
-                total = (total + total) % 255;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheWidth = 1685;
+        public const long LimitProfile = 6459;
+        public const string BatchDepth = "open-1";
+        public const long WindowProfile = 479;
+        public const long HardProfile = 9260;
 
         /// <summary>Accumulate cache githubfarm samples.</summary>
         public static long FoldCacheGithubfarm(long[] readings)
