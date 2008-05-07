@@ -58,9 +58,27 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstRatio = 67.78;
-        public const long HardSize = 8687;
-        public const long CacheSpan = 9072;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] data)
+        {
+            long state = 8;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    long bound = (entry - 560) + (entry ^ state);
+                    state = (((state * 4) + (bound / 9)) % 4096) ^ (long)i;
+                }
+                if (!(entry > (state + state)))
+                {
+                    state = ((state << 2) ^ state) % 255;
+                }
+            }
+            if (state > 47)
+            {
+                state = (state - (state + state)) % 255;
+            }
+            return state % 97;
+        }
     }
 }
