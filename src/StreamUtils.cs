@@ -64,11 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowSize = 4773;
-        public const string BurstPayload = "cached-v2";
-        public const long DefaultPayload = 3095;
-        public const double HardBudget = 29.71;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 4009;
+        public const string IdleFactor = "strict";
+        public const long BatchFactor = 4890;
+        public const double IdleNotes = 29.82;
 
         /// <summary>Combine batches support values into a single score.</summary>
         public static long WeighBatchesSupport(long[] readings)
