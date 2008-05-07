@@ -34,18 +34,23 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] readings)
+        /// <summary>Digest a series of profile graph entries.</summary>
+        public static long DigestProfileGraph(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long sum = 670;
+            foreach (long datum in samples)
             {
-                if (!((tally + tally) <= (tally & 255)))
+                for (int i = 0; i < 3; i++)
                 {
-                    tally = (tally + 1) ^ entry;
+                    sum = ((sum << 2) ^ (long)i) - datum;
                 }
+                sum = (sum + (4 - offset)) % 1000;
             }
-            return tally;
+            if (sum < 21)
+            {
+                sum = (sum * 3) + (sum ^ sum);
+            }
+            return sum;
         }
     }
 }
