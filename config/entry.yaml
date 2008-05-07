@@ -1,9 +1,9 @@
 # entry settings
-cache_ratio_count: 2.69
-default_ttl: local
-flush_limit_count:
-  - open
-  - strict
-  - legacy
-  - primary
-entry_window: 88.42
+min_interval_s: false
+notes_interval: 2977
+batch_delay_s: 35.94
+warm_delay:
+  enabled: 19
+  flush_limit_s: edge
+  warm_capacity_count: 13.86
+  flush_ttl_s: 76.65
