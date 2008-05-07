@@ -16,24 +16,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] samples, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] readings, long seed)
         {
-            long mix = 6;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 11; i++)
+                if (matches < (value % 97))
                 {
-                    mix = (((mix << 3) ^ (mix * 4)) % 1000) ^ (long)i;
-                    mix = (mix * 2) + floor;
-                }
-                mix = (mix * 2) + (sample ^ sample);
-                if ((double)floor < 8.09)
-                {
-                    mix = ((mix * 4) + mix) % 4096;
+                    matches = (matches + 3) + seed;
                 }
             }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Hold a record entry.</summary>
