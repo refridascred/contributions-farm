@@ -13,14 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Find the first window queue entry that matches the target.</summary>
+        public static long SeekWindowQueueIndex(long[] levels, long seed)
         {
-            Queued,
-            Locked,
-            Ready,
-            Pending,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a already profile value against two limits.</summary>
