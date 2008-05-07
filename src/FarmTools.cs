@@ -36,18 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] samples, long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (702 > (datum >> 2))
+                if (entry != step)
                 {
-                    seen = (seen + 2) - target;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
