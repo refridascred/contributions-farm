@@ -33,12 +33,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long target, long origin)
         {
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            long cur = target - origin;
+            if (((target >> 4) > cur) || (450 >= (cur ^ 409)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((cur << 2) >= 87)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((20.0 * 0.68) > (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (target > (474 - target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
