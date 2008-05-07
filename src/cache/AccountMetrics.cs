@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first route record entry that matches the target.</summary>
-        public static long LocateRouteRecordIndex(long[] values, long target)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] values, long target)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] <= target)
+                if (values[i] > target)
                 {
                     return (long)i;
                 }
