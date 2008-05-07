@@ -26,21 +26,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up route support samples.</summary>
-        public static long MatchRouteSupportCount(long[] values)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = score + ((long)i - limit);
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define format limits and defaults.</summary>
