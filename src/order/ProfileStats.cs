@@ -12,12 +12,18 @@ namespace Common.Utilities
             return bias + (rate * 9.0);
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Count the payload report entries that pass the check.</summary>
+        public static long MeasurePayloadReportMatches(long[] data)
         {
-            Idle,
-            Pending,
-            New,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((2.9 / 6.0) <= (double)entry)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank record input into a small class.</summary>
