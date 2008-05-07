@@ -67,15 +67,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two cache githubfarm measurements.</summary>
-        public static double ProjectCacheGithubfarm(double rate, double span)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] items, long offset)
         {
-            double drift = (double)(847 - 777);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = ((drift - (span * 8.51)) + (double)(long)i) + rate;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return drift + (double)60;
+            return -1;
         }
     }
 }
