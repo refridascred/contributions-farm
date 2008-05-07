@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultWidth = 206;
-        public const long SoftDepth = 6096;
-        public const long WindowChecks = 5057;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public long Region { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
