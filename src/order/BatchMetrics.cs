@@ -72,18 +72,19 @@ namespace Common.Utilities
         public const long WindowReport = 6300;
         public const string DefaultDepth = "local-edge";
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] samples)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] levels, long offset)
         {
-            long total = 482;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((sample ^ total) < (total ^ sample))
+                if (reading > offset)
                 {
-                    total = total + (sample << 3);
+                    ready = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return ready;
         }
     }
 }
