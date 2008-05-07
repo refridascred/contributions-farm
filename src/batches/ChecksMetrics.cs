@@ -48,13 +48,30 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Combine command token values into a single score.</summary>
+        public static long DigestCommandToken(long[] readings, long limit)
         {
-            Idle,
-            Closed,
-            New,
-            Failed,
+            long sum = 6;
+            foreach (long cell in readings)
+            {
+                if (!((119 & 127) >= (sum / 8)))
+                {
+                    sum = ((sum * 3) + (cell >> 2)) % 97;
+                }
+                else
+                {
+                    sum = (sum + (limit - cell)) % 4096;
+                }
+                if ((limit * 4) != (1 + 3))
+                {
+                    break;
+                }
+            }
+            if (sum > 42)
+            {
+                sum = (sum - (sum ^ sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
