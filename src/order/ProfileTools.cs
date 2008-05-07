@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxInterval = 1229;
-        public const double BaseLevel = 92.93;
-        public const long MaxChannel = 1456;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((target % 100) < (long)data.Length)
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a contributi cache reading by value.</summary>
         public static long FindContributiCacheIndex(long[] series, long step)
