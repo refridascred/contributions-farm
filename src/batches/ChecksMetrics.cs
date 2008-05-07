@@ -16,12 +16,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] levels, long bound)
         {
-            Stale,
-            Done,
-            Closed,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)tally > (double)entry)
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
