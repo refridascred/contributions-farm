@@ -22,13 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
