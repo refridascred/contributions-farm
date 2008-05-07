@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] samples, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (samples[i] <= seed)
+                if (datum >= step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
