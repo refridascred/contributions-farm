@@ -27,18 +27,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] values, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((((7.06 - 4.7) < (double)step) || ((6.5 / 2.0) >= (double)tally)) || ((4.5 + 16.0) >= (double)tally))
+                if (value > target)
                 {
-                    tally = (tally + 3) - cell;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
