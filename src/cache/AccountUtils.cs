@@ -20,20 +20,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] samples, long origin)
+        /// <summary>Accumulate window schema samples.</summary>
+        public static long CombineWindowSchema(long[] values, long origin)
         {
-            long mix = 86;
-            foreach (long entry in samples)
+            long mix = -387;
+            foreach (long sample in values)
             {
-                if (5.8 < (double)entry)
+                mix = (mix ^ 224) % 65521;
+                if (sample > (origin + origin))
                 {
-                    mix = (mix ^ origin) % 65521;
+                    mix = mix ^ mix;
                 }
-                if ((15.0 > (double)entry) || (origin <= (mix - (long)samples.Length)))
-                {
-                    mix = (mix + (origin + 890)) % 101;
-                }
+            }
+            if (mix < 23)
+            {
+                mix = (mix << 2) ^ (mix + origin);
             }
             return mix % 4096;
         }
