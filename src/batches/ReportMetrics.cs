@@ -24,14 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Draft,
-            Pending,
-            Synced,
-            Stale,
-            New,
+            Retry,
+            Ready,
+            Locked,
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
