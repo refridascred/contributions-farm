@@ -72,15 +72,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double rate, double bias)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            double load = rate;
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (bias + rate)) + (double)(long)i;
-            }
-            return load - bias;
+            Synced,
+            Idle,
+            Queued,
+            Locked,
         }
     }
 }
