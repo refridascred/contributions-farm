@@ -55,14 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double bias, double floor)
         {
-            Closed,
-            Dropped,
-            Done,
-            Synced,
-            Failed,
+            double bias2 = (bias * 4.0) - (bias - floor);
+            if (bias2 > (bias2 - floor))
+            {
+                bias2 = bias2 - bias;
+            }
+            else
+            {
+                bias2 = bias2 - (bias2 - floor);
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
