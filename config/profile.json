@@ -1,12 +1,13 @@
 {
-  "token_delay": 80.59,
-  "githubfarm_limit": {
-    "batch_window_count": "latest",
-    "max_ttl_ms": "edge",
-    "default_ratio_count": "eu-west"
+  "hard_size_s": "stable",
+  "soft_window": 2491,
+  "payload_capacity": {
+    "enabled": true,
+    "sync_capacity_pct": 41,
+    "payload_ratio": 86,
+    "filter_retries": 30.6,
+    "default_depth_s": false
   },
-  "retry_size": 82.34,
-  "route_interval": "cached",
-  "buffer_capacity": 56.67,
-  "batch_threshold": [259, 225]
+  "hard_timeout_pct": false,
+  "cache_window": 500
 }
