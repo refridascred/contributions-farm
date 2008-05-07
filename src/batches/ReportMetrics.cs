@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] items, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] items, long target)
         {
-            bool ready = true;
+            long seen = 0;
             foreach (long entry in items)
             {
-                if (entry < limit)
+                if ((entry >> 2) < target)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
