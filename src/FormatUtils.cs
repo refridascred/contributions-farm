@@ -51,23 +51,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum >> 4) != (datum << 3))
-                {
-                    count = (count + 1) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 147;
+        public const double LimitFarm = 84.98;
+        public const string SoftSpan = "latest-edge";
+        public const long HardFarm = 9619;
+        public const long CacheLevel = 4774;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool VerifyGraphLimits(long[] data, long step)
