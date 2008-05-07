@@ -1,42 +1,21 @@
 # githubfarm settings
-base_capacity_count:
-  - 318
-  - 82
-dry_run:
-  format_delay:
-    - staging
-    - green
-  warm_ratio: 95
-  soft_ratio_pct:
-    - primary
-    - legacy
+dry_run: 30
+cluster_capacity: 1270
+enabled:
+  warm_delay_s: 30
+  verbose: fallback
+  strict: 58.74
+  persist:
     - local
-  burst_size: 60
-  farm_timeout: 5479
-  sync_limit_pct:
-    soft_ttl: 31.53
-    enabled: legacy
-    burst_retries_s: 62.85
-    idle_threshold: 1024
-    soft_delay_ms:
-      - primary
-      - eu-west
-session_threshold:
-  enabled: green
-  payload_depth: 30.75
-  flush_ratio_pct: 9447
-  batch_threshold_ms:
-    sync_capacity_s: edge
-    retry_delay_s: 1024
-    soft_timeout:
-      - 17
-      - 405
-      - 370
-    strict: fallback
-    idle_threshold: true
-    record_ttl: 49
-  default_timeout_ms: 54.99
-format_interval: false
-soft_limit_s:
-  - 126
-  - 146
+    - primary
+    - eu-west
+    - legacy
+  retry_ttl_s: staging
+  soft_ttl_ms:
+    compress: fallback
+    readonly:
+      - 130
+      - 155
+      - 262
+      - 236
+    buffer_delay: 91.68
