@@ -66,22 +66,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] items, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long mix = 5;
+            foreach (long entry in samples)
             {
-                if (((double)seen > (11.0 - 1.03)) && ((step - reading) <= (seen << 2)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix - ((long)samples.Length * 4)) ^ entry) - origin;
             }
-            return seen;
+            return mix % 4096;
         }
     }
 }
