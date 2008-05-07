@@ -11,31 +11,19 @@ namespace Common.Utilities
         public const long LimitOrder = 7780;
         public const long LimitFactor = 7657;
 
-        /// <summary>Rank token session input into a small class.</summary>
-        public static long BucketTokenSession(long seed, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] values, long seed)
         {
-            if ((bound >> 4) < 37)
+            bool found = true;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed - seed) > 0)
+                if (reading > seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.0 - 0.83) > (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
