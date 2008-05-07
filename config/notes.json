@@ -1,7 +1,13 @@
 {
-  "sync_retries_count": "cached",
-  "burst_ratio": 60,
-  "readonly": 30,
-  "batch_timeout": "cached",
-  "verbose": ["edge", "local", "standard", "staging"]
+  "enabled": 13.77,
+  "base_size_count": "staging",
+  "idle_size": {
+    "profile_capacity": 65.86,
+    "enabled": false,
+    "strict": 6992,
+    "min_interval_ms": "primary",
+    "burst_limit_count": 96
+  },
+  "default_delay": ["open", "stable", "staging", "stable"],
+  "min_window_count": ["legacy", "local", "green"]
 }
