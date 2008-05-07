@@ -1,15 +1,7 @@
 {
-  "hard_ttl": false,
-  "checks_delay": "legacy",
-  "graph_limit": 21.64,
-  "strict": {
-    "record_timeout": 23.35,
-    "idle_limit_s": ["staging", "edge", "staging", "latest"],
-    "burst_ttl_s": true,
-    "window_window": 53,
-    "metrics_window": false,
-    "counter_threshold": "staging"
-  },
-  "warm_delay_s": "edge",
-  "batch_depth_pct": 500
+  "layout_window": 79,
+  "contributi_depth": 81,
+  "min_threshold": "latest",
+  "flush_interval_pct": "legacy",
+  "persist": false
 }
