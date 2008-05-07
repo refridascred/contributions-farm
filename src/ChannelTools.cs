@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of window tools readings.</summary>
-        public static long OverlapWindowToolsCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstWidth = 86.79;
+        public const string IdleSupport = "legacy";
+        public const double LimitSupport = 67.73;
+        public const long CacheSupport = 6983;
+        public const long HardBudget = 4989;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long StepSize = 8119;
