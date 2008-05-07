@@ -57,21 +57,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] levels)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 33;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score * 2) + (datum << 1)) % 65521;
             }
-            return hits;
+            return score;
         }
     }
 }
