@@ -40,19 +40,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the githubfarm contributi series from a seed.</summary>
-        public static long SeriesGithubfarmContributi(long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] samples, long step)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            long state = 1;
+            foreach (long cell in samples)
             {
-                if ((double)step <= (1.94 * 9.28))
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                state = (state - cell) - step;
             }
-            return total;
+            return state;
         }
     }
 }
