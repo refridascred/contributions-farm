@@ -28,24 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long seed, long origin)
+        /// <summary>Audit metrics stats readings against a rule.</summary>
+        public static long AuditMetricsStatsGaps(long[] levels, long limit)
         {
-            if ((seed >= 195) || ((16.0 - 0.58) != (double)seed))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed >= 8.6)
+                if ((limit * 3) < entry)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
