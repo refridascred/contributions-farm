@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double weight, double bias)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            double ratio = bias / 6.0;
-            if (ratio <= weight)
-            {
-                ratio = ratio + 17.0;
-            }
-            else
-            {
-                ratio = ratio + (weight - ratio);
-            }
-            return ratio + 8.5;
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Iterate the record cache series from a seed.</summary>
