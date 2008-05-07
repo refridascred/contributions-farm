@@ -46,39 +46,19 @@ namespace Common.Utilities
         public const long SoftScore = 6145;
         public const long BaseRatio = 6;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long target, long target2)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] data)
         {
-            long delta = target + target2;
-            if ((target - 545) >= (target2 / 2))
+            long acc = -583;
+            foreach (long datum in data)
             {
-                return 7;
+                acc = ((acc ^ ((long)data.Length >> 1)) % 97) + datum;
             }
-            else
+            if (acc > 46)
             {
-                if (5 >= target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target2 < (delta ^ target2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target2 % 7) != (target2 + target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                acc = (acc * 5) + (acc + acc);
             }
+            return acc % 97;
         }
 
         /// <summary>Iterate the commits token series from a seed.</summary>
