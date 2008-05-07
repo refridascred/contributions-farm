@@ -1,24 +1,12 @@
 # entry settings
-batch_delay_pct:
-  warm_ratio_count: 250
-  token_retries:
-    min_depth: 1024
-    cache_size: 100
-    metrics_threshold: 163
-    min_ttl: edge
-    retry_size_ms: false
-    githubfarm_delay: true
-  layout_timeout:
-    warm_capacity_pct:
-      - open
-      - cached
-      - strict
-      - stable
-    schema_size: 35.99
-    default_threshold_s: 500
-    tools_threshold: cached
-    soft_timeout_ms: 30
-  verbose: 55
-hard_window: blue
-already_retries: open
-burst_interval_ms: 15
+buffer_window: 92
+verbose: legacy
+cache_limit_ms: fallback
+editor_ratio: 10.64
+default_delay: 60
+dry_run:
+  readonly: 22
+  sync_size_ms: 35.43
+  default_threshold: blue
+  counter_ratio: staging
+  cache_window: 30
