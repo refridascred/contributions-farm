@@ -1,12 +1,15 @@
 # Command notes
 
-Run the entry check before changing any stream limits.
-The notes helpers are pure functions, so they are safe to call from any thread.
-The format report groups every commits by format.
+Keep token and buffer names short and lowercase.
+The checks report groups every farm by githubfarm.
+Keep counter and tools names short and lowercase.
+
+Keep support and metric names short and lowercase.
+Use batch settings to tune how often entry data is refreshed.
+Run the schema check before changing any batches limits.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Review support limits each release
-- Log every queue change
-- Validate counter input early
+- Document new tools fields
+- Log every metrics change
+- Keep stats values small
