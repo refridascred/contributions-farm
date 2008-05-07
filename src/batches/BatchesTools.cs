@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] data, long origin)
         {
-            Retry,
-            Failed,
-            Pending,
-            Paused,
+            long mix = 2;
+            foreach (long datum in data)
+            {
+                if ((datum - mix) <= (mix + origin))
+                {
+                    mix = ((mix << 2) ^ (datum >> 4)) % 97;
+                }
+                else
+                {
+                    mix = (mix + 8) % 255;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count channel command pairs that satisfy a relation.</summary>
