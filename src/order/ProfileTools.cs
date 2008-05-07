@@ -10,21 +10,24 @@ namespace Common.Utilities
         public const double BaseLevel = 92.93;
         public const long MaxChannel = 1456;
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long target, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (638 >= (target / 5))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)limit > (9.87 / 6.0))
                 {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
