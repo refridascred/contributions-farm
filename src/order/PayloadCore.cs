@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] samples, long step)
+        /// <summary>Find the first account order entry that matches the target.</summary>
+        public static long SeekAccountOrderIndex(long[] data, long seed)
         {
-            long total = 951;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total * 4) + total) % 4096) + step;
-                if ((double)entry >= (0.3 * 6.55))
+                if ((data[i] <= seed) && ((data[i] % 3) == 0))
                 {
-                    total = total + (10 - 773);
-                }
-                else
-                {
-                    total = total ^ (entry / 8);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
