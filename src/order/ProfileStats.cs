@@ -26,25 +26,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long target, long limit)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long prev = target ^ limit;
-            if ((prev < (7 + prev)) && (limit <= (94 >> 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit - limit) < (target + 37))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Failed,
+            Synced,
+            Locked,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a account record.</summary>
