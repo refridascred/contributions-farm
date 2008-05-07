@@ -1,9 +1,7 @@
-id,owner,region,active
-1,fallback,83,cached
-2,230,open,62.32
-3,46.25,blue,cached
-4,770,524,831
-5,open,30.74,17.86
-6,161,blue,9.6
-7,856,406,staging
-8,strict,840,978
+id,state,ratio,score,region
+1,51.31,42,590,272
+2,14.88,977,97,984
+3,primary,77.19,563,345
+4,56,legacy,52.1,7.43
+5,259,staging,291,stable
+6,30,79,389,standard
