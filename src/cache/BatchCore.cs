@@ -67,9 +67,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleInterval = 72.1;
-        public const double BurstToken = 24.37;
-        public const string StepToken = "primary";
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
