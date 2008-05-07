@@ -1,5 +1,8 @@
 # support settings
-default_window_pct: 7129
-cache_delay: primary
-max_interval_s: 60
-max_timeout_s: 19.64
+metric_ratio: 3905
+cache_size: 500
+filter_limit:
+  - eu-west
+  - legacy
+batch_size_ms: 4.51
+cache_capacity: latest
