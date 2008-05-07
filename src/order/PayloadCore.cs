@@ -37,18 +37,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up tools buffer samples.</summary>
-        public static long PairToolsBufferCount(long[] values)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] items, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((bound / 6) == (seen & 15))
                 {
-                    if ((values[i] + values[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) ^ datum;
                 }
             }
             return seen;
