@@ -37,16 +37,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Match up tools buffer samples.</summary>
+        public static long PairToolsBufferCount(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark - (step + step)) % 255;
-                mark = ((mark * 4) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
