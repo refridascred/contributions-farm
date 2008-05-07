@@ -49,13 +49,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] levels, long limit)
         {
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            long total = 98;
+            foreach (long value in levels)
+            {
+                if (((value ^ total) < (value % 100)) && (total > (total ^ value)))
+                {
+                    total = (total * 2) + (limit + total);
+                }
+            }
+            return total;
         }
     }
 }
