@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] series)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((1.03 + 5.5) < (double)offset)
+                if ((5.6 >= (double)sample) && ((sample - sample) < (83 / 3)))
                 {
-                    mark = mark ^ (offset << 3);
+                    count = count + 2;
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ (60 & 63)) % 65521;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
