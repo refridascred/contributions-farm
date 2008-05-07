@@ -22,13 +22,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] samples, long offset)
         {
-            Paused,
-            Closed,
-            Retry,
-            Ready,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of format readings.</summary>
