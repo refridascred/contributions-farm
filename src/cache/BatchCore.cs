@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] readings, long target)
         {
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank context input into a small class.</summary>
