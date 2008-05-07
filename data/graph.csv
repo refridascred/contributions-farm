@@ -1,9 +1,6 @@
-id,owner,token,label
-1,765,56.27,83.52
-2,407,legacy,24.61
-3,440,257,7
-4,58.67,green,516
-5,7,239,35.4
-6,92,913,67.92
-7,fallback,90.0,191
-8,latest,35.45,primary
+id,state,active,count,level
+1,252,408,791,edge
+2,97.56,39.87,851,edge
+3,272,strict,blue,48.96
+4,18.81,96.59,stable,legacy
+5,local,134,459,46.03
