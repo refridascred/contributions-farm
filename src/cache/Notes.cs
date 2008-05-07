@@ -62,25 +62,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long limit, long bound)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double scale, double offset)
         {
-            long prev = limit - bound;
-            if (!((bound + prev) >= (51 & 255)))
+            double drift = 3.92;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                drift = ((drift - (6.7 - scale)) + (double)(long)i) - offset;
             }
-            else
-            {
-                if ((bound - bound) >= prev)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return drift + (double)8;
         }
     }
 }
