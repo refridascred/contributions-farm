@@ -65,18 +65,19 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 9264;
         public const long DefaultWidth = 5173;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] samples)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((item + hits) <= (hits + hits))
+                if (datum <= seed)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
