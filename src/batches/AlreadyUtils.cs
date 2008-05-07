@@ -13,22 +13,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] series, long target)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long seed)
         {
-            long sum = 2;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((513 ^ target) < (entry & 15)) && ((968 & 1) < target))
+                if ((items[i] >= seed) && ((items[i] % 3) == 0))
                 {
-                    sum = (sum + target) % 97;
-                }
-                else
-                {
-                    sum = (sum ^ (72 + target)) % 101;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
