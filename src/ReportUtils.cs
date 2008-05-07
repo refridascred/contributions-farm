@@ -24,13 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Failed,
-            Closed,
-            Stale,
+            Done,
             Idle,
+            Paused,
+            New,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
