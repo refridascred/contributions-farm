@@ -56,18 +56,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheFactor = 9308;
+        public const double IdleCache = 2.21;
+        public const string WindowCache = "standard-edge";
+        public const double BaseCache = 22.23;
+        public const long MaxCache = 7577;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MaxRecord = 4639;
