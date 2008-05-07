@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 6339;
-        public const long RetryLayout = 5224;
-        public const string BaseCount = "legacy";
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (target > (sample % 100))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
