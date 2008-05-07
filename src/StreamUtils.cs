@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many batches notes samples are out of range.</summary>
-        public static long CountBatchesNotesMatches(long[] samples)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading ^ reading) > (count - reading))
+                if ((levels[i] < limit) && ((levels[i] % 5) == 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a editor reading.</summary>
