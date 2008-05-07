@@ -20,22 +20,11 @@ namespace Common.Utilities
             return bias2 + 1.8;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] data, long origin)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((origin % 24) == (4 % 12))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double drift = (floor / 5.0) * 7.63;
+            return (drift + drift) + scale;
         }
 
         /// <summary>Describe the contributi class values.</summary>
