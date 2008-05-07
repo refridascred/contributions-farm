@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long SoftDepth = 6096;
         public const long WindowChecks = 5057;
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Retry,
-            Synced,
-            Locked,
-            Paused,
+            Active,
+            Closed,
+            New,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
