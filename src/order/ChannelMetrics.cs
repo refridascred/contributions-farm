@@ -19,12 +19,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] values, long bound)
         {
-            Ready,
-            Closed,
-            Done,
+            long anchor = 557;
+            foreach (long cell in values)
+            {
+                if (((anchor * 5) <= 9) && ((double)anchor < (3.0 + 2.58)))
+                {
+                    anchor = ((anchor << 3) ^ cell) % 255;
+                }
+                if (bound <= (cell & 15))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the githubfarm contributi series from a seed.</summary>
