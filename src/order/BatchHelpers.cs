@@ -29,12 +29,39 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Grade a stream channel value against two limits.</summary>
+        public static long RankStreamChannel(long origin, long limit)
         {
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
+            long gap = origin - limit;
+            if (limit >= origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((gap + origin) <= (gap << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit - origin) <= (limit << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((limit & 63) >= gap) && ((gap + 6) > (limit + limit)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
