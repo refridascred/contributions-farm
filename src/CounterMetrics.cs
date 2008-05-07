@@ -48,9 +48,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheTimeout = 66.02;
-        public const long DefaultLevel = 5816;
-        public const string HardScore = "legacy-v2";
+        /// <summary>Audit farm order readings against a rule.</summary>
+        public static long AuditFarmOrderGaps(long[] series, long target)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((item > 65) && (7 <= (target * 4))) && (((6.7 / 4.0) > (double)item) || ((seen - 69) <= (item & 15))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
