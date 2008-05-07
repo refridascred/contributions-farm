@@ -1,10 +1,4 @@
 # support settings
-queue_threshold:
-  - edge
-  - legacy
-  - blue
-  - stable
-default_retries_ms: false
-checks_timeout: 67
-editor_size: 41
-support_retries: 80.34
+payload_ttl: 96
+default_limit: 68.55
+batches_ratio: 13
