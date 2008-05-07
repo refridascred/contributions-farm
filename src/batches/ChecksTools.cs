@@ -27,18 +27,13 @@ namespace Common.Utilities
         public const string SoftFarm = "fallback-edge";
         public const long HardFarm = 8399;
 
-        /// <summary>Count the already notes entries that pass the check.</summary>
-        public static long CountAlreadyNotesOutliers(long[] data)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((((4.1 + 6.73) >= (double)seen) && (reading >= (seen - seen))) || ((seen + seen) > (reading ^ 95)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a metrics info.</summary>
