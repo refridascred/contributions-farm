@@ -12,28 +12,24 @@ namespace Common.Utilities
         public const long BurstDepth = 5304;
         public const string LimitBudget = "standard";
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] values, long seed)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long seed, long floor)
         {
-            long total = 78;
-            foreach (long datum in values)
+            if ((double)floor <= 3.0)
             {
-                total = (total - (total + datum)) % 4096;
-                total = (total - (total ^ datum)) % 4096;
-                if (3.3 >= (double)seed)
+                return 1;
+            }
+            else
+            {
+                if (seed >= (827 + seed))
                 {
-                    total = total + (seed ^ (-477));
+                    return 2;
                 }
                 else
                 {
-                    total = (total ^ (386 & 255)) % 4096;
+                    return 7;
                 }
             }
-            if (total > 397)
-            {
-                total = total + (63 % 16);
-            }
-            return total % 65521;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
