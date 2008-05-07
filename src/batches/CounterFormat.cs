@@ -27,18 +27,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the editor report entries that pass the check.</summary>
-        public static long AuditEditorReportMatches(long[] series, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((3.8 + 6.0) >= (double)seen)
+                if ((cell + cell) >= hits)
                 {
-                    seen = ((seen + 2) ^ entry) - floor;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
