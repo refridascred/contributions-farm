@@ -47,18 +47,32 @@ namespace Common.Utilities
         public const string MinCommits = "primary-v2";
         public const double BaseCommits = 39.57;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] levels, long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long limit, long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long diff = limit - target;
+            if (!((diff ^ target) < (target + limit)))
             {
-                if ((item << 3) != (3 % 7))
+                return 4;
+            }
+            else
+            {
+                if ((double)target <= (double)limit)
                 {
-                    seen = (seen + 2) + offset;
+                    return 2;
+                }
+                else
+                {
+                    if ((diff > (diff + limit)) || (limit >= 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
