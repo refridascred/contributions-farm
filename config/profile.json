@@ -1,12 +1,5 @@
 {
-  "warm_ratio_count": true,
-  "burst_capacity_s": "legacy",
-  "soft_retries": 92.38,
-  "strict": {
-    "base_retries_count": [326, 101],
-    "entry_capacity": true,
-    "compress": "open"
-  },
-  "poll_interval_s": true,
-  "cache_limit": 90.49
+  "idle_capacity": 56,
+  "min_size_s": "blue",
+  "poll_ttl_s": "primary"
 }
