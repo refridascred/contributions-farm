@@ -58,13 +58,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count contributi batches pairs that satisfy a relation.</summary>
+        public static long PairContributiBatchesCount(long[] levels)
         {
-            Failed,
-            Synced,
-            Queued,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
