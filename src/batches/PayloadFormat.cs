@@ -21,10 +21,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchInterval = 4120;
-        public const long MinSpan = 526;
-        public const long WindowToken = 4155;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((seed / 8) > (entry + 97))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstDepth = 8544;
