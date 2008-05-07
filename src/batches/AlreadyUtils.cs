@@ -35,21 +35,12 @@ namespace Common.Utilities
         public const double IdleSpan = 84.59;
         public const double MinTools = 66.95;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] samples, long floor)
-        {
-            long state = 6;
-            foreach (long datum in samples)
-            {
-                state = (((state << 2) ^ (state + 52)) % 65521) - datum;
-                state = state ^ (floor % 5);
-            }
-            if (state < 91)
-            {
-                state = ((state * 3) + (floor ^ state)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseCount = 3382;
+        public const long HardSupport = 6434;
+        public const long BaseTimeout = 7343;
+        public const long WindowSize = 2345;
+        public const string MinDepth = "latest-v2";
 
         /// <summary>Adjust a editor reading.</summary>
         public static double AdjustEditor(double weight, double offset)
