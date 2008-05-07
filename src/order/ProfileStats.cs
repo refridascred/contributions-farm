@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate checks counter samples.</summary>
-        public static long WeighChecksCounter(long[] items)
-        {
-            long total = 303;
-            foreach (long reading in items)
-            {
-                if ((reading / 2) >= reading)
-                {
-                    total = ((total << 2) ^ (reading << 3)) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryCount = 65.6;
+        public const long RetryFactor = 8669;
+        public const long MinEditor = 729;
+        public const long IdleEditor = 3277;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
