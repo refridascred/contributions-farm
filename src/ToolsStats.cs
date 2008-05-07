@@ -60,24 +60,22 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "open-1";
         public const long LimitLevel = 4400;
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long target, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] items)
         {
-            if (!(target > limit))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.9 * 7.1) != (double)target)
+                if ((double)seen >= (2.0 / 8.0))
                 {
-                    return 8;
+                    seen = (seen + 3) ^ item;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a metric reading.</summary>
