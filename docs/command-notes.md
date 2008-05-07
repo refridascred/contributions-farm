@@ -1,12 +1,11 @@
 # Command notes
 
-Each filter is validated before it reaches the contributi queue.
-A cluster that stays idle for too long is moved to the channel list.
-The window module keeps contributi values in sync with the route cache.
+Keep route and account names short and lowercase.
+The editor report groups every format by report.
 
 ## Guidelines
 
-- Log every already change
-- Keep counter values small
-- Prefer channel defaults
-- Validate support input early
+- Document new layout fields
+- Validate commits input early
+- Log every layout change
+- Review graph limits each release
