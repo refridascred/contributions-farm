@@ -1,17 +1,13 @@
 {
-  "batch_capacity_ms": 3243,
-  "schema_timeout": "cached",
-  "soft_timeout": 9860,
-  "burst_depth_count": {
-    "strict": ["strict", "open"],
-    "record_ttl": 5023,
-    "hard_delay_pct": "strict",
-    "flush_threshold_s": {
-      "readonly": 1024,
-      "batch_capacity_s": 20.07,
-      "default_size_s": ["green", "edge"]
-    },
-    "schema_limit": 35.78,
-    "batches_depth": "green"
-  }
+  "sync_ttl": "local",
+  "counter_timeout": 211,
+  "retry_depth": {
+    "idle_size_s": true,
+    "hard_delay": "eu-west",
+    "burst_ttl_count": 72.93,
+    "cache_size_pct": true,
+    "sync_threshold_ms": 74.37,
+    "retry_ttl_s": "stable"
+  },
+  "base_depth_pct": 250
 }
