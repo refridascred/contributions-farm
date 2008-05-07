@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long target, long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] readings, long origin)
         {
-            long edge = target + floor;
-            if (20.0 <= (double)edge)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((7.2 - 12.0) <= (double)floor))
+                if ((double)hits == (2.0 * 2.8))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    hits = ((hits + 3) + reading) - origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
