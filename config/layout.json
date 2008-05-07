@@ -1,7 +1,5 @@
 {
-  "cache_window_ms": "open",
+  "batch_depth_pct": 80.16,
   "readonly": true,
-  "base_ttl_ms": "eu-west",
-  "max_limit": 85,
-  "audit": 9730
+  "sync_depth": 30
 }
