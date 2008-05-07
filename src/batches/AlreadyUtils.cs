@@ -57,11 +57,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
+            Locked,
+            Idle,
+            Active,
+            Draft,
+            Synced,
         }
     }
 }
