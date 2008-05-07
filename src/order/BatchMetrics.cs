@@ -76,19 +76,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (!(((datum - datum) == (69 + datum)) && ((tally / 2) == ((long)data.Length + (-344)))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseInterval = 7183;
+        public const long DefaultContributi = 2190;
+        public const long MaxContributi = 170;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long PairStreamCount(long[] items)
