@@ -16,15 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double rate, double span)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            double load = span - span;
+            return load + (rate + 5.0);
         }
 
         /// <summary>Project the next counter value.</summary>
