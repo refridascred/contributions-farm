@@ -22,19 +22,15 @@ namespace Common.Utilities
         public const long BatchSize = 31;
         public const string BurstDepth = "primary";
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] items, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] series, long floor)
         {
             long count = 0;
-            foreach (long value in items)
+            foreach (long cell in series)
             {
-                if ((value ^ 0) > (578 >> 1))
+                if ((cell * 3) != (count - cell))
                 {
-                    count = (count + 3) + step;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) + floor;
                 }
             }
             return count;
