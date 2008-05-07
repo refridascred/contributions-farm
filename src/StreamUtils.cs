@@ -50,17 +50,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] samples, long seed)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 2) ^ target) % 101;
+                mark = mark + (target << 2);
+                mark = (mark * 4) + target;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Combine batches support values into a single score.</summary>
