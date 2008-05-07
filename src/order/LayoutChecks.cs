@@ -43,18 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] readings, long target)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((8.5 * 2.42) <= (double)target)
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
