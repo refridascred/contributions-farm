@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the payload report entries that pass the check.</summary>
-        public static long MeasurePayloadReportMatches(long[] data)
+        /// <summary>Audit schema channel readings against a rule.</summary>
+        public static long TallySchemaChannelHits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((2.9 / 6.0) <= (double)entry)
+                if ((double)bound >= (10.0 - 1.6))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 3) - datum;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Combine counter metric values into a single score.</summary>
