@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=322
+CHANNEL_LIMIT=60
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-eu-west}"
+mode="${1:-cached}"
 case "${mode}" in
-    staging)
+    local)
         log "fast path"
         ;;
     *)
@@ -20,7 +20,7 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
