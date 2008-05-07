@@ -85,12 +85,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double bias, double span)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public long Rank { get; set; }
+            double mean = (double)9 / 3.0;
+            if (mean < bias)
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean + span;
+            }
+            return mean - bias;
         }
     }
 }
