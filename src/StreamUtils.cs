@@ -60,12 +60,16 @@ namespace Common.Utilities
         public const long DefaultPayload = 3095;
         public const double HardBudget = 29.71;
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Combine batches support values into a single score.</summary>
+        public static long WeighBatchesSupport(long[] readings)
         {
-            Draft,
-            Done,
-            Closed,
+            long acc = 67;
+            foreach (long entry in readings)
+            {
+                acc = ((acc << 2) ^ (entry - 844)) % 101;
+                acc = (acc * 2) + (acc >> 4);
+            }
+            return acc % 1000;
         }
     }
 }
