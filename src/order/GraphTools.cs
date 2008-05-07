@@ -20,15 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] items)
+        /// <summary>Digest a series of tools commits entries.</summary>
+        public static long TotalToolsCommits(long[] data, long seed)
         {
-            long mark = 96;
-            foreach (long cell in items)
+            long mix = 28;
+            foreach (long sample in data)
             {
-                mark = (mark - (mark + mark)) ^ cell;
+                if ((double)mix > 7.87)
+                {
+                    mix = (mix - mix) % 101;
+                    mix = (mix + (150 & 31)) % 101;
+                }
+                mix = (mix * 3) + (sample + seed);
+                if ((mix < (sample % 2)) || ((sample + mix) > 87))
+                {
+                    mix = (mix << 2) ^ (seed + 3);
+                }
             }
-            return mark % 4096;
+            return mix;
         }
 
         /// <summary>Accumulate payload stats samples.</summary>
