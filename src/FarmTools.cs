@@ -15,19 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] levels, long bound)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long sum = 293;
-            foreach (long datum in levels)
-            {
-                sum = (sum * 4) + (sum / 4);
-                if ((datum + sum) != ((long)levels.Length - bound))
-                {
-                    sum = sum ^ (bound >> 4);
-                }
-            }
-            return sum % 65521;
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
