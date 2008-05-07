@@ -58,19 +58,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] samples, long limit)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long anchor = 2;
+            foreach (long datum in series)
             {
-                if (datum != limit)
+                anchor = (anchor ^ (step - anchor)) % 4096;
+                if (datum >= (step * 4))
                 {
-                    stale = false;
-                    break;
+                    anchor = anchor - (7 * 2);
+                    anchor = (anchor - (datum ^ datum)) % 255;
+                    continue;
                 }
+                else
+                {
+                    anchor = anchor ^ anchor;
+                }
+                anchor = (anchor + (anchor + (long)series.Length)) % 255;
             }
-            return stale;
+            if (anchor > 34)
+            {
+                anchor = (anchor + anchor) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Audit already cluster readings against a rule.</summary>
