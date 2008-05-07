@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue local; do
+for item in edge blue open; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=53
+log "limit is ${BUFFER_LIMIT}"
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
