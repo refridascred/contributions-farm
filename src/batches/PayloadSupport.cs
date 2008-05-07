@@ -20,19 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] readings, long offset)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public double Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
