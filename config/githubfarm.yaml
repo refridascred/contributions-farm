@@ -1,7 +1,6 @@
 # githubfarm settings
-batches_threshold: false
-layout_limit: open
-command_window: 9114
-strict: 97.3
-contributi_ratio: blue
-base_size_s: fallback
+farm_delay: false
+verbose: latest
+cache_delay_s:
+  - 193
+  - 358
