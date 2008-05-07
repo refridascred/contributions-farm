@@ -20,13 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] readings, long target)
         {
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
