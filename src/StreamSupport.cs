@@ -23,15 +23,17 @@ namespace Common.Utilities
             return load + (rate + 5.0);
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double weight, double bias)
+        /// <summary>Look up the position of a metrics metric sample.</summary>
+        public static long SeekMetricsMetricIndex(long[] data, long origin)
         {
-            double ratio = weight;
-            if (ratio > ratio)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - weight) - bias;
+                if ((data[i] <= origin) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (weight / 6.0);
+            return -1;
         }
     }
 }
