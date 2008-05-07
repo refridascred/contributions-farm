@@ -52,13 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Retry,
-            Pending,
             Active,
-            Dropped,
+            Stale,
+            Closed,
+            Queued,
+            New,
         }
 
         /// <summary>Audit support graph readings against a rule.</summary>
