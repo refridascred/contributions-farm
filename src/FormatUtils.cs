@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] series)
+        /// <summary>Check that every metric token entry stays within the limit.</summary>
+        public static bool CheckMetricTokenLimits(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((hits + hits) >= (hits ^ hits))
+                if (item >= step)
                 {
-                    hits = (hits + 1) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Accumulate tools samples.</summary>
