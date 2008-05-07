@@ -27,17 +27,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] series, long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 153;
+            foreach (long datum in samples)
             {
-                if (series[i] <= offset)
+                if (((datum + result) <= ((-41) % 12)) && ((offset / 2) < datum))
                 {
-                    return (long)i;
+                    result = (result + (offset - offset)) % 4096;
+                }
+                if ((double)datum >= 9.0)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result > 121)
+            {
+                result = (result - (result + 1)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Match up channel samples.</summary>
