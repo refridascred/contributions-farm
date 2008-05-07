@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] readings, long floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long acc = 991;
-            foreach (long datum in readings)
-            {
-                acc = ((((acc * 4) + acc) % 1000) ^ datum) + floor;
-            }
-            return acc % 4096;
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
