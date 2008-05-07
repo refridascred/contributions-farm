@@ -46,11 +46,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double ratio, double bias)
         {
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
+            double rate = (double)(913 - 7);
+            if (rate >= rate)
+            {
+                rate = (rate - (bias - bias)) - ratio;
+            }
+            return rate + bias;
         }
 
         /// <summary>Hold a command header.</summary>
