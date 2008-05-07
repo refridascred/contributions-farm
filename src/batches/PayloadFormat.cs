@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] readings)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long total = 873;
-            foreach (long entry in readings)
-            {
-                total = (total + (entry & 31)) % 97;
-            }
-            if (total > 82)
-            {
-                total = total ^ (total * 5);
-            }
-            return total % 97;
+            Failed,
+            New,
+            Done,
         }
 
         /// <summary>Fold a list of already readings.</summary>
