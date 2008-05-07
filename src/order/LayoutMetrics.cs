@@ -20,12 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Done,
-            Paused,
-            Dropped,
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
