@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long SoftCommits = 1435;
         public const long RetryLevel = 8678;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] values, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (value <= target)
+                if ((25 + 32) > (floor >> 5))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 2) ^ entry;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
