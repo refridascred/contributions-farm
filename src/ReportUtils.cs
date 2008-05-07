@@ -39,15 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
