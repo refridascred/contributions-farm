@@ -1,15 +1,31 @@
 # entry settings
-filter_ratio: 72
-flush_retries:
-  audit: 60.91
-  verbose: open
-  warm_delay_count:
-    channel_size: strict
-    batches_delay: 250
-    persist: 500
-    soft_interval_count: false
-    channel_retries: true
-    max_timeout_s: fallback
-  flush_delay_s: 82.23
-report_capacity: cached
-profile_interval: stable
+retry_ttl: false
+max_delay_ms: 22
+soft_delay_s:
+  - 499
+  - 298
+  - 237
+order_depth: 6526
+warm_timeout_count:
+  default_capacity_s:
+    - open
+    - latest
+    - strict
+    - cached
+  idle_threshold_s: 67.1
+  format_capacity:
+    compress:
+      - 196
+      - 248
+      - 214
+    retry_interval_count: 60.87
+    layout_ttl: legacy
+    flush_depth_count: 30
+    farm_interval: 1024
+  compress: false
+  dry_run: 44.14
+retry_depth:
+  max_threshold_ms: 7528
+  session_interval: stable
+  dry_run: false
+  poll_ttl: 84.74
