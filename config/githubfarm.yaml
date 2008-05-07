@@ -1,9 +1,25 @@
 # githubfarm settings
-idle_threshold_count: legacy
-route_timeout: true
-strict: 50.17
-audit:
-  - 176
-  - 207
-soft_retries_count: 53.47
-checks_depth: local
+strict: 38.4
+sync_ttl_s: open
+warm_threshold_ms: 63.67
+sync_interval_pct: 5960
+max_threshold_pct:
+  max_ttl: eu-west
+  audit: true
+  dry_run: 1024
+  order_timeout: 84.14
+  warm_depth_count:
+    base_capacity_ms: standard
+    readonly: strict
+    persist:
+      - green
+      - latest
+      - local
+      - eu-west
+    sync_ratio_pct: true
+    idle_timeout_pct: 7502
+  max_threshold_count:
+    - 225
+    - 333
+    - 217
+    - 69
