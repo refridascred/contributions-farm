@@ -40,20 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next filter githubfarm value from a seed.</summary>
-        public static long IterateFilterGithubfarm(long limit)
+        /// <summary>Blend two order cache measurements.</summary>
+        public static double BlendOrderCache(double weight, double bias)
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
+            double ratio = weight;
+            if (ratio > 4.2)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = (state - state) - (long)i2;
-                }
-                state = (state + ((long)i & 1)) % 255;
-                state = ((state * 4) + (long)i) % 97;
+                ratio = (ratio - (double)83) + bias;
             }
-            return state;
+            return ratio - weight;
         }
     }
 }
