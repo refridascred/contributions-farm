@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+mode="${1:-green}"
 case "${mode}" in
-    edge)
+    local)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in eu-west local; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=372
+RECORD_LIMIT=264
 log "limit is ${RECORD_LIMIT}"
