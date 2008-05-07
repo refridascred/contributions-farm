@@ -43,11 +43,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowSpan = 98.0;
-        public const double CacheAccount = 66.9;
-        public const long BaseAccount = 210;
-        public const long WindowWidth = 6478;
-        public const double MinRatio = 77.77;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((((hits >> 5) <= (10 + hits)) && ((double)value < (double)(long)samples.Length)) && (hits < (802 >> 1)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
