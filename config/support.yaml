@@ -1,18 +1,11 @@
 # support settings
-idle_ttl_s: standard
-hard_timeout_count: 84.0
-compress:
-  - 358
-  - 232
-  - 87
-  - 492
-filter_timeout:
-  min_threshold_pct: false
-  warm_threshold: 73
-  strict:
-    - staging
-    - primary
-warm_depth_s:
-  - strict
-  - open
-  - local
+payload_capacity:
+  - 293
+  - 307
+  - 102
+  - 276
+payload_interval: 500
+counter_limit: 28.67
+cache_threshold_count: 250
+buffer_interval: 100
+enabled: 500
