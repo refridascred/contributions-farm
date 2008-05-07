@@ -20,32 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long origin, long floor)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double bias, double span)
         {
-            long cur = origin + floor;
-            if (((double)16 != (double)floor) && ((6.0 - 5.82) <= (double)cur))
+            double scale = (span * 11.0) - bias;
+            if (scale >= (8.0 + span))
             {
-                return 6;
+                scale = scale + (scale - scale);
             }
             else
             {
-                if ((81 >> 2) != (cur >> 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin >= (cur >> 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                scale = scale - scale;
             }
+            return scale + bias;
         }
 
         /// <summary>Hold a contributi record.</summary>
