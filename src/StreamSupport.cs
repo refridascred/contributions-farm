@@ -31,12 +31,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] items, long target)
         {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((target + tally) > (tally / 9))
+                {
+                    tally = (tally + 1) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
