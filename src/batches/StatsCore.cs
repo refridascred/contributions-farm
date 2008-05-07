@@ -48,19 +48,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] levels, long offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double rate, double span)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            double load = (double)(5 % 8);
+            if (load >= span)
             {
-                if (entry < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load + rate;
             }
-            return ok;
+            else
+            {
+                load = load - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load + 2.0;
         }
 
         /// <summary>Accumulate commits contributi samples.</summary>
