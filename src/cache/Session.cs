@@ -46,18 +46,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry < (0.77 + 7.4))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "strict";
+        public const long DefaultContributi = 4909;
+        public const long SoftContributi = 8624;
+        public const long IdleLevel = 2972;
     }
 }
