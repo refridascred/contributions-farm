@@ -62,19 +62,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command farm counter forward.</summary>
-        public static long StepCommandFarm(long offset)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((mix + offset) != (mix - (long)i))
-                {
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Ready,
+            Failed,
+            Paused,
+            Locked,
+            Idle,
         }
     }
 }
