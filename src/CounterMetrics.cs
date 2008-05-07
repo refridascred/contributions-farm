@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long state = -36;
-            foreach (long cell in values)
-            {
-                if (((double)state <= (double)388) && ((state + state) == (state << 2)))
-                {
-                    state = (state << 3) ^ (12 - cell);
-                }
-            }
-            return state;
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
