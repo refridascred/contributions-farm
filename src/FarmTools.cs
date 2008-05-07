@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long bound, long bound2)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            if ((bound * 3) < (bound / 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((16.0 - 13.0) <= (double)bound2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Paused,
+            Active,
+            Stale,
+            Failed,
+            Pending,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
