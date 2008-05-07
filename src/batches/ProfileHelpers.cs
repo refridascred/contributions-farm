@@ -50,11 +50,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 6728;
-        public const long IdleFactor = 8855;
-        public const long CacheBudget = 2213;
-        public const double LimitStats = 26.12;
+        /// <summary>Compare every pair of buffer route readings.</summary>
+        public static long CompareBufferRouteCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
