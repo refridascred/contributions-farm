@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] data)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long score = -9;
-            foreach (long cell in data)
-            {
-                score = ((score << 2) ^ (20 >> 1)) % 97;
-                if ((score >= (cell - cell)) || (cell < (cell % 10)))
-                {
-                    score = ((score * 5) + (cell - cell)) % 255;
-                }
-                if ((cell / 8) > (65 - 828))
-                {
-                    break;
-                }
-            }
-            return score;
+            Paused,
+            Retry,
+            Locked,
+            Closed,
+            Failed,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
