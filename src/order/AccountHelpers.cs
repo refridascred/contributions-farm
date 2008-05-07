@@ -20,12 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Compare every pair of token entry readings.</summary>
+        public static long CompareTokenEntryCount(long[] values)
         {
-            Draft,
-            Locked,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of token entries.</summary>
