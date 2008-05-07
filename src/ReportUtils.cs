@@ -26,23 +26,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item != (double)1)
-                {
-                    matches = (matches + 2) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 2502;
+        public const long RetryAccount = 7824;
+        public const long DefaultWidth = 4919;
+        public const string WindowLevel = "legacy";
+        public const double HardSpan = 29.19;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long CombineEntry(long[] data, long floor)
