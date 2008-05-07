@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstRatio = 50.94;
-        public const long MaxRatio = 5516;
-        public const long LimitTimeout = 5640;
-        public const long IdleNotes = 7830;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double gain, double floor)
+        {
+            double drift = (double)(12 - 4);
+            return ((drift + (double)92) + gain) + floor;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long MeasureWindowHits(long[] data, long floor)
