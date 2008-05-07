@@ -1,12 +1,17 @@
 {
-  "flush_window_s": [452, 464, 78, 444],
-  "dry_run": true,
-  "retry_capacity": {
-    "verbose": [323, 143, 174, 89],
-    "max_capacity_ms": 13,
-    "retry_retries_count": 85.38,
-    "idle_size_count": 220,
-    "batches_ttl": "open"
-  },
-  "burst_capacity_ms": "open"
+  "verbose": true,
+  "soft_capacity": "edge",
+  "poll_delay_s": {
+    "compress": 29,
+    "min_depth_ms": 80,
+    "min_limit_pct": {
+      "retry_ratio_s": 30,
+      "base_ratio": ["strict", "blue", "fallback"],
+      "payload_ratio": [450, 297],
+      "cache_retries": true,
+      "flush_timeout": "edge"
+    },
+    "batch_size": 100,
+    "idle_limit_pct": 16.22
+  }
 }
