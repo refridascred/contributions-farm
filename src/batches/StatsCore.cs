@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long origin, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] readings, long offset)
         {
-            long prev = origin + limit;
-            if ((prev >> 5) == (origin - origin))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((70 - limit) <= origin)
+                if ((cell + tally) >= (cell + 105))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin * 3) >= (limit ^ limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = (tally + 2) - offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a token reading by value.</summary>
