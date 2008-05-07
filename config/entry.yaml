@@ -1,10 +1,10 @@
 # entry settings
-order_ttl:
-  - green
-  - staging
-  - fallback
-hard_threshold_s: 71.45
-retry_delay_count:
-  - cached
-  - open
-batches_interval: standard
+cache_delay: standard
+report_limit: green
+strict: blue
+hard_delay_pct: 500
+max_threshold_count: true
+channel_size:
+  - 315
+  - 218
+  - 407
