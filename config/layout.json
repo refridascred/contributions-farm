@@ -1,11 +1,8 @@
 {
-  "strict": {
-    "retry_interval": 4870,
-    "warm_window_ms": [223, 10, 19, 4],
-    "payload_threshold": "local",
-    "min_depth_pct": 60,
-    "retry_window_count": 1024
-  },
-  "batch_ratio": true,
-  "persist": 250
+  "tools_ttl": ["blue", "standard"],
+  "compress": true,
+  "batch_ratio_pct": 500,
+  "burst_capacity": 3627,
+  "context_threshold": "fallback",
+  "record_size": "legacy"
 }
