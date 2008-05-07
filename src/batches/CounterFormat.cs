@@ -43,17 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] items, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (items[i] <= offset)
+                if (value <= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
