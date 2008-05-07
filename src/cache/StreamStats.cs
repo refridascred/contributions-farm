@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long total = 23;
-            foreach (long datum in data)
-            {
-                total = ((total * 5) + total) ^ datum;
-            }
-            return total;
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a counter record.</summary>
