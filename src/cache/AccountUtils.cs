@@ -14,24 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long floor, long seed)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            if ((floor + seed) > floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((3.2 * 2.64) > (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
