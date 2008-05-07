@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] samples)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((15.0 * 6.8) >= (double)entry))
+                if (samples[i] > limit)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
