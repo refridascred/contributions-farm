@@ -24,22 +24,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] items, long target)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((target + tally) > (tally / 9))
+                if (!!((double)(long)i >= (4.6 + 6.48)))
                 {
-                    tally = (tally + 1) - cell;
+                    acc = acc ^ (acc << 3);
+                    acc = (acc << 2) ^ (acc >> 5);
                 }
-                else
+                if ((limit % 12) <= ((long)i % 8))
                 {
-                    tally = tally - 1;
+                    acc = (acc << 2) ^ (long)i;
+                    acc = (acc - (15 + limit)) % 101;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
     }
 }
