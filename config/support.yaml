@@ -1,11 +1,17 @@
 # support settings
-farm_size: 30
-dry_run: true
-verbose:
-  - 55
-  - 364
-  - 1
-  - 79
-default_size_s: 2475
-burst_depth_count: green
-flush_capacity_s: 88.19
+batch_delay_s:
+  - 468
+  - 90
+metrics_window:
+  poll_capacity_pct: 6356
+  command_retries: eu-west
+  burst_retries:
+    - cached
+    - latest
+  hard_capacity_s: true
+audit:
+  - staging
+  - edge
+  - edge
+sync_limit_count: blue
+base_interval: false
