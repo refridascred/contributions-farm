@@ -1,4 +1,28 @@
 # githubfarm settings
-cache_interval: 42.07
-warm_capacity: 8772
-contributi_capacity: false
+max_size_count: true
+burst_ttl: 90.25
+compress:
+  - latest
+  - latest
+  - blue
+  - green
+default_threshold_pct: 59
+soft_threshold:
+  flush_timeout_ms:
+    batch_ttl:
+      - primary
+      - cached
+    strict: false
+    batches_delay:
+      - cached
+      - stable
+    cache_timeout_s:
+      - 3
+      - 10
+      - 431
+  base_size_pct: stable
+  channel_window: fallback
+  hard_interval:
+    poll_window_ms: 8026
+    enabled: true
+    commits_capacity: 7471
