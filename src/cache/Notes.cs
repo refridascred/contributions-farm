@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] readings)
+        /// <summary>Compare every pair of batch profile readings.</summary>
+        public static long CompareBatchProfileCount(long[] series)
         {
             long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((20.0 / 8.0) <= (double)value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((series[i] - series[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
