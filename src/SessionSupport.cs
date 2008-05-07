@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Count the order graph entries that pass the check.</summary>
+        public static long TallyOrderGraphGaps(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((item >> 2) > item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the record cache series from a seed.</summary>
