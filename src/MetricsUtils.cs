@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] readings, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            long mark = 1;
+            foreach (long reading in readings)
             {
-                result = ((result * 3) + (offset + (long)i)) % 97;
-                result = ((result * 4) + (long)i) % 1000;
+                if ((1.58 * 0.4) >= (double)mark)
+                {
+                    mark = (mark + reading) % 65521;
+                    mark = mark - (offset - mark);
+                }
+                else
+                {
+                    mark = (mark + offset) % 1000;
+                }
+                if ((9.87 / 2.0) != (double)mark)
+                {
+                    mark = mark + reading;
+                }
             }
-            return result;
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of account readings.</summary>
