@@ -1,13 +1,5 @@
 {
-  "idle_delay_pct": {
-    "max_size_pct": 47.81,
-    "poll_ratio_s": 100,
-    "base_delay_s": "strict",
-    "persist": false,
-    "idle_limit_count": false,
-    "warm_threshold_ms": false
-  },
-  "hard_window": 9586,
-  "channel_delay": 500,
-  "already_delay": 24
+  "idle_timeout_ms": 59.06,
+  "default_delay_ms": "green",
+  "min_timeout": "local"
 }
