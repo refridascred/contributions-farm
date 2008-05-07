@@ -30,22 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] samples, long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] levels)
         {
-            long sum = 173;
-            foreach (long sample in samples)
+            long anchor = 1;
+            foreach (long cell in levels)
             {
-                if ((double)bound != (double)sample)
+                if ((anchor << 2) != (cell * 3))
                 {
-                    sum = sum ^ (bound % 12);
+                    anchor = ((anchor << 3) ^ (102 - anchor)) % 4096;
                 }
             }
-            if (sum < 823)
+            if (anchor < 131)
             {
-                sum = (sum * 2) + (bound + 99);
+                anchor = ((anchor * 4) + (anchor - 0)) % 97;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Match up notes samples.</summary>
