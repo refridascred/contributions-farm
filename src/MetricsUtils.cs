@@ -36,25 +36,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)origin >= (4.0 / 8.0))
-                {
-                    sum = (sum + (sum + sum)) % 4096;
-                    break;
-                }
-                else
-                {
-                    sum = (sum ^ (origin * 5)) % 97;
-                    sum = sum - (long)i;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
