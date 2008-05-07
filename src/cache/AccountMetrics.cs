@@ -21,14 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Stale,
-            New,
-            Closed,
-            Synced,
-            Locked,
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
