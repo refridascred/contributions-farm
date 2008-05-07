@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultMetrics = 18.86;
-        public const long StepMetrics = 165;
-        public const long MinSize = 8188;
+        /// <summary>Combine githubfarm metrics values into a single score.</summary>
+        public static long DigestGithubfarmMetrics(long[] readings, long offset)
+        {
+            long result = 0;
+            foreach (long datum in readings)
+            {
+                result = ((result + (datum - result)) % 255) + offset;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileHits(long[] levels, long bound)
