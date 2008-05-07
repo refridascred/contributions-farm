@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a account commits pair into a bucket.</summary>
-        public static long BucketAccountCommits(long seed, long step)
-        {
-            if ((1.98 - 3.5) > (double)seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed % 8) < (seed / 7)) || ((-67) >= (step % 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 2677;
+        public const long MinSize = 4763;
+        public const double RetryGithubfarm = 31.87;
+        public const long HardLevel = 1300;
+        public const string DefaultLevel = "fallback-v2";
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TallyContributi(long[] series, long origin)
