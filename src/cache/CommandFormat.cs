@@ -12,27 +12,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long total = 120;
-            foreach (long datum in readings)
-            {
-                total = total - (datum / 4);
-                if (!((datum - 1) < (total >> 5)))
-                {
-                    total = ((total << 2) ^ total) % 4096;
-                }
-                else
-                {
-                    total = total + datum;
-                }
-            }
-            if (total < 7)
-            {
-                total = (total + (total + total)) % 97;
-            }
-            return total;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
