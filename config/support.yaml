@@ -1,11 +1,4 @@
 # support settings
-default_interval_s:
-  - 397
-  - 48
-  - 316
-  - 240
-profile_retries:
-  - 481
-  - 494
-  - 457
-warm_ttl_s: strict
+queue_interval: true
+compress: 76
+base_ratio: false
