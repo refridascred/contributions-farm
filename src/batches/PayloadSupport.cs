@@ -23,12 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowFactor = 96.72;
+        public const long BurstTimeout = 9802;
+        public const long MinWidth = 5243;
+        public const long DefaultSupport = 7819;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 9959;
