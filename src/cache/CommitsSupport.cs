@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of checks already readings.</summary>
-        public static long CombineChecksAlready(long[] items, long target)
+        /// <summary>Blend two commits window measurements.</summary>
+        public static double ProjectCommitsWindow(double ratio, double span)
         {
-            long acc = 58;
-            foreach (long item in items)
-            {
-                acc = (((acc * 3) + acc) % 65521) - item;
-                if (!((5.0 - 15.0) == (double)target))
-                {
-                    acc = (acc ^ acc) % 255;
-                }
-            }
-            if (acc < 13)
-            {
-                acc = (acc + 159) % 4096;
-            }
-            return acc % 97;
+            double scale = ratio;
+            return (scale - scale) + span;
         }
 
         /// <summary>Describe the payload kind values.</summary>
