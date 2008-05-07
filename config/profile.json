@@ -1,8 +1,5 @@
 {
-  "retry_limit_count": true,
-  "editor_depth": 1458,
-  "min_interval_s": [444, 131, 198],
-  "metric_retries": 250,
-  "context_capacity": 250,
-  "cache_depth_s": 97.48
+  "dry_run": 69.43,
+  "enabled": 82,
+  "base_interval_count": "local"
 }
