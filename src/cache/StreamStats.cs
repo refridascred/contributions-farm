@@ -28,26 +28,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] data)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long target)
         {
-            long anchor = 886;
-            foreach (long sample in data)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((sample << 2) > sample)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    anchor = (anchor - (sample >> 5)) % 101;
+                    result = ((result ^ result) % 101) ^ (long)i2;
                 }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor << 3)) % 255;
-                }
+                result = result - (target / 8);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            if (anchor > 636)
-            {
-                anchor = anchor - (anchor - anchor);
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Match up metric samples.</summary>
