@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryInterval = 2077;
-        public const double RetryDepth = 84.0;
-        public const long MaxFactor = 5793;
-        public const long SoftWidth = 954;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepStream = 87.27;
+        public const long WindowStream = 8866;
+        public const double MaxStream = 11.56;
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long CompareSessionCount(long[] values)
