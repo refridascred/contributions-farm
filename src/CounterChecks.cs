@@ -52,15 +52,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowMetrics = "standard-edge";
+        public const long BurstMetrics = 7935;
+        public const double WindowScore = 33.28;
     }
 }
