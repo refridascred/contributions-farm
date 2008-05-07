@@ -25,12 +25,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] items, long origin)
         {
-            Ready,
-            Done,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
