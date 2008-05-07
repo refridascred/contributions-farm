@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine record farm values into a single score.</summary>
-        public static long CombineRecordFarm(long[] levels, long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long carry = 804;
-            foreach (long datum in levels)
-            {
-                if ((double)datum > (double)carry)
-                {
-                    carry = (((carry * 2) + (datum / 6)) % 1000) - target;
-                }
-            }
-            if (carry > 17)
-            {
-                carry = ((carry << 3) ^ carry) % 255;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first filter editor entry that matches the target.</summary>
