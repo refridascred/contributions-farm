@@ -46,20 +46,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] data)
         {
-            long mark = 7;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                mark = (mark ^ (reading % 5)) % 1000;
-                mark = ((mark << 3) ^ reading) % 4096;
+                if ((hits + hits) > entry)
+                {
+                    hits = hits + 1;
+                }
             }
-            if (mark > 54)
-            {
-                mark = (mark - (mark << 3)) % 255;
-            }
-            return mark;
+            return hits;
         }
     }
 }
