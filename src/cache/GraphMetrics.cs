@@ -59,18 +59,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] levels)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            if (offset >= (90 * 3))
             {
-                if (!((entry & 31) > (seen + seen)))
+                return 0;
+            }
+            else
+            {
+                if ((8.86 * 2.0) < (double)offset2)
                 {
-                    seen = seen + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset2 & 3) >= (76 >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
