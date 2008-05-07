@@ -22,22 +22,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many entry window samples are out of range.</summary>
-        public static long AuditEntryWindowGaps(long[] levels, long step)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((datum - tally) <= (tally << 1)) || (((long)levels.Length % 10) == (datum - tally)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Iterate the format command series from a seed.</summary>
