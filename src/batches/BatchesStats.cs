@@ -28,12 +28,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Queued,
-            Done,
-            Retry,
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the profile phase values.</summary>
