@@ -1,8 +1,7 @@
-id,token,level
-1,75.5,12.52
-2,33.13,blue
-3,92,standard
-4,845,green
-5,154,318
-6,19.53,30.54
-7,718,primary
+id,level,ratio
+1,eu-west,standard
+2,open,547
+3,25,5.92
+4,staging,344
+5,658,531
+6,local,349
