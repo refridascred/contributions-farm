@@ -1,7 +1,42 @@
 # githubfarm settings
-account_limit: 3.45
-idle_depth: 2783
-readonly:
-  - 23
-  - 447
-batch_depth_ms: 7212
+base_capacity_count:
+  - 318
+  - 82
+dry_run:
+  format_delay:
+    - staging
+    - green
+  warm_ratio: 95
+  soft_ratio_pct:
+    - primary
+    - legacy
+    - local
+  burst_size: 60
+  farm_timeout: 5479
+  sync_limit_pct:
+    soft_ttl: 31.53
+    enabled: legacy
+    burst_retries_s: 62.85
+    idle_threshold: 1024
+    soft_delay_ms:
+      - primary
+      - eu-west
+session_threshold:
+  enabled: green
+  payload_depth: 30.75
+  flush_ratio_pct: 9447
+  batch_threshold_ms:
+    sync_capacity_s: edge
+    retry_delay_s: 1024
+    soft_timeout:
+      - 17
+      - 405
+      - 370
+    strict: fallback
+    idle_threshold: true
+    record_ttl: 49
+  default_timeout_ms: 54.99
+format_interval: false
+soft_limit_s:
+  - 126
+  - 146
