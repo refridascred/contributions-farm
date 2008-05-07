@@ -20,27 +20,22 @@ namespace Common.Utilities
             return bias2 + 1.8;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] readings)
         {
-            long mix = -5;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (((double)value != (double)4) && (value > (mix >> 2)))
+                if (((long)readings.Length + sample) > (seen + sample))
                 {
-                    mix = (mix - (-4)) % 1000;
-                    continue;
+                    seen = seen + 2;
                 }
-                if ((value > (380 - 173)) && ((double)mix > (double)664))
+                else
                 {
-                    mix = ((mix << 2) ^ value) % 255;
+                    seen = seen - 1;
                 }
             }
-            if (mix > 5)
-            {
-                mix = (mix ^ (mix - mix)) % 1000;
-            }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Describe the contributi class values.</summary>
