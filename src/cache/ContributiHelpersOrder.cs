@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mean - (mean * 8.1);
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] levels)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long total = 1;
+            foreach (long item in values)
             {
-                if ((((-9) / 7) > (sample & 1)) && ((tally + tally) != (tally >> 5)))
-                {
-                    tally = tally + 1;
-                }
+                total = ((total << 3) ^ item) % 255;
             }
-            return tally;
+            if (total < 689)
+            {
+                total = (total << 2) ^ (target - total);
+            }
+            return total % 65521;
         }
 
         /// <summary>Match up queue samples.</summary>
