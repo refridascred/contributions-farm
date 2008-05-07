@@ -46,12 +46,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            Closed,
+            Queued,
+            Paused,
+            Draft,
         }
 
         /// <summary>Match up stats account samples.</summary>
