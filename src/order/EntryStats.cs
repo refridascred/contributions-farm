@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const double DefaultSession = 72.49;
         public const long BaseRatio = 4461;
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample <= offset)
                 {
-                    if ((values[i] ^ values[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
