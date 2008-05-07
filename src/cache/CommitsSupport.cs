@@ -31,11 +31,20 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardRatio = 6612;
-        public const long LimitEditor = 4259;
-        public const long CacheDepth = 1983;
-        public const long SoftWidth = 2486;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] values, long origin)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the window buffer series from a seed.</summary>
         public static long RollWindowBuffer(long step)
