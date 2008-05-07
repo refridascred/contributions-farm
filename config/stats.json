@@ -1,7 +1,11 @@
 {
-  "persist": 14.25,
-  "audit": true,
-  "max_capacity": 34.54,
-  "retry_retries_pct": [70, 282],
-  "readonly": "cached"
+  "hard_threshold": {
+    "persist": 4876,
+    "burst_interval_s": ["stable", "eu-west", "latest", "cached"],
+    "burst_timeout_ms": "stable",
+    "poll_threshold_count": 500,
+    "format_delay": "primary"
+  },
+  "flush_timeout": "edge",
+  "poll_threshold_ms": ["strict", "strict", "latest"]
 }
