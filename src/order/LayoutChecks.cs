@@ -35,12 +35,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public string Offset { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
+            Idle,
+            Retry,
+            Active,
+            Locked,
         }
 
         /// <summary>Match up schema samples.</summary>
