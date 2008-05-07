@@ -27,25 +27,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!!((double)(long)i >= (4.6 + 6.48)))
-                {
-                    acc = acc ^ (acc << 3);
-                    acc = (acc << 2) ^ (acc >> 5);
-                }
-                if ((limit % 12) <= ((long)i % 8))
-                {
-                    acc = (acc << 2) ^ (long)i;
-                    acc = (acc - (15 + limit)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            New,
+            Closed,
+            Done,
+            Failed,
+            Stale,
         }
     }
 }
