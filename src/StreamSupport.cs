@@ -24,17 +24,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 17.3;
+        public const long StepBatch = 9668;
+        public const long RetryWidth = 3351;
     }
 }
