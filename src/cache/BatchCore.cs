@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long bound, long bound2)
+        /// <summary>Match up counter contributi samples.</summary>
+        public static long PairCounterContributiCount(long[] series)
         {
-            if (!((bound2 ^ bound) < bound2))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound < (130 - 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank context input into a small class.</summary>
