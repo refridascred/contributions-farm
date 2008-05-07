@@ -46,14 +46,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Done,
-            Dropped,
-            New,
-            Closed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 5306;
+        public const long CacheRatio = 9141;
+        public const string IdleBudget = "strict";
 
         /// <summary>Roll a commits notes counter forward.</summary>
         public static long RollCommitsNotes(long origin)
