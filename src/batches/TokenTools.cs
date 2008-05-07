@@ -31,12 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] samples, long step)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
