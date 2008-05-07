@@ -28,19 +28,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] items, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((double)floor >= (20.0 + 8.57))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 26.32;
+        public const long StepInterval = 8334;
+        public const long LimitReport = 6158;
 
         /// <summary>Accumulate commits contributi samples.</summary>
         public static long TallyCommitsContributi(long[] values)
