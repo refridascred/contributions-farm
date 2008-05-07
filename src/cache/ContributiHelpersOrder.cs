@@ -34,10 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinAlready = "cached-v2";
-        public const long MaxInterval = 9325;
-        public const long WindowFactor = 2390;
-        public const long DefaultAlready = 7386;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinAccount = "strict";
+        public const long MinInterval = 9865;
+        public const double DefaultAccount = 40.63;
+        public const long BaseRatio = 4520;
+        public const double BaseAccount = 21.19;
     }
 }
