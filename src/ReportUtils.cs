@@ -73,13 +73,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Audit already cluster readings against a rule.</summary>
+        public static long TallyAlreadyClusterMatches(long[] readings, long floor)
         {
-            Dropped,
-            Active,
-            Locked,
-            Idle,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((floor + item) >= (608 % 60))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
