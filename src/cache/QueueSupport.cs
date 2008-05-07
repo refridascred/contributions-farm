@@ -22,12 +22,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Queued,
-            Ready,
-            Synced,
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
