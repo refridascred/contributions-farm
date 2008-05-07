@@ -44,14 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] readings)
         {
-            Done,
-            Synced,
-            Draft,
-            Stale,
-            Idle,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell * 2) < cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
