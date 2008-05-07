@@ -1,7 +1,7 @@
 {
-  "strict": true,
-  "idle_size": "strict",
-  "readonly": true,
-  "base_window": "open",
-  "max_ttl_count": true
+  "strict": 100,
+  "poll_retries_ms": 6455,
+  "sync_delay_count": true,
+  "account_depth": false,
+  "poll_ttl_count": "local"
 }
