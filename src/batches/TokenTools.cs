@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next already support value from a seed.</summary>
-        public static long RollAlreadySupport(long origin)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
             {
-                sum = (sum ^ origin) % 255;
-                sum = ((sum * 4) + (long)i) % 97;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
