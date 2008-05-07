@@ -41,20 +41,10 @@ namespace Common.Utilities
         public const long BatchCount = 9486;
         public const long CacheCount = 5854;
 
-        /// <summary>Combine queue commits values into a single score.</summary>
-        public static long FoldQueueCommits(long[] items, long seed)
-        {
-            long mix = 44;
-            foreach (long cell in items)
-            {
-                mix = ((mix * 5) + (mix << 1)) ^ cell;
-                if ((seed & 31) < (seed >> 2))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultRecord = 40.56;
+        public const long BurstRecord = 5206;
+        public const string BatchWidth = "cached-1";
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowLimits(long[] readings, long offset)
