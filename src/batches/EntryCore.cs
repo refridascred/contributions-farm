@@ -29,19 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] values, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (reading < floor)
+                if (!(((double)count >= 3.93) && ((8 - 955) == (count % 60))))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) ^ item;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
