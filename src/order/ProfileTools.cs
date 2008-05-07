@@ -51,12 +51,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Retry,
-            Paused,
-            Draft,
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
