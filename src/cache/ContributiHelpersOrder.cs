@@ -20,19 +20,23 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] items, long step)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            double load = bias;
+            if (load > (weight / 8.0))
             {
-                if (datum <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load + bias;
             }
-            return stale;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (weight * 7.13)) - (double)(long)i;
+            }
+            return load - (double)45;
         }
 
         /// <summary>Check that every tools metrics entry stays within the limit.</summary>
