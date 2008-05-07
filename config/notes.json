@@ -1,6 +1,5 @@
 {
-  "min_retries_count": [243, 430, 272],
-  "metric_size": 6243,
-  "poll_retries_count": "edge",
-  "default_retries": ["blue", "blue"]
+  "flush_ratio": 30,
+  "cache_interval_count": "latest",
+  "hard_delay_s": 68
 }
