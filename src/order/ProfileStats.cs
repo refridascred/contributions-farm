@@ -28,22 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter metric values into a single score.</summary>
-        public static long TallyCounterMetric(long[] readings)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] readings)
         {
-            long total = 36;
+            long tally = 0;
             foreach (long cell in readings)
             {
-                if (((total * 5) >= total) || (total > cell))
+                if ((cell * 5) < tally)
                 {
-                    total = ((total * 4) + (3 / 4)) % 1000;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total & 255)) % 97;
+                    tally = tally + 1;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a account record.</summary>
