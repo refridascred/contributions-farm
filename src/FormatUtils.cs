@@ -37,18 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] data)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (!((long)data.Length <= (reading << 1)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
