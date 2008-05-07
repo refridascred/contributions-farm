@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 144;
-        public const string MaxGithubfarm = "legacy-v2";
-        public const long SoftGithubfarm = 8740;
-        public const double CacheDepth = 61.68;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long step, long offset)
+        {
+            if ((offset + step) == (offset / 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset >= (step + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step <= (offset + 32))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)step == (4.02 - 0.76))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstTools = 867;
