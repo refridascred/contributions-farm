@@ -1,10 +1,16 @@
 # support settings
-burst_interval: 68
-buffer_size:
-  - 216
-  - 462
-  - 243
-  - 319
-verbose: legacy
-audit: 5791
-hard_ttl: 1024
+cache_capacity_pct: 30
+soft_threshold_count: 35.27
+audit: 8359
+min_ttl_s: false
+graph_retries: false
+entry_timeout:
+  burst_ratio:
+    hard_delay_count: 62.81
+    cache_interval: false
+    compress: 8768
+  record_depth:
+    - blue
+    - legacy
+  route_timeout: 22.6
+  default_capacity_ms: 81
