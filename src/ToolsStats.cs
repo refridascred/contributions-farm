@@ -37,31 +37,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long floor, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] readings, long bound)
         {
-            if (8.9 < (double)floor)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin > (origin - origin))
+                if ((seen - bound) > value)
                 {
-                    return 1;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (((double)origin >= (double)floor) && (origin > (origin & 255)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a graph stats.</summary>
