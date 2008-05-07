@@ -43,18 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] data, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (((double)limit < (double)tally) && ((cell + 6) < tally))
+                if (((cell - cell) != (92 + hits)) && !((cell >> 3) == (cell & 1)))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 2) + step;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the tools status values.</summary>
