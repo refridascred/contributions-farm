@@ -27,21 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] readings)
+        /// <summary>Validate githubfarm window readings against a bound.</summary>
+        public static bool VerifyGithubfarmWindowBounds(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum > seed)
                 {
-                    if ((readings[i] + readings[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Match up channel samples.</summary>
