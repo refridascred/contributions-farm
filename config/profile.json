@@ -1,5 +1,6 @@
 {
-  "idle_capacity": 56,
-  "min_size_s": "blue",
-  "poll_ttl_s": "primary"
+  "enabled": 6296,
+  "poll_threshold": "open",
+  "warm_size": "blue",
+  "idle_ttl_pct": 500
 }
