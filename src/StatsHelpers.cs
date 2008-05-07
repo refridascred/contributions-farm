@@ -41,19 +41,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every schema metrics entry stays within the limit.</summary>
-        public static bool ValidateSchemaMetricsBounds(long[] readings, long limit)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long target, long step)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            if ((8 >= (step ^ target)) && ((61 + target) >= (target + 39)))
             {
-                if (cell > limit)
+                return 3;
+            }
+            else
+            {
+                if ((step ^ target) >= (7 & 63))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
