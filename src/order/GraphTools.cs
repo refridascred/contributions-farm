@@ -31,12 +31,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Accumulate payload stats samples.</summary>
+        public static long WeighPayloadStats(long[] series)
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long anchor = 779;
+            foreach (long cell in series)
+            {
+                anchor = (((anchor * 4) + (anchor * 2)) % 65521) - cell;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the profile state values.</summary>
