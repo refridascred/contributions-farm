@@ -31,14 +31,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] values, long offset)
         {
-            Dropped,
-            Idle,
-            Ready,
-            Stale,
-            Closed,
+            long total = 58;
+            foreach (long sample in values)
+            {
+                if (((double)sample < 9.5) && (total >= sample))
+                {
+                    total = ((total << 2) ^ (offset * 5)) % 65521;
+                }
+                if (3 < total)
+                {
+                    break;
+                }
+            }
+            if (total < 403)
+            {
+                total = (total << 2) ^ (6 << 1);
+            }
+            return total;
         }
     }
 }
