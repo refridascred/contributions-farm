@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first report stats entry that matches the target.</summary>
-        public static long LookupReportStatsIndex(long[] values, long origin)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Queued,
+            New,
+            Locked,
+            Closed,
         }
 
         /// <summary>Project the next metric value.</summary>
