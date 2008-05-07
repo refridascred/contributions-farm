@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 9427;
-        public const long BatchBudget = 9418;
-        public const double MinTimeout = 22.31;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public bool Limit { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] items, long floor)
