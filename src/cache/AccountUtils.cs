@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first schema metrics entry that matches the target.</summary>
-        public static long FindSchemaMetricsIndex(long[] readings, long offset)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] == offset)
+                if (samples[i] <= seed)
                 {
                     return (long)i;
                 }
