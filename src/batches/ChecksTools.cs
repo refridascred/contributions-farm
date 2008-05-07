@@ -36,32 +36,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long floor, long origin)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            long next = floor + origin;
-            if (((18.0 / 9.0) > (double)next) && (next > (origin + 4)))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-34) - next) > (next - floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((870 * 5) != (floor - floor))
+                    if ((items[i] ^ items[j]) < 4)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
