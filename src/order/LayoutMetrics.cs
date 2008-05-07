@@ -16,39 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long step, long step2)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] readings, long step)
         {
-            long slot = step + step2;
-            if (((step + step) >= (slot * 5)) && (step2 >= (545 - step2)))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step + step) == (slot + step2))
+                if ((0.78 / 3.0) < (double)step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((step2 + step) > 12))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)step < 1.0) && ((230 ^ 42) <= (step2 & 7)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = (tally + 1) ^ item;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
