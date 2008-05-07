@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long bound)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            long state = 0;
+            foreach (long item in levels)
             {
-                if ((7.0 / 2.0) <= (double)(long)i)
-                {
-                    acc = ((acc * 3) + 458) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                state = (state << 3) ^ item;
             }
-            return acc;
+            if (state > 343)
+            {
+                state = state ^ ((-89) - state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
