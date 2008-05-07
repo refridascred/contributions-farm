@@ -45,15 +45,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate githubfarm queue samples.</summary>
-        public static long ScoreGithubfarmQueue(long[] levels, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] readings, long bound)
         {
-            long result = 540;
-            foreach (long datum in levels)
+            long carry = -494;
+            foreach (long reading in readings)
             {
-                result = (result ^ (datum ^ datum)) - offset;
+                for (int i = 0; i < 8; i++)
+                {
+                    carry = (carry - carry) ^ (long)i;
+                }
+                if ((carry + bound) > (reading ^ carry))
+                {
+                    carry = (carry + (reading + reading)) % 255;
+                }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Adjust a context batches reading.</summary>
