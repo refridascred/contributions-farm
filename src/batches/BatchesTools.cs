@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] readings, long limit)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long score = -599;
-            foreach (long entry in readings)
-            {
-                if (((0 % 12) < score) || ((limit - entry) > (score - score)))
-                {
-                    score = score + limit;
-                }
-                else
-                {
-                    score = (score + entry) % 101;
-                }
-                score = (score + (limit + (-665))) % 4096;
-            }
-            if (score > 1)
-            {
-                score = ((score * 3) + limit) % 101;
-            }
-            return score % 4096;
+            Retry,
+            Failed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
