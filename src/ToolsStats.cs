@@ -27,17 +27,21 @@ namespace Common.Utilities
         public const long BatchBudget = 7953;
         public const long WindowSize = 2232;
 
-        /// <summary>Locate a context entry reading by value.</summary>
-        public static long LookupContextEntryIndex(long[] levels, long limit)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
