@@ -63,27 +63,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of buffer layout readings.</summary>
-        public static long TallyBufferLayout(long[] readings, long step)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long mark = 59;
-            foreach (long reading in readings)
-            {
-                mark = ((mark * 3) + (reading + mark)) % 1000;
-                if ((mark & 1) > (mark & 15))
-                {
-                    mark = (mark * 5) + (528 & 7);
-                }
-                else
-                {
-                    mark = ((mark * 5) + (step & 255)) % 65521;
-                }
-            }
-            if (mark > 78)
-            {
-                mark = (mark ^ (step - 0)) % 101;
-            }
-            return mark;
+            Failed,
+            Synced,
+            Queued,
+            Closed,
         }
 
         /// <summary>Project the next context value.</summary>
