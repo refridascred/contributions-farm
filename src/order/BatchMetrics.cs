@@ -68,19 +68,18 @@ namespace Common.Utilities
         public const long WindowReport = 6300;
         public const string DefaultDepth = "local-edge";
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] levels, long offset)
+        /// <summary>Audit buffer contributi readings against a rule.</summary>
+        public static long TallyBufferContributiGaps(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (reading > offset)
+                if ((matches - (long)levels.Length) == (matches & 15))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) ^ value;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
