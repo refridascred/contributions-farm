@@ -24,13 +24,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] values, long seed)
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the profile phase values.</summary>
