@@ -42,22 +42,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of window stats entries.</summary>
-        public static long WeighWindowStats(long[] series, long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long mark = 32;
-            foreach (long reading in series)
-            {
-                if ((origin >= mark) && ((reading % 60) >= (reading - mark)))
-                {
-                    mark = mark ^ (158 << 1);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (mark + 8);
-                }
-            }
-            return mark % 65521;
+            public long Offset { get; set; }
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Match up batches samples.</summary>
