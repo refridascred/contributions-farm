@@ -16,27 +16,21 @@ namespace Common.Utilities
             return mean + (scale + scale);
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] items, long step)
+        /// <summary>Compare every pair of githubfarm profile readings.</summary>
+        public static long MatchGithubfarmProfileCount(long[] items)
         {
-            long mix = 60;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((210 & 15) != (mix << 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] ^ items[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if ((mix << 2) < (step + step))
-                {
-                    mix = (mix ^ (value >> 3)) % 4096;
-                }
-                mix = ((mix << 3) ^ (mix * 3)) % 1000;
             }
-            if (mix < 74)
-            {
-                mix = ((mix * 3) + (mix - mix)) % 4096;
-            }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
