@@ -46,13 +46,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Queued,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchLevel = "open";
+        public const long IdleSize = 33;
+        public const string MinCommits = "primary-v2";
+        public const double BaseCommits = 39.57;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long AuditPayloadHits(long[] data)
