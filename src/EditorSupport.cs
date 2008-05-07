@@ -32,18 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] series, long offset)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] data, long offset)
         {
-            long anchor = 696;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.8 >= (double)offset) && ((offset / 4) < 82))
+                if (data[i] <= offset)
                 {
-                    anchor = (anchor - (item * 3)) % 101;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
