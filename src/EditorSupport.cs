@@ -29,19 +29,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] levels, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] series)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long carry = -955;
+            foreach (long cell in series)
             {
-                if (item <= bound)
+                if ((cell % 60) < (carry % 64))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry - (carry % 2)) % 65521;
                 }
             }
-            return ready;
+            return carry % 97;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
