@@ -1,7 +1,8 @@
 # entry settings
-window_interval: 69.21
-idle_retries_s: 18.7
-filter_window:
-  format_ratio: 45
-  warm_ttl_count: green
-  burst_window: open
+readonly: false
+channel_retries: 64.32
+verbose:
+  - edge
+  - local
+  - fallback
+  - legacy
