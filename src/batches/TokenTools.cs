@@ -27,12 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public double Count { get; set; }
             public double Mode { get; set; }
-            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
