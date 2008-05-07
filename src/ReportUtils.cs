@@ -83,22 +83,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks layout entries that pass the check.</summary>
-        public static long MeasureChecksLayoutOutliers(long[] values)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long seed)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell > hits)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = ((mark << 3) ^ (long)i) % 97;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
     }
 }
