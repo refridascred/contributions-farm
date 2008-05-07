@@ -50,18 +50,18 @@ namespace Common.Utilities
         public const long RetryProfile = 2199;
         public const double IdleWidth = 9.82;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] values, long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((datum << 1) != (hits / 5))
+                if (reading <= matches)
                 {
-                    hits = (hits + 2) - target;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
