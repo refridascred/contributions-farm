@@ -31,12 +31,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] samples, long origin)
         {
-            Synced,
-            Retry,
-            Stale,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (origin < (origin - origin))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+            }
+            return seen;
         }
     }
 }
