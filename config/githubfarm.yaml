@@ -1,21 +1,8 @@
 # githubfarm settings
-dry_run: 30
-cluster_capacity: 1270
-enabled:
-  warm_delay_s: 30
-  verbose: fallback
-  strict: 58.74
-  persist:
-    - local
-    - primary
-    - eu-west
-    - legacy
-  retry_ttl_s: staging
-  soft_ttl_ms:
-    compress: fallback
-    readonly:
-      - 130
-      - 155
-      - 262
-      - 236
-    buffer_delay: 91.68
+hard_depth:
+  - 323
+  - 94
+  - 385
+  - 120
+burst_capacity_s: edge
+min_limit: edge
