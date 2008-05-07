@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next profile githubfarm value.</summary>
-        public static double ProjectProfileGithubfarm(double bias, double bias2)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long step, long step2)
         {
-            double drift = bias;
-            if (drift <= drift)
+            if ((610 < (step2 * 4)) && ((double)step == (3.8 - 18.0)))
             {
-                drift = (drift + bias) + bias2;
+                return 0;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                drift = (drift - 9.6) + (double)(long)i;
+                if ((step <= ((-5) - 88)) || ((double)step > (8.55 * 6.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step2 > (step + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((3.0 - 13.0) != (double)step2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return drift - (double)4;
         }
 
         /// <summary>Match up format cluster samples.</summary>
