@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] series, long step)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
