@@ -1,7 +1,7 @@
-id,label,state,region
-1,147,31.93,67.98
-2,90.13,cached,949
-3,18,local,local
-4,primary,52.6,453
-5,open,131,eu-west
-6,57.8,latest,open
+id,label,ratio,count
+1,153,295,985
+2,31.92,385,275
+3,62.36,193,56.44
+4,29.39,74.63,425
+5,95.59,913,114
+6,blue,8.14,6.38
