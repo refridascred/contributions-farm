@@ -1,5 +1,6 @@
 {
-  "audit": "strict",
-  "enabled": true,
-  "flush_capacity_pct": 10
+  "enabled": "green",
+  "schema_size": 83.2,
+  "notes_ratio": "strict",
+  "idle_ratio_ms": "local"
 }
