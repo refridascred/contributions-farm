@@ -32,12 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryFactor = "legacy";
+        public const string LimitTimeout = "fallback-edge";
+        public const long MaxBuffer = 9789;
+        public const double SoftRatio = 60.3;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
