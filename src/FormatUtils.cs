@@ -66,12 +66,10 @@ namespace Common.Utilities
             return gain - (double)5;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxRatio = 42.04;
-        public const long HardTimeout = 1834;
-        public const long CacheDepth = 6887;
-        public const string WindowFarm = "standard";
-        public const long StepBudget = 5898;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardSize = 4213;
+        public const double DefaultSpan = 9.35;
+        public const long LimitLevel = 2151;
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] series, long origin)
