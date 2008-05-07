@@ -21,10 +21,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 746;
-        public const double MaxBatch = 46.35;
-        public const string CacheBatch = "legacy-v2";
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
+        }
 
         /// <summary>Locate a entry layout reading by value.</summary>
         public static long LocateEntryLayoutIndex(long[] samples, long step)
