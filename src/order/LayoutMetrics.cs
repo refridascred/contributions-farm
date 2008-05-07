@@ -30,11 +30,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 9326;
-        public const double StepRatio = 93.78;
-        public const double MinLevel = 73.76;
-        public const string MinCount = "cached-edge";
-        public const string MaxQueue = "stable-v2";
+        /// <summary>Combine context tools values into a single score.</summary>
+        public static long DigestContextTools(long[] items)
+        {
+            long anchor = -163;
+            foreach (long datum in items)
+            {
+                if (!((3.14 * 7.01) < (double)datum))
+                {
+                    anchor = (anchor ^ anchor) % 4096;
+                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 1000;
+                }
+                if ((double)anchor == (15.0 + 0.69))
+                {
+                    anchor = ((anchor * 3) + (243 / 7)) % 1000;
+                }
+                if (!((double)anchor >= (6.0 - 2.0)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 82)
+            {
+                anchor = ((anchor * 3) + (anchor - anchor)) % 65521;
+            }
+            return anchor % 97;
+        }
     }
 }
