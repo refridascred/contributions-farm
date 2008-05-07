@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Closed,
+            Synced,
+            Ready,
+            Draft,
         }
 
         /// <summary>Measure how many window metrics samples are out of range.</summary>
