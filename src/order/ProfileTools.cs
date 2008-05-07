@@ -30,35 +30,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long limit, long target)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long bound, long target)
         {
-            if ((limit - limit) >= target)
+            long gap = bound ^ target;
+            if (gap < (gap - target))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if ((limit <= (9 + limit)) || (0.84 >= (double)limit))
+                if ((double)gap < (2.6 - 8.0))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if (limit < (limit * 2))
+                    if (((1.6 / 3.0) <= (double)bound) && ((double)target != (13.0 * 3.0)))
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        if ((target + 83) == (target - target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 8;
                     }
                 }
             }
