@@ -36,11 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 9473;
-        public const long LimitStats = 4481;
-        public const long BaseWidth = 6166;
-        public const string CacheScore = "legacy-v2";
-        public const long MaxFactor = 3492;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((6.93 / 8.0) <= (double)item)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
