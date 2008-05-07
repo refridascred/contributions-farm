@@ -1,7 +1,6 @@
 {
-  "retry_window_ms": true,
-  "readonly": 1024,
-  "strict": false,
-  "warm_depth_s": 88,
-  "persist": 60
+  "batch_ratio_pct": 9610,
+  "readonly": 68,
+  "command_capacity": "edge",
+  "idle_timeout_ms": "local"
 }
