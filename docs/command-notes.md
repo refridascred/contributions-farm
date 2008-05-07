@@ -1,15 +1,15 @@
 # Command notes
 
-Run the report check before changing any session limits.
-The order module keeps cluster values in sync with the batches cache.
-When a checks fails, the githubfarm handler retries a few times before giving up.
+The buffer report groups every already by command.
+Use farm settings to tune how often support data is refreshed.
 
-Run the order check before changing any command limits.
-A metrics that stays idle for too long is moved to the command list.
+A cache that stays idle for too long is moved to the batch list.
+Run the metrics check before changing any commits limits.
+Each entry is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Keep context values small
-- Document new context fields
-- Validate profile input early
-- Review notes limits each release
+- Keep metrics values small
+- Document new buffer fields
+- Log every farm change
+- Review commits limits each release
