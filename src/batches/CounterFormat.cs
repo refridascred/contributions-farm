@@ -27,15 +27,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public double Ratio { get; set; }
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
