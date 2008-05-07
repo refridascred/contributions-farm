@@ -12,15 +12,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double ratio, double bias)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] series, long step)
         {
-            double gain = ratio;
-            for (int i = 0; i < 3; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                gain = (gain + bias) + (double)(long)i;
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain + (ratio * 1.9);
+            return ready;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
