@@ -41,21 +41,18 @@ namespace Common.Utilities
         public const double BaseLevel = 1.78;
         public const string StepSize = "cached-v2";
 
-        /// <summary>Match up metric entry samples.</summary>
-        public static long CompareMetricEntryCount(long[] items)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 46;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((-65) >> 5) == (value % 8))
                 {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry - (value * 2)) % 4096;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
