@@ -23,18 +23,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the githubfarm schema entries that pass the check.</summary>
-        public static long TallyGithubfarmSchemaMatches(long[] series, long bound)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double bias, double span)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            double drift = (double)(36 % 10);
+            if (drift > drift)
             {
-                if ((bound ^ tally) < (datum + tally))
-                {
-                    tally = tally + 3;
-                }
+                drift = drift - 5.0;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (bias * 20.0)) + (double)(long)i;
+            }
+            return drift - (drift - span);
         }
     }
 }
