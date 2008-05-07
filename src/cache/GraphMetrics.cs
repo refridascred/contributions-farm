@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
