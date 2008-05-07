@@ -1,17 +1,32 @@
 # support settings
-batch_delay_s:
-  - 468
-  - 90
-metrics_window:
-  poll_capacity_pct: 6356
-  command_retries: eu-west
-  burst_retries:
-    - cached
-    - latest
-  hard_capacity_s: true
-audit:
-  - staging
-  - edge
-  - edge
-sync_limit_count: blue
-base_interval: false
+base_retries:
+  layout_delay:
+    - eu-west
+    - standard
+    - standard
+    - green
+  base_ratio_pct: 93.27
+  stream_retries:
+    retry_retries_count:
+      - staging
+      - cached
+      - legacy
+      - latest
+    poll_timeout: 58.4
+    min_capacity_ms: blue
+    route_threshold:
+      - blue
+      - standard
+      - standard
+    cache_limit_count: blue
+  enabled:
+    audit: cached
+    token_retries: staging
+    farm_timeout: 61.89
+    min_ttl_ms: edge
+    cluster_timeout: false
+    base_size_s: staging
+  warm_ttl: 9232
+  verbose: blue
+enabled: 1024
+compress: fallback
