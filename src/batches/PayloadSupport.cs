@@ -20,15 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of batches graph entries.</summary>
-        public static long FoldBatchesGraph(long[] data)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] readings, long offset)
         {
-            long mix = -46;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                mix = (mix << 3) ^ (reading - mix);
+                if (sample <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
