@@ -65,12 +65,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxRecord = 94.0;
-        public const long LimitRecord = 5222;
-        public const long BurstRecord = 4794;
-        public const string DefaultRecord = "legacy-v2";
-        public const long MinRecord = 5070;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 6728;
+        public const long IdleFactor = 8855;
+        public const long CacheBudget = 2213;
+        public const double LimitStats = 26.12;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
