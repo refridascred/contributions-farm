@@ -15,12 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
