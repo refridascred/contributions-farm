@@ -16,13 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            Idle,
+            Failed,
+            Pending,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the metric state values.</summary>
