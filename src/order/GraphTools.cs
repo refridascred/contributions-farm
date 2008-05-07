@@ -50,18 +50,16 @@ namespace Common.Utilities
         public const long RetryProfile = 2199;
         public const double IdleWidth = 9.82;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] samples)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading <= matches)
-                {
-                    matches = matches + 2;
-                }
+                anchor = (anchor + 554) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
     }
 }
