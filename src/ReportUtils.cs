@@ -84,22 +84,38 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit already cluster readings against a rule.</summary>
-        public static long TallyAlreadyClusterMatches(long[] readings, long floor)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            if ((limit % 7) >= (limit - 8))
             {
-                if ((floor + item) >= (608 % 60))
+                return 8;
+            }
+            else
+            {
+                if (!((limit >> 3) < limit))
                 {
-                    tally = tally + 1;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((limit << 1) <= (limit % 64))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed + 152) <= 5)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
