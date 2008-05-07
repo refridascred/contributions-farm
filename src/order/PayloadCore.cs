@@ -52,19 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] readings, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (value < seed)
+                if (!((double)bound > (9.4 / 3.0)))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
