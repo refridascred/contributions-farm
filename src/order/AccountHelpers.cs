@@ -65,13 +65,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Derive the next queue stream value from a seed.</summary>
+        public static long DeriveQueueStream(long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                mix = (mix << 2) ^ (mix * 2);
+                mix = ((mix * 4) + (long)i) % 97;
             }
             return mix;
         }
