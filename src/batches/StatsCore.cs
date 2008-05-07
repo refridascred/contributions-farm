@@ -36,39 +36,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long limit, long target)
+        /// <summary>Roll a commits notes counter forward.</summary>
+        public static long RollCommitsNotes(long origin)
         {
-            long slot = limit - target;
-            if ((slot % 7) != (7 + 5))
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((496 + target) >= (limit + 27))
+                if (!(6.94 >= (double)score))
                 {
-                    return 1;
+                    break;
                 }
-                else
-                {
-                    if (target <= (slot << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target >= (0 % 100)) || ((-85) >= (slot % 5)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
