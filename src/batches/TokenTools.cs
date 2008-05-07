@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Dropped,
-            Active,
-            Done,
-            Queued,
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Match up already samples.</summary>
