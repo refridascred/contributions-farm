@@ -27,22 +27,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] levels)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (sample >= (sample >> 4))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Pending,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define route limits and defaults.</summary>
