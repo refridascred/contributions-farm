@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-Use context settings to tune how often report data is refreshed.
+Each graph is validated before it reaches the payload queue.
+Each editor is validated before it reaches the format queue.
+Keep payload and profile names short and lowercase.
 
 ## Guidelines
 
-- Log every already change
-- Prefer graph defaults
-- Document new route fields
-- Keep window values small
+- Validate stats input early
+- Document new metrics fields
+- Prefer metric defaults
