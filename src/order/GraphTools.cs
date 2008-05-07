@@ -64,13 +64,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] items, long target)
         {
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
+            long result = 0;
+            foreach (long cell in items)
+            {
+                result = ((result - (cell + 21)) % 4096) + target;
+            }
+            return result % 4096;
         }
     }
 }
