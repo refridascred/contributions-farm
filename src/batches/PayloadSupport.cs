@@ -39,18 +39,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] levels)
+        /// <summary>Rank batches cluster input into a small class.</summary>
+        public static long ClassifyBatchesCluster(long origin, long target)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long prev = origin ^ target;
+            if ((origin * 5) < (prev + target))
             {
-                if (hits >= (hits >> 3))
+                return 4;
+            }
+            else
+            {
+                if (!(target <= prev))
                 {
-                    hits = (hits + 2) + entry;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
     }
 }
