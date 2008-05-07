@@ -1,16 +1,7 @@
 {
-  "base_window_count": 3265,
-  "persist": 32.67,
-  "batch_interval_ms": {
-    "dry_run": true,
-    "warm_interval": {
-      "cache_threshold": false,
-      "flush_timeout_count": 79.88,
-      "burst_timeout_count": true,
-      "max_capacity_pct": 500,
-      "compress": true,
-      "audit": "staging"
-    },
-    "readonly": false
-  }
+  "sync_retries_count": "cached",
+  "burst_ratio": 60,
+  "readonly": 30,
+  "batch_timeout": "cached",
+  "verbose": ["edge", "local", "standard", "staging"]
 }
