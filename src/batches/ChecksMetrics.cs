@@ -44,19 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell * 2) < cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitSize = 9674;
+        public const string CacheBudget = "staging-edge";
+        public const long MinFarm = 5118;
+        public const long DefaultFactor = 1304;
+        public const long BaseRatio = 5983;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long BucketGithubfarm(long origin, long bound)
