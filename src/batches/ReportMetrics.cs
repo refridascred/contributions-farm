@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
             Queued,
-            Dropped,
+            Retry,
             New,
-            Closed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a entry info.</summary>
