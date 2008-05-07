@@ -57,15 +57,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] levels)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] levels)
         {
             long hits = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) != 11)
+                    if ((levels[i] - levels[j]) < 6)
                     {
                         hits = hits + 1;
                     }
