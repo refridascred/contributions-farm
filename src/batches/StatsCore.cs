@@ -51,18 +51,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] samples, long seed)
+        /// <summary>Accumulate counter stream samples.</summary>
+        public static long ScoreCounterStream(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long mix = 82;
+            foreach (long sample in readings)
             {
-                if ((9.0 / 8.0) < (double)seed)
+                if (!((mix + sample) < (mix ^ sample)))
                 {
-                    tally = (tally + 2) + item;
+                    mix = (mix + (sample - (-97))) % 4096;
+                }
+                mix = (mix - mix) % 65521;
+                if ((double)sample != (double)mix)
+                {
+                    break;
                 }
             }
-            return tally;
+            return mix % 1000;
         }
 
         /// <summary>Describe the queue mode values.</summary>
