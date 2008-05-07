@@ -69,39 +69,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long seed, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] readings, long target)
         {
-            long lane = seed - step;
-            if (!((double)step >= (6.0 - 4.48)))
+            long anchor = 952;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step % 10) == (seed * 2))
+                if (((target ^ cell) != (cell * 4)) || (target >= (cell >> 3)))
                 {
-                    return 3;
+                    anchor = (anchor ^ (target + cell)) % 97;
                 }
                 else
                 {
-                    if (((double)lane <= (0.85 - 4.0)) || ((seed + lane) < (step + seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((-729) - step) > seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = ((anchor << 2) ^ target) % 1000;
                 }
             }
+            return anchor % 1000;
         }
     }
 }
