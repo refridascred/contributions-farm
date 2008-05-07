@@ -29,38 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long target, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] data, long limit)
         {
-            if ((target << 2) > 19)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset << 1) == (offset << 3))
+                if (((((-5) << 2) <= limit) || ((double)limit >= 9.0)) && ((tally * 2) <= entry))
                 {
-                    return 2;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((offset / 7) != (target / 9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset >= (5 + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a format options.</summary>
