@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const string MinWidth = "local";
         public const long LimitTimeout = 6989;
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double bias, double span)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            double weight = (bias / 3.0) / 7.0;
-            if (weight >= (double)26)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight + span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return weight + weight;
+            return matches;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
