@@ -19,11 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] values)
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            long acc = 690;
+            foreach (long cell in values)
+            {
+                acc = (acc << 3) ^ (acc + acc);
+                acc = ((acc << 3) ^ cell) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
