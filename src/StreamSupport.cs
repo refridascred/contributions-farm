@@ -16,12 +16,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] items)
         {
-            Done,
-            Closed,
-            Synced,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((62 - (-221)) <= (tally / 7))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
