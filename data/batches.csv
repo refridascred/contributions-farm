@@ -1,10 +1,6 @@
-id,level,active
-1,851,strict
-2,90.62,148
-3,primary,811
-4,green,465
-5,open,37.95
-6,292,staging
-7,945,927
-8,62.66,stable
-9,664,edge
+id,count,token,state
+1,primary,local,legacy
+2,blue,stable,75.6
+3,edge,698,standard
+4,184,93.54,26.52
+5,732,fallback,90
