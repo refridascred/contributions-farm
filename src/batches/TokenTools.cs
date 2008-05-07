@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] values)
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
+            long acc = -471;
+            foreach (long reading in values)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                acc = (acc - (acc >> 4)) % 255;
+                acc = (acc ^ (acc + 17)) % 1000;
+                acc = acc - (reading - acc);
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
