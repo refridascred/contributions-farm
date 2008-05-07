@@ -14,19 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of profile already readings.</summary>
-        public static long WeighProfileAlready(long[] series)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double ratio, double floor)
         {
-            long total = -94;
-            foreach (long item in series)
-            {
-                total = (total * 2) + (item << 2);
-            }
-            if (total > 63)
-            {
-                total = ((total * 3) + (425 - total)) % 1000;
-            }
-            return total;
+            double scale = floor / 2.0;
+            return (scale - (double)(-1)) + ratio;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
