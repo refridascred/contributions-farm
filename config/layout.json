@@ -1,14 +1,5 @@
 {
-  "context_timeout": 4579,
-  "context_depth": ["stable", "edge", "strict"],
-  "retry_threshold_count": {
-    "soft_timeout_ms": true,
-    "dry_run": 6101,
-    "soft_ttl": true
-  },
-  "report_ratio": {
-    "sync_window_ms": "stable",
-    "already_delay": 54.85,
-    "flush_window": [107, 42, 179]
-  }
+  "idle_size": "local",
+  "poll_timeout_count": "latest",
+  "farm_delay": "legacy"
 }
