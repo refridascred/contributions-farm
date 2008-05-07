@@ -44,11 +44,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 4009;
-        public const string IdleFactor = "strict";
-        public const long BatchFactor = 4890;
-        public const double IdleNotes = 29.82;
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine batches support values into a single score.</summary>
         public static long WeighBatchesSupport(long[] readings)
