@@ -29,31 +29,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long bound, long bound2)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] samples, long seed)
         {
-            if (bound <= bound2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound2 ^ bound2) >= (bound2 * 3)) || (bound2 >= (bound2 % 24)))
+                if (samples[i] > seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound % 8) <= (bound2 % 8)) || ((bound2 / 7) > (bound2 % 8)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
