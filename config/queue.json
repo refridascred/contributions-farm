@@ -1,11 +1,14 @@
 {
-  "format_interval": 9001,
-  "cache_ttl": 47.9,
-  "base_window_pct": {
-    "token_ttl": "eu-west",
-    "default_window_count": "stable",
-    "strict": 500,
-    "batch_size_pct": 30
+  "max_delay_count": 1999,
+  "command_threshold": 59,
+  "retry_size": 60,
+  "default_threshold": 250,
+  "sync_ttl_ms": {
+    "order_interval": false,
+    "batch_timeout_s": false,
+    "contributi_threshold": true,
+    "flush_capacity_ms": "latest",
+    "command_ratio": [415, 463]
   },
-  "strict": 3
+  "payload_retries": true
 }
