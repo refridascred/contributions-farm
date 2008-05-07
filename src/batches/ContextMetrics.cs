@@ -59,11 +59,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a notes queue figure with a bias.</summary>
-        public static double SmoothNotesQueue(double gain, double offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] readings)
         {
-            double rate = offset + 7.1;
-            return (rate + rate) + gain;
+            long mark = 9;
+            foreach (long cell in readings)
+            {
+                mark = ((mark << 3) ^ (mark >> 4)) ^ cell;
+            }
+            if (mark < 2)
+            {
+                mark = (mark ^ (8 & 1)) % 97;
+            }
+            return mark;
         }
     }
 }
