@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetrySize = 80.43;
-        public const string RetryBatches = "local-edge";
-        public const long MaxBatches = 395;
-        public const double StepDepth = 47.56;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BurstSize = 5029;
