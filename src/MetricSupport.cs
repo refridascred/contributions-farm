@@ -18,12 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRecord = 1.84;
-        public const string LimitRecord = "open";
-        public const double MaxLevel = 10.37;
-        public const string BurstRatio = "stable-1";
-        public const string BurstTimeout = "standard";
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long bound, long bound2)
+        {
+            if ((bound - bound2) < (401 + bound2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound < (8 + bound2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound2 <= (22 << 3)) && ((double)bound != (8.9 - 3.4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long PairFormatCount(long[] data)
