@@ -33,12 +33,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long step, long seed)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public double Total { get; set; }
+            long step2 = step - seed;
+            if ((double)seed < (double)6)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step ^ seed) < step) && ((952 + step2) >= 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit farm order readings against a rule.</summary>
