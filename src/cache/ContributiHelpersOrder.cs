@@ -36,10 +36,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRoute = 82.01;
-        public const long IdleBudget = 6364;
-        public const long MinSpan = 1064;
-        public const long CacheLevel = 5752;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] data, long step)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
