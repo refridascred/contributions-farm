@@ -62,18 +62,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit support graph readings against a rule.</summary>
-        public static long AuditSupportGraphOutliers(long[] levels, long offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((offset + count) > (381 + count))
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
