@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
             Retry,
-            Paused,
             Done,
-            Failed,
+            Idle,
             Locked,
+            Ready,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
