@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double gain, double bias)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] items)
         {
-            double bias2 = bias;
-            if (bias2 < bias2)
+            long count = 0;
+            foreach (long sample in items)
             {
-                bias2 = bias2 + gain;
+                if ((long)items.Length < count)
+                {
+                    count = (count + 3) + sample;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + bias2) + (double)(long)i;
-            }
-            return bias2 - bias;
+            return count;
         }
 
         /// <summary>Hold a commits options.</summary>
