@@ -1,5 +1,5 @@
 {
-  "base_window_pct": 60,
-  "idle_size_count": 5956,
-  "filter_ttl": 41.55
+  "retry_interval_ms": 9238,
+  "persist": 55.94,
+  "retry_threshold_ms": true
 }
