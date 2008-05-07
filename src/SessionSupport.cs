@@ -32,16 +32,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next notes checks value from a seed.</summary>
-        public static long IterateNotesChecks(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total << 2) ^ (4 + step)) % 97;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 9473;
+        public const long LimitStats = 4481;
+        public const long BaseWidth = 6166;
+        public const string CacheScore = "legacy-v2";
+        public const long MaxFactor = 3492;
     }
 }
