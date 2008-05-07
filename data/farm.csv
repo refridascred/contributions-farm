@@ -1,10 +1,6 @@
-id,rank,level
-1,52.99,295
-2,7.23,edge
-3,green,39.77
-4,29.3,legacy
-5,207,39
-6,20.79,green
-7,eu-west,8
-8,53.66,885
-9,59.27,242
+id,weight,rank,count
+1,794,21.99,local
+2,995,edge,98.53
+3,212,eu-west,97.45
+4,725,845,404
+5,strict,52.84,127
