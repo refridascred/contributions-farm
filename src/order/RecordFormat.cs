@@ -45,19 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor batch entry stays within the limit.</summary>
-        public static bool ValidateEditorBatchLimits(long[] series, long floor)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
