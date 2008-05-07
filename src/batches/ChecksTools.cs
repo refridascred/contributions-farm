@@ -34,11 +34,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchInterval = 8502;
-        public const long BurstInterval = 9873;
-        public const double BatchCounter = 27.59;
-        public const string RetryRatio = "stable-1";
-        public const long BaseCounter = 2530;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public double Count { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
