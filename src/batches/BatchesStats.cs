@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long LimitTimeout = 5640;
         public const long IdleNotes = 7830;
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] data, long floor)
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + entry) != (floor - matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
