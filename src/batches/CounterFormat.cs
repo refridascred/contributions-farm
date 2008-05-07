@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long offset, long limit)
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
+            long lane = offset ^ limit;
+            if ((offset + limit) >= (lane << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((lane + lane) > (53 + lane)) && ((double)limit != (19.0 / 8.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset % 10) == (lane * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next cache value.</summary>
