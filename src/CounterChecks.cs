@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Done,
-            Locked,
-            Draft,
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Project the next schema value.</summary>
