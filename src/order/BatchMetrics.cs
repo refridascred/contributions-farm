@@ -48,15 +48,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double gain, double offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long offset, long seed)
         {
-            double ratio = gain;
-            for (int i = 0; i < 3; i++)
+            long edge = offset ^ seed;
+            if (!((2 / 4) < (offset / 5)))
             {
-                ratio = (ratio + (offset - ratio)) + (double)(long)i;
+                return 1;
             }
-            return ratio + (double)9;
+            else
+            {
+                if (6.47 < (double)edge)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((edge % 2) < (offset - 52)) && ((9.0 * 4.9) >= (double)seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
