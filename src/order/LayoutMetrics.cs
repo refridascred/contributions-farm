@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] items, long bound)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long anchor = 225;
-            foreach (long sample in items)
-            {
-                anchor = ((anchor * 4) + (anchor - anchor)) - sample;
-            }
-            if (anchor > (-797))
-            {
-                anchor = ((anchor << 3) ^ (bound + 278)) % 101;
-            }
-            return anchor % 65521;
+            Locked,
+            Pending,
+            New,
+            Synced,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
