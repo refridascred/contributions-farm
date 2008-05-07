@@ -35,15 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of buffer checks entries.</summary>
-        public static long TotalBufferChecks(long[] samples)
+        /// <summary>Check that every tools metrics entry stays within the limit.</summary>
+        public static bool CheckToolsMetricsLimits(long[] data, long floor)
         {
-            long total = 4;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long item in data)
             {
-                total = (total ^ total) - datum;
+                if (item > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
     }
 }
