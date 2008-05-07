@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] readings, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (3.1 >= (double)reading)
+                if ((double)matches >= (9.0 / 9.0))
                 {
-                    tally = (tally + 3) + step;
+                    matches = ((matches + 3) ^ datum) - origin;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Adjust a editor reading.</summary>
