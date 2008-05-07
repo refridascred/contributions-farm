@@ -33,22 +33,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] levels, long origin)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long bound, long bound2)
         {
-            long sum = 40;
-            foreach (long sample in levels)
+            long gap = bound - bound2;
+            if ((double)bound <= (5.5 + 2.9))
             {
-                if (((sample + sample) <= sample) || ((9.1 / 8.0) != (double)origin))
+                return 0;
+            }
+            else
+            {
+                if ((bound >> 1) <= (gap << 2))
                 {
-                    sum = sum + (890 << 3);
+                    return 4;
+                }
+                else
+                {
+                    if ((bound << 1) <= bound2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((gap & 15) == (bound ^ bound)) || ((51 - 0) != (gap & 31)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (sum < 9)
-            {
-                sum = (sum ^ (632 + origin)) % 1000;
-            }
-            return sum;
         }
     }
 }
