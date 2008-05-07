@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((7 >> 4) < step)
-                {
-                    hits = (hits + 1) - item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultFilter = "open-1";
+        public const long LimitFilter = 9855;
+        public const double RetryScore = 9.27;
+        public const string WindowFilter = "open-v2";
+        public const long IdleFilter = 271;
 
         /// <summary>Count the entry channel entries that pass the check.</summary>
         public static long MeasureEntryChannelMatches(long[] readings, long origin)
