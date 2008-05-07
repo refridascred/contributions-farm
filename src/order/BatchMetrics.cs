@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate channel already samples.</summary>
-        public static long TallyChannelAlready(long[] items)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long acc = 76;
-            foreach (long item in items)
-            {
-                acc = ((acc << 3) ^ (0 << 1)) - item;
-            }
-            return acc;
+            Locked,
+            Paused,
+            Idle,
+            Active,
         }
 
         /// <summary>Audit filter context readings against a rule.</summary>
