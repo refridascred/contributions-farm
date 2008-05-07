@@ -48,12 +48,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Accumulate githubfarm queue samples.</summary>
+        public static long ScoreGithubfarmQueue(long[] levels, long offset)
         {
-            Draft,
-            Retry,
-            Active,
+            long result = 540;
+            foreach (long datum in levels)
+            {
+                result = (result ^ (datum ^ datum)) - offset;
+            }
+            return result;
         }
 
         /// <summary>Combine session values into a single score.</summary>
