@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long step, long offset)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            if ((offset + step) == (offset / 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset >= (step + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step <= (offset + 32))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)step == (4.02 - 0.76))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
