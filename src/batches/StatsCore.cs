@@ -70,14 +70,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double rate, double bias)
         {
-            Stale,
-            Active,
-            Closed,
-            Idle,
-            Queued,
+            double load = rate;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (bias + rate)) + (double)(long)i;
+            }
+            return load - bias;
         }
     }
 }
