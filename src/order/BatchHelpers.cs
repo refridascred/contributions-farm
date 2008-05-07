@@ -19,14 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long bound, long offset)
         {
-            Ready,
-            Paused,
-            Retry,
-            Pending,
-            Locked,
+            if ((bound + bound) >= bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound << 3) <= (119 - offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
