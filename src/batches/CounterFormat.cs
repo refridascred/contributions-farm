@@ -12,19 +12,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] data, long limit)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            double gain = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                if (sample != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain + bias) + (double)(long)i;
             }
-            return ok;
+            return gain + (ratio * 1.9);
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
