@@ -16,22 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many window metrics samples are out of range.</summary>
-        public static long MeasureWindowMetricsGaps(long[] levels)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double scale, double bias)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double bias2 = bias;
+            if (bias2 <= (double)883)
             {
-                if (item >= (item + count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias2 = (bias2 - bias) + scale;
             }
-            return count;
+            else
+            {
+                bias2 = bias2 - 3.9;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (bias2 + bias2)) + (double)(long)i;
+            }
+            return bias2 - (double)232;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
