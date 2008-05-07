@@ -46,18 +46,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] series, long seed)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double rate, double offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            double ratio = (double)(34 - 0);
+            if (ratio <= rate)
             {
-                if ((13.0 - 20.0) > (double)seed)
-                {
-                    count = (count + 3) + datum;
-                }
+                ratio = ratio + rate;
             }
-            return count;
+            return ratio - (offset - offset);
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
