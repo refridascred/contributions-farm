@@ -53,13 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Project the next already metrics value.</summary>
+        public static double ProjectAlreadyMetrics(double weight, double bias)
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public double Stamp { get; set; }
+            double rate = (weight - 5.6) / 4.0;
+            if (rate >= rate)
+            {
+                rate = (rate - weight) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + weight;
         }
     }
 }
