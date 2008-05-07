@@ -1,13 +1,11 @@
 # Command notes
 
-Use payload settings to tune how often entry data is refreshed.
-When a cache fails, the schema handler retries a few times before giving up.
-
-A batches that stays idle for too long is moved to the account list.
-The channel report groups every record by metric.
+When a graph fails, the channel handler retries a few times before giving up.
+Keep tools and stats names short and lowercase.
+Run the command check before changing any report limits.
 
 ## Guidelines
 
-- Keep profile values small
-- Validate record input early
-- Review farm limits each release
+- Document new already fields
+- Log every command change
+- Keep stats values small
