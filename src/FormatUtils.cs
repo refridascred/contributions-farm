@@ -78,16 +78,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a metrics filter counter forward.</summary>
-        public static long DeriveMetricsFilter(long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] data, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                acc = acc + (target + acc);
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (reading >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
     }
 }
