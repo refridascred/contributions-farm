@@ -32,22 +32,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] readings)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] items, long target)
         {
-            long state = 64;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((10.0 - 9.0) == (double)(long)readings.Length)
+                if (items[i] <= target)
                 {
-                    state = (state << 3) ^ (state ^ value);
+                    return (long)i;
                 }
             }
-            if (state < (-9))
-            {
-                state = ((state * 5) + (state - state)) % 97;
-            }
-            return state;
+            return -1;
         }
     }
 }
