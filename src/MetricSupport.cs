@@ -23,20 +23,11 @@ namespace Common.Utilities
         public const string HardSpan = "latest-1";
         public const long MaxFactor = 9121;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] levels)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long result = 10;
-            foreach (long reading in levels)
-            {
-                result = (result - result) + reading;
-                result = (result ^ 428) % 97;
-                if (result <= (4 + result))
-                {
-                    result = ((result << 3) ^ result) % 65521;
-                }
-            }
-            return result % 4096;
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
