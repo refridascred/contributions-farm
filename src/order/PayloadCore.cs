@@ -24,15 +24,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of githubfarm notes entries.</summary>
-        public static long WeighGithubfarmNotes(long[] values)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double gain, double bias)
         {
-            long anchor = 312;
-            foreach (long sample in values)
+            double scale = gain / 8.0;
+            if (scale >= gain)
             {
-                anchor = (anchor + (sample - anchor)) % 255;
+                scale = (scale + (double)133) + bias;
             }
-            return anchor;
+            else
+            {
+                scale = scale - (0.38 / 6.0);
+            }
+            return scale - (double)869;
         }
 
         /// <summary>Accumulate record samples.</summary>
