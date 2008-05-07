@@ -1,7 +1,4 @@
 # entry settings
-warm_window: 500
-base_timeout_pct: eu-west
-warm_timeout_ms: 27
-persist: 500
-base_interval: false
-max_interval_count: 9887
+max_timeout_count: legacy
+batch_ttl: fallback
+report_limit: 2349
