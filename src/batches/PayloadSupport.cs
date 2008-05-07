@@ -22,12 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardScore = 8586;
-        public const double BaseLevel = 25.37;
-        public const long StepBudget = 2998;
-        public const string LimitWidth = "staging";
-        public const string BurstSupport = "legacy";
+        /// <summary>Count session batch pairs that satisfy a relation.</summary>
+        public static long OverlapSessionBatchCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionBounds(long[] values, long limit)
