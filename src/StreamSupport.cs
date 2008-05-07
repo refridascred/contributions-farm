@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] data)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] values, long offset)
         {
-            long carry = 212;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 4) + (carry << 3)) + datum;
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
