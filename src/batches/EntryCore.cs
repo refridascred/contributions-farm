@@ -19,14 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] items, long step)
         {
-            Paused,
-            Ready,
-            Closed,
-            Idle,
-            Done,
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
