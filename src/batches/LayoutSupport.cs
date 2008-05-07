@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] series, long step)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] values, long target)
         {
-            long anchor = -927;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (((anchor + (anchor / 8)) % 65521) + reading) + step;
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Project the next order value.</summary>
