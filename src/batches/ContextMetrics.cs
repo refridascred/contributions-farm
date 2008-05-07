@@ -23,15 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the token record series from a seed.</summary>
-        public static long SeriesTokenRecord(long limit)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] values, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (!((sample - 59) <= 623) && ((tally ^ tally) > (809 + sample)))
+                {
+                    tally = (tally + 2) + limit;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a channel summary.</summary>
