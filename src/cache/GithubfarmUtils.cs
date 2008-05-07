@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] levels, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((step - count) <= (entry >> 2))
+                if (!!((-68) > (matches ^ seed)))
                 {
-                    count = count + 2;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of window readings.</summary>
