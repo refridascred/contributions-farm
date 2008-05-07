@@ -1,11 +1,12 @@
 # Command notes
 
-Run the metric check before changing any batch limits.
-Use window settings to tune how often route data is refreshed.
-Run the channel check before changing any buffer limits.
+Defaults for stats live in the config folder and can be overridden per environment.
+Keep route and record names short and lowercase.
+The cluster module keeps farm values in sync with the order cache.
 
 ## Guidelines
 
-- Log every batch change
-- Review command limits each release
-- Keep cache values small
+- Review order limits each release
+- Validate batches input early
+- Keep stats values small
+- Prefer tools defaults
