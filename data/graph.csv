@@ -1,6 +1,9 @@
-id,state,active,count,level
-1,252,408,791,edge
-2,97.56,39.87,851,edge
-3,272,strict,blue,48.96
-4,18.81,96.59,stable,legacy
-5,local,134,459,46.03
+id,score,ratio
+1,green,36.69
+2,27,green
+3,668,32
+4,721,local
+5,513,575
+6,staging,7.92
+7,fallback,75.01
+8,eu-west,992
