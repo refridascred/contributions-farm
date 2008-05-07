@@ -35,39 +35,17 @@ namespace Common.Utilities
             return bias2 - (double)232;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long step, long limit)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] items, long offset)
         {
-            long prev = step + limit;
-            if (!((8.4 * 0.9) <= (double)limit))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((prev / 5) != (prev - limit)) || ((limit & 15) > limit))
+                if (items[i] <= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step <= (step + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit ^ step) > (step * 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the report level values.</summary>
