@@ -26,26 +26,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] series, long seed)
+        /// <summary>Match up route support samples.</summary>
+        public static long MatchRouteSupportCount(long[] values)
         {
-            long acc = 492;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-393) >> 3) < acc)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc * 2) + (26 + 86)) + value;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                if (seed >= (seed + acc))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
