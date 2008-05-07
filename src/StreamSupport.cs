@@ -13,17 +13,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Locate a filter checks reading by value.</summary>
-        public static long LocateFilterChecksIndex(long[] readings, long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((readings[i] < limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
