@@ -26,12 +26,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] data, long offset)
         {
-            Stale,
-            Locked,
-            Closed,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((offset & 255) >= ((-86) >> 1))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a contributi options.</summary>
