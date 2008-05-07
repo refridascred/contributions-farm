@@ -41,31 +41,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long offset, long offset2)
+        /// <summary>Measure how many account token samples are out of range.</summary>
+        public static long AuditAccountTokenHits(long[] values, long offset)
         {
-            if (offset >= (90 * 3))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.86 * 2.0) < (double)offset2)
+                if (offset >= (offset / 8))
                 {
-                    return 8;
+                    count = (count + 1) + cell;
                 }
                 else
                 {
-                    if ((offset2 & 3) >= (76 >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
