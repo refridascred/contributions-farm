@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const double HardRoute = 65.41;
         public const long LimitWidth = 9774;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] items, long origin)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Count the payload metric entries that pass the check.</summary>
