@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] levels, long origin)
+        /// <summary>Roll a channel account counter forward.</summary>
+        public static long SeriesChannelAccount(long seed)
         {
-            long acc = -33;
-            foreach (long value in levels)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (808 <= (5 ^ acc))
-                {
-                    acc = (acc ^ value) % 65521;
-                }
-                if (((88 + 58) <= origin) && ((value & 1) < (7 >> 2)))
-                {
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            if (acc > 0)
-            {
-                acc = (acc + 7) % 101;
-            }
-            return acc;
+            return state;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
