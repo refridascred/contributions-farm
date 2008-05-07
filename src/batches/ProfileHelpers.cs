@@ -53,22 +53,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of buffer route readings.</summary>
-        public static long CompareBufferRouteCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchFactor = 249;
+        public const long RetrySize = 993;
+        public const double WindowSession = 62.56;
+        public const string BaseSession = "standard-1";
+        public const long CacheSpan = 1697;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
