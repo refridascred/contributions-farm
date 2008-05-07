@@ -59,17 +59,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Locate a order layout reading by value.</summary>
-        public static long LookupOrderLayoutIndex(long[] series, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 173;
+            foreach (long reading in data)
             {
-                if (series[i] > target)
+                if ((5.22 * 7.39) < (double)floor)
                 {
-                    return (long)i;
+                    mark = ((mark - 1) % 97) + reading;
                 }
             }
-            return -1;
+            return mark % 4096;
         }
     }
 }
