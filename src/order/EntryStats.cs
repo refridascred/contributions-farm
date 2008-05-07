@@ -63,16 +63,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Validate metrics format readings against a bound.</summary>
+        public static bool ValidateMetricsFormatBounds(long[] data, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                score = score ^ (bound * 2);
-                score = ((score * 2) + (long)i) % 4093;
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Define order limits and defaults.</summary>
