@@ -28,12 +28,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
+            Failed,
+            Ready,
+            Synced,
+            Stale,
         }
 
         /// <summary>Locate a entry layout reading by value.</summary>
