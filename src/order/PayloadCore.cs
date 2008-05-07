@@ -19,15 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double rate, double offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] samples, long step)
         {
-            double scale = (double)(6 / 2);
-            if (scale < (0.1 - rate))
+            long total = 951;
+            foreach (long entry in samples)
             {
-                scale = (scale - (double)5) - offset;
+                total = (((total * 4) + total) % 4096) + step;
+                if ((double)entry >= (0.3 * 6.55))
+                {
+                    total = total + (10 - 773);
+                }
+                else
+                {
+                    total = total ^ (entry / 8);
+                }
             }
-            return scale + (scale / 2.0);
+            return total;
         }
 
         /// <summary>Project the next notes value.</summary>
