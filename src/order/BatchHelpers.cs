@@ -20,10 +20,12 @@ namespace Common.Utilities
         public const double IdleRatio = 86.27;
         public const double BaseSpan = 50.78;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepCount = 26.79;
-        public const double RetryStats = 48.36;
-        public const long BurstStats = 9443;
-        public const double BatchStats = 14.96;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
+        }
     }
 }
