@@ -46,17 +46,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] series, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] series, long seed)
         {
-            long state = -727;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in series)
             {
-                state = ((state << 3) ^ (floor * 5)) ^ cell;
-                state = (state * 2) + floor;
-                state = (state + state) % 97;
+                if ((13.0 - 20.0) > (double)seed)
+                {
+                    count = (count + 3) + datum;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
