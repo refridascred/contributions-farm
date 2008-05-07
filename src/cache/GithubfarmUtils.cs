@@ -59,12 +59,17 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Derive the next record context value from a seed.</summary>
+        public static long RollRecordContext(long bound)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public double Token { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = (mix ^ (mix & 255)) % 4096;
+                mix = (mix * 5) + (bound + 81);
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
