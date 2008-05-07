@@ -38,18 +38,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] items)
+        /// <summary>Audit filter editor readings against a rule.</summary>
+        public static long TallyFilterEditorGaps(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((0.6 + 6.69) >= (double)count)
+                if (!((double)seen < (9.6 / 3.0)) || ((seen / 7) >= 0))
                 {
-                    count = (count + 2) + sample;
+                    seen = ((seen + 3) ^ datum) - seed;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
