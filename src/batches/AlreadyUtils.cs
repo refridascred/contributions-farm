@@ -35,17 +35,25 @@ namespace Common.Utilities
         public const long HardRatio = 4678;
         public const long IdleChecks = 7745;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] levels, long bound)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long bound, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = bound + seed;
+            if (((double)seed > (4.65 * 1.0)) && ((double)next > (9.1 + 6.21)))
             {
-                if ((levels[i] <= bound) && ((levels[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if (!(seed < (76 / 2)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a editor reading.</summary>
