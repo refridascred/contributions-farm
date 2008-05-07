@@ -36,19 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double gain, double bias)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] data, long step)
         {
-            double rate = (gain + bias) + (gain / 9.0);
-            if (rate <= bias)
+            long anchor = 3;
+            foreach (long sample in data)
             {
-                rate = rate + bias;
+                if ((61 <= (sample + sample)) || ((anchor % 10) <= sample))
+                {
+                    anchor = ((anchor << 2) ^ anchor) - step;
+                }
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            return rate + 2.0;
+            return anchor % 1000;
         }
 
         /// <summary>Accumulate report samples.</summary>
