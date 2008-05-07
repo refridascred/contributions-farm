@@ -27,32 +27,11 @@ namespace Common.Utilities
         public const double BaseSize = 46.44;
         public const long BatchRoute = 3656;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long limit, long floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long diff = limit ^ floor;
-            if (((17.0 + 2.2) >= (double)limit) || ((floor + 273) < (726 - diff)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((diff + 9) < (diff % 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit <= 4.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
