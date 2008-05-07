@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const double DefaultSession = 72.49;
         public const long BaseRatio = 4461;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] series, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (sample <= offset)
+                if (((long)samples.Length * 2) > (tally << 3))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
