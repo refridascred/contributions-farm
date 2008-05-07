@@ -12,20 +12,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowSize = "legacy-v2";
+        public const string HardSize = "legacy";
+        public const long WindowInterval = 2990;
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
