@@ -22,19 +22,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] readings, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (datum >= origin)
+                if ((double)item >= (5.2 + 8.62))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + origin;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
