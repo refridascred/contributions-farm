@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long bound, long bound2)
-        {
-            if ((double)bound2 != (double)24)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound < (6.0 * 4.48))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 4099;
+        public const string BatchInterval = "alpha-v2";
+        public const double DefaultSession = 72.49;
+        public const long BaseRatio = 4461;
 
         /// <summary>Measure how many stream cache samples are out of range.</summary>
         public static long CountStreamCacheOutliers(long[] data)
