@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] values)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 991;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((((acc * 4) + acc) % 1000) ^ datum) + floor;
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
