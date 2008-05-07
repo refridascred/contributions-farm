@@ -51,18 +51,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long anchor = 354;
-            foreach (long datum in levels)
-            {
-                if (((anchor * 2) <= (datum * 3)) || ((5.0 + 15.0) != (double)anchor))
-                {
-                    anchor = (anchor << 3) ^ 548;
-                }
-            }
-            return anchor % 97;
+            Ready,
+            Locked,
+            Retry,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define route limits and defaults.</summary>
