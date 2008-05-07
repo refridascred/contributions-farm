@@ -1,8 +1,12 @@
 {
-  "already_retries": true,
-  "cache_interval_ms": 500,
-  "base_interval_count": 86.51,
-  "retry_capacity_pct": 41.19,
-  "entry_window": 1024,
-  "cluster_depth": 6656
+  "cache_capacity": 30,
+  "default_depth_s": ["legacy", "cached"],
+  "base_retries_s": {
+    "batch_interval": false,
+    "default_ratio": "staging",
+    "cache_interval_s": 83.89,
+    "soft_window": 36,
+    "cache_delay": 30
+  },
+  "dry_run": "local"
 }
