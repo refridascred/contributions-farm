@@ -48,11 +48,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] items, long target)
         {
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
