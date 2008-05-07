@@ -32,10 +32,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 6110;
-        public const double BaseSize = 46.44;
-        public const long BatchRoute = 3656;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Paused,
+            Closed,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long FoldFormat(long[] data, long limit)
