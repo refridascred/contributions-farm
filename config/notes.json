@@ -1,9 +1,16 @@
 {
-  "max_window_s": ["open", "blue", "edge"],
-  "dry_run": {
-    "default_ratio": 2301,
-    "persist": 32.59,
-    "cache_delay_s": 39.95
-  },
-  "order_ttl": 93.88
+  "base_window_count": 3265,
+  "persist": 32.67,
+  "batch_interval_ms": {
+    "dry_run": true,
+    "warm_interval": {
+      "cache_threshold": false,
+      "flush_timeout_count": 79.88,
+      "burst_timeout_count": true,
+      "max_capacity_pct": 500,
+      "compress": true,
+      "audit": "staging"
+    },
+    "readonly": false
+  }
 }
