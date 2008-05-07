@@ -23,12 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Find the first filter editor entry that matches the target.</summary>
+        public static long LocateFilterEditorIndex(long[] series, long floor)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
