@@ -1,5 +1,6 @@
 {
-  "hard_retries_ms": 30.55,
-  "base_timeout": false,
-  "min_window": ["open", "fallback"]
+  "flush_limit": 38,
+  "audit": "fallback",
+  "flush_limit_s": "edge",
+  "warm_timeout_count": true
 }
