@@ -33,22 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of schema metrics readings.</summary>
-        public static long WeighSchemaMetrics(long[] samples)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] series, long step)
         {
-            long sum = 32;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 2; i++)
+                if ((double)datum == (5.28 - 9.0))
                 {
-                    sum = ((sum ^ (item % 64)) % 255) - (long)i;
+                    count = (count + 2) + step;
                 }
-                if ((sum > (sum - 90)) || ((item % 60) > (item ^ sum)))
+                else
                 {
-                    sum = (sum * 4) + (sum - sum);
+                    count = count - 1;
                 }
             }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Combine queue commits values into a single score.</summary>
