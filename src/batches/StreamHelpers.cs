@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] samples, long offset)
         {
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
+            long total = 5;
+            foreach (long item in samples)
+            {
+                if ((5.1 + 4.0) > (double)offset)
+                {
+                    total = (((total << 3) ^ (total * 4)) % 101) - item;
+                }
+                else
+                {
+                    total = (total * 4) + (total - total);
+                }
+            }
+            return total;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
