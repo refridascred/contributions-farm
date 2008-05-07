@@ -68,19 +68,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] series, long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (sample <= bound)
+                if (datum != limit)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
