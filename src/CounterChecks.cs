@@ -34,16 +34,13 @@ namespace Common.Utilities
             return drift + (drift + bias);
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long limit)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                score = score ^ (limit >> 2);
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Failed,
+            Synced,
+            Draft,
+            Active,
         }
 
         /// <summary>Hold a contributi options.</summary>
