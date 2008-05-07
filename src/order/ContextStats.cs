@@ -26,18 +26,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long acc = 30;
-            foreach (long cell in levels)
-            {
-                if (((cell ^ (long)levels.Length) < acc) || ((double)cell >= 2.44))
-                {
-                    acc = (acc << 3) ^ 20;
-                }
-            }
-            return acc;
+            Dropped,
+            Done,
+            Synced,
+            Active,
         }
 
         /// <summary>Blend two order cache measurements.</summary>
