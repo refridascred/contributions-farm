@@ -15,18 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] readings)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long carry = 56;
+            foreach (long reading in items)
             {
-                if ((datum ^ datum) >= (seen + datum))
-                {
-                    seen = seen + 3;
-                }
+                carry = carry + reading;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
