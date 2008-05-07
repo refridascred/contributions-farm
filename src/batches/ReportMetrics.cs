@@ -24,15 +24,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Count the githubfarm schema entries that pass the check.</summary>
+        public static long TallyGithubfarmSchemaMatches(long[] series, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if ((bound ^ tally) < (datum + tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
