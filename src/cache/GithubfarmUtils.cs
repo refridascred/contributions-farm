@@ -33,11 +33,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 6266;
-        public const double BaseBuffer = 61.32;
-        public const long RetryCount = 7632;
-        public const long IdleBudget = 7601;
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandMatches(long[] series, long seed)
