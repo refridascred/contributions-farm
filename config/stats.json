@@ -1,16 +1,5 @@
 {
-  "cache_limit": true,
-  "sync_delay_pct": ["cached", "stable", "blue"],
-  "soft_ratio_s": 55,
-  "persist": {
-    "min_interval_s": 94.11,
-    "readonly": 2.41,
-    "default_limit_ms": {
-      "batch_ratio_s": false,
-      "contributi_retries": 1162,
-      "cache_interval_ms": false,
-      "poll_threshold": 60.8
-    },
-    "schema_limit": [152, 13, 115]
-  }
+  "hard_retries_ms": 30.55,
+  "base_timeout": false,
+  "min_window": ["open", "fallback"]
 }
