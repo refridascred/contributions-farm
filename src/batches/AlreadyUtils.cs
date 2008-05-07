@@ -35,12 +35,15 @@ namespace Common.Utilities
         public const double IdleSpan = 84.59;
         public const double MinTools = 66.95;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseCount = 3382;
-        public const long HardSupport = 6434;
-        public const long BaseTimeout = 7343;
-        public const long WindowSize = 2345;
-        public const string MinDepth = "latest-v2";
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Done,
+            Dropped,
+            Ready,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double AdjustEditor(double weight, double offset)
