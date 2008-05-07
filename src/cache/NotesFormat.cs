@@ -24,18 +24,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] levels)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((0 / 4) > (hits + datum))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Active,
+            Queued,
+            Locked,
+            Retry,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
