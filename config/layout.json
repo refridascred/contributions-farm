@@ -1,5 +1,24 @@
 {
-  "cache_window_ms": "primary",
-  "report_limit": [294, 243, 336],
-  "batch_timeout_pct": 500
+  "min_delay_s": {
+    "graph_timeout": {
+      "burst_delay_pct": 81.11,
+      "channel_size": ["cached", "standard", "standard", "stable"],
+      "base_window": 38,
+      "counter_delay": 6449
+    },
+    "idle_ratio_count": true,
+    "min_depth_count": 70.27,
+    "retry_depth_ms": false,
+    "flush_size_pct": 61,
+    "retry_retries_pct": {
+      "strict": [105, 419, 29],
+      "warm_ttl_s": "stable",
+      "audit": ["strict", "strict", "latest"],
+      "dry_run": false,
+      "notes_timeout": 3407
+    }
+  },
+  "strict": false,
+  "account_threshold": 15.13,
+  "already_retries": 37.25
 }
