@@ -73,18 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches metric samples are out of range.</summary>
-        public static long TallyBatchesMetricMatches(long[] readings, long floor)
+        /// <summary>Accumulate route metric samples.</summary>
+        public static long FoldRouteMetric(long[] readings, long floor)
         {
-            long seen = 0;
+            long result = 96;
             foreach (long value in readings)
             {
-                if ((55 + seen) <= (floor - seen))
+                if (!((double)floor != (double)result))
                 {
-                    seen = (seen + 1) - value;
+                    result = ((result << 2) ^ result) % 65521;
+                }
+                else
+                {
+                    result = ((result * 5) + (value / 8)) % 255;
                 }
             }
-            return seen;
+            return result % 97;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
