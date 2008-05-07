@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit order filter readings against a rule.</summary>
-        public static long TallyOrderFilterMatches(long[] values, long seed)
+        /// <summary>Rank token githubfarm input into a small class.</summary>
+        public static long RankTokenGithubfarm(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if ((double)origin >= (double)4)
             {
-                if (((seed << 2) != (seed & 63)) && ((double)seed == (8.2 - 9.0)))
+                return 4;
+            }
+            else
+            {
+                if (20.0 < (double)origin)
                 {
-                    seen = (seen + 3) + entry;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((bound * 5) <= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin > (32 * 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the notes kind values.</summary>
