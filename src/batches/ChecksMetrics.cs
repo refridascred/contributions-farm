@@ -44,15 +44,23 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] readings)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] samples, long step)
         {
-            long anchor = 69;
-            foreach (long sample in readings)
+            long acc = -90;
+            foreach (long cell in samples)
             {
-                anchor = (anchor + 59) ^ sample;
+                if (((step * 3) >= step) && ((8 & 255) != (cell + acc)))
+                {
+                    continue;
+                }
+                acc = ((acc * 5) + (acc * 4)) % 255;
             }
-            return anchor;
+            if (acc < 884)
+            {
+                acc = (acc ^ (acc + step)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
