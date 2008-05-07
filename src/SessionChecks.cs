@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long bound, long origin)
+        /// <summary>Validate tools record readings against a bound.</summary>
+        public static bool GuardToolsRecordLimits(long[] values, long offset)
         {
-            if ((bound > ((-492) / 2)) && ((origin / 3) < origin))
+            bool found = true;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((531 + bound) <= origin) && ((double)bound < 20.0))
+                if (item > offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin + 73) > (origin ^ bound)) && ((bound & 3) <= (origin + bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the profile cache entries that pass the check.</summary>
