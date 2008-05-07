@@ -27,22 +27,17 @@ namespace Common.Utilities
         public const long BatchBudget = 7953;
         public const long WindowSize = 2232;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] readings, long bound)
+        /// <summary>Locate a context entry reading by value.</summary>
+        public static long LookupContextEntryIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen - bound) > value)
+                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
