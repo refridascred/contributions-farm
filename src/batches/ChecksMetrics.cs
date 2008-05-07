@@ -31,13 +31,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public double Limit { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Blend two batches queue measurements.</summary>
