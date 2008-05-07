@@ -26,17 +26,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] series, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((series[i] < floor) && ((series[i] % 5) == 0))
+                if ((double)sample == (6.0 * 9.33))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
