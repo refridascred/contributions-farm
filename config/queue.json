@@ -1,7 +1,12 @@
 {
-  "batch_capacity": false,
-  "base_size": true,
-  "entry_retries": "green",
-  "max_retries_ms": [44, 493, 111],
-  "max_delay": "standard"
+  "flush_window_s": [452, 464, 78, 444],
+  "dry_run": true,
+  "retry_capacity": {
+    "verbose": [323, 143, 174, 89],
+    "max_capacity_ms": 13,
+    "retry_retries_count": 85.38,
+    "idle_size_count": 220,
+    "batches_ttl": "open"
+  },
+  "burst_capacity_ms": "open"
 }
