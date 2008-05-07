@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every graph batch entry stays within the limit.</summary>
-        public static bool CheckGraphBatchBounds(long[] readings, long seed)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Dropped,
+            Paused,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a layout entry.</summary>
