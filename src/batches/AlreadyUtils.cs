@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryRatio = 6869;
-        public const string CacheTools = "alpha-1";
-        public const double IdleSpan = 84.59;
-        public const double MinTools = 66.95;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
