@@ -26,11 +26,17 @@ namespace Common.Utilities
             return (weight2 - offset) + weight;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 5885;
-        public const long CacheSession = 705;
-        public const long RetrySession = 5638;
-        public const string HardSession = "local-1";
-        public const string MinSession = "standard-edge";
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < origin) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
