@@ -1,7 +1,5 @@
 {
-  "record_window": 60,
-  "verbose": 32.49,
-  "strict": ["primary", "green", "edge", "green"],
-  "warm_delay_ms": 27,
-  "soft_retries": "cached"
+  "base_window_pct": 60,
+  "idle_size_count": 5956,
+  "filter_ttl": 41.55
 }
