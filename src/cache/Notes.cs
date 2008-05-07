@@ -59,13 +59,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long limit, long bound)
         {
-            Draft,
-            Locked,
-            Paused,
-            Retry,
+            long prev = limit - bound;
+            if (!((bound + prev) >= (51 & 255)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound - bound) >= prev)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
