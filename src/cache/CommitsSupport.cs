@@ -43,18 +43,31 @@ namespace Common.Utilities
         public const long WindowProfile = 479;
         public const long HardProfile = 9260;
 
-        /// <summary>Accumulate cache githubfarm samples.</summary>
-        public static long FoldCacheGithubfarm(long[] readings)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long seed, long step)
         {
-            long mix = 2;
-            foreach (long item in readings)
+            if (2.4 < (double)seed)
             {
-                if ((1 % 16) < mix)
+                return 3;
+            }
+            else
+            {
+                if ((seed & 7) > seed)
                 {
-                    mix = mix - item;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed * 5) > step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
