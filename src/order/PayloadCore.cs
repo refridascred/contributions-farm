@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] values, long step)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long bound, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((bound + seed) > (bound / 7))
             {
-                if ((values[i] == step) && ((values[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((seed & 63) < (bound >> 3))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first account order entry that matches the target.</summary>
