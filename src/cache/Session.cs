@@ -14,12 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitSchema = 9.37;
-        public const double LimitFactor = 33.6;
-        public const double RetrySchema = 30.23;
-        public const long CacheSize = 4515;
-        public const long HardTimeout = 1052;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepScore = "open";
+        public const long HardFarm = 2439;
+        public const long DefaultFactor = 1017;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long GradeFarm(long step, long target)
