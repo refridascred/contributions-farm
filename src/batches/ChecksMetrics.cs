@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultMetrics = 18.86;
+        public const long StepMetrics = 165;
+        public const long MinSize = 8188;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileHits(long[] levels, long bound)
