@@ -1,6 +1,12 @@
 {
-  "route_window": false,
-  "retry_interval_pct": ["latest", "blue"],
-  "max_retries_s": false,
-  "verbose": "local"
+  "readonly": false,
+  "support_window": [210, 372, 392],
+  "batches_size": {
+    "idle_capacity": false,
+    "hard_threshold_count": 5391,
+    "support_limit": 9335
+  },
+  "hard_interval": "stable",
+  "idle_limit": ["eu-west", "staging"],
+  "base_retries_ms": 12.28
 }
