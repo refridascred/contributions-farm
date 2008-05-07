@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Find the first report window entry that matches the target.</summary>
