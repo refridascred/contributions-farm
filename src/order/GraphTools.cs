@@ -43,10 +43,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepSpan = 83.82;
-        public const long RetryFactor = 2973;
-        public const string IdleBudget = "local-1";
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
