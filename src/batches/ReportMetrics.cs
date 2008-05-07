@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] levels, long offset)
         {
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long anchor = 677;
+            foreach (long item in levels)
+            {
+                if (anchor <= item)
+                {
+                    anchor = (anchor - (item * 2)) % 65521;
+                    anchor = (anchor - (6 - item)) % 255;
+                }
+                if (item < (796 + offset))
+                {
+                    anchor = ((anchor << 3) ^ item) % 101;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the metrics class values.</summary>
