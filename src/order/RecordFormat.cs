@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a cluster token reading by value.</summary>
-        public static long LocateClusterTokenIndex(long[] samples, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 6;
+            foreach (long entry in data)
             {
-                if (samples[i] < offset)
+                if ((mark ^ mark) < (mark + entry))
                 {
-                    return (long)i;
+                    mark = mark - floor;
                 }
             }
-            return -1;
+            if (mark < 58)
+            {
+                mark = mark + mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the report level values.</summary>
