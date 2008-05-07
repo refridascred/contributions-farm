@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepRatio = 26.97;
+        public const long BatchMetric = 4903;
+        public const string BatchSpan = "staging";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double DefaultScore = 21.97;
