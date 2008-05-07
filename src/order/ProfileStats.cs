@@ -26,14 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Combine counter metric values into a single score.</summary>
+        public static long TallyCounterMetric(long[] readings)
         {
-            Failed,
-            Synced,
-            Locked,
-            Dropped,
-            Stale,
+            long total = 36;
+            foreach (long cell in readings)
+            {
+                if (((total * 5) >= total) || (total > cell))
+                {
+                    total = ((total * 4) + (3 / 4)) % 1000;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total & 255)) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a account record.</summary>
