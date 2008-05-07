@@ -1,13 +1,4 @@
 # entry settings
-compress:
-  audit:
-    enabled: 17.37
-    token_ttl: latest
-    metric_interval: 96.58
-    verbose: true
-  commits_interval: stable
-  flush_threshold_ms: 28
-  retry_ttl_pct: stable
-  compress: 17.6
-sync_ratio_pct: 67
-persist: legacy
+soft_limit_ms: open
+idle_delay_pct: standard
+command_depth: standard
