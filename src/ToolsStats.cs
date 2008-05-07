@@ -58,21 +58,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Retry,
+            Active,
         }
 
         /// <summary>Combine session values into a single score.</summary>
