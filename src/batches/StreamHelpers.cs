@@ -38,12 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
