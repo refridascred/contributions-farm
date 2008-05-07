@@ -21,17 +21,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor << 3) ^ (37 - floor)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxBudget = 3567;
+        public const long MaxMetric = 9656;
+        public const long WindowMetric = 8085;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
