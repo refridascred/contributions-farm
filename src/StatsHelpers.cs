@@ -20,23 +20,11 @@ namespace Common.Utilities
             return weight + (weight + 4.34);
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double scale, double offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            double weight = 2.0 * 7.9;
-            if (weight <= (scale - weight))
-            {
-                weight = (weight + scale) - offset;
-            }
-            else
-            {
-                weight = weight + scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + scale) + (double)(long)i;
-            }
-            return weight - (double)378;
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
