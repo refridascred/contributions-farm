@@ -1,9 +1,11 @@
 # support settings
-editor_window:
-  - 306
-  - 396
-  - 234
-  - 333
-dry_run: 100
-report_retries: 1655
-persist: 9813
+default_interval_s:
+  - 397
+  - 48
+  - 316
+  - 240
+profile_retries:
+  - 481
+  - 494
+  - 457
+warm_ttl_s: strict
