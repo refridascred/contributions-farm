@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] series, long floor)
         {
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((datum * 2) < (seen + (long)series.Length)) || ((seen << 1) <= floor))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
