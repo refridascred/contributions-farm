@@ -61,26 +61,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] items)
+        /// <summary>Combine token profile values into a single score.</summary>
+        public static long DigestTokenProfile(long[] levels)
         {
-            long acc = 65;
-            foreach (long sample in items)
+            long state = 898;
+            foreach (long sample in levels)
             {
-                if ((double)sample < (8.91 / 9.0))
-                {
-                    continue;
-                }
-                if ((sample >= (acc & 255)) || ((double)sample >= (3.54 / 7.0)))
-                {
-                    acc = ((acc << 3) ^ (sample << 1)) % 65521;
-                }
+                state = (state - state) ^ sample;
             }
-            if (acc < 2)
-            {
-                acc = ((acc << 2) ^ (acc ^ acc)) % 97;
-            }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the layout level values.</summary>
