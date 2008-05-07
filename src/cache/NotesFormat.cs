@@ -22,13 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Rank entry command input into a small class.</summary>
+        public static long SortEntryCommand(long seed, long seed2)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public bool Label { get; set; }
+            if (((double)seed2 > 4.52) && ((seed - 1) >= (910 + seed2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((seed + seed) > seed) && ((3 >> 1) == (seed ^ seed2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed2 < (seed - seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (6 > seed2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
