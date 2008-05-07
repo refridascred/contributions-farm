@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] levels, long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((seen + seen) >= target)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    seen = (seen + 2) ^ entry;
+                    acc = ((acc * 2) + bound) ^ (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Iterate the metrics support series from a seed.</summary>
