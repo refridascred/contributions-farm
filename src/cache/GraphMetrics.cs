@@ -47,16 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long step)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = (carry ^ (carry * 4)) % 97;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Grade a record value against two limits.</summary>
