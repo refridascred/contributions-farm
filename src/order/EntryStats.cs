@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            public bool Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next metric value.</summary>
