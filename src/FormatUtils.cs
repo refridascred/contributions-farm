@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] series, long origin)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long anchor = 89;
+            foreach (long entry in levels)
             {
-                if (item >= origin)
+                anchor = (anchor + (entry & 255)) % 4096;
+                if ((anchor % 5) > (anchor ^ anchor))
                 {
-                    stale = false;
-                    break;
+                    anchor = anchor + anchor;
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
