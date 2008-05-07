@@ -58,13 +58,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] data)
         {
-            New,
-            Done,
-            Retry,
-            Stale,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)tally <= (4.9 + 4.39))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
     }
 }
