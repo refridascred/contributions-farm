@@ -15,14 +15,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long origin)
         {
-            Failed,
-            Ready,
-            Done,
-            Closed,
-            Idle,
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = ((carry ^ ((long)i >> 1)) % 97) - (long)i2;
+                    carry = ((carry << 3) ^ (833 - origin)) % 97;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
