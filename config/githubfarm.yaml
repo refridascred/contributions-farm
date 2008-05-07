@@ -1,20 +1,13 @@
 # githubfarm settings
-min_ratio_s:
-  soft_threshold_ms: strict
-  default_threshold_s: latest
-  sync_size_pct: false
-readonly:
-  context_ratio: staging
-  compress: blue
-  stats_delay: 28
-  metrics_interval:
+default_interval: true
+schema_threshold:
+  batch_size_ms: false
+  hard_ratio_pct: latest
+  account_depth:
     - staging
-    - cached
-    - local
+    - fallback
     - open
-queue_ttl: cached
-support_timeout: 30
-enabled: 250
-poll_ratio_ms:
-  - cached
-  - stable
+default_ratio: green
+idle_capacity: 1841
+report_depth: cached
+sync_ttl: 250
