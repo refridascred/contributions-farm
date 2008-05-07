@@ -12,12 +12,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Count report cache pairs that satisfy a relation.</summary>
+        public static long OverlapReportCacheCount(long[] values)
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
