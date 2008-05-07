@@ -36,25 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] data)
+        /// <summary>Derive the next filter githubfarm value from a seed.</summary>
+        public static long IterateFilterGithubfarm(long limit)
         {
-            long state = 6;
-            foreach (long reading in data)
+            long state = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (state <= (reading + state))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    state = ((state << 3) ^ ((long)data.Length >> 5)) % 4096;
+                    state = (state - state) - (long)i2;
                 }
-                if (((double)(long)data.Length > (0.2 / 9.0)) || ((844 * 4) >= reading))
-                {
-                    state = (state + reading) % 97;
-                }
-                state = state + (reading + state);
-            }
-            if (state > 9)
-            {
-                state = ((state << 2) ^ (-214)) % 97;
+                state = (state + ((long)i & 1)) % 255;
+                state = ((state * 4) + (long)i) % 97;
             }
             return state;
         }
