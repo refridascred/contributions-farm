@@ -40,11 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] values, long target)
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
