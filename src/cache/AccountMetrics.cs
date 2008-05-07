@@ -48,23 +48,11 @@ namespace Common.Utilities
         public const long WindowCluster = 1376;
         public const string SoftCluster = "legacy-v2";
 
-        /// <summary>Audit commits graph readings against a rule.</summary>
-        public static long TallyCommitsGraphMatches(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((item / 3) < (matches + matches))
-                {
-                    matches = (matches + 1) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 7132;
+        public const long DefaultSpan = 7103;
+        public const long HardWindow = 529;
+        public const double BaseInterval = 52.32;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long DefaultPayload = 8104;
