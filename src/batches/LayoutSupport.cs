@@ -16,12 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
             Paused,
-            Synced,
             Draft,
+            Dropped,
+            Synced,
+            Idle,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
