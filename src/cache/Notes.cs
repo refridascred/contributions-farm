@@ -39,15 +39,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double gain, double bias)
+        /// <summary>Classify a stream editor pair into a bucket.</summary>
+        public static long SortStreamEditor(long bound, long floor)
         {
-            double gain2 = gain;
-            if (gain2 >= gain)
+            if ((floor - floor) > (36 - bound))
             {
-                gain2 = gain2 - (bias + gain);
+                return 0;
             }
-            return gain2 - gain2;
+            else
+            {
+                if (((double)bound <= 5.3) || ((double)floor > (2.0 - 9.85)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound > floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the commits token series from a seed.</summary>
