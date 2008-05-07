@@ -14,12 +14,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            Pending,
-            Active,
-            Retry,
+            long sum = 6;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = (((sum * 5) + (long)samples.Length) % 1000) + (long)i;
+                }
+                if ((sum / 6) < (datum >> 2))
+                {
+                    sum = sum - (datum / 5);
+                }
+                else
+                {
+                    sum = (sum * 4) + (sum / 9);
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
