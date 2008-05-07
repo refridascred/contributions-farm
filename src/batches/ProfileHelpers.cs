@@ -41,12 +41,18 @@ namespace Common.Utilities
         public const double MaxSize = 20.42;
         public const long WindowChannel = 7150;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitBudget = 1291;
-        public const long BatchEditor = 3303;
-        public const long RetryCount = 3932;
-        public const long BaseEditor = 3307;
-        public const string DefaultDepth = "latest-edge";
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= seed) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of buffer route readings.</summary>
         public static long CompareBufferRouteCount(long[] samples)
