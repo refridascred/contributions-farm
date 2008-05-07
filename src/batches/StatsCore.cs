@@ -55,19 +55,11 @@ namespace Common.Utilities
         public const double BatchProfile = 5.82;
         public const long DefaultProfile = 8121;
 
-        /// <summary>Accumulate commits contributi samples.</summary>
-        public static long TallyCommitsContributi(long[] values)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long result = 89;
-            foreach (long reading in values)
-            {
-                result = result ^ reading;
-                if ((reading - 685) >= (result << 3))
-                {
-                    break;
-                }
-            }
-            return result % 97;
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Look up the position of a token metric sample.</summary>
