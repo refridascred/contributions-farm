@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] values, long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 70;
+            foreach (long value in series)
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                state = (state * 4) + (value + value);
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Project the next order value.</summary>
