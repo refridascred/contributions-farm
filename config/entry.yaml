@@ -1,23 +1,10 @@
 # entry settings
-default_capacity_ms:
+order_ttl:
   - green
-  - latest
-command_window:
-  compress: true
-  order_size: open
-  support_ttl: 8407
-  max_window:
-    min_ttl: 100
-    burst_retries:
-      - legacy
-      - green
-    filter_size: eu-west
-    enabled: 16.17
-    audit: 96
-    base_window: false
-  session_ratio: eu-west
-  enabled: eu-west
-strict: 64.0
-retry_ttl: 60
-retry_capacity_pct: 8171
-compress: green
+  - staging
+  - fallback
+hard_threshold_s: 71.45
+retry_delay_count:
+  - cached
+  - open
+batches_interval: standard
