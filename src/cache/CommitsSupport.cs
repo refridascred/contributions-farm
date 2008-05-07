@@ -73,17 +73,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] levels, long step)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = weight;
+            if (gain < (double)69)
             {
-                if ((levels[i] == step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + (gain - 8.3)) + bias;
             }
-            return -1;
+            return gain - (double)5;
         }
     }
 }
