@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] values)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double ratio, double offset)
         {
-            long sum = 739;
-            foreach (long item in values)
+            double drift = 8.1;
+            if (drift < (offset * 4.7))
             {
-                long gap = item % 10;
-                if (((306 + gap) >= (sum % 60)) && (4 > (32 - gap)))
-                {
-                    gap = gap - (gap * 2);
-                }
-                sum = ((sum * 4) + (long)values.Length) % 101;
+                drift = drift + (double)77;
             }
-            if (sum < 8)
+            else
             {
-                sum = sum - (sum / 9);
+                drift = drift + (offset - 3.0);
             }
-            return sum;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + offset) + (double)(long)i;
+            }
+            return drift - (ratio + ratio);
         }
 
         /// <summary>Roll a context counter forward.</summary>
