@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank token githubfarm input into a small class.</summary>
-        public static long RankTokenGithubfarm(long origin, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] values, long bound)
         {
-            if ((double)origin >= (double)4)
+            long sum = 5;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (20.0 < (double)origin)
+                if ((1.0 + 4.37) >= (double)(long)values.Length)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound * 5) <= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin > (32 * 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    sum = ((sum * 5) + (bound * 3)) + datum;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Describe the notes kind values.</summary>
