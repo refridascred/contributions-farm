@@ -43,15 +43,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] values, long limit)
-        {
-            long score = 149;
-            foreach (long datum in values)
-            {
-                score = ((score * 5) + (limit + 55)) + datum;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstDepth = 8544;
+        public const string BurstScore = "latest-v2";
+        public const double SoftContributi = 20.4;
     }
 }
