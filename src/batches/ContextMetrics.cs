@@ -12,18 +12,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] readings, long seed)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (matches < (value % 97))
-                {
-                    matches = (matches + 3) + seed;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Iterate the token record series from a seed.</summary>
