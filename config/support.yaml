@@ -1,13 +1,7 @@
 # support settings
-base_ratio_count: 30
-retry_limit: standard
-min_retries:
-  compress: false
-  default_window_s: false
-  burst_size_s:
-    - 494
-    - 311
-    - 154
-    - 17
-max_capacity_pct: latest
-batches_delay: 13.15
+stats_interval: staging
+retry_ratio_pct: 364
+cache_delay: 5075
+poll_ttl_ms:
+  - eu-west
+  - legacy
