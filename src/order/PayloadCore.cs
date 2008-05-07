@@ -45,18 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi context readings against a rule.</summary>
-        public static long CountContributiContextGaps(long[] data)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((61 + tally) <= tally)
+                if (value < seed)
                 {
-                    tally = (tally + 3) - sample;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
