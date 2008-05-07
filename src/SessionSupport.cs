@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] readings, long origin)
+        /// <summary>Check that every editor route entry stays within the limit.</summary>
+        public static bool CheckEditorRouteRange(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (((long)readings.Length << 2) <= (seen - origin))
+                if (cell != floor)
                 {
-                    seen = (seen + 3) - sample;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Count the notes buffer entries that pass the check.</summary>
