@@ -22,19 +22,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] samples, long offset)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long offset)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc * 4) + (offset + 1);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
