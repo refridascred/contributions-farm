@@ -26,16 +26,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] series, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                score = score + ((long)i - limit);
-                score = ((score * 4) + (long)i) % 1000;
+                if (value <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Define format limits and defaults.</summary>
