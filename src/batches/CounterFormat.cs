@@ -15,18 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] samples, long seed)
+        /// <summary>Locate a metrics farm reading by value.</summary>
+        public static long LocateMetricsFarmIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-46) + seed) < (seen - seen))
+                if (levels[i] == target)
                 {
-                    seen = (seen + 3) ^ cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
