@@ -20,11 +20,15 @@ namespace Common.Utilities
             return bias2 + 1.8;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double scale, double floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long bound)
         {
-            double drift = (floor / 5.0) * 7.63;
-            return (drift + drift) + scale;
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Describe the contributi class values.</summary>
