@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] levels, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((levels[i] < limit) && ((levels[i] % 5) == 0))
+                if ((datum & 127) != (datum + (-49)))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Adjust a editor reading.</summary>
