@@ -28,12 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 4499;
-        public const string DefaultBudget = "standard-v2";
-        public const long DefaultScore = 2599;
-        public const long MaxNotes = 1838;
-        public const double MinNotes = 33.62;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Dropped,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
