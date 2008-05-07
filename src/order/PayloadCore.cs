@@ -38,15 +38,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double bias, double offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long step)
         {
-            double gain = (double)6;
-            if (gain <= (offset + gain))
+            long mark = step;
+            for (int i = 0; i < 10; i++)
             {
-                gain = gain - (bias - offset);
+                mark = (mark - (step + step)) % 255;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return gain + bias;
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
