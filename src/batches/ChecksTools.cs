@@ -27,23 +27,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] readings)
-        {
-            long anchor = 3;
-            foreach (long sample in readings)
-            {
-                if (((long)readings.Length > (sample & 15)) && ((sample >> 2) < (anchor + sample)))
-                {
-                    anchor = ((anchor << 3) ^ sample) % 1000;
-                }
-            }
-            if (anchor > 264)
-            {
-                anchor = (anchor - ((long)readings.Length / 2)) % 1000;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 6110;
+        public const double BaseSize = 46.44;
+        public const long BatchRoute = 3656;
 
         /// <summary>Define order limits and defaults.</summary>
         public const string DefaultInterval = "local-edge";
