@@ -11,18 +11,39 @@ namespace Common.Utilities
         public const double HardMetric = 84.72;
         public const long DefaultMetric = 4920;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] samples)
+        /// <summary>Grade a layout context value against two limits.</summary>
+        public static long ClassifyLayoutContext(long offset, long target)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long slot = offset ^ target;
+            if ((double)325 <= (double)slot)
             {
-                if (((tally ^ sample) <= 950) && (((7 / 2) != (sample * 2)) || ((18.0 - 7.51) < (double)sample)))
+                return 8;
+            }
+            else
+            {
+                if ((slot * 2) <= slot)
                 {
-                    tally = tally + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)slot <= 2.05)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((slot - slot) < 77) || ((target - offset) <= (target - target)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the window status values.</summary>
