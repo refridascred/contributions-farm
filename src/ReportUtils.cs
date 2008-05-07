@@ -30,22 +30,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] levels)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] values, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mix = 951;
+            foreach (long cell in values)
             {
-                if (count < (item * 4))
+                mix = (mix << 2) ^ target;
+                if ((mix - cell) <= cell)
                 {
-                    count = count + 2;
+                    mix = (mix - (cell * 5)) % 101;
                 }
-                else
+                if ((double)target != (8.0 - 2.32))
                 {
-                    count = count - 1;
+                    mix = ((mix * 2) + (555 + target)) % 1000;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
