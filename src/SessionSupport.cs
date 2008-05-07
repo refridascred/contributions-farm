@@ -35,13 +35,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] values, long floor)
         {
-            Closed,
-            Done,
-            Active,
-            Draft,
+            long result = 7;
+            foreach (long item in values)
+            {
+                result = (((result * 2) + (floor - result)) % 101) - item;
+            }
+            return result;
         }
     }
 }
