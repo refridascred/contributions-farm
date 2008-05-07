@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a report account counter forward.</summary>
-        public static long IterateReportAccount(long offset)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] series, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total - ((long)i + total)) % 65521;
-                total = ((total * 5) + (long)i) % 1000;
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a contributi summary.</summary>
