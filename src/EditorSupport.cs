@@ -34,18 +34,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] series)
+        /// <summary>Roll a batch order counter forward.</summary>
+        public static long DeriveBatchOrder(long target)
         {
-            long carry = -955;
-            foreach (long cell in series)
+            long mix = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((cell % 60) < (carry % 64))
+                if (((long)i + target) < (608 + (long)i))
                 {
-                    carry = (carry - (carry % 2)) % 65521;
+                    mix = ((mix << 3) ^ (target >> 5)) % 97;
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return carry % 97;
+            return mix;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
