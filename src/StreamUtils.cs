@@ -30,11 +30,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxInterval = 77.42;
-        public const double SoftGraph = 39.9;
-        public const string BaseSpan = "fallback";
-        public const long CacheBudget = 2914;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardCount = 4685;
+        public const long IdleRatio = 7681;
+        public const long SoftSpan = 5369;
+        public const long StepFormat = 4936;
+        public const long IdleFormat = 5323;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long SortBuffer(long seed, long limit)
