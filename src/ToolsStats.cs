@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstTimeout = 4080;
-        public const long CacheStream = 9562;
-        public const long WindowStream = 3132;
-        public const long BatchStream = 193;
-        public const long BurstLevel = 1263;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public double Level { get; set; }
+            public double Weight { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double BatchSize = 69.03;
