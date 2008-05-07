@@ -27,26 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] samples, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] samples, long floor)
         {
-            long result = 153;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (((datum + result) <= ((-41) % 12)) && ((offset / 2) < datum))
+                if (item >= floor)
                 {
-                    result = (result + (offset - offset)) % 4096;
-                }
-                if ((double)datum >= 9.0)
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (result > 121)
-            {
-                result = (result - (result + 1)) % 255;
-            }
-            return result;
+            return flag;
         }
 
         /// <summary>Audit token cluster readings against a rule.</summary>
