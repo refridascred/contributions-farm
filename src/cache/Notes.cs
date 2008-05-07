@@ -72,17 +72,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a cluster batch sample.</summary>
-        public static long LookupClusterBatchIndex(long[] levels, long bound)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] levels)
         {
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] >= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
