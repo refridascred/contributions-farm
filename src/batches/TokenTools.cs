@@ -17,10 +17,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseContext = 4.22;
-        public const string DefaultSize = "latest-edge";
-        public const long HardDepth = 5457;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] items, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long DefaultWidth = 5151;
