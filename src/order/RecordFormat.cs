@@ -18,12 +18,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Grade a tools report value against two limits.</summary>
+        public static long RankToolsReport(long step, long seed)
         {
-            Retry,
-            Stale,
-            Pending,
+            if ((double)step > (20.0 - 3.3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((64 ^ 31) < (step & 63))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((seed + step) <= (step / 9)) || (seed < (seed + seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every editor batch entry stays within the limit.</summary>
