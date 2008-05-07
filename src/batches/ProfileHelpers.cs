@@ -51,15 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double weight, double span)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            double drift = weight / 3.0;
-            if (drift >= (double)1)
-            {
-                drift = drift - span;
-            }
-            return drift - weight;
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
