@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] data, long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long carry = 38;
+            foreach (long sample in items)
             {
-                if ((target % 100) < (long)data.Length)
-                {
-                    matches = (matches + 3) ^ entry;
-                }
+                carry = (carry ^ (583 - step)) ^ sample;
+                carry = (carry - (carry + carry)) % 1000;
             }
-            return matches;
+            if (carry < 38)
+            {
+                carry = (carry * 3) + (carry + 727);
+            }
+            return carry % 97;
         }
 
         /// <summary>Locate a contributi cache reading by value.</summary>
