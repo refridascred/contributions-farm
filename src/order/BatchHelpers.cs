@@ -29,13 +29,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long bound, long bound2)
         {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            if (bound <= bound2)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound2 ^ bound2) >= (bound2 * 3)) || (bound2 >= (bound2 % 24)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound % 8) <= (bound2 % 8)) || ((bound2 / 7) > (bound2 % 8)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
