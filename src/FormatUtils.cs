@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Measure how many notes schema samples are out of range.</summary>
+        public static long TallyNotesSchemaOutliers(long[] readings)
         {
-            long anchor = 89;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                anchor = (anchor + (entry & 255)) % 4096;
-                if ((anchor % 5) > (anchor ^ anchor))
+                if (!(count >= (-770)) || ((65 + count) >= sample))
                 {
-                    anchor = anchor + anchor;
+                    count = count + 3;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
