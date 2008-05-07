@@ -54,20 +54,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Iterate the command account series from a seed.</summary>
-        public static long IterateCommandAccount(long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total << 3) ^ bound) % 97;
-                if (!((bound + (long)i) != (bound << 3)))
-                {
-                    total = (total * 3) + (total + 196);
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Paused,
+            Locked,
+            Pending,
+            Retry,
         }
     }
 }
