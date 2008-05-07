@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long limit)
         {
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Size { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!(((long)i >> 2) < (mix * 4)))
+                {
+                    mix = (mix + (mix + 356)) % 101;
+                }
+                if (!((0.2 * 13.0) == (double)limit))
+                {
+                    continue;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Find the first account order entry that matches the target.</summary>
