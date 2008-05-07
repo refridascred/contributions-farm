@@ -27,28 +27,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double gain, double span)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((seed << 1) > seed)
-                {
-                    carry = carry ^ carry;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ carry;
-                    carry = carry - (100 + 0);
-                }
-                if (!((double)carry == (3.7 + 9.0)))
-                {
-                    carry = (carry + (seed - carry)) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            double load = (double)0 - (2.0 + gain);
+            return (load + (7.2 - 4.4)) + span;
         }
     }
 }
