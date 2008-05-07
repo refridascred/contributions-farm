@@ -42,17 +42,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a entry layout reading by value.</summary>
-        public static long LocateEntryLayoutIndex(long[] samples, long step)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Closed,
+            Synced,
+            Pending,
+            Draft,
         }
 
         /// <summary>Fold a list of session contributi readings.</summary>
