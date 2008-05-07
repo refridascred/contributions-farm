@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Pending,
-            Closed,
+            Locked,
             Done,
-            Retry,
+            Stale,
         }
 
         /// <summary>Hold a metrics header.</summary>
