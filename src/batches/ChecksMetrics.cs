@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] values, long floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] values)
         {
+            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] >= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank support input into a small class.</summary>
