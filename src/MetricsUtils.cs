@@ -45,11 +45,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheScore = 4413;
-        public const long IdleDepth = 2564;
-        public const string BatchSpan = "latest-edge";
-        public const string MaxCommand = "standard-v2";
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] samples, long limit)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long FindToolsIndex(long[] samples, long target)
