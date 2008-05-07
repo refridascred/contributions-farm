@@ -34,10 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchRatio = 7517;
-        public const string RetryNotes = "stable";
-        public const long SoftNotes = 8321;
-        public const long BatchSpan = 8282;
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double rate, double span)
+        {
+            double gain = span;
+            if (gain >= (double)9)
+            {
+                gain = (gain + span) - rate;
+            }
+            return gain - (gain * 9.72);
+        }
     }
 }
