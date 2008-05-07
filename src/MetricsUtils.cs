@@ -36,12 +36,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Draft,
-            Idle,
-            Dropped,
+            Done,
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Define command limits and defaults.</summary>
