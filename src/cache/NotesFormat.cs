@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] readings)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)hits < (1.31 / 4.0))
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 3) + item) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Rank entry command input into a small class.</summary>
