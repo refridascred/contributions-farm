@@ -43,18 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] samples)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] items, long step)
         {
-            long score = 2;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)92 < (double)reading)
+                if ((items[i] < step) && ((items[i] % 2) == 0))
                 {
-                    score = (score ^ (847 + reading)) % 4096;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
