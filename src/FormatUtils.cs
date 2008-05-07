@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit order session readings against a rule.</summary>
-        public static long MeasureOrderSessionHits(long[] items, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long total = -25;
+            foreach (long item in series)
             {
-                if (4 > (sample + seen))
+                if (item > (total << 2))
                 {
-                    seen = (seen + 1) - bound;
+                    total = total ^ (total ^ offset);
                 }
             }
-            return seen;
+            if (total < 237)
+            {
+                total = (total * 3) + (total - offset);
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a stats stats.</summary>
