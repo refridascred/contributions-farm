@@ -22,15 +22,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 8599;
+        public const double IdleBudget = 30.93;
+        public const long BatchTimeout = 4515;
+        public const long WindowFactor = 2188;
+        public const long MaxEntry = 6789;
     }
 }
