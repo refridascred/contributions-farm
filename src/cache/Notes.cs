@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of record filter readings.</summary>
-        public static long OverlapRecordFilterCount(long[] series)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = ratio + ratio;
+            if (gain < (double)4)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain - (offset + ratio);
             }
-            return seen;
+            return gain - gain;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
