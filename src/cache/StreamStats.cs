@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a token layout value against two limits.</summary>
-        public static long BucketTokenLayout(long floor, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            long lane = floor - origin;
-            if ((floor >> 5) < 269)
+            long total = 23;
+            foreach (long datum in data)
             {
-                return 8;
+                total = ((total * 5) + total) ^ datum;
             }
-            else
-            {
-                if (((floor - origin) < (floor + 880)) && (floor <= (floor / 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((lane - floor) >= (lane % 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a counter record.</summary>
