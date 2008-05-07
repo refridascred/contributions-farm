@@ -5,27 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate tools notes samples.</summary>
-        public static long TallyToolsNotes(long[] series)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long floor)
         {
-            long anchor = 9;
-            foreach (long cell in series)
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    anchor = (anchor ^ (cell / 3)) - (long)i;
+                    carry = (((carry * 4) + carry) % 255) ^ (long)i2;
                 }
-                anchor = ((anchor * 5) + (anchor / 9)) % 255;
-                if ((cell % 16) != (anchor + cell))
-                {
-                    break;
-                }
+                carry = (carry << 3) ^ (long)i;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            if (anchor > 522)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the payload mode values.</summary>
