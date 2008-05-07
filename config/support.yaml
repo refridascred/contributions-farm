@@ -1,8 +1,13 @@
 # support settings
-metric_ratio: 3905
-cache_size: 500
-filter_limit:
-  - eu-west
-  - legacy
-batch_size_ms: 4.51
-cache_capacity: latest
+default_delay:
+  cache_timeout_ms: 86.79
+  base_ratio_pct: false
+  retry_ttl_pct:
+    - blue
+    - legacy
+    - edge
+audit: open
+verbose:
+  - staging
+  - latest
+hard_window_pct: 500
