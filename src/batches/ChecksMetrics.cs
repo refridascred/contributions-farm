@@ -30,18 +30,15 @@ namespace Common.Utilities
         public const long BatchFactor = 5072;
         public const double StepWindow = 22.56;
 
-        /// <summary>Count the support session entries that pass the check.</summary>
-        public static long AuditSupportSessionGaps(long[] series, long step)
+        /// <summary>Blend two batches queue measurements.</summary>
+        public static double SmoothBatchesQueue(double weight, double span)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double bias = (double)(760 << 3);
+            if (bias >= weight)
             {
-                if ((((double)reading < (double)step) || (hits >= (reading % 24))) || ((hits / 3) <= (hits * 4)))
-                {
-                    hits = hits + 2;
-                }
+                bias = bias - span;
             }
-            return hits;
+            return bias + (span + weight);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
