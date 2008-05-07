@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Grade a editor support value against two limits.</summary>
+        public static long RankEditorSupport(long origin, long limit)
         {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            if ((origin + origin) <= origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((6 - limit) <= (origin ^ limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
