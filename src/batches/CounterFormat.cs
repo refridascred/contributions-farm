@@ -43,19 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] levels, long limit)
+        /// <summary>Count the editor report entries that pass the check.</summary>
+        public static long AuditEditorReportMatches(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (value <= limit)
+                if ((3.8 + 6.0) >= (double)seen)
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 2) ^ entry) - floor;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
