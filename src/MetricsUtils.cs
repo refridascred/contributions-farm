@@ -44,33 +44,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long target, long seed)
-        {
-            long delta = target - seed;
-            if ((double)delta >= (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((delta + (-820)) > (seed << 2)) && ((seed * 3) >= (241 + target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target ^ 740) <= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheScore = 4413;
+        public const long IdleDepth = 2564;
+        public const string BatchSpan = "latest-edge";
+        public const string MaxCommand = "standard-v2";
 
         /// <summary>Project the next channel cluster value.</summary>
         public static double AdjustChannelCluster(double scale, double offset)
