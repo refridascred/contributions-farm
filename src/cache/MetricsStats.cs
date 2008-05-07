@@ -73,21 +73,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Match up stats account samples.</summary>
+        public static long MatchStatsAccountCount(long[] samples)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 5) + ((long)i / 9)) % 101;
-                if (origin >= mark)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark * 5) + mark;
-                    mark = (mark * 5) + (mark + origin);
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return count;
         }
     }
 }
