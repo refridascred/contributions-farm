@@ -28,38 +28,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long offset, long offset2)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] samples, long bound)
         {
-            if ((double)offset == (6.0 * 12.0))
+            long sum = 173;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)offset < (double)offset2) || ((574 % 64) == (offset2 >> 1)))
+                if ((double)bound != (double)sample)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset2 & 31) > offset2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (0.9 * 0.6))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = sum ^ (bound % 12);
                 }
             }
+            if (sum < 823)
+            {
+                sum = (sum * 2) + (bound + 99);
+            }
+            return sum;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
