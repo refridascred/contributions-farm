@@ -37,23 +37,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two channel stream measurements.</summary>
-        public static double ProjectChannelStream(double scale, double offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double gain = (double)((-8) - 9);
-            if (gain < scale)
-            {
-                gain = gain + scale;
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (double)22) + (double)(long)i;
-            }
-            return gain - offset;
+            Retry,
+            Pending,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a checks summary.</summary>
