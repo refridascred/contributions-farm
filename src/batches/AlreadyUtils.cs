@@ -13,20 +13,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] items, long bound)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitRatio = 3836;
+        public const double BaseScore = 15.99;
+        public const string LimitFilter = "latest-v2";
+        public const long BurstFilter = 1565;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryRatio = 6869;
