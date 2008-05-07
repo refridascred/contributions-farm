@@ -81,10 +81,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 4249;
-        public const double BatchSpan = 77.17;
-        public const long CacheRatio = 4675;
-        public const string CacheCount = "strict-v2";
+        /// <summary>Find the first cluster layout entry that matches the target.</summary>
+        public static long LocateClusterLayoutIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
