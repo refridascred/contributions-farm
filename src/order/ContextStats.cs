@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] values, long step)
         {
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((step * 3) <= (1 + cell))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
