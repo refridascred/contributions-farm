@@ -1,5 +1,5 @@
 {
-  "contributi_timeout": 60,
-  "idle_retries_pct": [347, 130],
-  "min_depth_ms": ["edge", "edge"]
+  "poll_ratio_pct": 500,
+  "persist": ["stable", "fallback", "edge"],
+  "support_depth": 85
 }
