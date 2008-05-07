@@ -29,22 +29,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] levels, long origin)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen >> 5) >= (reading << 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] - data[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
