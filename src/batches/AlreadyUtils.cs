@@ -48,17 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload channel sample.</summary>
-        public static long SeekPayloadChannelIndex(long[] items, long target)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = offset;
+            if (load <= (weight - weight))
             {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
+                load = load + (9.1 / 8.0);
             }
-            return -1;
+            return load - load;
         }
     }
 }
