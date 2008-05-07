@@ -1,20 +1,6 @@
 {
-  "min_timeout_pct": {
-    "sync_depth_s": [312, 307, 43],
-    "min_capacity_ms": false,
-    "metrics_threshold": {
-      "tools_retries": "eu-west",
-      "dry_run": true,
-      "min_ttl": 10.04,
-      "token_delay": true
-    },
-    "batch_depth": 5792,
-    "verbose": 4.19,
-    "warm_depth": "staging"
-  },
-  "farm_delay": 8,
-  "warm_threshold_s": 33,
-  "retry_timeout_ms": 8160,
-  "cluster_limit": 60,
-  "max_timeout_s": [217, 466, 399]
+  "sync_timeout_ms": "legacy",
+  "batch_ttl_ms": 393,
+  "min_interval": "open",
+  "retry_limit_count": 12
 }
