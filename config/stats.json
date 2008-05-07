@@ -1,5 +1,18 @@
 {
-  "retry_interval_ms": 9238,
-  "persist": 55.94,
-  "retry_threshold_ms": true
+  "retry_window": {
+    "hard_ttl_ms": 7415,
+    "strict": "edge",
+    "channel_timeout": 60,
+    "burst_depth_count": "primary"
+  },
+  "cache_window_pct": true,
+  "enabled": "eu-west",
+  "min_depth_ms": 17.4,
+  "compress": 53,
+  "default_ttl": {
+    "order_capacity": "eu-west",
+    "idle_window": ["latest", "fallback", "stable", "green"],
+    "soft_capacity_count": 30,
+    "batches_delay": 49.17
+  }
 }
