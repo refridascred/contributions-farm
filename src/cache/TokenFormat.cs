@@ -31,19 +31,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] readings, long bound)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long bound)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell > bound)
+                mark = (mark - (mark - bound)) % 1000;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    found = false;
-                    break;
+                    mark = (((mark * 4) + mark) % 101) ^ (long)i2;
+                    mark = mark - 66;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return found;
+            return mark;
         }
     }
 }
