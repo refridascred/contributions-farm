@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Queued,
-            Retry,
-            New,
-            Dropped,
-            Paused,
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a entry info.</summary>
