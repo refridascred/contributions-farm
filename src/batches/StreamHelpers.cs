@@ -64,19 +64,15 @@ namespace Common.Utilities
             return scale - (ratio * 9.4);
         }
 
-        /// <summary>Check that every metrics farm entry stays within the limit.</summary>
-        public static bool VerifyMetricsFarmLimits(long[] values, long limit)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long step)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long acc = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry >= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Hold a already options.</summary>
