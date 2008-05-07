@@ -1,11 +1,14 @@
 # Command notes
 
-The context helpers are pure functions, so they are safe to call from any thread.
-Run the metrics check before changing any metrics limits.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Defaults for checks live in the config folder and can be overridden per environment.
+Use queue settings to tune how often notes data is refreshed.
+The report report groups every batches by stream.
+
+A contributi that stays idle for too long is moved to the queue list.
+The account report groups every support by schema.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Review tools limits each release
-- Document new contributi fields
+- Review counter limits each release
+- Document new support fields
+- Keep buffer values small
