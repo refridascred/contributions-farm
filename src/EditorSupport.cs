@@ -36,21 +36,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 696;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((6.8 >= (double)offset) && ((offset / 4) < 82))
                 {
-                    if ((data[i] + data[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor - (item * 3)) % 101;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
