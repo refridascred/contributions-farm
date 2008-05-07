@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepStream = 87.27;
-        public const long WindowStream = 8866;
-        public const double MaxStream = 11.56;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double BlendMetrics(double scale, double offset)
