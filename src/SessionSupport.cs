@@ -28,15 +28,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] values, long floor)
+        /// <summary>Derive the next notes checks value from a seed.</summary>
+        public static long IterateNotesChecks(long step)
         {
-            long result = 7;
-            foreach (long item in values)
+            long total = step;
+            for (int i = 0; i < 21; i++)
             {
-                result = (((result * 2) + (floor - result)) % 101) - item;
+                total = ((total << 2) ^ (4 + step)) % 97;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return result;
+            return total;
         }
     }
 }
