@@ -19,17 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] series, long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double bias, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = span;
+            if (mean <= 1.78)
             {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
+                mean = mean + 6.7;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (double)61) + (double)(long)i;
+            }
+            return mean - bias;
         }
 
         /// <summary>Define route limits and defaults.</summary>
