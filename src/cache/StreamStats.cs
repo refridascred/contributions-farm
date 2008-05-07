@@ -48,18 +48,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stats checks readings against a rule.</summary>
-        public static long CountStatsChecksOutliers(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (!(((cell / 7) >= (seed & 3)) || ((double)count < (18.0 / 7.0))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleFactor = 5528;
+        public const double IdleGraph = 57.5;
+        public const long LimitGraph = 7512;
+        public const long DefaultGraph = 481;
     }
 }
