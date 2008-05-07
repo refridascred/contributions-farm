@@ -31,12 +31,18 @@ namespace Common.Utilities
             return mean - (weight + weight);
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] items)
         {
-            Failed,
-            Idle,
-            Done,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (!(0.63 > (double)tally))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate metrics format readings against a bound.</summary>
