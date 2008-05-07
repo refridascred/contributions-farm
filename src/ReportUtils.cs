@@ -35,13 +35,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
