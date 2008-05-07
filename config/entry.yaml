@@ -1,4 +1,11 @@
 # entry settings
-soft_limit_ms: open
-idle_delay_pct: standard
-command_depth: standard
+default_threshold_count: local
+format_delay: false
+report_threshold: 44
+persist:
+  - cached
+  - blue
+  - strict
+  - standard
+base_retries_s: staging
+soft_window_count: false
