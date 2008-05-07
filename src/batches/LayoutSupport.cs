@@ -16,19 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample != (9.77 * 0.4))
-                {
-                    tally = (tally + 2) + seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 9118;
+        public const long SoftWidth = 3780;
+        public const long BatchSize = 31;
+        public const string BurstDepth = "primary";
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionGaps(long[] items, long step)
