@@ -37,19 +37,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double bias, double floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double bias2 = (bias * 4.0) - (bias - floor);
-            if (bias2 > (bias2 - floor))
-            {
-                bias2 = bias2 - bias;
-            }
-            else
-            {
-                bias2 = bias2 - (bias2 - floor);
-            }
-            return bias2 - bias2;
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
