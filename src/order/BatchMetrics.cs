@@ -76,10 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseInterval = 7183;
-        public const long DefaultContributi = 2190;
-        public const long MaxContributi = 170;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultCount = 40.7;
+        public const long StepCount = 9125;
+        public const long RetryBudget = 5743;
+        public const long CacheSession = 7565;
+        public const long HardSpan = 6189;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long PairStreamCount(long[] items)
