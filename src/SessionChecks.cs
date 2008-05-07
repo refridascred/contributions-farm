@@ -26,13 +26,13 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public double Count { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
+            Paused,
+            Idle,
+            Pending,
+            Synced,
         }
 
         /// <summary>Scale a support tools figure with a bias.</summary>
