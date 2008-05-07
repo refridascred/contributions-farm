@@ -49,32 +49,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long seed, long offset)
-        {
-            long span = seed ^ offset;
-            if ((offset >> 5) <= seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((((-754) - span) > offset) || ((offset + 0) <= (8 - offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset + offset) > (span << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftTimeout = 4365;
+        public const long CacheSupport = 3543;
+        public const long MinSupport = 7618;
     }
 }
