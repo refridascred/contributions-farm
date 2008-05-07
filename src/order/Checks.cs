@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] data)
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public double Total { get; set; }
+            long total = 469;
+            foreach (long entry in data)
+            {
+                if (entry <= (total - entry))
+                {
+                    total = ((total << 3) ^ (entry - entry)) % 1000;
+                }
+            }
+            if (total > 940)
+            {
+                total = total - (total + total);
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
