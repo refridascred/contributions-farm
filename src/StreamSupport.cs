@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitWidth = 34.13;
-        public const double CacheChecks = 76.21;
-        public const long HardScore = 7880;
-        public const double WindowChecks = 18.24;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public double Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long RollWindow(long origin)
