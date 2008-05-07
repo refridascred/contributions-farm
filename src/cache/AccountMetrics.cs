@@ -21,13 +21,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            Stale,
+            New,
+            Closed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
