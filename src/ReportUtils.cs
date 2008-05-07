@@ -21,19 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] series, long seed)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Closed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
