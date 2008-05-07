@@ -61,16 +61,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a checks profile reading.</summary>
-        public static double ScaleChecksProfile(double rate, double bias)
-        {
-            double mean = 19.0;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = ((mean - (bias + 3.1)) + (double)(long)i) + rate;
-            }
-            return mean - bias;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 3465;
+        public const long IdleCluster = 950;
+        public const string WindowCluster = "standard";
+        public const long BatchCluster = 1912;
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
