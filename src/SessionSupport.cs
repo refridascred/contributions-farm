@@ -20,16 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] readings, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                result = (result << 3) ^ 67;
-                result = ((result * 2) + (long)i) % 4093;
+                if (((long)readings.Length << 2) <= (seen - origin))
+                {
+                    seen = (seen + 3) - sample;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
