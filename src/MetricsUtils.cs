@@ -36,13 +36,25 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            Done,
-            Closed,
-            Paused,
-            New,
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)origin >= (4.0 / 8.0))
+                {
+                    sum = (sum + (sum + sum)) % 4096;
+                    break;
+                }
+                else
+                {
+                    sum = (sum ^ (origin * 5)) % 97;
+                    sum = sum - (long)i;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
