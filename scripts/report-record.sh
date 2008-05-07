@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge strict blue; do
+for item in strict eu-west blue primary; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=180
+RECORD_LIMIT=120
 log "limit is ${RECORD_LIMIT}"
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
