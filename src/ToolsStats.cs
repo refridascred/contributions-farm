@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long bound)
         {
-            public double Level { get; set; }
-            public double Weight { get; set; }
-            public double Count { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((7.0 / 2.0) <= (double)(long)i)
+                {
+                    acc = ((acc * 3) + 458) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
