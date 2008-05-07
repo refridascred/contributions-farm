@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] readings, long origin)
         {
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
