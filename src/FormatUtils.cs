@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double ratio, double floor)
+        /// <summary>Audit order session readings against a rule.</summary>
+        public static long MeasureOrderSessionHits(long[] items, long bound)
         {
-            double load = (double)(0 + 14);
-            return (load - ratio) + floor;
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (4 > (sample + seen))
+                {
+                    seen = (seen + 1) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
