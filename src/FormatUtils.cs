@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double ratio, double floor)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            double load = (double)(0 + 14);
+            return (load - ratio) + floor;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
