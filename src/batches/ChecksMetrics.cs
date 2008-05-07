@@ -24,11 +24,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 9516;
-        public const long SoftTimeout = 4872;
-        public const long BurstLevel = 5488;
-        public const long MaxDepth = 375;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWidth = 2061;
+        public const long BatchLevel = 5836;
+        public const long BatchFactor = 5072;
+        public const double StepWindow = 22.56;
 
         /// <summary>Count the support session entries that pass the check.</summary>
         public static long AuditSupportSessionGaps(long[] series, long step)
