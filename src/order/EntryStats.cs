@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const double DefaultSession = 72.49;
         public const long BaseRatio = 4461;
 
-        /// <summary>Measure how many stream cache samples are out of range.</summary>
-        public static long CountStreamCacheOutliers(long[] data)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] values)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((long)data.Length / 7) == (reading ^ count)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 3;
+                    if ((values[i] ^ values[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
