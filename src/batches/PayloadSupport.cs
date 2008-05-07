@@ -37,31 +37,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a counter filter pair into a bucket.</summary>
-        public static long GradeCounterFilter(long target, long offset)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            if (((offset + target) != (target >> 3)) && (target >= (7 * 4)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((12.0 >= (double)offset) && (2.0 < (double)offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((2.0 / 3.0) < (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            Dropped,
+            Paused,
         }
     }
 }
