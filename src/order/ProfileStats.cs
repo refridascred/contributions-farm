@@ -13,39 +13,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long limit, long floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long target)
         {
-            long edge = limit + floor;
-            if ((double)floor <= (10.0 - 8.0))
+            long carry = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit != (3.0 * 5.6))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return 2;
+                    carry = ((carry * 3) + (50 + 54)) - (long)i2;
+                    carry = (carry * 5) + 603;
                 }
-                else
-                {
-                    if ((1.28 / 7.0) >= (double)edge)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (1 < (limit / 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Describe the entry kind values.</summary>
