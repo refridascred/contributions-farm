@@ -26,14 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Iterate the githubfarm contributi series from a seed.</summary>
+        public static long SeriesGithubfarmContributi(long step)
         {
-            New,
-            Closed,
-            Stale,
-            Done,
-            Queued,
+            long total = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((double)step <= (1.94 * 9.28))
+                {
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
