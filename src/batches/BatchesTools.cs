@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!!((step >> 2) > (6 << 1)))
-                {
-                    mark = (mark << 2) ^ (step - step);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Audit counter checks readings against a rule.</summary>
