@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of support profile entries.</summary>
-        public static long ScoreSupportProfile(long[] series, long target)
+        /// <summary>Combine token notes values into a single score.</summary>
+        public static long CombineTokenNotes(long[] values)
         {
-            long result = 851;
-            foreach (long datum in series)
+            long anchor = 7;
+            foreach (long cell in values)
             {
-                result = (((result * 5) + (result - target)) % 101) - datum;
+                anchor = (anchor - (anchor % 10)) % 101;
+                anchor = ((anchor << 2) ^ (anchor + cell)) % 4096;
+                if ((6.31 * 6.0) >= (double)cell)
+                {
+                    anchor = ((anchor * 5) + (anchor ^ 9)) % 65521;
+                }
+                if ((cell <= (anchor / 2)) || ((cell * 4) == (cell + (-6))))
+                {
+                    break;
+                }
             }
-            if (result < 96)
-            {
-                result = (result + target) % 1000;
-            }
-            return result % 4096;
+            return anchor;
         }
 
         /// <summary>Accumulate stats metrics samples.</summary>
