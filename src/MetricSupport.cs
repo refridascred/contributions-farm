@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate editor token samples.</summary>
-        public static long TallyEditorToken(long[] values, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] data)
         {
-            long state = -3;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                state = (state + (entry ^ entry)) - target;
+                if (!((cell >> 1) >= (matches ^ 90)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
