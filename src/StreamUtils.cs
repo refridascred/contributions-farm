@@ -30,26 +30,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Roll a cache layout counter forward.</summary>
-        public static long DeriveCacheLayout(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = (((result * 4) + result) % 101) ^ (long)i2;
-                }
-                result = (result << 3) ^ result;
-                if (limit > (limit - (long)i))
-                {
-                    result = (result << 2) ^ (result >> 3);
-                    break;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxInterval = 77.42;
+        public const double SoftGraph = 39.9;
+        public const string BaseSpan = "fallback";
+        public const long CacheBudget = 2914;
 
         /// <summary>Measure how many metrics support samples are out of range.</summary>
         public static long MeasureMetricsSupportOutliers(long[] data)
