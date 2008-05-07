@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double bias, double bias2)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
+            double scale = bias;
+            if (scale >= scale)
+            {
+                scale = (scale - bias) + bias2;
+            }
+            return scale - (double)(-531);
         }
 
         /// <summary>Define window limits and defaults.</summary>
