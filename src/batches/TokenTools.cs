@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long bound, long bound2)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            if ((bound >> 3) < bound2)
-            {
-                return 5;
-            }
-            else
-            {
-                if (2 >= (bound2 / 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((3.2 * 2.16) != (double)bound2) && ((double)bound > (2.7 * 3.85)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
