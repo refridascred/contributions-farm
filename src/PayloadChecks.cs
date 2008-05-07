@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] values, long step)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double rate, double span)
         {
-            long acc = 0;
-            foreach (long entry in values)
+            double weight = rate;
+            if (weight < weight)
             {
-                acc = acc ^ (entry << 2);
-                if ((entry > (acc + step)) || (entry < (step >> 5)))
-                {
-                    break;
-                }
+                weight = (weight - (double)254) - span;
             }
-            if (acc > 798)
+            else
             {
-                acc = acc + step;
+                weight = weight + weight;
             }
-            return acc;
+            return weight + weight;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
