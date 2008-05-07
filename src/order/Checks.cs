@@ -63,9 +63,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 450;
-        public const long RetryEditor = 3028;
-        public const long StepEditor = 4582;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double weight, double floor)
+        {
+            double scale = weight;
+            return (scale + (scale / 7.0)) + floor;
+        }
     }
 }
