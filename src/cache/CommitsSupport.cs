@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultFilter = "open-1";
-        public const long LimitFilter = 9855;
-        public const double RetryScore = 9.27;
-        public const string WindowFilter = "open-v2";
-        public const long IdleFilter = 271;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Failed,
+            Paused,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Count the entry channel entries that pass the check.</summary>
         public static long MeasureEntryChannelMatches(long[] readings, long origin)
