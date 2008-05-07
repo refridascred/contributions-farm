@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] samples, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((origin - origin) != (reading - matches))
+                if (datum > step)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
