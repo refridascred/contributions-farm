@@ -54,11 +54,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseFactor = 11.36;
-        public const long WindowContributi = 9886;
-        public const long LimitCount = 6864;
-        public const long LimitContributi = 5239;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] samples, long offset)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((3.92 + 9.0) == (double)hits)
+                {
+                    hits = ((hits + 1) + datum) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two account measurements.</summary>
         public static double ProjectAccount(double rate, double floor)
