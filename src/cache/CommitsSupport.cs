@@ -33,18 +33,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] data)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long offset, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            if ((step << 2) <= (offset + 517))
             {
-                if ((hits / 4) <= (hits + entry))
+                return 2;
+            }
+            else
+            {
+                if (offset <= (offset >> 1))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((76 % 2) < (step - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset <= step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
