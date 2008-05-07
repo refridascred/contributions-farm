@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double ratio, double span)
-        {
-            double weight = (ratio / 6.0) * 4.0;
-            if (weight >= (ratio * 7.0))
-            {
-                weight = weight + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - (span - 8.2);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 7300;
+        public const long MinDepth = 8027;
+        public const long BurstWidth = 1209;
+        public const long RetryScore = 2338;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
