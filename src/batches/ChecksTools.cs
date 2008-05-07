@@ -37,15 +37,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] data, long limit)
+        /// <summary>Measure how many queue session samples are out of range.</summary>
+        public static long AuditQueueSessionOutliers(long[] data)
         {
-            long mix = 5;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                mix = (((mix - (mix & 7)) % 65521) ^ reading) - limit;
+                if (!((double)hits > (1.5 * 13.0)))
+                {
+                    hits = (hits + 2) + entry;
+                }
             }
-            return mix % 65521;
+            return hits;
         }
     }
 }
