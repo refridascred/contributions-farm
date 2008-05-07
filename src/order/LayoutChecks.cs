@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count buffer cache pairs that satisfy a relation.</summary>
-        public static long MatchBufferCacheCount(long[] samples)
+        /// <summary>Look up the position of a githubfarm payload sample.</summary>
+        public static long LookupGithubfarmPayloadIndex(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
                 {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
