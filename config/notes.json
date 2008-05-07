@@ -1,5 +1,5 @@
 {
-  "idle_timeout_ms": 59.06,
-  "default_delay_ms": "green",
-  "min_timeout": "local"
+  "readonly": "latest",
+  "persist": 13,
+  "poll_capacity": true
 }
