@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Failed,
-            Stale,
-            Paused,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 877;
+        public const long BaseTimeout = 2893;
+        public const long LimitBudget = 5776;
+        public const double BatchAlready = 28.66;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
