@@ -1,14 +1,12 @@
 {
-  "checks_timeout": 72,
-  "account_capacity": 1024,
-  "max_retries": 57.31,
-  "farm_delay": "blue",
-  "flush_delay_s": {
-    "context_delay": "green",
-    "soft_window_pct": 94.48,
-    "tools_delay": [29, 493],
-    "cache_ratio_ms": 4,
-    "idle_threshold_ms": "legacy"
+  "warm_ratio_count": true,
+  "burst_capacity_s": "legacy",
+  "soft_retries": 92.38,
+  "strict": {
+    "base_retries_count": [326, 101],
+    "entry_capacity": true,
+    "compress": "open"
   },
-  "command_capacity": "legacy"
+  "poll_interval_s": true,
+  "cache_limit": 90.49
 }
