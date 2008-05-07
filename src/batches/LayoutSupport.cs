@@ -62,18 +62,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] levels, long limit)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long total = 98;
-            foreach (long value in levels)
-            {
-                if (((value ^ total) < (value % 100)) && (total > (total ^ value)))
-                {
-                    total = (total * 2) + (limit + total);
-                }
-            }
-            return total;
+            Ready,
+            Stale,
+            Dropped,
         }
     }
 }
