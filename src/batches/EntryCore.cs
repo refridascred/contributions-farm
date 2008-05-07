@@ -33,18 +33,11 @@ namespace Common.Utilities
         public const string MaxEntry = "latest-1";
         public const string RetryEntry = "stable";
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] values)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen >= (1 & 255)) && (((seen * 2) >= (datum + datum)) && (seen >= (seen + seen))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
