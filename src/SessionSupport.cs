@@ -42,12 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Dropped,
-            Paused,
-            Synced,
+            Closed,
+            Done,
+            Active,
+            Draft,
         }
     }
 }
