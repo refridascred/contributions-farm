@@ -30,19 +30,17 @@ namespace Common.Utilities
         public const string MinSize = "staging-1";
         public const double WindowCounter = 70.42;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] series, long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= step)
+                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
