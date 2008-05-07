@@ -43,18 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit tools entry readings against a rule.</summary>
-        public static long CountToolsEntryOutliers(long[] readings)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((reading << 1) > seen)
+                if (!((double)datum < (7.0 + 6.0)))
                 {
-                    seen = seen + 3;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
