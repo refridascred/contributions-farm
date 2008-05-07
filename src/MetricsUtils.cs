@@ -72,12 +72,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] items)
         {
-            Ready,
-            Locked,
-            Draft,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((entry < count) && ((entry >> 4) >= (entry & 7)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
