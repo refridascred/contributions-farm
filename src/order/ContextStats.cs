@@ -35,15 +35,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two order cache measurements.</summary>
-        public static double BlendOrderCache(double weight, double bias)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double ratio = weight;
-            if (ratio > 4.2)
-            {
-                ratio = (ratio - (double)83) + bias;
-            }
-            return ratio - weight;
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
