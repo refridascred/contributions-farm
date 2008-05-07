@@ -24,13 +24,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            long state = step;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 5) + state) % 4096;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
