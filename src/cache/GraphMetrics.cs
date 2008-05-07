@@ -47,17 +47,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] items, long seed)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ (carry * 4)) % 97;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
