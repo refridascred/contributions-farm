@@ -27,12 +27,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] values, long step)
         {
-            public double Label { get; set; }
-            public bool Level { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((((7.06 - 4.7) < (double)step) || ((6.5 / 2.0) >= (double)tally)) || ((4.5 + 16.0) >= (double)tally))
+                {
+                    tally = (tally + 3) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
