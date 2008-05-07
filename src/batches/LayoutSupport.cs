@@ -81,19 +81,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] items, long target)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample != target)
+                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
