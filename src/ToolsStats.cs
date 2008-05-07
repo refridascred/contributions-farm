@@ -80,12 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double scale, double floor)
         {
-            Retry,
-            Draft,
-            Paused,
+            double gain = floor;
+            if (gain > (double)9)
+            {
+                gain = gain - (gain + scale);
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain + gain;
         }
     }
 }
