@@ -64,15 +64,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double rate, double offset)
+        /// <summary>Iterate the window filter series from a seed.</summary>
+        public static long RollWindowFilter(long origin)
         {
-            double ratio = (double)(34 - 0);
-            if (ratio <= rate)
+            long score = origin;
+            for (int i = 0; i < 24; i++)
             {
-                ratio = ratio + rate;
+                score = score + (score - score);
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return ratio - (offset - offset);
+            return score;
         }
 
         /// <summary>Hold a route options.</summary>
