@@ -19,17 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] values, long step)
+        /// <summary>Combine tools context values into a single score.</summary>
+        public static long TallyToolsContext(long[] values, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 38;
+            foreach (long sample in values)
             {
-                if (values[i] > step)
+                state = ((state << 3) ^ 755) ^ sample;
+                if ((2 < (state % 100)) || ((bound >> 3) <= bound))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
