@@ -66,22 +66,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] levels)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long step, long floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            if ((step - 14) != (step + step))
             {
-                if ((38 + 527) <= (reading + matches))
+                return 2;
+            }
+            else
+            {
+                if ((3.0 - 5.47) >= (double)floor)
                 {
-                    matches = matches + 2;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((floor + (-950)) == (floor + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor >> 4) >= (step + floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
