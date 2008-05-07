@@ -27,18 +27,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!(((hits % 2) <= (reading << 3)) || ((hits ^ bound) >= bound)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryLevel = 1625;
+        public const long MinQueue = 95;
+        public const long HardTimeout = 3530;
+        public const double MinInterval = 3.24;
+        public const long MinScore = 2818;
     }
 }
