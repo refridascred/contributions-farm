@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many account farm samples are out of range.</summary>
+        public static long TallyAccountFarmOutliers(long[] readings, long offset)
         {
-            Synced,
-            Dropped,
-            New,
-            Active,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((offset % 24) >= matches)
+                {
+                    matches = (matches + 3) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the window phase values.</summary>
