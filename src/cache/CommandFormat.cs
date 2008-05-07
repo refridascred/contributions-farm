@@ -52,19 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster commits entry stays within the limit.</summary>
-        public static bool ValidateClusterCommitsBounds(long[] series, long offset)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Rank { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
