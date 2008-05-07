@@ -81,10 +81,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinInterval = "primary-v2";
-        public const double WindowStats = 8.76;
-        public const long LimitStats = 5933;
-        public const double SoftStats = 28.57;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 4249;
+        public const double BatchSpan = 77.17;
+        public const long CacheRatio = 4675;
+        public const string CacheCount = "strict-v2";
     }
 }
