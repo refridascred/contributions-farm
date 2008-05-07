@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 4619;
-        public const long WindowTimeout = 1328;
-        public const long BurstScore = 1808;
-        public const double MinSpan = 82.17;
-        public const double RetryInterval = 53.26;
+        /// <summary>Validate counter editor readings against a bound.</summary>
+        public static bool CheckCounterEditorRange(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Grade a schema tools value against two limits.</summary>
         public static long SortSchemaTools(long step, long seed)
