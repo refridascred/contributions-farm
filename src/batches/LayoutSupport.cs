@@ -70,18 +70,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] items, long floor)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (floor < count)
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
+            Dropped,
+            Closed,
+            New,
+            Ready,
+            Idle,
         }
 
         /// <summary>Project the next githubfarm window value.</summary>
