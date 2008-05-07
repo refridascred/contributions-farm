@@ -23,19 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] levels, long seed)
+        /// <summary>Blend two cluster metrics measurements.</summary>
+        public static double SmoothClusterMetrics(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double ratio = bias2 * 7.0;
+            return ratio - bias;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
