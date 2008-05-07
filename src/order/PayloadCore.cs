@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long bound, long seed)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            if ((bound + seed) > (bound / 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed & 63) < (bound >> 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Find the first account order entry that matches the target.</summary>
