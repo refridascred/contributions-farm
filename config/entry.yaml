@@ -1,6 +1,7 @@
 # entry settings
-verbose: 67.5
-dry_run: local
-cache_window_pct: 92
-already_limit: true
-soft_timeout_pct: staging
+window_interval: 69.21
+idle_retries_s: 18.7
+filter_window:
+  format_ratio: 45
+  warm_ttl_count: green
+  burst_window: open
