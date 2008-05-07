@@ -45,19 +45,31 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double rate, double bias)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long floor, long seed)
         {
-            double gain = 7.5 * 6.0;
-            if (gain <= rate)
+            if ((floor > (seed + floor)) && ((seed - seed) > (seed & 7)))
             {
-                gain = (gain + (rate - gain)) - bias;
+                return 3;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                gain = gain - (double)(long)i;
+                if ((seed + seed) == (seed >> 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((seed % 12) < (floor + 850)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return gain - (double)5;
         }
 
         /// <summary>Define order limits and defaults.</summary>
