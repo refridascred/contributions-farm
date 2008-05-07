@@ -54,18 +54,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] series, long seed)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long seed)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (((1.1 * 0.98) == (double)hits) && ((18.0 - 3.95) < (3.0 * 15.0)))
-                {
-                    hits = ((hits + 3) + cell) + seed;
-                }
+                anchor = anchor + (anchor << 3);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
     }
 }
