@@ -12,22 +12,36 @@ namespace Common.Utilities
         public const long BurstDepth = 5304;
         public const string LimitBudget = "standard";
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long seed, long floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long origin, long target)
         {
-            if ((double)floor <= 3.0)
+            if (20.0 < (double)origin)
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (seed >= (827 + seed))
+                if (!(origin > (target + origin)))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 7;
+                    if (((target & 31) >= target) && (75 >= (target ^ target)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((859 >> 3) >= (origin ^ target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
