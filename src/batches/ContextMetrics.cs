@@ -26,32 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a queue profile value against two limits.</summary>
-        public static long SortQueueProfile(long floor, long bound)
+        /// <summary>Iterate the token record series from a seed.</summary>
+        public static long SeriesTokenRecord(long limit)
         {
-            long prev = floor + bound;
-            if ((prev + floor) >= (bound ^ 81))
+            long mark = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 7;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((bound * 3) == (9 >> 3)) || (bound <= 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)prev < (4.0 + 8.7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Hold a channel summary.</summary>
