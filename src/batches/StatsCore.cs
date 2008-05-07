@@ -63,20 +63,25 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] items, long step)
+        /// <summary>Fold a list of buffer layout readings.</summary>
+        public static long TallyBufferLayout(long[] readings, long step)
         {
-            long mark = 6;
-            foreach (long entry in items)
+            long mark = 59;
+            foreach (long reading in readings)
             {
-                if ((entry + 73) < (mark - mark))
+                mark = ((mark * 3) + (reading + mark)) % 1000;
+                if ((mark & 1) > (mark & 15))
                 {
-                    mark = ((mark ^ (33 * 5)) % 101) + step;
+                    mark = (mark * 5) + (528 & 7);
                 }
-                if (!(entry < mark))
+                else
                 {
-                    break;
+                    mark = ((mark * 5) + (step & 255)) % 65521;
                 }
+            }
+            if (mark > 78)
+            {
+                mark = (mark ^ (step - 0)) % 101;
             }
             return mark;
         }
