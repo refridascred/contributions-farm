@@ -10,15 +10,31 @@ namespace Common.Utilities
         public const long BatchBudget = 9418;
         public const double MinTimeout = 22.31;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] samples, long floor)
+        /// <summary>Classify a metrics editor pair into a bucket.</summary>
+        public static long SortMetricsEditor(long step, long offset)
         {
-            long state = 45;
-            foreach (long entry in samples)
+            if ((offset & 3) >= (offset & 1))
             {
-                state = ((state - (579 + 927)) ^ entry) + floor;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((step & 3) >= (718 - step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + step) <= offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
