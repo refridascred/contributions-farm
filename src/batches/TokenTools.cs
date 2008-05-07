@@ -14,24 +14,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double gain, double span)
-        {
-            double rate = gain;
-            if (rate >= (2.2 / 9.0))
-            {
-                rate = (rate + (gain - rate)) - span;
-            }
-            else
-            {
-                rate = rate - 5.3;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (double)339) + (double)(long)i;
-            }
-            return rate - gain;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 2496;
+        public const long BurstFactor = 7739;
+        public const string HardWindow = "fallback-1";
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmHits(long[] samples, long origin)
