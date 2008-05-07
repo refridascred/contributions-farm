@@ -36,22 +36,31 @@ namespace Common.Utilities
         public const string BaseSpan = "fallback";
         public const long CacheBudget = 2914;
 
-        /// <summary>Measure how many metrics support samples are out of range.</summary>
-        public static long MeasureMetricsSupportOutliers(long[] data)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if (!((double)seed > (5.35 + 12.0)))
             {
-                if ((hits + 97) != (hits - item))
+                return 0;
+            }
+            else
+            {
+                if (!((seed + 90) <= (seed % 64)))
                 {
-                    hits = hits + 1;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!((limit * 5) <= seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
