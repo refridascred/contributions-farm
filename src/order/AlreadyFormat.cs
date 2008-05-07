@@ -34,22 +34,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 2068;
+        public const long BaseTimeout = 8752;
+        public const long MaxDepth = 812;
+        public const long WindowRatio = 9666;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long SortToken(long offset, long seed)
