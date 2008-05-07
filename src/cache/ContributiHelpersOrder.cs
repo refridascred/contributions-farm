@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] items, long limit)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double rate, double span)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            double mean = 9.0;
+            if (mean > (8.0 / 3.0))
             {
-                if (cell > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean + span) - rate;
             }
-            return valid;
+            return mean - (mean * 8.1);
         }
 
         /// <summary>Audit already readings against a rule.</summary>
