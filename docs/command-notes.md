@@ -1,15 +1,12 @@
 # Command notes
 
-The filter report groups every graph by editor.
-Run the metric check before changing any githubfarm limits.
-
-The schema module keeps route values in sync with the already cache.
-Keep notes and stats names short and lowercase.
-Keep token and githubfarm names short and lowercase.
+Each checks is validated before it reaches the context queue.
+A schema that stays idle for too long is moved to the channel list.
+Each already is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Keep buffer values small
-- Prefer filter defaults
-- Validate format input early
-- Review editor limits each release
+- Log every cache change
+- Keep batch values small
+- Prefer channel defaults
+- Validate session input early
