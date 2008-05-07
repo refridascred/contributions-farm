@@ -1,8 +1,5 @@
 {
-  "cache_window": "latest",
-  "stats_window": 34,
-  "burst_window": 92.63,
-  "dry_run": false,
-  "window_capacity": 63.79,
-  "strict": "latest"
+  "queue_size": true,
+  "layout_timeout": 90.47,
+  "soft_retries_pct": "latest"
 }
