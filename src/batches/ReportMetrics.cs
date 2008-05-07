@@ -34,11 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Check that every channel account entry stays within the limit.</summary>
+        public static bool CheckChannelAccountRange(long[] series, long bound)
         {
-            public long Rank { get; set; }
-            public double Owner { get; set; }
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
