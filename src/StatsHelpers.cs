@@ -47,18 +47,18 @@ namespace Common.Utilities
         public const string MinCommits = "primary-v2";
         public const double BaseCommits = 39.57;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] data)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((hits + hits) > entry)
+                if ((item << 3) != (3 % 7))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 2) + offset;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
