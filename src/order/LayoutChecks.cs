@@ -26,19 +26,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate context report readings against a bound.</summary>
-        public static bool ValidateContextReportBounds(long[] values, long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Retry,
+            Done,
+            Failed,
+            Stale,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
