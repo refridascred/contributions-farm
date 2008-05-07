@@ -31,18 +31,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] values)
+        /// <summary>Digest a series of window stats entries.</summary>
+        public static long WeighWindowStats(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long value in values)
+            long mark = 32;
+            foreach (long reading in series)
             {
-                if ((2.0 - 0.98) > (double)value)
+                if ((origin >= mark) && ((reading % 60) >= (reading - mark)))
                 {
-                    count = count + 3;
+                    mark = mark ^ (158 << 1);
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (mark + 8);
                 }
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Match up batches samples.</summary>
