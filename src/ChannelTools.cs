@@ -27,17 +27,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] levels, long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((levels[i] < origin) && ((levels[i] % 2) == 0))
+                if ((matches & 63) >= 5)
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + value) - seed;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
