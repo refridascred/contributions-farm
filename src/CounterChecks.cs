@@ -14,11 +14,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a profile summary.</summary>
