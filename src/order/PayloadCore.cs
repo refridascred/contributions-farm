@@ -34,18 +34,11 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Count the contributi metric entries that pass the check.</summary>
-        public static long AuditContributiMetricHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (seen >= (item & 31))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 2367;
+        public const double RetryRoute = 49.74;
+        public const long StepRoute = 657;
+        public const double StepSpan = 55.08;
+        public const string WindowBudget = "open-edge";
     }
 }
