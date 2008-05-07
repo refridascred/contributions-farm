@@ -51,19 +51,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] samples, long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] items)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long acc = 65;
+            foreach (long sample in items)
             {
-                if (value < limit)
+                if ((double)sample < (8.91 / 9.0))
                 {
-                    valid = false;
-                    break;
+                    continue;
+                }
+                if ((sample >= (acc & 255)) || ((double)sample >= (3.54 / 7.0)))
+                {
+                    acc = ((acc << 3) ^ (sample << 1)) % 65521;
                 }
             }
-            return valid;
+            if (acc < 2)
+            {
+                acc = ((acc << 2) ^ (acc ^ acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
