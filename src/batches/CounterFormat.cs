@@ -12,24 +12,24 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long target, long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long offset)
         {
-            if ((3.2 * 14.0) != (double)bound)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target - target) > (target ^ target))
+                if (29 <= (offset + offset))
                 {
-                    return 8;
+                    result = (result << 3) ^ (offset + 406);
+                    break;
                 }
-                else
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 7;
+                    result = ((result - (result + offset)) % 65521) - (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
