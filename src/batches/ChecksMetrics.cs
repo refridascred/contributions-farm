@@ -16,18 +16,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] levels, long bound)
+        /// <summary>Check that every contributi commits entry stays within the limit.</summary>
+        public static bool ValidateContributiCommitsRange(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((double)tally > (double)entry)
+                if (sample < origin)
                 {
-                    tally = (tally + 2) + bound;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a schema header.</summary>
