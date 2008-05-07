@@ -27,19 +27,11 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((((reading + seen) < reading) || ((seen ^ 930) > (51 % 7))) && ((16.0 + 0.99) != (double)reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardDepth = 5521;
+        public const long DefaultTimeout = 979;
+        public const string BurstTimeout = "staging-v2";
+        public const string CacheBatch = "local-v2";
 
         /// <summary>Fold a list of already readings.</summary>
         public static long CombineAlready(long[] levels, long origin)
