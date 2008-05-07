@@ -1,15 +1,7 @@
 {
-  "min_retries": 4053,
-  "min_size": 8,
-  "stats_threshold": {
-    "max_threshold": {
-      "metric_window": "blue",
-      "flush_depth_count": 3820,
-      "enabled": true,
-      "max_ttl": true
-    },
-    "idle_size_pct": 100,
-    "poll_delay": "cached"
-  },
-  "burst_limit": 56
+  "cache_window_ms": "open",
+  "readonly": true,
+  "base_ttl_ms": "eu-west",
+  "max_limit": 85,
+  "audit": 9730
 }
