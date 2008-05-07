@@ -24,18 +24,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] samples, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] values, long target)
         {
-            long result = 2;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (9 >= bound)
+                if (item < target)
                 {
-                    result = (result ^ (bound % 100)) ^ sample;
+                    stale = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return stale;
         }
     }
 }
