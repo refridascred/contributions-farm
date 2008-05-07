@@ -22,32 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long seed, long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] values, long origin)
         {
-            long offset2 = seed + offset;
-            if (((seed + seed) > (seed ^ offset)) && ((double)offset > (6.5 * 11.0)))
+            long seen = 0;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(offset >= (seed >> 5)))
+                if (value <= (seen + value))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((7.0 + 20.0) < (double)offset2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = (seen + 2) - origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate window samples.</summary>
