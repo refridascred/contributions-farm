@@ -1,7 +1,24 @@
 {
-  "sync_size_s": ["green", "local"],
-  "warm_size": 3723,
-  "editor_window": 100,
-  "warm_threshold_pct": 77,
-  "counter_ratio": 90.41
+  "dry_run": {
+    "dry_run": "fallback",
+    "warm_limit": {
+      "commits_capacity": 9,
+      "default_limit_ms": ["stable", "fallback"],
+      "warm_depth_pct": true
+    },
+    "batch_retries_count": 47,
+    "record_capacity": 1024
+  },
+  "hard_size_count": 99,
+  "warm_threshold_ms": {
+    "max_threshold_count": {
+      "burst_delay_ms": "local",
+      "warm_ratio": true,
+      "farm_retries": 56.81,
+      "max_limit_s": false
+    },
+    "flush_ttl_count": "standard",
+    "cache_window_count": [271, 134, 235],
+    "sync_retries": 51.89
+  }
 }
