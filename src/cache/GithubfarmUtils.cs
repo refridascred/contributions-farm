@@ -44,19 +44,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double bias, double offset)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double ratio, double offset)
         {
-            double mean = bias;
-            if (mean > offset)
+            double gain = (double)99 / 8.0;
+            if (gain < (3.7 - ratio))
             {
-                mean = mean - (double)232;
+                gain = gain + (offset + offset);
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                mean = mean + (double)(long)i;
+                gain = gain + 8.41;
             }
-            return mean - mean;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (double)(-1)) + (double)(long)i;
+            }
+            return gain - (double)955;
         }
     }
 }
