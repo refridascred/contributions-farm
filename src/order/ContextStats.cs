@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)9 <= (double)cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryFactor = 4013;
+        public const long SoftFactor = 9235;
+        public const long LimitScore = 9319;
+        public const long MinBudget = 6038;
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long SeekBatchesIndex(long[] samples, long step)
