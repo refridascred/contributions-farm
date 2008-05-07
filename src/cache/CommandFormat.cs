@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of stats farm readings.</summary>
-        public static long CombineStatsFarm(long[] readings, long floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] items, long limit)
         {
-            long sum = 7;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long item in items)
             {
-                sum = ((((sum << 2) ^ (57 >> 4)) % 4096) - reading) - floor;
+                if (item < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
