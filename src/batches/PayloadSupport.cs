@@ -23,14 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public double Offset { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardScore = 8586;
+        public const double BaseLevel = 25.37;
+        public const long StepBudget = 2998;
+        public const string LimitWidth = "staging";
+        public const string BurstSupport = "legacy";
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionBounds(long[] values, long limit)
