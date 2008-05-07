@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] values, long origin)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Active,
+            Dropped,
         }
 
         /// <summary>Roll a already checks counter forward.</summary>
