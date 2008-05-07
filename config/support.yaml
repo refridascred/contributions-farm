@@ -1,8 +1,5 @@
 # support settings
-min_ttl: 66.64
-hard_limit_ms: 30
-burst_limit:
-  - 317
-  - 56
-  - 293
-min_capacity_s: eu-west
+hard_interval_pct: 87.52
+hard_ratio: false
+hard_capacity_pct: staging
+dry_run: latest
