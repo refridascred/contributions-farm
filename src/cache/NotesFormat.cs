@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxInterval = 3297;
-        public const long BurstSpan = 3522;
-        public const string MinChannel = "fallback-1";
-        public const long WindowChannel = 1926;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            New,
+            Ready,
+            Draft,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
