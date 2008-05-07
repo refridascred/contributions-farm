@@ -1,5 +1,7 @@
 {
-  "filter_limit": "staging",
-  "payload_limit": ["fallback", "standard", "standard"],
-  "audit": "edge"
+  "retry_window_ms": true,
+  "readonly": 1024,
+  "strict": false,
+  "warm_depth_s": 88,
+  "persist": 60
 }
