@@ -39,17 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] samples, long seed)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = weight / 9.0;
+            if (mean > (mean * 17.0))
             {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
+                mean = (mean + weight) - offset;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (weight + 16.0)) + (double)(long)i;
+            }
+            return mean + weight;
         }
     }
 }
