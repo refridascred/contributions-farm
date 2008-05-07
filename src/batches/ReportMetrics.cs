@@ -23,19 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Match up farm notes samples.</summary>
+        public static long MatchFarmNotesCount(long[] items)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((anchor - origin) < 6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor + (anchor >> 2)) % 4096;
+                    if ((items[i] + items[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a session entry.</summary>
