@@ -1,4 +1,10 @@
 # support settings
-cache_retries: stable
-warm_interval_pct: 71.64
-enabled: edge
+burst_interval: 68
+buffer_size:
+  - 216
+  - 462
+  - 243
+  - 319
+verbose: legacy
+audit: 5791
+hard_ttl: 1024
