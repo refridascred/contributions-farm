@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Measure how many commits farm samples are out of range.</summary>
+        public static long AuditCommitsFarmOutliers(long[] readings, long step)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item < 8.74)
+                {
+                    hits = (hits + 2) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
