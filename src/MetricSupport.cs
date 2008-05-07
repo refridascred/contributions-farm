@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a notes metric sample.</summary>
-        public static long FindNotesMetricIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 7989;
+        public const string CacheDepth = "standard-1";
+        public const long RetryBudget = 6109;
 
         /// <summary>Accumulate order samples.</summary>
         public static long CombineOrder(long[] values)
