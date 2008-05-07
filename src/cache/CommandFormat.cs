@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long origin, long offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            if ((offset + offset) <= (offset + 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin + origin) >= 34)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((50 / 8) <= (offset ^ origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
