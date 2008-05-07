@@ -34,11 +34,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 9971;
-        public const long BaseFactor = 3241;
-        public const long WindowSupport = 2191;
-        public const long MinSize = 1006;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] items, long bound)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Digest a series of token session entries.</summary>
         public static long TotalTokenSession(long[] readings, long offset)
