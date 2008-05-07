@@ -19,10 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinSpan = 4933;
-        public const double IdleRatio = 86.27;
-        public const double BaseSpan = 50.78;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((long)samples.Length >= (hits - value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
