@@ -26,14 +26,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
+        public static long MeasureToolsGithubfarmOutliers(long[] series)
         {
-            Dropped,
-            Retry,
-            Done,
-            Failed,
-            Stale,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((((double)cell != (double)count) && ((count & 3) < (cell + count))) || (((6.0 + 2.91) <= (double)cell) && (count <= (cell * 5))))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
