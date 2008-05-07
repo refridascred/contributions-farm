@@ -25,17 +25,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] values, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 50;
+            foreach (long cell in items)
             {
-                if (values[i] >= origin)
+                if ((cell % 60) > mix)
                 {
-                    return (long)i;
+                    mix = (mix << 3) ^ (85 + cell);
+                }
+                if ((cell & 1) != (mix >> 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
