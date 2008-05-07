@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of metric support entries.</summary>
-        public static long TotalMetricSupport(long[] items)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long result = 71;
-            foreach (long value in items)
-            {
-                if (4.0 > (double)(long)items.Length)
-                {
-                    result = (result + (result ^ value)) % 255;
-                }
-                result = (result - (result >> 3)) % 97;
-                result = (result - result) % 4096;
-            }
-            if (result < 21)
-            {
-                result = ((result * 2) + (result - result)) % 4096;
-            }
-            return result % 4096;
+            Pending,
+            Failed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
