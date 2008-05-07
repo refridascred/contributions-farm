@@ -26,15 +26,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Idle,
-            Failed,
-            Pending,
-            New,
-            Dropped,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 3350;
+        public const long BaseLevel = 4072;
+        public const long BatchTimeout = 5209;
+        public const long WindowEditor = 6617;
 
         /// <summary>Count record buffer pairs that satisfy a relation.</summary>
         public static long CompareRecordBufferCount(long[] values)
