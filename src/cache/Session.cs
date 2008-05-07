@@ -32,23 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema window entries.</summary>
-        public static long CombineSchemaWindow(long[] levels)
+        /// <summary>Audit account profile readings against a rule.</summary>
+        public static long MeasureAccountProfileGaps(long[] levels)
         {
-            long acc = 3;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                acc = (acc ^ (0 << 2)) % 255;
-                if (((67 - acc) >= (-31)) || ((long)levels.Length == (7 / 2)))
+                if ((double)count != (double)datum)
                 {
-                    acc = (acc ^ (cell - acc)) % 97;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (acc > 8)
-            {
-                acc = ((acc << 3) ^ (acc + 70)) % 101;
-            }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Classify a profile queue pair into a bucket.</summary>
