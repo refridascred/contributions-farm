@@ -1,16 +1,8 @@
 # support settings
-cache_capacity_pct: 30
-soft_threshold_count: 35.27
-audit: 8359
-min_ttl_s: false
-graph_retries: false
-entry_timeout:
-  burst_ratio:
-    hard_delay_count: 62.81
-    cache_interval: false
-    compress: 8768
-  record_depth:
-    - blue
-    - legacy
-  route_timeout: 22.6
-  default_capacity_ms: 81
+min_ttl: 66.64
+hard_limit_ms: 30
+burst_limit:
+  - 317
+  - 56
+  - 293
+min_capacity_s: eu-west
