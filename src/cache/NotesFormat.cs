@@ -38,12 +38,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long bound)
         {
-            Dropped,
-            Failed,
-            Stale,
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
