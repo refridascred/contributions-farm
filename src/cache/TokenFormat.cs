@@ -24,13 +24,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] values)
         {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
