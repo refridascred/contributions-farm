@@ -58,14 +58,23 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] levels, long floor)
         {
-            Locked,
-            Idle,
-            Active,
-            Draft,
-            Synced,
+            long anchor = 1;
+            foreach (long item in levels)
+            {
+                if (!((floor >> 5) <= (anchor + 36)))
+                {
+                    long lane = item;
+                    anchor = (anchor + (lane & 127)) % 255;
+                }
+                if (((anchor & 63) > (item / 2)) || ((floor + (-44)) != (item - anchor)))
+                {
+                    anchor = (anchor + (349 * 4)) % 101;
+                }
+            }
+            return anchor;
         }
     }
 }
