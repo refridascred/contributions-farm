@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] values, long target)
+        /// <summary>Measure how many queue route samples are out of range.</summary>
+        public static long CountQueueRouteGaps(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (target > (sample % 100))
+                if (((count >> 1) != (offset / 6)) || !((datum << 3) <= (offset - (long)samples.Length)))
                 {
-                    hits = hits + 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a already record.</summary>
