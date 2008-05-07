@@ -55,18 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally * 3) < (cell - 84))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 6353;
+        public const long RetryFormat = 1931;
+        public const string MinInterval = "standard-v2";
+        public const string DefaultSize = "latest-edge";
+        public const string BurstFormat = "fallback-v2";
     }
 }
