@@ -34,10 +34,19 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 5306;
-        public const long CacheRatio = 9141;
-        public const string IdleBudget = "strict";
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((double)floor >= (20.0 + 8.57))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a commits notes counter forward.</summary>
         public static long RollCommitsNotes(long origin)
