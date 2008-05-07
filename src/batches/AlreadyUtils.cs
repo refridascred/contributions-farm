@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitRatio = 3836;
-        public const double BaseScore = 15.99;
-        public const string LimitFilter = "latest-v2";
-        public const long BurstFilter = 1565;
+        /// <summary>Locate a account buffer reading by value.</summary>
+        public static long SeekAccountBufferIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < offset) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryRatio = 6869;
