@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine token notes values into a single score.</summary>
-        public static long CombineTokenNotes(long[] values)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] levels, long bound)
         {
-            long anchor = 7;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor - (anchor % 10)) % 101;
-                anchor = ((anchor << 2) ^ (anchor + cell)) % 4096;
-                if ((6.31 * 6.0) >= (double)cell)
+                if (levels[i] <= bound)
                 {
-                    anchor = ((anchor * 5) + (anchor ^ 9)) % 65521;
-                }
-                if ((cell <= (anchor / 2)) || ((cell * 4) == (cell + (-6))))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
