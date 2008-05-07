@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long bound, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] levels)
         {
-            if ((73 + 319) >= (bound * 4))
+            long anchor = 818;
+            foreach (long item in levels)
             {
-                return 5;
+                anchor = ((anchor ^ (anchor + (long)levels.Length)) % 65521) + item;
             }
-            else
+            if (anchor > (-3))
             {
-                if ((14.0 + 4.3) >= (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((52 >> 5) != (offset * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                anchor = ((anchor << 2) ^ (anchor << 1)) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Hold a format options.</summary>
