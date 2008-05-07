@@ -27,14 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftSpan = 153;
+        public const long HardContext = 8460;
+        public const double RetryContext = 87.16;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long SeriesCommand(long target)
