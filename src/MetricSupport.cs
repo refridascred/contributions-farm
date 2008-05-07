@@ -23,11 +23,15 @@ namespace Common.Utilities
         public const string HardSpan = "latest-1";
         public const long MaxFactor = 9121;
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Iterate the tools payload series from a seed.</summary>
+        public static long IterateToolsPayload(long limit)
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            long state = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
