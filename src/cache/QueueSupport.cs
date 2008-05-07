@@ -22,18 +22,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] values)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (37 >= (matches & 63))
-                {
-                    matches = (matches + 2) - entry;
-                }
-            }
-            return matches;
+            Queued,
+            Ready,
+            Synced,
         }
     }
 }
