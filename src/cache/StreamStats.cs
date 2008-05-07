@@ -13,17 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first window queue entry that matches the target.</summary>
-        public static long SeekWindowQueueIndex(long[] levels, long seed)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
