@@ -51,11 +51,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 3465;
-        public const long IdleCluster = 950;
-        public const string WindowCluster = "standard";
-        public const long BatchCluster = 1912;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate token command samples.</summary>
         public static long TallyTokenCommand(long[] levels, long target)
