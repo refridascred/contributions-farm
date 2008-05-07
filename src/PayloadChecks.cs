@@ -19,22 +19,39 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] samples, long target)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long origin, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long prev = origin - limit;
+            if ((prev - limit) >= 1)
             {
-                if ((76 % 3) >= (seen + (long)samples.Length))
+                return 6;
+            }
+            else
+            {
+                if (((double)limit < (15.0 * 16.0)) && (origin > (origin % 16)))
                 {
-                    seen = ((seen + 2) ^ entry) + target;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((prev % 12) >= (prev + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((limit + limit) == (limit % 24)) || ((prev / 8) == (169 + 74)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine batch report values into a single score.</summary>
