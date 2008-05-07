@@ -32,22 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account profile readings against a rule.</summary>
-        public static long MeasureAccountProfileGaps(long[] levels)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((double)count != (double)datum)
+                if (!((0.6 + 6.91) == (double)(long)items.Length))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = ((tally + 1) + value) - origin;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Classify a profile queue pair into a bucket.</summary>
