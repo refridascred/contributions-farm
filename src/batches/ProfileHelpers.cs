@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            Retry,
-            Draft,
-            Dropped,
-            Failed,
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((mix / 7) > (7 * 4))
+                {
+                    mix = (mix << 2) ^ (long)i;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a stream info.</summary>
