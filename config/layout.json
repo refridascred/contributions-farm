@@ -1,5 +1,7 @@
 {
-  "readonly": ["standard", "local", "fallback"],
-  "soft_ttl": [89, 53, 261, 130],
-  "batch_size_s": "local"
+  "sync_ratio_ms": true,
+  "batch_ttl_pct": 6366,
+  "dry_run": "edge",
+  "default_interval": "strict",
+  "editor_depth": 81.76
 }
