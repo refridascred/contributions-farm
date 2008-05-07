@@ -28,11 +28,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Combine queue payload values into a single score.</summary>
+        public static long TotalQueuePayload(long[] series, long limit)
         {
-            public bool Total { get; set; }
-            public long Count { get; set; }
+            long mark = 7;
+            foreach (long entry in series)
+            {
+                if (((73 & 255) <= (limit ^ entry)) || ((4 & 3) <= limit))
+                {
+                    mark = mark + (entry ^ mark);
+                }
+                mark = mark ^ (entry - entry);
+            }
+            if (mark < 255)
+            {
+                mark = (mark ^ (limit + limit)) % 65521;
+            }
+            return mark % 97;
         }
     }
 }
