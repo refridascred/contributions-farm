@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] series, long step)
         {
-            Closed,
-            Synced,
-            Ready,
-            Draft,
+            long anchor = -927;
+            foreach (long reading in series)
+            {
+                anchor = (((anchor + (anchor / 8)) % 65521) + reading) + step;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many window metrics samples are out of range.</summary>
