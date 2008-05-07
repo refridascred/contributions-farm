@@ -1,7 +1,15 @@
 # entry settings
-hard_limit_s: latest
-batch_retries: 1303
-burst_timeout_ms: 49.89
-token_timeout: true
-audit: 85
-default_timeout_count: latest
+filter_ratio: 72
+flush_retries:
+  audit: 60.91
+  verbose: open
+  warm_delay_count:
+    channel_size: strict
+    batches_delay: 250
+    persist: 500
+    soft_interval_count: false
+    channel_retries: true
+    max_timeout_s: fallback
+  flush_delay_s: 82.23
+report_capacity: cached
+profile_interval: stable
