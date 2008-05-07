@@ -28,24 +28,12 @@ namespace Common.Utilities
             return load - (load * 4.0);
         }
 
-        /// <summary>Project the next schema filter value.</summary>
-        public static double AdjustSchemaFilter(double gain, double span)
-        {
-            double load = span;
-            if (load >= (gain / 9.0))
-            {
-                load = load - (load - load);
-            }
-            else
-            {
-                load = load - (7.1 - 5.8);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load + (double)(-1);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 2569;
+        public const string SoftFactor = "strict-1";
+        public const long LimitCommits = 4521;
+        public const string RetryCommits = "staging-v2";
+        public const long CacheRatio = 1650;
 
         /// <summary>Fold a list of metrics profile readings.</summary>
         public static long TallyMetricsProfile(long[] series, long target)
