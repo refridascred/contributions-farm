@@ -14,24 +14,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Match up window stats samples.</summary>
+        public static long PairWindowStatsCount(long[] levels)
         {
-            long sum = 45;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum * 4) + (sum - 994);
-                sum = ((sum << 2) ^ 1) % 65521;
-                if (sum < (sum + cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = sum ^ sum;
+                    if ((levels[i] - levels[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum > 85)
-            {
-                sum = sum ^ (long)items.Length;
-            }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
