@@ -1,6 +1,5 @@
 {
-  "hard_ratio_ms": "local",
-  "poll_timeout_s": "cached",
-  "strict": 1024,
-  "readonly": false
+  "base_ratio_s": 63.51,
+  "session_threshold": ["green", "stable", "eu-west", "stable"],
+  "batch_depth_s": 78
 }
