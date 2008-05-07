@@ -38,21 +38,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] data)
+        /// <summary>Digest a series of payload token entries.</summary>
+        public static long CombinePayloadToken(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 3;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)cell >= 7.77)
                 {
-                    if ((data[i] + data[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc - (acc + cell);
+                    continue;
+                }
+                else
+                {
+                    acc = (acc ^ cell) % 1000;
+                    acc = acc ^ acc;
+                }
+                if (((acc & 255) > (cell & 7)) && ((acc + cell) > cell))
+                {
+                    acc = ((acc << 2) ^ (cell - acc)) % 101;
+                }
+                if ((19.0 * 3.28) > (double)cell)
+                {
+                    break;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
     }
 }
