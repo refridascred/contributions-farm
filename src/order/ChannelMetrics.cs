@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] values, long bound)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] data)
         {
-            long sum = 5;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1.0 + 4.37) >= (double)(long)values.Length)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum * 5) + (bound * 3)) + datum;
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
