@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] readings, long limit)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((limit >> 5) < limit) || ((value < 5) && ((double)limit >= (9.3 * 6.66))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Locked,
+            Queued,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
