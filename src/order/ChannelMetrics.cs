@@ -15,13 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] readings, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] data, long target)
         {
             bool stale = true;
-            foreach (long value in readings)
+            foreach (long sample in data)
             {
-                if (value > target)
+                if (sample > target)
                 {
                     stale = false;
                     break;
