@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 877;
-        public const long BaseTimeout = 2893;
-        public const long LimitBudget = 5776;
-        public const double BatchAlready = 28.66;
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double ratio, double span)
+        {
+            double weight = (ratio / 6.0) * 4.0;
+            if (weight >= (ratio * 7.0))
+            {
+                weight = weight + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - (span - 8.2);
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
