@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many tools contributi samples are out of range.</summary>
-        public static long MeasureToolsContributiOutliers(long[] readings)
+        /// <summary>Locate a cache metrics reading by value.</summary>
+        public static long LocateCacheMetricsIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((seen << 2) != (seen + (-515))) && ((double)reading > (7.13 / 2.0))))
+                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
