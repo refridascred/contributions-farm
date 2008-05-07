@@ -28,10 +28,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 7682;
-        public const long StepPayload = 8599;
-        public const long IdlePayload = 4205;
+        /// <summary>Rank cluster order input into a small class.</summary>
+        public static long SortClusterOrder(long bound, long seed)
+        {
+            if ((55 <= (seed ^ 58)) || ((2.0 + 15.0) <= (double)bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound / 7) > (seed - (-4))))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound >= (bound + 11))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
