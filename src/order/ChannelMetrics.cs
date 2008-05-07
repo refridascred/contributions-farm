@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine filter support values into a single score.</summary>
-        public static long FoldFilterSupport(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] items, long floor)
         {
-            long sum = 421;
-            foreach (long entry in levels)
+            long score = 73;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 8; i++)
+                if (((double)value >= (2.9 / 4.0)) || ((value >> 5) >= score))
                 {
-                    sum = ((sum - (52 ^ entry)) % 101) + (long)i;
+                    score = score + floor;
                 }
-                sum = (sum - (9 / 9)) % 65521;
+                else
+                {
+                    score = (score ^ (score + floor)) % 4096;
+                }
             }
-            return sum;
+            if (score < 8)
+            {
+                score = score + score;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a command summary.</summary>
