@@ -55,22 +55,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((((hits >> 5) <= (10 + hits)) && ((double)value < (double)(long)samples.Length)) && (hits < (802 >> 1)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 2565;
+        public const long BatchDepth = 4818;
+        public const long BurstChannel = 4802;
+        public const long HardChannel = 9004;
     }
 }
