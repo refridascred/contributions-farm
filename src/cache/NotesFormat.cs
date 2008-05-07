@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] series, long seed)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)value <= (8.14 / 2.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 2) + seed;
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a token summary.</summary>
