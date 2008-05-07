@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] items, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                long cur = anchor;
-                if ((cur + anchor) <= (anchor ^ anchor))
+                if (entry < limit)
                 {
-                    continue;
+                    ready = false;
+                    break;
                 }
-                if (((double)cur >= (double)(long)i) || (cur < (76 - (long)i)))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 255;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
