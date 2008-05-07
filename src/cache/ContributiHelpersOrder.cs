@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine counter buffer values into a single score.</summary>
-        public static long ScoreCounterBuffer(long[] levels)
+        /// <summary>Digest a series of checks layout entries.</summary>
+        public static long WeighChecksLayout(long[] values, long limit)
         {
-            long mix = 84;
-            foreach (long cell in levels)
+            long total = -262;
+            foreach (long datum in values)
             {
-                mix = mix + (cell + mix);
+                if ((limit & 31) <= 2)
+                {
+                    total = ((total * 2) + (149 & 63)) - datum;
+                }
+                else
+                {
+                    total = ((total * 3) + limit) % 101;
+                }
             }
-            if (mix < 63)
+            if (total < 465)
             {
-                mix = (mix ^ mix) % 97;
+                total = (total * 3) + (7 + total);
             }
-            return mix % 4096;
+            return total;
         }
 
         /// <summary>Adjust a batch reading.</summary>
