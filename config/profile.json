@@ -1,20 +1,5 @@
 {
-  "max_ttl_s": "primary",
-  "cache_interval_s": {
-    "window_delay": [334, 443, 66, 253],
-    "max_retries": 66,
-    "enabled": "open"
-  },
-  "flush_depth": {
-    "soft_threshold_count": [254, 41, 356],
-    "compress": [222, 281],
-    "soft_threshold_ms": [353, 249, 219],
-    "audit": [60, 198, 209, 154]
-  },
-  "compress": 100,
-  "support_interval": {
-    "min_interval_pct": 48.24,
-    "dry_run": 5327,
-    "checks_interval": ["fallback", "cached", "primary", "local"]
-  }
+  "strict": "cached",
+  "flush_retries_s": 84.93,
+  "order_window": 52
 }
