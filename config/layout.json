@@ -1,24 +1,6 @@
 {
-  "stats_ttl": {
-    "enabled": ["primary", "standard", "cached", "latest"],
-    "verbose": {
-      "persist": "blue",
-      "retry_timeout_s": 14,
-      "readonly": "local",
-      "metric_delay": "fallback",
-      "base_threshold_ms": "strict"
-    },
-    "flush_capacity_pct": {
-      "burst_delay": 9374,
-      "notes_window": "primary",
-      "format_ratio": "stable",
-      "cluster_ttl": 88.5,
-      "batch_retries_pct": "blue"
-    },
-    "batch_size_ms": "fallback"
-  },
-  "sync_timeout_count": "fallback",
-  "burst_size_s": "latest",
-  "dry_run": true,
-  "warm_size": 991
+  "filter_retries": [199, 92],
+  "enabled": "legacy",
+  "min_timeout_count": "green",
+  "command_size": 0.99
 }
