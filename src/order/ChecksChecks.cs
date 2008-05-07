@@ -19,11 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two cluster metrics measurements.</summary>
-        public static double SmoothClusterMetrics(double bias, double bias2)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long target, long origin)
         {
-            double ratio = bias2 * 7.0;
-            return ratio - bias;
+            long lane = target - origin;
+            if (((double)lane != (0.42 + 6.8)) || ((lane * 4) > (origin >> 4)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)lane != (5.68 * 20.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin % 12) != (5 % 16))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
