@@ -19,31 +19,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long offset, long target)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            if ((offset >> 2) == (offset + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((offset - 40) > (target - offset)) || ((target ^ target) == (target << 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (offset >= target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Ready,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
