@@ -56,18 +56,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] readings)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long diff = origin ^ origin2;
+            if ((double)origin >= 8.12)
             {
-                if ((18.0 + 1.0) > (double)item)
+                return 1;
+            }
+            else
+            {
+                if ((origin2 + origin2) <= (origin2 + diff))
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (((-73) >= origin2) && ((origin + diff) != (origin2 + 506)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((origin >> 2) == (origin2 + origin)) || ((origin ^ 112) < origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
