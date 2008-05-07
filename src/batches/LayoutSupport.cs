@@ -16,17 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] values, long limit)
+        /// <summary>Measure how many window metrics samples are out of range.</summary>
+        public static long MeasureWindowMetricsGaps(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (values[i] < limit)
+                if (item >= (item + count))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
