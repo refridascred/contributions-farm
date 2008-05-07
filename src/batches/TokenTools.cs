@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const long BurstFactor = 7739;
         public const string HardWindow = "fallback-1";
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] samples, long origin)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (origin < (origin - origin))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
