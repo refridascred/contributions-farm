@@ -27,12 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Draft,
-            Done,
-            Dropped,
+            public double Count { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
