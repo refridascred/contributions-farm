@@ -1,10 +1,7 @@
-id,label,region
-1,standard,318
-2,staging,121
-3,latest,725
-4,548,760
-5,84.88,189
-6,stable,fallback
-7,33.62,open
-8,staging,eu-west
-9,340,193
+id,count,weight,rank,state
+1,74.71,edge,934,primary
+2,4.12,697,staging,721
+3,eu-west,local,96.85,standard
+4,89.87,local,98.12,stable
+5,37.14,fallback,28.43,cached
+6,517,green,760,blue
