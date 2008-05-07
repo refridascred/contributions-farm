@@ -15,13 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] data)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((count >= cell) && ((cell + cell) < 69))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a context record.</summary>
