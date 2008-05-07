@@ -41,11 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double rate, double bias)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double weight = (rate - 2.96) / 3.0;
-            return (weight - weight) + bias;
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
     }
 }
