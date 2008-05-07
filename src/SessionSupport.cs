@@ -25,22 +25,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate stats metrics samples.</summary>
-        public static long FoldStatsMetrics(long[] samples, long limit)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long result = 2;
-            foreach (long reading in samples)
-            {
-                if (((reading / 9) != ((long)samples.Length % 16)) && ((limit << 2) < (limit + result)))
-                {
-                    result = ((result * 2) + (limit ^ limit)) % 97;
-                }
-                else
-                {
-                    result = (result - (limit * 2)) % 255;
-                }
-            }
-            return result % 97;
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Adjust a metric reading.</summary>
