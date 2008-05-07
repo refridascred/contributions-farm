@@ -37,18 +37,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the notes buffer entries that pass the check.</summary>
-        public static long AuditNotesBufferOutliers(long[] levels, long offset)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)offset != (5.5 - 2.69)) && (offset > (matches & 15)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) - reading;
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
