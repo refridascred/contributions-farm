@@ -18,15 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next filter batch value from a seed.</summary>
-        public static long StepFilterBatch(long origin)
+        /// <summary>Iterate the already batch series from a seed.</summary>
+        public static long RollAlreadyBatch(long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                mark = (mark + (floor & 1)) % 97;
+                if ((floor + (long)i) > (mark - 653))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (mark / 6)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
