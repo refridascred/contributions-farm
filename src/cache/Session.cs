@@ -46,13 +46,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Count the window cluster entries that pass the check.</summary>
+        public static long AuditWindowClusterOutliers(long[] series)
         {
-            public string Count { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((double)seen >= (4.0 * 7.97))
+                {
+                    seen = (seen + 3) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
