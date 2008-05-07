@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstWidth = 86.79;
-        public const string IdleSupport = "legacy";
-        public const double LimitSupport = 67.73;
-        public const long CacheSupport = 6983;
-        public const long HardBudget = 4989;
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double weight, double offset)
+        {
+            double weight2 = (double)73;
+            return (weight2 - offset) + weight;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstSession = 5885;
