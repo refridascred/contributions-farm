@@ -27,15 +27,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] levels)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                if (sample >= (sample >> 4))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Digest a series of payload token entries.</summary>
