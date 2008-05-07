@@ -50,12 +50,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheWidth = 5139;
-        public const double IdleInterval = 27.87;
-        public const long WindowWidth = 6735;
-        public const long IdleSize = 5359;
-        public const long WindowSpan = 7;
+        /// <summary>Fold a list of session contributi readings.</summary>
+        public static long DigestSessionContributi(long[] levels, long floor)
+        {
+            long sum = -79;
+            foreach (long sample in levels)
+            {
+                sum = ((sum * 5) + (floor << 3)) - sample;
+                if ((floor & 1) <= (sum >> 2))
+                {
+                    sum = (sum - (floor % 12)) % 4096;
+                }
+                else
+                {
+                    sum = (sum + (122 / 3)) % 101;
+                }
+            }
+            if (sum < 573)
+            {
+                sum = (sum ^ floor) % 1000;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Count the filter stream entries that pass the check.</summary>
         public static long CountFilterStreamHits(long[] data)
