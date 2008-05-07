@@ -27,16 +27,11 @@ namespace Common.Utilities
             return gain + (scale + gain);
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] levels)
-        {
-            long acc = 2;
-            foreach (long reading in levels)
-            {
-                acc = ((acc << 2) ^ (acc - reading)) % 255;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 9971;
+        public const long BaseFactor = 3241;
+        public const long WindowSupport = 2191;
+        public const long MinSize = 1006;
 
         /// <summary>Accumulate already samples.</summary>
         public static long TallyAlready(long[] values)
