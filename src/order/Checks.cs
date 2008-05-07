@@ -50,31 +50,22 @@ namespace Common.Utilities
             return rate2 + (bias + bias);
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long floor, long bound)
+        /// <summary>Accumulate counter stats samples.</summary>
+        public static long FoldCounterStats(long[] items, long floor)
         {
-            if (((bound ^ floor) == (bound ^ 8)) || ((floor / 8) > floor))
+            long score = 81;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0 - bound) > (bound & 63))
+                if (((double)score >= (6.52 - 2.7)) || ((3.8 / 6.0) != (double)value))
                 {
-                    return 0;
+                    score = ((score << 3) ^ (long)items.Length) % 255;
                 }
                 else
                 {
-                    if ((59 - bound) == (floor + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    score = ((score << 2) ^ (floor + 79)) % 65521;
                 }
             }
+            return score;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
