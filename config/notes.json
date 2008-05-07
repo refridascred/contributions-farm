@@ -1,6 +1,6 @@
 {
-  "poll_interval": [283, 56, 210, 262],
-  "cache_limit_count": 3.94,
-  "hard_ratio": "green",
-  "soft_limit": 34.92
+  "hard_ratio_ms": "local",
+  "poll_timeout_s": "cached",
+  "strict": 1024,
+  "readonly": false
 }
