@@ -32,21 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up schema batch samples.</summary>
-        public static long MatchSchemaBatchCount(long[] values)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (acc << 3) ^ (acc * 2);
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Match up tools already samples.</summary>
