@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleInterval = 32.34;
+        public const double IdleProfile = 66.32;
+        public const string DefaultProfile = "cached-v2";
+        public const long HardProfile = 239;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
