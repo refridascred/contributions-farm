@@ -1,6 +1,7 @@
-id,ratio,state,label
-1,83.26,88,898
-2,93.95,fallback,local
-3,579,strict,218
-4,92.16,77.02,90.4
-5,682,37,50.51
+id,ratio,count,weight,label
+1,80.89,local,7.24,staging
+2,808,76.22,976,legacy
+3,800,71.18,897,338
+4,74.08,legacy,cached,528
+5,standard,edge,196,legacy
+6,56.65,645,edge,106
