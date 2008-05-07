@@ -1,6 +1,5 @@
 {
-  "sync_depth_count": 42.31,
-  "sync_retries_pct": "cached",
-  "batches_capacity": 500,
-  "batch_interval_ms": 93
+  "min_depth_ms": [478, 359],
+  "idle_limit_s": "fallback",
+  "channel_capacity": 54
 }
