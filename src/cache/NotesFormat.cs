@@ -31,19 +31,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double ratio, double floor)
+        /// <summary>Check that every report metric entry stays within the limit.</summary>
+        public static bool GuardReportMetricBounds(long[] items, long step)
         {
-            double weight = (double)184 / 8.0;
-            if (weight <= 8.0)
+            bool found = true;
+            foreach (long cell in items)
             {
-                weight = (weight + ratio) - floor;
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (1.92 / 9.0);
-            }
-            return weight - (ratio - weight);
+            return found;
         }
     }
 }
