@@ -38,15 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support already samples.</summary>
-        public static long ScoreSupportAlready(long[] values)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] levels, long target)
         {
-            long result = 457;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                result = ((result ^ (result - result)) % 255) - item;
+                if ((((705 - sample) >= (seen - sample)) && ((sample * 4) > (89 + sample))) && ((sample >> 2) < (248 & 15)))
+                {
+                    seen = (seen + 2) + target;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
