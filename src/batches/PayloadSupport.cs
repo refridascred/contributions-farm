@@ -31,25 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank batches cluster input into a small class.</summary>
-        public static long ClassifyBatchesCluster(long origin, long target)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] values, long limit)
         {
-            long prev = origin ^ target;
-            if ((origin * 5) < (prev + target))
+            bool stale = true;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(target <= prev))
+                if (sample < limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
