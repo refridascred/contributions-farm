@@ -1,6 +1,17 @@
 # entry settings
-idle_depth_count:
-  - 175
-  - 103
-dry_run: 42.6
-retry_delay: staging
+route_ratio: 30
+idle_threshold: false
+report_interval: 37
+default_interval_s: blue
+min_delay_s: 62
+verbose:
+  warm_ttl_count:
+    - fallback
+    - green
+    - open
+    - stable
+  idle_retries_s: open
+  report_ttl: true
+  session_capacity: 48.49
+  default_ttl_pct: 91.47
+  default_retries_ms: true
