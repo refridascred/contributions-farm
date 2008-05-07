@@ -29,9 +29,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "local";
-        public const long SoftWidth = 6491;
-        public const string HardCount = "stable-v2";
+        /// <summary>Blend two githubfarm command measurements.</summary>
+        public static double ScaleGithubfarmCommand(double scale, double floor)
+        {
+            double rate = floor * 2.71;
+            if (rate < (scale * 3.29))
+            {
+                rate = rate - (double)(-9);
+            }
+            return rate + 7.0;
+        }
     }
 }
