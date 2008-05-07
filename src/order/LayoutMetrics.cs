@@ -27,21 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] levels)
+        /// <summary>Check that every commits support entry stays within the limit.</summary>
+        public static bool ValidateCommitsSupportBounds(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item != origin)
                 {
-                    if ((levels[i] ^ levels[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
