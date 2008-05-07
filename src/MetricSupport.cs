@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] data)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (!((cell >> 1) >= (matches ^ 90)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Draft,
+            Stale,
         }
 
         /// <summary>Define record limits and defaults.</summary>
