@@ -1,5 +1,8 @@
 {
-  "compress": "open",
-  "enabled": 764,
-  "base_size_s": 30
+  "soft_capacity_pct": 14.17,
+  "readonly": "stable",
+  "default_size_s": "open",
+  "format_window": [423, 289, 27, 56],
+  "editor_interval": "open",
+  "githubfarm_size": 2199
 }
