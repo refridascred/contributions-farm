@@ -46,23 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] items, long bound)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (bound < 34)
-                {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxCount = 6.9;
+        public const string DefaultCount = "local";
+        public const string MaxCluster = "latest";
+        public const long WindowCluster = 1376;
+        public const string SoftCluster = "legacy-v2";
 
         /// <summary>Iterate the window filter series from a seed.</summary>
         public static long RollWindowFilter(long origin)
