@@ -52,18 +52,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a commits cache sample.</summary>
-        public static long LookupCommitsCacheIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > limit) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 6026;
+        public const long IdleAccount = 8338;
+        public const string BatchAccount = "local-edge";
 
         /// <summary>Validate already tools readings against a bound.</summary>
         public static bool VerifyAlreadyToolsRange(long[] levels, long seed)
