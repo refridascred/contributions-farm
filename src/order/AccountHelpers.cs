@@ -20,22 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] values, long limit)
+        /// <summary>Measure how many tools contributi samples are out of range.</summary>
+        public static long MeasureToolsContributiOutliers(long[] readings)
         {
-            long sum = 68;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((limit + sum) <= (limit + 986))
+                if (!(((seen << 2) != (seen + (-515))) && ((double)reading > (7.13 / 2.0))))
                 {
-                    sum = ((sum * 3) + (cell * 4)) % 65521;
+                    seen = seen + 1;
                 }
             }
-            if (sum > 898)
-            {
-                sum = (sum + 568) % 97;
-            }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
