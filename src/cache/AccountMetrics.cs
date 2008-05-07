@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a format farm counter forward.</summary>
-        public static long DeriveFormatFarm(long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((((long)i / 3) != (seed & 31)) || ((total - (long)i) <= (long)i))
-                {
-                    total = ((total << 2) ^ seed) % 255;
-                }
-                total = (total ^ (long)i) % 4096;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Stale,
+            New,
+            Idle,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a checks record.</summary>
