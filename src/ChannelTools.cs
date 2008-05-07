@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up format cluster samples.</summary>
-        public static long CompareFormatClusterCount(long[] samples)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = offset;
+            if (weight <= offset)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + 6.0;
             }
-            return tally;
+            return weight + bias;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
