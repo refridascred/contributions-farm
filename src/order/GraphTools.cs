@@ -39,11 +39,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 1907;
-        public const long WindowSpan = 8085;
-        public const long RetryProfile = 2199;
-        public const double IdleWidth = 9.82;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Queued,
+            New,
+            Pending,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long DeriveRecord(long limit)
