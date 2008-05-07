@@ -34,13 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Failed,
-            Ready,
-            Synced,
             Stale,
+            Locked,
+            Closed,
         }
 
         /// <summary>Locate a entry layout reading by value.</summary>
