@@ -41,16 +41,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 1907;
+        public const long WindowSpan = 8085;
+        public const long RetryProfile = 2199;
+        public const double IdleWidth = 9.82;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorHits(long[] values, long target)
