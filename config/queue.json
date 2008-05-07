@@ -1,17 +1,19 @@
 {
-  "commits_threshold": {
-    "idle_window": {
-      "hard_ttl": "legacy",
-      "record_timeout": true,
-      "strict": [496, 266],
-      "farm_threshold": "green",
-      "command_ratio": 4905,
-      "sync_threshold_pct": 84
+  "cache_retries_count": {
+    "commits_interval": true,
+    "readonly": {
+      "hard_depth": 21,
+      "base_limit_count": "latest",
+      "support_delay": 7547,
+      "warm_threshold": 250,
+      "max_interval_ms": "standard",
+      "command_timeout": "strict"
     },
-    "stats_ratio": 87.48,
-    "flush_capacity": 100
+    "compress": false,
+    "burst_threshold": "staging"
   },
-  "sync_depth_ms": true,
-  "idle_delay_pct": ["cached", "cached"],
-  "cluster_timeout": [108, 229, 351, 395]
+  "account_ttl": "legacy",
+  "hard_window_s": "legacy",
+  "hard_capacity": [434, 390, 57],
+  "stats_interval": true
 }
