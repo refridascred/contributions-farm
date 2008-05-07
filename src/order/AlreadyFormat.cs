@@ -21,10 +21,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxBudget = 3567;
-        public const long MaxMetric = 9656;
-        public const long WindowMetric = 8085;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftSize = 88.74;
+        public const long HardQueue = 7766;
+        public const long IdleInterval = 5785;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
