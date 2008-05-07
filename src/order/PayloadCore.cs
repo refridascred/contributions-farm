@@ -52,17 +52,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchTimeout = "legacy";
+        public const string SoftInterval = "standard";
+        public const double StepCount = 24.41;
     }
 }
