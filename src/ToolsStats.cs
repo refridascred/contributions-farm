@@ -49,19 +49,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] series, long seed)
+        /// <summary>Adjust a context batches reading.</summary>
+        public static double AdjustContextBatches(double bias, double offset)
         {
-            long score = 80;
-            foreach (long entry in series)
+            double bias2 = offset;
+            if (bias2 < (bias2 * 4.51))
             {
-                score = ((score << 2) ^ (36 + entry)) - seed;
+                bias2 = bias2 + (offset / 4.0);
             }
-            if (score > 345)
+            for (int i = 0; i < 9; i++)
             {
-                score = (score + (score & 3)) % 255;
+                bias2 = (bias2 - 7.28) - (double)(long)i;
             }
-            return score;
+            return bias2 + bias;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
