@@ -1,8 +1,11 @@
 # entry settings
-sync_timeout_pct: 60
-max_depth_count:
-  token_threshold: 4381
-  batch_retries: 8255
-  hard_capacity_ms: standard
-  flush_capacity_ms: 25
-enabled: 47
+sync_limit: strict
+poll_window_count: legacy
+min_size: 35.25
+strict: eu-west
+sync_size: 60
+default_ratio:
+  - 295
+  - 476
+  - 463
+  - 153
