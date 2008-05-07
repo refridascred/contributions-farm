@@ -13,20 +13,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] data)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] readings, long offset)
         {
-            long anchor = 1;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 2) + value) % 255;
-                anchor = (anchor << 2) ^ value;
+                if ((readings[i] == offset) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 0)
-            {
-                anchor = (anchor ^ (anchor % 3)) % 65521;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
