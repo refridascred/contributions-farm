@@ -48,19 +48,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] series, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardTimeout = 7813;
+        public const long LimitCount = 7208;
+        public const long BatchAccount = 5211;
     }
 }
