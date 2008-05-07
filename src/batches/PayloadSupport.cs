@@ -20,19 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] samples, long offset)
+        /// <summary>Digest a series of batches graph entries.</summary>
+        public static long FoldBatchesGraph(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long mix = -46;
+            foreach (long reading in data)
             {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix << 3) ^ (reading - mix);
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Rank batches cluster input into a small class.</summary>
