@@ -75,11 +75,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Count the checks layout entries that pass the check.</summary>
+        public static long MeasureChecksLayoutOutliers(long[] values)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (cell > hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
