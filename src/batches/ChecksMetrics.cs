@@ -22,21 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stats token samples.</summary>
-        public static long CompareStatsTokenCount(long[] series)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark << 2) ^ ((long)i >> 5)) % 65521;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a layout entry.</summary>
