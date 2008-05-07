@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRatio = 87.68;
-        public const long MinRoute = 4947;
-        public const double LimitRoute = 35.46;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((target >= (target - item)) && ((item + target) >= (matches - target)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsGaps(long[] data, long seed)
