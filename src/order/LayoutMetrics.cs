@@ -28,13 +28,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            Dropped,
+            Queued,
+            Stale,
         }
     }
 }
