@@ -84,21 +84,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepRatio = 8320;
+        public const long CacheScore = 9069;
+        public const double BaseFormat = 41.21;
+        public const long RetryFormat = 1645;
     }
 }
