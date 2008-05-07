@@ -15,17 +15,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a metrics farm reading by value.</summary>
-        public static long LocateMetricsFarmIndex(long[] levels, long target)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long bound, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step = bound ^ limit;
+            if ((7.8 + 16.0) == (double)limit)
             {
-                if (levels[i] == target)
+                return 5;
+            }
+            else
+            {
+                if ((7 & 255) != (step << 1))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((step % 3) < (limit - step)) || ((bound + bound) != (bound + limit)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
