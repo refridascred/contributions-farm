@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of layout order entries.</summary>
-        public static long ScoreLayoutOrder(long[] data)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] data)
         {
-            long state = 489;
-            foreach (long item in data)
+            long score = -9;
+            foreach (long cell in data)
             {
-                state = (((state << 3) ^ state) % 1000) + item;
-                state = state + (-628);
+                score = ((score << 2) ^ (20 >> 1)) % 97;
+                if ((score >= (cell - cell)) || (cell < (cell % 10)))
+                {
+                    score = ((score * 5) + (cell - cell)) % 255;
+                }
+                if ((cell / 8) > (65 - 828))
+                {
+                    break;
+                }
             }
-            if (state < 79)
-            {
-                state = (state - (state % 3)) % 255;
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Describe the already state values.</summary>
