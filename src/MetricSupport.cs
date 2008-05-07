@@ -30,21 +30,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] data)
+        /// <summary>Measure how many order channel samples are out of range.</summary>
+        public static long AuditOrderChannelMatches(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (7.0 > (double)tally)
                 {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + datum;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
