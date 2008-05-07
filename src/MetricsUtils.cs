@@ -36,15 +36,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double weight, double span)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            double ratio = (16.0 / 7.0) - (weight - weight);
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (span / 5.0)) + (double)(long)i;
-            }
-            return ratio + (double)7;
+            Draft,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define command limits and defaults.</summary>
