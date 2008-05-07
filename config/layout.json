@@ -1,5 +1,5 @@
 {
-  "default_window_s": false,
-  "sync_retries_ms": true,
-  "audit": ["fallback", "local", "edge"]
+  "poll_window": false,
+  "retry_threshold": [247, 372],
+  "base_window_count": 69.98
 }
