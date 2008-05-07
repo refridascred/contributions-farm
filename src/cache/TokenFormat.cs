@@ -47,14 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] readings, long bound)
         {
-            New,
-            Dropped,
-            Synced,
-            Failed,
-            Stale,
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
