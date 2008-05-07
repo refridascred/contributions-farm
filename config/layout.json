@@ -1,12 +1,5 @@
 {
-  "soft_capacity_ms": "eu-west",
-  "soft_timeout_s": [355, 294, 219, 248],
-  "profile_window": {
-    "enabled": false,
-    "flush_depth_count": 1472,
-    "strict": "edge",
-    "poll_ttl": [66, 10, 424, 20]
-  },
-  "flush_interval_ms": 48.25,
-  "persist": 1024
+  "retry_limit_s": false,
+  "cluster_capacity": 49.23,
+  "channel_ratio": 16.56
 }
