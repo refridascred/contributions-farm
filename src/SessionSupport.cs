@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long BaseSession = 407;
         public const double BurstSession = 15.09;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] values, long limit)
+        /// <summary>Accumulate stats metrics samples.</summary>
+        public static long FoldStatsMetrics(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 2;
+            foreach (long reading in samples)
             {
-                if ((values[i] >= limit) && ((values[i] % 2) != 0))
+                if (((reading / 9) != ((long)samples.Length % 16)) && ((limit << 2) < (limit + result)))
                 {
-                    return (long)i;
+                    result = ((result * 2) + (limit ^ limit)) % 97;
+                }
+                else
+                {
+                    result = (result - (limit * 2)) % 255;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Classify a githubfarm payload pair into a bucket.</summary>
