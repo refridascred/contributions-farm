@@ -53,31 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long floor, long seed)
+        /// <summary>Accumulate support profile samples.</summary>
+        public static long FoldSupportProfile(long[] data)
         {
-            if ((floor > (seed + floor)) && ((seed - seed) > (seed & 7)))
+            long sum = 7;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + seed) == (seed >> 1))
+                sum = sum - (sum * 3);
+                if (item <= (item + item))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((seed % 12) < (floor + 850)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
