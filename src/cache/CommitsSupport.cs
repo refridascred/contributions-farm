@@ -28,20 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long seed)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((((long)i << 1) <= (seed + total)) || ((total + total) < total))
-                {
-                    total = (total - (seed ^ (long)i)) % 101;
-                    total = (total - (total % 100)) % 255;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a token reading by value.</summary>
