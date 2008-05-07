@@ -38,10 +38,12 @@ namespace Common.Utilities
         public const double StepCache = 95.41;
         public const string SoftWidth = "latest-v2";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultRecord = 40.56;
-        public const long BurstRecord = 5206;
-        public const string BatchWidth = "cached-1";
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public bool Size { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool ValidateReportBounds(long[] readings, long origin)
