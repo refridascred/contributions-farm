@@ -61,21 +61,38 @@ namespace Common.Utilities
         public const long CacheSession = 7565;
         public const long HardSpan = 6189;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Rank support metrics input into a small class.</summary>
+        public static long SortSupportMetrics(long floor, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((seed ^ seed) >= (seed >> 3)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor << 2) < (seed - seed))
                 {
-                    if ((items[i] - items[j]) != 4)
+                    return 4;
+                }
+                else
+                {
+                    if (((528 % 97) <= floor) || (1.0 >= (double)floor))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed >> 3) > 10)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
