@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Roll a checks account counter forward.</summary>
+        public static long RollChecksAccount(long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (((origin + total) <= (origin / 3)) || ((total / 2) > (-1)))
-                {
-                    total = (total + total) % 101;
-                }
-                else
-                {
-                    total = (total + (-2)) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 65521;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Hold a contributi record.</summary>
