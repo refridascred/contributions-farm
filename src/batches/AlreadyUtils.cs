@@ -28,12 +28,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultBudget = 8528;
-        public const long MinSpan = 5130;
-        public const long WindowRatio = 8947;
-        public const long HardRatio = 4678;
-        public const long IdleChecks = 7745;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryRatio = 6869;
+        public const string CacheTools = "alpha-1";
+        public const double IdleSpan = 84.59;
+        public const double MinTools = 66.95;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long BucketLayout(long bound, long seed)
