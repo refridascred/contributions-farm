@@ -12,27 +12,19 @@ namespace Common.Utilities
         public const long HardLevel = 1300;
         public const string DefaultLevel = "fallback-v2";
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] series, long origin)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] samples, long target)
         {
-            long mix = 2;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                mix = (mix << 3) ^ (mix ^ origin);
-                if (origin >= (cell ^ origin))
+                if (datum < target)
                 {
-                    mix = mix + cell;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ cell) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (mix < 1)
-            {
-                mix = (mix << 2) ^ (mix % 10);
-            }
-            return mix % 65521;
+            return flag;
         }
 
         /// <summary>Describe the tools mode values.</summary>
