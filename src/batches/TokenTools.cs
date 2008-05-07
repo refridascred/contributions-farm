@@ -16,19 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] items, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (cell > offset)
+                if (reading <= bound)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Describe the queue level values.</summary>
