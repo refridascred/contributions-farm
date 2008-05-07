@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] samples, long bound)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Stale,
+            Paused,
+            Ready,
+            Closed,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
