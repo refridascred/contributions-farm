@@ -1,14 +1,13 @@
 # githubfarm settings
-batch_depth: 68
-verbose:
-  default_capacity: 30
-  warm_threshold_count: 4.2
-  base_size:
-    - blue
-    - stable
-    - open
-  idle_timeout: false
-  readonly: 713
-queue_timeout: false
-max_timeout_pct: 711
-min_depth_count: edge
+max_timeout_pct:
+  base_ttl: 22
+  soft_ttl: 2.76
+  cluster_size:
+    - 52
+    - 117
+    - 106
+  readonly: staging
+readonly: 35.83
+enabled: fallback
+support_size: 30
+hard_limit_count: true
