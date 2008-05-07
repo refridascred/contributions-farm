@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double rate, double span)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double mean = 9.0;
-            if (mean > (8.0 / 3.0))
-            {
-                mean = (mean + span) - rate;
-            }
-            return mean - (mean * 8.1);
+            Draft,
+            Synced,
+            Failed,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the checks state values.</summary>
