@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long MinRoute = 4947;
         public const double LimitRoute = 35.46;
 
-        /// <summary>Match up stream cache samples.</summary>
-        public static long MatchStreamCacheCount(long[] levels)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed << 2) > tally)
                 {
-                    if ((levels[i] + levels[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) + value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit tools entry readings against a rule.</summary>
