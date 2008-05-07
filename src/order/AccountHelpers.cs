@@ -77,20 +77,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)(long)i <= (double)score)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = ((score * 3) + (long)i) % 1000;
-                    score = (score ^ (seed & 1)) % 97;
+                    if ((readings[i] ^ readings[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return matches;
         }
     }
 }
