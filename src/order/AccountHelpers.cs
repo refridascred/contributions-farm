@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] series, long offset)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of token entry readings.</summary>
