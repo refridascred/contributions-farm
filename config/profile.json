@@ -1,8 +1,8 @@
 {
-  "account_capacity": 64.68,
-  "max_capacity_ms": [199, 330],
-  "farm_depth": "staging",
-  "context_capacity": 3.64,
-  "soft_timeout_s": 8654,
-  "enabled": 39
+  "cache_window": "latest",
+  "stats_window": 34,
+  "burst_window": 92.63,
+  "dry_run": false,
+  "window_capacity": 63.79,
+  "strict": "latest"
 }
