@@ -15,38 +15,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a stats account value against two limits.</summary>
-        public static long BucketStatsAccount(long target, long bound)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            if ((-57) >= target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((18.0 + 4.5) >= (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9.8 * 6.3) != (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(target >= (126 + bound)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            Locked,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the notes mode values.</summary>
