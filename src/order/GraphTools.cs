@@ -61,16 +61,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] data)
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor + 554) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
