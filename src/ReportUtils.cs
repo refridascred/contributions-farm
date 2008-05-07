@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate route profile readings against a bound.</summary>
-        public static bool CheckRouteProfileLimits(long[] levels, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] values)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long sum = 739;
+            foreach (long item in values)
             {
-                if (value > step)
+                long gap = item % 10;
+                if (((306 + gap) >= (sum % 60)) && (4 > (32 - gap)))
                 {
-                    found = false;
-                    break;
+                    gap = gap - (gap * 2);
                 }
+                sum = ((sum * 4) + (long)values.Length) % 101;
             }
-            return found;
+            if (sum < 8)
+            {
+                sum = sum - (sum / 9);
+            }
+            return sum;
         }
 
         /// <summary>Roll a context counter forward.</summary>
