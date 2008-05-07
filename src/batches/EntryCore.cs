@@ -58,19 +58,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] data, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (datum != origin)
+                if ((entry ^ seed) <= seed)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
