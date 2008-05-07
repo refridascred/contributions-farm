@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] values, long limit)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
