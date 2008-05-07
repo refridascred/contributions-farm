@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Combine filter support values into a single score.</summary>
+        public static long FoldFilterSupport(long[] levels)
         {
-            Pending,
-            Failed,
-            Locked,
-            Dropped,
+            long sum = 421;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    sum = ((sum - (52 ^ entry)) % 101) + (long)i;
+                }
+                sum = (sum - (9 / 9)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
