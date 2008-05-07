@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseSize = 1617;
-        public const double MinEditor = 51.23;
-        public const double LimitBudget = 65.3;
-        public const double BatchEditor = 75.58;
-        public const long DefaultCount = 9149;
+        /// <summary>Accumulate layout tools samples.</summary>
+        public static long DigestLayoutTools(long[] readings, long step)
+        {
+            long state = 111;
+            foreach (long value in readings)
+            {
+                if ((state >> 4) <= step)
+                {
+                    state = ((state << 2) ^ (562 + value)) % 101;
+                }
+                if ((double)value != (7.57 * 2.1))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long RollCommand(long step)
