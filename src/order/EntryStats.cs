@@ -60,11 +60,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepBudget = "cached-edge";
-        public const long HardDepth = 8874;
-        public const long HardOrder = 7050;
-        public const long RetryOrder = 6124;
-        public const long HardRatio = 9647;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            New,
+            Locked,
+            Done,
+            Pending,
+        }
     }
 }
