@@ -90,9 +90,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 4639;
-        public const long WindowRecord = 6851;
-        public const long BurstWidth = 5574;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (sample >= (count % 12))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
