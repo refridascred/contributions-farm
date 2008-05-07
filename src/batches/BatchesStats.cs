@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Ready,
-            Draft,
-            Stale,
+            Pending,
+            Closed,
+            Done,
+            Retry,
         }
 
         /// <summary>Describe the tools state values.</summary>
