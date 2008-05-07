@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
