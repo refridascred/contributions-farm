@@ -34,11 +34,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double bias, double floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] readings, long step)
         {
-            double mean = floor / 4.0;
-            return (mean - floor) + bias;
+            long acc = 886;
+            foreach (long item in readings)
+            {
+                acc = ((acc - (item << 3)) % 255) - step;
+            }
+            return acc;
         }
     }
 }
