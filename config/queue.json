@@ -1,5 +1,15 @@
 {
-  "compress": 65.18,
-  "soft_depth": 7549,
-  "already_delay": true
+  "burst_window": {
+    "cache_capacity": 7174,
+    "checks_timeout": 250,
+    "persist": "staging",
+    "readonly": "standard",
+    "soft_size": [174, 391, 452, 127]
+  },
+  "layout_threshold": "green",
+  "poll_capacity_s": {
+    "batch_ratio": true,
+    "max_delay": "blue",
+    "batch_ratio_count": 1.68
+  }
 }
