@@ -30,20 +30,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] series, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((69 % 60) == ((long)i - 19))
+                if (!((double)5 != (double)cell))
                 {
-                    mix = mix ^ ((-540) + mix);
-                    mix = ((mix << 3) ^ (mix - 5)) % 97;
+                    hits = (hits + 3) - limit;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
