@@ -1,19 +1,7 @@
 {
-  "cache_retries_count": {
-    "commits_interval": true,
-    "readonly": {
-      "hard_depth": 21,
-      "base_limit_count": "latest",
-      "support_delay": 7547,
-      "warm_threshold": 250,
-      "max_interval_ms": "standard",
-      "command_timeout": "strict"
-    },
-    "compress": false,
-    "burst_threshold": "staging"
-  },
-  "account_ttl": "legacy",
-  "hard_window_s": "legacy",
-  "hard_capacity": [434, 390, 57],
-  "stats_interval": true
+  "default_interval": true,
+  "dry_run": 30,
+  "commits_threshold": false,
+  "batch_interval": 30,
+  "idle_timeout_count": false
 }
