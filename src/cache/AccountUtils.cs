@@ -26,29 +26,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((total << 1) <= (total - seed)) || ((total + (long)i) <= total))
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total ^ (seed >> 5)) % 255;
-                }
-                if ((long)i >= ((-50) + seed))
-                {
-                    total = total + seed;
-                    total = (total << 2) ^ total;
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstSize = 5029;
+        public const double BasePayload = 20.2;
+        public const long StepWidth = 8347;
+        public const long RetryPayload = 426;
+        public const long WindowPayload = 4102;
     }
 }
