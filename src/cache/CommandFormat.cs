@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Combine record farm values into a single score.</summary>
+        public static long CombineRecordFarm(long[] levels, long target)
         {
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
+            long carry = 804;
+            foreach (long datum in levels)
+            {
+                if ((double)datum > (double)carry)
+                {
+                    carry = (((carry * 2) + (datum / 6)) % 1000) - target;
+                }
+            }
+            if (carry > 17)
+            {
+                carry = ((carry << 3) ^ carry) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metrics header.</summary>
