@@ -35,19 +35,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] samples, long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long state = 580;
+            foreach (long value in data)
             {
-                if (cell < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state - (value + (long)data.Length)) % 65521;
             }
-            return ok;
+            return state % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
