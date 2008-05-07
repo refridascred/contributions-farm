@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long RetryMetric = 8693;
         public const string BurstMetric = "staging-1";
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] series, long bound)
         {
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank context input into a small class.</summary>
