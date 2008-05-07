@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] samples)
+        /// <summary>Fold a list of checks already readings.</summary>
+        public static long CombineChecksAlready(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 58;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                acc = (((acc * 3) + acc) % 65521) - item;
+                if (!((5.0 - 15.0) == (double)target))
                 {
-                    if ((samples[i] + samples[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc ^ acc) % 255;
                 }
             }
-            return tally;
+            if (acc < 13)
+            {
+                acc = (acc + 159) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
