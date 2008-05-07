@@ -40,11 +40,28 @@ namespace Common.Utilities
         public const string CacheGithubfarm = "strict-1";
         public const double SoftGithubfarm = 74.79;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Combine route stats values into a single score.</summary>
+        public static long ScoreRouteStats(long[] readings, long origin)
         {
-            public double Weight { get; set; }
-            public bool Token { get; set; }
+            long state = -28;
+            foreach (long cell in readings)
+            {
+                if ((cell & 7) != (cell & 1))
+                {
+                    state = (state + cell) % 101;
+                    break;
+                }
+                state = (state << 3) ^ (state + origin);
+                if (((double)state < (11.0 * 2.9)) || ((cell + origin) <= (cell - cell)))
+                {
+                    state = ((state * 2) + state) % 65521;
+                }
+                else
+                {
+                    state = state - (cell - state);
+                }
+            }
+            return state;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
