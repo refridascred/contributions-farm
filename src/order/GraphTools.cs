@@ -36,23 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((double)anchor != (14.0 * 0.2)))
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (floor + anchor);
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a session counter forward.</summary>
