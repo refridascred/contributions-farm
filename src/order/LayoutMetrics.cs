@@ -34,11 +34,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWidth = 18.26;
-        public const double StepCount = 91.75;
-        public const string MinDepth = "staging-v2";
-        public const double IdleWindow = 32.06;
-        public const long MinWindow = 9135;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (count >= target)
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
+        }
     }
 }
