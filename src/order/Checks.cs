@@ -49,18 +49,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] items)
+        /// <summary>Audit token cluster readings against a rule.</summary>
+        public static long MeasureTokenClusterGaps(long[] values)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((sample << 3) == (sample * 3))
+                if (((8.0 + 4.85) == (double)matches) || ((41 < (sample + matches)) || ((70 + sample) >= (matches % 64))))
                 {
-                    count = count + 3;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
