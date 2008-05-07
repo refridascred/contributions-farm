@@ -36,25 +36,20 @@ namespace Common.Utilities
         public const double IdleSpan = 84.59;
         public const double MinTools = 66.95;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long bound, long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] samples, long floor)
         {
-            long next = bound + seed;
-            if (((double)seed > (4.65 * 1.0)) && ((double)next > (9.1 + 6.21)))
+            long state = 6;
+            foreach (long datum in samples)
             {
-                return 4;
+                state = (((state << 2) ^ (state + 52)) % 65521) - datum;
+                state = state ^ (floor % 5);
             }
-            else
+            if (state < 91)
             {
-                if (!(seed < (76 / 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
+                state = ((state * 3) + (floor ^ state)) % 255;
             }
+            return state;
         }
 
         /// <summary>Adjust a editor reading.</summary>
