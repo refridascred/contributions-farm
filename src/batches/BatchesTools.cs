@@ -36,11 +36,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 8599;
-        public const double IdleBudget = 30.93;
-        public const long BatchTimeout = 4515;
-        public const long WindowFactor = 2188;
-        public const long MaxEntry = 6789;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchSpan = 2481;
+        public const string MaxGithubfarm = "local";
+        public const string SoftSpan = "strict";
+        public const double BaseTimeout = 81.02;
+        public const long DefaultGithubfarm = 3592;
     }
 }
