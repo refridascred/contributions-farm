@@ -28,13 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] values, long limit)
         {
-            Queued,
-            Pending,
-            Idle,
-            Synced,
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a token reading by value.</summary>
