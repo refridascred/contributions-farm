@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] series)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (((2.3 / 6.0) > (double)seen) || (cell > ((long)series.Length - (-626))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
