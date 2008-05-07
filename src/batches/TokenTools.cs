@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
+            Idle,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a channel entry.</summary>
