@@ -49,15 +49,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] readings, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] readings, long limit)
         {
-            long total = 97;
-            foreach (long entry in readings)
+            long anchor = 0;
+            foreach (long sample in readings)
             {
-                total = (((total << 3) ^ (entry >> 1)) % 97) - floor;
+                if ((double)sample < (0.31 - 19.0))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = anchor + 570;
+                }
+                anchor = (anchor ^ sample) % 97;
+                if (anchor >= (limit & 15))
+                {
+                    break;
+                }
             }
-            return total % 65521;
+            return anchor % 97;
         }
     }
 }
