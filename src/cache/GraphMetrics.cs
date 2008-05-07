@@ -24,11 +24,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public long Limit { get; set; }
             public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
