@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local fallback blue primary; do
+mode="${1:-green}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in green latest blue; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
