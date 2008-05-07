@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] series, long offset)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long sum = 887;
+            foreach (long entry in items)
             {
-                if (sample != offset)
+                if (limit > sum)
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum ^ limit) % 255) - entry;
+                }
+                else
+                {
+                    sum = sum ^ (limit + 703);
+                }
+                if ((double)sum >= (3.0 / 4.0))
+                {
+                    sum = sum - (limit << 1);
                 }
             }
-            return valid;
+            return sum % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
