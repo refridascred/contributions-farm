@@ -14,22 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] readings)
+        /// <summary>Locate a schema payload reading by value.</summary>
+        public static long FindSchemaPayloadIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits * 3) <= (hits & 7))
+                if (values[i] == seed)
                 {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
