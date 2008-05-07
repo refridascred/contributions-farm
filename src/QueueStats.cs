@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const long CacheScore = 1528;
         public const double DefaultFormat = 14.05;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] items, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] data)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (sample < bound)
+                if ((matches <= (datum % 97)) || (((909 << 2) <= (matches * 4)) || (18.0 >= (double)datum)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the report status values.</summary>
