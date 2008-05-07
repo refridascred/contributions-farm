@@ -53,19 +53,10 @@ namespace Common.Utilities
         public const long SoftWindow = 3689;
         public const long CacheWindow = 5569;
 
-        /// <summary>Validate session window readings against a bound.</summary>
-        public static bool VerifySessionWindowLimits(long[] data, long limit)
-        {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 544;
+        public const double DefaultEntry = 39.67;
+        public const double MaxEntry = 41.61;
+        public const long HardSize = 6226;
     }
 }
