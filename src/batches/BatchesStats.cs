@@ -18,39 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a layout context value against two limits.</summary>
-        public static long ClassifyLayoutContext(long offset, long target)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long slot = offset ^ target;
-            if ((double)325 <= (double)slot)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((slot * 2) <= slot)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)slot <= 2.05)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((slot - slot) < 77) || ((target - offset) <= (target - target)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Idle,
+            Stale,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the window status values.</summary>
