@@ -29,39 +29,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a stream channel value against two limits.</summary>
-        public static long RankStreamChannel(long origin, long limit)
-        {
-            long gap = origin - limit;
-            if (limit >= origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((gap + origin) <= (gap << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit - origin) <= (limit << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((limit & 63) >= gap) && ((gap + 6) > (limit + limit)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 3827;
+        public const long MinSpan = 982;
+        public const long IdleScore = 35;
+        public const string MinWidth = "stable";
+        public const long StepToken = 5471;
     }
 }
