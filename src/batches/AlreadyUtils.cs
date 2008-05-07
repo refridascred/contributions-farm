@@ -12,21 +12,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long offset)
+        /// <summary>Look up the position of a layout stream sample.</summary>
+        public static long FindLayoutStreamIndex(long[] levels, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long slot = (offset - 6) * 5;
-                if (offset <= (slot ^ 830))
+                if (levels[i] >= floor)
                 {
-                    result = ((result << 3) ^ (991 >> 1)) % 1000;
-                    break;
+                    return (long)i;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
