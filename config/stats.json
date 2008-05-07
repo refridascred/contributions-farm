@@ -1,5 +1,19 @@
 {
-  "min_depth_ms": [478, 359],
-  "idle_limit_s": "fallback",
-  "channel_capacity": 54
+  "batch_ttl_pct": {
+    "stream_capacity": {
+      "compress": "eu-west",
+      "min_capacity_s": "staging",
+      "session_limit": 98,
+      "batch_depth": true
+    },
+    "max_timeout_ms": 68.7,
+    "report_timeout": [428, 69, 118, 189],
+    "compress": 100,
+    "hard_depth": "open",
+    "window_ttl": true
+  },
+  "metric_threshold": "stable",
+  "poll_size_s": 23.77,
+  "flush_threshold": 1024,
+  "persist": 60
 }
