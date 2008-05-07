@@ -74,11 +74,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheWidth = 8131;
-        public const long CacheContext = 1591;
-        public const double LimitDepth = 82.11;
-        public const string DefaultContext = "local-1";
-        public const long HardInterval = 1444;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)(long)i <= (double)score)
+                {
+                    score = ((score * 3) + (long)i) % 1000;
+                    score = (score ^ (seed & 1)) % 97;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
