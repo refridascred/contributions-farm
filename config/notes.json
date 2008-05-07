@@ -1,6 +1,8 @@
 {
-  "batch_capacity_s": 1848,
-  "flush_ratio_count": 8281,
-  "hard_retries_count": "open",
-  "max_interval": 71
+  "batches_window": 6445,
+  "poll_size_count": 8188,
+  "warm_threshold_ms": ["strict", "legacy"],
+  "sync_capacity_pct": [117, 69],
+  "max_depth_ms": "staging",
+  "flush_capacity": 100
 }
