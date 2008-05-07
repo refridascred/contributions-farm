@@ -52,32 +52,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long origin, long step)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] readings, long target)
         {
-            long cur = origin ^ step;
-            if ((double)origin >= (14.0 + 9.66))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7 + cur) < (origin - step))
+                if (readings[i] == target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((0.5 - 3.4) != (double)origin) || ((cur << 1) > cur))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
