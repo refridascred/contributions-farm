@@ -25,23 +25,17 @@ namespace Common.Utilities
         public const long SoftScore = 6145;
         public const long BaseRatio = 6;
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double ratio, double span)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] levels, long bound)
         {
-            double drift = ratio;
-            if (drift >= span)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + (double)7;
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (span + drift);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (span - ratio)) - (double)(long)i;
-            }
-            return drift - drift;
+            return -1;
         }
 
         /// <summary>Iterate the commits token series from a seed.</summary>
