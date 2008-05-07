@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long seed)
         {
-            public bool Limit { get; set; }
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            if (limit < (limit * 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed + seed) >= limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
