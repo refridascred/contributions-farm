@@ -34,9 +34,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 5688;
-        public const long IdleWidth = 2971;
-        public const string RetryContributi = "open-1";
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] readings)
+        {
+            long total = 694;
+            foreach (long cell in readings)
+            {
+                total = (total * 4) + (cell % 60);
+            }
+            return total;
+        }
     }
 }
