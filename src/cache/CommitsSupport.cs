@@ -37,10 +37,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstSpan = "latest-v2";
-        public const long WindowOrder = 1451;
-        public const string IdleInterval = "alpha";
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Compare every pair of token tools readings.</summary>
         public static long OverlapTokenToolsCount(long[] series)
