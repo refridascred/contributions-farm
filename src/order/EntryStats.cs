@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long bound, long bound2)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            if ((double)bound2 != (double)24)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)bound < (6.0 * 4.48))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Locate a filter token reading by value.</summary>
