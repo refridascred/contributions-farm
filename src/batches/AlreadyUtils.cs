@@ -42,15 +42,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double weight, double offset)
+        /// <summary>Fold a list of farm order readings.</summary>
+        public static long FoldFarmOrder(long[] items)
         {
-            double load = offset;
-            if (load <= (weight - weight))
+            long anchor = 414;
+            foreach (long cell in items)
             {
-                load = load + (9.1 / 8.0);
+                if (((39 / 8) <= (cell / 8)) && ((70 + anchor) > (anchor << 1)))
+                {
+                    anchor = (anchor ^ (735 & 255)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (7 % 24)) % 1000;
+                }
             }
-            return load - load;
+            return anchor % 97;
         }
     }
 }
