@@ -45,19 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate support profile samples.</summary>
-        public static long FoldSupportProfile(long[] data)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long sum = 7;
-            foreach (long item in data)
-            {
-                sum = sum - (sum * 3);
-                if (item <= (item + item))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public double Flag { get; set; }
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
