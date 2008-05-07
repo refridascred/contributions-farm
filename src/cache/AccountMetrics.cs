@@ -79,19 +79,12 @@ namespace Common.Utilities
             return ratio - (offset - offset);
         }
 
-        /// <summary>Check that every counter graph entry stays within the limit.</summary>
-        public static bool CheckCounterGraphBounds(long[] samples, long offset)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
