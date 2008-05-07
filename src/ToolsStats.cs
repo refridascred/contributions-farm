@@ -55,14 +55,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 4947;
+        public const string WindowGithubfarm = "open-1";
+        public const long LimitLevel = 4400;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksHits(long[] items)
