@@ -56,39 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long origin, long origin2)
-        {
-            long diff = origin ^ origin2;
-            if ((double)origin >= 8.12)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin2 + origin2) <= (origin2 + diff))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((-73) >= origin2) && ((origin + diff) != (origin2 + 506)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((origin >> 2) == (origin2 + origin)) || ((origin ^ 112) < origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "stable-v2";
+        public const long BaseBudget = 3776;
+        public const string StepStream = "local-1";
+        public const long BaseSize = 9371;
     }
 }
