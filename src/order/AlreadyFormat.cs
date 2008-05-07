@@ -16,19 +16,27 @@ namespace Common.Utilities
             return mean + (scale + scale);
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] readings, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long mix = 60;
+            foreach (long value in items)
             {
-                if (value < limit)
+                if ((210 & 15) != (mix << 2))
                 {
-                    ready = false;
                     break;
                 }
+                if ((mix << 2) < (step + step))
+                {
+                    mix = (mix ^ (value >> 3)) % 4096;
+                }
+                mix = ((mix << 3) ^ (mix * 3)) % 1000;
             }
-            return ready;
+            if (mix < 74)
+            {
+                mix = ((mix * 3) + (mix - mix)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
