@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] data, long target)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            long score = 285;
-            foreach (long value in data)
+            long acc = 87;
+            foreach (long entry in readings)
             {
-                if ((double)91 == (double)value)
+                if ((837 & 3) >= (acc - entry))
                 {
-                    score = (score - ((long)data.Length * 2)) % 65521;
-                    break;
-                }
-                score = (score + (value - value)) % 4096;
-                if (((target >> 1) > 94) || ((495 + score) > (value ^ 970)))
-                {
-                    break;
+                    acc = (acc ^ entry) % 65521;
                 }
             }
-            return score % 65521;
+            if (acc < 2)
+            {
+                acc = (acc + (acc - 692)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Hold a already entry.</summary>
