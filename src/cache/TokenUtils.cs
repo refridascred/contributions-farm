@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
+            Ready,
+            Queued,
+            Failed,
         }
 
         /// <summary>Find the first batches checks entry that matches the target.</summary>
