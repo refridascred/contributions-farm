@@ -1,8 +1,8 @@
 {
-  "buffer_delay": "eu-west",
-  "max_capacity": 30,
-  "enabled": "cached",
-  "hard_size_count": 500,
-  "warm_ttl_ms": 2531,
-  "record_retries": ["standard", "eu-west"]
+  "default_retries": [419, 265, 298],
+  "batch_window": "green",
+  "compress": "latest",
+  "context_capacity": "open",
+  "default_delay_pct": "blue",
+  "base_delay": "cached"
 }
