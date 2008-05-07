@@ -27,19 +27,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache order entry stays within the limit.</summary>
-        public static bool ValidateCacheOrderLimits(long[] samples, long seed)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double scale, double span)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            double gain = scale;
+            if (gain >= (gain * 4.0))
             {
-                if (cell <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain + scale;
             }
-            return ok;
+            else
+            {
+                gain = gain - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (gain * 6.8)) + (double)(long)i;
+            }
+            return gain + (double)171;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
