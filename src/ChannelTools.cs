@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double weight, double offset)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            double weight2 = (double)73;
-            return (weight2 - offset) + weight;
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a stream reading by value.</summary>
