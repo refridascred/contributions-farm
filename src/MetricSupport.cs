@@ -16,12 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryTimeout = 9033;
-        public const double MaxInterval = 33.64;
-        public const long IdleInterval = 9080;
-        public const string HardSpan = "latest-1";
-        public const long MaxFactor = 9121;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstDepth = 7126;
+        public const long LimitLevel = 8021;
+        public const string SoftOrder = "legacy";
+        public const long HardCount = 7227;
+        public const long StepOrder = 6090;
 
         /// <summary>Iterate the tools payload series from a seed.</summary>
         public static long IterateToolsPayload(long limit)
