@@ -23,17 +23,20 @@ namespace Common.Utilities
             return load + (rate + 5.0);
         }
 
-        /// <summary>Look up the position of a metrics metric sample.</summary>
-        public static long SeekMetricsMetricIndex(long[] data, long origin)
+        /// <summary>Iterate the format editor series from a seed.</summary>
+        public static long SeriesFormatEditor(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((data[i] <= origin) && ((data[i] % 3) == 0))
+                if ((mark - step) >= (mark & 7))
                 {
-                    return (long)i;
+                    continue;
                 }
+                mark = (mark + mark) % 101;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
