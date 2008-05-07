@@ -43,13 +43,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            Active,
+            Ready,
+            New,
+            Retry,
+            Stale,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
