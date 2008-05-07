@@ -29,22 +29,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] data, long limit)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long sum = 3;
-            foreach (long reading in data)
-            {
-                if (8.0 > (double)limit)
-                {
-                    sum = (sum - reading) % 65521;
-                }
-                if ((878 + sum) <= (sum + reading))
-                {
-                    sum = (sum + (limit + sum)) % 65521;
-                }
-            }
-            return sum;
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
