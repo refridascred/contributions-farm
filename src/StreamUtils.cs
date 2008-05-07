@@ -30,12 +30,21 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardCount = 4685;
-        public const long IdleRatio = 7681;
-        public const long SoftSpan = 5369;
-        public const long StepFormat = 4936;
-        public const long IdleFormat = 5323;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((69 % 60) == ((long)i - 19))
+                {
+                    mix = mix ^ ((-540) + mix);
+                    mix = ((mix << 3) ^ (mix - 5)) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long SortBuffer(long seed, long limit)
