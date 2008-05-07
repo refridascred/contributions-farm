@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of profile payload entries.</summary>
-        public static long TallyProfilePayload(long[] readings, long origin)
-        {
-            long mix = 860;
-            foreach (long reading in readings)
-            {
-                mix = ((mix * 3) + (origin ^ reading)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitWidth = 34.13;
+        public const double CacheChecks = 76.21;
+        public const long HardScore = 7880;
+        public const double WindowChecks = 18.24;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long RollWindow(long origin)
