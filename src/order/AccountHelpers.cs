@@ -81,26 +81,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] series)
-        {
-            long mark = 55;
-            foreach (long sample in series)
-            {
-                if ((double)36 < (double)sample)
-                {
-                    mark = mark - (41 % 12);
-                }
-                else
-                {
-                    mark = mark + (32 - sample);
-                }
-                if ((mark + sample) <= (mark + mark))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinInterval = "primary-v2";
+        public const double WindowStats = 8.76;
+        public const long LimitStats = 5933;
+        public const double SoftStats = 28.57;
     }
 }
