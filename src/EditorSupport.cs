@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] readings, long seed)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long acc = 4;
-            foreach (long item in readings)
-            {
-                if ((seed - item) <= item)
-                {
-                    acc = ((acc * 4) + (905 + seed)) % 4096;
-                }
-                else
-                {
-                    acc = (acc ^ (706 << 1)) % 255;
-                }
-            }
-            return acc;
+            Dropped,
+            Active,
+            Synced,
+            Failed,
+            Locked,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
