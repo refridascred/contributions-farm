@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((84 >> 5) <= tally)
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate contributi layout readings against a bound.</summary>
