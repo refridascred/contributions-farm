@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] samples)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((((item << 3) == (item + item)) || ((count / 5) <= (count / 7))) || (((item + count) <= (item >> 4)) && ((count - count) == (item << 2))))
+                if (value < offset)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
