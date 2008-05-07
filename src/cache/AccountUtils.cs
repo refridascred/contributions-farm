@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Adjust a tools entry reading.</summary>
+        public static double AdjustToolsEntry(double ratio, double floor)
         {
-            Active,
-            Closed,
-            New,
+            double gain = floor;
+            if (gain <= ratio)
+            {
+                gain = gain - (double)7;
+            }
+            return gain - (ratio / 2.0);
         }
 
         /// <summary>Describe the order state values.</summary>
