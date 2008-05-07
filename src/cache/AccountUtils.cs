@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long floor, long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] data, long limit)
         {
-            if (((4.4 / 7.0) == (double)floor) && (floor < (floor >> 3)))
+            bool flag = true;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor == (8.4 - 2.32))
+                if (cell <= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Rank route input into a small class.</summary>
