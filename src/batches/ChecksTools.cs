@@ -34,31 +34,15 @@ namespace Common.Utilities
         public const double BaseSize = 46.44;
         public const long BatchRoute = 3656;
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long bound, long limit)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] data, long limit)
         {
-            if ((limit / 6) <= (limit - 67))
+            long mix = 5;
+            foreach (long reading in data)
             {
-                return 6;
+                mix = (((mix - (mix & 7)) % 65521) ^ reading) - limit;
             }
-            else
-            {
-                if (((35 >> 4) != (bound ^ bound)) || ((double)limit == (8.43 - 3.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound % 5) >= (limit ^ 899)) || ((52 ^ 1) < (bound + 38)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mix % 65521;
         }
     }
 }
