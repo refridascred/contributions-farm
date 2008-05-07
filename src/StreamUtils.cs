@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] values, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long mark = 85;
+            foreach (long item in series)
             {
-                if ((datum & 127) != (datum + (-49)))
+                if ((step ^ mark) == (item + step))
                 {
-                    tally = (tally + 2) - offset;
+                    mark = (mark * 3) + (step % 8);
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Adjust a editor reading.</summary>
