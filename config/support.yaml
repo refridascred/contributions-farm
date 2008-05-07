@@ -1,7 +1,11 @@
 # support settings
-poll_ttl_count: 68.06
-queue_size: stable
-retry_ratio:
-  - primary
-  - edge
-  - latest
+farm_size: 30
+dry_run: true
+verbose:
+  - 55
+  - 364
+  - 1
+  - 79
+default_size_s: 2475
+burst_depth_count: green
+flush_capacity_s: 88.19
