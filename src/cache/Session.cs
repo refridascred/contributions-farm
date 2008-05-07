@@ -45,19 +45,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 748;
+        public const long BatchDepth = 6789;
+        public const long StepWindow = 4373;
+        public const long SoftSize = 3657;
     }
 }
