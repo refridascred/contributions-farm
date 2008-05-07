@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long floor, long limit)
+        /// <summary>Audit batch checks readings against a rule.</summary>
+        public static long CountBatchChecksMatches(long[] items, long limit)
         {
-            if (floor >= (floor / 2))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor > (double)83)
+                if ((reading + 1) == (seen / 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 3) + limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two counter batch measurements.</summary>
