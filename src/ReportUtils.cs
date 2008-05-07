@@ -21,12 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] series, long seed)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
