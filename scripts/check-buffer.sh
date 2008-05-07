@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=265
-log "limit is ${BUFFER_LIMIT}"
+for item in blue standard legacy; do
+    log "checking ${item}"
+done
 
-mode="${1:-staging}"
+mode="${1:-edge}"
 case "${mode}" in
-    stable)
+    open)
         log "fast path"
         ;;
     *)
@@ -19,6 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge latest strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
