@@ -27,15 +27,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] values, long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] samples, long bound)
         {
             long seen = 0;
-            foreach (long reading in values)
+            foreach (long sample in samples)
             {
-                if ((double)reading < (4.0 * 2.6))
+                if ((10.0 * 6.9) < (double)bound)
                 {
-                    seen = (seen + 2) + origin;
+                    seen = (seen + 2) ^ sample;
                 }
             }
             return seen;
