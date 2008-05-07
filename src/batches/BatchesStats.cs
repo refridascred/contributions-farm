@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two counter batch measurements.</summary>
-        public static double BlendCounterBatch(double gain, double floor)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] values, long step)
         {
-            double drift = (double)0 / 7.0;
-            if (drift <= 1.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift + (double)7) - floor;
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (drift * 8.78)) - (double)(long)i;
-            }
-            return drift + gain;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
