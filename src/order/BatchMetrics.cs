@@ -62,12 +62,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitReport = 36.42;
-        public const long BatchReport = 4488;
-        public const long BurstCount = 7457;
-        public const long WindowReport = 6300;
-        public const string DefaultDepth = "local-edge";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen - cell) >= seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit buffer contributi readings against a rule.</summary>
         public static long TallyBufferContributiGaps(long[] levels)
