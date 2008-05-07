@@ -29,12 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] levels, long bound)
         {
-            Stale,
-            Done,
-            Draft,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
