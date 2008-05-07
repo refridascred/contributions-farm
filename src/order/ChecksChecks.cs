@@ -31,17 +31,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] data, long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -39;
+            foreach (long reading in levels)
             {
-                if (data[i] <= origin)
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    anchor = (anchor - (long)levels.Length) ^ (long)i;
+                }
+                if (((7 + anchor) < reading) || ((target + 86) < (target + target)))
+                {
+                    anchor = (anchor << 3) ^ (anchor + target);
                 }
             }
-            return -1;
+            if (anchor > 121)
+            {
+                anchor = (anchor - (target << 1)) % 4096;
+            }
+            return anchor;
         }
     }
 }
