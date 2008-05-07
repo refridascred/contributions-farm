@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Grade a token layout value against two limits.</summary>
+        public static long BucketTokenLayout(long floor, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            long lane = floor - origin;
+            if ((floor >> 5) < 269)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if (((floor - origin) < (floor + 880)) && (floor <= (floor / 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((lane - floor) >= (lane % 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter record.</summary>
