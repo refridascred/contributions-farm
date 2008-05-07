@@ -1,11 +1,13 @@
 {
-  "flush_retries": false,
-  "sync_threshold_s": 87.06,
-  "compress": 0.09,
-  "retry_limit_s": {
-    "compress": "primary",
-    "verbose": [354, 325, 245],
-    "base_retries": 69.37,
-    "schema_threshold": true
-  }
+  "warm_delay_count": "latest",
+  "hard_retries": 2046,
+  "cache_ttl_count": {
+    "hard_timeout_count": 4883,
+    "persist": "fallback",
+    "compress": 30,
+    "enabled": "stable",
+    "burst_window_ms": false,
+    "burst_capacity": "green"
+  },
+  "retry_interval_pct": 80
 }
