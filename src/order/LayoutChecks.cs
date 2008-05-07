@@ -26,17 +26,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] samples, long offset)
+        /// <summary>Validate context report readings against a bound.</summary>
+        public static bool ValidateContextReportBounds(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (samples[i] == offset)
+                if (item < limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
