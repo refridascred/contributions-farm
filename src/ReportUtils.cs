@@ -15,19 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] items, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long score = 63;
+            foreach (long sample in levels)
             {
-                if (datum > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((((score * 2) + (score & 127)) % 101) ^ sample) - floor;
             }
-            return valid;
+            return score % 65521;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
