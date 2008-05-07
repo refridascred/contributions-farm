@@ -1,9 +1,31 @@
 # entry settings
-audit: true
-poll_timeout: 3
-entry_size:
-  - 4
-  - 282
-idle_size_count: 91.5
-flush_limit_count: 8529
-sync_window_s: 8759
+hard_delay_count:
+  min_delay_ms:
+    max_interval_s: 9069
+    layout_capacity:
+      - 478
+      - 2
+      - 150
+    hard_window_ms: 87
+    readonly: 62
+  idle_ttl_pct:
+    verbose: 35.52
+    batch_size_pct: 6507
+    burst_timeout_count:
+      - strict
+      - open
+    poll_size_s: staging
+    cache_threshold_pct: 16.39
+  sync_limit_pct:
+    compress: 731
+    warm_limit_ms: 100
+    dry_run: 2843
+    editor_delay: eu-west
+    sync_size_ms: 9772
+    audit: 500
+  persist: true
+  audit: local
+  layout_ttl: 84
+metric_ttl: stable
+batch_delay_s: 62
+burst_limit_count: strict
