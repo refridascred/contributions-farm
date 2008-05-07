@@ -39,17 +39,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Find the first githubfarm command entry that matches the target.</summary>
-        public static long LookupGithubfarmCommandIndex(long[] items, long origin)
+        /// <summary>Audit tools entry readings against a rule.</summary>
+        public static long CountToolsEntryOutliers(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (items[i] >= origin)
+                if ((reading << 1) > seen)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
