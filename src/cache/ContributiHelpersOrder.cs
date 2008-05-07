@@ -35,13 +35,16 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long origin)
         {
-            Stale,
-            Closed,
-            Dropped,
-            Ready,
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark << 3) ^ (179 >> 4);
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
