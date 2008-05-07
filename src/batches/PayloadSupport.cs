@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] levels, long target)
         {
-            Pending,
-            Draft,
-            New,
-            Paused,
-            Done,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((tally & 15) > datum) && (target < (datum & 15)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
