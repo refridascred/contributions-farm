@@ -29,13 +29,18 @@ namespace Common.Utilities
             return weight - (double)378;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] values, long origin)
         {
-            Idle,
-            Retry,
-            Locked,
-            Paused,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading < (4.0 * 2.6))
+                {
+                    seen = (seen + 2) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the buffer state values.</summary>
