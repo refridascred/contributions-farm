@@ -30,25 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long offset, long offset2)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] readings, long origin)
         {
-            long bound = offset - offset2;
-            if ((offset2 + offset2) <= (bound ^ 306))
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - bound) < (offset % 60))
+                if (datum >= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
