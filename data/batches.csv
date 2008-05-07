@@ -1,6 +1,11 @@
-id,count,rank
-1,204,eu-west
-2,green,491
-3,51.95,41.27
-4,green,87.97
-5,171,strict
+id,score,level
+1,62.51,local
+2,673,62.02
+3,95.74,green
+4,fallback,strict
+5,94.66,79.23
+6,standard,standard
+7,56.88,33.55
+8,open,staging
+9,802,local
+10,0.85,green
