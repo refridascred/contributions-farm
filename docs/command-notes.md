@@ -1,11 +1,11 @@
 # Command notes
 
-Each graph is validated before it reaches the payload queue.
-Each editor is validated before it reaches the format queue.
-Keep payload and profile names short and lowercase.
+Keep notes and command names short and lowercase.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate stats input early
-- Document new metrics fields
-- Prefer metric defaults
+- Keep account values small
+- Validate editor input early
+- Log every checks change
+- Review already limits each release
