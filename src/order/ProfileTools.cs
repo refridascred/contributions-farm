@@ -52,11 +52,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Combine queue commits values into a single score.</summary>
+        public static long FoldQueueCommits(long[] items, long seed)
         {
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
+            long mix = 44;
+            foreach (long cell in items)
+            {
+                mix = ((mix * 5) + (mix << 1)) ^ cell;
+                if ((seed & 31) < (seed >> 2))
+                {
+                    break;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
