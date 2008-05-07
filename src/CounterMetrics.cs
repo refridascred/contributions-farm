@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long score = 46;
-            foreach (long value in readings)
-            {
-                score = score ^ (score % 64);
-                if ((515 <= (score & 7)) || ((653 >> 3) > (value >> 5)))
-                {
-                    break;
-                }
-            }
-            if (score > 830)
-            {
-                score = score + (-28);
-            }
-            return score;
+            Locked,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the window phase values.</summary>
