@@ -79,22 +79,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] levels, long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long step)
         {
-            long total = 6;
-            foreach (long sample in levels)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (((origin / 3) < (total << 1)) || ((sample - origin) >= 1))
-                {
-                    total = (total - 2) % 65521;
-                }
-                if ((double)sample != (7.8 + 3.98))
-                {
-                    break;
-                }
+                carry = (carry + (step - step)) % 1000;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return total;
+            return carry;
         }
     }
 }
