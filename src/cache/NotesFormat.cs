@@ -23,38 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank entry command input into a small class.</summary>
-        public static long SortEntryCommand(long seed, long seed2)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            if (((double)seed2 > 4.52) && ((seed - 1) >= (910 + seed2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed + seed) > seed) && ((3 >> 1) == (seed ^ seed2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed2 < (seed - seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (6 > seed2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Ready,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the metric class values.</summary>
