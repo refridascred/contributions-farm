@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double ratio, double offset)
+        /// <summary>Grade a record filter value against two limits.</summary>
+        public static long RankRecordFilter(long origin, long step)
         {
-            double drift = 8.1;
-            if (drift < (offset * 4.7))
+            if ((step + step) < (step + origin))
             {
-                drift = drift + (double)77;
+                return 8;
             }
             else
             {
-                drift = drift + (offset - 3.0);
+                if ((double)step <= (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((origin ^ 529) <= origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (step >= origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + offset) + (double)(long)i;
-            }
-            return drift - (ratio + ratio);
         }
 
         /// <summary>Roll a context counter forward.</summary>
