@@ -61,10 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 6026;
-        public const long IdleAccount = 8338;
-        public const string BatchAccount = "local-edge";
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Closed,
+            Dropped,
+            Done,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Validate already tools readings against a bound.</summary>
         public static bool VerifyAlreadyToolsRange(long[] levels, long seed)
