@@ -13,15 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a already checks counter forward.</summary>
-        public static long StepAlreadyChecks(long limit)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                state = (state << 2) ^ ((long)i << 2);
+                if ((double)bound > (4.06 - 5.6))
+                {
+                    state = (state << 2) ^ (state + bound);
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
