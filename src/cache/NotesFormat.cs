@@ -23,13 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            Stale,
-            Ready,
+            Paused,
             Done,
-            Synced,
+            New,
+            Ready,
+            Failed,
         }
 
         /// <summary>Describe the metric class values.</summary>
