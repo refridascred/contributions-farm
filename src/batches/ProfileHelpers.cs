@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] data, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (reading >= offset)
+                if ((value ^ offset) >= value)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Roll a already counter forward.</summary>
