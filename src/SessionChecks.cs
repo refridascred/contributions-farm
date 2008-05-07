@@ -53,27 +53,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = (anchor ^ 8) % 4096;
-                anchor = anchor - (anchor & 3);
-                if ((((long)i + anchor) != ((long)i + (long)i)) || ((long)i >= anchor))
-                {
-                    anchor = (anchor - ((long)i % 8)) % 255;
-                    anchor = (anchor * 5) + (anchor - bound);
-                    break;
-                }
-                else
-                {
-                    anchor = anchor - (anchor + bound);
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
     }
 }
