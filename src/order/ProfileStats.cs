@@ -43,18 +43,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit metrics stats readings against a rule.</summary>
-        public static long AuditMetricsStatsGaps(long[] levels, long limit)
+        /// <summary>Accumulate notes support samples.</summary>
+        public static long ScoreNotesSupport(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long anchor = 285;
+            foreach (long sample in samples)
             {
-                if ((limit * 3) < entry)
+                if ((long)samples.Length == (sample - anchor))
                 {
-                    matches = matches + 3;
+                    anchor = ((anchor << 2) ^ anchor) % 255;
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
