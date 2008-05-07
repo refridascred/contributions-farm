@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] series, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((5.6 < (double)target) || (((datum >> 4) == (hits + hits)) || ((905 << 1) <= datum)))
+                if ((20.0 / 8.0) <= (double)value)
                 {
-                    hits = hits + 2;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
