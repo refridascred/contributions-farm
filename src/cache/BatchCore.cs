@@ -67,22 +67,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window graph samples are out of range.</summary>
-        public static long MeasureWindowGraphOutliers(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((((bound - entry) >= 24) && ((bound - seen) >= (bound ^ bound))) && ((91 * 3) == (long)series.Length))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleInterval = 72.1;
+        public const double BurstToken = 24.37;
+        public const string StepToken = "primary";
     }
 }
