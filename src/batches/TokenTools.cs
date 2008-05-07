@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] readings, long offset)
         {
-            Idle,
-            Failed,
-            New,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((97 > (offset % 10)) || ((count * 2) <= (offset / 2)))
+                {
+                    count = (count + 1) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
