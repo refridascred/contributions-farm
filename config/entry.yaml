@@ -1,4 +1,10 @@
 # entry settings
-stream_threshold: open
-dry_run: false
-verbose: local
+record_delay: 62
+base_interval_s:
+  - edge
+  - green
+  - blue
+  - open
+flush_depth_s:
+  - blue
+  - edge
