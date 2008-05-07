@@ -34,11 +34,31 @@ namespace Common.Utilities
         public const double BaseSize = 46.44;
         public const long BatchRoute = 3656;
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long bound, long limit)
         {
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
+            if ((limit / 6) <= (limit - 67))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((35 >> 4) != (bound ^ bound)) || ((double)limit == (8.43 - 3.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound % 5) >= (limit ^ 899)) || ((52 ^ 1) < (bound + 38)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
