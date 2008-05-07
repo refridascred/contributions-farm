@@ -20,13 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Active,
-            New,
-            Dropped,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 6942;
+        public const long StepLayout = 7748;
+        public const long SoftLayout = 7310;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long StepPayload(long target)
