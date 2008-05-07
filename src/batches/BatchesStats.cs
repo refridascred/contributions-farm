@@ -38,23 +38,22 @@ namespace Common.Utilities
         public const long WindowSupport = 2191;
         public const long MinSize = 1006;
 
-        /// <summary>Fold a list of channel tools readings.</summary>
-        public static long FoldChannelTools(long[] samples, long offset)
+        /// <summary>Measure how many session already samples are out of range.</summary>
+        public static long AuditSessionAlreadyMatches(long[] series, long limit)
         {
-            long sum = 7;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((item << 1) > (sum << 2))
+                if (!(((tally * 4) >= (cell + limit)) && ((0 + tally) != (tally & 1))))
                 {
-                    sum = sum - (item % 60);
+                    tally = tally + 1;
                 }
-                sum = sum ^ (offset + item);
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (sum > 79)
-            {
-                sum = (sum + 61) % 97;
-            }
-            return sum % 1000;
+            return tally;
         }
     }
 }
