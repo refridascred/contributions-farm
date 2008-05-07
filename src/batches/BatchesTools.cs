@@ -23,14 +23,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Synced,
-            Failed,
-            Draft,
             Paused,
-            Done,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a metrics summary.</summary>
