@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 4523;
-        public const long SoftCommits = 1435;
-        public const long RetryLevel = 8678;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Queued,
+            Dropped,
+            New,
+            Closed,
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
