@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] samples, long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (8.0 <= (double)cell)
+                if ((seen + seen) >= target)
                 {
-                    tally = (tally + 1) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 2) ^ entry;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Blend two cluster metrics measurements.</summary>
