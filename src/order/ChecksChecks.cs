@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of notes stats entries.</summary>
-        public static long TallyNotesStats(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] samples, long limit)
         {
-            long mark = 49;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                mark = (mark ^ (value << 2)) % 101;
+                if (8.0 <= (double)cell)
+                {
+                    tally = (tally + 1) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
