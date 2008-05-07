@@ -52,11 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Digest a series of metrics account entries.</summary>
+        public static long ScoreMetricsAccount(long[] items, long offset)
         {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
+            long anchor = 7;
+            foreach (long item in items)
+            {
+                anchor = ((anchor - (item / 4)) % 1000) - offset;
+            }
+            if (anchor > 8)
+            {
+                anchor = anchor + (anchor - anchor);
+            }
+            return anchor;
         }
     }
 }
