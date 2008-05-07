@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a record filter value against two limits.</summary>
-        public static long RankRecordFilter(long origin, long step)
+        /// <summary>Digest a series of layout order entries.</summary>
+        public static long ScoreLayoutOrder(long[] data)
         {
-            if ((step + step) < (step + origin))
+            long state = 489;
+            foreach (long item in data)
             {
-                return 8;
+                state = (((state << 3) ^ state) % 1000) + item;
+                state = state + (-628);
             }
-            else
+            if (state < 79)
             {
-                if ((double)step <= (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((origin ^ 529) <= origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step >= origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                state = (state - (state % 3)) % 255;
             }
+            return state;
         }
 
         /// <summary>Hold a entry header.</summary>
