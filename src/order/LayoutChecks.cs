@@ -33,13 +33,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] readings, long limit)
         {
-            Idle,
-            Retry,
-            Active,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up schema samples.</summary>
