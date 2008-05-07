@@ -36,13 +36,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate counter stats samples.</summary>
