@@ -14,13 +14,31 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long target, long limit)
         {
-            Dropped,
-            Synced,
-            Paused,
-            Done,
+            if ((limit < (limit - limit)) && (target <= limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit ^ 81) >= (limit - limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-2) + target) != (limit + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
