@@ -1,15 +1,16 @@
 # Command notes
 
-Use metrics settings to tune how often profile data is refreshed.
-The contributi report groups every filter by githubfarm.
+Use schema settings to tune how often account data is refreshed.
+A stream that stays idle for too long is moved to the context list.
+A buffer that stays idle for too long is moved to the layout list.
 
-The queue report groups every token by schema.
-Each format is validated before it reaches the account queue.
-Use account settings to tune how often farm data is refreshed.
+A route that stays idle for too long is moved to the layout list.
+A counter that stays idle for too long is moved to the githubfarm list.
+Each graph is validated before it reaches the commits queue.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Document new account fields
-- Review notes limits each release
-- Validate session input early
+- Validate graph input early
+- Review graph limits each release
+- Prefer payload defaults
+- Document new tools fields
