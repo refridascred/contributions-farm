@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a checks account counter forward.</summary>
-        public static long RollChecksAccount(long origin)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                long step = bound;
+                if (step <= (mix >> 3))
+                {
+                    step = (step ^ (step - bound)) % 4096;
+                }
+                else
+                {
+                    step = (step ^ ((long)i - (long)i)) % 65521;
+                    step = ((step << 3) ^ ((long)i + step)) % 97;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Describe the batches mode values.</summary>
