@@ -55,17 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] data, long offset)
+        /// <summary>Audit counter report readings against a rule.</summary>
+        public static long TallyCounterReportMatches(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (data[i] >= offset)
+                if (!((seen + entry) > 507) || (((8.18 * 4.2) >= (double)entry) && ((floor - 4) < entry)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
