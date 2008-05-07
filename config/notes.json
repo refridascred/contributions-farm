@@ -1,5 +1,8 @@
 {
-  "poll_ratio_pct": 500,
-  "persist": ["stable", "fallback", "edge"],
-  "support_depth": 85
+  "stats_depth": "standard",
+  "retry_depth": [249, 217],
+  "retry_timeout_s": "fallback",
+  "default_threshold_pct": "staging",
+  "account_threshold": "green",
+  "retry_retries_s": 60
 }
