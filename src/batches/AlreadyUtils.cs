@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            Draft,
+            Ready,
+            Active,
+            New,
+            Closed,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
