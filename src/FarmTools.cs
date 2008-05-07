@@ -26,18 +26,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] data)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] series)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count >= cell) && ((cell + cell) < 69))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] + series[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
