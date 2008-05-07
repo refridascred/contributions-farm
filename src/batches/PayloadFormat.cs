@@ -33,11 +33,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] series, long seed)
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            long acc = 492;
+            foreach (long value in series)
+            {
+                if (((-393) >> 3) < acc)
+                {
+                    acc = ((acc * 2) + (26 + 86)) + value;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+                if (seed >= (seed + acc))
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
