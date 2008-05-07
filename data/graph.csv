@@ -1,7 +1,8 @@
-id,owner,token
-1,staging,strict
-2,strict,stable
-3,914,stable
-4,684,351
-5,361,13.49
-6,371,377
+id,token,state
+1,strict,legacy
+2,448,6
+3,standard,891
+4,52.06,778
+5,98.12,28.84
+6,39.03,350
+7,170,414
