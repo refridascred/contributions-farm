@@ -48,9 +48,13 @@ namespace Common.Utilities
         public const long RetryFactor = 2973;
         public const string IdleBudget = "local-1";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultSpan = 7264;
-        public const double LimitOrder = 67.41;
-        public const long MaxOrder = 3170;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
