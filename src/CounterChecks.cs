@@ -34,18 +34,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] data, long offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long score = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((offset & 255) >= ((-86) >> 1))
-                {
-                    tally = (tally + 1) + reading;
-                }
+                score = score ^ (limit >> 2);
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a contributi options.</summary>
