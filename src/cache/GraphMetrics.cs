@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultTimeout = 54.52;
-        public const string LimitSpan = "fallback-edge";
-        public const double MinSize = 76.88;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Done,
+            Failed,
+            Locked,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
