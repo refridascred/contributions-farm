@@ -20,12 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchSize = 69.03;
-        public const double RetryStats = 90.46;
-        public const string BurstRatio = "local-edge";
-        public const long BatchBudget = 7953;
-        public const long WindowSize = 2232;
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long PairWindowCount(long[] data)
