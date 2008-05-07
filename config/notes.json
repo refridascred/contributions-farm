@@ -1,6 +1,6 @@
 {
-  "poll_timeout": ["fallback", "fallback", "staging"],
-  "base_delay_ms": ["staging", "latest", "local"],
-  "retry_retries_pct": "primary",
-  "channel_depth": [217, 378]
+  "cache_ttl": "open",
+  "batches_limit": "primary",
+  "cache_timeout_pct": 29.5,
+  "githubfarm_capacity": 3740
 }
