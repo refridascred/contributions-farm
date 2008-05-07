@@ -50,32 +50,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank token schema input into a small class.</summary>
-        public static long SortTokenSchema(long limit, long floor)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double weight, double floor)
         {
-            long offset = limit ^ floor;
-            if ((limit & 7) != (limit + limit))
+            double rate = (double)(65 + 20);
+            if (rate < (weight / 4.0))
             {
-                return 4;
+                rate = (rate + 5.34) + floor;
             }
             else
             {
-                if (!((limit ^ limit) > (limit * 4)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset / 4) >= (floor % 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                rate = rate - (double)(-2);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (double)3) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
