@@ -37,22 +37,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] items)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long total = 2;
+            foreach (long sample in items)
             {
-                if (((1.1 + 5.4) < (double)tally) || !(9.0 >= (double)entry))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (((total ^ (total * 5)) % 1000) + sample) - origin;
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
