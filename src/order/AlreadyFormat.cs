@@ -40,17 +40,11 @@ namespace Common.Utilities
         public const string CacheGithubfarm = "strict-1";
         public const double SoftGithubfarm = 74.79;
 
-        /// <summary>Find the first batch githubfarm entry that matches the target.</summary>
-        public static long LookupBatchGithubfarmIndex(long[] series, long offset)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
