@@ -33,23 +33,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] values, long target)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long origin)
         {
-            long mix = 951;
-            foreach (long cell in values)
+            long result = origin;
+            for (int i = 0; i < 11; i++)
             {
-                mix = (mix << 2) ^ target;
-                if ((mix - cell) <= cell)
+                if (!((result * 5) < (14 + (-813))))
                 {
-                    mix = (mix - (cell * 5)) % 101;
+                    result = result + ((long)i - result);
                 }
-                if ((double)target != (8.0 - 2.32))
+                else
                 {
-                    mix = ((mix * 2) + (555 + target)) % 1000;
+                    result = ((result * 4) + result) % 255;
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
