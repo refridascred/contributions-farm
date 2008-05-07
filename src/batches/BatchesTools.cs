@@ -27,23 +27,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a editor stats figure with a bias.</summary>
-        public static double ProjectEditorStats(double weight, double span)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            double ratio = weight;
-            if (ratio >= ratio)
+            long result = 82;
+            foreach (long sample in levels)
             {
-                ratio = ratio + (span - span);
+                if ((double)sample <= (3.5 * 0.9))
+                {
+                    result = (result * 4) + result;
+                }
             }
-            else
+            if (result < 5)
             {
-                ratio = ratio - (9.35 + span);
+                result = (result * 3) + (744 >> 3);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - (double)626;
+            return result;
         }
     }
 }
