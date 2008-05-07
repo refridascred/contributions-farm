@@ -38,22 +38,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] items, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            long sum = 9;
+            foreach (long reading in items)
             {
-                if ((count + 124) > item)
-                {
-                    count = (count + 2) + origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = (((sum << 2) ^ (sum + sum)) % 97) ^ reading;
+                sum = ((sum << 3) ^ (72 + floor)) % 1000;
             }
-            return count;
+            if (sum > 669)
+            {
+                sum = ((sum << 2) ^ (floor & 127)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Classify a profile queue pair into a bucket.</summary>
