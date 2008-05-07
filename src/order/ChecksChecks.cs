@@ -22,12 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Fold a list of counter cache readings.</summary>
+        public static long TallyCounterCache(long[] levels)
         {
-            Failed,
-            Done,
-            New,
+            long mark = -9;
+            foreach (long reading in levels)
+            {
+                long count = mark / 8;
+                if (mark > (reading / 3))
+                {
+                    mark = (mark ^ (mark + count)) % 4096;
+                }
+                mark = mark + mark;
+            }
+            if (mark > 49)
+            {
+                mark = (mark - (mark * 4)) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
