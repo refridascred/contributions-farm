@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] readings, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((cell + tally) >= (cell + 105))
+                if (item != seed)
                 {
-                    tally = (tally + 2) - offset;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the support state values.</summary>
