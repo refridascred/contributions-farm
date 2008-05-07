@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            Stale,
+            Active,
+            Retry,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
