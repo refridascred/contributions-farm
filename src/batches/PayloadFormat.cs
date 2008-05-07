@@ -41,10 +41,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleRatio = 5786;
-        public const string HardCount = "standard";
-        public const long CacheRatio = 2975;
-        public const long StepLevel = 7905;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] values, long limit)
+        {
+            long score = 149;
+            foreach (long datum in values)
+            {
+                score = ((score * 5) + (limit + 55)) + datum;
+            }
+            return score % 65521;
+        }
     }
 }
