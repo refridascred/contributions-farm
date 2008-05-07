@@ -66,23 +66,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate counter stream samples.</summary>
-        public static long ScoreCounterStream(long[] readings)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] items, long step)
         {
-            long mix = 82;
-            foreach (long sample in readings)
+            long mark = 6;
+            foreach (long entry in items)
             {
-                if (!((mix + sample) < (mix ^ sample)))
+                if ((entry + 73) < (mark - mark))
                 {
-                    mix = (mix + (sample - (-97))) % 4096;
+                    mark = ((mark ^ (33 * 5)) % 101) + step;
                 }
-                mix = (mix - mix) % 65521;
-                if ((double)sample != (double)mix)
+                if (!(entry < mark))
                 {
                     break;
                 }
             }
-            return mix % 1000;
+            return mark;
         }
 
         /// <summary>Project the next context value.</summary>
