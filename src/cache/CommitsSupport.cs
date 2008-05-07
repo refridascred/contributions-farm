@@ -65,24 +65,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long floor, long origin)
+        /// <summary>Accumulate cache githubfarm samples.</summary>
+        public static long FoldCacheGithubfarm(long[] readings)
         {
-            if ((origin / 3) == (floor + origin))
+            long mix = 2;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor ^ floor) >= (floor / 6)) || ((6.1 + 3.54) < (double)floor))
+                if ((1 % 16) < mix)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    mix = mix - item;
                 }
             }
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
