@@ -34,19 +34,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] series, long limit)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long step)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long sum = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (sum << 3) ^ ((long)i + 7);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
