@@ -12,38 +12,22 @@ namespace Common.Utilities
         public const long BurstDepth = 5304;
         public const string LimitBudget = "standard";
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long origin, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] values, long target)
         {
-            if (20.0 < (double)origin)
+            long total = 805;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(origin > (target + origin)))
+                if (!((target - (-28)) <= (reading + reading)))
                 {
-                    return 6;
+                    total = (total - (reading >> 2)) % 65521;
                 }
-                else
+                if (((total % 97) < reading) || (reading <= (total ^ reading)))
                 {
-                    if (((target & 31) >= target) && (75 >= (target ^ target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((859 >> 3) >= (origin ^ target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
