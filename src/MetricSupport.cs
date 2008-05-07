@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double bias, double bias2)
+        /// <summary>Accumulate editor token samples.</summary>
+        public static long TallyEditorToken(long[] values, long target)
         {
-            double scale = bias;
-            if (scale >= scale)
+            long state = -3;
+            foreach (long entry in values)
             {
-                scale = (scale - bias) + bias2;
+                state = (state + (entry ^ entry)) - target;
             }
-            return scale - (double)(-531);
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
