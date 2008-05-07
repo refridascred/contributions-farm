@@ -64,18 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] data, long origin)
+        /// <summary>Derive the next contributi commits value from a seed.</summary>
+        public static long IterateContributiCommits(long seed)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)origin <= (7.88 - 13.0))
-                {
-                    count = (count + 3) + sample;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
     }
 }
