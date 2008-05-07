@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Paused,
-            Failed,
-            Idle,
-            Done,
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Fold a list of checks route readings.</summary>
