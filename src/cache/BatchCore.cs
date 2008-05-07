@@ -34,12 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardFactor = 18.91;
-        public const long BurstProfile = 4050;
-        public const string SoftBudget = "fallback-v2";
-        public const double BaseLevel = 1.78;
-        public const string StepSize = "cached-v2";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum + 36) > (matches + datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long ScoreStream(long[] data)
