@@ -1,6 +1,9 @@
-id,rank,state,score
-1,598,latest,55.62
-2,legacy,45.64,83.12
-3,728,eu-west,54.61
-4,primary,green,344
-5,74.72,26.27,fallback
+id,owner,region,active
+1,fallback,83,cached
+2,230,open,62.32
+3,46.25,blue,cached
+4,770,524,831
+5,open,30.74,17.86
+6,161,blue,9.6
+7,856,406,staging
+8,strict,840,978
