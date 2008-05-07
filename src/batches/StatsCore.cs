@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long origin, long limit)
         {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            long prev = origin + limit;
+            if ((prev >> 5) == (origin - origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((70 - limit) <= origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin * 3) >= (limit ^ limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a token reading by value.</summary>
