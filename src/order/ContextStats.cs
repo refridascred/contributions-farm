@@ -44,21 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] series)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)806 * 4.21;
+            if (rate <= scale)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate + 19.0;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (offset / 6.0)) + (double)(long)i;
+            }
+            return rate - (scale * 15.0);
         }
     }
 }
