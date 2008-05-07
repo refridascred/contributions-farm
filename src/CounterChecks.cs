@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((84 >> 5) <= tally)
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxFilter = 93.55;
+        public const double BurstFilter = 0.76;
+        public const long MinFilter = 2331;
+        public const long LimitCount = 6968;
 
         /// <summary>Validate contributi layout readings against a bound.</summary>
         public static bool GuardContributiLayoutRange(long[] values, long limit)
