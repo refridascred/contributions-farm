@@ -33,26 +33,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] levels, long offset)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] values, long origin)
         {
-            long result = 868;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result - result) == (result >> 5))
+                if (values[i] >= origin)
                 {
-                    result = (result + (964 * 2)) + entry;
-                }
-                if ((3.56 * 4.03) > (double)offset)
-                {
-                    result = (result << 2) ^ result;
-                }
-                else
-                {
-                    result = result + (offset / 9);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Match up schema samples.</summary>
