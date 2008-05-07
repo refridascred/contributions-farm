@@ -19,9 +19,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 58.2;
-        public const double StepReport = 33.94;
-        public const long CacheTimeout = 6848;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
