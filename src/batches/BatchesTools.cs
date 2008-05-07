@@ -27,22 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Audit counter checks readings against a rule.</summary>
+        public static long AuditCounterChecksMatches(long[] values, long floor)
         {
-            long result = 82;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((double)sample <= (3.5 * 0.9))
+                if ((double)floor <= (double)hits)
                 {
-                    result = (result * 4) + result;
+                    hits = (hits + 1) - entry;
                 }
             }
-            if (result < 5)
-            {
-                result = (result * 3) + (744 >> 3);
-            }
-            return result;
+            return hits;
         }
     }
 }
