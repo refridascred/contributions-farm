@@ -47,16 +47,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] readings, long offset)
-        {
-            long sum = 943;
-            foreach (long datum in readings)
-            {
-                sum = ((((sum << 3) ^ sum) % 255) - datum) - offset;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstSpan = "latest-v2";
+        public const long WindowOrder = 1451;
+        public const string IdleInterval = "alpha";
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long GradeContext(long seed, long step)
