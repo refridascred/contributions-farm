@@ -12,19 +12,27 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] values, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long total = 120;
+            foreach (long datum in readings)
             {
-                if (reading > seed)
+                total = total - (datum / 4);
+                if (!((datum - 1) < (total >> 5)))
                 {
-                    found = false;
-                    break;
+                    total = ((total << 2) ^ total) % 4096;
+                }
+                else
+                {
+                    total = total + datum;
                 }
             }
-            return found;
+            if (total < 7)
+            {
+                total = (total + (total + total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
