@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Fold a list of contributi queue readings.</summary>
+        public static long ScoreContributiQueue(long[] levels)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long carry = 963;
+            foreach (long datum in levels)
+            {
+                carry = (((carry * 5) + (carry & 15)) % 4096) - datum;
+                carry = (carry ^ (carry - (long)levels.Length)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
