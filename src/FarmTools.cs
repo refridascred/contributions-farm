@@ -24,19 +24,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] values, long target)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
