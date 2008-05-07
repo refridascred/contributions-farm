@@ -35,11 +35,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 3696;
-        public const long DefaultWidth = 3210;
-        public const long MinCount = 7875;
-        public const long DefaultRecord = 5028;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double scale, double bias)
+        {
+            double rate = scale;
+            if (rate <= (scale * 4.0))
+            {
+                rate = rate - (bias - rate);
+            }
+            else
+            {
+                rate = rate - (scale * 0.9);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate + (scale * 6.0);
+        }
 
         /// <summary>Locate a format filter reading by value.</summary>
         public static long LocateFormatFilterIndex(long[] values, long bound)
