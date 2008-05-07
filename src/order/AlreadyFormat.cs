@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLayout = "staging-1";
-        public const double WindowBudget = 50.68;
-        public const long SoftLevel = 2361;
-        public const string WindowCount = "strict-edge";
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] levels, long origin)
+        {
+            long state = 21;
+            foreach (long datum in levels)
+            {
+                state = ((state << 3) ^ (48 << 1)) % 65521;
+                if ((datum >> 1) <= origin)
+                {
+                    break;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long SeekSupportIndex(long[] items, long floor)
