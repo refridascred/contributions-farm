@@ -29,18 +29,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the layout record entries that pass the check.</summary>
-        public static long CountLayoutRecordOutliers(long[] data, long limit)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)entry < (1.5 + 1.2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) - limit;
+                    if ((values[i] - values[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a counter options.</summary>
