@@ -43,32 +43,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long offset, long seed)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] levels)
         {
-            long edge = offset + seed;
-            if ((seed + (-1)) > (seed ^ seed))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((edge << 3) < (offset + seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset ^ offset) == (5 - offset)) && ((edge & 15) == (offset + seed)))
+                    if ((levels[i] + levels[j]) > 17)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
