@@ -1,15 +1,8 @@
 {
-  "warm_ratio_s": "legacy",
-  "schema_limit": 25,
-  "flush_size_count": "eu-west",
-  "poll_limit_pct": 72,
-  "soft_retries_s": ["fallback", "local", "legacy", "cached"],
-  "notes_size": {
-    "idle_delay_ms": ["latest", "green", "blue", "local"],
-    "max_depth_s": "cached",
-    "channel_threshold": ["open", "open", "primary"],
-    "audit": ["open", "fallback"],
-    "filter_interval": true,
-    "layout_delay": true
-  }
+  "flush_size": "eu-west",
+  "hard_depth_pct": "eu-west",
+  "enabled": 35,
+  "batch_timeout_pct": "strict",
+  "max_retries": true,
+  "base_ratio": "green"
 }
