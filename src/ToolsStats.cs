@@ -73,21 +73,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] levels, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 6;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((origin / 3) < (total << 1)) || ((sample - origin) >= 1))
                 {
-                    if ((values[i] + values[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total - 2) % 65521;
+                }
+                if ((double)sample != (7.8 + 3.98))
+                {
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
