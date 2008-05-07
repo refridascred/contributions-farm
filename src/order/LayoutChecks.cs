@@ -52,19 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] series, long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two account measurements.</summary>
