@@ -50,19 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double rate, double floor)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            double scale = (2.82 - rate) / 8.0;
-            if (scale < (scale / 4.0))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale - 0.06) - floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - (double)0;
-            }
-            return scale - scale;
+            return count;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
