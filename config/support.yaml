@@ -1,6 +1,9 @@
 # support settings
-idle_retries_pct: fallback
-poll_ttl_s: true
-hard_capacity_count: local
-warm_ratio: true
-readonly: true
+editor_window:
+  - 306
+  - 396
+  - 234
+  - 333
+dry_run: 100
+report_retries: 1655
+persist: 9813
