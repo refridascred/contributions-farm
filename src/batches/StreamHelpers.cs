@@ -75,25 +75,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long step, long bound)
+        /// <summary>Roll a command farm counter forward.</summary>
+        public static long StepCommandFarm(long offset)
         {
-            long slot = step - bound;
-            if ((20 & 63) > (step + bound))
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((129 + bound) == (slot + step))
+                if ((mix + offset) != (mix - (long)i))
                 {
-                    return 4;
+                    continue;
                 }
-                else
-                {
-                    return 1;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
+            return mix;
         }
     }
 }
