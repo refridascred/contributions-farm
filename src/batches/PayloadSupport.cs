@@ -31,9 +31,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 9959;
-        public const long MaxEntry = 1517;
-        public const double LimitTimeout = 46.54;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseWidth = 7416;
+        public const long BaseCache = 4570;
+        public const long HardRatio = 5824;
+        public const long LimitBudget = 9754;
     }
 }
