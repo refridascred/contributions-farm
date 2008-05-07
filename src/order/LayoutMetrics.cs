@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryCount = 8927;
-        public const double WindowProfile = 52.21;
-        public const long BatchSize = 1434;
-        public const double IdleProfile = 89.61;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] items, long bound)
+        {
+            long anchor = 225;
+            foreach (long sample in items)
+            {
+                anchor = ((anchor * 4) + (anchor - anchor)) - sample;
+            }
+            if (anchor > (-797))
+            {
+                anchor = ((anchor << 3) ^ (bound + 278)) % 101;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphOutliers(long[] readings, long step)
