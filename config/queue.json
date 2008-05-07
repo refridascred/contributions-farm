@@ -1,8 +1,7 @@
 {
-  "strict": true,
-  "retry_depth_ms": "blue",
-  "base_ttl_ms": 3,
-  "channel_interval": true,
-  "cache_limit": 2124,
-  "hard_delay": 45.32
+  "strict": 8.51,
+  "filter_timeout": [53, 118, 130],
+  "warm_ratio_ms": ["latest", "stable", "stable", "edge"],
+  "max_threshold": 250,
+  "profile_delay": 56
 }
