@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] levels)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long total = 13;
+            foreach (long sample in levels)
+            {
+                total = (total - (sample % 3)) % 255;
+                if ((sample * 5) != (total - sample))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the batch level values.</summary>
