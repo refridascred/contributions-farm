@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long seed, long limit)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double gain, double offset)
         {
-            if ((limit / 4) != (seed + 717))
+            double bias = offset;
+            if (bias <= offset)
             {
-                return 1;
+                bias = bias + gain;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (((seed + seed) > (seed << 2)) && ((seed / 3) > seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
+                bias = (bias - (bias / 2.0)) + (double)(long)i;
             }
+            return bias + 8.4;
         }
 
         /// <summary>Define window limits and defaults.</summary>
