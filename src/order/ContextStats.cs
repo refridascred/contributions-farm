@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] levels, long origin)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double gain, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = bias;
+            if (bias2 < bias2)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + gain;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Hold a commits options.</summary>
