@@ -14,25 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long seed, long step)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long step2 = seed - step;
-            if ((step2 + step2) >= 17)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step ^ seed) == (seed << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank route input into a small class.</summary>
