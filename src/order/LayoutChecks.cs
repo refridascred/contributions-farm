@@ -12,19 +12,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] readings, long origin)
+        /// <summary>Find the first report window entry that matches the target.</summary>
+        public static long LookupReportWindowIndex(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > origin)
+                if ((values[i] == step) && ((values[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the metric status values.</summary>
