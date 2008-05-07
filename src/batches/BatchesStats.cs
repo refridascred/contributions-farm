@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Locked,
-            Done,
-            Stale,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstRatio = 50.94;
+        public const long MaxRatio = 5516;
+        public const long LimitTimeout = 5640;
+        public const long IdleNotes = 7830;
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
