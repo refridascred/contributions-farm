@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count batches tools pairs that satisfy a relation.</summary>
-        public static long CompareBatchesToolsCount(long[] items)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the cache phase values.</summary>
