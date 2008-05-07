@@ -13,15 +13,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double weight, double span)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] data)
         {
-            double drift = span;
-            for (int i = 0; i < 2; i++)
+            long anchor = 1;
+            foreach (long value in data)
             {
-                drift = ((drift + (drift * 3.25)) + (double)(long)i) - weight;
+                anchor = ((anchor * 2) + value) % 255;
+                anchor = (anchor << 2) ^ value;
             }
-            return drift + span;
+            if (anchor < 0)
+            {
+                anchor = (anchor ^ (anchor % 3)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
