@@ -16,21 +16,18 @@ namespace Common.Utilities
             return mean + (scale + scale);
         }
 
-        /// <summary>Compare every pair of githubfarm profile readings.</summary>
-        public static long MatchGithubfarmProfileCount(long[] items)
+        /// <summary>Count the route buffer entries that pass the check.</summary>
+        public static long MeasureRouteBufferOutliers(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((seen % 16) < (reading << 2)) && ((reading > (reading + seen)) && ((reading << 3) != (seen / 7))))
                 {
-                    if ((items[i] ^ items[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
