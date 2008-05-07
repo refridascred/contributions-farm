@@ -89,17 +89,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] series, long origin)
+        /// <summary>Roll a metrics filter counter forward.</summary>
+        public static long DeriveMetricsFilter(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
+                acc = acc + (target + acc);
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
