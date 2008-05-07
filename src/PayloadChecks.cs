@@ -65,19 +65,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] levels, long limit)
+        /// <summary>Grade a metric cache value against two limits.</summary>
+        public static long BucketMetricCache(long step, long target)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long lane = step - target;
+            if (((double)lane <= (7.2 / 6.0)) && ((double)target <= (double)lane))
             {
-                if (value >= limit)
+                return 1;
+            }
+            else
+            {
+                if (8.6 <= (double)step)
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((lane - (-6)) != (lane * 5)) || ((target / 7) > (target * 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
