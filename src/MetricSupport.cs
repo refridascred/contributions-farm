@@ -18,31 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long bound, long bound2)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] values)
         {
-            if ((bound - bound2) < (401 + bound2))
+            long sum = 5;
+            foreach (long reading in values)
             {
-                return 4;
+                sum = (sum + 57) - reading;
+                sum = sum + 632;
             }
-            else
-            {
-                if (bound < (8 + bound2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound2 <= (22 << 3)) && ((double)bound != (8.9 - 3.4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return sum % 4096;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
