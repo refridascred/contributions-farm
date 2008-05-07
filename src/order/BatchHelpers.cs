@@ -19,24 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long bound, long offset)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            if ((bound + bound) >= bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound << 3) <= (119 - offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Failed,
+            Ready,
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Adjust a buffer reading.</summary>
