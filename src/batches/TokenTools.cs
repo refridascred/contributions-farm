@@ -32,10 +32,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultWidth = 5151;
-        public const long CacheTimeout = 3450;
-        public const long HardSpan = 8348;
-        public const long IdleDepth = 3006;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Synced,
+            Retry,
+            Stale,
+        }
     }
 }
