@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] readings, long step)
+        /// <summary>Validate contributi order readings against a bound.</summary>
+        public static bool ValidateContributiOrderRange(long[] levels, long origin)
         {
-            long sum = 8;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((double)sum >= 0.75)
+                if (datum != origin)
                 {
-                    sum = ((sum ^ (sum ^ 21)) ^ sample) - step;
-                }
-                else
-                {
-                    sum = sum - (sum % 5);
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
