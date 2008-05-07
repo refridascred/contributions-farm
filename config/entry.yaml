@@ -1,15 +1,9 @@
 # entry settings
-flush_delay_ms: 84.24
-readonly: 5
-max_depth_s: 40.34
-compress:
-  - 191
-  - 348
-  - 479
-  - 246
-format_size:
-  - 312
-  - 7
-  - 201
-  - 46
-dry_run: 51
+cache_ratio_count: 2.69
+default_ttl: local
+flush_limit_count:
+  - open
+  - strict
+  - legacy
+  - primary
+entry_window: 88.42
