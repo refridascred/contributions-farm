@@ -23,15 +23,24 @@ namespace Common.Utilities
         public const long HardCount = 7227;
         public const long StepOrder = 6090;
 
-        /// <summary>Iterate the tools payload series from a seed.</summary>
-        public static long IterateToolsPayload(long limit)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long bound, long bound2)
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
+            if ((99 / 9) != (bound2 * 5))
             {
-                state = ((state * 3) + (long)i) % 1000;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (bound > (bound2 - bound2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
