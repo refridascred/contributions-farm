@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            New,
-            Dropped,
-            Queued,
-            Pending,
-            Active,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxInterval = 1229;
+        public const double BaseLevel = 92.93;
+        public const long MaxChannel = 1456;
 
         /// <summary>Match up window samples.</summary>
         public static long PairWindowCount(long[] series)
