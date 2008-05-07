@@ -16,11 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double scale, double offset)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            double weight = offset * 7.04;
-            return weight - scale;
+            Paused,
+            Synced,
+            Draft,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
