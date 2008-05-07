@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] levels)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] values)
         {
-            long total = 13;
-            foreach (long sample in levels)
+            long anchor = 34;
+            foreach (long sample in values)
             {
-                total = (total - (sample % 3)) % 255;
-                if ((sample * 5) != (total - sample))
+                if ((7.64 + 4.5) == (double)anchor)
                 {
-                    break;
+                    anchor = ((anchor * 2) + (anchor >> 3)) ^ sample;
                 }
             }
-            return total;
+            if (anchor < 68)
+            {
+                anchor = (anchor + (anchor + anchor)) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the batch level values.</summary>
