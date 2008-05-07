@@ -22,18 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] values, long floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] series)
         {
-            long score = 9;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((floor + score) >= (reading << 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score - (long)values.Length) % 1000;
+                    if ((series[i] ^ series[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a layout entry.</summary>
