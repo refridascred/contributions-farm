@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const long RetryLayout = 5224;
         public const string BaseCount = "legacy";
 
-        /// <summary>Locate a buffer session reading by value.</summary>
-        public static long SeekBufferSessionIndex(long[] readings, long seed)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Ready,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
