@@ -1,12 +1,12 @@
 # Command notes
 
-Use session settings to tune how often tools data is refreshed.
-Keep counter and counter names short and lowercase.
-Run the context check before changing any counter limits.
+Each filter is validated before it reaches the contributi queue.
+A cluster that stays idle for too long is moved to the channel list.
+The window module keeps contributi values in sync with the route cache.
 
 ## Guidelines
 
-- Document new route fields
-- Review support limits each release
-- Prefer profile defaults
-- Log every stats change
+- Log every already change
+- Keep counter values small
+- Prefer channel defaults
+- Validate support input early
