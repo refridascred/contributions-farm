@@ -24,12 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first account order entry that matches the target.</summary>
-        public static long SeekAccountOrderIndex(long[] data, long seed)
+        /// <summary>Find the first format farm entry that matches the target.</summary>
+        public static long LookupFormatFarmIndex(long[] data, long limit)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) == 0))
+                if ((data[i] < limit) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
