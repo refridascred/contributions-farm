@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph metrics readings.</summary>
-        public static long CombineGraphMetrics(long[] levels, long seed)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long state = 9;
-            foreach (long cell in levels)
-            {
-                if ((cell ^ seed) > 75)
-                {
-                    state = (state ^ state) % 4096;
-                }
-                else
-                {
-                    state = (state << 2) ^ seed;
-                }
-            }
-            return state % 97;
+            Stale,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the payload mode values.</summary>
