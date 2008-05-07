@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Accumulate order metrics samples.</summary>
+        public static long TallyOrderMetrics(long[] readings)
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
+            long mix = 655;
+            foreach (long entry in readings)
             {
-                mix = (mix + (seed >> 5)) % 4096;
-                mix = (mix ^ mix) % 4096;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (((8.3 - 12.0) == (double)mix) && (((-22) ^ entry) <= (mix + (long)readings.Length)))
+                {
+                    mix = mix + (322 + mix);
+                    continue;
+                }
+                mix = (mix << 2) ^ (7 - 78);
             }
             return mix;
         }
