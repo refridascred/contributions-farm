@@ -1,9 +1,9 @@
 # githubfarm settings
-queue_threshold: 22.31
-format_ratio: true
-stats_window:
-  - 7
-  - 463
-audit: green
-strict: false
-account_retries: 30
+idle_threshold_count: legacy
+route_timeout: true
+strict: 50.17
+audit:
+  - 176
+  - 207
+soft_retries_count: 53.47
+checks_depth: local
