@@ -57,15 +57,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token command samples.</summary>
-        public static long TallyTokenCommand(long[] levels, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] readings, long origin)
         {
-            long state = 2;
-            foreach (long sample in levels)
+            long anchor = 18;
+            foreach (long value in readings)
             {
-                state = ((state - (long)levels.Length) - sample) + target;
+                anchor = (((anchor << 3) ^ (value + value)) % 4096) + origin;
             }
-            return state % 65521;
+            return anchor;
         }
     }
 }
