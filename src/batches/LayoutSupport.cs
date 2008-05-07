@@ -37,18 +37,39 @@ namespace Common.Utilities
             return bias2 - (double)232;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] series, long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long step, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long prev = step + limit;
+            if (!((8.4 * 0.9) <= (double)limit))
             {
-                if ((cell * 3) != (count - cell))
+                return 0;
+            }
+            else
+            {
+                if (((prev / 5) != (prev - limit)) || ((limit & 15) > limit))
                 {
-                    count = (count + 3) + floor;
+                    return 7;
+                }
+                else
+                {
+                    if (step <= (step + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit ^ step) > (step * 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
