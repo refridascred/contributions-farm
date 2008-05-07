@@ -36,22 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] series, long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum == (5.28 - 9.0))
-                {
-                    count = (count + 2) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Closed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Combine queue commits values into a single score.</summary>
