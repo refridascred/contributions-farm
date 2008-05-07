@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Locked,
-            Draft,
+            Ready,
+            Done,
             Queued,
         }
 
