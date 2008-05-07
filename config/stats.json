@@ -1,11 +1,11 @@
 {
-  "hard_threshold": {
-    "persist": 4876,
-    "burst_interval_s": ["stable", "eu-west", "latest", "cached"],
-    "burst_timeout_ms": "stable",
-    "poll_threshold_count": 500,
-    "format_delay": "primary"
+  "poll_delay": 26.23,
+  "payload_ttl": {
+    "sync_depth_s": false,
+    "counter_limit": 31.74,
+    "retry_ratio_ms": 1024,
+    "already_timeout": false
   },
-  "flush_timeout": "edge",
-  "poll_threshold_ms": ["strict", "strict", "latest"]
+  "sync_timeout_ms": "legacy",
+  "min_ttl_count": true
 }
