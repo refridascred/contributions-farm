@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] series, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] data, long target)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((sample * 3) == (sample & 31))
+                if ((target + 4) >= (cell * 5))
                 {
-                    count = (count + 1) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Adjust a profile reading.</summary>
