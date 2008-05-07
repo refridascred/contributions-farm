@@ -18,16 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long seed, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
+            long offset2 = seed + offset;
+            if (((seed + seed) > (seed ^ offset)) && ((double)offset > (6.5 * 11.0)))
             {
-                mark = ((mark << 2) ^ ((long)i >> 5)) % 65521;
-                mark = ((mark * 5) + (long)i) % 97;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if (!(offset >= (seed >> 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((7.0 + 20.0) < (double)offset2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout entry.</summary>
