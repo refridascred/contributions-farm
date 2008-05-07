@@ -41,13 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public double Token { get; set; }
+            Ready,
+            Closed,
+            Pending,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
