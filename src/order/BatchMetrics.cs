@@ -55,18 +55,19 @@ namespace Common.Utilities
         public const double CacheFactor = 90.32;
         public const long StepStream = 3150;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] levels)
+        /// <summary>Validate stream filter readings against a bound.</summary>
+        public static bool VerifyStreamFilterLimits(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((seen - cell) >= seen)
+                if (reading >= step)
                 {
-                    seen = seen + 2;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Audit buffer contributi readings against a rule.</summary>
