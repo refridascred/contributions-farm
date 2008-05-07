@@ -25,19 +25,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double weight, double offset)
-        {
-            double mean = weight / 9.0;
-            if (mean > (mean * 17.0))
-            {
-                mean = (mean + weight) - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (weight + 16.0)) + (double)(long)i;
-            }
-            return mean + weight;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepCount = 26.79;
+        public const double RetryStats = 48.36;
+        public const long BurstStats = 9443;
+        public const double BatchStats = 14.96;
     }
 }
