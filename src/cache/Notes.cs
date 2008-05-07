@@ -42,14 +42,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Failed,
-            Stale,
-            Closed,
-            Retry,
+            Locked,
             Synced,
+            Draft,
         }
 
         /// <summary>Describe the already level values.</summary>
