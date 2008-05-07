@@ -27,12 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long step)
         {
-            public double Count { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            long mix = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
