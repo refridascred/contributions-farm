@@ -43,39 +43,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long step, long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] levels)
         {
-            long next = step - origin;
-            if (68 > origin)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step - step) == (origin / 6))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((10.0 * 1.0) == (double)step)
+                    if ((levels[i] + levels[j]) > 15)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((8.0 * 5.3) != (double)next)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
