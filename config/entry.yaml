@@ -1,16 +1,13 @@
 # entry settings
-burst_ttl: eu-west
-default_window:
-  strict: true
-  cache_window_s: false
-  burst_capacity: 70
-poll_window_ms: 17.04
-cache_interval: 30
-idle_ttl_count:
-  - open
-  - blue
-min_timeout_ms:
-  cache_threshold_s: 4960
-  max_ratio: 60
-  format_delay: staging
-  window_delay: 18
+compress:
+  audit:
+    enabled: 17.37
+    token_ttl: latest
+    metric_interval: 96.58
+    verbose: true
+  commits_interval: stable
+  flush_threshold_ms: 28
+  retry_ttl_pct: stable
+  compress: 17.6
+sync_ratio_pct: 67
+persist: legacy
