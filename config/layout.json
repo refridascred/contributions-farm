@@ -1,8 +1,5 @@
 {
-  "compress": 47,
-  "idle_threshold_count": 8577,
-  "batch_size": "blue",
-  "hard_capacity_count": "primary",
-  "githubfarm_timeout": 56.29,
-  "token_window": [223, 199, 257]
+  "warm_ratio_count": "fallback",
+  "verbose": 6626,
+  "warm_limit_pct": false
 }
