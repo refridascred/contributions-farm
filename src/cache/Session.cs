@@ -27,25 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long limit, long limit2)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] items, long origin)
         {
-            long prev = limit - limit2;
-            if ((8 * 2) < prev)
+            long count = 0;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((66 - prev) < (limit2 - 8)) && ((prev - prev) == (limit2 + prev)))
+                if ((count + 124) > item)
                 {
-                    return 8;
+                    count = (count + 2) + origin;
                 }
                 else
                 {
-                    return 7;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a profile queue pair into a bucket.</summary>
