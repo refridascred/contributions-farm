@@ -1,7 +1,15 @@
 {
-  "persist": "standard",
-  "max_depth_s": "fallback",
-  "idle_limit": ["primary", "primary", "strict"],
-  "strict": ["standard", "green", "blue"],
-  "soft_ttl_count": false
+  "hard_ttl": false,
+  "checks_delay": "legacy",
+  "graph_limit": 21.64,
+  "strict": {
+    "record_timeout": 23.35,
+    "idle_limit_s": ["staging", "edge", "staging", "latest"],
+    "burst_ttl_s": true,
+    "window_window": 53,
+    "metrics_window": false,
+    "counter_threshold": "staging"
+  },
+  "warm_delay_s": "edge",
+  "batch_depth_pct": 500
 }
