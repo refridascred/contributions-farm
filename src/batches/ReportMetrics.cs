@@ -23,13 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] levels, long floor)
         {
-            Idle,
-            Active,
-            Dropped,
-            Failed,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((count + sample) >= (count - sample)) || ((floor * 5) < (sample % 8)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a session entry.</summary>
