@@ -59,19 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools metrics samples are out of range.</summary>
-        public static long AuditToolsMetricsMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((item & 31) > (item ^ item))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 4642;
+        public const long BurstCount = 1876;
+        public const long BatchGithubfarm = 9264;
+        public const long DefaultWidth = 5173;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
