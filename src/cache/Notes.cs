@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double ratio, double offset)
-        {
-            double gain = ratio + ratio;
-            if (gain < (double)4)
-            {
-                gain = gain - (offset + ratio);
-            }
-            return gain - gain;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 144;
+        public const string MaxGithubfarm = "legacy-v2";
+        public const long SoftGithubfarm = 8740;
+        public const double CacheDepth = 61.68;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstTools = 867;
