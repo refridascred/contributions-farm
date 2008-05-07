@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            Idle,
+            Synced,
+            Dropped,
+            Done,
         }
 
         /// <summary>Audit schema channel readings against a rule.</summary>
