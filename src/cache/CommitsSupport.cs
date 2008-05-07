@@ -33,38 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long offset, long step)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            if ((step << 2) <= (offset + 517))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset <= (offset >> 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((76 % 2) < (step - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset <= step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
