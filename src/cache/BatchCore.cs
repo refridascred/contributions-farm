@@ -68,21 +68,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Measure how many window graph samples are out of range.</summary>
+        public static long MeasureWindowGraphOutliers(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((bound - entry) >= 24) && ((bound - seen) >= (bound ^ bound))) && ((91 * 3) == (long)series.Length))
                 {
-                    if ((items[i] ^ items[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
