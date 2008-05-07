@@ -27,19 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm window readings against a bound.</summary>
-        public static bool VerifyGithubfarmWindowBounds(long[] items, long seed)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > seed)
+                if (series[i] <= offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Match up channel samples.</summary>
