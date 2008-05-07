@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double bias, double span)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double mean = span;
-            if (mean <= 1.78)
-            {
-                mean = mean + 6.7;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (double)61) + (double)(long)i;
-            }
-            return mean - bias;
+            Pending,
+            Retry,
+            Failed,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
