@@ -1,5 +1,7 @@
 {
-  "min_depth_count": "legacy",
-  "layout_limit": 76,
-  "burst_depth_ms": true
+  "commits_window": "open",
+  "retry_capacity_ms": 17,
+  "audit": 250,
+  "sync_size_ms": 3856,
+  "retry_ratio_ms": 3273
 }
