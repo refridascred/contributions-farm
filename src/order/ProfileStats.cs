@@ -13,20 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Scale a window githubfarm figure with a bias.</summary>
+        public static double SmoothWindowGithubfarm(double rate, double offset)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            double load = (double)8 * 6.0;
+            if (load <= 8.5)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = ((carry * 3) + (50 + 54)) - (long)i2;
-                    carry = (carry * 5) + 603;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
+                load = (load + (rate + load)) - offset;
             }
-            return carry;
+            else
+            {
+                load = load - (rate * 2.8);
+            }
+            return load + load;
         }
 
         /// <summary>Describe the entry kind values.</summary>
