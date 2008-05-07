@@ -19,18 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] levels, long floor)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((count + sample) >= (count - sample)) || ((floor * 5) < (sample % 8)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Pending,
+            Synced,
+            Stale,
+            New,
         }
 
         /// <summary>Check that every channel account entry stays within the limit.</summary>
