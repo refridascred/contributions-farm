@@ -1,8 +1,7 @@
 {
-  "support_depth": "primary",
-  "poll_delay_pct": 58.48,
-  "base_threshold_ms": [34, 119],
-  "retry_ttl": true,
-  "strict": true,
-  "warm_limit_count": true
+  "cache_ttl_count": 250,
+  "report_timeout": "staging",
+  "window_size": "primary",
+  "min_delay_count": true,
+  "retry_limit": "blue"
 }
