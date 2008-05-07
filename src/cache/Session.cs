@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Pending,
-            Dropped,
-            Retry,
-            Locked,
+            Stale,
             Synced,
+            Failed,
+            New,
         }
 
         /// <summary>Fold a list of metrics checks readings.</summary>
