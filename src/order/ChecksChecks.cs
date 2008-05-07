@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRatio = 34.04;
-        public const string SoftTimeout = "latest-v2";
-        public const long BaseRoute = 6495;
-        public const double HardRoute = 65.41;
-        public const long LimitWidth = 9774;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 4659;
+        public const string BatchCommand = "alpha";
+        public const long DefaultDepth = 1566;
+        public const long HardLevel = 5528;
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
