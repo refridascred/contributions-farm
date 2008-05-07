@@ -47,12 +47,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheWidth = 1685;
-        public const long LimitProfile = 6459;
-        public const string BatchDepth = "open-1";
-        public const long WindowProfile = 479;
-        public const long HardProfile = 9260;
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] readings, long offset)
+        {
+            long sum = 943;
+            foreach (long datum in readings)
+            {
+                sum = ((((sum << 3) ^ sum) % 255) - datum) - offset;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long GradeContext(long seed, long step)
