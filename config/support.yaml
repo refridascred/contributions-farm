@@ -1,5 +1,4 @@
 # support settings
-sync_size_ms: true
-min_threshold_ms: standard
-sync_retries: standard
-persist: 85.28
+retry_timeout: latest
+strict: fallback
+retry_capacity_pct: 250
