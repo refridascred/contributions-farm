@@ -15,18 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] samples)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((item ^ item) != (item - item))
+                if (((seen * 4) <= item) || !((3.0 - 0.8) <= (double)item))
                 {
-                    count = count + 1;
+                    seen = (seen + 2) - offset;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the notes mode values.</summary>
