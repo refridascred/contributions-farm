@@ -16,21 +16,13 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = acc ^ acc;
-                if (844 < (origin & 63))
-                {
-                    acc = (acc * 2) + (acc + acc);
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Size { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Classify a stream editor pair into a bucket.</summary>
