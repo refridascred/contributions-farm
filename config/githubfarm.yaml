@@ -1,20 +1,25 @@
 # githubfarm settings
-tools_timeout:
-  - 309
-  - 330
-  - 486
-  - 354
-enabled: strict
-strict:
-  flush_delay_count: 1024
-  burst_timeout_pct: false
-  warm_window_s: edge
-  strict:
-    - fallback
-    - fallback
-    - legacy
-    - stable
-  warm_ratio: 78.51
-session_threshold:
-  - 467
-  - 48
+cache_depth_s: 88
+stats_size: false
+retry_delay:
+  - cached
+  - cached
+base_interval_count:
+  - 223
+  - 455
+cache_retries:
+  enabled: 500
+  flush_limit:
+    - 99
+    - 419
+  retry_capacity_ms: false
+  verbose:
+    - 318
+    - 171
+min_size_count:
+  cache_delay_s: true
+  soft_limit: 9086
+  hard_ratio_count: true
+  persist:
+    - green
+    - latest
