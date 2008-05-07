@@ -36,12 +36,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long offset)
         {
-            Retry,
-            Done,
-            Locked,
+            long result = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
