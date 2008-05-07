@@ -26,18 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] series, long seed)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((19.0 / 7.0) == (double)sample)
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
+            Done,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
