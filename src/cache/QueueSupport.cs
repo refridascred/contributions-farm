@@ -17,12 +17,10 @@ namespace Common.Utilities
         public const string HardSize = "legacy";
         public const long WindowInterval = 2990;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Locked,
-            Retry,
-            New,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardFactor = 7095;
+        public const string WindowRecord = "open-v2";
+        public const long SoftRatio = 7783;
+        public const double BaseRecord = 26.48;
     }
 }
