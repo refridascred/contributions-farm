@@ -57,22 +57,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 3696;
+        public const long DefaultWidth = 3210;
+        public const long MinCount = 7875;
+        public const long DefaultRecord = 5028;
 
         /// <summary>Locate a format filter reading by value.</summary>
         public static long LocateFormatFilterIndex(long[] values, long bound)
