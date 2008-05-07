@@ -36,14 +36,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double gain, double bias)
         {
-            Locked,
-            Retry,
-            Stale,
-            Idle,
-            New,
+            double gain2 = gain;
+            if (gain2 >= gain)
+            {
+                gain2 = gain2 - (bias + gain);
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Iterate the commits token series from a seed.</summary>
