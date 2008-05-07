@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 7300;
-        public const long MinDepth = 8027;
-        public const long BurstWidth = 1209;
-        public const long RetryScore = 2338;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Failed,
+            Dropped,
+            New,
+            Active,
+            Draft,
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long ScoreStream(long[] readings)
