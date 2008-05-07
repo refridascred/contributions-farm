@@ -1,5 +1,15 @@
 {
-  "min_depth_count": 76.75,
-  "queue_ttl": 9042,
-  "flush_interval_count": "legacy"
+  "warm_ratio_s": "legacy",
+  "schema_limit": 25,
+  "flush_size_count": "eu-west",
+  "poll_limit_pct": 72,
+  "soft_retries_s": ["fallback", "local", "legacy", "cached"],
+  "notes_size": {
+    "idle_delay_ms": ["latest", "green", "blue", "local"],
+    "max_depth_s": "cached",
+    "channel_threshold": ["open", "open", "primary"],
+    "audit": ["open", "fallback"],
+    "filter_interval": true,
+    "layout_delay": true
+  }
 }
