@@ -1,5 +1,5 @@
 # support settings
-flush_capacity_ms: 777
-soft_depth_count: 1024
-idle_timeout: strict
-sync_interval_s: 36.85
+sync_size_ms: true
+min_threshold_ms: standard
+sync_retries: standard
+persist: 85.28
