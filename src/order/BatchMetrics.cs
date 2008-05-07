@@ -14,22 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit filter context readings against a rule.</summary>
-        public static long TallyFilterContextHits(long[] samples)
+        /// <summary>Fold a list of profile already readings.</summary>
+        public static long WeighProfileAlready(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long total = -94;
+            foreach (long item in series)
             {
-                if ((sample >= (tally & 1)) || ((tally & 63) > (sample & 127)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total * 2) + (item << 2);
             }
-            return tally;
+            if (total > 63)
+            {
+                total = ((total * 3) + (425 - total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
