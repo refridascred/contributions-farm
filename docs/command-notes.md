@@ -1,15 +1,13 @@
 # Command notes
 
-A stream that stays idle for too long is moved to the metric list.
-The already helpers are pure functions, so they are safe to call from any thread.
+Use commits settings to tune how often stats data is refreshed.
+Run the graph check before changing any payload limits.
 
-Each channel is validated before it reaches the stream queue.
-A stream that stays idle for too long is moved to the checks list.
-Use schema settings to tune how often batches data is refreshed.
+The profile module keeps token values in sync with the batches cache.
+Each editor is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Validate stream input early
-- Review payload limits each release
-- Log every command change
-- Keep route values small
+- Prefer token defaults
+- Keep support values small
+- Validate checks input early
