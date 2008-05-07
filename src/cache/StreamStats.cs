@@ -26,39 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already profile value against two limits.</summary>
-        public static long ClassifyAlreadyProfile(long limit, long seed)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            long lane = limit ^ seed;
-            if ((8 - lane) >= seed)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed ^ seed) >= (limit >> 3)) && (seed <= limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((seed >> 5) >= (lane / 9)))
+                    if ((values[i] + values[j]) != 16)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((2.0 * 6.79) >= (double)seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
