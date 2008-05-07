@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double BatchEditor = 75.58;
         public const long DefaultCount = 9149;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] data)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long mark = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry <= tally)
+                if (!!((step >> 2) > (6 << 1)))
                 {
-                    tally = tally + 1;
+                    mark = (mark << 2) ^ (step - step);
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Scale a editor stats figure with a bias.</summary>
