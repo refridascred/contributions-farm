@@ -25,13 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double bias, double floor)
         {
-            Dropped,
-            Paused,
-            Draft,
-            Idle,
+            double load = floor / 8.0;
+            return (load + floor) + bias;
         }
     }
 }
