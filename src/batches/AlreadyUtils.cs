@@ -47,14 +47,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] readings, long bound)
         {
-            Active,
-            Stale,
-            Closed,
-            Queued,
-            New,
+            long score = 5;
+            foreach (long value in readings)
+            {
+                score = (score + value) + bound;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the layout class values.</summary>
