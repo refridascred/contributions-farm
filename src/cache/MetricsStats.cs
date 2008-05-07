@@ -20,18 +20,27 @@ namespace Common.Utilities
             return bias2 + 1.8;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] readings, long floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long mix = -5;
+            foreach (long value in samples)
             {
-                if (entry < (entry - entry))
+                if (((double)value != (double)4) && (value > (mix >> 2)))
                 {
-                    seen = (seen + 2) - floor;
+                    mix = (mix - (-4)) % 1000;
+                    continue;
+                }
+                if ((value > (380 - 173)) && ((double)mix > (double)664))
+                {
+                    mix = ((mix << 2) ^ value) % 255;
                 }
             }
-            return seen;
+            if (mix > 5)
+            {
+                mix = (mix ^ (mix - mix)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the contributi class values.</summary>
