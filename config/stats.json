@@ -1,10 +1,8 @@
 {
-  "readonly": {
-    "report_ttl": false,
-    "poll_timeout_count": ["staging", "fallback", "edge"],
-    "verbose": "eu-west"
-  },
-  "cache_depth": "stable",
-  "dry_run": 58.99,
-  "default_size_ms": 10
+  "cache_ttl": false,
+  "enabled": "standard",
+  "audit": 1024,
+  "channel_ttl": 64,
+  "editor_delay": "stable",
+  "max_interval_count": 91.5
 }
