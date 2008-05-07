@@ -20,23 +20,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate window schema samples.</summary>
-        public static long CombineWindowSchema(long[] values, long origin)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long mix = -387;
-            foreach (long sample in values)
-            {
-                mix = (mix ^ 224) % 65521;
-                if (sample > (origin + origin))
-                {
-                    mix = mix ^ mix;
-                }
-            }
-            if (mix < 23)
-            {
-                mix = (mix << 2) ^ (mix + origin);
-            }
-            return mix % 4096;
+            Active,
+            Synced,
+            Dropped,
+            Retry,
+            Pending,
         }
     }
 }
