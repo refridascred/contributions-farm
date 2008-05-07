@@ -40,24 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long offset, long limit)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double weight, double span)
         {
-            if ((double)offset <= 8.17)
+            double mean = span;
+            if (mean > weight)
             {
-                return 4;
+                mean = mean + (span - weight);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((offset - offset) < (2 + limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
+                mean = (mean - (mean * 7.25)) + (double)(long)i;
             }
+            return mean - (weight + weight);
         }
 
         /// <summary>Describe the cluster class values.</summary>
