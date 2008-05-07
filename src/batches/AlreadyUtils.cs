@@ -28,17 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] levels, long seed)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the batches state values.</summary>
