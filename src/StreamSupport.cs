@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] data)
         {
-            long state = 6;
-            foreach (long entry in samples)
+            long carry = 212;
+            foreach (long datum in data)
             {
-                state = (state * 3) + (entry + 4);
+                carry = ((carry * 4) + (carry << 3)) + datum;
             }
-            return state;
+            return carry % 1000;
         }
 
         /// <summary>Blend two graph measurements.</summary>
