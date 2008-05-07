@@ -14,10 +14,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftChecks = "latest";
-        public const long DefaultInterval = 8625;
-        public const long CacheChecks = 1493;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((hits * 3) <= (hits & 7))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long GradeFarm(long step, long target)
