@@ -36,20 +36,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                mix = (mix * 3) + mix;
-                if ((61 * 5) >= (seed >> 5))
+                if (6 <= value)
                 {
-                    break;
+                    count = count + 3;
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
