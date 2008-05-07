@@ -38,12 +38,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxDepth = 86.45;
-        public const string MaxWidth = "staging-1";
-        public const long IdleTimeout = 4220;
-        public const long BaseSpan = 8009;
-        public const string BaseContributi = "strict-v2";
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((hits ^ reading) >= reading)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
