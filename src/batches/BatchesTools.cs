@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the githubfarm payload entries that pass the check.</summary>
-        public static long TallyGithubfarmPayloadOutliers(long[] data)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (value <= (value + value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Idle,
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
