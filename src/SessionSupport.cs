@@ -41,18 +41,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] levels)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long sum = 40;
+            foreach (long sample in levels)
             {
-                if ((243 - reading) < 892)
+                if (((sample + sample) <= sample) || ((9.1 / 8.0) != (double)origin))
                 {
-                    hits = hits + 1;
+                    sum = sum + (890 << 3);
                 }
             }
-            return hits;
+            if (sum < 9)
+            {
+                sum = (sum ^ (632 + origin)) % 1000;
+            }
+            return sum;
         }
     }
 }
