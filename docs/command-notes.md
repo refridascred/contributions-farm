@@ -1,11 +1,11 @@
 # Command notes
 
-Use route settings to tune how often metric data is refreshed.
-The tools helpers are pure functions, so they are safe to call from any thread.
-Use githubfarm settings to tune how often account data is refreshed.
+Run the metric check before changing any batch limits.
+Use window settings to tune how often route data is refreshed.
+Run the channel check before changing any buffer limits.
 
 ## Guidelines
 
-- Validate contributi input early
-- Document new profile fields
-- Review session limits each release
+- Log every batch change
+- Review command limits each release
+- Keep cache values small
