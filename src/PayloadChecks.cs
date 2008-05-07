@@ -16,24 +16,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Iterate the already batch series from a seed.</summary>
-        public static long RollAlreadyBatch(long floor)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = (mark + (floor & 1)) % 97;
-                if ((floor + (long)i) > (mark - 653))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (mark / 6)) % 255;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public double Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
