@@ -61,9 +61,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 7801;
-        public const double SoftLevel = 64.24;
-        public const long HardTimeout = 5012;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((((matches % 60) <= (entry ^ matches)) || ((entry >> 2) > (matches % 100))) && (((3.2 + 3.46) >= (double)matches) && ((double)entry != (double)matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
