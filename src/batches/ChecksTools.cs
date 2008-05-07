@@ -20,16 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the metric account series from a seed.</summary>
-        public static long DeriveMetricAccount(long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] samples, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                score = ((score << 3) ^ ((long)i >> 4)) % 4096;
-                score = ((score * 3) + (long)i) % 65521;
+                if ((double)404 != (double)offset)
+                {
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Count the already notes entries that pass the check.</summary>
