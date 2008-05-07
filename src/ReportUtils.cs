@@ -35,11 +35,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long target)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
+            long result = target;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
