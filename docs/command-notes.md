@@ -1,15 +1,11 @@
 # Command notes
 
-Keep token and buffer names short and lowercase.
-The checks report groups every farm by githubfarm.
-Keep counter and tools names short and lowercase.
-
-Keep support and metric names short and lowercase.
-Use batch settings to tune how often entry data is refreshed.
-Run the schema check before changing any batches limits.
+The window module keeps channel values in sync with the metrics cache.
+When a cluster fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new tools fields
-- Log every metrics change
-- Keep stats values small
+- Prefer counter defaults
+- Review format limits each release
+- Keep notes values small
+- Log every commits change
