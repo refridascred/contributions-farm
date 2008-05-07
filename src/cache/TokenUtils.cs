@@ -26,11 +26,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryLevel = 1625;
-        public const long MinQueue = 95;
-        public const long HardTimeout = 3530;
-        public const double MinInterval = 3.24;
-        public const long MinScore = 2818;
+        /// <summary>Find the first batches checks entry that matches the target.</summary>
+        public static long FindBatchesChecksIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
