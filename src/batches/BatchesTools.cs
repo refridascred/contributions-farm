@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseSize = 1617;
+        public const double MinEditor = 51.23;
+        public const double LimitBudget = 65.3;
+        public const double BatchEditor = 75.58;
+        public const long DefaultCount = 9149;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmOutliers(long[] data)
