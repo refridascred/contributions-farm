@@ -49,21 +49,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample << 3) == (sample * 3))
                 {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
