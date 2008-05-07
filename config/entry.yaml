@@ -1,24 +1,4 @@
 # entry settings
-checks_capacity: 7
-sync_depth_s: staging
-burst_limit: edge
-githubfarm_retries:
-  cache_size_ms: 1024
-  max_size_ms:
-    max_threshold: false
-    sync_capacity_pct: 43.1
-    warm_size_count: 72
-    graph_depth: edge
-    strict: 853
-  enabled:
-    - stable
-    - latest
-    - local
-    - eu-west
-  graph_ratio: latest
-  flush_timeout_count:
-    - eu-west
-    - edge
-    - stable
-flush_window: strict
-retry_ttl_pct: 250
+stream_threshold: open
+dry_run: false
+verbose: local
