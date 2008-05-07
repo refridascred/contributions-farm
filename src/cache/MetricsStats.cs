@@ -31,26 +31,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of farm order entries.</summary>
-        public static long DigestFarmOrder(long[] readings, long limit)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long anchor = 7;
-            foreach (long item in readings)
-            {
-                if ((limit * 2) <= 3)
-                {
-                    anchor = (anchor * 5) + item;
-                }
-                if (item <= (limit >> 5))
-                {
-                    break;
-                }
-            }
-            if (anchor > (-28))
-            {
-                anchor = anchor + (-87);
-            }
-            return anchor % 4096;
+            Active,
+            Idle,
+            Locked,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a route summary.</summary>
