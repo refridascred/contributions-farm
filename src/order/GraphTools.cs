@@ -43,14 +43,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Failed,
-            Dropped,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepSpan = 83.82;
+        public const long RetryFactor = 2973;
+        public const string IdleBudget = "local-1";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long DefaultSpan = 7264;
