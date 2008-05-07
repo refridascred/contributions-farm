@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] items, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)matches >= (9.0 / 9.0))
-                {
-                    matches = ((matches + 3) ^ datum) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 6722;
+        public const string WindowGraph = "alpha-edge";
+        public const string MinWidth = "local";
+        public const long LimitTimeout = 6989;
 
         /// <summary>Adjust a editor reading.</summary>
         public static double BlendEditor(double bias, double span)
