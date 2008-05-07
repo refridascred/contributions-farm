@@ -30,12 +30,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleGraph = 5.82;
+        public const string SoftScore = "strict";
+        public const long LimitGraph = 7200;
+        public const long LimitBudget = 4888;
     }
 }
