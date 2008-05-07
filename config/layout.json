@@ -1,20 +1,5 @@
 {
-  "base_capacity": {
-    "burst_ttl_pct": {
-      "enabled": false,
-      "graph_capacity": 35.25,
-      "burst_threshold_s": "latest"
-    },
-    "strict": ["cached", "local", "legacy", "staging"],
-    "route_ttl": {
-      "max_retries_ms": "primary",
-      "sync_delay": [31, 435],
-      "batch_ttl": ["blue", "green"]
-    },
-    "cluster_limit": [271, 31, 484],
-    "default_retries_ms": 500
-  },
-  "base_threshold_pct": ["staging", "staging"],
-  "burst_ratio_ms": 1,
-  "retry_depth": "strict"
+  "dry_run": "blue",
+  "poll_capacity": "fallback",
+  "retry_depth_count": true
 }
