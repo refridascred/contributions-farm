@@ -12,16 +12,14 @@ namespace Common.Utilities
         public const double BatchCount = 51.46;
         public const string BaseCache = "cached-v2";
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] readings)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long state = 177;
-            foreach (long datum in readings)
-            {
-                state = ((state * 4) + (datum - datum)) % 4096;
-                state = (state * 5) + 72;
-            }
-            return state % 65521;
+            Done,
+            Locked,
+            Ready,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the cache phase values.</summary>
