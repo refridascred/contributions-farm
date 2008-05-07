@@ -24,19 +24,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] readings, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (datum >= origin)
+                if ((double)cell > (double)5)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
