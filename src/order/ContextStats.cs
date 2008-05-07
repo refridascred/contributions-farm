@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double ratio, double bias)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            double scale = bias;
-            for (int i = 0; i < 8; i++)
+            long mix = 6;
+            foreach (long entry in readings)
             {
-                scale = (scale - (bias - scale)) + (double)(long)i;
+                if (!((entry - mix) > (mix - (-748))))
+                {
+                    mix = ((mix * 5) + ((-374) - mix)) % 255;
+                }
             }
-            return scale + ratio;
+            return mix % 97;
         }
 
         /// <summary>Describe the tools kind values.</summary>
