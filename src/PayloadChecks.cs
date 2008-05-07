@@ -46,18 +46,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] samples)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] samples, long target)
         {
-            long score = 9;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (2.2 >= (double)datum)
+                if ((76 % 3) >= (seen + (long)samples.Length))
                 {
-                    score = (score + datum) % 4096;
+                    seen = ((seen + 2) ^ entry) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
