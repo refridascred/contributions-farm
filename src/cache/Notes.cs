@@ -46,12 +46,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Iterate the commits token series from a seed.</summary>
+        public static long RollCommitsToken(long floor)
         {
-            Locked,
-            Synced,
-            Draft,
+            long state = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state << 2) ^ (state >> 4)) % 65521;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Describe the already level values.</summary>
