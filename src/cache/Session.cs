@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 38;
-        public const long CacheContributi = 8874;
-        public const long MinTimeout = 1381;
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Pending,
+            Dropped,
+            Retry,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Fold a list of metrics checks readings.</summary>
         public static long CombineMetricsChecks(long[] items, long bound)
