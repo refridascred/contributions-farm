@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] values, long step)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step * 3) <= (1 + cell))
+                if ((levels[i] >= origin) && ((levels[i] % 2) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
