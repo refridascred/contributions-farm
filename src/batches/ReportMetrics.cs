@@ -23,21 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up farm notes samples.</summary>
-        public static long MatchFarmNotesCount(long[] items)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Active,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a session entry.</summary>
