@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Draft,
-            Ready,
-            Active,
-            New,
-            Closed,
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
