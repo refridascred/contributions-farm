@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Roll a context metrics counter forward.</summary>
+        public static long RollContextMetrics(long seed)
         {
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
+            long score = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score << 3) ^ (seed ^ seed);
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
