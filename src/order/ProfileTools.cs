@@ -36,19 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] levels, long step)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item < step)
+                if ((data[i] == step) && ((data[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Combine queue commits values into a single score.</summary>
