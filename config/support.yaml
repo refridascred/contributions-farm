@@ -1,5 +1,16 @@
 # support settings
-dry_run: 86
-idle_capacity: true
-batch_timeout_s: blue
-hard_size_count: 1024
+min_delay:
+  - staging
+  - legacy
+  - blue
+  - edge
+batch_size: 250
+min_delay_s: 3.84
+sync_retries_s:
+  - 290
+  - 348
+soft_timeout:
+  - primary
+  - latest
+  - green
+  - fallback
