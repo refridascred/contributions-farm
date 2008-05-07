@@ -47,11 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 9187;
-        public const double LimitCommits = 87.19;
-        public const double HardLevel = 23.14;
-        public const double BurstCommits = 59.2;
-        public const long WindowCommits = 9403;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] samples, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
