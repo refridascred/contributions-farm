@@ -19,14 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Iterate the metrics support series from a seed.</summary>
+        public static long StepMetricsSupport(long origin)
         {
-            Dropped,
-            Synced,
-            Done,
-            Closed,
-            Idle,
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 255;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
