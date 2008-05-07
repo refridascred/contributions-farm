@@ -26,17 +26,12 @@ namespace Common.Utilities
         public const long LimitScore = 9319;
         public const long MinBudget = 6038;
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] samples, long step)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Closed,
+            Ready,
         }
 
         /// <summary>Match up record samples.</summary>
