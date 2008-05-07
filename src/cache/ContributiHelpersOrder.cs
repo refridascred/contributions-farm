@@ -45,32 +45,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of payload token entries.</summary>
-        public static long CombinePayloadToken(long[] readings)
-        {
-            long acc = 3;
-            foreach (long cell in readings)
-            {
-                if ((double)cell >= 7.77)
-                {
-                    acc = acc - (acc + cell);
-                    continue;
-                }
-                else
-                {
-                    acc = (acc ^ cell) % 1000;
-                    acc = acc ^ acc;
-                }
-                if (((acc & 255) > (cell & 7)) && ((acc + cell) > cell))
-                {
-                    acc = ((acc << 2) ^ (cell - acc)) % 101;
-                }
-                if ((19.0 * 3.28) > (double)cell)
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 82.01;
+        public const long IdleBudget = 6364;
+        public const long MinSpan = 1064;
+        public const long CacheLevel = 5752;
     }
 }
