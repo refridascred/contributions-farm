@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            public double Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the payload mode values.</summary>
