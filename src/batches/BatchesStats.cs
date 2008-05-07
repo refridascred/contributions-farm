@@ -49,22 +49,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of token session entries.</summary>
-        public static long TotalTokenSession(long[] readings, long offset)
+        /// <summary>Adjust a farm channel reading.</summary>
+        public static double ProjectFarmChannel(double rate, double offset)
         {
-            long score = 5;
-            foreach (long sample in readings)
+            double ratio = rate - rate;
+            if (ratio > (7.49 * 1.2))
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    score = ((score << 3) ^ (3 + sample)) - (long)i;
-                }
-                if ((score + offset) == (989 / 8))
-                {
-                    score = ((score << 3) ^ (offset ^ sample)) % 4096;
-                }
+                ratio = ratio + offset;
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - 12.0) + (double)(long)i;
+            }
+            return ratio + (ratio + ratio);
         }
     }
 }
