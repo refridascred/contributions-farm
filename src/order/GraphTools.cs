@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] samples)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 96;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark - (mark + mark)) ^ cell;
             }
-            return matches;
+            return mark % 4096;
         }
 
         /// <summary>Hold a queue options.</summary>
