@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] values)
+        /// <summary>Digest a series of batches context entries.</summary>
+        public static long ScoreBatchesContext(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long state = 42;
+            foreach (long reading in levels)
             {
-                if (datum > (datum % 5))
+                if ((state / 6) == ((long)levels.Length * 5))
                 {
-                    tally = tally + 2;
+                    state = ((((state << 2) ^ (state >> 2)) % 4096) - reading) + step;
                 }
             }
-            return tally;
+            if (state < 89)
+            {
+                state = (state - state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
