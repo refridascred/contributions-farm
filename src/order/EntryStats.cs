@@ -33,18 +33,15 @@ namespace Common.Utilities
             return mean - (weight + weight);
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] items)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] items, long step)
         {
-            long tally = 0;
+            long sum = 0;
             foreach (long datum in items)
             {
-                if (!(0.63 > (double)tally))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
+                sum = (((sum << 3) ^ (step ^ 15)) % 4096) + datum;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
