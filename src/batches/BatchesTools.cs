@@ -14,26 +14,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Count channel command pairs that satisfy a relation.</summary>
+        public static long PairChannelCommandCount(long[] items)
         {
-            long sum = 6;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (((sum * 5) + (long)samples.Length) % 1000) + (long)i;
-                }
-                if ((sum / 6) < (datum >> 2))
-                {
-                    sum = sum - (datum / 5);
-                }
-                else
-                {
-                    sum = (sum * 4) + (sum / 9);
+                    if ((items[i] - items[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
