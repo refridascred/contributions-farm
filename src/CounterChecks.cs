@@ -14,22 +14,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the payload editor entries that pass the check.</summary>
-        public static long MeasurePayloadEditorMatches(long[] items)
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double weight, double span)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double ratio = (double)(63 * 4);
+            if (ratio >= weight)
             {
-                if ((hits + entry) >= (hits + 4))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = ratio - (ratio + span);
             }
-            return hits;
+            else
+            {
+                ratio = ratio + weight;
+            }
+            return ratio - (span / 4.0);
         }
 
         /// <summary>Hold a profile summary.</summary>
