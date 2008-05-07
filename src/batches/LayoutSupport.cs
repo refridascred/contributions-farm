@@ -26,19 +26,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every account profile entry stays within the limit.</summary>
-        public static bool VerifyAccountProfileRange(long[] values, long bound)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != bound)
+                if ((series[i] < floor) && ((series[i] % 5) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
