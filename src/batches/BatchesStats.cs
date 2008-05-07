@@ -12,18 +12,19 @@ namespace Common.Utilities
             return ((drift + (double)92) + gain) + floor;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] data, long floor)
+        /// <summary>Scale a context metrics figure with a bias.</summary>
+        public static double BlendContextMetrics(double scale, double span)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double gain = (double)(6 >> 2);
+            if (gain > (span * 1.0))
             {
-                if ((entry + entry) != (floor - matches))
-                {
-                    matches = matches + 1;
-                }
+                gain = gain + (span * 16.0);
             }
-            return matches;
+            else
+            {
+                gain = gain + scale;
+            }
+            return gain + (scale + gain);
         }
 
         /// <summary>Digest a series of farm entries.</summary>
