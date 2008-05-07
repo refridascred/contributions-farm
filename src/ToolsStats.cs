@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] items, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long state = 34;
+            foreach (long value in levels)
             {
-                if (cell >= limit)
+                for (int i = 0; i < 10; i++)
                 {
-                    stale = false;
-                    break;
+                    state = ((state ^ value) % 97) + (long)i;
+                }
+                if (((value & 1) == (state >> 3)) && ((21 + value) > (seed << 2)))
+                {
+                    state = (state ^ (428 >> 1)) % 4096;
                 }
             }
-            return stale;
+            return state % 1000;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
