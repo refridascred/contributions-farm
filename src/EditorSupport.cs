@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] readings, long seed)
         {
-            Failed,
-            Dropped,
-            New,
-            Active,
-            Draft,
+            long acc = 4;
+            foreach (long item in readings)
+            {
+                if ((seed - item) <= item)
+                {
+                    acc = ((acc * 4) + (905 + seed)) % 4096;
+                }
+                else
+                {
+                    acc = (acc ^ (706 << 1)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
