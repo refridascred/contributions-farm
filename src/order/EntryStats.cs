@@ -65,13 +65,18 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 9264;
         public const long DefaultWidth = 5173;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] samples)
         {
-            New,
-            Locked,
-            Done,
-            Pending,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((item + hits) <= (hits + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
