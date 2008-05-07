@@ -37,10 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstScore = 8878;
-        public const long BaseSize = 9531;
-        public const double HardTimeout = 88.85;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!((long)data.Length <= (reading << 1)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long GradeCache(long floor, long seed)
