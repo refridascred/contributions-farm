@@ -1,12 +1,11 @@
 # Command notes
 
-Each checks is validated before it reaches the context queue.
-A schema that stays idle for too long is moved to the channel list.
-Each already is validated before it reaches the format queue.
+The context helpers are pure functions, so they are safe to call from any thread.
+Run the metrics check before changing any metrics limits.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every cache change
-- Keep batch values small
-- Prefer channel defaults
-- Validate session input early
+- Prefer commits defaults
+- Review tools limits each release
+- Document new contributi fields
