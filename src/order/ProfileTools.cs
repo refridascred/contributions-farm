@@ -66,15 +66,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] samples, long origin)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] readings, long offset)
         {
-            long mix = 5;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                mix = ((mix - ((long)samples.Length * 4)) ^ entry) - origin;
+                if (datum > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix % 4096;
+            return valid;
         }
     }
 }
