@@ -33,18 +33,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] levels)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum < (datum & 127)) && (datum < seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            Retry,
+            Active,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
