@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Stale,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchFactor = 147;
+        public const long CacheSession = 6759;
+        public const long StepDepth = 6172;
+        public const long StepSession = 1949;
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
