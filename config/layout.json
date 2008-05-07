@@ -1,6 +1,5 @@
 {
-  "default_ratio_count": [457, 238, 346],
-  "compress": false,
-  "buffer_ttl": 5676,
-  "format_ratio": 94.3
+  "sync_window_s": "primary",
+  "idle_retries_count": 75.14,
+  "strict": [2, 275, 301]
 }
