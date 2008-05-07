@@ -20,14 +20,21 @@ namespace Common.Utilities
         public const long LimitLevel = 4853;
         public const long WindowChannel = 3045;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Match up batches session samples.</summary>
+        public static long CompareBatchesSessionCount(long[] series)
         {
-            Idle,
-            Pending,
-            Retry,
-            Queued,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit metrics stats readings against a rule.</summary>
