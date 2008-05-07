@@ -75,19 +75,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate notes profile readings against a bound.</summary>
-        public static bool ValidateNotesProfileRange(long[] items, long bound)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long offset)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Define context limits and defaults.</summary>
