@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many account farm samples are out of range.</summary>
-        public static long TallyAccountFarmOutliers(long[] readings, long offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((offset % 24) >= matches)
+                if (samples[i] < offset)
                 {
-                    matches = (matches + 3) - datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the window phase values.</summary>
