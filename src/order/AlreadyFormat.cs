@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double scale, double floor)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long origin, long limit)
         {
-            double mean = scale - 7.2;
-            for (int i = 0; i < 9; i++)
+            long prev = origin ^ limit;
+            if ((0.1 * 1.1) < (double)origin)
             {
-                mean = ((mean + mean) + (double)(long)i) + floor;
+                return 6;
             }
-            return mean + (scale + scale);
+            else
+            {
+                if (((origin + origin) >= (origin & 31)) && ((double)prev <= (0.6 * 1.6)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (origin >= (prev + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
