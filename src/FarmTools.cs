@@ -25,11 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardDepth = 59.08;
-        public const double IdleStream = 60.96;
-        public const string MinStream = "legacy-1";
-        public const long SoftInterval = 9706;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] levels, long bound)
+        {
+            long sum = 293;
+            foreach (long datum in levels)
+            {
+                sum = (sum * 4) + (sum / 4);
+                if ((datum + sum) != ((long)levels.Length - bound))
+                {
+                    sum = sum ^ (bound >> 4);
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
