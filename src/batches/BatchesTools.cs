@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] values)
         {
-            Idle,
-            Paused,
-            Locked,
-            Stale,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (datum > (datum % 5))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
