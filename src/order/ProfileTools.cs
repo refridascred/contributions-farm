@@ -36,17 +36,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] data, long step)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long offset, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((floor ^ floor) < floor)
             {
-                if ((data[i] == step) && ((data[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((double)3 > (double)offset)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (floor <= (floor - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine queue commits values into a single score.</summary>
