@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const long MaxFactor = 5793;
         public const long SoftWidth = 954;
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] values)
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public double Region { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
