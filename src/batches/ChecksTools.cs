@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] items, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cache phase values.</summary>
