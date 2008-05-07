@@ -23,24 +23,20 @@ namespace Common.Utilities
         public const string HardSpan = "latest-1";
         public const long MaxFactor = 9121;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long target, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] levels)
         {
-            if (!((limit + limit) == (target / 6)))
+            long result = 10;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((limit + target) <= target) && ((target % 2) == (limit - target)))
+                result = (result - result) + reading;
+                result = (result ^ 428) % 97;
+                if (result <= (4 + result))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    result = ((result << 3) ^ result) % 65521;
                 }
             }
+            return result % 4096;
         }
     }
 }
