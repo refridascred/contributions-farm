@@ -12,19 +12,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double weight, double span)
+        /// <summary>Locate a filter token reading by value.</summary>
+        public static long SeekFilterTokenIndex(long[] readings, long step)
         {
-            double mean = span;
-            if (mean > weight)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + (span - weight);
+                if ((readings[i] > step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (mean * 7.25)) + (double)(long)i;
-            }
-            return mean - (weight + weight);
+            return -1;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
