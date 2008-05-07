@@ -13,21 +13,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count cache graph pairs that satisfy a relation.</summary>
-        public static long MatchCacheGraphCount(long[] series)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = span;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = ((drift + (drift * 3.25)) + (double)(long)i) - weight;
             }
-            return count;
+            return drift + span;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
