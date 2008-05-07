@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate layout tools samples.</summary>
-        public static long DigestLayoutTools(long[] readings, long step)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
         {
-            long state = 111;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((state >> 4) <= step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state << 2) ^ (562 + value)) % 101;
-                }
-                if ((double)value != (7.57 * 2.1))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
