@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate contributi order readings against a bound.</summary>
-        public static bool ValidateContributiOrderRange(long[] levels, long origin)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of token entry readings.</summary>
