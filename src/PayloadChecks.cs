@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] data)
+        /// <summary>Derive the next filter batch value from a seed.</summary>
+        public static long StepFilterBatch(long origin)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long anchor = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(cell <= tally) || (((tally + cell) <= (86 >> 1)) && ((0 - tally) >= (cell >> 1))))
-                {
-                    tally = tally + 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
