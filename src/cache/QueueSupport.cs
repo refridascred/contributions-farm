@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
             Retry,
-            Queued,
-            Pending,
-            Locked,
-            Done,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the queue mode values.</summary>
