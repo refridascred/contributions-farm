@@ -33,19 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] values, long origin)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long limit)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (item < origin)
+                if (!(((long)i - 1) != ((long)i - acc)))
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
