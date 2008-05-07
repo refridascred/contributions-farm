@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics window entries.</summary>
-        public static long WeighMetricsWindow(long[] levels, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] data, long target)
         {
-            long state = 960;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                state = (state - (entry + 7)) % 1000;
-                if (((2.0 / 6.0) <= (double)limit) || ((state % 60) != (state - entry)))
+                if (sample < target)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Hold a record info.</summary>
