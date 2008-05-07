@@ -36,18 +36,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] data)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (6 <= value)
+                if (value >= seed)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
