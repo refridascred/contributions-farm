@@ -34,16 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long step)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum << 3) ^ ((long)i + 7);
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
