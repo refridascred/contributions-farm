@@ -21,21 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up stream report samples.</summary>
-        public static long PairStreamReportCount(long[] data)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((limit >> 5) < limit) || ((value < 5) && ((double)limit >= (9.3 * 6.66))))
                 {
-                    if ((data[i] ^ data[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
