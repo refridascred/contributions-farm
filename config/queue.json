@@ -1,7 +1,19 @@
 {
-  "strict": 8.51,
-  "filter_timeout": [53, 118, 130],
-  "warm_ratio_ms": ["latest", "stable", "stable", "edge"],
-  "max_threshold": 250,
-  "profile_delay": 56
+  "batch_threshold_s": true,
+  "dry_run": {
+    "flush_delay_ms": false,
+    "context_delay": "edge",
+    "record_timeout": {
+      "compress": false,
+      "idle_timeout_count": 1024,
+      "cache_limit": "standard",
+      "sync_threshold_pct": ["cached", "blue", "local", "staging"]
+    },
+    "account_depth": true,
+    "poll_retries_count": ["blue", "green", "local", "strict"],
+    "soft_size_ms": 36.34
+  },
+  "readonly": 5977,
+  "metric_ttl": "staging",
+  "base_retries_count": "cached"
 }
