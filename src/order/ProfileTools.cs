@@ -32,32 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long bound, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] levels)
         {
-            long gap = bound ^ target;
-            if (gap < (gap - target))
+            long score = 149;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)gap < (2.6 - 8.0))
+                long delta = score + (sample + score);
+                if (!(delta >= (score - score)))
                 {
-                    return 4;
+                    delta = (delta + delta) % 65521;
                 }
-                else
+                if (!((sample / 5) >= sample))
                 {
-                    if (((1.6 / 3.0) <= (double)bound) && ((double)target != (13.0 * 3.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = (score - (score % 60)) % 97;
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
