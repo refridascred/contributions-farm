@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public double Count { get; set; }
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
+            Pending,
+            Synced,
+            Queued,
         }
 
         /// <summary>Blend two session measurements.</summary>
