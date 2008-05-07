@@ -76,13 +76,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] levels, long limit)
         {
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
