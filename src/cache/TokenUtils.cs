@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] data, long target)
+        /// <summary>Find the first window route entry that matches the target.</summary>
+        public static long FindWindowRouteIndex(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target + 4) >= (cell * 5))
+                if ((series[i] >= seed) && ((series[i] % 3) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
