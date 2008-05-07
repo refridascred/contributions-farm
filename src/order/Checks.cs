@@ -59,13 +59,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] series, long limit)
         {
-            New,
-            Synced,
-            Locked,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
