@@ -1,7 +1,18 @@
 {
-  "hard_delay_pct": ["cached", "local", "stable", "eu-west"],
-  "burst_limit_ms": 9647,
-  "cache_ratio_ms": "local",
-  "order_interval": 88.07,
-  "editor_ratio": [306, 34]
+  "support_threshold": "primary",
+  "flush_window": 78,
+  "verbose": "standard",
+  "hard_capacity": "blue",
+  "stats_depth": false,
+  "strict": {
+    "verbose": "staging",
+    "idle_interval": {
+      "hard_delay_pct": [286, 421],
+      "enabled": 100,
+      "cache_size": "fallback",
+      "base_retries_pct": 62.15
+    },
+    "session_depth": "eu-west",
+    "persist": [20, 238]
+  }
 }
