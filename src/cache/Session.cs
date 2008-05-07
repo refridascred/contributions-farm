@@ -46,22 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the window cluster entries that pass the check.</summary>
-        public static long AuditWindowClusterOutliers(long[] series)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((double)seen >= (4.0 * 7.97))
+                if ((double)entry < (0.77 + 7.4))
                 {
-                    seen = (seen + 3) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
