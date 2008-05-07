@@ -60,18 +60,24 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "open-1";
         public const long LimitLevel = 4400;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] items)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long target, long limit)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            if (!(target > limit))
             {
-                if ((reading > (reading + 450)) || ((reading & 1) < (reading & 3)))
+                return 6;
+            }
+            else
+            {
+                if ((9.9 * 7.1) != (double)target)
                 {
-                    seen = seen + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the account status values.</summary>
