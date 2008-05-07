@@ -90,14 +90,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] samples)
         {
-            Ready,
-            Pending,
-            Done,
-            Idle,
-            Paused,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally / 3) == (sample << 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
