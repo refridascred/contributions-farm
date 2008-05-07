@@ -51,15 +51,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double weight, double floor)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double weight, double span)
         {
-            double ratio = (double)97 * 4.7;
-            for (int i = 0; i < 3; i++)
+            double drift = weight / 3.0;
+            if (drift >= (double)1)
             {
-                ratio = ((ratio - floor) + (double)(long)i) - weight;
+                drift = drift - span;
             }
-            return ratio - (6.9 * 3.25);
+            return drift - weight;
         }
 
         /// <summary>Hold a checks entry.</summary>
