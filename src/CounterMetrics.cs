@@ -31,12 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            Queued,
+            Pending,
+            Dropped,
+            Active,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
