@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] items, long step)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long offset)
         {
-            long anchor = 537;
-            foreach (long datum in items)
+            long score = offset;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = ((((anchor << 3) ^ 518) % 1000) ^ datum) - step;
+                if (offset > (score / 4))
+                {
+                    score = (score * 2) + (offset + score);
+                }
+                score = score - (score + (long)i);
+                score = ((score * 3) + (long)i) % 97;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
