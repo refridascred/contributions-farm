@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] data, long floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long bound)
         {
-            long mark = 6;
-            foreach (long entry in data)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((mark ^ mark) < (mark + entry))
-                {
-                    mark = mark - floor;
-                }
+                sum = ((sum << 2) ^ bound) % 97;
+                sum = (sum + (2 + 74)) % 65521;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            if (mark < 58)
-            {
-                mark = mark + mark;
-            }
-            return mark % 97;
+            return sum;
         }
 
         /// <summary>Describe the report level values.</summary>
