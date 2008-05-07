@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] values, long floor)
+        /// <summary>Accumulate channel already samples.</summary>
+        public static long TallyChannelAlready(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 76;
+            foreach (long item in items)
             {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 3) ^ (0 << 1)) - item;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
