@@ -1,7 +1,7 @@
 {
-  "soft_ttl_s": 100,
-  "min_threshold_pct": 60,
-  "entry_depth": "eu-west",
-  "window_threshold": "local",
-  "flush_limit_count": 55.68
+  "record_window": 60,
+  "verbose": 32.49,
+  "strict": ["primary", "green", "edge", "green"],
+  "warm_delay_ms": 27,
+  "soft_retries": "cached"
 }
