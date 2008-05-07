@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] series)
+        /// <summary>Digest a series of profile channel entries.</summary>
+        public static long TotalProfileChannel(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long mix = 656;
+            foreach (long datum in items)
             {
-                if (((tally - tally) < (47 >> 3)) || !((8.0 + 4.2) == (double)sample))
+                if (((datum - 10) >= 957) || ((datum & 3) <= (datum - datum)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mix = (mix ^ (10 + datum)) % 101;
                 }
             }
-            return tally;
+            return mix % 4096;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
