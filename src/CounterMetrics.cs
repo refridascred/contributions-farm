@@ -36,27 +36,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] readings, long limit)
-        {
-            long anchor = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample < (0.31 - 19.0))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = anchor + 570;
-                }
-                anchor = (anchor ^ sample) % 97;
-                if (anchor >= (limit & 15))
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheTimeout = 66.02;
+        public const long DefaultLevel = 5816;
+        public const string HardScore = "legacy-v2";
     }
 }
