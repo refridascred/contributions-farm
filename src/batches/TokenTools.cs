@@ -27,18 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] samples)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((((1.1 / 2.0) != (double)hits) && (6.8 > (double)item)) && ((item >> 2) <= (item >> 5)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Done,
+            Dropped,
         }
     }
 }
