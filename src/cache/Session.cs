@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a entry metric value against two limits.</summary>
-        public static long BucketEntryMetric(long bound, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] levels, long seed)
         {
-            if (((1.13 / 3.0) == (double)bound) && ((origin / 7) == (bound + 64)))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(origin >= (bound & 63)))
+                if (((72 / 8) > seed) || ((double)seed <= (double)entry))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a schema payload reading by value.</summary>
