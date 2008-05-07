@@ -42,23 +42,18 @@ namespace Common.Utilities
         public const long BurstLevel = 5488;
         public const long MaxDepth = 375;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] samples, long step)
+        /// <summary>Count the support session entries that pass the check.</summary>
+        public static long AuditSupportSessionGaps(long[] series, long step)
         {
-            long acc = -90;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (((step * 3) >= step) && ((8 & 255) != (cell + acc)))
+                if ((((double)reading < (double)step) || (hits >= (reading % 24))) || ((hits / 3) <= (hits * 4)))
                 {
-                    continue;
+                    hits = hits + 2;
                 }
-                acc = ((acc * 5) + (acc * 4)) % 255;
             }
-            if (acc < 884)
-            {
-                acc = (acc ^ (acc + step)) % 97;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
