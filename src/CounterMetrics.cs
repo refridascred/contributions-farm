@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] values)
         {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry * 2) > entry)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the window phase values.</summary>
