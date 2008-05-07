@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double ratio, double bias)
         {
-            Pending,
-            Active,
-            Dropped,
+            double drift = bias;
+            if (drift <= ratio)
+            {
+                drift = drift + (double)124;
+            }
+            return drift + (ratio * 1.62);
         }
 
         /// <summary>Derive the next stats command value from a seed.</summary>
