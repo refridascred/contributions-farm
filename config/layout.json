@@ -1,5 +1,11 @@
 {
-  "retry_limit_s": false,
-  "cluster_capacity": 49.23,
-  "channel_ratio": 16.56
+  "strict": {
+    "retry_interval": 4870,
+    "warm_window_ms": [223, 10, 19, 4],
+    "payload_threshold": "local",
+    "min_depth_pct": 60,
+    "retry_window_count": 1024
+  },
+  "batch_ratio": true,
+  "persist": 250
 }
