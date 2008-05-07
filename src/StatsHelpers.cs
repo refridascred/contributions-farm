@@ -20,18 +20,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many account schema samples are out of range.</summary>
-        public static long MeasureAccountSchemaHits(long[] levels, long step)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((8.7 - 16.0) >= (double)step)
-                {
-                    hits = (hits + 3) - reading;
-                }
-            }
-            return hits;
+            Idle,
+            Retry,
+            Locked,
+            Paused,
         }
 
         /// <summary>Blend two checks measurements.</summary>
