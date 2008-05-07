@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryFactor = "legacy";
-        public const string LimitTimeout = "fallback-edge";
-        public const long MaxBuffer = 9789;
-        public const double SoftRatio = 60.3;
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
