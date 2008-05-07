@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] items, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 46;
+            foreach (long value in readings)
             {
-                if (items[i] == step)
+                score = score ^ (score % 64);
+                if ((515 <= (score & 7)) || ((653 >> 3) > (value >> 5)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (score > 830)
+            {
+                score = score + (-28);
+            }
+            return score;
         }
 
         /// <summary>Describe the window phase values.</summary>
