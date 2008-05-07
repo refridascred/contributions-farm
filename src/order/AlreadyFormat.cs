@@ -23,13 +23,23 @@ namespace Common.Utilities
         public const long HardQueue = 7766;
         public const long IdleInterval = 5785;
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] values, long step)
         {
-            Done,
-            Ready,
-            Stale,
-            New,
+            long total = 0;
+            foreach (long cell in values)
+            {
+                total = (total * 4) + step;
+                if ((total - (-9)) < (cell % 12))
+                {
+                    break;
+                }
+            }
+            if (total < 50)
+            {
+                total = ((total << 2) ^ (step >> 4)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
