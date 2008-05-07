@@ -1,16 +1,44 @@
 # support settings
-min_delay:
-  - staging
-  - legacy
-  - blue
-  - edge
-batch_size: 250
-min_delay_s: 3.84
-sync_retries_s:
-  - 290
-  - 348
-soft_timeout:
-  - primary
-  - latest
-  - green
-  - fallback
+base_interval_count:
+  checks_interval: local
+  sync_window_count: 2527
+  layout_interval: true
+  poll_threshold_ms: true
+  base_retries_ms:
+    format_ratio: true
+    hard_retries: true
+    counter_capacity: standard
+    verbose: false
+    batches_size: 4170
+    cache_interval: 97
+  max_capacity_count: staging
+audit: 73.67
+readonly: strict
+retry_window_count:
+  readonly: 250
+  default_window_ms:
+    - 429
+    - 492
+  account_window:
+    audit: 2664
+    session_timeout: 662
+    min_limit_ms:
+      - open
+      - legacy
+      - blue
+    idle_ttl_ms:
+      - stable
+      - staging
+      - stable
+      - edge
+    cache_window:
+      - 126
+      - 130
+  checks_depth: 500
+  verbose:
+    - local
+    - eu-west
+    - green
+    - staging
+  idle_interval: 9.19
+poll_ttl: 78.21
