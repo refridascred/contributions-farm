@@ -19,13 +19,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Dropped,
-            Locked,
-            Closed,
-            New,
+            Queued,
+            Retry,
+            Done,
+            Paused,
         }
     }
 }
