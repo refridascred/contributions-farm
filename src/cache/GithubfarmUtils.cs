@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long BatchBudget = 9418;
         public const double MinTimeout = 22.31;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] values, long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long state = 45;
+            foreach (long entry in samples)
             {
-                if (!!((-68) > (matches ^ seed)))
-                {
-                    matches = (matches + 2) + cell;
-                }
+                state = ((state - (579 + 927)) ^ entry) + floor;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Fold a list of window readings.</summary>
