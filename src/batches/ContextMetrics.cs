@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long step, long step2)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long diff = step ^ step2;
-            if ((diff >> 2) > step2)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((3 - step) <= (step2 + step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
