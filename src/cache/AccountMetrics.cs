@@ -53,16 +53,22 @@ namespace Common.Utilities
         public const long WindowCluster = 1376;
         public const string SoftCluster = "legacy-v2";
 
-        /// <summary>Iterate the window filter series from a seed.</summary>
-        public static long RollWindowFilter(long origin)
+        /// <summary>Audit commits graph readings against a rule.</summary>
+        public static long TallyCommitsGraphMatches(long[] samples, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                score = score + (score - score);
-                score = ((score * 2) + (long)i) % 4093;
+                if ((item / 3) < (matches + matches))
+                {
+                    matches = (matches + 1) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a route options.</summary>
