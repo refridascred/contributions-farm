@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] values, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 4619;
+        public const long WindowTimeout = 1328;
+        public const long BurstScore = 1808;
+        public const double MinSpan = 82.17;
+        public const double RetryInterval = 53.26;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
