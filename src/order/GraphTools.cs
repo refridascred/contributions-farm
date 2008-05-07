@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit batches checks readings against a rule.</summary>
-        public static long TallyBatchesChecksMatches(long[] levels)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if ((matches >> 5) <= (0 / 8))
+                if (datum >= target)
                 {
-                    matches = (matches + 1) - value;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Match up schema samples.</summary>
