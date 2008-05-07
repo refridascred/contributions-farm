@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of profile channel entries.</summary>
-        public static long TotalProfileChannel(long[] items)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] readings, long limit)
         {
-            long mix = 656;
-            foreach (long datum in items)
+            long acc = 897;
+            foreach (long entry in readings)
             {
-                if (((datum - 10) >= 957) || ((datum & 3) <= (datum - datum)))
+                if ((entry & 3) <= (entry + limit))
                 {
-                    mix = (mix ^ (10 + datum)) % 101;
+                    acc = (acc ^ (entry + (long)readings.Length)) % 255;
                 }
+                acc = ((acc << 2) ^ (acc - acc)) % 4096;
             }
-            return mix % 4096;
+            if (acc < 199)
+            {
+                acc = (acc * 5) + (acc + limit);
+            }
+            return acc;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
