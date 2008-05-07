@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Check that every metrics channel entry stays within the limit.</summary>
-        public static bool CheckMetricsChannelRange(long[] values, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long step)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Describe the cache level values.</summary>
