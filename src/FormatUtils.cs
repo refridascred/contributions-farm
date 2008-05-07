@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Closed,
-            Draft,
-            Queued,
-            Dropped,
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
