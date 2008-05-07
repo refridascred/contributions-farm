@@ -20,22 +20,22 @@ namespace Common.Utilities
             return bias2 + 1.8;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] readings)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (((long)readings.Length + sample) > (seen + sample))
+                if ((origin % 24) == (4 % 12))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 3) ^ sample;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the contributi class values.</summary>
