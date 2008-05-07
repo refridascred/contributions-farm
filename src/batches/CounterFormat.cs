@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a support session figure with a bias.</summary>
-        public static double SmoothSupportSession(double weight, double offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            double scale = weight;
-            if (scale >= weight)
-            {
-                scale = scale + (double)96;
-            }
-            else
-            {
-                scale = scale - offset;
-            }
-            return scale - weight;
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Project the next cache value.</summary>
