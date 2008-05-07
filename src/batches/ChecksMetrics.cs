@@ -61,39 +61,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long seed, long offset)
-        {
-            if (!((double)offset <= (3.88 - 19.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((12.0 * 5.0) < (0.02 + 4.48))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset % 7) <= seed) || ((414 % 100) < (offset - offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset + 821) == (offset % 60)) && (seed <= offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinBudget = 83;
+        public const string HardStats = "fallback-edge";
+        public const string IdleSpan = "staging-v2";
+        public const long HardInterval = 2680;
+        public const string BatchStats = "standard-1";
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long BucketGithubfarm(long origin, long bound)
