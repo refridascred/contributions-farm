@@ -1,5 +1,5 @@
 {
-  "dry_run": 69.43,
-  "enabled": 82,
-  "base_interval_count": "local"
+  "sync_ratio_s": "legacy",
+  "batch_delay": "eu-west",
+  "enabled": 83
 }
