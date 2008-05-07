@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] data, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] data, long floor)
         {
-            long matches = 0;
+            long seen = 0;
             foreach (long item in data)
             {
-                if (matches <= (step + matches))
+                if (!((floor + seen) > seen))
                 {
-                    matches = (matches + 3) - item;
+                    seen = (seen + 2) + item;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a batch options.</summary>
