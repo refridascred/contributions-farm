@@ -36,18 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] items)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((6.93 / 8.0) <= (double)item)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double rate = (double)(54 + 6);
+            return ((rate - (double)892) + bias) + offset;
         }
     }
 }
