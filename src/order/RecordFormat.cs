@@ -31,15 +31,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of already account entries.</summary>
-        public static long FoldAlreadyAccount(long[] readings)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] series, long limit)
         {
-            long carry = 64;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                carry = (carry + (datum << 2)) % 97;
+                if (datum > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry % 97;
+            return ready;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
