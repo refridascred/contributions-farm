@@ -24,12 +24,19 @@ namespace Common.Utilities
             return weight + (bias * 0.3);
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] samples, long offset)
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
