@@ -50,12 +50,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] samples, long offset)
         {
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Mode { get; set; }
+            long state = 95;
+            foreach (long sample in samples)
+            {
+                if (sample > (state / 2))
+                {
+                    state = (state - (sample - sample)) % 255;
+                    continue;
+                }
+                else
+                {
+                    state = (state + (state + 8)) % 65521;
+                }
+                if ((double)offset >= (4.18 * 10.0))
+                {
+                    state = (state - (state ^ state)) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
