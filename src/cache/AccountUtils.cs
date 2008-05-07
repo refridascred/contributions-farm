@@ -20,15 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a tools entry reading.</summary>
-        public static double AdjustToolsEntry(double ratio, double floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long floor, long seed)
         {
-            double gain = floor;
-            if (gain <= ratio)
+            if ((floor + seed) > floor)
             {
-                gain = gain - (double)7;
+                return 7;
             }
-            return gain - (ratio / 2.0);
+            else
+            {
+                if ((3.2 * 2.64) > (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the order state values.</summary>
