@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const string IdleToken = "stable-1";
         public const string WindowFactor = "standard";
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((1.17 > (double)(long)i) || ((bound * 3) <= (state - state))))
                 {
-                    if ((samples[i] ^ samples[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state * 4) + ((long)i - bound);
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
     }
 }
