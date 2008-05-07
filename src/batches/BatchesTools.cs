@@ -23,11 +23,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 1590;
-        public const long MinBudget = 1587;
-        public const long BatchCommits = 351;
-        public const string MinCommits = "legacy-1";
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Synced,
+            Failed,
+            Draft,
+            Paused,
+            Done,
+        }
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
