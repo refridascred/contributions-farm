@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank editor report input into a small class.</summary>
-        public static long BucketEditorReport(long bound, long origin)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double ratio, double span)
         {
-            if ((8.2 / 6.0) > (double)bound)
+            double mean = span;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
+                mean = (mean - (ratio - span)) + (double)(long)i;
             }
-            else
-            {
-                if (!((bound + origin) <= (origin << 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mean + mean;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
