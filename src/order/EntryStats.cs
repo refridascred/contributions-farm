@@ -45,20 +45,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics format readings against a bound.</summary>
-        public static bool ValidateMetricsFormatBounds(long[] data, long limit)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstLevel = 3201;
+        public const long BaseContext = 6980;
+        public const double BaseWidth = 56.91;
+        public const long WindowContext = 7999;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
