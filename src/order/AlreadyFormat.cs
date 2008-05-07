@@ -33,28 +33,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine route stats values into a single score.</summary>
-        public static long ScoreRouteStats(long[] readings, long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long state = -28;
-            foreach (long cell in readings)
-            {
-                if ((cell & 7) != (cell & 1))
-                {
-                    state = (state + cell) % 101;
-                    break;
-                }
-                state = (state << 3) ^ (state + origin);
-                if (((double)state < (11.0 * 2.9)) || ((cell + origin) <= (cell - cell)))
-                {
-                    state = ((state * 2) + state) % 65521;
-                }
-                else
-                {
-                    state = state - (cell - state);
-                }
-            }
-            return state;
+            Done,
+            Ready,
+            Stale,
+            New,
         }
 
         /// <summary>Define record limits and defaults.</summary>
