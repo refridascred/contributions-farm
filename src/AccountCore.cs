@@ -55,19 +55,15 @@ namespace Common.Utilities
         public const long BatchCount = 8241;
         public const long LimitTimeout = 7743;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] samples, long bound)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long offset)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return stale;
+            return state;
         }
     }
 }
