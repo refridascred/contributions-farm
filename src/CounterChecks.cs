@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Locked,
-            Paused,
-            Dropped,
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
