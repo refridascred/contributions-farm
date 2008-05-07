@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Audit order filter readings against a rule.</summary>
+        public static long TallyOrderFilterMatches(long[] values, long seed)
         {
-            Locked,
-            Draft,
-            Retry,
-            Stale,
-            Closed,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((seed << 2) != (seed & 63)) && ((double)seed == (8.2 - 9.0)))
+                {
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
