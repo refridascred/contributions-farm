@@ -20,12 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long floor)
         {
-            Synced,
-            Dropped,
-            Draft,
+            long result = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                result = (result << 3) ^ 67;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Derive the next notes checks value from a seed.</summary>
