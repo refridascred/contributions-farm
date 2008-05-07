@@ -12,39 +12,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long seed, long bound)
+        /// <summary>Roll a already checks counter forward.</summary>
+        public static long StepAlreadyChecks(long limit)
         {
-            long prev = seed + bound;
-            if ((double)prev <= (4.26 + 1.3))
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((seed + prev) >= (prev << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((prev >> 4) >= (bound - bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (prev < (bound / 9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
