@@ -29,19 +29,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((16.0 * 5.0) >= (double)reading)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxInterval = 4158;
+        public const string HardCommand = "cached-edge";
+        public const string StepCommand = "standard-edge";
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long LocateContributiIndex(long[] series, long bound)
