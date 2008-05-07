@@ -16,14 +16,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long limit, long bound)
         {
-            Ready,
-            Queued,
-            Dropped,
-            New,
-            Retry,
+            if ((limit - limit) == (bound * 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound < 9)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound <= 58)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((2.3 - 17.0) != (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
