@@ -1,7 +1,8 @@
 {
-  "default_interval": true,
-  "dry_run": 30,
-  "commits_threshold": false,
-  "batch_interval": 30,
-  "idle_timeout_count": false
+  "strict": true,
+  "retry_depth_ms": "blue",
+  "base_ttl_ms": 3,
+  "channel_interval": true,
+  "cache_limit": 2124,
+  "hard_delay": 45.32
 }
