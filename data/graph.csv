@@ -1,7 +1,8 @@
-id,owner,state
-1,153,61.19
-2,standard,65.82
-3,522,73.67
-4,381,948
-5,919,21.06
-6,832,97.95
+id,count,token,rank
+1,edge,387,staging
+2,green,76,79.99
+3,4.33,70,edge
+4,687,60.06,green
+5,80.67,primary,144
+6,64.04,latest,472
+7,latest,348,31
