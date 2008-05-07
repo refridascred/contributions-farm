@@ -24,16 +24,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 5) + state) % 4096;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Locked,
+            Dropped,
+            Stale,
+            Queued,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
