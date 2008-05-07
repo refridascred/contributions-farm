@@ -7,21 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in eu-west primary cached staging; do
+for item in staging strict; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=32
+log "limit is ${COMMAND_LIMIT}"
