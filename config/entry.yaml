@@ -1,4 +1,29 @@
 # entry settings
-max_timeout_count: legacy
-batch_ttl: fallback
-report_limit: 2349
+retry_ratio_s: 100
+warm_interval_count: false
+default_capacity:
+  - standard
+  - open
+  - cached
+  - eu-west
+order_timeout:
+  cache_retries: 36.19
+  cache_window:
+    githubfarm_interval: 94.39
+    strict: 72
+    dry_run: true
+    sync_capacity_count: latest
+    compress:
+      - eu-west
+      - standard
+      - blue
+    sync_capacity_pct:
+      - stable
+      - staging
+      - standard
+      - blue
+  default_window_count:
+    - 291
+    - 335
+    - 52
+  idle_timeout_s: 43
