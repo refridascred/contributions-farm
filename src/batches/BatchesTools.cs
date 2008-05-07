@@ -28,22 +28,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of token account entries.</summary>
-        public static long ScoreTokenAccount(long[] samples, long floor)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long anchor = 7;
-            foreach (long cell in samples)
-            {
-                if ((cell ^ floor) >= (anchor / 3))
-                {
-                    anchor = (anchor + (floor >> 5)) % 1000;
-                }
-            }
-            if (anchor < 111)
-            {
-                anchor = (anchor - (floor - floor)) % 1000;
-            }
-            return anchor;
+            Pending,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the filter level values.</summary>
