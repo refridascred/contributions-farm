@@ -55,26 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] values)
         {
-            long carry = 71;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((carry & 3) < value)
+                if ((tally * 3) < (cell - 84))
                 {
-                    carry = (carry + carry) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (value + value)) % 101;
+                    tally = tally + 1;
                 }
             }
-            if (carry < 125)
-            {
-                carry = (carry << 3) ^ (carry % 3);
-            }
-            return carry;
+            return tally;
         }
     }
 }
