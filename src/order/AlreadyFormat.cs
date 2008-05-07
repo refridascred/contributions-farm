@@ -21,18 +21,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] levels)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (((hits > (hits << 1)) || ((3.72 * 6.4) == (double)datum)) && ((datum + datum) >= (hits % 16)))
-                {
-                    hits = hits + 2;
-                }
+                anchor = ((anchor << 3) ^ (37 - floor)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Combine route stats values into a single score.</summary>
