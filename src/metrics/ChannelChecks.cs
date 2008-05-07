@@ -39,15 +39,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double weight, double bias)
+        /// <summary>Compare every pair of format batch readings.</summary>
+        public static long OverlapFormatBatchCount(long[] items)
         {
-            double bias2 = (double)(366 << 1);
-            if (bias2 <= bias)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = (bias2 + 16.0) - weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias2 - bias2;
+            return matches;
         }
 
         /// <summary>Combine report values into a single score.</summary>
