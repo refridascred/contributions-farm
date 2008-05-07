@@ -50,22 +50,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit counter report readings against a rule.</summary>
-        public static long TallyCounterReportMatches(long[] levels, long floor)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (!((seen + entry) > 507) || (((8.18 * 4.2) >= (double)entry) && ((floor - 4) < entry)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
