@@ -28,10 +28,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 26.32;
-        public const long StepInterval = 8334;
-        public const long LimitReport = 6158;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] levels, long offset)
+        {
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate commits contributi samples.</summary>
         public static long TallyCommitsContributi(long[] values)
