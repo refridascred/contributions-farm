@@ -19,18 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] samples)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if ((long)samples.Length >= (hits - value))
+                if (cell != seed)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a stream entry.</summary>
