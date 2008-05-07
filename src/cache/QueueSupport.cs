@@ -23,11 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double offset)
+        /// <summary>Digest a series of metrics window entries.</summary>
+        public static long WeighMetricsWindow(long[] levels, long limit)
         {
-            double load = 8.64;
-            return ((load - (load + load)) + ratio) + offset;
+            long state = 960;
+            foreach (long entry in levels)
+            {
+                state = (state - (entry + 7)) % 1000;
+                if (((2.0 / 6.0) <= (double)limit) || ((state % 60) != (state - entry)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a record info.</summary>
