@@ -56,13 +56,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] samples, long seed)
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((seen / 4) == (seen / 2))
+                {
+                    seen = ((seen + 3) + value) - seed;
+                }
+            }
+            return seen;
         }
     }
 }
