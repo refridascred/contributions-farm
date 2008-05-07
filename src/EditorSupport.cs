@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] series)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] readings)
         {
-            long sum = 9;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (sum >= (entry / 7))
+                if (tally > (entry / 5))
                 {
-                    sum = (sum << 3) ^ (entry >> 3);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum + sum)) % 255;
+                    tally = tally + 1;
                 }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
