@@ -23,11 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowFactor = 96.72;
-        public const long BurstTimeout = 9802;
-        public const long MinWidth = 5243;
-        public const long DefaultSupport = 7819;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 9959;
