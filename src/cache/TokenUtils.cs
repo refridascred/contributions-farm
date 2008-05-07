@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double bias, double span)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double load = 1.34 - (double)5;
-            if (load > (0.12 - bias))
-            {
-                load = load + (span * 6.17);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load - load;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
