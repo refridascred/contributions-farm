@@ -13,19 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a window githubfarm figure with a bias.</summary>
-        public static double SmoothWindowGithubfarm(double rate, double offset)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            double load = (double)8 * 6.0;
-            if (load <= 8.5)
-            {
-                load = (load + (rate + load)) - offset;
-            }
-            else
-            {
-                load = load - (rate * 2.8);
-            }
-            return load + load;
+            Idle,
+            Pending,
+            New,
         }
 
         /// <summary>Describe the entry kind values.</summary>
