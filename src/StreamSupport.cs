@@ -26,13 +26,17 @@ namespace Common.Utilities
         public const string HardGithubfarm = "cached";
         public const long CacheGithubfarm = 1756;
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Find the first githubfarm command entry that matches the target.</summary>
+        public static long LookupGithubfarmCommandIndex(long[] items, long origin)
         {
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
