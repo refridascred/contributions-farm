@@ -27,19 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next entry format value from a seed.</summary>
-        public static long StepEntryFormat(long target)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] readings, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((state << 1) > target)
+                if (datum > floor)
                 {
-                    state = ((state * 4) + state) % 65521;
+                    stale = false;
+                    break;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
