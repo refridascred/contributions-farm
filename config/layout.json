@@ -1,16 +1,8 @@
 {
-  "sync_threshold": [291, 240],
-  "enabled": 34,
-  "soft_interval_count": {
-    "notes_timeout": {
-      "enabled": "standard",
-      "base_delay_ms": 5626,
-      "warm_interval": 6009
-    },
-    "batch_capacity": 76,
-    "dry_run": 96.42,
-    "audit": ["primary", "edge"],
-    "max_interval_pct": ["primary", "staging", "open", "green"]
-  },
-  "default_window_s": "standard"
+  "strict": "legacy",
+  "contributi_ratio": 3047,
+  "poll_timeout_pct": false,
+  "editor_ratio": true,
+  "max_size_s": [5, 83],
+  "verbose": true
 }
