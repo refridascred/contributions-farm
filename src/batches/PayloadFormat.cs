@@ -26,18 +26,20 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] items, long offset)
+        /// <summary>Iterate the batches entry series from a seed.</summary>
+        public static long RollBatchesEntry(long bound)
         {
-            long total = -95;
-            foreach (long sample in items)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((total << 2) > sample)
+                state = state + (bound - bound);
+                if ((118 >> 3) <= state)
                 {
-                    total = ((total * 4) + offset) % 65521;
+                    state = (state - (long)i) % 4096;
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
