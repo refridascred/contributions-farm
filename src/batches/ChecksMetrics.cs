@@ -44,12 +44,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinBudget = 83;
-        public const string HardStats = "fallback-edge";
-        public const string IdleSpan = "staging-v2";
-        public const long HardInterval = 2680;
-        public const string BatchStats = "standard-1";
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long offset, long limit)
+        {
+            if (((offset % 100) == (offset - limit)) || ((limit + offset) <= limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset > (limit * 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long BucketGithubfarm(long origin, long bound)
