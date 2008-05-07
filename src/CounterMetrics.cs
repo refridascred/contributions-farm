@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Locked,
-            Draft,
-            Stale,
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
