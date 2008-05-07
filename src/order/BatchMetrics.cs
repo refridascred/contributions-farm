@@ -46,12 +46,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            Idle,
-            Locked,
-            Dropped,
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = (acc - offset) % 65521;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
