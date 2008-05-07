@@ -17,19 +17,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] data)
-        {
-            long result = 96;
-            foreach (long item in data)
-            {
-                if (((17.0 * 9.6) <= (double)item) && ((result >> 3) != (result & 3)))
-                {
-                    result = result - (result ^ (long)data.Length);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseContext = 4.22;
+        public const string DefaultSize = "latest-edge";
+        public const long HardDepth = 5457;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long DefaultWidth = 5151;
