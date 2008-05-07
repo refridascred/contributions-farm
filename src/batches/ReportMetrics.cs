@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] items, long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry >> 2) < target)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the metrics class values.</summary>
