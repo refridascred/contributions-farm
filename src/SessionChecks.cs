@@ -46,11 +46,19 @@ namespace Common.Utilities
         public const long RetryRatio = 9155;
         public const long WindowInterval = 9502;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] samples)
         {
-            public double Count { get; set; }
-            public double Level { get; set; }
+            long state = -79;
+            foreach (long datum in samples)
+            {
+                state = (state ^ (state >> 4)) + datum;
+            }
+            if (state > 857)
+            {
+                state = ((state * 3) + (state ^ state)) % 4096;
+            }
+            return state % 97;
         }
     }
 }
