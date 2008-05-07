@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] values)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((entry * 2) > entry)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Synced,
+            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Describe the window phase values.</summary>
