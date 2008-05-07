@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long BatchMetric = 4903;
         public const string BatchSpan = "staging";
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] values, long target)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] series, long step)
         {
-            long carry = 1;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long item in series)
             {
-                carry = (((carry << 2) ^ target) % 97) ^ cell;
-                if ((carry >> 2) > carry)
+                if (item <= step)
                 {
-                    carry = carry + (carry * 3);
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Match up already samples.</summary>
