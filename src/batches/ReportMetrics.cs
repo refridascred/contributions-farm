@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long SoftCommits = 1435;
         public const long RetryLevel = 8678;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] values, long target)
         {
-            Retry,
-            Ready,
-            Locked,
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
