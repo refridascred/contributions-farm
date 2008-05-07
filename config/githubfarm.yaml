@@ -1,14 +1,7 @@
 # githubfarm settings
-batch_capacity_s: blue
-tools_ratio: 3318
-verbose:
-  order_retries: 22.47
-  payload_size: 36.7
-  entry_ttl: strict
-  already_ratio: 2044
-  stream_timeout:
-    - 440
-    - 287
-  persist: 43.69
-sync_threshold_count: false
-retry_ratio: 100
+account_limit: 3.45
+idle_depth: 2783
+readonly:
+  - 23
+  - 447
+batch_depth_ms: 7212
