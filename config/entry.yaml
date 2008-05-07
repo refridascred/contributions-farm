@@ -1,10 +1,5 @@
 # entry settings
-cache_delay: standard
-report_limit: green
-strict: blue
-hard_delay_pct: 500
-max_threshold_count: true
-channel_size:
-  - 315
-  - 218
-  - 407
+default_delay_ms: 500
+retry_timeout_count: 3710
+retry_window_count: 60
+idle_threshold_s: true
