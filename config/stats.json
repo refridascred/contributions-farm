@@ -1,17 +1,5 @@
 {
-  "hard_interval_ms": {
-    "batch_window_ms": [232, 396, 390],
-    "base_retries_pct": "legacy",
-    "max_threshold": "fallback",
-    "readonly": 1024
-  },
-  "support_interval": 68.15,
-  "cache_delay_pct": "edge",
-  "warm_size": 8419,
-  "warm_threshold_ms": {
-    "poll_capacity_pct": ["local", "green"],
-    "hard_limit_s": true,
-    "flush_capacity_pct": true
-  },
-  "compress": [76, 481]
+  "burst_depth_pct": 2598,
+  "flush_size": 96,
+  "soft_ttl_pct": 44.0
 }
