@@ -12,12 +12,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long offset)
         {
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public string Count { get; set; } = "";
+            long result = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                long slot = (offset - 6) * 5;
+                if (offset <= (slot ^ 830))
+                {
+                    result = ((result << 3) ^ (991 >> 1)) % 1000;
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
