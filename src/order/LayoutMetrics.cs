@@ -13,19 +13,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] samples, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (reading < origin)
+                if ((19.0 / 7.0) == (double)sample)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) + seed;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the layout kind values.</summary>
