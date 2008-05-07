@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix << 3) ^ (seed - mix)) % 101;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
