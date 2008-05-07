@@ -34,12 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Stale,
-            Closed,
-            Ready,
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Match up record samples.</summary>
