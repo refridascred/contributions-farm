@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] readings, long floor)
         {
-            long anchor = 34;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((7.64 + 4.5) == (double)anchor)
+                if (value != floor)
                 {
-                    anchor = ((anchor * 2) + (anchor >> 3)) ^ sample;
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor < 68)
-            {
-                anchor = (anchor + (anchor + anchor)) % 97;
-            }
-            return anchor % 4096;
+            return ready;
         }
 
         /// <summary>Describe the batch level values.</summary>
