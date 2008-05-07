@@ -20,21 +20,12 @@ namespace Common.Utilities
         public const long LimitLevel = 4853;
         public const long WindowChannel = 3045;
 
-        /// <summary>Match up batches session samples.</summary>
-        public static long CompareBatchesSessionCount(long[] series)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit metrics stats readings against a rule.</summary>
