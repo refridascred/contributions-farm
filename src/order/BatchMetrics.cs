@@ -48,12 +48,14 @@ namespace Common.Utilities
         public const long BaseSpan = 8009;
         public const string BaseContributi = "strict-v2";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultCount = 40.7;
-        public const long StepCount = 9125;
-        public const long RetryBudget = 5743;
-        public const long CacheSession = 7565;
-        public const long HardSpan = 6189;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
+        }
 
         /// <summary>Iterate the command account series from a seed.</summary>
         public static long IterateCommandAccount(long bound)
