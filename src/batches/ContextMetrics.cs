@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the report account entries that pass the check.</summary>
-        public static long CountReportAccountMatches(long[] items)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((1.91 / 7.0) == (double)hits)
-                {
-                    hits = (hits + 3) - cell;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
