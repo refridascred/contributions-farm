@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] items, long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)sample > (double)count)
+                if ((values[i] == step) && ((values[i] % 5) == 0))
                 {
-                    count = (count + 1) + target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate checks samples.</summary>
