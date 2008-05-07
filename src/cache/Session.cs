@@ -14,24 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the commits buffer series from a seed.</summary>
-        public static long DeriveCommitsBuffer(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((double)(long)i > 1.96))
-                {
-                    mix = mix - (limit % 2);
-                }
-                else
-                {
-                    mix = (mix - mix) % 4096;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftChecks = "latest";
+        public const long DefaultInterval = 8625;
+        public const long CacheChecks = 1493;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long GradeFarm(long step, long target)
