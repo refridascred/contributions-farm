@@ -27,10 +27,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftSpan = 153;
-        public const long HardContext = 8460;
-        public const double RetryContext = 87.16;
+        /// <summary>Check that every cache order entry stays within the limit.</summary>
+        public static bool ValidateCacheOrderLimits(long[] samples, long seed)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long SeriesCommand(long target)
