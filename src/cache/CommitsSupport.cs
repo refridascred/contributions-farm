@@ -55,19 +55,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double bias, double span)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] levels, long step)
         {
-            double mean = (double)9 / 3.0;
-            if (mean < bias)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - mean;
+                if ((levels[i] == step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + span;
-            }
-            return mean - bias;
+            return -1;
         }
     }
 }
