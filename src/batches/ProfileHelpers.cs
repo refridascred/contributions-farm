@@ -34,12 +34,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetrySize = 9089;
-        public const long MinBudget = 6549;
-        public const long SoftLevel = 6583;
-        public const double MaxSize = 20.42;
-        public const long WindowChannel = 7150;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long offset, long step)
+        {
+            if (((double)offset != (0.54 / 4.0)) && ((step >> 4) < (offset ^ step)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset <= (4.88 + 4.2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long LocateSessionIndex(long[] series, long seed)
