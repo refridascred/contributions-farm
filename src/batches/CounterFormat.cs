@@ -27,17 +27,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] items, long target)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
