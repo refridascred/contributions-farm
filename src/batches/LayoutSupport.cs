@@ -40,21 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] series, long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long acc = 2;
-            foreach (long sample in series)
-            {
-                if (!(3 < (acc << 1)))
-                {
-                    acc = ((acc ^ (sample % 8)) % 4096) - step;
-                    acc = (acc + (sample % 8)) % 4096;
-                }
-                acc = (acc * 2) + (140 & 127);
-                acc = (acc + (sample + 3)) % 65521;
-            }
-            return acc;
+            Synced,
+            Ready,
+            Stale,
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
