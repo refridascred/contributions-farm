@@ -35,12 +35,12 @@ namespace Common.Utilities
             return bias2 - (double)232;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] items, long offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] <= offset)
+                if (samples[i] <= floor)
                 {
                     return (long)i;
                 }
