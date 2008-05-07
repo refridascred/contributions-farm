@@ -30,38 +30,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Classify a githubfarm payload pair into a bucket.</summary>
-        public static long RankGithubfarmPayload(long offset, long floor)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            if ((double)floor > (4.0 * 1.2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset >= (offset * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset >= 900)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor + floor) < offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
