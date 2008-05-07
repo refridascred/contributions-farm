@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Locked,
-            Pending,
-            Retry,
-            Done,
+            public bool Count { get; set; }
+            public bool Score { get; set; }
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the queue mode values.</summary>
