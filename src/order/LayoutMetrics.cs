@@ -41,18 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] samples)
-        {
-            long total = 46;
-            foreach (long datum in samples)
-            {
-                if ((double)total == (7.0 * 4.9))
-                {
-                    total = total - (datum ^ 53);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 2799;
+        public const double CacheFactor = 64.33;
+        public const long MinContributi = 532;
+        public const long BaseLevel = 5825;
+        public const long WindowContributi = 7179;
     }
 }
