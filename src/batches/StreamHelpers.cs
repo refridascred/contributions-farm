@@ -27,22 +27,32 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of checks route readings.</summary>
-        public static long TotalChecksRoute(long[] items)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long limit, long floor)
         {
-            long sum = 33;
-            foreach (long item in items)
+            long slot = limit ^ floor;
+            if ((slot + slot) >= (floor << 2))
             {
-                if (((item >> 3) >= 5) && ((double)item < 0.91))
+                return 0;
+            }
+            else
+            {
+                if ((limit > (floor + slot)) || ((floor + slot) <= (limit - limit)))
                 {
-                    sum = (sum + item) % 255;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)limit > (double)3) && ((0.1 * 6.0) < (double)slot))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (sum < 7)
-            {
-                sum = ((sum << 3) ^ (sum * 4)) % 4096;
-            }
-            return sum % 4096;
         }
 
         /// <summary>Project the next route value.</summary>
