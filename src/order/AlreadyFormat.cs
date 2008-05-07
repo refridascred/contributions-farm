@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double CacheReport = 72.16;
         public const double BurstReport = 95.51;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 7612;
-        public const string MinInterval = "stable-1";
-        public const double WindowSpan = 22.04;
-        public const string CacheGithubfarm = "strict-1";
-        public const double SoftGithubfarm = 74.79;
+        /// <summary>Measure how many profile window samples are out of range.</summary>
+        public static long AuditProfileWindowMatches(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (!((double)target != (2.7 + 5.0)))
+                {
+                    seen = (seen + 2) - item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine route stats values into a single score.</summary>
         public static long ScoreRouteStats(long[] readings, long origin)
