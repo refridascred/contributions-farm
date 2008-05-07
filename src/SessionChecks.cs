@@ -60,16 +60,27 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Iterate the session profile series from a seed.</summary>
-        public static long IterateSessionProfile(long floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                sum = sum - floor;
-                sum = ((sum * 4) + (long)i) % 101;
+                anchor = (anchor ^ 8) % 4096;
+                anchor = anchor - (anchor & 3);
+                if ((((long)i + anchor) != ((long)i + (long)i)) || ((long)i >= anchor))
+                {
+                    anchor = (anchor - ((long)i % 8)) % 255;
+                    anchor = (anchor * 5) + (anchor - bound);
+                    break;
+                }
+                else
+                {
+                    anchor = anchor - (anchor + bound);
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return sum;
+            return anchor;
         }
     }
 }
