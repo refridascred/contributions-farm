@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public bool Label { get; set; }
-            public long Total { get; set; }
+            Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Project the next schema value.</summary>
