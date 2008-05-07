@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] levels)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (8.0 > (double)count)
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
