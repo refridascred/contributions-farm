@@ -52,13 +52,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] samples, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
+            long sum = 32;
+            foreach (long sample in samples)
+            {
+                sum = ((sum * 5) + (sum / 6)) % 97;
+                if ((sum ^ sample) != (sum / 2))
+                {
+                    sum = ((sum << 3) ^ (bound << 1)) % 255;
+                }
+                sum = (sum ^ bound) % 101;
+                if ((bound & 31) > bound)
+                {
+                    break;
+                }
+            }
+            if (sum < 489)
+            {
+                sum = (sum + (637 - bound)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the filter status values.</summary>
