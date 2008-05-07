@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
