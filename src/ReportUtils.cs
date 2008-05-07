@@ -83,18 +83,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] samples, long bound)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((543 ^ 431) <= (seen * 5))
-                {
-                    seen = ((seen + 2) + datum) - bound;
-                }
-            }
-            return seen;
+            Dropped,
+            Active,
+            Locked,
+            Idle,
         }
     }
 }
