@@ -31,19 +31,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] samples, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (reading != step)
+                if ((59 ^ floor) >= (floor & 255))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a contributi summary.</summary>
