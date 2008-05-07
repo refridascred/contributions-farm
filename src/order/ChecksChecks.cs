@@ -19,32 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long target, long origin)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long lane = target - origin;
-            if (((double)lane != (0.42 + 6.8)) || ((lane * 4) > (origin >> 4)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)lane != (5.68 * 20.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin % 12) != (5 % 16))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Dropped,
+            Synced,
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Look up the position of a order sample.</summary>
