@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a context metrics counter forward.</summary>
-        public static long RollContextMetrics(long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] values, long floor)
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                score = (score << 3) ^ (seed ^ seed);
-                score = ((score * 5) + (long)i) % 65521;
+                if (sample < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
