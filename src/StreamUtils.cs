@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] series, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] readings, long step)
         {
-            long mark = 85;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((step ^ mark) == (item + step))
+                if (3.1 >= (double)reading)
                 {
-                    mark = (mark * 3) + (step % 8);
+                    tally = (tally + 3) + step;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Adjust a editor reading.</summary>
