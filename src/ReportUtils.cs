@@ -30,23 +30,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] samples, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (!((result * 5) < (14 + (-813))))
+                if ((double)item != (double)1)
                 {
-                    result = result + ((long)i - result);
+                    matches = (matches + 2) + origin;
                 }
                 else
                 {
-                    result = ((result * 4) + result) % 255;
+                    matches = matches - 1;
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
