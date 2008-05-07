@@ -14,23 +14,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] series, long floor)
+        /// <summary>Match up stream cache samples.</summary>
+        public static long MatchStreamCacheCount(long[] levels)
         {
-            long state = 686;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (((state * 2) + ((long)i >> 1)) % 97) + floor;
-                }
-                state = (state + (state % 12)) % 65521;
-                if ((double)cell > (2.7 - 9.4))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Audit tools entry readings against a rule.</summary>
