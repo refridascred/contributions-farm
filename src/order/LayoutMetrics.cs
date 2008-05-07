@@ -28,18 +28,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] readings, long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long target, long step)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long edge = target ^ step;
+            if ((double)edge >= 16.0)
             {
-                if ((seen % 2) >= (seen - seed))
+                return 2;
+            }
+            else
+            {
+                if ((step >> 3) <= (2 / 4))
                 {
-                    seen = (seen + 3) ^ entry;
+                    return 4;
+                }
+                else
+                {
+                    if (!((target % 2) >= edge))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
