@@ -1,13 +1,5 @@
 # support settings
-default_delay:
-  cache_timeout_ms: 86.79
-  base_ratio_pct: false
-  retry_ttl_pct:
-    - blue
-    - legacy
-    - edge
-audit: open
-verbose:
-  - staging
-  - latest
-hard_window_pct: 500
+flush_capacity_ms: 777
+soft_depth_count: 1024
+idle_timeout: strict
+sync_interval_s: 36.85
