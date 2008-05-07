@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] values)
+        /// <summary>Adjust a checks farm reading.</summary>
+        public static double ProjectChecksFarm(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)(0 & 15);
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = ((load + (double)3) + (double)(long)i) + gain;
             }
-            return tally;
+            return load + bias;
         }
 
         /// <summary>Describe the window kind values.</summary>
