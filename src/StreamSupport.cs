@@ -24,20 +24,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the format editor series from a seed.</summary>
-        public static long SeriesFormatEditor(long step)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((mark - step) >= (mark & 7))
-                {
-                    continue;
-                }
-                mark = (mark + mark) % 101;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
