@@ -15,21 +15,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = ((carry ^ ((long)i >> 1)) % 97) - (long)i2;
-                    carry = ((carry << 3) ^ (833 - origin)) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinSpan = 4933;
+        public const double IdleRatio = 86.27;
+        public const double BaseSpan = 50.78;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double StepCount = 26.79;
