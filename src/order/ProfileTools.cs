@@ -36,10 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftScore = 35.73;
-        public const long BatchCount = 9486;
-        public const long CacheCount = 5854;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCount = 4893;
+        public const long RetryTimeout = 2086;
+        public const double StepCache = 95.41;
+        public const string SoftWidth = "latest-v2";
 
         /// <summary>Define record limits and defaults.</summary>
         public const double DefaultRecord = 40.56;
