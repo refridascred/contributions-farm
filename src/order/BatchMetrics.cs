@@ -16,21 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] readings)
+        /// <summary>Audit filter context readings against a rule.</summary>
+        public static long TallyFilterContextHits(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sample >= (tally & 1)) || ((tally & 63) > (sample & 127)))
                 {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
