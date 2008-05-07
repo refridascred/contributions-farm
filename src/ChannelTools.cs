@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] items)
         {
-            long score = 4;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                score = score - (score * 2);
-                score = (score << 2) ^ (entry - (-25));
-                score = ((score << 3) ^ (score - entry)) % 1000;
+                if ((4 ^ cell) == (cell & 127))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (score > 82)
-            {
-                score = ((score * 5) + score) % 1000;
-            }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Compare every pair of window tools readings.</summary>
