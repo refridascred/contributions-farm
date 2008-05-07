@@ -16,11 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 9118;
-        public const long SoftWidth = 3780;
-        public const long BatchSize = 31;
-        public const string BurstDepth = "primary";
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsHits(long[] series, long floor)
