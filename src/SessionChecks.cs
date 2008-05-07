@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate layout route readings against a bound.</summary>
-        public static bool GuardLayoutRouteRange(long[] samples, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 9843;
+        public const string LimitScore = "staging";
+        public const string WindowBudget = "cached";
+        public const double BurstFarm = 80.75;
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ScaleChannel(double bias, double span)
