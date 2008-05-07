@@ -10,21 +10,23 @@ namespace Common.Utilities
         public const long WindowStream = 8866;
         public const double MaxStream = 11.56;
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = 2.0 * 7.9;
+            if (weight <= (scale - weight))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = (weight + scale) - offset;
             }
-            return hits;
+            else
+            {
+                weight = weight + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + scale) + (double)(long)i;
+            }
+            return weight - (double)378;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
