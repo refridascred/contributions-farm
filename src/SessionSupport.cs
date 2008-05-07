@@ -36,11 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double bias, double offset)
+        /// <summary>Count the notes buffer entries that pass the check.</summary>
+        public static long AuditNotesBufferOutliers(long[] levels, long offset)
         {
-            double rate = (double)(54 + 6);
-            return ((rate - (double)892) + bias) + offset;
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!((double)offset != (5.5 - 2.69)) && (offset > (matches & 15)))
+                {
+                    matches = (matches + 3) - reading;
+                }
+            }
+            return matches;
         }
     }
 }
