@@ -24,21 +24,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long offset, long offset2)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long bound = offset - offset2;
+            if ((offset2 + offset2) <= (bound ^ 306))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((bound - bound) < (offset % 60))
                 {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
