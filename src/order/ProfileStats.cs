@@ -47,18 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes support samples.</summary>
-        public static long ScoreNotesSupport(long[] samples)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long anchor = 285;
-            foreach (long sample in samples)
-            {
-                if ((long)samples.Length == (sample - anchor))
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 255;
-                }
-            }
-            return anchor;
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
