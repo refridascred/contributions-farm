@@ -72,31 +72,21 @@ namespace Common.Utilities
         public const long WindowOrder = 1451;
         public const string IdleInterval = "alpha";
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long seed, long step)
+        /// <summary>Compare every pair of token tools readings.</summary>
+        public static long OverlapTokenToolsCount(long[] series)
         {
-            if (2.4 < (double)seed)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed & 7) > seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed * 5) > step)
+                    if ((series[i] - series[j]) == 17)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a format reading.</summary>
