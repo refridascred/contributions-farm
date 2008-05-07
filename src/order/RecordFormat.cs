@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] samples)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                sum = ((sum << 2) ^ bound) % 97;
-                sum = (sum + (2 + 74)) % 65521;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (sample >= (sample + sample))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Grade a tools report value against two limits.</summary>
