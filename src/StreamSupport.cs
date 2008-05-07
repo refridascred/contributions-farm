@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] data, long target)
+        /// <summary>Match up buffer metrics samples.</summary>
+        public static long MatchBufferMetricsCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target >= (target - item)) && ((item + target) >= (matches - target)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] - samples[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Roll a window counter forward.</summary>
