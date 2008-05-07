@@ -19,18 +19,31 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] data, long target)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long offset, long target)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if ((offset >> 2) == (offset + target))
             {
-                if (((item + hits) < target) && ((item < (item + item)) || (hits <= (hits * 3))))
+                return 5;
+            }
+            else
+            {
+                if (((offset - 40) > (target - offset)) || ((target ^ target) == (target << 3)))
                 {
-                    hits = hits + 1;
+                    return 7;
+                }
+                else
+                {
+                    if (offset >= target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
