@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double rate, double span)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            double bias = 3.3 - span;
-            return bias + (rate * 9.0);
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the payload report entries that pass the check.</summary>
