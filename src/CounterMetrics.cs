@@ -39,14 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Queued,
-            Pending,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseWidth = 9420;
+        public const double StepFarm = 57.79;
+        public const double BatchFarm = 70.13;
+        public const string BurstFarm = "open-edge";
 
         /// <summary>Audit farm order readings against a rule.</summary>
         public static long AuditFarmOrderGaps(long[] series, long target)
