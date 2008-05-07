@@ -75,38 +75,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long seed, long limit)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            if ((limit % 7) >= (limit - 8))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((limit >> 3) < limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit << 1) <= (limit % 64))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed + 152) <= 5)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
