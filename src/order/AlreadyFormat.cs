@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] readings, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 537;
+            foreach (long datum in items)
             {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
+                anchor = ((((anchor << 3) ^ 518) % 1000) ^ datum) - step;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Match up report samples.</summary>
