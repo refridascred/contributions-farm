@@ -27,11 +27,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 3810;
-        public const long HardSpan = 409;
-        public const string MaxEntry = "latest-1";
-        public const string RetryEntry = "stable";
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
