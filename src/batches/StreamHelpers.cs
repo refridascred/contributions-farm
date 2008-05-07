@@ -46,17 +46,31 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] items, long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long step, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((origin - step) != (step >> 4))
             {
-                if ((items[i] > offset) && ((items[i] % 5) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((origin % 12) <= (3 + step))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((step % 97) > (8 + origin)) && ((125 >> 2) <= (step / 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batch kind values.</summary>
