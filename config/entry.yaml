@@ -1,12 +1,8 @@
 # entry settings
-poll_retries_count: true
-command_threshold:
-  - strict
-  - staging
-burst_ratio: open
-batch_ttl_pct: 94.23
-strict:
-  retry_capacity: 81
-  profile_limit: cached
-  min_capacity_ms: true
-  poll_threshold_ms: primary
+burst_ttl_s: strict
+idle_timeout: green
+max_delay_count:
+  - 152
+  - 100
+  - 449
+  - 463
