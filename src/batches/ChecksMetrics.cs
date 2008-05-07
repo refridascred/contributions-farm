@@ -24,28 +24,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] samples, long offset)
-        {
-            long state = 95;
-            foreach (long sample in samples)
-            {
-                if (sample > (state / 2))
-                {
-                    state = (state - (sample - sample)) % 255;
-                    continue;
-                }
-                else
-                {
-                    state = (state + (state + 8)) % 65521;
-                }
-                if ((double)offset >= (4.18 * 10.0))
-                {
-                    state = (state - (state ^ state)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 9516;
+        public const long SoftTimeout = 4872;
+        public const long BurstLevel = 5488;
+        public const long MaxDepth = 375;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long DigestBatches(long[] samples, long step)
