@@ -29,15 +29,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two githubfarm command measurements.</summary>
-        public static double ScaleGithubfarmCommand(double scale, double floor)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            double rate = floor * 2.71;
-            if (rate < (scale * 3.29))
-            {
-                rate = rate - (double)(-9);
-            }
-            return rate + 7.0;
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
     }
 }
