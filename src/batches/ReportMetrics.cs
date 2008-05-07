@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((54 - (-385)) == (seen / 7))
-                {
-                    seen = ((seen + 2) + cell) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 7049;
+        public const double BatchTimeout = 69.29;
+        public const string CacheGithubfarm = "alpha-v2";
+        public const long HardGithubfarm = 2659;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferHits(long[] levels, long floor)
