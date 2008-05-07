@@ -13,20 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = ((anchor + (anchor ^ bound)) % 101) - (long)i2;
-                    anchor = ((anchor << 3) ^ (anchor ^ 834)) % 65521;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Active,
+            Draft,
+            Stale,
+            Locked,
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
