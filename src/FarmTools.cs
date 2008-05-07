@@ -22,19 +22,13 @@ namespace Common.Utilities
         public const string MinStream = "legacy-1";
         public const long SoftInterval = 9706;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] readings, long origin)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Synced,
+            Active,
+            Ready,
         }
     }
 }
