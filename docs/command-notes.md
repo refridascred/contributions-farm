@@ -1,11 +1,11 @@
 # Command notes
 
-Keep notes and command names short and lowercase.
-The route helpers are pure functions, so they are safe to call from any thread.
+Defaults for farm live in the config folder and can be overridden per environment.
+When a tools fails, the format handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep account values small
-- Validate editor input early
-- Log every checks change
-- Review already limits each release
+- Keep context values small
+- Log every record change
+- Document new metrics fields
+- Review channel limits each release
