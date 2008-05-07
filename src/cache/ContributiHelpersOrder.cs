@@ -35,19 +35,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every tools metrics entry stays within the limit.</summary>
-        public static bool CheckToolsMetricsLimits(long[] data, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Closed,
+            Dropped,
+            Ready,
         }
     }
 }
