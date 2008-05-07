@@ -15,15 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double ratio, double span)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] samples, long seed)
         {
-            double gain = (double)(229 & 1);
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                gain = (((gain - gain) + (double)(long)i) + ratio) + span;
+                if (((-46) + seed) < (seen - seen))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
             }
-            return gain - gain;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
