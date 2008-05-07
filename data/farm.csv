@@ -1,6 +1,10 @@
-id,label,count,token,state
-1,494,fallback,stable,93
-2,standard,25.24,41,515
-3,legacy,green,156,253
-4,92.0,312,940,cached
-5,31.37,402,278,84.89
+id,rank,level
+1,52.99,295
+2,7.23,edge
+3,green,39.77
+4,29.3,legacy
+5,207,39
+6,20.79,green
+7,eu-west,8
+8,53.66,885
+9,59.27,242
