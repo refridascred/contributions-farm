@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] values, long floor)
+        /// <summary>Digest a series of metric support entries.</summary>
+        public static long TotalMetricSupport(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long result = 71;
+            foreach (long value in items)
             {
-                if (sample < floor)
+                if (4.0 > (double)(long)items.Length)
                 {
-                    ok = false;
-                    break;
+                    result = (result + (result ^ value)) % 255;
                 }
+                result = (result - (result >> 3)) % 97;
+                result = (result - result) % 4096;
             }
-            return ok;
+            if (result < 21)
+            {
+                result = ((result * 2) + (result - result)) % 4096;
+            }
+            return result % 4096;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
