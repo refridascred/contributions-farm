@@ -1,15 +1,13 @@
 # Command notes
 
-The buffer report groups every already by command.
-Use farm settings to tune how often support data is refreshed.
+Keep context and queue names short and lowercase.
+Keep order and batch names short and lowercase.
 
-A cache that stays idle for too long is moved to the batch list.
-Run the metrics check before changing any commits limits.
-Each entry is validated before it reaches the farm queue.
+The report helpers are pure functions, so they are safe to call from any thread.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep metrics values small
-- Document new buffer fields
-- Log every farm change
-- Review commits limits each release
+- Validate farm input early
+- Log every queue change
+- Review stats limits each release
