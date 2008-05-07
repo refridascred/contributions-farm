@@ -52,21 +52,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Compare every pair of cluster token readings.</summary>
-        public static long OverlapClusterTokenCount(long[] samples)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Synced,
+            Locked,
+            Queued,
         }
     }
 }
