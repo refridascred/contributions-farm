@@ -27,14 +27,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            New,
-            Closed,
-            Done,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitSpan = 88;
+        public const string BatchCache = "strict-v2";
+        public const long MaxScore = 733;
     }
 }
