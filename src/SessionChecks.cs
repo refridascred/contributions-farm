@@ -32,16 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Count the profile cache entries that pass the check.</summary>
+        public static long TallyProfileCacheHits(long[] readings, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                acc = (acc << 3) ^ (acc * 2);
-                acc = ((acc * 3) + (long)i) % 101;
+                if ((offset / 5) < offset)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Match up tools already samples.</summary>
