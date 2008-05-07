@@ -27,15 +27,38 @@ namespace Common.Utilities
             return mean - (weight + weight);
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] items, long step)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long target, long offset)
         {
-            long sum = 0;
-            foreach (long datum in items)
+            if ((target << 2) > 19)
             {
-                sum = (((sum << 3) ^ (step ^ 15)) % 4096) + datum;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((offset << 1) == (offset << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset / 7) != (target / 9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset >= (5 + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache entry.</summary>
