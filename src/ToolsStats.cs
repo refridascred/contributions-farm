@@ -78,19 +78,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double scale, double floor)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            double gain = floor;
-            if (gain > (double)9)
-            {
-                gain = gain - (gain + scale);
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain + gain;
+            Synced,
+            Failed,
+            Ready,
+            Idle,
+            Queued,
         }
     }
 }
