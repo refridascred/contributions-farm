@@ -44,19 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter contributi readings against a bound.</summary>
-        public static bool VerifyFilterContributiLimits(long[] levels, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long total = 220;
+            foreach (long datum in levels)
             {
-                if (value <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total + (origin % 3)) % 97) + datum;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Scale a notes queue figure with a bias.</summary>
