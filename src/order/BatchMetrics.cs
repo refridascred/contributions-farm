@@ -43,13 +43,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Failed,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxDepth = 86.45;
+        public const string MaxWidth = "staging-1";
+        public const long IdleTimeout = 4220;
+        public const long BaseSpan = 8009;
+        public const string BaseContributi = "strict-v2";
 
         /// <summary>Define session limits and defaults.</summary>
         public const double DefaultCount = 40.7;
