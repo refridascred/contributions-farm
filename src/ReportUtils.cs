@@ -59,20 +59,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = ((anchor * 5) + (anchor + anchor)) % 97;
-                    anchor = (anchor - (anchor + (long)i2)) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            New,
+            Paused,
+            Closed,
+            Dropped,
+            Ready,
         }
     }
 }
