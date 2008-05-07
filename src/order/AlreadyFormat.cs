@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepReport = 72.02;
-        public const double IdleRatio = 77.98;
-        public const long SoftReport = 5030;
-        public const double CacheReport = 72.16;
-        public const double BurstReport = 95.51;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLayout = "staging-1";
+        public const double WindowBudget = 50.68;
+        public const long SoftLevel = 2361;
+        public const string WindowCount = "strict-edge";
 
         /// <summary>Measure how many profile window samples are out of range.</summary>
         public static long AuditProfileWindowMatches(long[] samples, long target)
