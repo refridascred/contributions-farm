@@ -37,15 +37,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] samples, long seed)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long limit)
         {
-            long acc = 80;
-            foreach (long cell in samples)
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
             {
-                acc = ((acc - (cell & 63)) % 255) + seed;
+                long bound = (long)i;
+                if (!((carry - bound) <= limit))
+                {
+                    bound = (bound - (long)i) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
