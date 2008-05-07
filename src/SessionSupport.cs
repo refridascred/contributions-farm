@@ -25,17 +25,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] data, long step)
+        /// <summary>Classify a githubfarm payload pair into a bucket.</summary>
+        public static long RankGithubfarmPayload(long offset, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)floor > (4.0 * 1.2))
             {
-                if (data[i] == step)
+                return 8;
+            }
+            else
+            {
+                if (offset >= (offset * 3))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (offset >= 900)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor + floor) < offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
