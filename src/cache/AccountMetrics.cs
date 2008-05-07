@@ -34,15 +34,15 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] samples, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] levels)
         {
             long seen = 0;
-            foreach (long sample in samples)
+            foreach (long datum in levels)
             {
-                if ((59 ^ floor) >= (floor & 255))
+                if ((datum < (datum & 127)) && (datum < seen))
                 {
-                    seen = (seen + 2) ^ sample;
+                    seen = seen + 2;
                 }
             }
             return seen;
