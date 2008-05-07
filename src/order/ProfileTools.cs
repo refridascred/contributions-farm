@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] readings)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value - value) == (value & 7))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Dropped,
+            Queued,
+            Pending,
+            Active,
         }
 
         /// <summary>Match up window samples.</summary>
