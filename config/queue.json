@@ -1,19 +1,7 @@
 {
-  "batch_threshold_s": true,
-  "dry_run": {
-    "flush_delay_ms": false,
-    "context_delay": "edge",
-    "record_timeout": {
-      "compress": false,
-      "idle_timeout_count": 1024,
-      "cache_limit": "standard",
-      "sync_threshold_pct": ["cached", "blue", "local", "staging"]
-    },
-    "account_depth": true,
-    "poll_retries_count": ["blue", "green", "local", "strict"],
-    "soft_size_ms": 36.34
-  },
-  "readonly": 5977,
-  "metric_ttl": "staging",
-  "base_retries_count": "cached"
+  "default_timeout_s": false,
+  "poll_capacity": "eu-west",
+  "cache_ratio_ms": 6554,
+  "session_limit": "legacy",
+  "graph_timeout": "fallback"
 }
