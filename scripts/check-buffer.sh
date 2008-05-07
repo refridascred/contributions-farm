@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge blue open; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=53
+BUFFER_LIMIT=459
 log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 6); do
     total=$((total + i * 1))
 done
 log "total ${total}"
