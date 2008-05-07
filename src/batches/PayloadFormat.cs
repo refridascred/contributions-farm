@@ -33,18 +33,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] samples, long offset)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((offset << 1) >= tally)
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
