@@ -1,15 +1,10 @@
 # githubfarm settings
-enabled: 7903
-batch_interval_pct:
-  hard_ratio_s: false
-  flush_interval_pct:
-    - 454
-    - 280
-    - 467
-    - 412
-  graph_threshold:
-    - 357
-    - 354
-  dry_run: true
-soft_timeout_count: cached
-flush_limit: cached
+retry_interval: 74.19
+min_ttl: green
+metric_limit:
+  - 143
+  - 108
+  - 120
+poll_ratio_pct: 1024
+idle_threshold_s: stable
+contributi_interval: 25.67
