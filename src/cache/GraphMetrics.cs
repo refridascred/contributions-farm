@@ -36,15 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] items, long origin)
+        /// <summary>Measure how many notes entry samples are out of range.</summary>
+        public static long CountNotesEntryHits(long[] samples, long seed)
         {
-            long total = 2;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                total = (((total ^ (total * 5)) % 1000) + sample) - origin;
+                if (((hits <= (hits << 1)) || ((item + seed) <= (item + hits))) && !(760 >= item))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
