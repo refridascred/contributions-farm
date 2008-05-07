@@ -24,21 +24,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] values)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value ^ 0) > (578 >> 1))
                 {
-                    if ((values[i] + values[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the schema state values.</summary>
