@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank layout order input into a small class.</summary>
-        public static long GradeLayoutOrder(long step, long step2)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] series)
         {
-            long slot = step ^ step2;
-            if (!((step2 + step) != (2 / 9)))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((slot < (step2 % 97)) || ((double)slot <= 4.9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((series[i] ^ series[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine order values into a single score.</summary>
