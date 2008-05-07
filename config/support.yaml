@@ -1,4 +1,4 @@
 # support settings
-retry_timeout: latest
-strict: fallback
-retry_capacity_pct: 250
+cache_retries: stable
+warm_interval_pct: 71.64
+enabled: edge
