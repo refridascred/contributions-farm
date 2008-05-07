@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] data)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (matches < item)
+                if ((values[i] > bound) && ((values[i] % 2) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of schema metrics readings.</summary>
