@@ -110,10 +110,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 9993;
-        public const long DefaultFormat = 7379;
-        public const long IdleFormat = 2380;
-        public const double BaseBudget = 52.17;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Ready,
+            Pending,
+            Done,
+            Idle,
+            Paused,
+        }
     }
 }
