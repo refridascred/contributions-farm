@@ -26,11 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            Queued,
+            Pending,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define order limits and defaults.</summary>
