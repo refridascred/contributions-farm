@@ -37,14 +37,23 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Blend two channel stream measurements.</summary>
+        public static double ProjectChannelStream(double scale, double offset)
         {
-            Done,
-            Dropped,
-            Ready,
-            Synced,
-            Retry,
+            double gain = (double)((-8) - 9);
+            if (gain < scale)
+            {
+                gain = gain + scale;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (double)22) + (double)(long)i;
+            }
+            return gain - offset;
         }
 
         /// <summary>Hold a checks summary.</summary>
