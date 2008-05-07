@@ -1,8 +1,8 @@
 {
-  "default_threshold_ms": 62,
-  "max_ratio": "staging",
-  "retry_window_ms": "blue",
-  "idle_capacity": true,
-  "max_depth_pct": 38,
-  "cache_limit": "staging"
+  "buffer_delay": "eu-west",
+  "max_capacity": 30,
+  "enabled": "cached",
+  "hard_size_count": 500,
+  "warm_ttl_ms": 2531,
+  "record_retries": ["standard", "eu-west"]
 }
