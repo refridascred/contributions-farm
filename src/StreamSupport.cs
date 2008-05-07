@@ -20,22 +20,29 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Combine support notes values into a single score.</summary>
+        public static long TotalSupportNotes(long[] samples, long bound)
         {
-            long state = 82;
-            foreach (long reading in levels)
+            long mix = 71;
+            foreach (long datum in samples)
             {
-                if ((-920) >= state)
+                if (!(mix < ((long)samples.Length - bound)))
                 {
-                    state = ((state << 2) ^ state) % 255;
+                    mix = ((mix + (38 + mix)) % 65521) ^ datum;
+                    mix = (mix ^ (mix & 255)) % 65521;
                 }
-                else
+                if (!((mix >> 2) == (69 & 3)))
                 {
-                    state = ((state << 3) ^ reading) % 4096;
+                    mix = mix + (mix & 255);
+                    mix = (mix - (bound ^ 626)) % 4096;
+                }
+                mix = mix ^ (bound ^ mix);
+                if ((double)mix < (7.0 * 2.0))
+                {
+                    break;
                 }
             }
-            return state;
+            return mix % 4096;
         }
 
         /// <summary>Find the first githubfarm command entry that matches the target.</summary>
