@@ -39,15 +39,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format command series from a seed.</summary>
-        public static long RollFormatCommand(long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long seed, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            if ((seed >= 195) || ((16.0 - 0.58) != (double)seed))
             {
-                state = ((state * 4) + (long)i) % 4093;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((double)seed >= 8.6)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
