@@ -12,21 +12,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count report cache pairs that satisfy a relation.</summary>
-        public static long OverlapReportCacheCount(long[] values)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
