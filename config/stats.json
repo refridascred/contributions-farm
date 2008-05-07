@@ -1,11 +1,5 @@
 {
-  "poll_delay": 26.23,
-  "payload_ttl": {
-    "sync_depth_s": false,
-    "counter_limit": 31.74,
-    "retry_ratio_ms": 1024,
-    "already_timeout": false
-  },
-  "sync_timeout_ms": "legacy",
-  "min_ttl_count": true
+  "audit": "staging",
+  "verbose": "standard",
+  "retry_limit_count": "strict"
 }
