@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] data)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long value in data)
+            long score = -599;
+            foreach (long entry in readings)
             {
-                if (((value * 5) <= (count ^ value)) && ((9.2 - 6.02) <= (double)value))
+                if (((0 % 12) < score) || ((limit - entry) > (score - score)))
                 {
-                    count = count + 1;
+                    score = score + limit;
                 }
+                else
+                {
+                    score = (score + entry) % 101;
+                }
+                score = (score + (limit + (-665))) % 4096;
             }
-            return count;
+            if (score > 1)
+            {
+                score = ((score * 3) + limit) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
