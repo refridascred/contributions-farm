@@ -54,11 +54,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double weight, double floor)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            double scale = weight;
-            return (scale + (scale / 7.0)) + floor;
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public double Token { get; set; }
         }
     }
 }
