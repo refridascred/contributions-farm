@@ -48,13 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] items, long bound)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (bound < 34)
+                {
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a channel reading.</summary>
