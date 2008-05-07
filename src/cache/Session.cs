@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Grade a entry metric value against two limits.</summary>
+        public static long BucketEntryMetric(long bound, long origin)
         {
-            Stale,
-            Synced,
-            Failed,
-            New,
+            if (((1.13 / 3.0) == (double)bound) && ((origin / 7) == (bound + 64)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(origin >= (bound & 63)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Locate a schema payload reading by value.</summary>
