@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                long count = offset;
-                count = (count * 3) + ((long)i + (long)i);
-                if (((long)i < ((-8) >> 2)) && (offset > (count << 3)))
+                if ((1.03 + 5.5) < (double)offset)
                 {
-                    break;
+                    mark = mark ^ (offset << 3);
                 }
                 else
                 {
-                    count = ((count * 3) + (offset >> 1)) % 4096;
+                    mark = ((mark << 2) ^ (60 & 63)) % 65521;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
