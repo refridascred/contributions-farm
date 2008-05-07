@@ -1,10 +1,23 @@
 # entry settings
-record_delay: 62
-base_interval_s:
-  - edge
+default_capacity_ms:
   - green
-  - blue
-  - open
-flush_depth_s:
-  - blue
-  - edge
+  - latest
+command_window:
+  compress: true
+  order_size: open
+  support_ttl: 8407
+  max_window:
+    min_ttl: 100
+    burst_retries:
+      - legacy
+      - green
+    filter_size: eu-west
+    enabled: 16.17
+    audit: 96
+    base_window: false
+  session_ratio: eu-west
+  enabled: eu-west
+strict: 64.0
+retry_ttl: 60
+retry_capacity_pct: 8171
+compress: green
