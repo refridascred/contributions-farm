@@ -1,8 +1,7 @@
 {
-  "batches_window": 6445,
-  "poll_size_count": 8188,
-  "warm_threshold_ms": ["strict", "legacy"],
-  "sync_capacity_pct": [117, 69],
-  "max_depth_ms": "staging",
-  "flush_capacity": 100
+  "queue_delay": "green",
+  "sync_depth_s": 30,
+  "counter_size": false,
+  "cache_capacity": ["latest", "open", "green"],
+  "soft_delay_s": false
 }
