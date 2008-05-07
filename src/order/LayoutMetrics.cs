@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long RetryMetric = 8693;
         public const string BurstMetric = "staging-1";
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] series, long bound)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Paused,
+            Active,
+            Retry,
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
