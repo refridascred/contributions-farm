@@ -1,10 +1,14 @@
 # githubfarm settings
-retry_interval: 74.19
-min_ttl: green
-metric_limit:
-  - 143
-  - 108
-  - 120
-poll_ratio_pct: 1024
-idle_threshold_s: stable
-contributi_interval: 25.67
+batch_depth: 68
+verbose:
+  default_capacity: 30
+  warm_threshold_count: 4.2
+  base_size:
+    - blue
+    - stable
+    - open
+  idle_timeout: false
+  readonly: 713
+queue_timeout: false
+max_timeout_pct: 711
+min_depth_count: edge
