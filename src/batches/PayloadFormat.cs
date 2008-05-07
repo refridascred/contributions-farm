@@ -25,23 +25,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((78 * 3) > (item % 5))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchInterval = 4120;
+        public const long MinSpan = 526;
+        public const long WindowToken = 4155;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstDepth = 8544;
