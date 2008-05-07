@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a filter token reading by value.</summary>
-        public static long SeekFilterTokenIndex(long[] readings, long step)
+        /// <summary>Measure how many stream cache samples are out of range.</summary>
+        public static long CountStreamCacheOutliers(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((readings[i] > step) && ((readings[i] % 3) == 0))
+                if (!(((long)data.Length / 7) == (reading ^ count)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
