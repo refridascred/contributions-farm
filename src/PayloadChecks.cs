@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double rate, double span)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] data, long floor)
         {
-            double weight = rate;
-            if (weight < weight)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight - (double)254) - span;
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight + weight;
+            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
