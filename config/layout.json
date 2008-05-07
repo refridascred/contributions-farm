@@ -1,5 +1,7 @@
 {
-  "batches_capacity": true,
-  "command_ratio": 100,
-  "githubfarm_delay": "local"
+  "retry_threshold_count": false,
+  "burst_capacity_ms": 9,
+  "warm_timeout": [391, 17, 93],
+  "sync_ttl_pct": 97,
+  "warm_limit": "strict"
 }
