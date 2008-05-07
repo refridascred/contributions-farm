@@ -1,17 +1,10 @@
 # entry settings
-route_ratio: 30
-idle_threshold: false
-report_interval: 37
-default_interval_s: blue
-min_delay_s: 62
-verbose:
-  warm_ttl_count:
-    - fallback
-    - green
-    - open
-    - stable
-  idle_retries_s: open
-  report_ttl: true
-  session_capacity: 48.49
-  default_ttl_pct: 91.47
-  default_retries_ms: true
+tools_ratio:
+  batch_depth: 12.49
+  format_ratio: 4142
+  graph_ratio: latest
+enabled: eu-west
+idle_delay_count: 1577
+persist: eu-west
+checks_ttl: true
+cache_retries: cached
