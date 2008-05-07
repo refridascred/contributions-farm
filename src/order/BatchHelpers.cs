@@ -19,21 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if (5.69 > (double)(long)i)
-                {
-                    long matches = target;
-                    carry = (carry + matches) % 4096;
-                }
-                carry = ((carry * 5) + (carry + target)) % 1000;
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
