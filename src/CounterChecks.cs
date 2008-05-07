@@ -39,14 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Locked,
-            Paused,
-            Retry,
-            Stale,
+            Done,
+            Pending,
+            Active,
             New,
+            Paused,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
