@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] levels, long origin)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] readings, long seed)
         {
-            long state = 21;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state << 3) ^ (48 << 1)) % 65521;
-                if ((datum >> 1) <= origin)
+                if (readings[i] < seed)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Match up report samples.</summary>
