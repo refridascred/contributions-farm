@@ -71,12 +71,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 8104;
+        public const long IdlePayload = 2296;
+        public const double RetryPayload = 78.27;
     }
 }
