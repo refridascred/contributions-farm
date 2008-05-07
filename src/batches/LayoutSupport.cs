@@ -48,17 +48,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] levels, long offset)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public double Total { get; set; }
         }
     }
 }
