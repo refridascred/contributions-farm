@@ -57,21 +57,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of cache notes readings.</summary>
-        public static long PairCacheNotesCount(long[] data)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = -727;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state << 3) ^ (floor * 5)) ^ cell;
+                state = (state * 2) + floor;
+                state = (state + state) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Project the next githubfarm buffer value.</summary>
