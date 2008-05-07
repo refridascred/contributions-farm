@@ -19,11 +19,9 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 3827;
-        public const long MinSpan = 982;
-        public const long IdleScore = 35;
-        public const string MinWidth = "stable";
-        public const long StepToken = 5471;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 58.2;
+        public const double StepReport = 33.94;
+        public const long CacheTimeout = 6848;
     }
 }
