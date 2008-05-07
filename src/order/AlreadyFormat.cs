@@ -57,21 +57,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] levels)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) > 17)
+                    if ((levels[i] - levels[j]) < 13)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a format filter reading by value.</summary>
