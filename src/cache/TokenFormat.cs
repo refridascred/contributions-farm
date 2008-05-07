@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double bias, double offset)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] values)
         {
-            double load = bias;
-            if (load > (double)152)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load + (2.3 / 5.0)) - offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (bias + load)) + (double)(long)i;
-            }
-            return load + (load / 5.0);
+            return hits;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
