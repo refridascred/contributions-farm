@@ -1,13 +1,9 @@
 {
-  "max_ttl": 56.58,
-  "report_size": {
-    "retry_timeout_ms": 11,
-    "session_threshold": 1871,
-    "min_ttl_pct": 14.75,
-    "profile_ratio": 37.49
+  "max_window_s": ["open", "blue", "edge"],
+  "dry_run": {
+    "default_ratio": 2301,
+    "persist": 32.59,
+    "cache_delay_s": 39.95
   },
-  "checks_size": "local",
-  "burst_ttl": false,
-  "format_threshold": "fallback",
-  "dry_run": 92
+  "order_ttl": 93.88
 }
