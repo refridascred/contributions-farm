@@ -1,6 +1,17 @@
 {
-  "format_size": ["standard", "latest", "open", "cached"],
-  "warm_limit_count": "standard",
-  "batch_limit_pct": "open",
-  "default_capacity_pct": true
+  "batch_capacity_ms": 3243,
+  "schema_timeout": "cached",
+  "soft_timeout": 9860,
+  "burst_depth_count": {
+    "strict": ["strict", "open"],
+    "record_ttl": 5023,
+    "hard_delay_pct": "strict",
+    "flush_threshold_s": {
+      "readonly": 1024,
+      "batch_capacity_s": 20.07,
+      "default_size_s": ["green", "edge"]
+    },
+    "schema_limit": 35.78,
+    "batches_depth": "green"
+  }
 }
