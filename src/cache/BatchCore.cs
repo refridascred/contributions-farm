@@ -48,18 +48,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] data)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long seed, long offset)
         {
-            long carry = 46;
-            foreach (long value in data)
+            long span = seed ^ offset;
+            if ((offset >> 5) <= seed)
             {
-                if (((-65) >> 5) == (value % 8))
+                return 6;
+            }
+            else
+            {
+                if ((((-754) - span) > offset) || ((offset + 0) <= (8 - offset)))
                 {
-                    carry = (carry - (value * 2)) % 4096;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + offset) > (span << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
