@@ -22,18 +22,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit metrics context readings against a rule.</summary>
-        public static long TallyMetricsContextMatches(long[] series)
+        /// <summary>Compare every pair of window tools readings.</summary>
+        public static long OverlapWindowToolsCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits + 4) > (datum ^ 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((values[i] - values[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
