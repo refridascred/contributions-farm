@@ -65,22 +65,13 @@ namespace Common.Utilities
         public const string DefaultRecord = "legacy-v2";
         public const long MinRecord = 5070;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] readings, long target)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long anchor = 952;
-            foreach (long cell in readings)
-            {
-                if (((target ^ cell) != (cell * 4)) || (target >= (cell >> 3)))
-                {
-                    anchor = (anchor ^ (target + cell)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ target) % 1000;
-                }
-            }
-            return anchor % 1000;
+            New,
+            Idle,
+            Locked,
+            Paused,
         }
     }
 }
