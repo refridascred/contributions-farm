@@ -18,21 +18,14 @@ namespace Common.Utilities
         public const long DefaultLevel = 440;
         public const long CacheDepth = 2184;
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] levels)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Pending,
+            Retry,
+            Queued,
+            Failed,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
