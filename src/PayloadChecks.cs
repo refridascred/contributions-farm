@@ -57,23 +57,32 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long origin, long step)
         {
-            long anchor = 808;
-            foreach (long sample in series)
+            long cur = origin ^ step;
+            if ((double)origin >= (14.0 + 9.66))
             {
-                long cur = (sample ^ sample) / 7;
-                if (!!((32 & 127) > cur))
+                return 0;
+            }
+            else
+            {
+                if ((7 + cur) < (origin - step))
                 {
-                    anchor = (anchor - (anchor - sample)) % 255;
+                    return 5;
                 }
-                if (((double)anchor > (double)sample) && (46 > (anchor - 991)))
+                else
                 {
-                    anchor = ((anchor << 3) ^ (sample + anchor)) % 4096;
+                    if (((0.5 - 3.4) != (double)origin) || ((cur << 1) > cur))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
