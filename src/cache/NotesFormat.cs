@@ -31,18 +31,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] levels, long floor)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] values)
         {
-            long sum = 65;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (7.02 > (double)item)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum ^ item) + floor;
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return matches;
         }
     }
 }
