@@ -45,19 +45,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] samples)
-        {
-            long carry = 643;
-            foreach (long cell in samples)
-            {
-                carry = (((carry << 3) ^ 841) % 101) ^ cell;
-            }
-            if (carry > 3)
-            {
-                carry = carry + carry;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 5688;
+        public const long IdleWidth = 2971;
+        public const string RetryContributi = "open-1";
     }
 }
