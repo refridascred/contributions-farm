@@ -26,13 +26,10 @@ namespace Common.Utilities
         public const string MinSize = "staging-1";
         public const double WindowCounter = 70.42;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 884;
+        public const double WindowSize = 90.96;
+        public const long CachePayload = 4505;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long CombineCounter(long[] samples)
