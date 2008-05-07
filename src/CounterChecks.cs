@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Count the payload editor entries that pass the check.</summary>
+        public static long MeasurePayloadEditorMatches(long[] items)
         {
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((hits + entry) >= (hits + 4))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a profile summary.</summary>
