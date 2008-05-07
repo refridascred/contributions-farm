@@ -49,19 +49,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] values, long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long floor)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Accumulate record samples.</summary>
