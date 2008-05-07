@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] levels)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long bound, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((bound > ((-492) / 2)) && ((origin / 3) < origin))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((531 + bound) <= origin) && ((double)bound < 20.0))
                 {
-                    if ((levels[i] ^ levels[j]) == 18)
+                    return 3;
+                }
+                else
+                {
+                    if (((origin + 73) > (origin ^ bound)) && ((bound & 3) <= (origin + bound)))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit account stream readings against a rule.</summary>
