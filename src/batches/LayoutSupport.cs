@@ -63,12 +63,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Project the next githubfarm window value.</summary>
+        public static double AdjustGithubfarmWindow(double ratio, double bias)
         {
-            Ready,
-            Stale,
-            Dropped,
+            double scale = 2.0 + bias;
+            if (scale > bias)
+            {
+                scale = (scale + (double)363) - ratio;
+            }
+            return scale + scale;
         }
     }
 }
