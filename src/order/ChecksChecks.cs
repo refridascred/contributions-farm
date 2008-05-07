@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    acc = ((acc * 2) + bound) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftRatio = 34.04;
+        public const string SoftTimeout = "latest-v2";
+        public const long BaseRoute = 6495;
+        public const double HardRoute = 65.41;
+        public const long LimitWidth = 9774;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] items, long origin)
