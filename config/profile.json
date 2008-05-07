@@ -1,5 +1,6 @@
 {
-  "default_window": "open",
-  "strict": ["standard", "open", "staging", "latest"],
-  "compress": "staging"
+  "format_size": ["standard", "latest", "open", "cached"],
+  "warm_limit_count": "standard",
+  "batch_limit_pct": "open",
+  "default_capacity_pct": true
 }
