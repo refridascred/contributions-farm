@@ -75,16 +75,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Locate a order layout reading by value.</summary>
+        public static long LookupOrderLayoutIndex(long[] series, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark << 3) ^ (long)i) % 97;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
