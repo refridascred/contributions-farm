@@ -33,17 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] items, long offset)
+        /// <summary>Count the payload metric entries that pass the check.</summary>
+        public static long MeasurePayloadMetricOutliers(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((items[i] <= offset) && ((items[i] % 2) == 0))
+                if (((long)items.Length - item) > 732)
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
