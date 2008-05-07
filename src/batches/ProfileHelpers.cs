@@ -36,21 +36,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long step, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long gap = step ^ target;
+            if ((8.0 * 2.3) > (double)step)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)gap > (0.28 * 4.8))
                 {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a stats options.</summary>
