@@ -18,32 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long bound, long limit)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long step = bound ^ limit;
-            if ((7.8 + 16.0) == (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((7 & 255) != (step << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((step % 3) < (limit - step)) || ((bound + bound) != (bound + limit)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count the editor report entries that pass the check.</summary>
