@@ -24,17 +24,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first format farm entry that matches the target.</summary>
-        public static long LookupFormatFarmIndex(long[] data, long limit)
+        /// <summary>Digest a series of githubfarm notes entries.</summary>
+        public static long WeighGithubfarmNotes(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 312;
+            foreach (long sample in values)
             {
-                if ((data[i] < limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + (sample - anchor)) % 255;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
