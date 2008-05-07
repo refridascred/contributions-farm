@@ -37,12 +37,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] values, long step)
         {
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of token tools readings.</summary>
