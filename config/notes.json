@@ -1,6 +1,12 @@
 {
-  "hard_timeout_ms": 31,
-  "format_ttl": true,
-  "default_delay_s": "open",
-  "dry_run": "staging"
+  "flush_ratio_count": {
+    "batch_delay_count": "strict",
+    "min_timeout": false,
+    "already_window": true,
+    "command_delay": 30,
+    "dry_run": "local"
+  },
+  "farm_threshold": 4100,
+  "base_capacity_pct": "green",
+  "cache_delay": "legacy"
 }
