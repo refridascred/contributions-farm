@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] values, long origin)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (value <= (seen + value))
-                {
-                    seen = (seen + 2) - origin;
-                }
-            }
-            return seen;
+            Stale,
+            Done,
+            Closed,
         }
 
         /// <summary>Accumulate window samples.</summary>
