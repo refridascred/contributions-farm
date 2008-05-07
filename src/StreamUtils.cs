@@ -46,31 +46,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long seed, long limit)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            if (!((double)seed > (5.35 + 12.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((seed + 90) <= (seed % 64)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((limit * 5) <= seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
