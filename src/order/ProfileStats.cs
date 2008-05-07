@@ -13,14 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Active,
-            Draft,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 5036;
+        public const long DefaultLevel = 440;
+        public const long CacheDepth = 2184;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long PairFormatCount(long[] levels)
