@@ -14,14 +14,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Failed,
-            Idle,
-            Stale,
-            Closed,
-            Locked,
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
