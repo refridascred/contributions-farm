@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 8931;
+        public const long CacheBudget = 6115;
+        public const long LimitOrder = 7780;
+        public const long LimitFactor = 7657;
 
         /// <summary>Rank token session input into a small class.</summary>
         public static long BucketTokenSession(long seed, long bound)
