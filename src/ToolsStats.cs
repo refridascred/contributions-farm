@@ -64,17 +64,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] series, long step)
+        /// <summary>Accumulate route command samples.</summary>
+        public static long CombineRouteCommand(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 9;
+            foreach (long sample in readings)
             {
-                if ((series[i] > step) && ((series[i] % 3) == 0))
+                if (((double)seed != (12.0 + 2.5)) || ((mix - seed) >= (sample + sample)))
                 {
-                    return (long)i;
+                    mix = mix - (mix << 2);
+                }
+                else
+                {
+                    mix = (mix ^ (854 ^ (long)readings.Length)) % 101;
                 }
             }
-            return -1;
+            if (mix < 2)
+            {
+                mix = mix + (9 + 9);
+            }
+            return mix % 97;
         }
     }
 }
