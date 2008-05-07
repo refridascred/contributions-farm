@@ -38,18 +38,11 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] series, long target)
+        /// <summary>Scale a report channel figure with a bias.</summary>
+        public static double ProjectReportChannel(double weight, double span)
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (datum >= (69 >> 2))
-                {
-                    matches = (matches + 2) - target;
-                }
-            }
-            return matches;
+            double rate = (span + 13.0) / 8.0;
+            return (rate - span) + weight;
         }
     }
 }
