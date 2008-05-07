@@ -48,10 +48,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryStream = 70.59;
-        public const double CacheFactor = 90.32;
-        public const long StepStream = 3150;
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double gain, double offset)
+        {
+            double ratio = gain;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (offset - ratio)) + (double)(long)i;
+            }
+            return ratio + (double)9;
+        }
 
         /// <summary>Validate stream filter readings against a bound.</summary>
         public static bool VerifyStreamFilterLimits(long[] series, long step)
