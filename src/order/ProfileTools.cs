@@ -30,11 +30,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCount = 4893;
-        public const long RetryTimeout = 2086;
-        public const double StepCache = 95.41;
-        public const string SoftWidth = "latest-v2";
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long limit, long target)
+        {
+            if ((limit - limit) >= target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit <= (9 + limit)) || (0.84 >= (double)limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit < (limit * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target + 83) == (target - target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryOutliers(long[] samples, long seed)
