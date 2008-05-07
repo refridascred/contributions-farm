@@ -40,38 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stats record pair into a bucket.</summary>
-        public static long BucketStatsRecord(long origin, long origin2)
+        /// <summary>Iterate the format command series from a seed.</summary>
+        public static long RollFormatCommand(long floor)
         {
-            if ((origin % 16) <= (origin + origin))
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                return 1;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((origin2 & 15) != (origin2 % 100))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin2 != (8.0 - 5.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((origin2 - origin2) != (origin2 << 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return state;
         }
     }
 }
