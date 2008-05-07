@@ -16,38 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long limit, long bound)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            if ((limit - limit) == (bound * 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound < 9)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound <= 58)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((2.3 - 17.0) != (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
