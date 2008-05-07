@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate counter editor readings against a bound.</summary>
-        public static bool CheckCounterEditorRange(long[] series, long limit)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell != limit)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
