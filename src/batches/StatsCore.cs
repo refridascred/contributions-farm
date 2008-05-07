@@ -48,28 +48,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] values, long step)
-        {
-            long state = 20;
-            foreach (long value in values)
-            {
-                state = state - step;
-                if ((state + value) < (5 / 3))
-                {
-                    state = state ^ (value << 3);
-                }
-                else
-                {
-                    state = ((state << 2) ^ value) % 97;
-                }
-            }
-            if (state < 915)
-            {
-                state = (state * 5) + (step * 5);
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitSize = 3167;
+        public const double BurstRatio = 2.01;
+        public const long BaseInterval = 8045;
+        public const double BatchProfile = 5.82;
+        public const long DefaultProfile = 8121;
 
         /// <summary>Accumulate commits contributi samples.</summary>
         public static long TallyCommitsContributi(long[] values)
