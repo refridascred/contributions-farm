@@ -33,19 +33,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] levels, long origin)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Queued,
+            Retry,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define account limits and defaults.</summary>
