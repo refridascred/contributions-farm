@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const string WindowBudget = "cached";
         public const double BurstFarm = 80.75;
 
-        /// <summary>Roll a already cluster counter forward.</summary>
-        public static long SeriesAlreadyCluster(long floor)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
