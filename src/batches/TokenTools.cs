@@ -14,21 +14,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
