@@ -13,19 +13,23 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] series, long step)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double bias, double span)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            double drift = span;
+            if (drift > 9.8)
             {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift - (span * 7.8);
             }
-            return ready;
+            else
+            {
+                drift = drift + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (span * 1.7)) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
