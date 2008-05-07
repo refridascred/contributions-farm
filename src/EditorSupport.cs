@@ -32,17 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] data, long offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
