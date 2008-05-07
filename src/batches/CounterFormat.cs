@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
