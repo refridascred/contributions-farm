@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Look up the position of a notes metric sample.</summary>
+        public static long FindNotesMetricIndex(long[] samples, long step)
         {
-            New,
-            Draft,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
