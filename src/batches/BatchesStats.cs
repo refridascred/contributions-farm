@@ -38,22 +38,22 @@ namespace Common.Utilities
         public const long WindowSupport = 2191;
         public const long MinSize = 1006;
 
-        /// <summary>Measure how many session already samples are out of range.</summary>
-        public static long AuditSessionAlreadyMatches(long[] series, long limit)
+        /// <summary>Digest a series of token session entries.</summary>
+        public static long TotalTokenSession(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long score = 5;
+            foreach (long sample in readings)
             {
-                if (!(((tally * 4) >= (cell + limit)) && ((0 + tally) != (tally & 1))))
+                for (int i = 0; i < 11; i++)
                 {
-                    tally = tally + 1;
+                    score = ((score << 3) ^ (3 + sample)) - (long)i;
                 }
-                else
+                if ((score + offset) == (989 / 8))
                 {
-                    tally = tally - 1;
+                    score = ((score << 3) ^ (offset ^ sample)) % 4096;
                 }
             }
-            return tally;
+            return score;
         }
     }
 }
