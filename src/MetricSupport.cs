@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const string CacheDepth = "standard-1";
         public const long RetryBudget = 6109;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] values)
-        {
-            long sum = 5;
-            foreach (long reading in values)
-            {
-                sum = (sum + 57) - reading;
-                sum = sum + 632;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 4406;
+        public const long CacheCount = 6992;
+        public const string IdleToken = "stable-1";
+        public const string WindowFactor = "standard";
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long OverlapGithubfarmCount(long[] samples)
