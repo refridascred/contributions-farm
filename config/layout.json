@@ -1,5 +1,16 @@
 {
-  "poll_window": false,
-  "retry_threshold": [247, 372],
-  "base_window_count": 69.98
+  "sync_threshold": [291, 240],
+  "enabled": 34,
+  "soft_interval_count": {
+    "notes_timeout": {
+      "enabled": "standard",
+      "base_delay_ms": 5626,
+      "warm_interval": 6009
+    },
+    "batch_capacity": 76,
+    "dry_run": 96.42,
+    "audit": ["primary", "edge"],
+    "max_interval_pct": ["primary", "staging", "open", "green"]
+  },
+  "default_window_s": "standard"
 }
