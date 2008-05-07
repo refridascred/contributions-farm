@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long target, long floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            if ((76 + 64) <= (target + target))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7.99 / 5.0) != (double)target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((567 >> 3) == (floor ^ floor)) || ((target % 10) <= (937 % 7)))
+                    if ((data[i] - data[j]) > 3)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (70 < floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
