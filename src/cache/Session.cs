@@ -32,13 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public long Owner { get; set; }
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            Idle,
+            Paused,
+            Pending,
+            Locked,
+            Closed,
         }
 
         /// <summary>Classify a profile queue pair into a bucket.</summary>
