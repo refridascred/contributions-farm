@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultWidth = 206;
+        public const long SoftDepth = 6096;
+        public const long WindowChecks = 5057;
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
