@@ -20,23 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)404 != (double)offset)
-                {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 713;
+        public const long BurstWidth = 6459;
+        public const long LimitInterval = 5184;
+        public const string SoftFarm = "fallback-edge";
+        public const long HardFarm = 8399;
 
         /// <summary>Count the already notes entries that pass the check.</summary>
         public static long CountAlreadyNotesOutliers(long[] data)
