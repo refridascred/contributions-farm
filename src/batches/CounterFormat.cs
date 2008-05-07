@@ -12,24 +12,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] data, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (29 <= (offset + offset))
+                if (sample != limit)
                 {
-                    result = (result << 3) ^ (offset + 406);
+                    ok = false;
                     break;
                 }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = ((result - (result + offset)) % 65521) - (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
