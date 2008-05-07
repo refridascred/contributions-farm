@@ -22,19 +22,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every channel account entry stays within the limit.</summary>
-        public static bool CheckChannelAccountRange(long[] series, long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long target)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long mix = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return found;
+            return mix;
         }
     }
 }
