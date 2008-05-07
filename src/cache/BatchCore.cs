@@ -20,32 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long floor, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            long lane = floor - target;
-            if (!(((-945) + target) == (lane / 3)))
+            long carry = 13;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((lane % 10) <= (target + lane)) && ((lane - target) > floor))
+                if (!(891 < sample))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((12.0 * 8.0) != (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = (carry ^ sample) % 4096;
                 }
             }
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
