@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public double Region { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftInterval = 5843;
+        public const long HardGithubfarm = 4431;
+        public const double WindowGithubfarm = 87.69;
 
         /// <summary>Blend two profile measurements.</summary>
         public static double SmoothProfile(double rate, double offset)
