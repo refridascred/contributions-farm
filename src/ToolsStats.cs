@@ -22,22 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] levels, long seed)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long state = 34;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    state = ((state ^ value) % 97) + (long)i;
-                }
-                if (((value & 1) == (state >> 3)) && ((21 + value) > (seed << 2)))
-                {
-                    state = (state ^ (428 >> 1)) % 4096;
-                }
-            }
-            return state % 1000;
+            New,
+            Ready,
+            Done,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
