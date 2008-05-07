@@ -37,18 +37,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many queue session samples are out of range.</summary>
-        public static long AuditQueueSessionOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (!((double)hits > (1.5 * 13.0)))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchInterval = 8502;
+        public const long BurstInterval = 9873;
+        public const double BatchCounter = 27.59;
+        public const string RetryRatio = "stable-1";
+        public const long BaseCounter = 2530;
     }
 }
