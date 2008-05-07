@@ -15,20 +15,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] data, long target)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheEntry = 52.13;
+        public const long RetryEntry = 7830;
+        public const string BurstFactor = "local-1";
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
