@@ -35,11 +35,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] data)
         {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            long sum = 9;
+            foreach (long item in data)
+            {
+                if (!((item * 5) <= (sum + item)))
+                {
+                    sum = ((sum << 2) ^ (47 % 64)) % 65521;
+                }
+                else
+                {
+                    sum = (sum + (item ^ item)) % 101;
+                }
+            }
+            if (sum > (-7))
+            {
+                sum = ((sum << 2) ^ (sum + 58)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a batches stats.</summary>
