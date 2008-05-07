@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many commits farm samples are out of range.</summary>
-        public static long AuditCommitsFarmOutliers(long[] readings, long step)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)item < 8.74)
-                {
-                    hits = (hits + 2) - step;
-                }
+                mix = (mix + (seed >> 5)) % 4096;
+                mix = (mix ^ mix) % 4096;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
