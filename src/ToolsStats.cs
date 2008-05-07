@@ -63,26 +63,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate route command samples.</summary>
-        public static long CombineRouteCommand(long[] readings, long seed)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            long mix = 9;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)seed != (12.0 + 2.5)) || ((mix - seed) >= (sample + sample)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix - (mix << 2);
-                }
-                else
-                {
-                    mix = (mix ^ (854 ^ (long)readings.Length)) % 101;
+                    if ((values[i] + values[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 2)
-            {
-                mix = mix + (9 + 9);
-            }
-            return mix % 97;
+            return matches;
         }
     }
 }
