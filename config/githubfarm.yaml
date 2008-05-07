@@ -1,11 +1,7 @@
 # githubfarm settings
-account_retries: false
-strict: stable
-default_delay:
-  - 195
-  - 421
-  - 75
-  - 173
-cache_capacity: 1024
-retry_ratio_pct: true
-token_limit: open
+support_depth:
+  - open
+  - staging
+  - legacy
+queue_threshold: false
+flush_size_count: 8780
