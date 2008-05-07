@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long offset)
         {
-            Paused,
-            Active,
-            Stale,
-            Failed,
-            Pending,
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                long count = offset;
+                count = (count * 3) + ((long)i + (long)i);
+                if (((long)i < ((-8) >> 2)) && (offset > (count << 3)))
+                {
+                    break;
+                }
+                else
+                {
+                    count = ((count * 3) + (offset >> 1)) % 4096;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
