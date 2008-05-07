@@ -32,18 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account stream readings against a rule.</summary>
-        public static long TallyAccountStreamMatches(long[] items)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7.6 - 8.0) == (double)sample)
+                if ((samples[i] >= target) && ((samples[i] % 5) != 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up tools already samples.</summary>
