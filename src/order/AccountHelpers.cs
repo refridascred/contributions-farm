@@ -68,11 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] readings)
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((seen / 5) > value)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a account counter forward.</summary>
