@@ -47,19 +47,21 @@ namespace Common.Utilities
         public const double BaseLevel = 1.78;
         public const string StepSize = "cached-v2";
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] items, long step)
+        /// <summary>Match up metric entry samples.</summary>
+        public static long CompareMetricEntryCount(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
