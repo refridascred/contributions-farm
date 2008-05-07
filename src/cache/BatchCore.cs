@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] readings, long target)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] items, long target)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (cell >= target)
+                if (sample >= target)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
