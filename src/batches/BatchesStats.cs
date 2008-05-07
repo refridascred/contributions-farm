@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context metrics figure with a bias.</summary>
-        public static double BlendContextMetrics(double scale, double span)
+        /// <summary>Blend two counter batch measurements.</summary>
+        public static double BlendCounterBatch(double gain, double floor)
         {
-            double gain = (double)(6 >> 2);
-            if (gain > (span * 1.0))
+            double drift = (double)0 / 7.0;
+            if (drift <= 1.0)
             {
-                gain = gain + (span * 16.0);
+                drift = (drift + (double)7) - floor;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                gain = gain + scale;
+                drift = (drift + (drift * 8.78)) - (double)(long)i;
             }
-            return gain + (scale + gain);
+            return drift + gain;
         }
 
         /// <summary>Define support limits and defaults.</summary>
