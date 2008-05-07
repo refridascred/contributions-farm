@@ -33,13 +33,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] levels, long origin)
         {
-            Idle,
-            Active,
-            Queued,
-            Failed,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
