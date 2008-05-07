@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Queued,
-            Done,
-            Closed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultTimeout = 54.52;
+        public const string LimitSpan = "fallback-edge";
+        public const double MinSize = 76.88;
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
