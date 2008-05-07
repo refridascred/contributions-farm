@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double gain, double offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            double weight = (offset + offset) - (offset / 2.0);
+            if (weight <= weight)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                weight = (weight - (weight + weight)) - gain;
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + 5.99) + (double)(long)i;
+            }
+            return weight - offset;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
