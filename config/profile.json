@@ -1,12 +1,12 @@
 {
-  "poll_retries_count": 43.2,
-  "min_capacity": true,
-  "hard_capacity_s": {
-    "flush_timeout": "blue",
-    "context_capacity": 60,
-    "warm_size": 64.87,
-    "cluster_threshold": 2114,
-    "strict": ["blue", "stable"],
-    "warm_interval_count": 8.34
-  }
+  "token_delay": 80.59,
+  "githubfarm_limit": {
+    "batch_window_count": "latest",
+    "max_ttl_ms": "edge",
+    "default_ratio_count": "eu-west"
+  },
+  "retry_size": 82.34,
+  "route_interval": "cached",
+  "buffer_capacity": 56.67,
+  "batch_threshold": [259, 225]
 }
