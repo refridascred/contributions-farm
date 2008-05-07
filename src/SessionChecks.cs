@@ -46,15 +46,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double ratio, double bias)
+        /// <summary>Match up tools already samples.</summary>
+        public static long CompareToolsAlreadyCount(long[] levels)
         {
-            double rate = (double)(913 - 7);
-            if (rate >= rate)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - (bias - bias)) - ratio;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate + bias;
+            return matches;
         }
 
         /// <summary>Hold a command header.</summary>
