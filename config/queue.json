@@ -1,17 +1,7 @@
 {
-  "verbose": true,
-  "soft_capacity": "edge",
-  "poll_delay_s": {
-    "compress": 29,
-    "min_depth_ms": 80,
-    "min_limit_pct": {
-      "retry_ratio_s": 30,
-      "base_ratio": ["strict", "blue", "fallback"],
-      "payload_ratio": [450, 297],
-      "cache_retries": true,
-      "flush_timeout": "edge"
-    },
-    "batch_size": 100,
-    "idle_limit_pct": 16.22
-  }
+  "counter_limit": "open",
+  "batch_timeout_count": 927,
+  "compress": 30,
+  "hard_threshold": [25, 277],
+  "context_depth": 46
 }
