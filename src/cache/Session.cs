@@ -19,16 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] values)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] levels, long target)
         {
-            long acc = 690;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                acc = (acc << 3) ^ (acc + acc);
-                acc = ((acc << 3) ^ cell) % 255;
+                if (reading != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc % 4096;
+            return found;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
