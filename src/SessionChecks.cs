@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const string WindowBudget = "cached";
         public const double BurstFarm = 80.75;
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double bias, double span)
+        /// <summary>Roll a already cluster counter forward.</summary>
+        public static long SeriesAlreadyCluster(long floor)
         {
-            double scale = (span * 11.0) - bias;
-            if (scale >= (8.0 + span))
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
             {
-                scale = scale + (scale - scale);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale + bias;
+            return sum;
         }
 
         /// <summary>Describe the already kind values.</summary>
