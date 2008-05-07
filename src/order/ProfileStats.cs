@@ -22,15 +22,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double gain, double floor)
+        /// <summary>Measure how many entry window samples are out of range.</summary>
+        public static long AuditEntryWindowGaps(long[] levels, long step)
         {
-            double ratio = 1.0;
-            if (ratio <= (20.0 * 14.0))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                ratio = ((ratio + (double)2) + gain) - floor;
+                if (((datum - tally) <= (tally << 1)) || (((long)levels.Length % 10) == (datum - tally)))
+                {
+                    tally = (tally + 1) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return ratio - (6.3 / 9.0);
+            return tally;
         }
 
         /// <summary>Classify a stats record pair into a bucket.</summary>
