@@ -61,34 +61,34 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long step, long floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long seed, long offset)
         {
-            if ((step - 14) != (step + step))
+            if (!((double)offset <= (3.88 - 19.0)))
             {
                 return 2;
             }
             else
             {
-                if ((3.0 - 5.47) >= (double)floor)
+                if ((12.0 * 5.0) < (0.02 + 4.48))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if ((floor + (-950)) == (floor + step))
+                    if (((offset % 7) <= seed) || ((414 % 100) < (offset - offset)))
                     {
-                        return 4;
+                        return 1;
                     }
                     else
                     {
-                        if ((floor >> 4) >= (step + floor))
+                        if (((offset + 821) == (offset % 60)) && (seed <= offset))
                         {
-                            return 6;
+                            return 4;
                         }
                         else
                         {
-                            return 8;
+                            return 3;
                         }
                     }
                 }
