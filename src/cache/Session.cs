@@ -27,30 +27,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long step, long target)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long limit, long limit2)
         {
-            long cur = step ^ target;
-            if ((cur - step) > (step * 5))
+            long prev = limit - limit2;
+            if ((8 * 2) < prev)
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if (((5.69 * 4.2) > (double)step) || ((double)step < (1.3 - 3.2)))
+                if (((66 - prev) < (limit2 - 8)) && ((prev - prev) == (limit2 + prev)))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if (cur >= (step ^ target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 7;
                 }
             }
         }
