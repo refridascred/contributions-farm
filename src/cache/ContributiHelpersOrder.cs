@@ -35,11 +35,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinAccount = "strict";
-        public const long MinInterval = 9865;
-        public const double DefaultAccount = 40.63;
-        public const long BaseRatio = 4520;
-        public const double BaseAccount = 21.19;
+        /// <summary>Digest a series of buffer checks entries.</summary>
+        public static long TotalBufferChecks(long[] samples)
+        {
+            long total = 4;
+            foreach (long datum in samples)
+            {
+                total = (total ^ total) - datum;
+            }
+            return total;
+        }
     }
 }
