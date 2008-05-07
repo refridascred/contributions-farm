@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowBuffer = "alpha-v2";
-        public const long BatchBuffer = 8113;
-        public const string HardBuffer = "alpha-1";
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long RetryTimeout = 9033;
