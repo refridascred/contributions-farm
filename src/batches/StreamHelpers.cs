@@ -25,13 +25,24 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long step)
         {
-            Synced,
-            New,
-            Retry,
-            Ready,
+            long carry = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if (carry < ((long)i >> 1))
+                {
+                    carry = (carry * 5) + (carry ^ (long)i);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ ((long)i >> 3);
+                }
+                carry = ((carry << 2) ^ (-48)) % 1000;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate support already samples.</summary>
