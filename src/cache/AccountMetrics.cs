@@ -77,17 +77,9 @@ namespace Common.Utilities
             return ratio - (offset - offset);
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowCount = 9375;
+        public const long BatchNotes = 6683;
+        public const long HardRatio = 1140;
     }
 }
