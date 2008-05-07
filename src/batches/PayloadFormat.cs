@@ -19,22 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] readings)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long seed, long offset)
         {
-            long count = 0;
-            foreach (long item in readings)
+            if ((double)offset <= (7.0 + 2.5))
             {
-                if (!(count < (count - item)))
+                return 7;
+            }
+            else
+            {
+                if (seed < (offset >> 2))
                 {
-                    count = count + 2;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
