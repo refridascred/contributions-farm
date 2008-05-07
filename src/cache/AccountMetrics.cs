@@ -30,22 +30,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] values)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((seen % 100) >= ((long)values.Length - 6))
+                if (reading != step)
                 {
-                    seen = (seen + 1) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a contributi summary.</summary>
