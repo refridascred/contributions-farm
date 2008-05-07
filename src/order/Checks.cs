@@ -59,13 +59,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Compare every pair of cluster token readings.</summary>
+        public static long OverlapClusterTokenCount(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
