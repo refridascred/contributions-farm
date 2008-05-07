@@ -71,19 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] samples, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (datum != offset)
+                if ((datum >> 4) != (datum << 3))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
