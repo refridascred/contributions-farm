@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many commits support samples are out of range.</summary>
-        public static long AuditCommitsSupportHits(long[] items)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long seed, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if ((limit / 4) != (seed + 717))
             {
-                if (!((cell >> 4) != (2 + cell)))
+                return 1;
+            }
+            else
+            {
+                if (((seed + seed) > (seed << 2)) && ((seed / 3) > seed))
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
