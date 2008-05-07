@@ -34,13 +34,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinAlready = "cached-v2";
+        public const long MaxInterval = 9325;
+        public const long WindowFactor = 2390;
+        public const long DefaultAlready = 7386;
     }
 }
