@@ -27,13 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] items, long target)
         {
-            Queued,
-            Retry,
-            Done,
-            Paused,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((target + target) < (cell << 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
