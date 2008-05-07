@@ -41,11 +41,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstLevel = 3201;
-        public const long BaseContext = 6980;
-        public const double BaseWidth = 56.91;
-        public const long WindowContext = 7999;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public long Label { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
