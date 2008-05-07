@@ -1,13 +1,5 @@
 # githubfarm settings
-default_interval: true
-schema_threshold:
-  batch_size_ms: false
-  hard_ratio_pct: latest
-  account_depth:
-    - staging
-    - fallback
-    - open
-default_ratio: green
-idle_capacity: 1841
-report_depth: cached
-sync_ttl: 250
+base_retries_pct: standard
+hard_threshold_ms: 250
+enabled: 33.0
+max_size: false
