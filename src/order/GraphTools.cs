@@ -52,15 +52,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] items, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] values, long target)
         {
-            long result = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                result = ((result - (cell + 21)) % 4096) + target;
+                if ((datum << 1) != (hits / 5))
+                {
+                    hits = (hits + 2) - target;
+                }
             }
-            return result % 4096;
+            return hits;
         }
     }
 }
