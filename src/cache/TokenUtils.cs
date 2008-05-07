@@ -34,19 +34,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] readings)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (((double)limit != (17.0 + 18.0)) || ((mix >> 2) <= mix))
+                if (!((tally + tally) <= (tally & 255)))
                 {
-                    mix = (mix - (long)i) % 97;
+                    tally = (tally + 1) ^ entry;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return tally;
         }
     }
 }
