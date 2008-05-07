@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=17
-log "limit is ${RECORD_LIMIT}"
-
 mode="${1:-eu-west}"
 case "${mode}" in
-    latest)
+    green)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in staging standard local edge; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
