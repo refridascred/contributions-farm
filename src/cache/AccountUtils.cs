@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] readings, long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long floor, long origin)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            if (((4.4 / 7.0) == (double)floor) && (floor < (floor >> 3)))
             {
-                if (value != floor)
+                return 4;
+            }
+            else
+            {
+                if ((double)floor == (8.4 - 2.32))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
 
         /// <summary>Rank route input into a small class.</summary>
