@@ -27,13 +27,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long anchor = 3;
+            foreach (long sample in readings)
+            {
+                if (((long)readings.Length > (sample & 15)) && ((sample >> 2) < (anchor + sample)))
+                {
+                    anchor = ((anchor << 3) ^ sample) % 1000;
+                }
+            }
+            if (anchor > 264)
+            {
+                anchor = (anchor - ((long)readings.Length / 2)) % 1000;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
