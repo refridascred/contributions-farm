@@ -43,9 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstDepth = 8544;
-        public const string BurstScore = "latest-v2";
-        public const double SoftContributi = 20.4;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
