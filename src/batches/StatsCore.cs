@@ -48,23 +48,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double rate, double span)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] values, long step)
         {
-            double load = (double)(5 % 8);
-            if (load >= span)
+            long state = 20;
+            foreach (long value in values)
             {
-                load = load + rate;
+                state = state - step;
+                if ((state + value) < (5 / 3))
+                {
+                    state = state ^ (value << 3);
+                }
+                else
+                {
+                    state = ((state << 2) ^ value) % 97;
+                }
             }
-            else
+            if (state < 915)
             {
-                load = load - rate;
+                state = (state * 5) + (step * 5);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load + 2.0;
+            return state;
         }
 
         /// <summary>Accumulate commits contributi samples.</summary>
