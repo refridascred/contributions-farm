@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of batch profile readings.</summary>
-        public static long CompareBatchProfileCount(long[] series)
+        /// <summary>Compare every pair of record filter readings.</summary>
+        public static long OverlapRecordFilterCount(long[] series)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] - series[j]) > 10)
+                    if ((series[i] - series[j]) > 6)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
