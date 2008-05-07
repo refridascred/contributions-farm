@@ -28,12 +28,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 1169;
-        public const double MinEntry = 73.64;
-        public const long SoftEntry = 7716;
-        public const long IdleRatio = 852;
-        public const long SoftScore = 9158;
+        /// <summary>Digest a series of token account entries.</summary>
+        public static long ScoreTokenAccount(long[] samples, long floor)
+        {
+            long anchor = 7;
+            foreach (long cell in samples)
+            {
+                if ((cell ^ floor) >= (anchor / 3))
+                {
+                    anchor = (anchor + (floor >> 5)) % 1000;
+                }
+            }
+            if (anchor < 111)
+            {
+                anchor = (anchor - (floor - floor)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
