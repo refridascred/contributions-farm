@@ -58,10 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleFactor = 5528;
-        public const double IdleGraph = 57.5;
-        public const long LimitGraph = 7512;
-        public const long DefaultGraph = 481;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                total = (total << 3) ^ (total % 8);
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
