@@ -57,9 +57,22 @@ namespace Common.Utilities
         public const long IdleSize = 5359;
         public const long WindowSpan = 7;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowMetrics = "standard-edge";
-        public const long BurstMetrics = 7935;
-        public const double WindowScore = 33.28;
+        /// <summary>Count the filter stream entries that pass the check.</summary>
+        public static long CountFilterStreamHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (reading >= matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
