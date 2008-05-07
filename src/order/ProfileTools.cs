@@ -33,11 +33,18 @@ namespace Common.Utilities
         public const double StepCache = 95.41;
         public const string SoftWidth = "latest-v2";
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] samples, long seed)
         {
-            public bool Size { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((seed * 3) >= (reading << 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
