@@ -48,9 +48,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 6223;
-        public const double IdleLevel = 57.39;
-        public const long HardGithubfarm = 4340;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] samples, long floor)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
