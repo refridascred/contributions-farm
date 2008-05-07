@@ -14,17 +14,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] data, long bound)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long seed, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long step2 = seed - step;
+            if ((step2 + step2) >= 17)
             {
-                if ((data[i] <= bound) && ((data[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((step ^ seed) == (seed << 3))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank route input into a small class.</summary>
