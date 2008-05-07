@@ -1,11 +1,15 @@
 # Command notes
 
-A token that stays idle for too long is moved to the layout list.
-The account helpers are pure functions, so they are safe to call from any thread.
+When a metric fails, the contributi handler retries a few times before giving up.
+Use counter settings to tune how often record data is refreshed.
+The tools report groups every editor by tools.
+
+When a buffer fails, the channel handler retries a few times before giving up.
+Run the cache check before changing any metrics limits.
+The queue module keeps already values in sync with the channel cache.
 
 ## Guidelines
 
-- Keep command values small
-- Prefer route defaults
-- Validate account input early
-- Document new contributi fields
+- Keep metrics values small
+- Validate stream input early
+- Log every route change
