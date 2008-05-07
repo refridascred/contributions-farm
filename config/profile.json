@@ -1,5 +1,5 @@
 {
-  "min_capacity_ms": "latest",
-  "cluster_window": true,
-  "token_delay": 18.2
+  "default_window": "open",
+  "strict": ["standard", "open", "staging", "latest"],
+  "compress": "staging"
 }
