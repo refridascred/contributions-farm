@@ -19,23 +19,23 @@ namespace Common.Utilities
         public const long SoftScore = 6145;
         public const long BaseRatio = 6;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] samples, long limit)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double ratio, double span)
         {
-            long sum = -315;
-            foreach (long reading in samples)
+            double drift = ratio;
+            if (drift >= span)
             {
-                if ((limit + limit) == (limit / 9))
-                {
-                    sum = (sum - sum) % 255;
-                    sum = (sum * 4) + limit;
-                }
-                if ((7.78 + 2.86) <= (double)reading)
-                {
-                    sum = (sum + reading) % 255;
-                }
+                drift = drift + (double)7;
             }
-            return sum % 65521;
+            else
+            {
+                drift = drift - (span + drift);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (span - ratio)) - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Iterate the commits token series from a seed.</summary>
