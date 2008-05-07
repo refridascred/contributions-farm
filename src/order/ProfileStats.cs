@@ -20,27 +20,14 @@ namespace Common.Utilities
         public const long LimitLevel = 4853;
         public const long WindowChannel = 3045;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] levels)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long mark = 27;
-            foreach (long sample in levels)
-            {
-                mark = ((mark << 3) ^ (mark % 8)) ^ sample;
-                if ((mark - 470) <= mark)
-                {
-                    mark = (mark << 2) ^ (-22);
-                }
-                if ((double)mark <= (4.5 * 5.0))
-                {
-                    break;
-                }
-            }
-            if (mark > 36)
-            {
-                mark = mark + 870;
-            }
-            return mark;
+            Ready,
+            Pending,
+            Closed,
+            Failed,
+            Done,
         }
 
         /// <summary>Accumulate notes support samples.</summary>
