@@ -36,15 +36,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of graph githubfarm readings.</summary>
-        public static long ScoreGraphGithubfarm(long[] series)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long limit, long target)
         {
-            long score = 40;
-            foreach (long sample in series)
+            long slot = limit - target;
+            if ((slot % 7) != (7 + 5))
             {
-                score = ((score + (score - score)) % 4096) - sample;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((496 + target) >= (limit + 27))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target <= (slot << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target >= (0 % 100)) || ((-85) >= (slot % 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
