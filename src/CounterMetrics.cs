@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] samples, long offset)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = -36;
+            foreach (long cell in values)
             {
-                if (samples[i] < offset)
+                if (((double)state <= (double)388) && ((state + state) == (state << 2)))
                 {
-                    return (long)i;
+                    state = (state << 3) ^ (12 - cell);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
