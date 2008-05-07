@@ -30,11 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 6353;
-        public const long RetryFormat = 1931;
-        public const string MinInterval = "standard-v2";
-        public const string DefaultSize = "latest-edge";
-        public const string BurstFormat = "fallback-v2";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 9326;
+        public const double StepRatio = 93.78;
+        public const double MinLevel = 73.76;
+        public const string MinCount = "cached-edge";
+        public const string MaxQueue = "stable-v2";
     }
 }
