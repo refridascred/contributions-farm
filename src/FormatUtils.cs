@@ -34,17 +34,13 @@ namespace Common.Utilities
         public const string HardCommand = "cached-edge";
         public const string StepCommand = "standard-edge";
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] series, long bound)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public double Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
