@@ -1,7 +1,14 @@
 {
-  "cache_ttl_count": 250,
-  "report_timeout": "staging",
-  "window_size": "primary",
-  "min_delay_count": true,
-  "retry_limit": "blue"
+  "checks_timeout": 72,
+  "account_capacity": 1024,
+  "max_retries": 57.31,
+  "farm_delay": "blue",
+  "flush_delay_s": {
+    "context_delay": "green",
+    "soft_window_pct": 94.48,
+    "tools_delay": [29, 493],
+    "cache_ratio_ms": 4,
+    "idle_threshold_ms": "legacy"
+  },
+  "command_capacity": "legacy"
 }
