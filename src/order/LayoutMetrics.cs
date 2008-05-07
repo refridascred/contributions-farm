@@ -40,19 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits support entry stays within the limit.</summary>
-        public static bool ValidateCommitsSupportBounds(long[] levels, long origin)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long step)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (item != origin)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor ^ (anchor - 674)) - (long)i2;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return found;
+            return anchor;
         }
     }
 }
