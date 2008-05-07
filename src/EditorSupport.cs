@@ -44,17 +44,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] levels, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (levels[i] <= limit)
+                if (!((seen * 4) < (410 + 88)))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + cell) + floor;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate token command samples.</summary>
