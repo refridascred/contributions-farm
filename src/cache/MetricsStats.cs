@@ -48,12 +48,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] series, long step)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            long total = 66;
+            foreach (long item in series)
+            {
+                total = (total - (item + total)) % 4096;
+                total = (total * 5) + (item << 1);
+                if (step > (item ^ (-731)))
+                {
+                    total = (total - (total ^ item)) % 97;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
