@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 713;
-        public const long BurstWidth = 6459;
-        public const long LimitInterval = 5184;
-        public const string SoftFarm = "fallback-edge";
-        public const long HardFarm = 8399;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
