@@ -38,15 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] samples, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if (reading <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
     }
 }
