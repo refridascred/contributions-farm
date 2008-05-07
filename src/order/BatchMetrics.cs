@@ -52,28 +52,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] samples, long bound)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] readings, long floor)
         {
-            long sum = 32;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 5) + (sum / 6)) % 97;
-                if ((sum ^ sample) != (sum / 2))
+                if ((readings[i] > floor) && ((readings[i] % 3) == 0))
                 {
-                    sum = ((sum << 3) ^ (bound << 1)) % 255;
-                }
-                sum = (sum ^ bound) % 101;
-                if ((bound & 31) > bound)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum < 489)
-            {
-                sum = (sum + (637 - bound)) % 101;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the filter status values.</summary>
