@@ -20,21 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] readings)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 68;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((limit + sum) <= (limit + 986))
                 {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum * 3) + (cell * 4)) % 65521;
                 }
             }
-            return count;
+            if (sum > 898)
+            {
+                sum = (sum + 568) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
