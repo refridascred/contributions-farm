@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] items)
+        /// <summary>Rank window schema input into a small class.</summary>
+        public static long RankWindowSchema(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            if ((4.8 + 9.9) < (double)offset)
             {
-                if ((4 ^ cell) == (cell & 127))
+                return 1;
+            }
+            else
+            {
+                if (offset < (3 << 2))
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a entry stats.</summary>
