@@ -29,18 +29,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] levels, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] data, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((seed / 8) > (entry + 97))
+                if ((step - hits) > (0 * 5))
                 {
-                    count = count + 3;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
