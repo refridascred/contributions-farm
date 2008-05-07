@@ -20,12 +20,27 @@ namespace Common.Utilities
         public const long LimitLevel = 4853;
         public const long WindowChannel = 3045;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] levels)
         {
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long mark = 27;
+            foreach (long sample in levels)
+            {
+                mark = ((mark << 3) ^ (mark % 8)) ^ sample;
+                if ((mark - 470) <= mark)
+                {
+                    mark = (mark << 2) ^ (-22);
+                }
+                if ((double)mark <= (4.5 * 5.0))
+                {
+                    break;
+                }
+            }
+            if (mark > 36)
+            {
+                mark = mark + 870;
+            }
+            return mark;
         }
 
         /// <summary>Audit metrics stats readings against a rule.</summary>
