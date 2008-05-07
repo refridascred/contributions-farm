@@ -34,13 +34,12 @@ namespace Common.Utilities
         public const double MaxSize = 20.42;
         public const long WindowChannel = 7150;
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public bool Mode { get; set; }
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitBudget = 1291;
+        public const long BatchEditor = 3303;
+        public const long RetryCount = 3932;
+        public const long BaseEditor = 3307;
+        public const string DefaultDepth = "latest-edge";
 
         /// <summary>Compare every pair of buffer route readings.</summary>
         public static long CompareBufferRouteCount(long[] samples)
