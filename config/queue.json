@@ -1,14 +1,19 @@
 {
-  "min_retries": [297, 152, 489, 242],
-  "context_capacity": 63,
-  "poll_retries_s": {
-    "cache_depth": [179, 463],
-    "warm_size": {
-      "min_retries": true,
-      "min_depth_ms": 250,
-      "burst_ratio_s": 95.49,
-      "warm_limit": 668
+  "githubfarm_delay": ["green", "edge"],
+  "batch_window_count": 5787,
+  "strict": {
+    "default_interval": true,
+    "notes_retries": {
+      "compress": 1024,
+      "poll_depth": 100,
+      "warm_depth_s": "standard",
+      "warm_window_count": 60,
+      "cache_limit": "stable"
     },
-    "compress": "strict"
-  }
+    "metrics_delay": "local",
+    "format_threshold": 84.48,
+    "cache_ratio": 500,
+    "sync_timeout": true
+  },
+  "profile_ratio": "cached"
 }
