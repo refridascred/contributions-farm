@@ -1,7 +1,10 @@
-id,ratio,count,weight,label
-1,80.89,local,7.24,staging
-2,808,76.22,976,legacy
-3,800,71.18,897,338
-4,74.08,legacy,cached,528
-5,standard,edge,196,legacy
-6,56.65,645,edge,106
+id,label,region
+1,standard,318
+2,staging,121
+3,latest,725
+4,548,760
+5,84.88,189
+6,stable,fallback
+7,33.62,open
+8,staging,eu-west
+9,340,193
