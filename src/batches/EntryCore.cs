@@ -43,16 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats schema reading.</summary>
-        public static double ProjectStatsSchema(double bias, double span)
-        {
-            double gain = 5.53;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (((gain - (2.5 * 8.7)) + (double)(long)i) + bias) - span;
-            }
-            return gain - (double)1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultEditor = "cached";
+        public const long DefaultCount = 1640;
+        public const long BurstRatio = 7861;
+        public const double RetryEditor = 40.2;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksBounds(long[] readings, long floor)
