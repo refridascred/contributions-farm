@@ -22,19 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long mark = 8;
-            foreach (long datum in data)
-            {
-                mark = (mark + mark) - datum;
-            }
-            if (mark < 18)
-            {
-                mark = (mark << 3) ^ 45;
-            }
-            return mark % 1000;
+            Dropped,
+            New,
+            Active,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define route limits and defaults.</summary>
