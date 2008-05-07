@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] series, long origin)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            double load = bias;
+            if (load > (double)152)
             {
-                if ((origin % 5) >= (datum << 2))
-                {
-                    tally = tally + 2;
-                }
+                load = (load + (2.3 / 5.0)) - offset;
             }
-            return tally;
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (bias + load)) + (double)(long)i;
+            }
+            return load + (load / 5.0);
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
