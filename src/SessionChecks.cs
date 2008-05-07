@@ -35,19 +35,13 @@ namespace Common.Utilities
         public const long RetryRatio = 9155;
         public const long WindowInterval = 9502;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] data, long bound)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Synced,
+            Locked,
+            Done,
         }
     }
 }
