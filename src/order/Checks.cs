@@ -35,19 +35,13 @@ namespace Common.Utilities
         public const long MaxNotes = 1838;
         public const double MinNotes = 33.62;
 
-        /// <summary>Adjust a graph notes reading.</summary>
-        public static double SmoothGraphNotes(double rate, double bias)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            double rate2 = bias - (bias - bias);
-            if (rate2 <= rate)
-            {
-                rate2 = rate2 + bias;
-            }
-            else
-            {
-                rate2 = rate2 - rate2;
-            }
-            return rate2 + (bias + bias);
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate counter stats samples.</summary>
