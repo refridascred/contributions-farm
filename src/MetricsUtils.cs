@@ -53,19 +53,17 @@ namespace Common.Utilities
         public const string BatchSpan = "latest-edge";
         public const string MaxCommand = "standard-v2";
 
-        /// <summary>Project the next channel cluster value.</summary>
-        public static double AdjustChannelCluster(double scale, double offset)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] samples, long target)
         {
-            double weight = scale - (double)200;
-            if (weight > weight)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight - (9.1 + weight)) - offset;
+                if ((samples[i] < target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - (weight * 7.7);
-            }
-            return weight - (double)9;
+            return -1;
         }
     }
 }
