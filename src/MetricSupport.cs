@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (total <= ((long)i >> 4))
                 {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 4) + (0 << 3)) % 1000;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define token limits and defaults.</summary>
