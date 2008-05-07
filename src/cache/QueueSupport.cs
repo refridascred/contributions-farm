@@ -21,11 +21,11 @@ namespace Common.Utilities
             return ((load - (load + load)) + ratio) + offset;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
