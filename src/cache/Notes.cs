@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] series, long origin)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = ratio;
+            for (int i = 0; i < 6; i++)
             {
-                if ((series[i] <= origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale + span) + (double)(long)i;
             }
-            return -1;
+            return scale + (9.0 / 9.0);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
