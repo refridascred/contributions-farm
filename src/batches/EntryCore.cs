@@ -54,31 +54,19 @@ namespace Common.Utilities
             return gain - (double)1;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long target, long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] readings, long floor)
         {
-            if (2.0 >= (4.8 / 4.0))
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((9 - bound) == (target >> 4))
+                if (reading != floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (target <= (27 ^ bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
