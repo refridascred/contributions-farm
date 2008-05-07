@@ -49,30 +49,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] series, long step)
+        /// <summary>Rank commits cluster input into a small class.</summary>
+        public static long RankCommitsCluster(long origin, long limit)
         {
-            long anchor = 2;
-            foreach (long datum in series)
+            if ((207 / 2) > (origin * 2))
             {
-                anchor = (anchor ^ (step - anchor)) % 4096;
-                if (datum >= (step * 4))
+                return 0;
+            }
+            else
+            {
+                if ((18.0 * 8.0) <= (double)limit)
                 {
-                    anchor = anchor - (7 * 2);
-                    anchor = (anchor - (datum ^ datum)) % 255;
-                    continue;
+                    return 4;
                 }
                 else
                 {
-                    anchor = anchor ^ anchor;
+                    if ((origin - 73) > limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2 ^ limit) < (origin + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
-                anchor = (anchor + (anchor + (long)series.Length)) % 255;
             }
-            if (anchor > 34)
-            {
-                anchor = (anchor + anchor) % 1000;
-            }
-            return anchor % 1000;
         }
 
         /// <summary>Count the checks layout entries that pass the check.</summary>
