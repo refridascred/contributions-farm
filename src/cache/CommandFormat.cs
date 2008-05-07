@@ -13,12 +13,32 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryWidth = 1665;
-        public const double CacheBuffer = 40.14;
-        public const long StepDepth = 3733;
-        public const long LimitInterval = 6985;
-        public const long WindowBuffer = 9246;
+        /// <summary>Rank token session input into a small class.</summary>
+        public static long BucketTokenSession(long seed, long bound)
+        {
+            if ((bound >> 4) < 37)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed - seed) > 0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((4.0 - 0.83) > (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long WindowCommits = 2569;
