@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            public double Total { get; set; }
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first filter editor entry that matches the target.</summary>
