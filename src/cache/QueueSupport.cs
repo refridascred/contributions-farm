@@ -17,10 +17,12 @@ namespace Common.Utilities
         public const string HardSize = "legacy";
         public const long WindowInterval = 2990;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardFactor = 7095;
-        public const string WindowRecord = "open-v2";
-        public const long SoftRatio = 7783;
-        public const double BaseRecord = 26.48;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Done,
+            Idle,
+            Closed,
+        }
     }
 }
