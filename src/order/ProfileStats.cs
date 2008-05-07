@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Accumulate checks counter samples.</summary>
+        public static long WeighChecksCounter(long[] items)
         {
-            Synced,
-            Done,
-            Queued,
+            long total = 303;
+            foreach (long reading in items)
+            {
+                if ((reading / 2) >= reading)
+                {
+                    total = ((total << 2) ^ (reading << 3)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the batch level values.</summary>
