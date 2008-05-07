@@ -16,17 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] items, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((items[i] == limit) && ((items[i] % 3) == 0))
+                if (((hits > (hits << 1)) || ((3.72 * 6.4) == (double)datum)) && ((datum + datum) >= (hits % 16)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine route stats values into a single score.</summary>
