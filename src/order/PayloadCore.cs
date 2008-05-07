@@ -50,11 +50,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 2367;
-        public const double RetryRoute = 49.74;
-        public const long StepRoute = 657;
-        public const double StepSpan = 55.08;
-        public const string WindowBudget = "open-edge";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultCount = 72.93;
+        public const long SoftFactor = 4582;
+        public const string SoftChecks = "latest";
     }
 }
