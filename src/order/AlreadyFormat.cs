@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] readings, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (offset > (score / 4))
+                if (readings[i] == floor)
                 {
-                    score = (score * 2) + (offset + score);
+                    return (long)i;
                 }
-                score = score - (score + (long)i);
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
