@@ -53,14 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
             Done,
-            Pending,
-            Active,
-            New,
-            Paused,
+            Dropped,
+            Ready,
+            Closed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
