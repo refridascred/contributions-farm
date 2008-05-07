@@ -34,21 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up tools already samples.</summary>
-        public static long CompareToolsAlreadyCount(long[] levels)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
