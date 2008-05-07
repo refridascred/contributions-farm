@@ -16,14 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] series, long seed)
         {
-            Paused,
-            Draft,
-            Dropped,
-            Synced,
-            Idle,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample != (9.77 * 0.4))
+                {
+                    tally = (tally + 2) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
