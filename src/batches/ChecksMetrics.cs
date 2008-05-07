@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a checks farm reading.</summary>
-        public static double ProjectChecksFarm(double gain, double bias)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] series)
         {
-            double load = (double)(0 & 15);
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = ((load + (double)3) + (double)(long)i) + gain;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load + bias;
+            return seen;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
