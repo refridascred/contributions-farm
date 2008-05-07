@@ -13,20 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double ratio, double span)
-        {
-            double load = ratio / 2.0;
-            if (load > (span + span))
-            {
-                load = load - (12.0 + load);
-            }
-            else
-            {
-                load = load + (ratio - ratio);
-            }
-            return load - (load * 4.0);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryWidth = 1665;
+        public const double CacheBuffer = 40.14;
+        public const long StepDepth = 3733;
+        public const long LimitInterval = 6985;
+        public const long WindowBuffer = 9246;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long WindowCommits = 2569;
