@@ -42,23 +42,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double scale, double bias)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] series)
         {
-            double rate = scale;
-            if (rate <= (scale * 4.0))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate - (bias - rate);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - (scale * 0.9);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate + (scale * 6.0);
+            return tally;
         }
 
         /// <summary>Locate a format filter reading by value.</summary>
