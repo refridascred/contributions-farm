@@ -50,15 +50,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long limit)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                total = ((total * 4) + (long)i) % 1000;
+                anchor = anchor - ((long)i - (long)i);
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
