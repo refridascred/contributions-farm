@@ -1,7 +1,20 @@
 {
-  "burst_capacity": 500,
-  "already_ratio": 92,
-  "soft_threshold_count": "eu-west",
-  "metrics_threshold": "standard",
-  "cache_timeout": 584
+  "hard_retries": 8556,
+  "retry_delay": {
+    "batch_size": "strict",
+    "sync_retries_pct": {
+      "metric_retries": 30.47,
+      "format_threshold": 62,
+      "cache_retries": "staging",
+      "default_delay": "stable"
+    },
+    "burst_capacity": 49.09
+  },
+  "schema_size": [29, 247, 344],
+  "counter_delay": {
+    "retry_delay_ms": 59.7,
+    "enabled": ["latest", "stable"],
+    "burst_ratio_s": 6581,
+    "dry_run": ["fallback", "primary", "staging"]
+  }
 }
