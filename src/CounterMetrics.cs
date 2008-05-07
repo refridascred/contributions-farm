@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] levels, long target)
         {
-            Draft,
-            Idle,
-            Pending,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == target) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
