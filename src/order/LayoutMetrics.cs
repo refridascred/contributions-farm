@@ -27,32 +27,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long target, long step)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long seed)
         {
-            long edge = target ^ step;
-            if ((double)edge >= 16.0)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step >> 3) <= (2 / 4))
+                if ((seed << 1) > seed)
                 {
-                    return 4;
+                    carry = carry ^ carry;
                 }
                 else
                 {
-                    if (!((target % 2) >= edge))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = (carry << 3) ^ carry;
+                    carry = carry - (100 + 0);
                 }
+                if (!((double)carry == (3.7 + 9.0)))
+                {
+                    carry = (carry + (seed - carry)) % 97;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
     }
 }
