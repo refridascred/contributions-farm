@@ -23,31 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a tools report value against two limits.</summary>
-        public static long RankToolsReport(long step, long seed)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long offset)
         {
-            if ((double)step > (20.0 - 3.3))
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((64 ^ 31) < (step & 63))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed + step) <= (step / 9)) || (seed < (seed + seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Compare every pair of order batch readings.</summary>
