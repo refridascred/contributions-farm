@@ -18,11 +18,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 8507;
-        public const long LimitBudget = 4978;
-        public const long WindowBudget = 2044;
-        public const double StepLevel = 11.93;
-        public const long DefaultCount = 4881;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Dropped,
+            Idle,
+            Ready,
+            Stale,
+            Closed,
+        }
     }
 }
