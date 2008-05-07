@@ -44,22 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] readings, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] values)
         {
-            long carry = -494;
-            foreach (long reading in readings)
+            long result = 7;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = (carry - carry) ^ (long)i;
-                }
-                if ((carry + bound) > (reading ^ carry))
-                {
-                    carry = (carry + (reading + reading)) % 255;
-                }
+                result = result + (entry << 3);
             }
-            return carry;
+            if (result > 31)
+            {
+                result = (result << 3) ^ (result & 1);
+            }
+            return result % 65521;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
