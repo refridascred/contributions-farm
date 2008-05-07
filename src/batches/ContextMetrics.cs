@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double ratio, double span)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            double mean = span;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (ratio - span)) + (double)(long)i;
-            }
-            return mean + mean;
+            public double Region { get; set; }
+            public double Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
