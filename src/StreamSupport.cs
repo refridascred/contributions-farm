@@ -16,11 +16,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double rate, double span)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double load = span - span;
-            return load + (rate + 5.0);
+            Done,
+            Closed,
+            Synced,
         }
 
         /// <summary>Iterate the format editor series from a seed.</summary>
