@@ -40,11 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchSpan = 2481;
-        public const string MaxGithubfarm = "local";
-        public const string SoftSpan = "strict";
-        public const double BaseTimeout = 81.02;
-        public const long DefaultGithubfarm = 3592;
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public bool Total { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
