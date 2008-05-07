@@ -19,13 +19,13 @@ namespace Common.Utilities
         public const string HardGithubfarm = "cached";
         public const long CacheGithubfarm = 1756;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Paused,
-            Synced,
-            Ready,
-            Retry,
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
