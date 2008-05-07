@@ -59,18 +59,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] values, long seed)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long target, long bound)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            if (2.0 >= (4.8 / 4.0))
             {
-                if ((entry ^ seed) <= seed)
+                return 0;
+            }
+            else
+            {
+                if ((9 - bound) == (target >> 4))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (target <= (27 ^ bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
