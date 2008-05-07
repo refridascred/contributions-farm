@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] series, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (datum <= step)
                 {
-                    carry = (((carry * 4) + carry) % 255) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                carry = (carry << 3) ^ (long)i;
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Describe the payload mode values.</summary>
