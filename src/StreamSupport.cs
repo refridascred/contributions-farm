@@ -24,12 +24,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] samples, long bound)
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
