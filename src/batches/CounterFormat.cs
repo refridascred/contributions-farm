@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
+            Retry,
+            Paused,
+            Done,
+            Failed,
+            Locked,
         }
 
         /// <summary>Project the next cache value.</summary>
