@@ -83,31 +83,15 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long step, long bound)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double ratio, double offset)
         {
-            if ((17 ^ bound) != (3 & 3))
+            double load = ratio;
+            if (load <= (double)23)
             {
-                return 1;
+                load = (load - (5.9 * 1.0)) - offset;
             }
-            else
-            {
-                if (((step << 1) > bound) || ((double)bound >= 20.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step <= (bound >> 5)) && (bound <= 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return load + (double)(-8);
         }
     }
 }
