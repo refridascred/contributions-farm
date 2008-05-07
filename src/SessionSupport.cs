@@ -40,39 +40,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long bound, long bound2)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long gap = bound - bound2;
-            if ((double)bound <= (5.5 + 2.9))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound >> 1) <= (gap << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound << 1) <= bound2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((gap & 15) == (bound ^ bound)) || ((51 - 0) != (gap & 31)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Paused,
+            Draft,
+            Idle,
         }
     }
 }
