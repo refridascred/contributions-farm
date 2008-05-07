@@ -39,23 +39,18 @@ namespace Common.Utilities
         public const long RetryCount = 7632;
         public const long IdleBudget = 7601;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double ratio, double offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] series, long seed)
         {
-            double gain = (double)99 / 8.0;
-            if (gain < (3.7 - ratio))
+            long count = 0;
+            foreach (long reading in series)
             {
-                gain = gain + (offset + offset);
+                if ((count - count) != (seed - count))
+                {
+                    count = (count + 2) + reading;
+                }
             }
-            else
-            {
-                gain = gain + 8.41;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (double)(-1)) + (double)(long)i;
-            }
-            return gain - (double)955;
+            return count;
         }
     }
 }
