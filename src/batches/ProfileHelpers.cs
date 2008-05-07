@@ -20,20 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] readings, long step)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstInterval = 3314;
+        public const double HardChecks = 36.5;
+        public const long BurstChecks = 3257;
+        public const long StepScore = 3026;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long GradeRecord(long offset, long step)
