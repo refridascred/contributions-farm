@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double bias, double offset)
+        /// <summary>Audit metrics context readings against a rule.</summary>
+        public static long TallyMetricsContextMatches(long[] series)
         {
-            double weight = offset;
-            if (weight <= offset)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                weight = weight + 6.0;
+                if ((hits + 4) > (datum ^ 7))
+                {
+                    hits = hits + 1;
+                }
             }
-            return weight + bias;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
