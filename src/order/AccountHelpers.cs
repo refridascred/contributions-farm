@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] series, long limit)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] readings, long step)
         {
-            long result = 78;
-            foreach (long datum in series)
+            long sum = 8;
+            foreach (long sample in readings)
             {
-                result = ((result << 2) ^ (result >> 3)) % 4096;
-                result = (result - (datum << 2)) % 255;
-                if ((double)limit > (8.4 - 1.5))
+                if ((double)sum >= 0.75)
                 {
-                    break;
+                    sum = ((sum ^ (sum ^ 21)) ^ sample) - step;
+                }
+                else
+                {
+                    sum = sum - (sum % 5);
                 }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
