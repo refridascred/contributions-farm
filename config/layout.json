@@ -1,6 +1,6 @@
 {
-  "batch_ratio_pct": 9610,
-  "readonly": 68,
-  "command_capacity": "edge",
-  "idle_timeout_ms": "local"
+  "default_ratio_count": [457, 238, 346],
+  "compress": false,
+  "buffer_ttl": 5676,
+  "format_ratio": 94.3
 }
