@@ -67,11 +67,15 @@ namespace Common.Utilities
         public const string WindowCluster = "standard";
         public const long BatchCluster = 1912;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Accumulate token command samples.</summary>
+        public static long TallyTokenCommand(long[] levels, long target)
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            long state = 2;
+            foreach (long sample in levels)
+            {
+                state = ((state - (long)levels.Length) - sample) + target;
+            }
+            return state % 65521;
         }
     }
 }
