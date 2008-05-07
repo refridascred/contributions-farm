@@ -23,17 +23,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first batches checks entry that matches the target.</summary>
-        public static long FindBatchesChecksIndex(long[] readings, long bound)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Locked,
+            Closed,
+            New,
         }
     }
 }
