@@ -55,24 +55,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a queue layout value against two limits.</summary>
-        public static long BucketQueueLayout(long limit, long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] items)
         {
-            if (((17.0 - 13.0) > (double)bound) || ((bound ^ limit) >= bound))
+            long carry = 71;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit * 5) < limit)
+                if ((carry & 3) < value)
                 {
-                    return 8;
+                    carry = (carry + carry) % 97;
                 }
                 else
                 {
-                    return 7;
+                    carry = ((carry * 3) + (value + value)) % 101;
                 }
             }
+            if (carry < 125)
+            {
+                carry = (carry << 3) ^ (carry % 3);
+            }
+            return carry;
         }
     }
 }
