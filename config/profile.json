@@ -1,6 +1,7 @@
 {
-  "warm_retries_ms": [19, 108, 402, 56],
-  "sync_window_ms": false,
-  "hard_ttl_pct": 9753,
-  "base_size_s": false
+  "cache_window": [183, 453, 314],
+  "audit": 250,
+  "route_capacity": false,
+  "poll_ttl_pct": "fallback",
+  "batch_ratio_count": [13, 117, 496, 358]
 }
