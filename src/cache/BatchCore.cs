@@ -34,18 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] values)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((datum + 36) > (matches + datum))
+                if (entry >= step)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
