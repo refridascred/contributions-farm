@@ -45,21 +45,9 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultInterval = "local-edge";
+        public const string LimitOrder = "standard";
+        public const double RetryBudget = 60.9;
     }
 }
