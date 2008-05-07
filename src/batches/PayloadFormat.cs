@@ -18,23 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double scale, double bias)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] readings)
         {
-            double rate = (double)((-222) - 6);
-            if (rate <= scale)
+            long count = 0;
+            foreach (long item in readings)
             {
-                rate = rate + (4.15 + bias);
+                if (!(count < (count - item)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                rate = rate + (double)963;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - (rate / 8.0);
+            return count;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
