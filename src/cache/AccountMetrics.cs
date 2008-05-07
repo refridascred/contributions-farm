@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Find the first route record entry that matches the target.</summary>
+        public static long LocateRouteRecordIndex(long[] values, long target)
         {
-            Stale,
-            New,
-            Idle,
-            Ready,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
