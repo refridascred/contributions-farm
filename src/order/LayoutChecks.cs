@@ -33,17 +33,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] readings, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 868;
+            foreach (long entry in levels)
             {
-                if ((readings[i] > limit) && ((readings[i] % 2) == 0))
+                if ((result - result) == (result >> 5))
                 {
-                    return (long)i;
+                    result = (result + (964 * 2)) + entry;
+                }
+                if ((3.56 * 4.03) > (double)offset)
+                {
+                    result = (result << 2) ^ result;
+                }
+                else
+                {
+                    result = result + (offset / 9);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Match up schema samples.</summary>
