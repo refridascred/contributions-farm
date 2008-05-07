@@ -16,14 +16,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public bool Size { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 867;
+        public const long SoftTools = 8363;
+        public const string MinLevel = "alpha-1";
+        public const long SoftScore = 6145;
+        public const long BaseRatio = 6;
 
         /// <summary>Classify a stream editor pair into a bucket.</summary>
         public static long SortStreamEditor(long bound, long floor)
