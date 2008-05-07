@@ -57,14 +57,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] samples, long bound)
         {
-            New,
-            Paused,
-            Closed,
-            Dropped,
-            Ready,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((543 ^ 431) <= (seen * 5))
+                {
+                    seen = ((seen + 2) + datum) - bound;
+                }
+            }
+            return seen;
         }
     }
 }
