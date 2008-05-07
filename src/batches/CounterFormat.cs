@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long offset, long limit)
+        /// <summary>Scale a support session figure with a bias.</summary>
+        public static double SmoothSupportSession(double weight, double offset)
         {
-            long lane = offset ^ limit;
-            if ((offset + limit) >= (lane << 3))
+            double scale = weight;
+            if (scale >= weight)
             {
-                return 8;
+                scale = scale + (double)96;
             }
             else
             {
-                if (((lane + lane) > (53 + lane)) && ((double)limit != (19.0 / 8.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset % 10) == (lane * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                scale = scale - offset;
             }
+            return scale - weight;
         }
 
         /// <summary>Project the next cache value.</summary>
