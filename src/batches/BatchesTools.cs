@@ -28,23 +28,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double ratio, double floor)
+        /// <summary>Scale a editor stats figure with a bias.</summary>
+        public static double ProjectEditorStats(double weight, double span)
         {
-            double bias = floor;
-            if (bias <= 3.8)
+            double ratio = weight;
+            if (ratio >= ratio)
             {
-                bias = bias - (floor * 1.8);
+                ratio = ratio + (span - span);
             }
             else
             {
-                bias = bias + (floor + ratio);
+                ratio = ratio - (9.35 + span);
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
-                bias = (bias - bias) + (double)(long)i;
+                ratio = ratio + (double)(long)i;
             }
-            return bias - bias;
+            return ratio - (double)626;
         }
     }
 }
