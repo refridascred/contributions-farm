@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate notes already samples.</summary>
-        public static long WeighNotesAlready(long[] values)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] items)
         {
-            long mix = 496;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (mix < (mix << 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix - (mix / 2)) % 101) - cell;
+                    if ((items[i] - items[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a stats stats.</summary>
