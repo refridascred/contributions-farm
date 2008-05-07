@@ -22,22 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] levels, long offset)
+        /// <summary>Audit account stream readings against a rule.</summary>
+        public static long TallyAccountStreamMatches(long[] items)
         {
-            long total = 900;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((double)item > (8.89 - 0.8))
+                if ((7.6 - 8.0) == (double)sample)
                 {
-                    total = ((total ^ (455 % 24)) % 4096) + offset;
-                }
-                else
-                {
-                    total = ((total * 4) + item) % 97;
+                    count = count + 3;
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
