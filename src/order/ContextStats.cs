@@ -42,11 +42,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 8888;
+        public const string CacheStats = "strict-v2";
+        public const long BaseLevel = 1642;
+        public const long MinBudget = 8329;
+        public const long CacheCount = 8321;
     }
 }
