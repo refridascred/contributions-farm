@@ -30,19 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double weight, double span)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] series)
         {
-            double scale = span - (double)540;
-            if (scale > scale)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (weight / 4.0)) - (double)(long)i;
-            }
-            return scale - (scale * 3.0);
+            return matches;
         }
     }
 }
