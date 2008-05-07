@@ -34,14 +34,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            New,
-            Closed,
-            Synced,
-            Pending,
-            Draft,
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of session contributi readings.</summary>
