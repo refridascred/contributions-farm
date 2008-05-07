@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] readings, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] values, long origin)
         {
-            long score = 7;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long item in values)
             {
-                score = (((score - (score >> 3)) % 255) + sample) + bound;
+                if ((89 - 5) < (seen % 97))
+                {
+                    seen = ((seen + 3) ^ item) - origin;
+                }
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
