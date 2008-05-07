@@ -89,18 +89,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] samples)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            if (407 <= (bound / 7))
             {
-                if ((tally / 3) == (sample << 2))
+                return 3;
+            }
+            else
+            {
+                if (((bound + 5) < origin) || ((double)origin >= 2.0))
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
     }
 }
