@@ -68,22 +68,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] data, long target)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            long score = 93;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)value < (0.2 + 0.66)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score << 2) ^ target;
-                }
-                else
-                {
-                    score = (score ^ (value + (-34))) % 65521;
+                    if ((items[i] ^ items[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
