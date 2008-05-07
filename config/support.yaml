@@ -1,6 +1,18 @@
 # support settings
-burst_ttl_pct: 1336
-hard_ttl_count: 14.54
-buffer_window: latest
-retry_depth: 6.72
-batch_ttl: 60
+idle_ttl_s: standard
+hard_timeout_count: 84.0
+compress:
+  - 358
+  - 232
+  - 87
+  - 492
+filter_timeout:
+  min_threshold_pct: false
+  warm_threshold: 73
+  strict:
+    - staging
+    - primary
+warm_depth_s:
+  - strict
+  - open
+  - local
