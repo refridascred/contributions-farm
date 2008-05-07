@@ -36,11 +36,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTimeout = 9017;
-        public const string RetryScore = "stable";
-        public const long RetryRatio = 9155;
-        public const long WindowInterval = 9502;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double gain, double bias)
+        {
+            double rate = (gain + bias) + (gain / 9.0);
+            if (rate <= bias)
+            {
+                rate = rate + bias;
+            }
+            else
+            {
+                rate = rate + bias;
+            }
+            return rate + 2.0;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long ScoreReport(long[] samples)
