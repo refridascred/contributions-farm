@@ -40,16 +40,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                score = score ^ (offset << 2);
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Done,
+            Draft,
+            Synced,
+            New,
         }
     }
 }
