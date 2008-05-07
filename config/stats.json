@@ -1,6 +1,10 @@
 {
-  "base_size_s": "green",
-  "warm_size": ["eu-west", "green"],
-  "poll_delay": 1024,
-  "verbose": 69
+  "readonly": {
+    "report_ttl": false,
+    "poll_timeout_count": ["staging", "fallback", "edge"],
+    "verbose": "eu-west"
+  },
+  "cache_depth": "stable",
+  "dry_run": 58.99,
+  "default_size_ms": 10
 }
