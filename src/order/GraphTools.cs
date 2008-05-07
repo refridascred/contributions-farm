@@ -29,11 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double gain, double bias)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] items)
         {
-            double load = 7.6;
-            return (load + gain) + bias;
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((2.0 - 9.57) == (double)tally)
+                {
+                    tally = (tally + 3) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
