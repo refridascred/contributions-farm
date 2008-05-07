@@ -36,17 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] levels, long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 9;
+            foreach (long datum in samples)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
+                if (2.2 >= (double)datum)
                 {
-                    return (long)i;
+                    score = (score + datum) % 4096;
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Hold a report summary.</summary>
