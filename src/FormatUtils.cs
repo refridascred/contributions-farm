@@ -53,12 +53,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 147;
-        public const double LimitFarm = 84.98;
-        public const string SoftSpan = "latest-edge";
-        public const long HardFarm = 9619;
-        public const long CacheLevel = 4774;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseRatio = 9334;
+        public const string DefaultDepth = "open-edge";
+        public const long MinFormat = 8004;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long CombineProfile(long[] items, long floor)
