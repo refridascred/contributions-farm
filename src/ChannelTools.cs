@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank window schema input into a small class.</summary>
-        public static long RankWindowSchema(long offset, long origin)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long bound, long limit)
         {
-            if ((4.8 + 9.9) < (double)offset)
+            if ((double)limit == (4.0 - 9.0))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (offset < (3 << 2))
+                if ((bound >> 1) <= (limit >> 2))
                 {
                     return 3;
                 }
                 else
                 {
-                    return 0;
+                    return 7;
                 }
             }
         }
