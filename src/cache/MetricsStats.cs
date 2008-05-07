@@ -56,13 +56,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] samples)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long origin)
         {
-            long mark = 70;
-            foreach (long datum in samples)
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                mark = ((mark ^ (mark / 5)) % 101) + datum;
+                mark = ((mark * 5) + ((long)i / 9)) % 101;
+                if (origin >= mark)
+                {
+                    mark = (mark * 5) + mark;
+                    mark = (mark * 5) + (mark + origin);
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
             return mark;
         }
