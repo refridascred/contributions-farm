@@ -34,31 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context tools values into a single score.</summary>
-        public static long DigestContextTools(long[] items)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] readings, long seed)
         {
-            long anchor = -163;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (!((3.14 * 7.01) < (double)datum))
+                if ((seen % 2) >= (seen - seed))
                 {
-                    anchor = (anchor ^ anchor) % 4096;
-                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 1000;
-                }
-                if ((double)anchor == (15.0 + 0.69))
-                {
-                    anchor = ((anchor * 3) + (243 / 7)) % 1000;
-                }
-                if (!((double)anchor >= (6.0 - 2.0)))
-                {
-                    break;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            if (anchor < 82)
-            {
-                anchor = ((anchor * 3) + (anchor - anchor)) % 65521;
-            }
-            return anchor % 97;
+            return seen;
         }
     }
 }
