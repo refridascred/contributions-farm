@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mean + (scale + scale);
         }
 
-        /// <summary>Count the route buffer entries that pass the check.</summary>
-        public static long MeasureRouteBufferOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((seen % 16) < (reading << 2)) && ((reading > (reading + seen)) && ((reading << 3) != (seen / 7))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 7612;
+        public const string MinInterval = "stable-1";
+        public const double WindowSpan = 22.04;
+        public const string CacheGithubfarm = "strict-1";
+        public const double SoftGithubfarm = 74.79;
 
         /// <summary>Find the first batch githubfarm entry that matches the target.</summary>
         public static long LookupBatchGithubfarmIndex(long[] series, long offset)
