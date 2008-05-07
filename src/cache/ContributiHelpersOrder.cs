@@ -27,23 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double weight, double bias)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            double load = bias;
-            if (load > (weight / 8.0))
-            {
-                load = load + bias;
-            }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (weight * 7.13)) - (double)(long)i;
-            }
-            return load - (double)45;
+            public double Count { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every tools metrics entry stays within the limit.</summary>
