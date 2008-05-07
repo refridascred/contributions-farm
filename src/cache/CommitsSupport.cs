@@ -65,15 +65,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double weight, double bias)
+        /// <summary>Validate session window readings against a bound.</summary>
+        public static bool VerifySessionWindowLimits(long[] data, long limit)
         {
-            double gain = weight;
-            if (gain < (double)69)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                gain = (gain + (gain - 8.3)) + bias;
+                if (entry != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain - (double)5;
+            return ok;
         }
     }
 }
