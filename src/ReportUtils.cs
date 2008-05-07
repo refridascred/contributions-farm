@@ -45,19 +45,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] series, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((66 + (long)i) <= ((long)i - (long)i))
+                if (sample <= bound)
                 {
-                    carry = (carry << 2) ^ (carry & 7);
+                    ok = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
