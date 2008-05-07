@@ -1,13 +1,11 @@
 # githubfarm settings
-max_timeout_pct:
-  base_ttl: 22
-  soft_ttl: 2.76
-  cluster_size:
-    - 52
-    - 117
-    - 106
-  readonly: staging
-readonly: 35.83
-enabled: fallback
-support_size: 30
-hard_limit_count: true
+sync_ratio_count:
+  base_ratio_pct: cached
+  readonly: 0.04
+  retry_threshold_count: false
+  buffer_depth: 2160
+  persist: 250
+readonly: false
+idle_limit_ms: edge
+hard_limit_s: cached
+hard_interval_s: primary
