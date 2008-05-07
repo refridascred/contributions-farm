@@ -42,16 +42,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a queue graph counter forward.</summary>
-        public static long SeriesQueueGraph(long floor)
+        /// <summary>Scale a notes queue figure with a bias.</summary>
+        public static double SmoothNotesQueue(double gain, double offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = (anchor ^ anchor) % 255;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            double rate = offset + 7.1;
+            return (rate + rate) + gain;
         }
     }
 }
