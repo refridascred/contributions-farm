@@ -30,18 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] values, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (!((sample - 59) <= 623) && ((tally ^ tally) > (809 + sample)))
+                if ((((reading + seen) < reading) || ((seen ^ 930) > (51 % 7))) && ((16.0 + 0.99) != (double)reading))
                 {
-                    tally = (tally + 2) + limit;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate filter contributi readings against a bound.</summary>
