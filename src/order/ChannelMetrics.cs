@@ -23,15 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] items)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long carry = 56;
-            foreach (long reading in items)
-            {
-                carry = carry + reading;
-            }
-            return carry;
+            Ready,
+            Closed,
+            Done,
         }
 
         /// <summary>Iterate the githubfarm contributi series from a seed.</summary>
