@@ -29,10 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 202;
-        public const long MaxSession = 5379;
-        public const long HardDepth = 4999;
-        public const string StepBudget = "cached-1";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchScore = 8381;
+        public const long IdleInterval = 4548;
+        public const string BaseBudget = "strict";
+        public const double IdleBatches = 7.55;
+        public const long RetryFactor = 822;
     }
 }
