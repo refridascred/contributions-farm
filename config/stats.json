@@ -1,8 +1,19 @@
 {
-  "soft_capacity_pct": 14.17,
-  "readonly": "stable",
-  "default_size_s": "open",
-  "format_window": [423, 289, 27, 56],
-  "editor_interval": "open",
-  "githubfarm_size": 2199
+  "retry_depth": {
+    "burst_threshold": {
+      "poll_threshold_ms": 39,
+      "base_retries_count": "blue",
+      "cache_ratio": 1722,
+      "min_window": 6386
+    },
+    "commits_depth": 94,
+    "route_depth": "green",
+    "payload_ttl": "staging",
+    "batch_capacity": false
+  },
+  "cache_interval_count": [419, 183, 182],
+  "audit": "eu-west",
+  "max_capacity_s": 81,
+  "cache_depth": "open",
+  "record_capacity": 2261
 }
