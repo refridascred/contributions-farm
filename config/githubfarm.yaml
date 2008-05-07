@@ -1,11 +1,14 @@
 # githubfarm settings
-burst_depth_s: true
-batch_depth: edge
-profile_delay: 83.66
-poll_size_count:
-  persist: latest
-  cache_ratio: 8776
-  max_limit: 43.58
-  default_retries_ms: 7938
-  hard_threshold_pct: false
-  dry_run: 7411
+batch_capacity_s: blue
+tools_ratio: 3318
+verbose:
+  order_retries: 22.47
+  payload_size: 36.7
+  entry_ttl: strict
+  already_ratio: 2044
+  stream_timeout:
+    - 440
+    - 287
+  persist: 43.69
+sync_threshold_count: false
+retry_ratio: 100
