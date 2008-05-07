@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            long state = 6;
+            foreach (long entry in samples)
+            {
+                state = (state * 3) + (entry + 4);
+            }
+            return state;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
