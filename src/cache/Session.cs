@@ -46,24 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a profile queue pair into a bucket.</summary>
-        public static long ClassifyProfileQueue(long origin, long seed)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            if (seed > (68 ^ origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed > (2.0 + 8.71))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
