@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] series)
+        /// <summary>Look up the position of a cluster githubfarm sample.</summary>
+        public static long FindClusterGithubfarmIndex(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((double)tally >= (2.4 * 7.16)) && (item < tally)) && ((double)item <= (double)tally))
+                if (values[i] > limit)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a stream summary.</summary>
