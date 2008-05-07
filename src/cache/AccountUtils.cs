@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Closed,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetrySize = 80.43;
+        public const string RetryBatches = "local-edge";
+        public const long MaxBatches = 395;
+        public const double StepDepth = 47.56;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BurstSize = 5029;
