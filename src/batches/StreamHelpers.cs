@@ -49,25 +49,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long origin, long origin2)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] items, long offset)
         {
-            long gap = origin ^ origin2;
-            if ((origin2 + origin2) < origin2)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (9.18 > (double)gap)
+                if ((items[i] > offset) && ((items[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a command farm counter forward.</summary>
