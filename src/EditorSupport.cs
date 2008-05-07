@@ -33,20 +33,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                long bound = (long)i;
-                if (!((carry - bound) <= limit))
-                {
-                    bound = (bound - (long)i) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Stale,
+            Done,
+            Draft,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
