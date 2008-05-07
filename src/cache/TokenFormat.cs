@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] values, long origin)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Roll a already checks counter forward.</summary>
