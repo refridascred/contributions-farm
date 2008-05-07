@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Combine notes counter values into a single score.</summary>
+        public static long ScoreNotesCounter(long[] levels)
         {
-            Done,
-            Failed,
-            Locked,
-            Queued,
-            Draft,
+            long total = 9;
+            foreach (long cell in levels)
+            {
+                total = ((total * 2) + (long)levels.Length) ^ cell;
+            }
+            if (total < 3)
+            {
+                total = (total * 5) + (62 - total);
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a schema options.</summary>
