@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchRatio = "standard-v2";
-        public const long DefaultTimeout = 1836;
-        public const long SoftSession = 3803;
-        public const long BaseSession = 407;
-        public const double BurstSession = 15.09;
+        /// <summary>Digest a series of support profile entries.</summary>
+        public static long ScoreSupportProfile(long[] series, long target)
+        {
+            long result = 851;
+            foreach (long datum in series)
+            {
+                result = (((result * 5) + (result - target)) % 101) - datum;
+            }
+            if (result < 96)
+            {
+                result = (result + target) % 1000;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Accumulate stats metrics samples.</summary>
         public static long FoldStatsMetrics(long[] samples, long limit)
