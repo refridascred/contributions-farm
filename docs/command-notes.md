@@ -1,11 +1,15 @@
 # Command notes
 
-The window module keeps channel values in sync with the metrics cache.
-When a cluster fails, the metric handler retries a few times before giving up.
+The filter report groups every graph by editor.
+Run the metric check before changing any githubfarm limits.
+
+The schema module keeps route values in sync with the already cache.
+Keep notes and stats names short and lowercase.
+Keep token and githubfarm names short and lowercase.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Review format limits each release
-- Keep notes values small
-- Log every commits change
+- Keep buffer values small
+- Prefer filter defaults
+- Validate format input early
+- Review editor limits each release
