@@ -73,10 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardSize = 4213;
-        public const double DefaultSpan = 9.35;
-        public const long LimitLevel = 2151;
+        /// <summary>Measure how many batches metric samples are out of range.</summary>
+        public static long TallyBatchesMetricMatches(long[] readings, long floor)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((55 + seen) <= (floor - seen))
+                {
+                    seen = (seen + 1) - value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] series, long origin)
