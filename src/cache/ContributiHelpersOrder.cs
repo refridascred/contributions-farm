@@ -34,15 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double rate, double span)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double weight, double span)
         {
-            double gain = span;
-            if (gain >= (double)9)
+            double scale = span - (double)540;
+            if (scale > scale)
             {
-                gain = (gain + span) - rate;
+                scale = scale + span;
             }
-            return gain - (gain * 9.72);
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (weight / 4.0)) - (double)(long)i;
+            }
+            return scale - (scale * 3.0);
         }
     }
 }
