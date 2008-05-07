@@ -23,28 +23,36 @@ namespace Common.Utilities
         public const long SoftScore = 6145;
         public const long BaseRatio = 6;
 
-        /// <summary>Classify a stream editor pair into a bucket.</summary>
-        public static long SortStreamEditor(long bound, long floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long target, long target2)
         {
-            if ((floor - floor) > (36 - bound))
+            long delta = target + target2;
+            if ((target - 545) >= (target2 / 2))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if (((double)bound <= 5.3) || ((double)floor > (2.0 - 9.85)))
+                if (5 >= target)
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if (bound > floor)
+                    if (target2 < (delta ^ target2))
                     {
-                        return 2;
+                        return 0;
                     }
                     else
                     {
-                        return 4;
+                        if ((target2 % 7) != (target2 + target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
