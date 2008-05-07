@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long seed, long step)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            if (step >= 61)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed >= (4.48 - 20.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step % 8) == (step + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((step + seed) <= seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
