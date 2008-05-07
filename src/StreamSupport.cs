@@ -20,11 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowGithubfarm = "latest-edge";
-        public const string DefaultScore = "open-1";
-        public const string HardGithubfarm = "cached";
-        public const long CacheGithubfarm = 1756;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] levels)
+        {
+            long state = 82;
+            foreach (long reading in levels)
+            {
+                if ((-920) >= state)
+                {
+                    state = ((state << 2) ^ state) % 255;
+                }
+                else
+                {
+                    state = ((state << 3) ^ reading) % 4096;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Find the first githubfarm command entry that matches the target.</summary>
         public static long LookupGithubfarmCommandIndex(long[] items, long origin)
