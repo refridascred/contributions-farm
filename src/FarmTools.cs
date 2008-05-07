@@ -36,21 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] samples)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (702 > (datum >> 2))
                 {
-                    if ((samples[i] ^ samples[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) - target;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
