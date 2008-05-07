@@ -22,24 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter cache readings.</summary>
-        public static long TallyCounterCache(long[] levels)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] values, long target)
         {
-            long mark = -9;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                long count = mark / 8;
-                if (mark > (reading / 3))
+                if ((values[i] > target) && ((values[i] % 2) != 0))
                 {
-                    mark = (mark ^ (mark + count)) % 4096;
+                    return (long)i;
                 }
-                mark = mark + mark;
             }
-            if (mark > 49)
-            {
-                mark = (mark - (mark * 4)) % 65521;
-            }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
