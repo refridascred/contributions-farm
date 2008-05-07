@@ -38,18 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] levels, long target)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((((705 - sample) >= (seen - sample)) && ((sample * 4) > (89 + sample))) && ((sample >> 2) < (248 & 15)))
-                {
-                    seen = (seen + 2) + target;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
