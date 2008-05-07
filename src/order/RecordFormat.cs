@@ -42,13 +42,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            public long Offset { get; set; }
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up batches samples.</summary>
