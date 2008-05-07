@@ -53,22 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate counter stats samples.</summary>
-        public static long FoldCounterStats(long[] items, long floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long score = 81;
-            foreach (long value in items)
-            {
-                if (((double)score >= (6.52 - 2.7)) || ((3.8 / 6.0) != (double)value))
-                {
-                    score = ((score << 3) ^ (long)items.Length) % 255;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (floor + 79)) % 65521;
-                }
-            }
-            return score;
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Adjust a graph reading.</summary>
