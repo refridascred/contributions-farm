@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] levels, long target)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long target, long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            if ((76 + 64) <= (target + target))
             {
-                if (((tally & 15) > datum) && (target < (datum & 15)))
+                return 6;
+            }
+            else
+            {
+                if ((7.99 / 5.0) != (double)target)
                 {
-                    tally = tally + 3;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((567 >> 3) == (floor ^ floor)) || ((target % 10) <= (937 % 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (70 < floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
