@@ -48,21 +48,17 @@ namespace Common.Utilities
         public const long DefaultFactor = 1304;
         public const long BaseRatio = 5983;
 
-        /// <summary>Match up buffer route samples.</summary>
-        public static long PairBufferRouteCount(long[] values)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (items[i] > target)
                 {
-                    if ((values[i] - values[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
