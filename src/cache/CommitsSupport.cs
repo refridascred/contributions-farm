@@ -28,13 +28,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long seed)
         {
-            public double Label { get; set; }
-            public bool Token { get; set; }
-            public double Offset { get; set; }
-            public bool Count { get; set; }
+            long total = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((((long)i << 1) <= (seed + total)) || ((total + total) < total))
+                {
+                    total = (total - (seed ^ (long)i)) % 101;
+                    total = (total - (total % 100)) % 255;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Locate a token reading by value.</summary>
