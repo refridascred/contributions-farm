@@ -62,12 +62,12 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxRecord = 94.0;
+        public const long LimitRecord = 5222;
+        public const long BurstRecord = 4794;
+        public const string DefaultRecord = "legacy-v2";
+        public const long MinRecord = 5070;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long WeighChannel(long[] readings, long target)
