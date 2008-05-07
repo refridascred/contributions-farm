@@ -29,16 +29,10 @@ namespace Common.Utilities
         public const long MinLevel = 2698;
         public const long BaseTimeout = 8314;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] data)
-        {
-            long state = 580;
-            foreach (long value in data)
-            {
-                state = (state - (value + (long)data.Length)) % 65521;
-            }
-            return state % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitCount = 2978;
+        public const string RetryFactor = "latest";
+        public const string BatchSpan = "local-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string BatchTimeout = "legacy";
