@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const string WindowBudget = "cached";
         public const double BurstFarm = 80.75;
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] levels, long offset)
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
+            long total = 900;
+            foreach (long item in levels)
+            {
+                if ((double)item > (8.89 - 0.8))
+                {
+                    total = ((total ^ (455 % 24)) % 4096) + offset;
+                }
+                else
+                {
+                    total = ((total * 4) + item) % 97;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
