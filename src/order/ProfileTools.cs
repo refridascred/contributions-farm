@@ -43,19 +43,19 @@ namespace Common.Utilities
         public const long BurstRecord = 5206;
         public const string BatchWidth = "cached-1";
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] readings, long offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (datum > offset)
+                if (value >= origin)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
