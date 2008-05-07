@@ -30,11 +30,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWidth = 2061;
-        public const long BatchLevel = 5836;
-        public const long BatchFactor = 5072;
-        public const double StepWindow = 22.56;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public double Limit { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Blend two batches queue measurements.</summary>
         public static double SmoothBatchesQueue(double weight, double span)
