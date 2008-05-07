@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up buffer metrics samples.</summary>
-        public static long MatchBufferMetricsCount(long[] samples)
+        /// <summary>Digest a series of profile payload entries.</summary>
+        public static long TallyProfilePayload(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 860;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 3) + (origin ^ reading)) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Roll a window counter forward.</summary>
