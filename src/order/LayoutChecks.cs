@@ -62,20 +62,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mark = 92;
-            foreach (long item in values)
-            {
-                mark = (((mark << 3) ^ (mark << 1)) % 65521) ^ item;
-                mark = (mark + (mark + 2)) % 255;
-                if ((double)mark > 7.0)
-                {
-                    break;
-                }
-            }
-            return mark;
+            Locked,
+            New,
+            Pending,
+            Retry,
         }
     }
 }
