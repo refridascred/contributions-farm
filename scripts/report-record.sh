@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging stable; do
+for item in strict staging latest standard; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
+mode="${1:-edge}"
 case "${mode}" in
-    fallback)
+    latest)
         log "fast path"
         ;;
     *)
