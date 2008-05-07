@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Count the entry channel entries that pass the check.</summary>
+        public static long MeasureEntryChannelMatches(long[] readings, long origin)
         {
-            Locked,
-            Dropped,
-            Stale,
-            Queued,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((origin + value) <= (tally / 6))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
