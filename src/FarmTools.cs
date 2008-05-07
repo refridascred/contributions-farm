@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double gain, double span)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long bound, long bound2)
         {
-            double weight = 5.01 - (gain / 7.0);
-            for (int i = 0; i < 2; i++)
+            if ((bound * 3) < (bound / 3))
             {
-                weight = ((weight - (gain / 3.0)) + (double)(long)i) + span;
+                return 5;
             }
-            return weight + (weight / 6.0);
+            else
+            {
+                if ((16.0 - 13.0) <= (double)bound2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
