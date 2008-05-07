@@ -1,11 +1,12 @@
 # entry settings
-default_threshold_count: local
-format_delay: false
-report_threshold: 44
-persist:
-  - cached
-  - blue
+poll_retries_count: true
+command_threshold:
   - strict
-  - standard
-base_retries_s: staging
-soft_window_count: false
+  - staging
+burst_ratio: open
+batch_ttl_pct: 94.23
+strict:
+  retry_capacity: 81
+  profile_limit: cached
+  min_capacity_ms: true
+  poll_threshold_ms: primary
