@@ -45,14 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] samples)
         {
-            Active,
-            Synced,
-            Dropped,
-            Retry,
-            Pending,
+            long carry = 643;
+            foreach (long cell in samples)
+            {
+                carry = (((carry << 3) ^ 841) % 101) ^ cell;
+            }
+            if (carry > 3)
+            {
+                carry = carry + carry;
+            }
+            return carry % 65521;
         }
     }
 }
