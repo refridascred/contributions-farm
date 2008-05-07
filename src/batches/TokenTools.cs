@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long acc = -471;
-            foreach (long reading in values)
-            {
-                acc = (acc - (acc >> 4)) % 255;
-                acc = (acc ^ (acc + 17)) % 1000;
-                acc = acc - (reading - acc);
-            }
-            return acc;
+            public double Count { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
