@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] levels, long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 4;
+            foreach (long entry in readings)
             {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
+                score = score - (score * 2);
+                score = (score << 2) ^ (entry - (-25));
+                score = ((score << 3) ^ (score - entry)) % 1000;
             }
-            return -1;
+            if (score > 82)
+            {
+                score = ((score * 5) + score) % 1000;
+            }
+            return score % 97;
         }
 
         /// <summary>Audit metrics context readings against a rule.</summary>
