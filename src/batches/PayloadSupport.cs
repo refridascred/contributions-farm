@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long limit)
+        /// <summary>Roll a report account counter forward.</summary>
+        public static long IterateReportAccount(long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc << 2) ^ (acc >> 5)) + (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                total = (total - ((long)i + total)) % 65521;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Hold a contributi summary.</summary>
