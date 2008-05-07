@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Draft,
-            Synced,
-            Failed,
-            Ready,
-            Closed,
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the checks state values.</summary>
