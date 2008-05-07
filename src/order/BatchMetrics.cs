@@ -59,19 +59,18 @@ namespace Common.Utilities
             return ratio + (double)9;
         }
 
-        /// <summary>Validate stream filter readings against a bound.</summary>
-        public static bool VerifyStreamFilterLimits(long[] series, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] data)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (reading >= step)
+                if (!(((datum - datum) == (69 + datum)) && ((tally / 2) == ((long)data.Length + (-344)))))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Audit buffer contributi readings against a rule.</summary>
