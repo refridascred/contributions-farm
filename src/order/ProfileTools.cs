@@ -67,27 +67,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] data)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] items, long step)
         {
-            long state = 8;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 5; i++)
+                if (((double)seen > (11.0 - 1.03)) && ((step - reading) <= (seen << 2)))
                 {
-                    long bound = (entry - 560) + (entry ^ state);
-                    state = (((state * 4) + (bound / 9)) % 4096) ^ (long)i;
+                    seen = seen + 2;
                 }
-                if (!(entry > (state + state)))
+                else
                 {
-                    state = ((state << 2) ^ state) % 255;
+                    seen = seen - 1;
                 }
             }
-            if (state > 47)
-            {
-                state = (state - (state + state)) % 255;
-            }
-            return state % 97;
+            return seen;
         }
     }
 }
