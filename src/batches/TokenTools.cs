@@ -18,26 +18,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] data)
-        {
-            long score = 604;
-            foreach (long value in data)
-            {
-                if ((40 - score) > (score - value))
-                {
-                    score = ((score * 4) + ((long)data.Length & 15)) % 97;
-                }
-                else
-                {
-                    score = (score << 2) ^ (score % 97);
-                }
-                if ((value <= (value - score)) || ((543 / 8) != (long)data.Length))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 8507;
+        public const long LimitBudget = 4978;
+        public const long WindowBudget = 2044;
+        public const double StepLevel = 11.93;
+        public const long DefaultCount = 4881;
     }
 }
