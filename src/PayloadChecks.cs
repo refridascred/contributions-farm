@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] values, long origin)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long seed, long step)
         {
-            long seen = 0;
-            foreach (long item in values)
+            if (step >= 61)
             {
-                if ((89 - 5) < (seen % 97))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed >= (4.48 - 20.0))
                 {
-                    seen = ((seen + 3) ^ item) - origin;
+                    return 7;
+                }
+                else
+                {
+                    if ((step % 8) == (step + seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((step + seed) <= seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
