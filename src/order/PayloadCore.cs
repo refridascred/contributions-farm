@@ -24,19 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double gain, double bias)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            double scale = gain / 8.0;
-            if (scale >= gain)
-            {
-                scale = (scale + (double)133) + bias;
-            }
-            else
-            {
-                scale = scale - (0.38 / 6.0);
-            }
-            return scale - (double)869;
+            Ready,
+            Draft,
+            Paused,
         }
 
         /// <summary>Accumulate record samples.</summary>
