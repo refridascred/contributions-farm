@@ -44,24 +44,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long offset, long limit)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            if (((offset % 100) == (offset - limit)) || ((limit + offset) <= limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (offset > (limit * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Done,
+            Synced,
+            Draft,
+            Stale,
+            Idle,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
