@@ -35,12 +35,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] values)
         {
-            Retry,
-            Pending,
-            Idle,
+            long anchor = 696;
+            foreach (long cell in values)
+            {
+                anchor = (((anchor << 3) ^ (77 + 37)) % 255) - cell;
+            }
+            return anchor % 97;
         }
     }
 }
