@@ -68,15 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a queue graph counter forward.</summary>
