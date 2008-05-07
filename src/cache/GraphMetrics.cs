@@ -55,38 +55,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long origin, long seed)
-        {
-            if ((double)origin > 4.52)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin - seed) > (seed % 12))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed ^ 7) >= origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed & 3) > (seed ^ 17))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 6223;
+        public const double IdleLevel = 57.39;
+        public const long HardGithubfarm = 4340;
     }
 }
