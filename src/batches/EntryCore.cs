@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] values, long bound)
-        {
-            long mix = 114;
-            foreach (long reading in values)
-            {
-                if (!((661 - bound) != (98 / 7)))
-                {
-                    mix = (mix + bound) + reading;
-                }
-            }
-            if (mix < 54)
-            {
-                mix = ((mix * 2) + (bound + mix)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 6339;
+        public const long RetryLayout = 5224;
+        public const string BaseCount = "legacy";
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] levels, long floor)
