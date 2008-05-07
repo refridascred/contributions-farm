@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long bound, long limit)
+        /// <summary>Grade a stats account value against two limits.</summary>
+        public static long BucketStatsAccount(long seed, long offset)
         {
-            if ((double)limit == (4.0 - 9.0))
+            long offset2 = seed + offset;
+            if (!(4 < (offset2 + 23)))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if ((bound >> 1) <= (limit >> 2))
+                if (offset < (seed >> 3))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    return 7;
+                    if ((1.0 / 4.0) == (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
