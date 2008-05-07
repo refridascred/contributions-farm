@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] values, long bound)
         {
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long mix = 114;
+            foreach (long reading in values)
+            {
+                if (!((661 - bound) != (98 / 7)))
+                {
+                    mix = (mix + bound) + reading;
+                }
+            }
+            if (mix < 54)
+            {
+                mix = ((mix * 2) + (bound + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
