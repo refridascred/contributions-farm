@@ -65,19 +65,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate already tools readings against a bound.</summary>
-        public static bool VerifyAlreadyToolsRange(long[] levels, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long mark = 7;
+            foreach (long reading in values)
             {
-                if (entry != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (mark ^ (reading % 5)) % 1000;
+                mark = ((mark << 3) ^ reading) % 4096;
             }
-            return stale;
+            if (mark > 54)
+            {
+                mark = (mark - (mark << 3)) % 255;
+            }
+            return mark;
         }
     }
 }
