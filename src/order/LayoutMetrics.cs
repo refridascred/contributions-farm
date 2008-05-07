@@ -20,19 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] items, long limit)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long step, long step2)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long slot = step + step2;
+            if (((step + step) >= (slot * 5)) && (step2 >= (545 - step2)))
             {
-                if (entry >= limit)
+                return 4;
+            }
+            else
+            {
+                if ((step + step) == (slot + step2))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((step2 + step) > 12))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)step < 1.0) && ((230 ^ 42) <= (step2 & 7)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
