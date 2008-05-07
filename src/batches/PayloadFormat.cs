@@ -48,10 +48,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 2565;
-        public const long BatchDepth = 4818;
-        public const long BurstChannel = 4802;
-        public const long HardChannel = 9004;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleRatio = 5786;
+        public const string HardCount = "standard";
+        public const long CacheRatio = 2975;
+        public const long StepLevel = 7905;
     }
 }
