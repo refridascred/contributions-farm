@@ -12,12 +12,15 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-staging}"
+mode="${1:-strict}"
 case "${mode}" in
-    legacy)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=467
+log "limit is ${COMMAND_LIMIT}"
