@@ -1,5 +1,5 @@
 {
-  "batch_depth_pct": 80.16,
-  "readonly": true,
-  "sync_depth": 30
+  "batches_capacity": true,
+  "command_ratio": 100,
+  "githubfarm_delay": "local"
 }
