@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!(limit < total))
-                {
-                    total = ((total << 2) ^ total) % 255;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the payload kind values.</summary>
