@@ -41,12 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Validate filter contributi readings against a bound.</summary>
+        public static bool VerifyFilterContributiLimits(long[] levels, long offset)
         {
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a notes queue figure with a bias.</summary>
