@@ -47,18 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes entry samples are out of range.</summary>
-        public static long CountNotesEntryHits(long[] samples, long seed)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((hits <= (hits << 1)) || ((item + seed) <= (item + hits))) && !(760 >= item))
+                if (items[i] >= seed)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
