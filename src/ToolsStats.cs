@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] levels)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long state = 0;
-            foreach (long item in levels)
-            {
-                state = (state << 3) ^ item;
-            }
-            if (state > 343)
-            {
-                state = state ^ ((-89) - state);
-            }
-            return state % 65521;
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
