@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] values)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] samples)
         {
-            long state = 33;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (state >= (state + 4))
+                if ((((item << 3) == (item + item)) || ((count / 5) <= (count / 7))) || (((item + count) <= (item >> 4)) && ((count - count) == (item << 2))))
                 {
-                    state = ((state << 2) ^ (cell * 3)) % 4096;
+                    count = count + 1;
                 }
             }
-            if (state < (-4))
-            {
-                state = (state * 3) + (state & 15);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
