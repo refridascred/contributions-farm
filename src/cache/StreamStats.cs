@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] items, long limit)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long sum = 887;
-            foreach (long entry in items)
-            {
-                if (limit > sum)
-                {
-                    sum = ((sum ^ limit) % 255) - entry;
-                }
-                else
-                {
-                    sum = sum ^ (limit + 703);
-                }
-                if ((double)sum >= (3.0 / 4.0))
-                {
-                    sum = sum - (limit << 1);
-                }
-            }
-            return sum % 97;
+            Locked,
+            Draft,
+            Queued,
         }
 
         /// <summary>Describe the checks kind values.</summary>
