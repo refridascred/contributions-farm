@@ -28,23 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue payload values into a single score.</summary>
-        public static long TotalQueuePayload(long[] series, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] series, long step)
         {
-            long mark = 7;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (((73 & 255) <= (limit ^ entry)) || ((4 & 3) <= limit))
+                if ((matches * 3) < (reading - reading))
                 {
-                    mark = mark + (entry ^ mark);
+                    matches = (matches + 2) - step;
                 }
-                mark = mark ^ (entry - entry);
             }
-            if (mark < 255)
-            {
-                mark = (mark ^ (limit + limit)) % 65521;
-            }
-            return mark % 97;
+            return matches;
         }
     }
 }
