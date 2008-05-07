@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstTimeout = 4080;
+        public const long CacheStream = 9562;
+        public const long WindowStream = 3132;
+        public const long BatchStream = 193;
+        public const long BurstLevel = 1263;
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
