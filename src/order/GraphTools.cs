@@ -43,18 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] items, long floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long state = 9;
-            foreach (long value in items)
-            {
-                if ((floor * 4) == (state + value))
-                {
-                    state = (state * 5) + (value + value);
-                }
-            }
-            return state;
+            Failed,
+            Dropped,
+            Stale,
+            Pending,
         }
 
         /// <summary>Derive the next command cache value from a seed.</summary>
