@@ -58,23 +58,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] levels, long floor)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] data, long seed)
         {
-            long anchor = 1;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((floor >> 5) <= (anchor + 36)))
+                if ((data[i] >= seed) && ((data[i] % 3) == 0))
                 {
-                    long lane = item;
-                    anchor = (anchor + (lane & 127)) % 255;
-                }
-                if (((anchor & 63) > (item / 2)) || ((floor + (-44)) != (item - anchor)))
-                {
-                    anchor = (anchor + (349 * 4)) % 101;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
