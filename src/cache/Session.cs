@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
-            public double Score { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
