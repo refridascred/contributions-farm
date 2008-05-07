@@ -70,15 +70,20 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double ratio, double offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] values)
         {
-            double load = ratio;
-            if (load <= (double)23)
+            long mark = 92;
+            foreach (long item in values)
             {
-                load = (load - (5.9 * 1.0)) - offset;
+                mark = (((mark << 3) ^ (mark << 1)) % 65521) ^ item;
+                mark = (mark + (mark + 2)) % 255;
+                if ((double)mark > 7.0)
+                {
+                    break;
+                }
             }
-            return load + (double)(-8);
+            return mark;
         }
     }
 }
