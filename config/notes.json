@@ -1,5 +1,10 @@
 {
-  "dry_run": 45,
-  "window_timeout": 25.79,
-  "enabled": ["latest", "open", "strict", "legacy"]
+  "flush_window_s": {
+    "soft_ratio_s": true,
+    "verbose": "open",
+    "warm_timeout": 77.32
+  },
+  "githubfarm_threshold": 6,
+  "batch_threshold": 26.83,
+  "soft_timeout_ms": 5712
 }
