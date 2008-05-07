@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long offset, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] series, long seed)
         {
-            long step2 = offset - step;
-            if (!((offset << 1) < (offset - step)))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6.0 - 15.0) > (double)step2)
+                if ((sample * 3) == (sample & 31))
                 {
-                    return 3;
+                    count = (count + 1) + seed;
                 }
                 else
                 {
-                    if (!((double)step < (double)offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a profile reading.</summary>
