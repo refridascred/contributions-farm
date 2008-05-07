@@ -33,18 +33,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches & 63) >= 5)
-                {
-                    matches = ((matches + 1) + value) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 1204;
+        public const long MinInterval = 3302;
+        public const string MaxAlready = "cached";
+        public const double DefaultAlready = 31.75;
     }
 }
