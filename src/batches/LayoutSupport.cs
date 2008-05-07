@@ -16,14 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
+            Ready,
             Queued,
-            Done,
-            Locked,
-            Closed,
-            Idle,
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Check that every account profile entry stays within the limit.</summary>
