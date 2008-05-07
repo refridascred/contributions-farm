@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Check that every graph batch entry stays within the limit.</summary>
+        public static bool CheckGraphBatchBounds(long[] readings, long seed)
         {
-            Closed,
-            Queued,
-            Failed,
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the metric account series from a seed.</summary>
