@@ -60,19 +60,17 @@ namespace Common.Utilities
         public const string BaseSession = "standard-1";
         public const long CacheSpan = 1697;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] levels, long target)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry != target)
+                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
