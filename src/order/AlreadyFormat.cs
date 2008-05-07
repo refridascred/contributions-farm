@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long origin, long limit)
-        {
-            long prev = origin ^ limit;
-            if ((0.1 * 1.1) < (double)origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin + origin) >= (origin & 31)) && ((double)prev <= (0.6 * 1.6)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin >= (prev + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 72.02;
+        public const double IdleRatio = 77.98;
+        public const long SoftReport = 5030;
+        public const double CacheReport = 72.16;
+        public const double BurstReport = 95.51;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long StepGithubfarm = 7612;
