@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi layout readings against a bound.</summary>
-        public static bool GuardContributiLayoutRange(long[] values, long limit)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            double drift = bias;
+            if (drift <= (2.86 * 9.1))
             {
-                if (entry < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = (drift - (double)68) - scale;
             }
-            return valid;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (drift + bias)) + (double)(long)i;
+            }
+            return drift + (drift + bias);
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
