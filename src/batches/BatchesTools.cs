@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] data)
         {
-            Paused,
-            Failed,
-            Active,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (entry <= tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metrics summary.</summary>
