@@ -28,19 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] values, long limit)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Label { get; set; }
+            public bool Token { get; set; }
+            public double Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Locate a token reading by value.</summary>
