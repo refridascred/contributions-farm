@@ -31,19 +31,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultWidth = 5151;
+        public const long CacheTimeout = 3450;
+        public const long HardSpan = 8348;
+        public const long IdleDepth = 3006;
     }
 }
