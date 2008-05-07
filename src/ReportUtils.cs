@@ -24,13 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] items, long origin)
         {
-            Done,
-            Idle,
-            Paused,
-            New,
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
