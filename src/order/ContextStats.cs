@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a metric snapshot.</summary>
