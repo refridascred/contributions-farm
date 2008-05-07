@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] readings, long offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            if ((bound >> 3) < bound2)
             {
-                if ((97 > (offset % 10)) || ((count * 2) <= (offset / 2)))
+                return 5;
+            }
+            else
+            {
+                if (2 >= (bound2 / 2))
                 {
-                    count = (count + 1) - datum;
+                    return 3;
+                }
+                else
+                {
+                    if (((3.2 * 2.16) != (double)bound2) && ((double)bound > (2.7 * 3.85)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
