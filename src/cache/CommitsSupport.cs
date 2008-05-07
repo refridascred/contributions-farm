@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] readings)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((reading - reading) <= 351)
+                if ((7 >> 4) < step)
                 {
-                    tally = tally + 3;
+                    hits = (hits + 1) - item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the entry channel entries that pass the check.</summary>
