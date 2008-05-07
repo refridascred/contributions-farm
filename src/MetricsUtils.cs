@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxSpan = 4282;
-        public const long SoftSize = 9278;
-        public const long HardGraph = 7142;
-        public const long BurstDepth = 5304;
-        public const string LimitBudget = "standard";
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 3) + (offset + (long)i)) % 97;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long ScoreAccount(long[] values, long target)
