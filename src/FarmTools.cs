@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] items, long seed)
+        /// <summary>Fold a list of graph metrics readings.</summary>
+        public static long CombineGraphMetrics(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long state = 9;
+            foreach (long cell in levels)
             {
-                if (item > seed)
+                if ((cell ^ seed) > 75)
                 {
-                    flag = false;
-                    break;
+                    state = (state ^ state) % 4096;
+                }
+                else
+                {
+                    state = (state << 2) ^ seed;
                 }
             }
-            return flag;
+            return state % 97;
         }
 
         /// <summary>Describe the payload mode values.</summary>
