@@ -1,4 +1,4 @@
 # support settings
-queue_interval: true
-compress: 76
-base_ratio: false
+enabled: 18
+burst_capacity_s: stable
+entry_ttl: false
