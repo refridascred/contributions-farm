@@ -36,13 +36,20 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long seed)
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = (mix * 3) + mix;
+                if ((61 * 5) >= (seed >> 5))
+                {
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
