@@ -39,10 +39,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseWidth = 7416;
-        public const long BaseCache = 4570;
-        public const long HardRatio = 5824;
-        public const long LimitBudget = 9754;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (hits >= (hits >> 3))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
+        }
     }
 }
