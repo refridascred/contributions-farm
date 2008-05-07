@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 4099;
-        public const string BatchInterval = "alpha-v2";
-        public const double DefaultSession = 72.49;
-        public const long BaseRatio = 4461;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsOutliers(long[] samples)
