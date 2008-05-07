@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Count buffer cache pairs that satisfy a relation.</summary>
+        public static long MatchBufferCacheCount(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor + (191 / 6)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
