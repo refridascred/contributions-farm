@@ -1,15 +1,11 @@
 {
-  "burst_window": {
-    "cache_capacity": 7174,
-    "checks_timeout": 250,
-    "persist": "staging",
-    "readonly": "standard",
-    "soft_size": [174, 391, 452, 127]
-  },
-  "layout_threshold": "green",
-  "poll_capacity_s": {
-    "batch_ratio": true,
-    "max_delay": "blue",
-    "batch_ratio_count": 1.68
+  "flush_retries": false,
+  "sync_threshold_s": 87.06,
+  "compress": 0.09,
+  "retry_limit_s": {
+    "compress": "primary",
+    "verbose": [354, 325, 245],
+    "base_retries": 69.37,
+    "schema_threshold": true
   }
 }
