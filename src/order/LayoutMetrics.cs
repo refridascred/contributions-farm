@@ -12,11 +12,25 @@ namespace Common.Utilities
         public const double MinSpan = 82.17;
         public const double RetryInterval = 53.26;
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Grade a schema tools value against two limits.</summary>
+        public static long SortSchemaTools(long step, long seed)
         {
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
+            long slot = step ^ seed;
+            if (seed > (slot / 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)slot <= (11.0 - 2.07)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate already samples.</summary>
