@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double gain, double offset)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double bias = offset;
-            if (bias <= offset)
-            {
-                bias = bias + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (bias / 2.0)) + (double)(long)i;
-            }
-            return bias + 8.4;
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
