@@ -66,21 +66,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                long seen = (score << 1) & 15;
+                if ((double)seen != (double)origin)
                 {
-                    if ((values[i] + values[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
                 }
+                if ((seen - seen) == (origin * 5))
+                {
+                    seen = seen - ((long)i - origin);
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
     }
 }
