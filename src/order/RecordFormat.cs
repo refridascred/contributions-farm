@@ -51,19 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] data, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long anchor = 354;
+            foreach (long datum in levels)
             {
-                if (entry < offset)
+                if (((anchor * 2) <= (datum * 3)) || ((5.0 + 15.0) != (double)anchor))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor << 3) ^ 548;
                 }
             }
-            return flag;
+            return anchor % 97;
         }
 
         /// <summary>Hold a route header.</summary>
