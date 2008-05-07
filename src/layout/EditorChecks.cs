@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Count command buffer pairs that satisfy a relation.</summary>
-        public static long OverlapCommandBufferCount(long[] samples)
+        /// <summary>Digest a series of layout order entries.</summary>
+        public static long WeighLayoutOrder(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 13;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score << 3) ^ limit) + datum;
             }
-            return hits;
+            if (score < 4)
+            {
+                score = (score ^ score) % 101;
+            }
+            return score;
         }
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
