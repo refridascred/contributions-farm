@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long floor, long offset)
+        /// <summary>Accumulate notes already samples.</summary>
+        public static long WeighNotesAlready(long[] values)
         {
-            if (offset <= ((-3) / 2))
+            long mix = 496;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset > (4.17 / 6.0))
+                if (mix < (mix << 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset >= (5.6 * 5.9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mix = ((mix - (mix / 2)) % 101) - cell;
                 }
             }
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
