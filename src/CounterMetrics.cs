@@ -31,25 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long seed, long step)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long edge = seed + step;
-            if ((step * 5) > (step + step))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((90 + seed) > (seed & 7)) && ((30 * 3) > (0 + edge)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of stats entries.</summary>
