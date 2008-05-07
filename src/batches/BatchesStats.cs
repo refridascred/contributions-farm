@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 5845;
-        public const string BatchDepth = "open";
-        public const double HardMetric = 84.72;
-        public const long DefaultMetric = 4920;
+        /// <summary>Look up the position of a order batch sample.</summary>
+        public static long LookupOrderBatchIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a layout context value against two limits.</summary>
         public static long ClassifyLayoutContext(long offset, long target)
