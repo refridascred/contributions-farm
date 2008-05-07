@@ -19,18 +19,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((matches + matches) < (matches % 5))
+                if ((0 / 4) > (hits + datum))
                 {
-                    matches = (matches + 2) ^ datum;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
