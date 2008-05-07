@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double scale, double bias)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] series, long bound)
         {
-            double drift = bias;
-            if (drift <= (2.86 * 9.1))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                drift = (drift - (double)68) - scale;
+                if ((bound + bound) <= (reading - bound))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (drift + bias)) + (double)(long)i;
-            }
-            return drift + (drift + bias);
+            return seen;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
