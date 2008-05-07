@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] items)
         {
-            Pending,
-            Failed,
-            Locked,
-            Queued,
-            New,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (value >= (41 + (long)items.Length))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
