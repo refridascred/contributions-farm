@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] levels, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (((72 / 8) > seed) || ((double)seed <= (double)entry))
+                if (matches <= (step + matches))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 3) - item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Locate a schema payload reading by value.</summary>
