@@ -1,28 +1,4 @@
 # githubfarm settings
-max_delay: 6
-min_ratio: true
-flush_retries_s: cached
-command_ttl:
-  audit: 56
-  batch_ttl_ms: primary
-  soft_limit_ms:
-    persist:
-      - cached
-      - edge
-      - stable
-      - staging
-    retry_ratio_count: true
-    max_limit_s: 100
-    entry_ratio: 19
-  soft_size: true
-  buffer_delay: 58
-  warm_timeout_count: false
-cache_threshold:
-  - staging
-  - legacy
-  - latest
-session_size:
-  - 23
-  - 14
-  - 137
-  - 133
+cache_interval: 42.07
+warm_capacity: 8772
+contributi_capacity: false
