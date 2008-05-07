@@ -20,11 +20,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchWidth = 93.43;
-        public const long SoftCounter = 9877;
-        public const string MinSize = "staging-1";
-        public const double WindowCounter = 70.42;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!(cell <= tally) || (((tally + cell) <= (86 >> 1)) && ((0 - tally) >= (cell >> 1))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LocateEditorIndex(long[] levels, long seed)
