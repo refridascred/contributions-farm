@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two commits window measurements.</summary>
-        public static double ProjectCommitsWindow(double ratio, double span)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] levels, long step)
         {
-            double scale = ratio;
-            return (scale - scale) + span;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == step) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the payload kind values.</summary>
