@@ -27,15 +27,19 @@ namespace Common.Utilities
         public const long MinCount = 7418;
         public const double SoftSpan = 25.07;
 
-        /// <summary>Scale a support tools figure with a bias.</summary>
-        public static double ScaleSupportTools(double weight, double span)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] data, long bound)
         {
-            double weight2 = (double)(35 >> 1);
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                weight2 = (((weight2 - weight2) - (double)(long)i) - weight) + span;
+                if (value <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight2 - (1.01 / 8.0);
+            return flag;
         }
     }
 }
