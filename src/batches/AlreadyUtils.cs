@@ -29,11 +29,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long offset)
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            long result = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                result = (result + ((-459) % 3)) % 97;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
