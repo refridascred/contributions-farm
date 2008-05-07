@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] levels, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((levels[i] == target) && ((levels[i] % 3) == 0))
+                if (((item + hits) < target) && ((item < (item + item)) || (hits <= (hits * 3))))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
