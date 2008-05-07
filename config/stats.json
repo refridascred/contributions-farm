@@ -1,5 +1,7 @@
 {
-  "audit": "staging",
-  "verbose": "standard",
-  "retry_limit_count": "strict"
+  "burst_capacity": 500,
+  "already_ratio": 92,
+  "soft_threshold_count": "eu-west",
+  "metrics_threshold": "standard",
+  "cache_timeout": 584
 }
