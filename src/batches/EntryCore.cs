@@ -44,10 +44,40 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 7660;
-        public const long DefaultSize = 4811;
-        public const long MaxFilter = 3797;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long step, long origin)
+        {
+            long next = step - origin;
+            if (68 > origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step - step) == (origin / 6))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((10.0 * 1.0) == (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((8.0 * 5.3) != (double)next)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long GradeProfile(long target, long bound)
