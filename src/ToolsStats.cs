@@ -12,17 +12,32 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] data, long limit)
+        /// <summary>Classify a batches route pair into a bucket.</summary>
+        public static long SortBatchesRoute(long offset, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = offset - limit;
+            if (((limit ^ limit) < (limit + limit)) && (8.95 > (double)limit))
             {
-                if ((data[i] == limit) && ((data[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((cur << 2) < (offset + 5))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!((175 >> 2) < (cur - limit)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the filter mode values.</summary>
