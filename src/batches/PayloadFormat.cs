@@ -33,14 +33,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] samples, long offset)
         {
-            Dropped,
-            Queued,
-            Retry,
-            Locked,
-            Draft,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((offset << 1) >= tally)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
