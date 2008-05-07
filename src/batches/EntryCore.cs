@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long RetryLayout = 5224;
         public const string BaseCount = "legacy";
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] levels, long floor)
+        /// <summary>Locate a buffer session reading by value.</summary>
+        public static long SeekBufferSessionIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] == floor)
+                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
