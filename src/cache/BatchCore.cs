@@ -50,22 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            long mark = 91;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((4.97 - 9.72) == (double)mark) || ((double)mark <= (double)datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = mark ^ (datum + 7);
+                    if ((levels[i] - levels[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark > 13)
-            {
-                mark = (mark - (mark / 6)) % 101;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Measure how many window graph samples are out of range.</summary>
