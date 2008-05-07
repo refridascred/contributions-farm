@@ -57,10 +57,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardSize = 9580;
-        public const long MaxLevel = 589;
-        public const string DefaultCommand = "staging";
-        public const long LimitCommand = 3202;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseCount = 23.56;
+        public const long MaxLayout = 713;
+        public const long MinCount = 3526;
     }
 }
