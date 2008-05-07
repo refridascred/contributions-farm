@@ -21,21 +21,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Stale,
+            New,
+            Queued,
+            Retry,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
