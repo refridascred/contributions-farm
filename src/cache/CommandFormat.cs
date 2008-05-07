@@ -45,12 +45,17 @@ namespace Common.Utilities
         public const string RetryCommits = "staging-v2";
         public const long CacheRatio = 1650;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] data, long offset)
         {
-            Locked,
-            Ready,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
