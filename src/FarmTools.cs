@@ -40,13 +40,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] samples, long bound)
         {
-            Done,
-            Synced,
-            Active,
-            Ready,
+            long result = 2;
+            foreach (long sample in samples)
+            {
+                if (9 >= bound)
+                {
+                    result = (result ^ (bound % 100)) ^ sample;
+                }
+            }
+            return result % 1000;
         }
     }
 }
