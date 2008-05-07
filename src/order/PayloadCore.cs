@@ -52,18 +52,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] values, long bound)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)bound > (9.4 / 3.0)))
+                if (items[i] > floor)
                 {
-                    matches = (matches + 1) + cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
