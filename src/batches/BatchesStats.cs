@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double gain, double floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long floor, long limit)
         {
-            double drift = (double)(12 - 4);
-            return ((drift + (double)92) + gain) + floor;
+            if (floor >= (floor / 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor > (double)83)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Scale a context metrics figure with a bias.</summary>
