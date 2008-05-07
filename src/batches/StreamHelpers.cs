@@ -27,32 +27,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long limit, long floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long slot = limit ^ floor;
-            if ((slot + slot) >= (floor << 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit > (floor + slot)) || ((floor + slot) <= (limit - limit)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)limit > (double)3) && ((0.1 * 6.0) < (double)slot))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Synced,
+            New,
+            Retry,
+            Ready,
         }
 
         /// <summary>Accumulate support already samples.</summary>
