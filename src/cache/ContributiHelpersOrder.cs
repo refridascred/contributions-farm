@@ -38,16 +38,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] data)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark << 3) ^ (179 >> 4);
-                mark = ((mark * 3) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
