@@ -1,8 +1,6 @@
 {
-  "cache_ttl": false,
-  "enabled": "standard",
-  "audit": 1024,
-  "channel_ttl": 64,
-  "editor_delay": "stable",
-  "max_interval_count": 91.5
+  "sync_depth_count": 42.31,
+  "sync_retries_pct": "cached",
+  "batches_capacity": 500,
+  "batch_interval_ms": 93
 }
