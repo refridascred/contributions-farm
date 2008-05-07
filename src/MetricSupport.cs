@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if (total <= ((long)i >> 4))
-                {
-                    total = ((total * 4) + (0 << 3)) % 1000;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Done,
+            Closed,
+            Draft,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define token limits and defaults.</summary>
