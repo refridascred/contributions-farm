@@ -26,19 +26,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double bias, double span)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double ratio, double span)
         {
-            double drift = (double)(36 % 10);
-            if (drift > drift)
+            double rate = ratio;
+            if (rate <= ratio)
             {
-                drift = drift - 5.0;
+                rate = (rate - (3.33 * 13.0)) + span;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (bias * 20.0)) + (double)(long)i;
-            }
-            return drift - (drift - span);
+            return rate - ratio;
         }
     }
 }
