@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Count cluster batches pairs that satisfy a relation.</summary>
+        public static long OverlapClusterBatchesCount(long[] values)
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a stream summary.</summary>
