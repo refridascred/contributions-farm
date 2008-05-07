@@ -43,21 +43,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] levels)
+        /// <summary>Adjust a stats schema reading.</summary>
+        public static double ProjectStatsSchema(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = 5.53;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = (((gain - (2.5 * 8.7)) + (double)(long)i) + bias) - span;
             }
-            return hits;
+            return gain - (double)1;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
