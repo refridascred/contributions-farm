@@ -6,22 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-staging}"
 case "${mode}" in
-    open)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in green latest blue; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
