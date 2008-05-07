@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] readings, long limit)
-        {
-            long acc = 897;
-            foreach (long entry in readings)
-            {
-                if ((entry & 3) <= (entry + limit))
-                {
-                    acc = (acc ^ (entry + (long)readings.Length)) % 255;
-                }
-                acc = ((acc << 2) ^ (acc - acc)) % 4096;
-            }
-            if (acc < 199)
-            {
-                acc = (acc * 5) + (acc + limit);
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxInterval = 3297;
+        public const long BurstSpan = 3522;
+        public const string MinChannel = "fallback-1";
+        public const long WindowChannel = 1926;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
