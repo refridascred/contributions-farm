@@ -71,32 +71,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metric cache value against two limits.</summary>
-        public static long BucketMetricCache(long step, long target)
-        {
-            long lane = step - target;
-            if (((double)lane <= (7.2 / 6.0)) && ((double)target <= (double)lane))
-            {
-                return 1;
-            }
-            else
-            {
-                if (8.6 <= (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((lane - (-6)) != (lane * 5)) || ((target / 7) > (target * 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 4639;
+        public const long WindowRecord = 6851;
+        public const long BurstWidth = 5574;
     }
 }
