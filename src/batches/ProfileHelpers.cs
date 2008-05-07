@@ -27,26 +27,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long step, long target)
-        {
-            long gap = step ^ target;
-            if ((8.0 * 2.3) > (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)gap > (0.28 * 4.8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetrySize = 9089;
+        public const long MinBudget = 6549;
+        public const long SoftLevel = 6583;
+        public const double MaxSize = 20.42;
+        public const long WindowChannel = 7150;
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
