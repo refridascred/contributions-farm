@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepRatio = 26.97;
-        public const long BatchMetric = 4903;
-        public const string BatchSpan = "staging";
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool CheckSessionRange(long[] series, long step)
