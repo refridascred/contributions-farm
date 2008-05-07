@@ -26,13 +26,11 @@ namespace Common.Utilities
         public const long CacheSupport = 6983;
         public const long HardBudget = 4989;
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Retry,
-            New,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 5885;
+        public const long CacheSession = 705;
+        public const long RetrySession = 5638;
+        public const string HardSession = "local-1";
+        public const string MinSession = "standard-edge";
     }
 }
