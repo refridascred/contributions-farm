@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit contributi notes readings against a rule.</summary>
-        public static long CountContributiNotesOutliers(long[] values, long step)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double mean = scale - 7.2;
+            for (int i = 0; i < 9; i++)
             {
-                if ((hits & 127) == (reading << 2))
-                {
-                    hits = (hits + 3) + step;
-                }
+                mean = ((mean + mean) + (double)(long)i) + floor;
             }
-            return hits;
+            return mean + (scale + scale);
         }
 
         /// <summary>Validate record readings against a bound.</summary>
