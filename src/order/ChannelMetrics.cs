@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] items, long floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long origin, long seed)
         {
-            long score = 73;
-            foreach (long value in items)
+            long slot = origin + seed;
+            if ((seed % 7) <= (origin - slot))
             {
-                if (((double)value >= (2.9 / 4.0)) || ((value >> 5) >= score))
+                return 4;
+            }
+            else
+            {
+                if ((seed / 6) < 5)
                 {
-                    score = score + floor;
+                    return 6;
                 }
                 else
                 {
-                    score = (score ^ (score + floor)) % 4096;
+                    if ((double)origin == (1.0 - 8.48))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (score < 8)
-            {
-                score = score + score;
-            }
-            return score % 4096;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
