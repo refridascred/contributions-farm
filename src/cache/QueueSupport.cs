@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] samples)
         {
-            public bool Count { get; set; }
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (!((15.0 * 6.8) >= (double)entry))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next notes value.</summary>
