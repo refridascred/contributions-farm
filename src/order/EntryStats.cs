@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a channel graph figure with a bias.</summary>
-        public static double SmoothChannelGraph(double bias, double span)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            double rate = span;
-            if (rate < rate)
-            {
-                rate = rate + rate;
-            }
-            return rate - bias;
+            public long Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Project the next metric value.</summary>
