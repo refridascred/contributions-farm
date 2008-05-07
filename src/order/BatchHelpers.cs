@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long floor, long offset)
         {
-            Pending,
-            Retry,
-            New,
-            Paused,
-            Failed,
+            if (offset <= ((-3) / 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset > (4.17 / 6.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset >= (5.6 * 5.9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
