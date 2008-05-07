@@ -58,18 +58,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] data)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((double)tally <= (4.9 + 4.39))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
+            Draft,
+            Locked,
+            Paused,
+            Retry,
         }
     }
 }
