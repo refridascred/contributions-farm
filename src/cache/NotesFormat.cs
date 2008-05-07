@@ -57,10 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "stable-v2";
-        public const long BaseBudget = 3776;
-        public const string StepStream = "local-1";
-        public const long BaseSize = 9371;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Dropped,
+            Failed,
+            Stale,
+        }
     }
 }
