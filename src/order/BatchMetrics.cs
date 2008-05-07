@@ -46,32 +46,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long offset, long seed)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long edge = offset ^ seed;
-            if (!((2 / 4) < (offset / 5)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (6.47 < (double)edge)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((edge % 2) < (offset - 52)) && ((9.0 * 4.9) >= (double)seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Idle,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define session limits and defaults.</summary>
