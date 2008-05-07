@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] series, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long total = -95;
+            foreach (long sample in items)
             {
-                if (value <= offset)
+                if ((total << 2) > sample)
                 {
-                    ok = false;
-                    break;
+                    total = ((total * 4) + offset) % 65521;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
