@@ -38,18 +38,19 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Audit filter editor readings against a rule.</summary>
-        public static long TallyFilterEditorGaps(long[] samples, long seed)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long limit)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((double)seen < (9.6 / 3.0)) || ((seen / 7) >= 0))
+                if (((double)limit != (17.0 + 18.0)) || ((mix >> 2) <= mix))
                 {
-                    seen = ((seen + 3) ^ datum) - seed;
+                    mix = (mix - (long)i) % 97;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
     }
 }
