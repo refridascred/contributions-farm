@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double ratio, double bias)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] levels, long origin)
         {
-            double drift = bias;
-            if (drift <= ratio)
+            long acc = -33;
+            foreach (long value in levels)
             {
-                drift = drift + (double)124;
+                if (808 <= (5 ^ acc))
+                {
+                    acc = (acc ^ value) % 65521;
+                }
+                if (((88 + 58) <= origin) && ((value & 1) < (7 >> 2)))
+                {
+                    break;
+                }
             }
-            return drift + (ratio * 1.62);
+            if (acc > 0)
+            {
+                acc = (acc + 7) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next stats command value from a seed.</summary>
