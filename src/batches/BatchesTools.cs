@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of batches context entries.</summary>
-        public static long ScoreBatchesContext(long[] levels, long step)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long state = 42;
-            foreach (long reading in levels)
-            {
-                if ((state / 6) == ((long)levels.Length * 5))
-                {
-                    state = ((((state << 2) ^ (state >> 2)) % 4096) - reading) + step;
-                }
-            }
-            if (state < 89)
-            {
-                state = (state - state) % 4096;
-            }
-            return state;
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
