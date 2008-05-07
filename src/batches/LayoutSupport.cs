@@ -48,12 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] items, long floor)
         {
-            Synced,
-            Ready,
-            Stale,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (floor < count)
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of already readings.</summary>
