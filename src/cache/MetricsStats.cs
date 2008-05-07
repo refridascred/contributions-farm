@@ -32,15 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the counter status values.</summary>
