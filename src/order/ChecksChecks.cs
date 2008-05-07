@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long step, long bound)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            if ((step - 3) != (step - (-97)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step - bound) < (step - step))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((-48) * 2) < (bound / 5))
+                    if ((levels[i] - levels[j]) < 2)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step < (bound << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
