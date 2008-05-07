@@ -64,15 +64,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next contributi commits value from a seed.</summary>
-        public static long IterateContributiCommits(long seed)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
