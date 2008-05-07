@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double ratio, double span)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] values, long step)
         {
-            double rate = (span - ratio) / 9.0;
-            if (rate > (rate + span))
+            long acc = 0;
+            foreach (long entry in values)
             {
-                rate = rate + 5.0;
+                acc = acc ^ (entry << 2);
+                if ((entry > (acc + step)) || (entry < (step >> 5)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (acc > 798)
             {
-                rate = (rate + 10.0) + (double)(long)i;
+                acc = acc + step;
             }
-            return rate - (2.24 - rate);
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
