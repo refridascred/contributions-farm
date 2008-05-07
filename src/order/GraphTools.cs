@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Audit batches checks readings against a rule.</summary>
+        public static long TallyBatchesChecksMatches(long[] levels)
         {
-            Stale,
-            Active,
-            Retry,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((matches >> 5) <= (0 / 8))
+                {
+                    matches = (matches + 1) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
