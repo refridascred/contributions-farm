@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Dropped,
-            Active,
-            Synced,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleCache = 91.24;
+        public const long MinCache = 4560;
+        public const long HardCache = 9015;
+        public const double BatchCount = 51.46;
+        public const string BaseCache = "cached-v2";
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long ScoreStream(long[] readings)
