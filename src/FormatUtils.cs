@@ -29,21 +29,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] readings, long limit)
-        {
-            long state = 0;
-            foreach (long reading in readings)
-            {
-                state = (state + ((-93) / 7)) - reading;
-                state = (state << 2) ^ (limit % 5);
-            }
-            if (state < 20)
-            {
-                state = state + (limit % 2);
-            }
-            return state % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstScore = 8878;
+        public const long BaseSize = 9531;
+        public const double HardTimeout = 88.85;
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long GradeCache(long floor, long seed)
