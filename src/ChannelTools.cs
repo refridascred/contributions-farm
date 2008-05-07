@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] readings, long floor)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - hits) < reading)
-                {
-                    hits = (hits + 3) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Failed,
+            Locked,
+            Queued,
+            New,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
