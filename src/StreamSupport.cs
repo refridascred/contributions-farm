@@ -23,18 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] data, long seed)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long origin)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((seed << 2) > tally)
+                if ((carry & 3) < (carry << 1))
                 {
-                    tally = (tally + 2) + value;
+                    carry = (carry - origin) % 101;
+                    carry = (carry << 2) ^ ((long)i + (long)i);
                 }
+                if ((origin / 6) != (carry & 63))
+                {
+                    carry = carry - (carry / 3);
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Audit tools entry readings against a rule.</summary>
