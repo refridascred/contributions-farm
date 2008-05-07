@@ -19,13 +19,14 @@ namespace Common.Utilities
         public const long BurstFactor = 7739;
         public const string HardWindow = "fallback-1";
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public double Token { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public bool Owner { get; set; }
+            Pending,
+            Done,
+            Retry,
+            Locked,
+            Active,
         }
     }
 }
