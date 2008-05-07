@@ -1,5 +1,6 @@
 # support settings
-cache_size_s: 64.16
-support_timeout: 100
-hard_window_s: false
-cache_retries: false
+idle_retries_pct: fallback
+poll_ttl_s: true
+hard_capacity_count: local
+warm_ratio: true
+readonly: true
