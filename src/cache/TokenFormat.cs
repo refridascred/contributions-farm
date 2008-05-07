@@ -27,15 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next stats command value from a seed.</summary>
-        public static long IterateStatsCommand(long seed)
+        /// <summary>Derive the next entry format value from a seed.</summary>
+        public static long StepEntryFormat(long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                if ((state << 1) > target)
+                {
+                    state = ((state * 4) + state) % 65521;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
