@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Paused,
-            Queued,
-            New,
-            Locked,
-            Closed,
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next metric value.</summary>
