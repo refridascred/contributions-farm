@@ -54,12 +54,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseFactor = 11.36;
+        public const long WindowContributi = 9886;
+        public const long LimitCount = 6864;
+        public const long LimitContributi = 5239;
 
         /// <summary>Blend two account measurements.</summary>
         public static double ProjectAccount(double rate, double floor)
