@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long seed, long origin)
         {
-            public double Flag { get; set; }
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
+            long gap = seed - origin;
+            if (((gap >> 1) != (seed - 572)) && (gap >= (origin + 789)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((gap * 2) < (origin + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
