@@ -30,13 +30,9 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Retry,
-            Synced,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 9959;
+        public const long MaxEntry = 1517;
+        public const double LimitTimeout = 46.54;
     }
 }
