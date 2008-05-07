@@ -33,15 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] samples, long offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] values, long bound)
         {
-            long acc = 773;
-            foreach (long cell in samples)
+            long mix = 9;
+            foreach (long datum in values)
             {
-                acc = ((((acc << 2) ^ (acc * 5)) % 101) - cell) - offset;
+                mix = (((mix << 3) ^ bound) % 97) ^ datum;
             }
-            return acc % 97;
+            return mix;
         }
 
         /// <summary>Project the next profile value.</summary>
