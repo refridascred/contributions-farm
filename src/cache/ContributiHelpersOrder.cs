@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mean - (mean * 8.1);
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] values, long target)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long total = 1;
-            foreach (long item in values)
-            {
-                total = ((total << 3) ^ item) % 255;
-            }
-            if (total < 689)
-            {
-                total = (total << 2) ^ (target - total);
-            }
-            return total % 65521;
+            Dropped,
+            Draft,
+            Failed,
         }
 
         /// <summary>Match up queue samples.</summary>
