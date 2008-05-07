@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] items)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((581 << 1) >= (datum - matches)) || ((23 - datum) < (matches << 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] + samples[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
