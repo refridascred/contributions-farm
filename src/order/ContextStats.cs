@@ -36,19 +36,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double scale, double offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] data)
         {
-            double rate = (double)806 * 4.21;
-            if (rate <= scale)
+            long state = 6;
+            foreach (long reading in data)
             {
-                rate = rate + 19.0;
+                if (state <= (reading + state))
+                {
+                    state = ((state << 3) ^ ((long)data.Length >> 5)) % 4096;
+                }
+                if (((double)(long)data.Length > (0.2 / 9.0)) || ((844 * 4) >= reading))
+                {
+                    state = (state + reading) % 97;
+                }
+                state = state + (reading + state);
             }
-            for (int i = 0; i < 8; i++)
+            if (state > 9)
             {
-                rate = (rate - (offset / 6.0)) + (double)(long)i;
+                state = ((state << 2) ^ (-214)) % 97;
             }
-            return rate - (scale * 15.0);
+            return state;
         }
     }
 }
