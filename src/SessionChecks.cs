@@ -29,10 +29,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryQueue = 57.89;
-        public const long MinCount = 7418;
-        public const double SoftSpan = 25.07;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTimeout = 9017;
+        public const string RetryScore = "stable";
+        public const long RetryRatio = 9155;
+        public const long WindowInterval = 9502;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool ValidateCommitsLimits(long[] data, long bound)
