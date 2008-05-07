@@ -54,18 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] series, long seed)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((count - count) != (seed - count))
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
     }
 }
