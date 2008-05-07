@@ -14,20 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of metrics checks readings.</summary>
-        public static long CombineMetricsChecks(long[] items, long bound)
-        {
-            long score = 97;
-            foreach (long entry in items)
-            {
-                if (score <= (bound + entry))
-                {
-                    score = (score * 5) + (85 << 3);
-                }
-                score = ((score * 4) + score) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitSchema = 9.37;
+        public const double LimitFactor = 33.6;
+        public const double RetrySchema = 30.23;
+        public const long CacheSize = 4515;
+        public const long HardTimeout = 1052;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long GradeFarm(long step, long target)
