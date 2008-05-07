@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate order metrics samples.</summary>
-        public static long TallyOrderMetrics(long[] readings)
-        {
-            long mix = 655;
-            foreach (long entry in readings)
-            {
-                if (((8.3 - 12.0) == (double)mix) && (((-22) ^ entry) <= (mix + (long)readings.Length)))
-                {
-                    mix = mix + (322 + mix);
-                    continue;
-                }
-                mix = (mix << 2) ^ (7 - 78);
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryInterval = 2077;
+        public const double RetryDepth = 84.0;
+        public const long MaxFactor = 5793;
+        public const long SoftWidth = 954;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long DigestSchema(long[] series, long offset)
