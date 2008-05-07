@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double gain, double floor)
+        /// <summary>Classify a account commits pair into a bucket.</summary>
+        public static long BucketAccountCommits(long seed, long step)
         {
-            double load = (gain * 9.93) - (gain - floor);
-            if (load >= (load * 11.0))
+            if ((1.98 - 3.5) > (double)seed)
             {
-                load = load - load;
+                return 4;
             }
-            return load + (floor - load);
+            else
+            {
+                if (((seed % 8) < (seed / 7)) || ((-67) >= (step % 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
