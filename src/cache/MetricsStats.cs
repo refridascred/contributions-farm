@@ -46,20 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] series, long step)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long total = 66;
-            foreach (long item in series)
-            {
-                total = (total - (item + total)) % 4096;
-                total = (total * 5) + (item << 1);
-                if (step > (item ^ (-731)))
-                {
-                    total = (total - (total ^ item)) % 97;
-                }
-            }
-            return total % 1000;
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up stats account samples.</summary>
