@@ -15,10 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheEntry = 52.13;
-        public const long RetryEntry = 7830;
-        public const string BurstFactor = "local-1";
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum ^ datum) >= (seen + datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
