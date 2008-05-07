@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
