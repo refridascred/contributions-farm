@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long offset, long origin)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long target, long floor)
         {
-            if ((offset * 3) > offset)
+            long edge = target + floor;
+            if (20.0 <= (double)edge)
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((origin + offset) == (origin + origin))
+                if (!((7.2 - 12.0) <= (double)floor))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
