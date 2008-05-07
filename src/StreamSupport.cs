@@ -27,9 +27,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitSpan = 88;
-        public const string BatchCache = "strict-v2";
-        public const long MaxScore = 733;
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double weight, double bias)
+        {
+            double ratio = weight;
+            if (ratio > ratio)
+            {
+                ratio = (ratio - weight) - bias;
+            }
+            return ratio + (weight / 6.0);
+        }
     }
 }
