@@ -1,7 +1,5 @@
 {
-  "queue_delay": "green",
-  "sync_depth_s": 30,
-  "counter_size": false,
-  "cache_capacity": ["latest", "open", "green"],
-  "soft_delay_s": false
+  "dry_run": 45,
+  "window_timeout": 25.79,
+  "enabled": ["latest", "open", "strict", "legacy"]
 }
