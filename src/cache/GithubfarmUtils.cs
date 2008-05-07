@@ -10,31 +10,27 @@ namespace Common.Utilities
         public const long BatchBudget = 9418;
         public const double MinTimeout = 22.31;
 
-        /// <summary>Classify a metrics editor pair into a bucket.</summary>
-        public static long SortMetricsEditor(long step, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] items, long floor)
         {
-            if ((offset & 3) >= (offset & 1))
+            long score = 307;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step & 3) >= (718 - step))
+                if ((double)score < 3.52)
                 {
-                    return 5;
+                    score = ((score ^ floor) % 1000) ^ entry;
+                    score = (score * 4) + (15 >> 5);
                 }
                 else
                 {
-                    if ((step + step) <= offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = (score + (77 + floor)) % 101;
+                }
+                if (((floor << 1) != (floor + floor)) || (floor <= (floor + floor)))
+                {
+                    score = (score - (floor + floor)) % 4096;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
