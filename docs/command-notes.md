@@ -1,16 +1,13 @@
 # Command notes
 
-Use schema settings to tune how often account data is refreshed.
-A stream that stays idle for too long is moved to the context list.
-A buffer that stays idle for too long is moved to the layout list.
+Each batch is validated before it reaches the batch queue.
+Run the commits check before changing any tools limits.
 
-A route that stays idle for too long is moved to the layout list.
-A counter that stays idle for too long is moved to the githubfarm list.
-Each graph is validated before it reaches the commits queue.
+Use session settings to tune how often metric data is refreshed.
+Defaults for metric live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate graph input early
-- Review graph limits each release
-- Prefer payload defaults
-- Document new tools fields
+- Log every format change
+- Validate support input early
+- Review stream limits each release
