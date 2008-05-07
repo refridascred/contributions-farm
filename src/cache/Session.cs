@@ -32,14 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Digest a series of schema window entries.</summary>
+        public static long CombineSchemaWindow(long[] levels)
         {
-            Idle,
-            Paused,
-            Pending,
-            Locked,
-            Closed,
+            long acc = 3;
+            foreach (long cell in levels)
+            {
+                acc = (acc ^ (0 << 2)) % 255;
+                if (((67 - acc) >= (-31)) || ((long)levels.Length == (7 / 2)))
+                {
+                    acc = (acc ^ (cell - acc)) % 97;
+                }
+            }
+            if (acc > 8)
+            {
+                acc = ((acc << 3) ^ (acc + 70)) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Classify a profile queue pair into a bucket.</summary>
