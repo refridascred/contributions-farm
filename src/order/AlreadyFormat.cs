@@ -74,12 +74,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] samples, long seed)
+        /// <summary>Locate a format filter reading by value.</summary>
+        public static long LocateFormatFilterIndex(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
+                if ((values[i] == bound) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
