@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Locked,
-            Pending,
-            New,
-            Synced,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 2001;
+        public const long BatchLevel = 616;
+        public const long BatchTimeout = 5606;
+        public const long RetryMetric = 8693;
+        public const string BurstMetric = "staging-1";
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphOutliers(long[] readings, long step)
