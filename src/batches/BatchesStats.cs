@@ -24,17 +24,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] values, long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 2;
+            foreach (long reading in levels)
             {
-                if ((values[i] <= seed) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 2) ^ (acc - reading)) % 255;
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Describe the profile phase values.</summary>
