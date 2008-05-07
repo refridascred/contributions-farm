@@ -20,16 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
             {
-                total = ((total << 3) ^ 840) % 101;
-                total = ((total * 3) + (long)i) % 65521;
+                acc = acc ^ acc;
+                if (844 < (origin & 63))
+                {
+                    acc = (acc * 2) + (acc + acc);
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Describe the session state values.</summary>
