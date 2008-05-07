@@ -43,18 +43,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] readings)
+        /// <summary>Fold a list of already payload readings.</summary>
+        public static long FoldAlreadyPayload(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long total = 6;
+            foreach (long sample in series)
             {
-                if (!(((1.4 / 2.0) < (double)tally) || ((reading + reading) < reading)))
+                if (((total % 60) >= total) && ((total << 1) != (total ^ total)))
                 {
-                    tally = tally + 3;
+                    total = total + 658;
+                }
+                total = (total * 2) + (total + total);
+                if ((sample >> 1) < (767 + sample))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total > 454)
+            {
+                total = (total ^ (total ^ total)) % 255;
+            }
+            return total;
         }
     }
 }
