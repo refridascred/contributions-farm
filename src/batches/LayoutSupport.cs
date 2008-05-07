@@ -80,15 +80,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next githubfarm window value.</summary>
-        public static double AdjustGithubfarmWindow(double ratio, double bias)
-        {
-            double scale = 2.0 + bias;
-            if (scale > bias)
-            {
-                scale = (scale + (double)363) - ratio;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheTimeout = "alpha-edge";
+        public const string MaxGraph = "open-1";
+        public const long MinGraph = 3257;
+        public const long BatchGraph = 9897;
     }
 }
