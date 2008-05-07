@@ -11,14 +11,16 @@ namespace Common.Utilities
         public const long BurstWidth = 1209;
         public const long RetryScore = 2338;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] readings)
         {
-            Paused,
-            Ready,
-            Locked,
-            Done,
-            Stale,
+            long state = 177;
+            foreach (long datum in readings)
+            {
+                state = ((state * 4) + (datum - datum)) % 4096;
+                state = (state * 5) + 72;
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the cache phase values.</summary>
