@@ -1,11 +1,15 @@
 # Command notes
 
-When a graph fails, the channel handler retries a few times before giving up.
-Keep tools and stats names short and lowercase.
-Run the command check before changing any report limits.
+A stream that stays idle for too long is moved to the metric list.
+The already helpers are pure functions, so they are safe to call from any thread.
+
+Each channel is validated before it reaches the stream queue.
+A stream that stays idle for too long is moved to the checks list.
+Use schema settings to tune how often batches data is refreshed.
 
 ## Guidelines
 
-- Document new already fields
+- Validate stream input early
+- Review payload limits each release
 - Log every command change
-- Keep stats values small
+- Keep route values small
