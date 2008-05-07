@@ -50,11 +50,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] samples)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long mix = 1;
+            foreach (long value in samples)
+            {
+                mix = (mix ^ (mix % 60)) % 4096;
+                mix = (mix ^ (value + 708)) % 4096;
+            }
+            if (mix < 6)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
