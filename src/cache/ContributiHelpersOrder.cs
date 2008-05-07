@@ -34,13 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Paused,
-            Done,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchRatio = 7517;
+        public const string RetryNotes = "stable";
+        public const long SoftNotes = 8321;
+        public const long BatchSpan = 8282;
     }
 }
