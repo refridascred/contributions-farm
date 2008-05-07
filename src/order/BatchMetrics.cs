@@ -50,17 +50,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = anchor - ((long)i - (long)i);
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryStream = 70.59;
+        public const double CacheFactor = 90.32;
+        public const long StepStream = 3150;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long CountStreamGaps(long[] levels)
