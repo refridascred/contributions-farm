@@ -38,39 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a layout batches pair into a bucket.</summary>
-        public static long ClassifyLayoutBatches(long floor, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] levels, long step)
         {
-            long delta = floor ^ offset;
-            if (floor < (offset & 31))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset * 2) > (851 * 5)) && (offset < (delta >> 3)))
+                if ((double)cell != (9.7 * 6.5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor * 2) != (offset / 8)) || (57 > (floor * 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((85 * 3) <= delta)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = (seen + 2) - step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a already options.</summary>
