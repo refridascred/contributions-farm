@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] samples, long bound)
+        /// <summary>Count the checks buffer entries that pass the check.</summary>
+        public static long AuditChecksBufferOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (value <= bound)
+                if ((537 + seen) == (seen / 9))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
