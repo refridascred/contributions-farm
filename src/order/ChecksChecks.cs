@@ -19,18 +19,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] levels)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((tally - datum) <= tally)
+                if (item >= target)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
