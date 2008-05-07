@@ -46,18 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] data, long step)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long anchor = 3;
-            foreach (long sample in data)
-            {
-                if ((61 <= (sample + sample)) || ((anchor % 10) <= sample))
-                {
-                    anchor = ((anchor << 2) ^ anchor) - step;
-                }
-            }
-            return anchor % 1000;
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
