@@ -1,5 +1,5 @@
 {
-  "queue_size": true,
-  "layout_timeout": 90.47,
-  "soft_retries_pct": "latest"
+  "min_capacity_ms": "latest",
+  "cluster_window": true,
+  "token_delay": 18.2
 }
