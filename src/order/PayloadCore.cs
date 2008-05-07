@@ -54,9 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultCount = 72.93;
-        public const long SoftFactor = 4582;
-        public const string SoftChecks = "latest";
+        /// <summary>Audit contributi context readings against a rule.</summary>
+        public static long CountContributiContextGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((61 + tally) <= tally)
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
+        }
     }
 }
