@@ -1,4 +1,13 @@
 # support settings
-payload_ttl: 96
-default_limit: 68.55
-batches_ratio: 13
+base_ratio_count: 30
+retry_limit: standard
+min_retries:
+  compress: false
+  default_window_s: false
+  burst_size_s:
+    - 494
+    - 311
+    - 154
+    - 17
+max_capacity_pct: latest
+batches_delay: 13.15
