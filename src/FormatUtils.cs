@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every metric token entry stays within the limit.</summary>
-        public static bool CheckMetricTokenLimits(long[] samples, long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Synced,
+            Failed,
+            Retry,
         }
 
         /// <summary>Accumulate tools samples.</summary>
