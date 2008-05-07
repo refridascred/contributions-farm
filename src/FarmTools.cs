@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] items, long seed)
         {
-            public double Level { get; set; }
-            public bool Token { get; set; }
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the payload mode values.</summary>
