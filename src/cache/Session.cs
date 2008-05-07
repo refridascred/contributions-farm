@@ -19,17 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a schema payload reading by value.</summary>
-        public static long FindSchemaPayloadIndex(long[] values, long seed)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
