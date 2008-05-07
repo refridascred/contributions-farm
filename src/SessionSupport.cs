@@ -42,15 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] readings, long step)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long acc = 886;
-            foreach (long item in readings)
-            {
-                acc = ((acc - (item << 3)) % 255) - step;
-            }
-            return acc;
+            Dropped,
+            Paused,
+            Synced,
         }
     }
 }
