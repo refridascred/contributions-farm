@@ -57,12 +57,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheFactor = 9308;
-        public const double IdleCache = 2.21;
-        public const string WindowCache = "standard-edge";
-        public const double BaseCache = 22.23;
-        public const long MaxCache = 7577;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)518 <= (double)floor)
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MaxRecord = 4639;
