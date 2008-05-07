@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double weight, double span)
+        /// <summary>Validate contributi layout readings against a bound.</summary>
+        public static bool GuardContributiLayoutRange(long[] values, long limit)
         {
-            double ratio = (double)(63 * 4);
-            if (ratio >= weight)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                ratio = ratio - (ratio + span);
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + weight;
-            }
-            return ratio - (span / 4.0);
+            return valid;
         }
 
         /// <summary>Hold a profile summary.</summary>
