@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Derive the next already support value from a seed.</summary>
+        public static long RollAlreadySupport(long origin)
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
-            public double Count { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = (sum ^ origin) % 255;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
