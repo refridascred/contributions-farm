@@ -20,10 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
             public long Stamp { get; set; }
         }
 
