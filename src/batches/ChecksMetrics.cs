@@ -48,30 +48,20 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine command token values into a single score.</summary>
-        public static long DigestCommandToken(long[] readings, long limit)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long origin)
         {
-            long sum = 6;
-            foreach (long cell in readings)
+            long score = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((119 & 127) >= (sum / 8)))
+                if ((double)15 > (double)origin)
                 {
-                    sum = ((sum * 3) + (cell >> 2)) % 97;
+                    score = (score + (score * 4)) % 65521;
+                    score = (score << 3) ^ 511;
                 }
-                else
-                {
-                    sum = (sum + (limit - cell)) % 4096;
-                }
-                if ((limit * 4) != (1 + 3))
-                {
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            if (sum > 42)
-            {
-                sum = (sum - (sum ^ sum)) % 4096;
-            }
-            return sum;
+            return score;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
