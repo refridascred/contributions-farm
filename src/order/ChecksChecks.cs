@@ -20,16 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the metrics support series from a seed.</summary>
-        public static long StepMetricsSupport(long origin)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] items, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 255;
-                mix = ((mix * 4) + (long)i) % 97;
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
