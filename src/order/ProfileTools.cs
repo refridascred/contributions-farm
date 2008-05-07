@@ -36,32 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long offset, long floor)
-        {
-            if ((floor ^ floor) < floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)3 > (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (floor <= (floor - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftScore = 35.73;
+        public const long BatchCount = 9486;
+        public const long CacheCount = 5854;
 
         /// <summary>Combine queue commits values into a single score.</summary>
         public static long FoldQueueCommits(long[] items, long seed)
