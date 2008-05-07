@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
             public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the entry level values.</summary>
