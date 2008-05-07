@@ -1,5 +1,7 @@
 # support settings
-hard_interval_pct: 87.52
-hard_ratio: false
-hard_capacity_pct: staging
-dry_run: latest
+poll_ttl_count: 68.06
+queue_size: stable
+retry_ratio:
+  - primary
+  - edge
+  - latest
