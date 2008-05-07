@@ -55,23 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double ratio, double floor)
+        /// <summary>Accumulate support already samples.</summary>
+        public static long ScoreSupportAlready(long[] values)
         {
-            double scale = ratio;
-            if (scale <= (double)2)
+            long result = 457;
+            foreach (long item in values)
             {
-                scale = scale + (ratio + 9.37);
+                result = ((result ^ (result - result)) % 255) - item;
             }
-            else
-            {
-                scale = scale + (scale + floor);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale - (ratio * 9.4);
+            return result;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
