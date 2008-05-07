@@ -75,12 +75,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long step, long bound)
         {
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
-            public double Limit { get; set; }
+            long slot = step - bound;
+            if ((20 & 63) > (step + bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((129 + bound) == (slot + step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
