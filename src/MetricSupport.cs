@@ -19,27 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next window session value from a seed.</summary>
-        public static long RollWindowSession(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                long seen = origin;
-                if (((63 * 4) >= (state << 3)) || ((origin ^ origin) != (seen + origin)))
-                {
-                    state = (state - origin) % 65521;
-                }
-                else
-                {
-                    state = ((state << 2) ^ ((long)i - origin)) % 65521;
-                    seen = (seen * 2) + (seen % 60);
-                }
-                state = ((state << 3) ^ (state + 68)) % 255;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRecord = 1.84;
+        public const string LimitRecord = "open";
+        public const double MaxLevel = 10.37;
+        public const string BurstRatio = "stable-1";
+        public const string BurstTimeout = "standard";
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long PairFormatCount(long[] data)
