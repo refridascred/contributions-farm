@@ -28,14 +28,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 7682;
+        public const long StepPayload = 8599;
+        public const long IdlePayload = 4205;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
