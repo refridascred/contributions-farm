@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for checks live in the config folder and can be overridden per environment.
-Use queue settings to tune how often notes data is refreshed.
-The report report groups every batches by stream.
+The buffer report groups every route by order.
+Run the queue check before changing any metrics limits.
+Keep counter and entry names short and lowercase.
 
-A contributi that stays idle for too long is moved to the queue list.
-The account report groups every support by schema.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Keep githubfarm and format names short and lowercase.
+The farm module keeps buffer values in sync with the channel cache.
 
 ## Guidelines
 
-- Review counter limits each release
-- Document new support fields
-- Keep buffer values small
+- Review batch limits each release
+- Prefer report defaults
+- Keep report values small
