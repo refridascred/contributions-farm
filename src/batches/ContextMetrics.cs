@@ -47,18 +47,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] samples, long seed)
+        /// <summary>Roll a queue graph counter forward.</summary>
+        public static long SeriesQueueGraph(long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((seen / 4) == (seen / 2))
-                {
-                    seen = ((seen + 3) + value) - seed;
-                }
+                anchor = (anchor ^ anchor) % 255;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
     }
 }
