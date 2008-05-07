@@ -78,21 +78,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count contributi batches pairs that satisfy a relation.</summary>
-        public static long PairContributiBatchesCount(long[] levels)
+        /// <summary>Look up the position of a token metric sample.</summary>
+        public static long LocateTokenMetricIndex(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((data[i] > step) && ((data[i] % 5) != 0))
                 {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
