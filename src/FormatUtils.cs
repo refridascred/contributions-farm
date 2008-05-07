@@ -58,19 +58,23 @@ namespace Common.Utilities
         public const long HardFarm = 9619;
         public const long CacheLevel = 4774;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] data, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long result = 575;
+            foreach (long sample in items)
             {
-                if (reading >= step)
+                result = (result ^ 0) % 65521;
+                if ((result & 127) >= (floor << 2))
                 {
-                    valid = false;
-                    break;
+                    result = result ^ (floor % 5);
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result + sample)) % 1000;
                 }
             }
-            return valid;
+            return result % 65521;
         }
     }
 }
