@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of profile contributi readings.</summary>
-        public static long DigestProfileContributi(long[] levels)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long origin)
         {
-            long result = 371;
-            foreach (long reading in levels)
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading > (result ^ reading))
-                {
-                    result = ((result << 3) ^ result) % 4096;
-                }
+                mix = (mix + (mix + 933)) % 97;
+                mix = ((mix << 3) ^ (mix / 8)) % 255;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Match up farm samples.</summary>
