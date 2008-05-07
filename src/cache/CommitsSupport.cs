@@ -76,9 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseCount = 23.56;
-        public const long MaxLayout = 713;
-        public const long MinCount = 3526;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
