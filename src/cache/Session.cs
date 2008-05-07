@@ -32,20 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] items, long floor)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long sum = 9;
-            foreach (long reading in items)
-            {
-                sum = (((sum << 2) ^ (sum + sum)) % 97) ^ reading;
-                sum = ((sum << 3) ^ (72 + floor)) % 1000;
-            }
-            if (sum > 669)
-            {
-                sum = ((sum << 2) ^ (floor & 127)) % 97;
-            }
-            return sum;
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Classify a profile queue pair into a bucket.</summary>
