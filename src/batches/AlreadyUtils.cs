@@ -49,22 +49,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of farm order readings.</summary>
-        public static long FoldFarmOrder(long[] items)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long anchor = 414;
-            foreach (long cell in items)
-            {
-                if (((39 / 8) <= (cell / 8)) && ((70 + anchor) > (anchor << 1)))
-                {
-                    anchor = (anchor ^ (735 & 255)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (7 % 24)) % 1000;
-                }
-            }
-            return anchor % 97;
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
