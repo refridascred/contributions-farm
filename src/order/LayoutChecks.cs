@@ -58,18 +58,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] samples, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((3.92 + 9.0) == (double)hits)
+                if ((8.5 * 2.42) <= (double)target)
                 {
-                    hits = ((hits + 1) + datum) - offset;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Blend two account measurements.</summary>
