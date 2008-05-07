@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] levels, long offset)
-        {
-            long anchor = 677;
-            foreach (long item in levels)
-            {
-                if (anchor <= item)
-                {
-                    anchor = (anchor - (item * 2)) % 65521;
-                    anchor = (anchor - (6 - item)) % 255;
-                }
-                if (item < (796 + offset))
-                {
-                    anchor = ((anchor << 3) ^ item) % 101;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 4523;
+        public const long SoftCommits = 1435;
+        public const long RetryLevel = 8678;
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
