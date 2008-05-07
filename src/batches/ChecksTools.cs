@@ -36,13 +36,32 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long floor, long origin)
         {
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            long next = floor + origin;
+            if (((18.0 / 9.0) > (double)next) && (next > (origin + 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-34) - next) > (next - floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((870 * 5) != (floor - floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
