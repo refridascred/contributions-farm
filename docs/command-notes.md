@@ -1,11 +1,10 @@
 # Command notes
 
-Use window settings to tune how often schema data is refreshed.
-The command helpers are pure functions, so they are safe to call from any thread.
+Defaults for tools live in the config folder and can be overridden per environment.
+When a token fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every route change
-- Validate stats input early
-- Document new payload fields
+- Review batch limits each release
+- Document new commits fields
+- Keep tools values small
