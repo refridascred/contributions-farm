@@ -72,15 +72,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double scale, double offset)
+        /// <summary>Look up the position of a cluster batch sample.</summary>
+        public static long LookupClusterBatchIndex(long[] levels, long bound)
         {
-            double drift = 3.92;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = ((drift - (6.7 - scale)) + (double)(long)i) - offset;
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return drift + (double)8;
+            return -1;
         }
     }
 }
