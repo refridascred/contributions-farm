@@ -15,18 +15,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] data, long offset)
+        /// <summary>Grade a stats account value against two limits.</summary>
+        public static long BucketStatsAccount(long target, long bound)
         {
-            long seen = 0;
-            foreach (long item in data)
+            if ((-57) >= target)
             {
-                if (((seen * 4) <= item) || !((3.0 - 0.8) <= (double)item))
+                return 6;
+            }
+            else
+            {
+                if ((18.0 + 4.5) >= (double)target)
                 {
-                    seen = (seen + 2) - offset;
+                    return 3;
+                }
+                else
+                {
+                    if ((9.8 * 6.3) != (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(target >= (126 + bound)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the notes mode values.</summary>
