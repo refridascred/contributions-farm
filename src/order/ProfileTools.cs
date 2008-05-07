@@ -36,13 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] levels, long step)
         {
-            Stale,
-            Closed,
-            Pending,
-            Idle,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine queue commits values into a single score.</summary>
