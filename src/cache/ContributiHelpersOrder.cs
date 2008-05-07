@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] samples, long limit)
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
