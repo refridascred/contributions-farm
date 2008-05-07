@@ -39,11 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseWidth = 9420;
-        public const double StepFarm = 57.79;
-        public const double BatchFarm = 70.13;
-        public const string BurstFarm = "open-edge";
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Audit farm order readings against a rule.</summary>
         public static long AuditFarmOrderGaps(long[] series, long target)
