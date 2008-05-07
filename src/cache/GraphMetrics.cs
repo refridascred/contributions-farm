@@ -25,18 +25,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] series, long origin)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((double)item >= (5.2 + 8.62))
-                {
-                    seen = (seen + 1) + origin;
-                }
-            }
-            return seen;
+            New,
+            Active,
+            Closed,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
