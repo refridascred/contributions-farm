@@ -35,19 +35,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long step, long target)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            long step2 = step ^ target;
+            if ((double)step > (16.0 + 10.0))
             {
-                if ((step * 2) < step)
-                {
-                    state = (state << 2) ^ state;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                return 1;
             }
-            return state;
+            else
+            {
+                if (!((target + step) <= (target >> 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((step2 + step) > step2) && ((double)target != (double)step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a window entry.</summary>
