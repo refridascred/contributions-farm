@@ -1,8 +1,7 @@
 # entry settings
-readonly: false
-channel_retries: 64.32
-verbose:
-  - edge
-  - local
-  - fallback
-  - legacy
+hard_limit_s: latest
+batch_retries: 1303
+burst_timeout_ms: 49.89
+token_timeout: true
+audit: 85
+default_timeout_count: latest
