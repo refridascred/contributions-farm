@@ -51,24 +51,21 @@ namespace Common.Utilities
         public const long DefaultFactor = 1304;
         public const long BaseRatio = 5983;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long origin, long bound)
+        /// <summary>Match up buffer route samples.</summary>
+        public static long PairBufferRouteCount(long[] values)
         {
-            if (407 <= (bound / 7))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound + 5) < origin) || ((double)origin >= 2.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    if ((values[i] - values[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
