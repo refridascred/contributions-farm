@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double ratio, double span)
         {
-            public double Score { get; set; }
-            public double Size { get; set; }
+            double drift = (double)(979 - 100);
+            for (int i = 0; i < 4; i++)
+            {
+                drift = ((drift - (span * 6.7)) + (double)(long)i) - ratio;
+            }
+            return drift + span;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
