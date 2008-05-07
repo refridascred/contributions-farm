@@ -29,18 +29,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] items)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((count / 9) < (count ^ count)))
+                if (data[i] <= origin)
                 {
-                    count = (count + 3) + reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
