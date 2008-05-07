@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] data)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long total = 469;
-            foreach (long entry in data)
-            {
-                if (entry <= (total - entry))
-                {
-                    total = ((total << 3) ^ (entry - entry)) % 1000;
-                }
-            }
-            if (total > 940)
-            {
-                total = total - (total + total);
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
