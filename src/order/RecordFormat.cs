@@ -72,15 +72,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] readings)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long score = 33;
-            foreach (long datum in readings)
-            {
-                score = ((score * 2) + (datum << 1)) % 65521;
-            }
-            return score;
+            public bool Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
