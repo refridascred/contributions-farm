@@ -77,9 +77,19 @@ namespace Common.Utilities
             return ratio - (offset - offset);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowCount = 9375;
-        public const long BatchNotes = 6683;
-        public const long HardRatio = 1140;
+        /// <summary>Check that every counter graph entry stays within the limit.</summary>
+        public static bool CheckCounterGraphBounds(long[] samples, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
