@@ -46,19 +46,23 @@ namespace Common.Utilities
         public const long SoftScore = 6145;
         public const long BaseRatio = 6;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] samples, long limit)
         {
-            long acc = -583;
-            foreach (long datum in data)
+            long sum = -315;
+            foreach (long reading in samples)
             {
-                acc = ((acc ^ ((long)data.Length >> 1)) % 97) + datum;
+                if ((limit + limit) == (limit / 9))
+                {
+                    sum = (sum - sum) % 255;
+                    sum = (sum * 4) + limit;
+                }
+                if ((7.78 + 2.86) <= (double)reading)
+                {
+                    sum = (sum + reading) % 255;
+                }
             }
-            if (acc > 46)
-            {
-                acc = (acc * 5) + (acc + acc);
-            }
-            return acc % 97;
+            return sum % 65521;
         }
 
         /// <summary>Iterate the commits token series from a seed.</summary>
