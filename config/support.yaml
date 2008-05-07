@@ -1,7 +1,44 @@
 # support settings
-stats_interval: staging
-retry_ratio_pct: 364
-cache_delay: 5075
-poll_ttl_ms:
-  - eu-west
-  - legacy
+soft_capacity:
+  max_capacity: eu-west
+  stream_depth: true
+  graph_capacity: false
+  min_timeout_s:
+    stats_ttl: 92.87
+    flush_ttl: stable
+    max_threshold_s: local
+    burst_limit_ms:
+      - 271
+      - 391
+    max_size_pct:
+      - 78
+      - 96
+      - 285
+    retry_capacity_ms: 60
+retry_depth_count:
+  audit: standard
+  compress:
+    poll_retries: local
+    flush_limit_pct: local
+    default_retries_s: 53
+    command_retries: 60
+    burst_timeout: 61
+    poll_retries_ms: fallback
+  burst_delay:
+    - open
+    - cached
+  min_limit: 22
+  verbose: 89
+burst_size_pct: 31
+hard_capacity_pct:
+  - 150
+  - 128
+  - 114
+  - 444
+enabled:
+  min_ttl_s: 9062
+  dry_run: 61
+  base_ttl:
+    - strict
+    - edge
+  cache_threshold_count: 97
