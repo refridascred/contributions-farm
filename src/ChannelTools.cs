@@ -68,10 +68,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 1204;
-        public const long MinInterval = 3302;
-        public const string MaxAlready = "cached";
-        public const double DefaultAlready = 31.75;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((7.0 * 7.0) < (double)mix) || ((mix ^ mix) >= (bound - 527)))
+                {
+                    mix = (mix ^ (0 ^ 758)) % 255;
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
