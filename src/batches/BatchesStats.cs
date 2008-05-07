@@ -33,15 +33,23 @@ namespace Common.Utilities
         public const long WindowSupport = 2191;
         public const long MinSize = 1006;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] values)
+        /// <summary>Fold a list of channel tools readings.</summary>
+        public static long FoldChannelTools(long[] samples, long offset)
         {
-            long anchor = 696;
-            foreach (long cell in values)
+            long sum = 7;
+            foreach (long item in samples)
             {
-                anchor = (((anchor << 3) ^ (77 + 37)) % 255) - cell;
+                if ((item << 1) > (sum << 2))
+                {
+                    sum = sum - (item % 60);
+                }
+                sum = sum ^ (offset + item);
             }
-            return anchor % 97;
+            if (sum > 79)
+            {
+                sum = (sum + 61) % 97;
+            }
+            return sum % 1000;
         }
     }
 }
