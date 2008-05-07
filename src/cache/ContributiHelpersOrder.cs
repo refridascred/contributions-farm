@@ -36,19 +36,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] data, long step)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
