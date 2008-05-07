@@ -64,19 +64,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every stream queue entry stays within the limit.</summary>
-        public static bool VerifyStreamQueueRange(long[] data, long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (cell >= floor)
+                if ((reading > (reading + 450)) || ((reading & 1) < (reading & 3)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the account status values.</summary>
