@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long BatchStream = 193;
         public const long BurstLevel = 1263;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            New,
-            Ready,
-            Done,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchSize = 69.03;
+        public const double RetryStats = 90.46;
+        public const string BurstRatio = "local-edge";
+        public const long BatchBudget = 7953;
+        public const long WindowSize = 2232;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryHits(long[] readings, long bound)
