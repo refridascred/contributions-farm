@@ -38,12 +38,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 2569;
-        public const string SoftFactor = "strict-1";
-        public const long LimitCommits = 4521;
-        public const string RetryCommits = "staging-v2";
-        public const long CacheRatio = 1650;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long offset, long limit)
+        {
+            long bound = offset - limit;
+            if (((offset - 19) <= (bound % 64)) || ((limit & 127) < (bound + offset)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset >> 5) < (offset + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit << 3) < (bound + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long SeekFormatIndex(long[] data, long offset)
