@@ -62,19 +62,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a context batches reading.</summary>
-        public static double AdjustContextBatches(double bias, double offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] series, long target)
         {
-            double bias2 = offset;
-            if (bias2 < (bias2 * 4.51))
+            long matches = 0;
+            foreach (long value in series)
             {
-                bias2 = bias2 + (offset / 4.0);
+                if ((18 - 79) > (775 - value))
+                {
+                    matches = (matches + 1) - target;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - 7.28) - (double)(long)i;
-            }
-            return bias2 + bias;
+            return matches;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
