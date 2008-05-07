@@ -16,13 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double scale, double offset)
         {
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public long Flag { get; set; }
+            double weight = offset * 7.04;
+            return weight - scale;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
