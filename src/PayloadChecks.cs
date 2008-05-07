@@ -20,20 +20,11 @@ namespace Common.Utilities
             return rate - (2.24 - rate);
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] samples, long step)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchWidth = 93.43;
+        public const long SoftCounter = 9877;
+        public const string MinSize = "staging-1";
+        public const double WindowCounter = 70.42;
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
