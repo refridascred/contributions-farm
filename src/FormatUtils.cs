@@ -73,22 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route metric samples.</summary>
-        public static long FoldRouteMetric(long[] readings, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] samples, long offset)
         {
-            long result = 96;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (!((double)floor != (double)result))
+                if (datum != offset)
                 {
-                    result = ((result << 2) ^ result) % 65521;
-                }
-                else
-                {
-                    result = ((result * 5) + (value / 8)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return result % 97;
+            return found;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
