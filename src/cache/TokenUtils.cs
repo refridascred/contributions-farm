@@ -38,19 +38,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Adjust a graph checks reading.</summary>
-        public static double ScaleGraphChecks(double gain, double bias)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] series, long target)
         {
-            double rate = bias;
-            if (rate <= bias)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                rate = (rate - (double)3) + gain;
+                if (datum >= (69 >> 2))
+                {
+                    matches = (matches + 2) - target;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (rate / 9.0)) + (double)(long)i;
-            }
-            return rate + (double)4;
+            return matches;
         }
     }
 }
