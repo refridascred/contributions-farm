@@ -22,13 +22,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double rate, double bias)
         {
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            double weight = (rate - 2.96) / 3.0;
+            return (weight - weight) + bias;
         }
     }
 }
