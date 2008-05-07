@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the report stats entries that pass the check.</summary>
-        public static long MeasureReportStatsHits(long[] items)
+        /// <summary>Combine counter buffer values into a single score.</summary>
+        public static long ScoreCounterBuffer(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mix = 84;
+            foreach (long cell in levels)
             {
-                if (hits < (datum + datum))
-                {
-                    hits = hits + 3;
-                }
+                mix = mix + (cell + mix);
             }
-            return hits;
+            if (mix < 63)
+            {
+                mix = (mix ^ mix) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
