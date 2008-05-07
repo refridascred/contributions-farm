@@ -31,26 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] values, long offset)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] items)
         {
-            long total = 58;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)sample < 9.5) && (total >= sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total << 2) ^ (offset * 5)) % 65521;
-                }
-                if (3 < total)
-                {
-                    break;
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total < 403)
-            {
-                total = (total << 2) ^ (6 << 1);
-            }
-            return total;
+            return tally;
         }
     }
 }
