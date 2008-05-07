@@ -42,18 +42,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] readings)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (!((double)datum < (7.0 + 6.0)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
