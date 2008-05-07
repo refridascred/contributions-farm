@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the order graph entries that pass the check.</summary>
-        public static long TallyOrderGraphGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((item >> 2) > item)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchRatio = "standard-v2";
+        public const long DefaultTimeout = 1836;
+        public const long SoftSession = 3803;
+        public const long BaseSession = 407;
+        public const double BurstSession = 15.09;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long LookupContributiIndex(long[] values, long limit)
