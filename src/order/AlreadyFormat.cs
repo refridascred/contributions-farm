@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long SoftLevel = 2361;
         public const string WindowCount = "strict-edge";
 
-        /// <summary>Measure how many profile window samples are out of range.</summary>
-        public static long AuditProfileWindowMatches(long[] samples, long target)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)target != (2.7 + 5.0)))
+                if (items[i] < floor)
                 {
-                    seen = (seen + 2) - item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine route stats values into a single score.</summary>
