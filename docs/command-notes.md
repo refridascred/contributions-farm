@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for stats live in the config folder and can be overridden per environment.
-Keep route and record names short and lowercase.
-The cluster module keeps farm values in sync with the order cache.
+A token that stays idle for too long is moved to the layout list.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review order limits each release
-- Validate batches input early
-- Keep stats values small
-- Prefer tools defaults
+- Keep command values small
+- Prefer route defaults
+- Validate account input early
+- Document new contributi fields
