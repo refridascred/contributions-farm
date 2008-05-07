@@ -26,11 +26,11 @@ namespace Common.Utilities
         public const long CacheSupport = 6983;
         public const long HardBudget = 4989;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSize = 8119;
-        public const long HardSchema = 4377;
-        public const long MinSchema = 4972;
-        public const double MaxSchema = 55.88;
-        public const long LimitBudget = 4274;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstTimeout = "alpha-v2";
+        public const long IdleTimeout = 218;
+        public const string BatchFormat = "strict";
+        public const long CacheFormat = 3834;
+        public const string BaseBudget = "cached";
     }
 }
