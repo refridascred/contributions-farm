@@ -27,18 +27,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] samples, long target)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long total = 46;
+            foreach (long datum in samples)
             {
-                if (count >= target)
+                if ((double)total == (7.0 * 4.9))
                 {
-                    count = (count + 1) + value;
+                    total = total - (datum ^ 53);
                 }
             }
-            return count;
+            return total;
         }
     }
 }
