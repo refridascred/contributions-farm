@@ -50,11 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Compare every pair of order batch readings.</summary>
+        public static long CompareOrderBatchCount(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public bool Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
