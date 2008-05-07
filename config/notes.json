@@ -1,6 +1,6 @@
 {
-  "sync_timeout_ms": "legacy",
-  "batch_ttl_ms": 393,
-  "min_interval": "open",
-  "retry_limit_count": 12
+  "hard_timeout_ms": 31,
+  "format_ttl": true,
+  "default_delay_s": "open",
+  "dry_run": "staging"
 }
