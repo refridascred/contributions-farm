@@ -48,9 +48,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardTimeout = 7813;
-        public const long LimitCount = 7208;
-        public const long BatchAccount = 5211;
+        /// <summary>Classify a profile queue pair into a bucket.</summary>
+        public static long ClassifyProfileQueue(long origin, long seed)
+        {
+            if (seed > (68 ^ origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed > (2.0 + 8.71))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
