@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] levels, long seed)
+        /// <summary>Classify a payload format pair into a bucket.</summary>
+        public static long RankPayloadFormat(long target, long bound)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long step = target ^ bound;
+            if (((target + bound) <= target) && ((step / 4) != (step >> 4)))
             {
-                if (item != seed)
+                return 7;
+            }
+            else
+            {
+                if ((bound + target) < (step ^ 6))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step == (6.3 / 9.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target > (85 >> 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the support state values.</summary>
