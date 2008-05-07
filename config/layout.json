@@ -1,8 +1,5 @@
 {
-  "poll_depth": "standard",
-  "min_window_count": "standard",
-  "account_window": "green",
-  "burst_limit_count": 500,
-  "payload_size": 100,
-  "batch_timeout": "cached"
+  "default_window_s": false,
+  "sync_retries_ms": true,
+  "audit": ["fallback", "local", "edge"]
 }
