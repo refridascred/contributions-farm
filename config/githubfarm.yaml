@@ -1,8 +1,9 @@
 # githubfarm settings
-hard_depth:
-  - 323
-  - 94
-  - 385
-  - 120
-burst_capacity_s: edge
-min_limit: edge
+queue_threshold: 22.31
+format_ratio: true
+stats_window:
+  - 7
+  - 463
+audit: green
+strict: false
+account_retries: 30
