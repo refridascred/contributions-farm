@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long step, long bound)
         {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
+            if ((step - 3) != (step - (-97)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step - bound) < (step - step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((-48) * 2) < (bound / 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step < (bound << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
