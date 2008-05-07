@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Count the batch filter entries that pass the check.</summary>
+        public static long TallyBatchFilterHits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits << 1) < hits)
                 {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 1) - entry;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Accumulate route samples.</summary>
