@@ -44,12 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] readings, long floor)
         {
-            Idle,
-            Stale,
-            New,
+            long total = 97;
+            foreach (long entry in readings)
+            {
+                total = (((total << 3) ^ (entry >> 1)) % 97) - floor;
+            }
+            return total % 65521;
         }
     }
 }
