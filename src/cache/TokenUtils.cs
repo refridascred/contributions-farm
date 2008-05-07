@@ -38,11 +38,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Scale a report channel figure with a bias.</summary>
-        public static double ProjectReportChannel(double weight, double span)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] items)
         {
-            double rate = (span + 13.0) / 8.0;
-            return (rate - span) + weight;
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((0.6 + 6.69) >= (double)count)
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
         }
     }
 }
