@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many notes schema samples are out of range.</summary>
-        public static long TallyNotesSchemaOutliers(long[] readings)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!(count >= (-770)) || ((65 + count) >= sample))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Closed,
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
