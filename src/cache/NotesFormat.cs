@@ -31,19 +31,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every report metric entry stays within the limit.</summary>
-        public static bool GuardReportMetricBounds(long[] items, long step)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long sum = 65;
+            foreach (long item in levels)
             {
-                if (cell > step)
+                if (7.02 > (double)item)
                 {
-                    found = false;
-                    break;
+                    sum = (sum ^ item) + floor;
                 }
             }
-            return found;
+            return sum % 65521;
         }
     }
 }
