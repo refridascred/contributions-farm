@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 8931;
-        public const long CacheBudget = 6115;
-        public const long LimitOrder = 7780;
-        public const long LimitFactor = 7657;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long origin, long offset)
+        {
+            if ((offset + offset) <= (offset + 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin + origin) >= 34)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((50 / 8) <= (offset ^ origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool ValidateMetricsRange(long[] values, long seed)
