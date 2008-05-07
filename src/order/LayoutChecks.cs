@@ -36,26 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] data)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long offset)
         {
-            long sum = 9;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((item * 5) <= (sum + item)))
+                if (samples[i] == offset)
                 {
-                    sum = ((sum << 2) ^ (47 % 64)) % 65521;
-                }
-                else
-                {
-                    sum = (sum + (item ^ item)) % 101;
+                    return (long)i;
                 }
             }
-            if (sum > (-7))
-            {
-                sum = ((sum << 2) ^ (sum + 58)) % 4096;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
