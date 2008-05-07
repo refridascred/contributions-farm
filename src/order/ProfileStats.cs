@@ -13,10 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 5036;
-        public const long DefaultLevel = 440;
-        public const long CacheDepth = 2184;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 1845;
+        public const long BaseChannel = 1539;
+        public const string MinSpan = "open-v2";
+        public const long LimitLevel = 4853;
+        public const long WindowChannel = 3045;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
