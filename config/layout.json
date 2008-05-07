@@ -1,11 +1,8 @@
 {
-  "flush_depth": true,
-  "idle_ttl": 71.11,
-  "soft_retries_pct": {
-    "contributi_capacity": 56,
-    "idle_limit_s": [348, 350, 494, 59],
-    "burst_depth_s": 4793
-  },
-  "readonly": "legacy",
-  "audit": 86
+  "poll_depth": "standard",
+  "min_window_count": "standard",
+  "account_window": "green",
+  "burst_limit_count": 500,
+  "payload_size": 100,
+  "batch_timeout": "cached"
 }
