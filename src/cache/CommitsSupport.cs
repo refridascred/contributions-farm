@@ -48,22 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of token tools readings.</summary>
-        public static long OverlapTokenToolsCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchBudget = "standard-v2";
+        public const long SoftWindow = 3689;
+        public const long CacheWindow = 5569;
 
         /// <summary>Validate session window readings against a bound.</summary>
         public static bool VerifySessionWindowLimits(long[] data, long limit)
