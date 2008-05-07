@@ -24,13 +24,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Ready,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitFactor = 29.72;
+        public const long MinLevel = 2698;
+        public const long BaseTimeout = 8314;
 
         /// <summary>Accumulate record samples.</summary>
         public static long CombineRecord(long[] data)
