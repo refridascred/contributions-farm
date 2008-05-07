@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftInterval = 5843;
-        public const long HardGithubfarm = 4431;
-        public const double WindowGithubfarm = 87.69;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample > (double)count)
+                {
+                    count = (count + 1) + target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double SmoothProfile(double rate, double offset)
