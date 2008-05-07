@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] series)
         {
-            Dropped,
-            Stale,
-            Draft,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((1.99 * 9.33) > (double)matches)
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
