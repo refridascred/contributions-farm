@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double scale, double floor)
         {
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
+            double weight = floor + (scale * 9.36);
+            if (weight > floor)
+            {
+                weight = weight - (double)729;
+            }
+            else
+            {
+                weight = weight - floor;
+            }
+            return weight + (weight + 4.34);
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
