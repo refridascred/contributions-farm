@@ -1,6 +1,7 @@
 {
-  "cache_ttl": "open",
-  "batches_limit": "primary",
-  "cache_timeout_pct": 29.5,
-  "githubfarm_capacity": 3740
+  "hard_delay_pct": ["cached", "local", "stable", "eu-west"],
+  "burst_limit_ms": 9647,
+  "cache_ratio_ms": "local",
+  "order_interval": 88.07,
+  "editor_ratio": [306, 34]
 }
