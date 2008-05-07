@@ -1,4 +1,9 @@
 # support settings
-enabled: 18
-burst_capacity_s: stable
-entry_ttl: false
+max_capacity_s: 60
+record_threshold:
+  - 86
+  - 335
+  - 47
+  - 82
+idle_ttl_ms: standard
+min_window_count: standard
