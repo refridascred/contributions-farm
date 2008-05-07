@@ -1,6 +1,22 @@
 # githubfarm settings
-farm_delay: false
-verbose: latest
-cache_delay_s:
-  - 193
-  - 358
+burst_threshold_s:
+  dry_run: 65
+  editor_depth: 84.35
+  flush_size:
+    - stable
+    - standard
+poll_window_ms: 72
+poll_retries:
+  readonly: 83
+  verbose: stable
+  idle_interval_count:
+    - 216
+    - 315
+    - 94
+  notes_delay: true
+profile_timeout:
+  batch_retries_count: 42
+  flush_delay_pct: false
+  base_depth: 31.66
+  audit: 46.74
+  max_ratio_count: 38.67
