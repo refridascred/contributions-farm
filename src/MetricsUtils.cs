@@ -73,18 +73,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] items)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((entry < count) && ((entry >> 4) >= (entry & 7)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Draft,
+            Stale,
+            Failed,
         }
     }
 }
