@@ -50,18 +50,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] values, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
+            long score = -746;
+            foreach (long value in values)
             {
-                mark = ((mark << 2) ^ target) % 101;
-                mark = mark + (target << 2);
-                mark = (mark * 4) + target;
-                mark = ((mark * 5) + (long)i) % 1000;
+                score = (score ^ (limit % 60)) + value;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Combine batches support values into a single score.</summary>
