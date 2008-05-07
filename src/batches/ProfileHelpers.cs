@@ -20,11 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] samples, long origin)
         {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((origin - origin) != (reading - matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
