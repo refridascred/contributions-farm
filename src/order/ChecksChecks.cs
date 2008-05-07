@@ -19,22 +19,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the payload metric entries that pass the check.</summary>
-        public static long MeasurePayloadMetricOutliers(long[] items)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (((long)items.Length - item) > 732)
+                if ((tally - datum) <= tally)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
