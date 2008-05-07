@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Count the githubfarm payload entries that pass the check.</summary>
+        public static long TallyGithubfarmPayloadOutliers(long[] data)
         {
-            Draft,
-            Dropped,
-            Synced,
-            Ready,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (value <= (value + value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
