@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxFilter = 93.55;
-        public const double BurstFilter = 0.76;
-        public const long MinFilter = 2331;
-        public const long LimitCount = 6968;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (matches >= item)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate contributi layout readings against a bound.</summary>
         public static bool GuardContributiLayoutRange(long[] values, long limit)
