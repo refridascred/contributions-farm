@@ -1,14 +1,6 @@
 {
-  "default_timeout_ms": 96,
-  "min_capacity": "edge",
-  "editor_limit": {
-    "idle_timeout_count": true,
-    "batch_window_pct": "open",
-    "readonly": 79.68,
-    "hard_depth_s": ["cached", "fallback", "strict"],
-    "max_capacity": "eu-west",
-    "idle_size_pct": "latest"
-  },
-  "notes_capacity": [310, 244],
-  "batch_limit": "cached"
+  "route_window": false,
+  "retry_interval_pct": ["latest", "blue"],
+  "max_retries_s": false,
+  "verbose": "local"
 }
