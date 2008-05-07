@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long HardLevel = 1300;
         public const string DefaultLevel = "fallback-v2";
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] samples, long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long anchor = 9;
+            foreach (long sample in values)
             {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor << 3) ^ (sample - 918);
             }
-            return flag;
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
