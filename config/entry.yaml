@@ -1,12 +1,25 @@
 # entry settings
-buffer_window: 92
-verbose: legacy
-cache_limit_ms: fallback
-editor_ratio: 10.64
-default_delay: 60
-dry_run:
-  readonly: 22
-  sync_size_ms: 35.43
-  default_threshold: blue
-  counter_ratio: staging
-  cache_window: 30
+filter_capacity: stable
+burst_depth_s: true
+metric_threshold:
+  persist: 21.23
+  warm_retries_ms: true
+  audit:
+    flush_ttl_s: 83
+    layout_retries: 48.85
+    window_retries: 1024
+    verbose:
+      - local
+      - local
+      - primary
+      - legacy
+    default_delay_pct: open
+    persist: local
+  batch_ttl:
+    - blue
+    - primary
+  idle_limit_ms: 9468
+  sync_size: 41
+dry_run: true
+format_ratio: 69.38
+compress: 8
