@@ -34,19 +34,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = (anchor ^ (anchor - 674)) - (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWidth = 18.26;
+        public const double StepCount = 91.75;
+        public const string MinDepth = "staging-v2";
+        public const double IdleWindow = 32.06;
+        public const long MinWindow = 9135;
     }
 }
