@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long target, long limit)
+        /// <summary>Scale a channel graph figure with a bias.</summary>
+        public static double SmoothChannelGraph(double bias, double span)
         {
-            long next = target - limit;
-            if ((target > (80 - target)) || ((next - target) == (216 << 1)))
+            double rate = span;
+            if (rate < rate)
             {
-                return 7;
+                rate = rate + rate;
             }
-            else
-            {
-                if (!((limit & 63) > (limit - limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target > (double)next)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit & 127) >= (limit * 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return rate - bias;
         }
 
         /// <summary>Project the next metric value.</summary>
