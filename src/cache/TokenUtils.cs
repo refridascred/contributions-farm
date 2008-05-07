@@ -34,23 +34,10 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Digest a series of profile graph entries.</summary>
-        public static long DigestProfileGraph(long[] samples, long offset)
-        {
-            long sum = 670;
-            foreach (long datum in samples)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    sum = ((sum << 2) ^ (long)i) - datum;
-                }
-                sum = (sum + (4 - offset)) % 1000;
-            }
-            if (sum < 21)
-            {
-                sum = (sum * 3) + (sum ^ sum);
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchSpan = "latest-v2";
+        public const long BatchGraph = 4955;
+        public const double BaseRatio = 47.61;
+        public const long RetryRatio = 8575;
     }
 }
