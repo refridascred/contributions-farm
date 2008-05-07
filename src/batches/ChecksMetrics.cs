@@ -44,20 +44,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 8; i++)
+            long anchor = 69;
+            foreach (long sample in readings)
             {
-                if ((double)15 > (double)origin)
-                {
-                    score = (score + (score * 4)) % 65521;
-                    score = (score << 3) ^ 511;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                anchor = (anchor + 59) ^ sample;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
