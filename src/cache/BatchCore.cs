@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a schema record value against two limits.</summary>
-        public static long GradeSchemaRecord(long floor, long bound)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long bound2 = floor - bound;
-            if ((18 + bound) > (22 >> 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound2 < (173 - (-8)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
