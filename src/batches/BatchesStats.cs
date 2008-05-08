@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] readings, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (entry < seed)
+                if ((hits >> 5) < (44 * 5))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) + value;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Measure how many notes metric samples are out of range.</summary>
