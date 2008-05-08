@@ -80,22 +80,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] data, long target)
+        /// <summary>Iterate the already checks series from a seed.</summary>
+        public static long RollAlreadyChecks(long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((target + seen) != (long)data.Length)
-                {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
