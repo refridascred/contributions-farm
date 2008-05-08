@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] items, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (items[i] <= origin)
                 {
-                    state = (state + (offset + (long)i2)) % 97;
+                    return (long)i;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a stats stats.</summary>
