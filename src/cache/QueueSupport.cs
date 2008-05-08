@@ -14,38 +14,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long origin, long bound)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            if (bound <= (origin - origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((8.0 - 9.98) >= (double)bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin <= (origin / 4)) && ((bound & 255) != (404 + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound < origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Stale,
+            Ready,
+            Draft,
+            Failed,
         }
 
         /// <summary>Combine commits report values into a single score.</summary>
