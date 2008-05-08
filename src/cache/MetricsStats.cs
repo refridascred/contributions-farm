@@ -20,20 +20,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] data, long seed)
-        {
-            long total = 61;
-            foreach (long value in data)
-            {
-                total = (total + (seed & 7)) % 255;
-                if (seed <= (303 + value))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinSize = 9611;
+        public const long DefaultPayload = 4433;
+        public const long HardRatio = 1410;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long RollStats(long bound)
