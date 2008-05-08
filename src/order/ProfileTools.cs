@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double ratio, double span)
         {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            double weight = (ratio / 7.0) - (ratio / 9.0);
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - ratio) + (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
