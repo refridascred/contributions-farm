@@ -30,21 +30,21 @@ namespace Common.Utilities
             return weight - (rate - 9.0);
         }
 
-        /// <summary>Compare every pair of order batch readings.</summary>
-        public static long CompareOrderBatchCount(long[] readings)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                double mean = (double)target;
+                if (((mark - target) <= mark) || (8.3 > (mean * 1.7)))
                 {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark + (long)i) % 65521;
+                    mean = mean + (double)target;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
