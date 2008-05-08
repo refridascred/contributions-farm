@@ -51,12 +51,24 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long target2)
         {
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
+            if ((29 + target2) >= 174)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((8.0 * 7.0) == (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
