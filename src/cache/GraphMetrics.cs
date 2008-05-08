@@ -41,17 +41,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] samples, long limit)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((samples[i] > limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
