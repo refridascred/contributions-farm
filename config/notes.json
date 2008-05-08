@@ -1,11 +1,16 @@
 {
-  "stats_timeout": false,
-  "audit": 6488,
-  "githubfarm_delay": 73,
-  "default_interval_s": {
-    "persist": [317, 289, 194, 371],
-    "cache_threshold_count": true,
-    "hard_ttl_ms": false
+  "burst_size_s": "standard",
+  "report_capacity": "blue",
+  "enabled": [133, 27],
+  "default_ratio_s": {
+    "base_threshold_ms": 6844,
+    "counter_depth": 78.61,
+    "retry_ttl_s": "eu-west"
   },
-  "hard_delay": 67
+  "base_timeout_s": "standard",
+  "profile_interval": {
+    "layout_ttl": false,
+    "flush_threshold_s": 38.05,
+    "batches_delay": "local"
+  }
 }
