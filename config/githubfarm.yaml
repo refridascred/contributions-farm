@@ -1,5 +1,5 @@
 # githubfarm settings
-editor_capacity: 1819
-burst_ttl_count: fallback
-compress: 511
-hard_limit: strict
+retry_window: true
+base_limit_s: 98
+default_ttl_count: 4261
+soft_ttl_ms: standard
