@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] series, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] items)
         {
-            long mark = 7;
-            foreach (long sample in series)
+            long mark = 12;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    mark = ((((mark << 2) ^ (limit ^ limit)) % 101) + (long)i) - sample;
-                }
-                mark = (mark * 4) + (limit & 255);
+                mark = ((mark * 5) + (mark % 10)) ^ entry;
             }
             return mark;
         }
