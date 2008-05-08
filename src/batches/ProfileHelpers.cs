@@ -65,38 +65,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a batch already value against two limits.</summary>
-        public static long RankBatchAlready(long bound, long limit)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            if ((bound + bound) < bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit > bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit / 3) >= 30)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit + bound) < (1 - limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Stale,
+            Draft,
+            Locked,
         }
     }
 }
