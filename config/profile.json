@@ -1,18 +1,8 @@
 {
-  "warm_interval": true,
-  "persist": false,
-  "token_ttl": "fallback",
-  "max_retries_pct": {
-    "default_capacity": {
-      "tools_delay": 1849,
-      "batch_timeout_count": "edge",
-      "base_threshold": 30,
-      "cache_ratio_count": 3990,
-      "base_ttl_count": true
-    },
-    "warm_window_pct": "legacy",
-    "burst_size": 2374,
-    "soft_size": 86.84,
-    "max_capacity_ms": 53
-  }
+  "support_ttl": true,
+  "min_interval_ms": 8676,
+  "compress": 63.62,
+  "verbose": "eu-west",
+  "soft_window": 500,
+  "idle_window_ms": true
 }
