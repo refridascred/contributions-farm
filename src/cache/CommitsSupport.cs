@@ -29,10 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 6655;
-        public const long SoftContext = 2159;
-        public const long CacheContext = 195;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Idle,
+            Failed,
+            Retry,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LocateTokenIndex(long[] values, long step)
