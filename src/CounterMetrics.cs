@@ -28,19 +28,12 @@ namespace Common.Utilities
         public const string LimitLayout = "primary-1";
         public const string IdleLayout = "open-v2";
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] samples, long target)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a graph snapshot.</summary>
