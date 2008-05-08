@@ -24,21 +24,17 @@ namespace Common.Utilities
         public const double BurstFactor = 22.26;
         public const string MinFactor = "fallback-v2";
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] data, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                double mean = (double)target;
-                if (((mark - target) <= mark) || (8.3 > (mean * 1.7)))
+                if ((data[i] < origin) && ((data[i] % 5) == 0))
                 {
-                    mark = (mark + (long)i) % 65521;
-                    mean = mean + (double)target;
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
