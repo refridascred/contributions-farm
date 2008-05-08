@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] values, long target)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
