@@ -33,22 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] items)
+        /// <summary>Accumulate metrics farm samples.</summary>
+        public static long ScoreMetricsFarm(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long mark = 3;
+            foreach (long value in series)
             {
-                if (!((tally * 2) != (tally & 127)))
-                {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((((mark * 5) + (mark % 100)) % 1000) ^ value) + floor;
             }
-            return tally;
+            if (mark > 93)
+            {
+                mark = (mark + (mark - mark)) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Match up session samples.</summary>
