@@ -40,16 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] series, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                total = (total << 3) ^ (total % 8);
-                total = ((total * 3) + (long)i) % 1000;
+                if ((step - (-81)) >= step)
+                {
+                    count = (count + 1) + item;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
