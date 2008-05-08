@@ -1,18 +1,10 @@
 # githubfarm settings
-strict:
-  commits_retries:
-    - 49
-    - 493
-    - 435
-  max_timeout:
-    - eu-west
-    - green
-  window_depth: 4365
-  audit: 33.5
-hard_capacity_ms: 39
-poll_depth_ms: 17.35
-layout_retries: 95.83
-max_interval_s:
-  - staging
-  - green
-  - eu-west
+base_delay_pct: 2292
+base_threshold_pct:
+  poll_retries_s: true
+  enabled: true
+  profile_delay: 100
+  flush_ttl: 60
+  contributi_window: 30
+  soft_delay_count: 82.71
+context_delay: true
