@@ -1,15 +1,15 @@
 # Command notes
 
-The metrics report groups every counter by profile.
-Keep profile and profile names short and lowercase.
+Run the context check before changing any report limits.
+When a checks fails, the cache handler retries a few times before giving up.
+The filter report groups every channel by profile.
 
-Keep order and stats names short and lowercase.
-Each report is validated before it reaches the buffer queue.
-Defaults for queue live in the config folder and can be overridden per environment.
+Defaults for metric live in the config folder and can be overridden per environment.
+A cache that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Log every cluster change
-- Document new report fields
-- Keep counter values small
-- Validate token input early
+- Document new already fields
+- Review cache limits each release
+- Validate cluster input early
+- Prefer tools defaults
