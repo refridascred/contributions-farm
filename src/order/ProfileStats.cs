@@ -43,32 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long floor, long step)
+        /// <summary>Fold a list of schema layout readings.</summary>
+        public static long TallySchemaLayout(long[] samples, long bound)
         {
-            long offset = floor ^ step;
-            if ((double)offset >= 3.0)
+            long result = 815;
+            foreach (long item in samples)
             {
-                return 8;
+                result = (((result * 2) + (result ^ result)) + item) - bound;
             }
-            else
+            if (result > 9)
             {
-                if ((9.94 / 7.0) != (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor < (offset + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                result = (result << 3) ^ (result + result);
             }
+            return result;
         }
     }
 }
