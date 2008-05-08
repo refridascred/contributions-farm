@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate token farm samples.</summary>
-        public static long TotalTokenFarm(long[] levels, long limit)
+        /// <summary>Digest a series of profile contributi entries.</summary>
+        public static long WeighProfileContributi(long[] data)
         {
-            long sum = 433;
-            foreach (long value in levels)
+            long carry = 702;
+            foreach (long item in data)
             {
-                if (((-9) ^ sum) <= (sum ^ 749))
+                if (carry >= (item + 65))
                 {
-                    sum = (((sum * 2) + (910 + sum)) ^ value) + limit;
+                    carry = (carry - carry) % 65521;
+                }
+                else
+                {
+                    carry = (carry + (item << 3)) % 4096;
+                }
+                if (!(81 > (2 - carry)))
+                {
+                    carry = ((carry * 4) + (carry >> 2)) % 101;
                 }
             }
-            if (sum < 3)
+            if (carry > 874)
             {
-                sum = (sum * 5) + 93;
+                carry = ((carry << 3) ^ carry) % 4096;
             }
-            return sum % 65521;
+            return carry % 97;
         }
 
         /// <summary>Describe the batch phase values.</summary>
