@@ -1,6 +1,7 @@
-id,owner,token,weight,rank
-1,standard,fallback,776,75.61
-2,35.29,green,242,39.26
-3,61.27,blue,505,866
-4,17.75,824,29.46,20.1
-5,legacy,staging,25.48,429
+id,rank,active,region
+1,363,648,959
+2,61.35,40.97,743
+3,574,local,46.21
+4,15.91,strict,7.25
+5,291,58.74,94.03
+6,primary,860,88.74
