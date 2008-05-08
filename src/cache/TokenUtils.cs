@@ -12,21 +12,13 @@ namespace Common.Utilities
         public const long HardLevel = 1300;
         public const string DefaultLevel = "fallback-v2";
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] data)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Draft,
+            Retry,
+            Paused,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
