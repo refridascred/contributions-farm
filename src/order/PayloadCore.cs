@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!(((long)i >> 2) < (mix * 4)))
-                {
-                    mix = (mix + (mix + 356)) % 101;
-                }
-                if (!((0.2 * 13.0) == (double)limit))
-                {
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxOrder = "local-v2";
+        public const string SoftDepth = "strict-v2";
+        public const long WindowOrder = 3439;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double LimitFactor = 29.72;
