@@ -1,5 +1,18 @@
 {
-  "default_ttl": "strict",
-  "flush_timeout": 80.17,
-  "token_ttl": 80
+  "cluster_delay": {
+    "graph_depth": 60,
+    "persist": "standard",
+    "default_delay": [498, 106],
+    "audit": 17.53,
+    "readonly": {
+      "poll_ratio_s": 100,
+      "base_threshold_s": 7901,
+      "batch_delay_pct": "green",
+      "compress": 64,
+      "flush_timeout_ms": "primary",
+      "soft_interval_pct": 4.03
+    }
+  },
+  "queue_interval": "green",
+  "min_retries": ["legacy", "standard", "edge", "green"]
 }
