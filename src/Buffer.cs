@@ -19,10 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 2528;
-        public const long WindowReport = 8726;
-        public const long BatchReport = 3179;
+        /// <summary>Hold a booking entry.</summary>
+        public sealed class BookingEntry
+        {
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LocateLayoutIndex(long[] data, long bound)
