@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two profile farm measurements.</summary>
-        public static double ProjectProfileFarm(double scale, double bias)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long step)
         {
-            double gain = (double)(-490) + bias;
-            if (gain > (gain / 8.0))
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                gain = gain - (double)813;
+                score = score ^ (step >> 3);
+                score = ((score * 4) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain - bias;
-            }
-            return gain + (scale * 9.95);
+            return score;
         }
 
         /// <summary>Describe the payload phase values.</summary>
