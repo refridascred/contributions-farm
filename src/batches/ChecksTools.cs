@@ -31,26 +31,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] items)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] levels, long seed)
         {
-            long mix = -13;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((3.95 + 4.18) == (double)entry)
+                if (datum <= seed)
                 {
-                    mix = mix + (mix / 3);
-                }
-                if (!(0 < (mix ^ mix)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (mix < 10)
-            {
-                mix = ((mix << 2) ^ (mix >> 4)) % 101;
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Project the next checks value.</summary>
