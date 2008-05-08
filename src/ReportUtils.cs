@@ -35,14 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            New,
-            Synced,
-            Idle,
-            Retry,
-            Locked,
+            public bool Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
