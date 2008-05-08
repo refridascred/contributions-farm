@@ -1,5 +1,5 @@
 {
-  "command_threshold": 849,
-  "cache_limit": 7748,
-  "checks_capacity": [337, 73, 61, 159]
+  "batch_interval": 0.07,
+  "max_window": 25,
+  "idle_limit": false
 }
