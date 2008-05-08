@@ -6,19 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-for item in strict staging; do
+for item in staging cached strict eu-west; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
+mode="${1:-fallback}"
 case "${mode}" in
-    latest)
+    standard)
         log "fast path"
         ;;
     *)
