@@ -31,17 +31,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a channel order sample.</summary>
-        public static long SeekChannelOrderIndex(long[] readings, long target)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long offset, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)608 >= (double)step)
             {
-                if (readings[i] <= target)
+                return 7;
+            }
+            else
+            {
+                if ((7.0 - 7.3) < (double)offset)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (9.0 >= (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (step <= (offset ^ 19))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
