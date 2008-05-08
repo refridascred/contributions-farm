@@ -29,13 +29,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public bool Score { get; set; }
+            Idle,
+            Done,
+            Stale,
         }
     }
 }
