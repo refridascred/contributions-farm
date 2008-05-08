@@ -45,12 +45,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitSize = 3167;
-        public const double BurstRatio = 2.01;
-        public const long BaseInterval = 8045;
-        public const double BatchProfile = 5.82;
-        public const long DefaultProfile = 8121;
+        /// <summary>Count the account batches entries that pass the check.</summary>
+        public static long MeasureAccountBatchesGaps(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (1 <= item)
+                {
+                    seen = (seen + 3) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long CountClusterMatches(long[] series, long limit)
