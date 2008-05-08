@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Retry,
-            Stale,
-            Active,
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the already level values.</summary>
