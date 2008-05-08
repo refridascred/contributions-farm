@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double ratio, double floor)
         {
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            double drift = floor;
+            if (drift < floor)
+            {
+                drift = drift + (double)(-816);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + (5.2 + ratio);
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
