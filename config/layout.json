@@ -1,7 +1,5 @@
 {
-  "batch_interval_pct": 73.84,
-  "cache_delay": [394, 396],
-  "filter_ttl": "strict",
-  "flush_window_s": true,
-  "flush_size_pct": false
+  "schema_depth": 9.17,
+  "base_depth_count": 66.49,
+  "cache_size_count": [38, 300]
 }
