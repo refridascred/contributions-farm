@@ -30,11 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] series, long step)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry != (1.22 - 3.0))
+                {
+                    matches = (matches + 1) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a format options.</summary>
