@@ -28,39 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long target, long limit)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long gap = target ^ limit;
-            if ((double)gap >= (double)9)
-            {
-                return 7;
-            }
-            else
-            {
-                if (742 >= gap)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target == (3.7 * 4.2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((6.63 - 2.99) >= (double)target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public bool Label { get; set; }
+            public double Flag { get; set; }
+            public double Total { get; set; }
         }
     }
 }
