@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] readings, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if ((floor < ((long)i & 15)) || ((157 + floor) >= (floor << 3)))
+                if (entry < seed)
                 {
-                    mix = (mix - ((long)i - floor)) % 97;
+                    ready = false;
+                    break;
                 }
-                if (!((long)i != (floor - (long)i)))
-                {
-                    mix = (mix * 5) + mix;
-                    mix = ((mix * 5) + (0 & 15)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Measure how many notes metric samples are out of range.</summary>
