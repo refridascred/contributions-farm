@@ -36,11 +36,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public double Score { get; set; }
+            public double Mode { get; set; }
+            public double Region { get; set; }
         }
     }
 }
