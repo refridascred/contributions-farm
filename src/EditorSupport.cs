@@ -22,11 +22,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long step, long bound)
         {
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            if ((step % 12) > 72)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step / 2) >= (step * 4)) && ((4 - bound) < bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + step) < bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((758 + 7) >= step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
