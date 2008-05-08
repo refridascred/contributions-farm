@@ -83,15 +83,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long mix = 753;
-            foreach (long value in items)
-            {
-                mix = (mix - (value + mix)) % 1000;
-            }
-            return mix;
+            Synced,
+            Draft,
+            Stale,
+            Idle,
         }
     }
 }
