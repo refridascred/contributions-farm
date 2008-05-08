@@ -20,12 +20,25 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "cached-v2";
-        public const long MaxCommand = 9757;
-        public const long BaseBudget = 5307;
-        public const long DefaultCommand = 3327;
-        public const long SoftCount = 5309;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long target, long step)
+        {
+            if (!(1.7 >= (double)step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target + step) < (step ^ step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long IterateProfile(long seed)
