@@ -1,17 +1,14 @@
 {
-  "min_limit_pct": {
-    "base_threshold": [165, 45, 10],
-    "idle_ttl_count": "latest",
-    "strict": false,
-    "dry_run": false,
-    "cache_window_s": {
-      "base_depth": 250,
-      "editor_ratio": 1024,
-      "profile_ratio": false,
-      "burst_threshold": 60
-    },
-    "warm_threshold": 7689
-  },
-  "batch_window": true,
-  "support_ratio": 500
+  "already_ratio": "eu-west",
+  "default_depth": 0.35,
+  "retry_interval_count": 87.6,
+  "base_window_pct": "stable",
+  "warm_depth_pct": {
+    "strict": 16.85,
+    "batch_delay": true,
+    "soft_window_ms": 8594,
+    "session_capacity": true,
+    "context_window": 87,
+    "soft_limit_ms": 500
+  }
 }
