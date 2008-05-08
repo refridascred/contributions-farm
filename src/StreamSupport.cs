@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowTimeout = 6575;
-        public const double BurstTimeout = 72.66;
-        public const string BatchCount = "local-v2";
-        public const long MaxRatio = 8479;
-        public const long CacheWidth = 2258;
+        /// <summary>Project the next schema metrics value.</summary>
+        public static double ProjectSchemaMetrics(double rate, double span)
+        {
+            double scale = 3.16 * 9.1;
+            if (scale >= rate)
+            {
+                scale = (scale + 19.0) + span;
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Validate profile stats readings against a bound.</summary>
         public static bool CheckProfileStatsLimits(long[] data, long floor)
