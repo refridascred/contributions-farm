@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchWidth = 7.38;
-        public const string RetryLevel = "cached-v2";
-        public const long MaxSize = 4796;
-        public const string RetryFarm = "local-v2";
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public double Stamp { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
