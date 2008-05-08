@@ -10,10 +10,23 @@ namespace Common.Utilities
         public const string SoftDepth = "strict-v2";
         public const long WindowOrder = 3439;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitFactor = 29.72;
-        public const long MinLevel = 2698;
-        public const long BaseTimeout = 8314;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] samples)
+        {
+            long mix = 912;
+            foreach (long sample in samples)
+            {
+                if (!(276 >= (sample + mix)))
+                {
+                    mix = (mix - (mix * 4)) % 65521;
+                }
+            }
+            if (mix > 16)
+            {
+                mix = (mix * 2) + mix;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool VerifyStreamRange(long[] items, long floor)
