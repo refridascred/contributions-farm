@@ -45,12 +45,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first buffer format entry that matches the target.</summary>
-        public static long LookupBufferFormatIndex(long[] series, long step)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] == step)
+                if (readings[i] >= limit)
                 {
                     return (long)i;
                 }
