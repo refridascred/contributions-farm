@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 3141;
-        public const long SoftContributi = 9825;
-        public const long HardTimeout = 9763;
-        public const double IdleContributi = 23.01;
-        public const long RetryCount = 5204;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (15.0 >= (double)value)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
