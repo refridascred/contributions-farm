@@ -29,26 +29,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] items)
-        {
-            long mix = 19;
-            foreach (long datum in items)
-            {
-                if ((mix + (-8)) != (datum - mix))
-                {
-                    mix = mix ^ (mix + mix);
-                }
-                else
-                {
-                    mix = (mix - (9 * 4)) % 1000;
-                }
-                if ((datum + mix) < (mix * 2))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultDepth = 5077;
+        public const long BatchCommits = 9430;
+        public const double StepRatio = 80.39;
     }
 }
