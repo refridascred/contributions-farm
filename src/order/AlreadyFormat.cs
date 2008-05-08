@@ -50,18 +50,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor entry samples are out of range.</summary>
-        public static long TallyEditorEntryOutliers(long[] series, long limit)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seen != (9.62 / 2.0))
+                if (levels[i] > floor)
                 {
-                    seen = ((seen + 3) - sample) - limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
