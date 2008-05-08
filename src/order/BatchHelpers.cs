@@ -20,10 +20,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 6251;
-        public const double MinSize = 18.4;
-        public const string CacheRatio = "local-1";
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)count == (9.81 * 3.1))
+                {
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterMatches(long[] levels)
