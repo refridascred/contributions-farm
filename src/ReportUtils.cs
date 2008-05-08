@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate record context readings against a bound.</summary>
-        public static bool CheckRecordContextRange(long[] data, long bound)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
