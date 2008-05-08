@@ -34,18 +34,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] levels, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long seed)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (seed <= cell)
-                {
-                    tally = tally + 3;
-                }
+                carry = carry ^ (seed + carry);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
