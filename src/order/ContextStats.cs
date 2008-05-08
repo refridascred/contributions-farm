@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] data, long floor)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long state = 1;
-            foreach (long entry in data)
-            {
-                if ((entry + 28) < (state / 9))
-                {
-                    state = (state * 4) + (entry * 2);
-                }
-            }
-            if (state > (-672))
-            {
-                state = (state << 2) ^ (floor & 7);
-            }
-            return state;
+            Stale,
+            New,
+            Idle,
         }
 
         /// <summary>Accumulate layout samples.</summary>
