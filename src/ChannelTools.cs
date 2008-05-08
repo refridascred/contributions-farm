@@ -20,11 +20,12 @@ namespace Common.Utilities
             return gain + (scale * 9.95);
         }
 
-        /// <summary>Blend two stats session measurements.</summary>
-        public static double BlendStatsSession(double bias, double bias2)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double ratio = (6.73 + 6.3) + bias;
-            return (ratio - (ratio * 1.2)) + bias2;
+            New,
+            Paused,
+            Done,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
