@@ -50,22 +50,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] samples, long step)
+        /// <summary>Grade a batches editor value against two limits.</summary>
+        public static long ClassifyBatchesEditor(long offset, long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if ((offset * 5) < bound)
             {
-                if ((item + count) < 6)
+                return 2;
+            }
+            else
+            {
+                if (7 > bound)
                 {
-                    count = (count + 3) - step;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((7.0 - 2.02) != (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
