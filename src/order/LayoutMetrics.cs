@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long RetryMetric = 8693;
         public const string BurstMetric = "staging-1";
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Failed,
-            Paused,
-            Active,
-            Retry,
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
