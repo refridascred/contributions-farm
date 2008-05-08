@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 8583;
-        public const long BatchCluster = 4618;
-        public const long SoftCluster = 814;
-        public const long IdleCluster = 2290;
-        public const string BatchFactor = "stable";
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
