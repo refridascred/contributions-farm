@@ -59,21 +59,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 67;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum - datum) != (total % 8))
                 {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total << 2) ^ (limit ^ limit)) % 1000;
+                    total = ((total << 3) ^ (datum - total)) % 255;
+                }
+                total = ((total * 5) + (limit - datum)) % 97;
+                if (!((datum << 3) >= (limit + limit)))
+                {
+                    total = (total - datum) % 1000;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
