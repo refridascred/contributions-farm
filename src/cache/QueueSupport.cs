@@ -25,17 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] samples, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (samples[i] <= target)
+                if ((hits + 438) < hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 3) ^ entry) + step;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
