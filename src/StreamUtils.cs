@@ -17,27 +17,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of filter metrics entries.</summary>
-        public static long TallyFilterMetrics(long[] series)
-        {
-            long state = 25;
-            foreach (long sample in series)
-            {
-                if ((double)sample >= (double)state)
-                {
-                    state = ((state << 2) ^ (sample + 8)) % 65521;
-                }
-                else
-                {
-                    state = state + (1 + 891);
-                }
-            }
-            if (state < 86)
-            {
-                state = (state - (state + state)) % 97;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryTimeout = 1152;
+        public const long SoftBatches = 4564;
+        public const long BaseRatio = 104;
 
         /// <summary>Derive the next route cluster value from a seed.</summary>
         public static long SeriesRouteCluster(long offset)
