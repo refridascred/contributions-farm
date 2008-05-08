@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long seed, long limit)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Score { get; set; }
+            long offset = seed - limit;
+            if ((300 >= seed) || ((seed / 3) != (limit ^ limit)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (0.9 < (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((16 - seed) >= (offset << 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit - offset) >= (808 % 24))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
