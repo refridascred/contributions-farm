@@ -1,7 +1,15 @@
 # entry settings
-counter_delay: 3073
-hard_window_s: latest
-dry_run: 18.12
-checks_ratio: strict
-payload_retries: eu-west
-min_ttl: false
+session_ratio:
+  - primary
+  - cached
+  - open
+  - fallback
+batch_interval:
+  cache_capacity: 4660
+  window_threshold: eu-west
+  warm_size_ms: 71.91
+  queue_retries: edge
+githubfarm_capacity: false
+max_threshold_s: 4907
+max_limit_ms: 44.98
+stream_interval: 250
