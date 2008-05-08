@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double WindowFilter = 66.23;
         public const string BurstBudget = "open";
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((((reading / 3) > (seen & 127)) && ((double)seen < (double)875)) || (seen > (reading - seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 683;
+        public const long IdleWidth = 6195;
+        public const long StepFactor = 527;
+        public const long BatchContributi = 4353;
+        public const long RetryScore = 9792;
 
         /// <summary>Locate a record account reading by value.</summary>
         public static long LocateRecordAccountIndex(long[] series, long target)
