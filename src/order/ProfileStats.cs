@@ -27,17 +27,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long floor, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            if (298 < (floor % 16))
             {
-                mark = ((mark << 3) ^ (long)i) % 255;
-                mark = ((mark * 3) + (limit - 82)) % 4096;
-                mark = ((mark * 3) + (long)i) % 97;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if (floor <= (floor >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
