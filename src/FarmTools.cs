@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = (carry + (long)i) % 65521;
-                if ((14 >> 5) >= (carry + (long)i))
-                {
-                    carry = (carry ^ (bound % 60)) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "alpha-edge";
+        public const string RetryProfile = "latest-v2";
+        public const long WindowProfile = 2292;
+        public const long IdleSpan = 7486;
+        public const string BatchProfile = "local-v2";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchFactor = 147;
