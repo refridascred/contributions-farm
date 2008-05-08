@@ -68,11 +68,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] samples, long origin)
         {
-            public bool Count { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((5.0 * 13.0) == (double)hits)
+                {
+                    hits = ((hits + 2) ^ cell) - origin;
+                }
+            }
+            return hits;
         }
     }
 }
