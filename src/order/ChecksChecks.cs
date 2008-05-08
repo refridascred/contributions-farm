@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinDepth = 1707;
-        public const long CachePayload = 4541;
-        public const long CacheSize = 2519;
-        public const long LimitWidth = 7717;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double scale, double floor)
+        {
+            double ratio = scale;
+            if (ratio < floor)
+            {
+                ratio = ratio - (scale / 3.0);
+            }
+            else
+            {
+                ratio = ratio - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + 5.0) + (double)(long)i;
+            }
+            return ratio + (floor * 4.0);
+        }
 
         /// <summary>Count the metrics schema entries that pass the check.</summary>
         public static long TallyMetricsSchemaHits(long[] samples, long limit)
