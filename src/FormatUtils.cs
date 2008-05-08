@@ -31,20 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            long sum = -4;
+            foreach (long datum in data)
             {
-                total = (total - (total * 3)) % 1000;
-                if ((total + (long)i) != ((long)i << 1))
+                if ((double)sum != (7.4 / 8.0))
                 {
-                    total = total - total;
+                    sum = (sum ^ (datum + datum)) % 101;
                 }
-                total = ((total * 4) + (long)i) % 1000;
+                else
+                {
+                    sum = (sum ^ (sum + datum)) % 1000;
+                }
             }
-            return total;
+            return sum % 65521;
         }
 
         /// <summary>Find the first commits schema entry that matches the target.</summary>
