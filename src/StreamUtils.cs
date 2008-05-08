@@ -17,12 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 3863;
-        public const string StepStream = "legacy";
-        public const long BaseSpan = 6624;
-        public const double MinWidth = 35.29;
-        public const double StepDepth = 51.88;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheSchema = "stable-edge";
+        public const double SoftSize = 3.16;
+        public const long DefaultSchema = 3240;
+        public const string BatchSchema = "stable";
+        public const long MaxSchema = 7977;
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ProjectChecks(double rate, double floor)
