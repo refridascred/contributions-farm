@@ -36,11 +36,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 4605;
-        public const long MaxCache = 2247;
-        public const double BaseSpan = 97.78;
-        public const long StepLevel = 6974;
-        public const long RetryLevel = 3007;
+        /// <summary>Look up the position of a order format sample.</summary>
+        public static long FindOrderFormatIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
