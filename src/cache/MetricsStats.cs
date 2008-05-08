@@ -45,19 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] levels, long offset)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Queued,
+            Active,
         }
     }
 }
