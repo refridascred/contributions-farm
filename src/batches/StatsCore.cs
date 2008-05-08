@@ -17,23 +17,11 @@ namespace Common.Utilities
         public const string CacheInterval = "stable-v2";
         public const long IdleBudget = 5239;
 
-        /// <summary>Count the account batches entries that pass the check.</summary>
-        public static long MeasureAccountBatchesGaps(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (1 <= item)
-                {
-                    seen = (seen + 3) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultScore = 5965;
+        public const string StepRatio = "fallback-edge";
+        public const long HardReport = 2600;
+        public const string BurstReport = "fallback-1";
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long CountClusterMatches(long[] series, long limit)
