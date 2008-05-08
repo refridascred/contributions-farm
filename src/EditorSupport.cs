@@ -70,11 +70,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double ratio, double floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            double bias = (double)(56 ^ 692);
-            return (bias + (bias + ratio)) + floor;
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a graph header.</summary>
