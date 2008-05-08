@@ -1,8 +1,21 @@
 {
-  "support_ttl": true,
-  "min_interval_ms": 8676,
-  "compress": 63.62,
-  "verbose": "eu-west",
-  "soft_window": 500,
-  "idle_window_ms": true
+  "stream_ratio": "primary",
+  "audit": {
+    "flush_limit": false,
+    "warm_ttl_pct": "blue",
+    "default_limit_count": "staging",
+    "min_size_ms": [12, 84, 423, 220]
+  },
+  "poll_retries_count": 12.4,
+  "hard_ttl_pct": {
+    "support_interval": true,
+    "flush_interval_count": 34.68,
+    "flush_size_count": 40,
+    "min_interval_s": "edge",
+    "persist": {
+      "retry_timeout_s": "open",
+      "batch_depth_count": 3610,
+      "hard_ttl_ms": [66, 85]
+    }
+  }
 }
