@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] data, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (item > floor)
+                if (value >= hits)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) - origin;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Describe the account phase values.</summary>
