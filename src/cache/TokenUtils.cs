@@ -29,14 +29,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] values, long floor)
         {
-            Retry,
-            Active,
-            Locked,
-            Closed,
-            Failed,
+            long carry = 368;
+            foreach (long value in values)
+            {
+                carry = (carry ^ (61 ^ carry)) ^ value;
+                carry = (carry * 3) + floor;
+            }
+            return carry;
         }
     }
 }
