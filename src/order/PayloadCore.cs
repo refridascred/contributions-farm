@@ -25,10 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryBudget = 8524;
-        public const long HardNotes = 1631;
-        public const long BaseDepth = 3551;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Done,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long BucketBuffer(long limit, long bound)
