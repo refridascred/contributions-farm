@@ -19,18 +19,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] items)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long acc = -1;
+            foreach (long datum in levels)
             {
-                if ((double)tally < (double)reading)
+                if (((double)datum >= 9.5) || (datum >= (acc - acc)))
                 {
-                    tally = tally + 3;
+                    acc = acc - (datum >> 1);
                 }
             }
-            return tally;
+            if (acc > 55)
+            {
+                acc = ((acc << 2) ^ (acc ^ acc)) % 101;
+            }
+            return acc % 97;
         }
     }
 }
