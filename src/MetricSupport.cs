@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] levels, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] readings)
         {
-            long mark = -9;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                mark = ((mark << 2) ^ value) + step;
+                if ((7.0 * 4.17) < (double)seen)
+                {
+                    seen = (seen + 3) + item;
+                }
             }
-            if (mark > 5)
-            {
-                mark = ((mark * 3) + 3) % 97;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
