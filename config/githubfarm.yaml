@@ -1,12 +1,11 @@
 # githubfarm settings
-session_window: false
-route_interval: 5714
-base_limit:
-  - edge
-  - legacy
-  - latest
-  - eu-west
-strict: 23.12
-readonly:
-  - fallback
+max_threshold_pct: 1553
+flush_ratio_count: 62
+idle_interval_s: fallback
+strict: false
+dry_run: 88.45
+max_window:
+  - standard
+  - green
   - primary
+  - eu-west
