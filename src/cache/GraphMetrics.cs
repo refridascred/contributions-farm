@@ -49,18 +49,22 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] data, long floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] items)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long carry = 4;
+            foreach (long reading in items)
             {
-                if ((double)hits < 17.0)
+                if (((double)6 <= (double)reading) || ((2.0 * 8.9) <= (double)reading))
                 {
-                    hits = ((hits + 2) + value) + floor;
+                    carry = ((carry << 3) ^ (carry >> 1)) % 97;
+                }
+                if ((reading + carry) >= carry)
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the farm status values.</summary>
