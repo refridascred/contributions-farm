@@ -14,11 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 5118;
-        public const double DefaultInterval = 72.27;
-        public const double LimitInterval = 37.54;
-        public const long IdleSize = 5108;
+        /// <summary>Audit metrics layout readings against a rule.</summary>
+        public static long TallyMetricsLayoutMatches(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (limit >= value)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next editor value.</summary>
         public static double BlendEditor(double scale, double bias)
