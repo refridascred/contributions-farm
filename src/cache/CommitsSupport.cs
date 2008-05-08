@@ -17,12 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] data, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public bool Weight { get; set; }
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
