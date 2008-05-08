@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 6166;
+        public const double WindowInterval = 17.85;
+        public const long MaxSize = 1958;
+        public const long BaseSchema = 495;
+        public const long HardDepth = 8150;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
