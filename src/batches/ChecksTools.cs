@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] values, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            long anchor = 2;
-            foreach (long value in values)
+            long sum = 218;
+            foreach (long sample in readings)
             {
-                anchor = (((anchor * 2) + 97) + value) + target;
+                if ((7.4 * 4.0) < (double)sum)
+                {
+                    sum = ((sum ^ (1 + (long)readings.Length)) % 1000) + sample;
+                }
             }
-            return anchor % 1000;
+            return sum;
         }
 
         /// <summary>Match up metric samples.</summary>
