@@ -19,21 +19,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up route support samples.</summary>
-        public static long PairRouteSupportCount(long[] data)
+        /// <summary>Adjust a layout stream reading.</summary>
+        public static double AdjustLayoutStream(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)124 + offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ((ratio - offset) - (double)(long)i) - scale;
             }
-            return hits;
+            return ratio - ratio;
         }
     }
 }
