@@ -20,17 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a context graph sample.</summary>
-        public static long LookupContextGraphIndex(long[] readings, long step)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
+                score = (score ^ (bound & 255)) % 101;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
