@@ -40,19 +40,19 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 2284;
         public const string MinLevel = "open-v2";
 
-        /// <summary>Validate graph context readings against a bound.</summary>
-        public static bool GuardGraphContextLimits(long[] samples, long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (entry < floor)
+                if (reading > limit)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
