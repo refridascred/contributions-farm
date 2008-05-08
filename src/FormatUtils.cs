@@ -59,23 +59,11 @@ namespace Common.Utilities
         public const string DefaultDepth = "open-edge";
         public const long MinFormat = 8004;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] items, long floor)
-        {
-            long result = 575;
-            foreach (long sample in items)
-            {
-                result = (result ^ 0) % 65521;
-                if ((result & 127) >= (floor << 2))
-                {
-                    result = result ^ (floor % 5);
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result + sample)) % 1000;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleRatio = 916;
+        public const double StepLevel = 70.62;
+        public const long WindowProfile = 9738;
+        public const string WindowBudget = "open-v2";
+        public const string BatchInterval = "alpha";
     }
 }
