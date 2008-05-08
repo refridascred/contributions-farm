@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next context queue value.</summary>
-        public static double ScaleContextQueue(double scale, double floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            double mean = floor / 8.0;
-            if (mean < floor)
-            {
-                mean = mean + scale;
-            }
-            return mean - floor;
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of report readings.</summary>
