@@ -42,15 +42,23 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Blend two batches queue measurements.</summary>
-        public static double SmoothBatchesQueue(double weight, double span)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] items, long limit)
         {
-            double bias = (double)(760 << 3);
-            if (bias >= weight)
+            long acc = 6;
+            foreach (long entry in items)
             {
-                bias = bias - span;
+                acc = (acc - (entry / 7)) % 1000;
+                if (entry >= (acc + entry))
+                {
+                    acc = ((acc << 2) ^ (limit + entry)) % 4096;
+                }
             }
-            return bias + (span + weight);
+            if (acc < 1)
+            {
+                acc = (acc - (acc >> 5)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Describe the farm state values.</summary>
