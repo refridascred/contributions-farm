@@ -1,6 +1,21 @@
 {
-  "hard_retries": 1.93,
-  "warm_delay_count": false,
-  "support_ttl": "strict",
-  "hard_window_s": 35
+  "contributi_timeout": {
+    "default_interval_ms": "cached",
+    "warm_ratio": true,
+    "record_window": "fallback",
+    "soft_retries_count": {
+      "verbose": "staging",
+      "soft_threshold_count": "latest",
+      "hard_retries_s": 30
+    }
+  },
+  "base_ttl_s": "standard",
+  "readonly": "eu-west",
+  "flush_depth_ms": {
+    "hard_retries_pct": false,
+    "base_window": "open",
+    "support_limit": false,
+    "audit": true,
+    "default_size_pct": "blue"
+  }
 }
