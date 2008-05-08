@@ -48,17 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] data, long floor)
+        /// <summary>Combine commits report values into a single score.</summary>
+        public static long ScoreCommitsReport(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 307;
+            foreach (long datum in series)
             {
-                if (data[i] > floor)
+                if ((70 - anchor) > (datum + anchor))
                 {
-                    return (long)i;
+                    anchor = ((anchor ^ ((-1) * 4)) % 1000) + target;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
