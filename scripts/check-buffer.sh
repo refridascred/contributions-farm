@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open edge legacy cached; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=213
+log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 12); do
     total=$((total + i * 5))
 done
 log "total ${total}"
