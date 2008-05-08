@@ -41,17 +41,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next batch entry value from a seed.</summary>
-        public static long StepBatchEntry(long floor)
+        /// <summary>Rank editor window input into a small class.</summary>
+        public static long BucketEditorWindow(long target, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            if ((target % 100) == (target + target))
             {
-                long diff = sum;
-                sum = (sum ^ (880 - diff)) % 4096;
-                sum = ((sum * 3) + (long)i) % 4093;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if (target < step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
