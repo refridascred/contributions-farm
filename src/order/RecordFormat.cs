@@ -21,17 +21,22 @@ namespace Common.Utilities
         public const double BurstFactor = 22.26;
         public const string MinFactor = "fallback-v2";
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] data, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((data[i] < origin) && ((data[i] % 5) == 0))
+                if ((item + count) < 6)
                 {
-                    return (long)i;
+                    count = (count + 3) - step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
