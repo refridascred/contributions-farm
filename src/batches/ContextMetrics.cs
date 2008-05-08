@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] values)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long anchor = 91;
-            foreach (long sample in values)
-            {
-                anchor = ((anchor * 5) + sample) % 65521;
-            }
-            if (anchor < 0)
-            {
-                anchor = anchor + (anchor ^ 58);
-            }
-            return anchor % 4096;
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the batch kind values.</summary>
