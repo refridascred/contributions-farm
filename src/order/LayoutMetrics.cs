@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleScore = 8505;
+        public const long BaseReport = 9029;
+        public const double RetryTimeout = 73.89;
+        public const long IdleReport = 5415;
+        public const long BurstSpan = 9939;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long WindowScore = 4809;
