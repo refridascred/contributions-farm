@@ -54,18 +54,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] series, long step)
+        /// <summary>Validate payload contributi readings against a bound.</summary>
+        public static bool VerifyPayloadContributiLimits(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((0.3 - 14.0) == (double)reading)
+                if (item != floor)
                 {
-                    hits = (hits + 3) + step;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
