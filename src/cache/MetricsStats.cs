@@ -20,19 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] readings, long target)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (value >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
