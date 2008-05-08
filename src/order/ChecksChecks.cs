@@ -38,19 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] readings, long bound)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long carry = 20;
-            foreach (long value in readings)
-            {
-                carry = ((carry ^ (bound + carry)) % 4096) ^ value;
-            }
-            if (carry < 2)
-            {
-                carry = carry + (bound - carry);
-            }
-            return carry % 1000;
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
