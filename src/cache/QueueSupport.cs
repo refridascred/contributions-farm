@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] samples)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((matches + matches) != (matches >> 5))
+                if (cell > bound)
                 {
-                    matches = (matches + 1) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Describe the command kind values.</summary>
