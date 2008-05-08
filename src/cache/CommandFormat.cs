@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepInterval = 5166;
-        public const double IdleWindow = 84.86;
-        public const long CacheFactor = 4743;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long RetryAccount = 6848;
