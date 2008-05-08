@@ -16,11 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "open-edge";
-        public const string StepGithubfarm = "fallback-v2";
-        public const long MaxWidth = 7850;
-        public const double DefaultLevel = 89.1;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                state = state + ((long)i + bound);
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long SeriesToken(long limit)
