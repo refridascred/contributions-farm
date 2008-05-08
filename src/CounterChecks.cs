@@ -30,19 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] data, long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (bound > (80 + carry))
+                if ((data[i] > offset) && ((data[i] % 5) == 0))
                 {
-                    carry = (carry + 63) % 1000;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a contributi options.</summary>
