@@ -16,11 +16,17 @@ namespace Common.Utilities
             return gain2 + (gain - gain);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchFactor = 147;
-        public const long CacheSession = 6759;
-        public const long StepDepth = 6172;
-        public const long StepSession = 1949;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 5) + ((long)i + (long)i)) % 97;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LookupFilterIndex(long[] data, long floor)
