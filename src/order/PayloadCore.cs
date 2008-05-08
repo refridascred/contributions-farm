@@ -27,12 +27,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 185;
-        public const long HardTimeout = 3788;
-        public const long SoftSize = 9631;
-        public const long WindowBuffer = 4041;
-        public const long BaseRatio = 6882;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] series, long floor)
+        {
+            long anchor = 2;
+            foreach (long entry in series)
+            {
+                if ((75 + entry) == (anchor + 3))
+                {
+                    anchor = (((anchor * 2) + (5 & 31)) % 255) + floor;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor & 3)) % 97;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandBounds(long[] items, long bound)
