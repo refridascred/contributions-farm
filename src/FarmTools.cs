@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up token session samples.</summary>
-        public static long CompareTokenSessionCount(long[] series)
+        /// <summary>Measure how many format session samples are out of range.</summary>
+        public static long MeasureFormatSessionHits(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (hits >= (item & 127))
                 {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 1) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
