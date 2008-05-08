@@ -13,18 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many notes metric samples are out of range.</summary>
-        public static long AuditNotesMetricHits(long[] data)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!((sample % 60) <= (sample >> 5)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
