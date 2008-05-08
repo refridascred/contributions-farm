@@ -1,9 +1,6 @@
-id,region,active
-1,fallback,open
-2,677,6
-3,749,cached
-4,stable,21.73
-5,89.84,cached
-6,559,165
-7,staging,38.55
-8,staging,45.07
+id,score,rank,level
+1,568,blue,667
+2,755,8.49,15.33
+3,14.89,44.82,813
+4,90.81,90.18,864
+5,legacy,cached,57.62
