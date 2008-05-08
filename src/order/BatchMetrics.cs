@@ -13,16 +13,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double scale, double offset)
-        {
-            double scale2 = (scale - scale) * 7.3;
-            if (scale2 < (double)2)
-            {
-                scale2 = scale2 - scale2;
-            }
-            return scale2 - offset;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstFactor = 29.36;
+        public const double HardFilter = 66.35;
+        public const double StepRatio = 55.12;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool VerifyMetricsLimits(long[] items, long limit)
