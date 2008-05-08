@@ -21,11 +21,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double gain, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] items)
         {
-            double load = (double)0 - (2.0 + gain);
-            return (load + (7.2 - 4.4)) + span;
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)tally < (double)reading)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
