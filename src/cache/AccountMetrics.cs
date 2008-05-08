@@ -23,32 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long offset, long step)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long next = offset ^ step;
-            if (!(step <= (step * 5)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((5.04 - 7.62) >= (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((0.1 * 15.0) > (double)next) && ((step - step) <= (-6)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Synced,
+            New,
         }
 
         /// <summary>Define command limits and defaults.</summary>
