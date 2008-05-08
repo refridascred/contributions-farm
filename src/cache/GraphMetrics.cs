@@ -48,18 +48,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] levels, long origin)
+        /// <summary>Digest a series of counter route entries.</summary>
+        public static long ScoreCounterRoute(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long mark = 3;
+            foreach (long item in readings)
             {
-                if (7 >= (6 + seen))
+                if ((8.97 * 10.0) > (double)mark)
                 {
-                    seen = ((seen + 1) + item) - origin;
+                    mark = (((mark << 2) ^ (342 % 16)) % 65521) - item;
                 }
             }
-            return seen;
+            if (mark > 23)
+            {
+                mark = (mark + (mark + 34)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
