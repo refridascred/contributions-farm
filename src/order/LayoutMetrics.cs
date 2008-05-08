@@ -15,16 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                total = (total * 3) + seed;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Ready,
+            Paused,
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a batches info.</summary>
