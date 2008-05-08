@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] series)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] levels, long origin)
         {
-            long state = 70;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state * 4) + (value + value);
+                if ((levels[i] > origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Fold a list of checks window readings.</summary>
