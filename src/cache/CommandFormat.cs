@@ -26,13 +26,12 @@ namespace Common.Utilities
         public const long CacheAccount = 2438;
         public const double HardAccount = 14.27;
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 65;
+        public const long SoftGithubfarm = 5437;
+        public const double BurstBudget = 89.12;
+        public const long BurstGithubfarm = 2284;
+        public const string MinLevel = "open-v2";
 
         /// <summary>Measure how many batches stream samples are out of range.</summary>
         public static long CountBatchesStreamOutliers(long[] data, long offset)
