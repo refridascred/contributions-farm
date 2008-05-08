@@ -29,21 +29,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of batches channel readings.</summary>
-        public static long PairBatchesChannelCount(long[] series)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = -324;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sum <= (reading - sum))
                 {
-                    if ((series[i] ^ series[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = sum - (sum << 3);
+                }
+                else
+                {
+                    sum = (sum ^ (sum % 8)) % 101;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Locate a already reading by value.</summary>
