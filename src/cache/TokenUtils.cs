@@ -29,19 +29,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double ratio, double span)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double bias = ratio;
-            if (bias >= ratio)
-            {
-                bias = bias + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (double)3) + (double)(long)i;
-            }
-            return bias - (span + bias);
+            Retry,
+            Active,
+            Locked,
+            Closed,
+            Failed,
         }
     }
 }
