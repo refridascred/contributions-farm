@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] readings)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (entry >= (matches + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
