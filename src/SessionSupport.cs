@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
