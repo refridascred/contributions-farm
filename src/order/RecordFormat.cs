@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] items, long limit)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long result = 6;
-            foreach (long sample in items)
-            {
-                result = (result << 2) ^ sample;
-            }
-            if (result > 3)
-            {
-                result = (result + (limit - limit)) % 65521;
-            }
-            return result % 97;
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
