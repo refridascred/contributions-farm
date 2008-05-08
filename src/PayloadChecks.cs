@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 6264;
+        public const long WindowDepth = 30;
+        public const long CacheNotes = 3348;
+        public const long RetryScore = 6235;
+        public const long BatchSize = 5590;
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
