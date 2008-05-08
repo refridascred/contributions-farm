@@ -44,18 +44,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] samples)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (!((353 + 8) < (long)samples.Length))
+                if (entry < floor)
                 {
-                    count = (count + 2) + cell;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Combine batches support values into a single score.</summary>
