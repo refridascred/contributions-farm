@@ -19,14 +19,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] items, long limit)
         {
-            Idle,
-            New,
-            Dropped,
-            Failed,
-            Paused,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
