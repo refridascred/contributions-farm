@@ -74,11 +74,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            New,
+            Synced,
+            Failed,
         }
     }
 }
