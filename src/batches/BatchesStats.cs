@@ -53,11 +53,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long floor, long seed)
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            if (7.0 < (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((653 / 3) < seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - floor) == (floor / 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed << 1) == (seed ^ floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
