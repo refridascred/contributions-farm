@@ -18,21 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count session support pairs that satisfy a relation.</summary>
-        public static long MatchSessionSupportCount(long[] readings)
+        /// <summary>Roll a metrics record counter forward.</summary>
+        public static long StepMetricsRecord(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = mark - ((long)i + mark);
+                mark = (mark - (origin >> 2)) % 255;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a schema entry.</summary>
