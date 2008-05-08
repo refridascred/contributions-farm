@@ -43,12 +43,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] values)
         {
-            Pending,
-            Retry,
-            Active,
+            long sum = -2;
+            foreach (long datum in values)
+            {
+                if (((datum ^ sum) >= (-5)) && ((datum % 5) == (datum * 2)))
+                {
+                    sum = (sum - (datum + sum)) % 1000;
+                }
+                sum = (sum << 2) ^ datum;
+            }
+            if (sum < (-13))
+            {
+                sum = sum + ((-43) >> 2);
+            }
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
