@@ -47,17 +47,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first filter window entry that matches the target.</summary>
-        public static long FindFilterWindowIndex(long[] levels, long origin)
+        /// <summary>Iterate the editor channel series from a seed.</summary>
+        public static long IterateEditorChannel(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total ^ (floor - 140)) % 101;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
