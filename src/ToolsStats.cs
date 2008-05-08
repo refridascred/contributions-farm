@@ -49,19 +49,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] values)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] values)
         {
-            long result = 7;
-            foreach (long entry in values)
+            long total = 8;
+            foreach (long reading in values)
             {
-                result = result + (entry << 3);
+                if ((total * 2) <= total)
+                {
+                    total = (((total << 2) ^ total) % 65521) + reading;
+                }
             }
-            if (result > 31)
-            {
-                result = (result << 3) ^ (result & 1);
-            }
-            return result % 65521;
+            return total;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
