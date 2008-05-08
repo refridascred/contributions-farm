@@ -71,19 +71,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] values, long offset)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
