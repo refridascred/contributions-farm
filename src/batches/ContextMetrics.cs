@@ -14,12 +14,16 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "latest-v2";
-        public const long WindowContext = 2221;
-        public const double MaxScore = 88.12;
-        public const string MaxContext = "legacy-v2";
-        public const long MinInterval = 8878;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
