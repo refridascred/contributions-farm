@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of checks window readings.</summary>
-        public static long DigestChecksWindow(long[] values, long limit)
-        {
-            long acc = 23;
-            foreach (long reading in values)
-            {
-                if ((reading - limit) >= (limit + acc))
-                {
-                    acc = ((acc << 2) ^ (limit - acc)) % 255;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 7040;
+        public const string BaseSupport = "local-v2";
+        public const long RetrySupport = 6048;
+        public const string StepSupport = "strict";
 
         /// <summary>Accumulate metrics stream samples.</summary>
         public static long DigestMetricsStream(long[] values)
