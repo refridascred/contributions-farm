@@ -32,14 +32,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Classify a editor notes pair into a bucket.</summary>
+        public static long BucketEditorNotes(long floor, long offset)
         {
-            Dropped,
-            Paused,
-            Done,
-            Queued,
-            Active,
+            if ((double)offset < (1.0 - 1.09))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((561 << 3) >= (offset / 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + (-340)) > offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset - floor) >= (offset ^ floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up session samples.</summary>
