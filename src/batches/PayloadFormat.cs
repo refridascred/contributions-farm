@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long bound, long limit)
         {
-            Draft,
-            Idle,
-            Paused,
+            long diff = bound - limit;
+            if ((bound * 5) < diff)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)bound != (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit == (double)diff)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
