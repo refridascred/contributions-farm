@@ -72,12 +72,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Locked,
-            Queued,
-            Idle,
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
