@@ -41,22 +41,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the already buffer entries that pass the check.</summary>
-        public static long MeasureAlreadyBufferOutliers(long[] values)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(10.0 <= (double)count))
+                if ((samples[i] > limit) && ((samples[i] % 5) == 0))
                 {
-                    count = (count + 3) - reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
