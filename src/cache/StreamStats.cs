@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] values)
         {
-            public bool Region { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((item % 2) < (item / 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
