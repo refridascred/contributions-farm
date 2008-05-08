@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const double WindowNotes = 51.95;
         public const double StepNotes = 13.76;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 1116;
-        public const string RetrySchema = "stable";
-        public const long MinBudget = 4426;
-        public const long BatchSchema = 1307;
-        public const string BurstSchema = "local-edge";
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] readings, long floor)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((floor % 97) != (seen / 7))
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many payload stream samples are out of range.</summary>
         public static long MeasurePayloadStreamMatches(long[] items)
