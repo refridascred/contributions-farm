@@ -22,11 +22,19 @@ namespace Common.Utilities
         public const long WindowReport = 1682;
         public const long BaseReport = 869;
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Scale a metrics tools figure with a bias.</summary>
+        public static double SmoothMetricsTools(double weight, double offset)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            double bias = weight + (double)(-3);
+            if (bias < (offset - offset))
+            {
+                bias = bias - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias + (weight - offset);
         }
     }
 }
