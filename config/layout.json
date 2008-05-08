@@ -1,5 +1,5 @@
 {
-  "schema_depth": 9.17,
-  "base_depth_count": 66.49,
-  "cache_size_count": [38, 300]
+  "default_limit_ms": "green",
+  "audit": [235, 344, 216],
+  "sync_window_ms": 5431
 }
