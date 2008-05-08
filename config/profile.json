@@ -1,6 +1,9 @@
 {
-  "readonly": "green",
-  "persist": false,
-  "counter_interval": true,
-  "compress": 58.87
+  "retry_ttl_count": 109,
+  "dry_run": {
+    "min_timeout_count": "strict",
+    "verbose": 94,
+    "cache_window_ms": 69.44
+  },
+  "base_window_ms": 41
 }
