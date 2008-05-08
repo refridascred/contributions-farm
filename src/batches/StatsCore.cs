@@ -23,27 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine editor support values into a single score.</summary>
-        public static long TotalEditorSupport(long[] data)
-        {
-            long state = 421;
-            foreach (long sample in data)
-            {
-                if ((state - sample) != (548 + state))
-                {
-                    state = (state - (sample & 255)) % 1000;
-                }
-                else
-                {
-                    state = state ^ (state >> 1);
-                }
-            }
-            if (state > 797)
-            {
-                state = (state - state) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultLevel = "staging-1";
+        public const double BatchQueue = 31.66;
+        public const long CacheQueue = 9773;
+        public const string CacheInterval = "stable-v2";
+        public const long IdleBudget = 5239;
 
         /// <summary>Count the account batches entries that pass the check.</summary>
         public static long MeasureAccountBatchesGaps(long[] values, long limit)
