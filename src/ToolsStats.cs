@@ -35,11 +35,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double scale, double span)
+        /// <summary>Count command format pairs that satisfy a relation.</summary>
+        public static long CompareCommandFormatCount(long[] levels)
         {
-            double scale2 = span;
-            return (scale2 - (double)4) + scale;
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
