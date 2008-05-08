@@ -25,18 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] items, long target)
+        /// <summary>Find the first order channel entry that matches the target.</summary>
+        public static long FindOrderChannelIndex(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target + target) < (cell << 2))
+                if ((values[i] <= target) && ((values[i] % 5) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
