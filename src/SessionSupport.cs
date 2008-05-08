@@ -13,10 +13,20 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardDepth = 0.94;
-        public const long MinLevel = 5110;
-        public const long IdleStream = 7291;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] levels, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long SeriesPayload(long offset)
