@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 4708;
+        public const long MinStats = 4455;
+        public const string MaxSpan = "alpha-1";
+        public const long BaseStats = 6057;
+        public const long MaxStats = 6665;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long StepFarm(long bound)
