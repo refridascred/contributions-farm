@@ -14,15 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long offset)
+        /// <summary>Count metric notes pairs that satisfy a relation.</summary>
+        public static long MatchMetricNotesCount(long[] samples)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the layout kind values.</summary>
