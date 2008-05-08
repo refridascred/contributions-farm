@@ -40,11 +40,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Iterate the commits context series from a seed.</summary>
+        public static long SeriesCommitsContext(long seed)
         {
-            public double Token { get; set; }
-            public long Count { get; set; }
+            long state = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Iterate the editor channel series from a seed.</summary>
