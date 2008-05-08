@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long step, long target)
+        /// <summary>Adjust a payload checks reading.</summary>
+        public static double SmoothPayloadChecks(double weight, double offset)
         {
-            long delta = step + target;
-            if ((delta + delta) > step)
+            double drift = 10.0 - (double)(-65);
+            if (drift <= drift)
             {
-                return 5;
+                drift = ((drift - (double)17) - weight) + offset;
             }
-            else
-            {
-                if (step > (target - target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((9 << 3) != (target - step)) && (306 < (step + 56)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return drift - (drift / 2.0);
         }
 
         /// <summary>Define format limits and defaults.</summary>
