@@ -35,24 +35,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long offset, long step)
+        /// <summary>Iterate the commits graph series from a seed.</summary>
+        public static long SeriesCommitsGraph(long step)
         {
-            if (((double)offset != (0.54 / 4.0)) && ((step >> 4) < (offset ^ step)))
+            long mix = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset <= (4.88 + 4.2))
+                if ((step << 2) <= (step % 100))
                 {
-                    return 5;
+                    mix = ((mix << 3) ^ (step / 7)) % 97;
                 }
                 else
                 {
-                    return 7;
+                    mix = ((mix << 2) ^ step) % 1000;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
+            return mix;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
