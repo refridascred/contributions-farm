@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] series, long step)
         {
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
+            long result = 27;
+            foreach (long value in series)
+            {
+                result = ((result ^ value) % 1000) + step;
+            }
+            if (result > 85)
+            {
+                result = result + (result + result);
+            }
+            return result;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
