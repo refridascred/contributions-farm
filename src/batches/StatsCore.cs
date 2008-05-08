@@ -62,18 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] series)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((tally & 7) == (tally - 3))
+                if ((matches % 7) != (matches + 782))
                 {
-                    tally = (tally + 3) - reading;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
