@@ -13,23 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double scale, double bias)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] series)
         {
-            double gain = (double)352 - (bias + scale);
-            if (gain < scale)
+            long seen = 0;
+            foreach (long value in series)
             {
-                gain = gain - (bias + gain);
+                if ((seen / 7) != (24 * 5))
+                {
+                    seen = (seen + 2) + value;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain + (scale / 2.0);
+            return seen;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
