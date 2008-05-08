@@ -43,23 +43,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two support metrics measurements.</summary>
-        public static double ScaleSupportMetrics(double gain, double bias)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long floor, long target)
         {
-            double load = 2.12;
-            if (load >= (gain / 2.0))
+            if ((target + target) != (63 ^ 31))
             {
-                load = load + (double)1;
+                return 8;
             }
             else
             {
-                load = load - (load * 9.75);
+                if (11.0 <= (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)floor == (16.0 * 6.18)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor > (floor ^ 4)) && (49 < (floor * 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + bias) - (double)(long)i;
-            }
-            return load + (double)(-58);
         }
     }
 }
