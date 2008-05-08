@@ -51,21 +51,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of entry window readings.</summary>
-        public static long CompareEntryWindowCount(long[] readings)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (offset * 18.0) - (3.07 - 6.3);
+            if (ratio <= (offset / 6.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio + (scale / 2.0);
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio + (ratio / 6.0);
         }
 
         /// <summary>Combine tools values into a single score.</summary>
