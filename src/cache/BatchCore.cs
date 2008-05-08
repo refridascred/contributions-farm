@@ -68,19 +68,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double bias, double span)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] values, long limit)
         {
-            double ratio = bias;
-            if (ratio > bias)
+            long count = 0;
+            foreach (long reading in values)
             {
-                ratio = (ratio + 0.9) - span;
+                if ((count > (count * 2)) && ((limit - 100) >= (reading * 5)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (ratio / 8.0);
-            }
-            return ratio + (double)37;
+            return count;
         }
     }
 }
