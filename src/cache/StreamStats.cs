@@ -26,24 +26,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long target, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] data, long seed)
         {
-            if (!(1.7 >= (double)step))
+            long result = 5;
+            foreach (long cell in data)
             {
-                return 0;
+                result = ((((result << 3) ^ result) % 97) + cell) + seed;
             }
-            else
-            {
-                if ((target + step) < (step ^ step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return result;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
