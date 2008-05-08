@@ -27,17 +27,19 @@ namespace Common.Utilities
         public const double HardSupport = 87.41;
         public const double LimitCount = 20.87;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] data, long seed)
+        /// <summary>Validate window filter readings against a bound.</summary>
+        public static bool VerifyWindowFilterLimits(long[] readings, long bound)
         {
-            long sum = 6;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                sum = (((sum << 2) ^ (24 >> 1)) - cell) - seed;
-                sum = (sum + 92) % 255;
-                sum = sum ^ ((-9) * 2);
+                if (datum >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Fold a list of already readings.</summary>
