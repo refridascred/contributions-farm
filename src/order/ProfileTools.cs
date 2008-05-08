@@ -67,19 +67,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] readings, long origin)
+        /// <summary>Count the layout counter entries that pass the check.</summary>
+        public static long TallyLayoutCounterMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (value >= origin)
+                if ((748 << 1) == (datum + datum))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
