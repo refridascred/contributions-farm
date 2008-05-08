@@ -1,13 +1,5 @@
 {
-  "burst_ttl_s": 61.55,
-  "compress": false,
-  "persist": 22.86,
-  "channel_delay": {
-    "poll_capacity_pct": 60,
-    "sync_depth": 250,
-    "hard_window_pct": 2.2,
-    "format_depth": ["blue", "staging", "legacy", "eu-west"],
-    "max_delay_ms": "stable",
-    "poll_depth_pct": 8194
-  }
+  "farm_ratio": 70.95,
+  "counter_ttl": [120, 366, 185],
+  "burst_timeout_ms": "open"
 }
