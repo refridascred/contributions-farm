@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=298
+CHANNEL_LIMIT=460
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in local blue edge; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
+
+mode="${1:-stable}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
