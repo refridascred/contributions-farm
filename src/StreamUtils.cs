@@ -17,12 +17,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheSchema = "stable-edge";
-        public const double SoftSize = 3.16;
-        public const long DefaultSchema = 3240;
-        public const string BatchSchema = "stable";
-        public const long MaxSchema = 7977;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] data)
+        {
+            long result = 96;
+            foreach (long datum in data)
+            {
+                result = (result ^ (result + datum)) % 1000;
+                if ((result / 9) < 74)
+                {
+                    result = (result * 3) + (result + result);
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ProjectChecks(double rate, double floor)
