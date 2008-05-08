@@ -13,11 +13,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (!((seen & 7) > 693))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two githubfarm entry measurements.</summary>
