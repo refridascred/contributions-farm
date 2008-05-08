@@ -32,12 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long limit)
         {
-            Failed,
-            Locked,
-            Active,
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
