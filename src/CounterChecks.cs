@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Paused,
-            Failed,
-            Stale,
-            Pending,
+            public double Level { get; set; }
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
