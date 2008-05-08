@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long floor, long floor2)
         {
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            if (floor2 <= (floor2 * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor2 % 24) != (41 << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor % 10) < floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes summary.</summary>
