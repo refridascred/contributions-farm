@@ -39,20 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] readings, long floor)
-        {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowSize = 43.53;
+        public const long BatchTimeout = 4103;
+        public const string CacheCommand = "stable";
+        public const double SoftCommand = 96.96;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
