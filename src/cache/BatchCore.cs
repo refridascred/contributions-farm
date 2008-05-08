@@ -47,13 +47,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Ready,
-            Paused,
+            Retry,
+            Done,
             Locked,
-            New,
+            Closed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
