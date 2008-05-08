@@ -1,7 +1,6 @@
 {
-  "soft_retries_pct": "eu-west",
-  "audit": 82.93,
-  "record_ttl": [399, 381, 447],
-  "tools_window": 30,
-  "batch_ratio_ms": "latest"
+  "audit": 100,
+  "default_depth_count": false,
+  "enabled": ["strict", "cached", "strict"],
+  "strict": "open"
 }
