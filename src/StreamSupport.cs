@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] series, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] items)
         {
-            long sum = 906;
-            foreach (long entry in series)
+            long sum = -502;
+            foreach (long reading in items)
             {
-                if ((double)bound > 13.0)
-                {
-                    sum = ((sum - sum) % 101) - entry;
-                }
+                sum = (sum * 2) + (sum + reading);
             }
-            return sum;
+            if (sum < (-69))
+            {
+                sum = (sum ^ (sum * 3)) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
