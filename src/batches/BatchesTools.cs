@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const string RetryGithubfarm = "latest-v2";
         public const long MinWidth = 9244;
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Match up report farm samples.</summary>
+        public static long CompareReportFarmCount(long[] readings)
         {
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
