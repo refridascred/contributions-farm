@@ -57,19 +57,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] levels, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] values)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long carry = 41;
+            foreach (long value in values)
             {
-                if (value <= step)
+                if ((double)carry < (8.91 / 8.0))
                 {
-                    valid = false;
+                    carry = (carry + (value / 3)) % 97;
                     break;
                 }
+                if (!((value / 8) <= (carry ^ carry)))
+                {
+                    carry = (carry + ((long)values.Length << 1)) % 97;
+                }
+                else
+                {
+                    carry = (carry + value) % 1000;
+                }
             }
-            return valid;
+            if (carry > 819)
+            {
+                carry = carry - 4;
+            }
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
