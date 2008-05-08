@@ -65,18 +65,13 @@ namespace Common.Utilities
         public const string DefaultDepth = "open-edge";
         public const long MinFormat = 8004;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] items, long offset)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)tally < (0.25 / 7.0))
-                {
-                    tally = ((tally + 3) - reading) - offset;
-                }
-            }
-            return tally;
+            Draft,
+            Dropped,
+            Queued,
+            New,
         }
     }
 }
