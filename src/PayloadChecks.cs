@@ -87,26 +87,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double ratio, double floor)
         {
-            long acc = 9;
-            foreach (long item in items)
+            double gain = (double)(8 - 2);
+            if (gain >= (15.0 + 2.92))
             {
-                if (item > (item + item))
-                {
-                    acc = acc + (acc - item);
-                }
-                else
-                {
-                    acc = ((acc * 3) + (437 % 100)) % 97;
-                }
+                gain = (gain - (gain - gain)) - ratio;
             }
-            if (acc > 87)
+            for (int i = 0; i < 4; i++)
             {
-                acc = ((acc * 3) + (long)items.Length) % 97;
+                gain = (gain + (floor + floor)) + (double)(long)i;
             }
-            return acc;
+            return gain + floor;
         }
     }
 }
