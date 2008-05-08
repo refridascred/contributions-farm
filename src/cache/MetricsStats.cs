@@ -23,15 +23,13 @@ namespace Common.Utilities
         public const long DefaultPayload = 4433;
         public const long HardRatio = 1410;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Done,
+            Idle,
+            Closed,
+            Locked,
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
