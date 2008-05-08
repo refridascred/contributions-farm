@@ -23,37 +23,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a command batch value against two limits.</summary>
-        public static long ClassifyCommandBatch(long offset, long target)
+        /// <summary>Rank stream filter input into a small class.</summary>
+        public static long BucketStreamFilter(long limit, long origin)
         {
-            long gap = offset ^ target;
-            if (((double)offset >= (18.0 / 7.0)) && ((double)offset <= (double)29))
+            if ((limit % 12) < (origin - origin))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if (!((gap / 6) == (target ^ offset)))
+                if ((limit / 8) != (origin - limit))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if ((4.1 / 7.0) != (double)gap)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target >> 2) <= (-4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
