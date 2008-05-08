@@ -47,12 +47,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long step)
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            long carry = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((carry + carry) < (step + step)))
+                {
+                    carry = ((carry * 3) + ((long)i >> 3)) % 101;
+                }
+                carry = ((carry * 5) + (step % 60)) % 1000;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a channel reading.</summary>
