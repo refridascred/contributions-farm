@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank support layout input into a small class.</summary>
-        public static long SortSupportLayout(long floor, long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] series, long target)
         {
-            if (((12.0 / 7.0) > (double)floor) && (floor < (floor - floor)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed - seed) >= seed)
+                if ((series[i] < target) && ((series[i] % 3) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + seed) >= (floor % 10))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
