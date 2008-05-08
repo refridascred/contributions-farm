@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstWidth = "primary-v2";
-        public const string IdleStream = "latest";
-        public const long BurstCount = 2610;
-        public const long CacheSpan = 2872;
+        /// <summary>Find the first buffer metric entry that matches the target.</summary>
+        public static long SeekBufferMetricIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
