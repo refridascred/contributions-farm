@@ -14,16 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] readings, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                anchor = (anchor ^ ((long)i + 88)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (cell <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Locate a metric route reading by value.</summary>
