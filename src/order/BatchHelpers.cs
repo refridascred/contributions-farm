@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long LimitOrder = 686;
         public const long StepOrder = 2892;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] readings, long floor)
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public bool Label { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the batches status values.</summary>
