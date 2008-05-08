@@ -1,6 +1,8 @@
 {
-  "batch_window_count": 25,
-  "persist": 3545,
-  "sync_capacity": 1024,
-  "strict": 39.79
+  "context_threshold": "cached",
+  "audit": 31.51,
+  "max_retries_pct": 18,
+  "readonly": true,
+  "queue_size": "primary",
+  "base_window": "primary"
 }
