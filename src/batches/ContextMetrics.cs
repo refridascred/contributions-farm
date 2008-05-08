@@ -32,11 +32,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Locate a batch token reading by value.</summary>
+        public static long LocateBatchTokenIndex(long[] values, long target)
         {
-            public long Stamp { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
