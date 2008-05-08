@@ -33,30 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] series, long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] samples, long limit)
         {
-            long result = 1;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (bound >= (result * 5))
+                if (item < limit)
                 {
-                    continue;
-                }
-                else
-                {
-                    result = ((result + bound) % 1000) - reading;
-                }
-                if ((result / 5) >= 814)
-                {
-                    result = result + 118;
-                }
-                else
-                {
-                    result = ((result * 4) + (bound ^ (long)series.Length)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Hold a account entry.</summary>
