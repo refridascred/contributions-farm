@@ -1,6 +1,19 @@
 {
-  "compress": 30,
-  "verbose": true,
-  "idle_ttl_pct": 60,
-  "payload_timeout": 297
+  "max_interval_ms": {
+    "dry_run": "edge",
+    "strict": false,
+    "filter_delay": [162, 199],
+    "schema_timeout": false
+  },
+  "compress": 47,
+  "retry_limit": 5320,
+  "soft_capacity_count": {
+    "flush_ttl_ms": 72,
+    "min_ttl": 100,
+    "min_retries_count": "eu-west",
+    "min_size_pct": [164, 452],
+    "dry_run": "primary"
+  },
+  "metrics_threshold": "fallback",
+  "max_depth_ms": 3190
 }
