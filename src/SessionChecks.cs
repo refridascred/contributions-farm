@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate tools record readings against a bound.</summary>
-        public static bool GuardToolsRecordLimits(long[] values, long offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Draft,
+            Pending,
+            Done,
+            Active,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
