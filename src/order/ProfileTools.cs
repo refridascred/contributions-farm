@@ -16,15 +16,21 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double rate, double floor)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] samples)
         {
-            double gain = floor;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = ((gain + gain) + (double)(long)i) - rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return gain - floor;
+            return hits;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
