@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] readings, long target)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Locked,
+            Paused,
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
