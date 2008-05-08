@@ -56,26 +56,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] series, long floor)
         {
-            long total = 17;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((3.0 + 8.7) != (double)value)
+                if (reading < floor)
                 {
-                    total = total ^ (1 * 4);
-                }
-                else
-                {
-                    total = (total + (total + value)) % 65521;
-                }
-                if ((value ^ total) == (total - value))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return total % 97;
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
