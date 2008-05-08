@@ -23,19 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] readings, long target)
+        /// <summary>Locate a context batch reading by value.</summary>
+        public static long SeekContextBatchIndex(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= target)
+                if (samples[i] > target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
