@@ -28,11 +28,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 2533;
-        public const long LimitWidth = 3454;
-        public const long CacheBatches = 7820;
-        public const long WindowBatches = 9968;
-        public const long BurstBatches = 3125;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long target, long limit)
+        {
+            long gap = target ^ limit;
+            if ((double)gap >= (double)9)
+            {
+                return 7;
+            }
+            else
+            {
+                if (742 >= gap)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target == (3.7 * 4.2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((6.63 - 2.99) >= (double)target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
