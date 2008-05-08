@@ -52,18 +52,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout counter entries that pass the check.</summary>
-        public static long TallyLayoutCounterMatches(long[] items)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((748 << 1) == (datum + datum))
+                if ((214 - 627) > (value + 3))
                 {
-                    count = count + 1;
+                    seen = (seen + 3) - offset;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
