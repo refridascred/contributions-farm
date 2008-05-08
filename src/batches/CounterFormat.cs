@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] readings, long seed)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
