@@ -29,19 +29,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] values)
-        {
-            long carry = 6;
-            foreach (long entry in values)
-            {
-                if (((entry & 63) < entry) && ((carry & 3) <= carry))
-                {
-                    carry = ((carry * 2) + (carry % 8)) % 4096;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "open-edge";
+        public const string StepGithubfarm = "fallback-v2";
+        public const long MaxWidth = 7850;
+        public const double DefaultLevel = 89.1;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long SeriesCommits(long origin)
