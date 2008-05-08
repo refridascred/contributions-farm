@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] series)
-        {
-            long mark = -523;
-            foreach (long entry in series)
-            {
-                if ((entry * 2) < (entry + 535))
-                {
-                    mark = mark - (entry + mark);
-                }
-                mark = (mark ^ (mark + 58)) % 65521;
-                if (((-24) ^ mark) != (mark & 1))
-                {
-                    mark = (mark - (3 / 9)) % 255;
-                }
-            }
-            if (mark > 605)
-            {
-                mark = (mark ^ 3) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowTimeout = 6575;
+        public const double BurstTimeout = 72.66;
+        public const string BatchCount = "local-v2";
+        public const long MaxRatio = 8479;
+        public const long CacheWidth = 2258;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long WindowSpan = 3455;
