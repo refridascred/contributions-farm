@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Paused,
-            Synced,
-            Ready,
+            public bool Token { get; set; }
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a graph header.</summary>
