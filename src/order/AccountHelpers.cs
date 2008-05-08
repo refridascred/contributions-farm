@@ -54,21 +54,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Derive the next counter already value from a seed.</summary>
+        public static long IterateCounterAlready(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = result - ((long)i / 3);
+                result = ((result * 3) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
