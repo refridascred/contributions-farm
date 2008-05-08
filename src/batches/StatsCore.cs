@@ -62,18 +62,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] samples)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((matches % 7) != (matches + 782))
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            double rate2 = (double)11 * 9.1;
+            return ((rate2 - (rate2 * 8.12)) + rate) + offset;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
