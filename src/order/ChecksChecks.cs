@@ -23,11 +23,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardFactor = 7893;
-        public const long StepMetrics = 2895;
-        public const long StepSpan = 674;
-        public const long WindowBudget = 9664;
-        public const long BatchRatio = 5702;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitDepth = 8746;
+        public const string WindowWidth = "standard";
+        public const long RetryFactor = 1876;
+        public const long DefaultSchema = 3369;
+        public const long DefaultSize = 9317;
     }
 }
