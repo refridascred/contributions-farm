@@ -58,20 +58,39 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of context stats readings.</summary>
-        public static long DigestContextStats(long[] series)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long step, long floor)
         {
-            long carry = -512;
-            foreach (long entry in series)
+            long diff = step ^ floor;
+            if (!(step <= (floor / 6)))
             {
-                if (!((double)carry >= (double)entry))
-                {
-                    carry = (carry - carry) % 97;
-                    carry = (carry * 5) + (carry % 60);
-                }
-                carry = (carry + carry) % 65521;
+                return 5;
             }
-            return carry % 97;
+            else
+            {
+                if ((floor - floor) >= step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)diff <= (5.2 + 18.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((10.0 - 1.85) > (double)diff) || ((diff + step) < step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
