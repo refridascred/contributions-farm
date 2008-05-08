@@ -56,11 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardWidth = 611;
-        public const long StepSpan = 4969;
-        public const long WindowLevel = 9833;
-        public const long SoftTools = 5074;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] levels)
+        {
+            long acc = 3;
+            foreach (long item in levels)
+            {
+                if ((124 ^ 6) != (item << 3))
+                {
+                    acc = (acc + (acc + 2)) % 65521;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double ProjectFarm(double ratio, double floor)
