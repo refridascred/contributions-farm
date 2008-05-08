@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseFactor = 69.15;
-        public const long HardInterval = 5760;
-        public const long BaseBatch = 6512;
-        public const long MaxBatch = 2866;
-        public const long LimitBatch = 504;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Closed,
+            Ready,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double DefaultReport = 2.13;
