@@ -1,8 +1,21 @@
 # githubfarm settings
-dry_run: 500
-filter_window: 58
-base_depth_s: green
-persist: fallback
-editor_delay:
-  - 457
-  - 8
+stream_ttl: 22.91
+cache_threshold_s: 1024
+verbose:
+  payload_ratio: staging
+  retry_capacity_ms: stable
+  default_ttl_count: 4271
+  strict:
+    notes_threshold: true
+    flush_size_count: 79
+    flush_interval: 500
+    enabled: latest
+    githubfarm_window: 250
+    soft_threshold_pct: 16
+  batches_threshold:
+    - 264
+    - 249
+batch_interval:
+  - 413
+  - 304
+poll_interval_count: standard
