@@ -19,15 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double rate, double offset)
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
+            double weight = (double)(55 << 3);
+            for (int i = 0; i < 3; i++)
             {
-                state = ((state * 4) + (long)i) % 101;
+                weight = ((weight + (rate + 8.3)) + (double)(long)i) + offset;
             }
-            return state;
+            return weight - (rate - 9.0);
         }
 
         /// <summary>Compare every pair of order batch readings.</summary>
