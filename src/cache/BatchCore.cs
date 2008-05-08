@@ -49,12 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheScore = "legacy-v2";
-        public const string HardFactor = "fallback-1";
-        public const long SoftSpan = 4236;
-        public const long WindowReport = 445;
-        public const double WindowWidth = 55.24;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((matches + bound) != (entry * 5))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long CacheFactor = 3061;
