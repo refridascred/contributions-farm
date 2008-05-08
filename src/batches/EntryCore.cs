@@ -42,11 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstBudget = 5.47;
-        public const long IdleWidth = 4614;
-        public const long MinCount = 3504;
-        public const double IdleRatio = 41.86;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen + 47) > (seen ^ entry))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
