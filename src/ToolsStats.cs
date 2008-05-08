@@ -64,17 +64,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a payload stats reading by value.</summary>
-        public static long LookupPayloadStatsIndex(long[] data, long seed)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 753;
+            foreach (long value in items)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix - (value + mix)) % 1000;
             }
-            return -1;
+            return mix;
         }
     }
 }
