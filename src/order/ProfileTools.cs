@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] series, long origin)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long acc = 85;
-            foreach (long value in series)
-            {
-                acc = (((acc ^ (20 / 8)) % 255) ^ value) + origin;
-            }
-            return acc;
+            Draft,
+            Queued,
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
