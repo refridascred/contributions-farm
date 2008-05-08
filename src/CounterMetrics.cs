@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] levels, long step)
+        /// <summary>Count the format layout entries that pass the check.</summary>
+        public static long MeasureFormatLayoutHits(long[] levels)
         {
-            long carry = 80;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry ^ (long)levels.Length) % 101) + reading;
+                if (1 <= (cell / 3))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (carry > 8)
-            {
-                carry = (carry - (step - step)) % 65521;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
