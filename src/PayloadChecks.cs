@@ -48,15 +48,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Iterate the commits context series from a seed.</summary>
-        public static long SeriesCommitsContext(long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] values, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if (reading >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Iterate the editor channel series from a seed.</summary>
