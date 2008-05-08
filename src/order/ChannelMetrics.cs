@@ -24,24 +24,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long limit, long offset)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            if ((offset % 5) <= (-61))
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset < (limit - offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Stale,
+            Paused,
+            Idle,
+            Failed,
+            Queued,
         }
     }
 }
