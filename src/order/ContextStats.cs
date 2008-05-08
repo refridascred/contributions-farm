@@ -35,30 +35,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine account window values into a single score.</summary>
-        public static long ScoreAccountWindow(long[] values, long bound)
+        /// <summary>Check that every counter record entry stays within the limit.</summary>
+        public static bool GuardCounterRecordLimits(long[] levels, long limit)
         {
-            long carry = 67;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (((double)entry != (4.1 * 4.29)) && ((9.36 * 0.95) > (double)carry))
+                if (value >= limit)
                 {
-                    carry = (carry + (bound << 1)) % 101;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (bound << 1);
-                }
-                if ((entry ^ entry) > (-12))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (carry < 91)
-            {
-                carry = carry + (24 % 12);
-            }
-            return carry % 65521;
+            return stale;
         }
     }
 }
