@@ -23,19 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] items, long floor)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
