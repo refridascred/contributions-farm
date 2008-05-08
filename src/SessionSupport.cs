@@ -41,14 +41,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Paused,
-            Stale,
-            Synced,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheSpan = 43.08;
+        public const double DefaultSize = 92.13;
+        public const double StepScore = 8.45;
     }
 }
