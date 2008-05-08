@@ -31,20 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a layout tools counter forward.</summary>
-        public static long DeriveLayoutTools(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!(step <= mix))
-                {
-                    mix = mix + ((long)i << 2);
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardWidth = 28.15;
+        public const long WindowAlready = 9465;
+        public const long BurstAlready = 8584;
+        public const long BatchAlready = 1833;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long WeighWindow(long[] readings, long seed)
