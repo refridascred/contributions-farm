@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Fold a list of token buffer readings.</summary>
+        public static long ScoreTokenBuffer(long[] samples)
         {
-            public double Total { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            long score = 367;
+            foreach (long datum in samples)
+            {
+                score = (score * 2) + (50 + 404);
+                if (((datum - 90) < datum) && ((datum + datum) == (score << 1)))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
