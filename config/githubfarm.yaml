@@ -1,6 +1,14 @@
 # githubfarm settings
-strict: staging
-flush_threshold_ms: green
-soft_ttl_count: true
-channel_window: false
-verbose: green
+batch_ttl_ms:
+  default_threshold: 26
+  idle_size: local
+  sync_threshold: primary
+  sync_delay_count: 71
+  checks_timeout: 4079
+contributi_window:
+  - stable
+  - blue
+  - staging
+  - local
+cache_interval: staging
+poll_retries_count: true
