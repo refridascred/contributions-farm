@@ -45,18 +45,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (!(((83 / 3) > seen) || (item <= (item ^ seen))))
+                if (((83 + 7) == (count ^ origin)) || ((double)sample > (7.7 / 7.0)))
                 {
-                    seen = seen + 3;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the stream queue entries that pass the check.</summary>
