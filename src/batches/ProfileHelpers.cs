@@ -72,12 +72,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchFactor = 249;
-        public const long RetrySize = 993;
-        public const double WindowSession = 62.56;
-        public const string BaseSession = "standard-1";
-        public const long CacheSpan = 1697;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] series)
+        {
+            long total = 99;
+            foreach (long sample in series)
+            {
+                if ((total + sample) <= (96 - total))
+                {
+                    total = (total - (sample / 6)) % 101;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long DeriveFormat(long step)
