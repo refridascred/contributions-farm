@@ -52,19 +52,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate already graph readings against a bound.</summary>
-        public static bool ValidateAlreadyGraphBounds(long[] readings, long floor)
+        /// <summary>Audit order checks readings against a rule.</summary>
+        public static long TallyOrderChecksHits(long[] levels, long bound)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (datum > floor)
+                if (!((14.0 * 1.65) == (double)bound))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) + value;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
