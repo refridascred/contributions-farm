@@ -56,17 +56,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] values, long step)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 17;
+            foreach (long value in readings)
             {
-                if (values[i] == step)
+                if ((3.0 + 8.7) != (double)value)
                 {
-                    return (long)i;
+                    total = total ^ (1 * 4);
+                }
+                else
+                {
+                    total = (total + (total + value)) % 65521;
+                }
+                if ((value ^ total) == (total - value))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Define window limits and defaults.</summary>
