@@ -29,11 +29,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitWidth = 6924;
-        public const string BurstRecord = "open-v2";
-        public const double RetryFactor = 17.18;
-        public const long WindowInterval = 8039;
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long OverlapLayoutCount(long[] series)
