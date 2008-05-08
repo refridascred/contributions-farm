@@ -54,12 +54,26 @@ namespace Common.Utilities
         public const long HardScore = 1625;
         public const long MinChannel = 3861;
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] readings)
         {
-            New,
-            Ready,
-            Closed,
+            long carry = 6;
+            foreach (long value in readings)
+            {
+                if (carry >= 882)
+                {
+                    carry = carry - value;
+                }
+                if ((value * 4) >= (value << 2))
+                {
+                    break;
+                }
+            }
+            if (carry < 909)
+            {
+                carry = ((carry << 3) ^ carry) % 255;
+            }
+            return carry % 97;
         }
     }
 }
