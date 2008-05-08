@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] readings, long origin)
         {
-            public double Label { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((3 < (origin + origin)) && (sample <= ((-62) << 1)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
