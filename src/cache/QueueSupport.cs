@@ -23,11 +23,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long origin, long bound)
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
+            if (bound <= (origin - origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((8.0 - 9.98) >= (double)bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin <= (origin / 4)) && ((bound & 255) != (404 + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound < origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
