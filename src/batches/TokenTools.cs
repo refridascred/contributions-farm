@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long step, long floor)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long offset = step + floor;
-            if (!((double)step <= (double)offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(89 < step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Retry,
+            Failed,
+            Idle,
         }
 
         /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
