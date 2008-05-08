@@ -19,10 +19,24 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultWidth = "primary-1";
-        public const double StepPayload = 64.22;
-        public const long BasePayload = 5272;
-        public const long DefaultPayload = 620;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long limit, long offset)
+        {
+            if ((offset % 5) <= (-61))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset < (limit - offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
