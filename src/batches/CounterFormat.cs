@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support queue entries that pass the check.</summary>
-        public static long AuditSupportQueueHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((hits % 100) <= sample)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 7889;
+        public const double IdleInterval = 51.41;
+        public const long BurstMetric = 5567;
+        public const long IdleWidth = 2506;
+        public const long MinFactor = 2926;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BurstTimeout = "open-v2";
