@@ -15,13 +15,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long bound)
         {
-            Active,
-            Queued,
-            Locked,
-            Retry,
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((bound * 2) >= ((long)i % 10))
+                {
+                    sum = ((sum << 3) ^ bound) % 1000;
+                    break;
+                }
+                sum = (sum + sum) % 97;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
