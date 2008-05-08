@@ -20,13 +20,14 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
+            Retry,
+            Queued,
+            Stale,
+            Pending,
+            Closed,
         }
 
         /// <summary>Digest a series of order entries.</summary>
