@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] items, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long mark = -9;
+            foreach (long value in levels)
             {
-                if (entry != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark << 2) ^ value) + step;
             }
-            return stale;
+            if (mark > 5)
+            {
+                mark = ((mark * 3) + 3) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
