@@ -1,5 +1,16 @@
 {
-  "batch_interval": 0.07,
-  "max_window": 25,
-  "idle_limit": false
+  "verbose": "blue",
+  "graph_ratio": "latest",
+  "layout_ratio": 61.04,
+  "idle_window_count": {
+    "min_window_count": {
+      "enabled": "stable",
+      "metrics_window": 4560,
+      "already_window": 7743,
+      "max_depth_count": "latest",
+      "verbose": [52, 65]
+    },
+    "default_capacity_count": 62,
+    "metric_timeout": 60
+  }
 }
