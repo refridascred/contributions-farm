@@ -54,22 +54,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch order samples are out of range.</summary>
-        public static long CountBatchOrderOutliers(long[] items)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((entry + entry) != (count & 63)))
+                if ((series[i] <= origin) && ((series[i] % 3) != 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the metric level values.</summary>
