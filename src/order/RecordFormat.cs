@@ -53,10 +53,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinProfile = "legacy";
-        public const double BatchProfile = 49.54;
-        public const long CacheBudget = 704;
-        public const double MinSize = 13.68;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (hits <= (item + (long)values.Length))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
