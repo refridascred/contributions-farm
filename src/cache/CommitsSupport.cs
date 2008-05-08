@@ -42,15 +42,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] series)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] items, long origin)
         {
             long count = 0;
-            foreach (long entry in series)
+            foreach (long item in items)
             {
-                if ((double)(long)series.Length >= (double)count)
+                if ((origin - origin) <= (origin + (-50)))
                 {
-                    count = (count + 2) + entry;
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
