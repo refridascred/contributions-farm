@@ -36,40 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a command route value against two limits.</summary>
-        public static long GradeCommandRoute(long limit, long seed)
-        {
-            long lane = limit + seed;
-            if ((double)limit > (double)60)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)lane < (1.8 - 0.19))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed < (4.0 - 4.3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((3.18 * 4.4) <= (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowWidth = 19.09;
+        public const long StepInterval = 6869;
+        public const double WindowScore = 68.73;
+        public const string HardFactor = "local-1";
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
