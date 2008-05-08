@@ -1,9 +1,7 @@
-id,label,state,rank,ratio
-1,39.12,887,edge,83.68
-2,blue,primary,924,76.6
-3,28.89,53.08,319,eu-west
-4,51.03,834,398,420
-5,575,green,233,stable
-6,254,68.94,local,245
-7,fallback,21.29,71.67,14.76
-8,edge,eu-west,open,latest
+id,count,region
+1,32.7,green
+2,strict,5.29
+3,14,360
+4,390,stable
+5,strict,83.01
+6,eu-west,27.41
