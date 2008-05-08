@@ -43,18 +43,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] series, long offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long anchor = 75;
-            foreach (long value in series)
-            {
-                if ((anchor / 7) != (offset << 2))
-                {
-                    anchor = (((anchor << 3) ^ (584 & 1)) % 97) - value;
-                }
-            }
-            return anchor % 65521;
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
