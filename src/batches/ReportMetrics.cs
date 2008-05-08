@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] series, long step)
+        /// <summary>Locate a account window reading by value.</summary>
+        public static long LocateAccountWindowIndex(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < step)
+                if (series[i] > step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a tools info.</summary>
