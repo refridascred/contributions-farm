@@ -25,19 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every batch report entry stays within the limit.</summary>
-        public static bool GuardBatchReportBounds(long[] series, long seed)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Retry,
+            Pending,
         }
     }
 }
