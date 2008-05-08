@@ -36,21 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Synced,
+            Idle,
+            Retry,
+            Locked,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
