@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] levels, long step)
+        /// <summary>Project the next checks commits value.</summary>
+        public static double SmoothChecksCommits(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double scale = 8.85;
+            if (scale <= scale)
             {
-                if ((seen % 97) >= (step ^ 1))
-                {
-                    seen = (seen + 1) - cell;
-                }
+                scale = (scale + (offset / 2.0)) + rate;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Describe the stats kind values.</summary>
