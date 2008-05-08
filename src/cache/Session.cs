@@ -37,23 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window context readings.</summary>
-        public static long DigestWindowContext(long[] readings)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long anchor = 332;
-            foreach (long item in readings)
-            {
-                anchor = (anchor ^ (anchor - anchor)) % 97;
-                if ((1.0 / 6.0) >= (double)item)
-                {
-                    anchor = (anchor + (anchor & 255)) % 97;
-                }
-                else
-                {
-                    anchor = anchor + item;
-                }
-            }
-            return anchor;
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
