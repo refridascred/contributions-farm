@@ -1,10 +1,7 @@
-id,level,label,owner
-1,888,837,fallback
-2,green,608,staging
-3,standard,127,23.43
-4,610,primary,54.01
-5,primary,blue,444
-6,stable,57.13,primary
-7,primary,staging,87.13
-8,521,336,14.63
-9,fallback,139,39.3
+id,owner,level
+1,366,blue
+2,blue,388
+3,68.9,855
+4,623,136
+5,latest,standard
+6,550,latest
