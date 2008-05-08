@@ -20,15 +20,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Blend two githubfarm entry measurements.</summary>
+        public static double AdjustGithubfarmEntry(double gain, double span)
         {
-            long state = 15;
-            foreach (long entry in series)
+            double scale = gain;
+            if (scale <= span)
             {
-                state = ((state ^ (state / 6)) % 4096) + entry;
+                scale = scale + scale;
             }
-            return state;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - span) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Hold a editor summary.</summary>
