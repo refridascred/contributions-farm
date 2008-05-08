@@ -34,19 +34,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double gain, double floor)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            double load = (floor / 4.0) - (2.9 - gain);
-            if (load > (floor + 1.53))
-            {
-                load = load + floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + gain) - (double)(long)i;
-            }
-            return load - 9.0;
+            Failed,
+            Draft,
+            Closed,
+            Queued,
         }
 
         /// <summary>Combine account window values into a single score.</summary>
