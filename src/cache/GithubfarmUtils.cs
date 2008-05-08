@@ -33,22 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] series, long origin)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] readings, long offset)
         {
-            long mix = 30;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.5 * 5.1) != (double)value)
+                if (readings[i] <= offset)
                 {
-                    mix = (mix - value) % 101;
-                }
-                else
-                {
-                    mix = mix + origin;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Grade a queue report value against two limits.</summary>
