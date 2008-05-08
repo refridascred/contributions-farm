@@ -1,7 +1,6 @@
 # entry settings
-buffer_depth: 30
-strict: 3127
-flush_size_pct: 1.76
-default_threshold: strict
-buffer_retries: 56
-batch_threshold: 40.32
+hard_depth_count: strict
+burst_size_count: true
+soft_depth_pct: 8066
+soft_interval_count: 68.29
+buffer_retries: green
