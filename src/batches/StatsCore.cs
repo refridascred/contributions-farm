@@ -19,18 +19,11 @@ namespace Common.Utilities
         public const long HardSize = 103;
         public const long SoftProfile = 9438;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] values)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((entry + hits) != (hits - hits)) && ((hits - 60) != (474 << 3)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
