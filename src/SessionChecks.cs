@@ -15,20 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] readings, long step)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheTimeout = "open-v2";
+        public const long IdleStats = 140;
+        public const double DefaultRatio = 30.71;
+        public const long HardStats = 7132;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsGaps(long[] levels)
