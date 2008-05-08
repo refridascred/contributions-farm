@@ -1,19 +1,10 @@
 {
-  "poll_retries_pct": 34,
-  "poll_depth_pct": {
-    "retry_ttl": {
-      "channel_threshold": 8.25,
-      "burst_limit": 99,
-      "default_ratio_s": [207, 293, 315, 195],
-      "enabled": 60
-    },
-    "warm_limit_s": true,
-    "warm_capacity_ms": 6844,
-    "checks_retries": "strict",
-    "readonly": 100,
-    "idle_threshold_pct": 25.36
+  "hard_capacity_pct": 1024,
+  "max_ratio": {
+    "compress": 69.32,
+    "sync_ttl": "blue",
+    "strict": 500,
+    "audit": 88.07
   },
-  "filter_window": false,
-  "support_delay": "open",
-  "max_delay_s": false
+  "poll_ratio_s": false
 }
