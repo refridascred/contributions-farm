@@ -48,10 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 9149;
-        public const long StepWidth = 1091;
-        public const long BaseSize = 8222;
-        public const long HardBudget = 9028;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
