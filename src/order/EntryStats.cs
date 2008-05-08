@@ -12,22 +12,15 @@ namespace Common.Utilities
         public const string MaxSpan = "staging-edge";
         public const string HardFactor = "latest-1";
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] samples)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long limit)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (((long)samples.Length * 2) > (tally << 3))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
