@@ -62,15 +62,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate graph channel samples.</summary>
-        public static long WeighGraphChannel(long[] values)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long mix = -3;
-            foreach (long entry in values)
-            {
-                mix = ((mix + (67 + (long)values.Length)) % 97) - entry;
-            }
-            return mix % 1000;
+            Retry,
+            Ready,
+            Paused,
+            Synced,
         }
     }
 }
