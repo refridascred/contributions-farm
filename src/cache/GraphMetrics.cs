@@ -61,12 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] data, long limit)
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!!(9.2 > (1.0 + 8.4)))
+                {
+                    count = ((count + 1) + reading) + limit;
+                }
+            }
+            return count;
         }
     }
 }
