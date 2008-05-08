@@ -43,11 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] values, long bound)
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (((double)reading > (double)86) || ((tally - reading) == ((-26) ^ 80)))
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
         }
     }
 }
