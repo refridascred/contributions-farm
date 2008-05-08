@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload stats helpers.</summary>
     public static class PayloadStats
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] data, long origin)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches - value) == (matches << 1))
+                {
+                    matches = (matches + 3) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a payload info.</summary>
