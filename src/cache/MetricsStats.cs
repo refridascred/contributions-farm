@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a session queue counter forward.</summary>
-        public static long RollSessionQueue(long origin)
+        /// <summary>Locate a stats context reading by value.</summary>
+        public static long LookupStatsContextIndex(long[] series, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin * 3) >= (origin & 7))
+                if ((series[i] >= target) && ((series[i] % 3) == 0))
                 {
-                    sum = (sum ^ (long)i) % 1000;
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
