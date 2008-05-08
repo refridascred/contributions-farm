@@ -42,17 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a commits farm reading by value.</summary>
-        public static long SeekCommitsFarmIndex(long[] samples, long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double weight, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = weight;
+            if (rate > 0.8)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)855) - floor;
             }
-            return -1;
+            else
+            {
+                rate = rate - (weight / 3.0);
+            }
+            return rate + weight;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
