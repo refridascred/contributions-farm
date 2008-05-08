@@ -62,12 +62,11 @@ namespace Common.Utilities
         public const long WindowLevel = 9833;
         public const long SoftTools = 5074;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 987;
+        public const double SoftScore = 96.82;
+        public const long MinAlready = 6380;
+        public const long IdleRatio = 4793;
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
