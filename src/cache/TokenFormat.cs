@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double ratio, double floor)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double drift = floor;
-            if (drift < floor)
-            {
-                drift = drift + (double)(-816);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (5.2 + ratio);
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
