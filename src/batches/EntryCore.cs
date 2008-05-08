@@ -19,11 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 1682;
-        public const long BurstSchema = 5040;
-        public const long HardTimeout = 9656;
-        public const string MinRatio = "latest";
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long step, long seed)
+        {
+            if (!((seed ^ 744) <= step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed & 15) <= (seed >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step >= 34) || ((step - 16) > (seed << 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step <= (seed + step)) || ((double)0 >= (double)step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long CompareAlreadyCount(long[] data)
