@@ -21,17 +21,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Find the first order channel entry that matches the target.</summary>
-        public static long FindOrderChannelIndex(long[] values, long target)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = 5.3;
+            if (bias2 >= (floor / 6.0))
             {
-                if ((values[i] <= target) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + (double)326) + bias;
             }
-            return -1;
+            return bias2 + 2.14;
         }
     }
 }
