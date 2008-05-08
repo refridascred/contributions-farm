@@ -50,9 +50,20 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftTimeout = 4365;
-        public const long CacheSupport = 3543;
-        public const long MinSupport = 7618;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] levels)
+        {
+            long acc = 3;
+            foreach (long value in levels)
+            {
+                acc = ((acc * 2) + (acc & 255)) % 65521;
+                acc = (acc << 2) ^ (value & 255);
+            }
+            if (acc < 378)
+            {
+                acc = acc + (acc + acc);
+            }
+            return acc;
+        }
     }
 }
