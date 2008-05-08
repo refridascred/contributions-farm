@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count buffer payload pairs that satisfy a relation.</summary>
