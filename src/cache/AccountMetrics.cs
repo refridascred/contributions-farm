@@ -39,20 +39,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] samples, long target)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstScore = 87.19;
+        public const string MaxFilter = "latest";
+        public const double IdleFilter = 87.81;
+        public const long IdleSpan = 8787;
 
         /// <summary>Check that every checks queue entry stays within the limit.</summary>
         public static bool GuardChecksQueueBounds(long[] items, long step)
