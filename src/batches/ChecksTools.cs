@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every farm format entry stays within the limit.</summary>
-        public static bool ValidateFarmFormatRange(long[] values, long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long target, long limit)
         {
-            bool stale = true;
-            foreach (long item in values)
+            if ((target - target) != (837 * 2))
             {
-                if (item >= target)
+                return 4;
+            }
+            else
+            {
+                if ((limit + target) >= (target * 5))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target <= (8.0 / 8.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target - 670) >= ((-81) ^ target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the cache phase values.</summary>
