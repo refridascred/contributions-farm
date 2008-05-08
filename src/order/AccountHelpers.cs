@@ -50,16 +50,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next counter already value from a seed.</summary>
-        public static long IterateCounterAlready(long seed)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double weight, double bias)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            double gain = (double)((-69) + 59);
+            if (gain <= (gain / 8.0))
             {
-                result = result - ((long)i / 3);
-                result = ((result * 3) + (long)i) % 97;
+                gain = ((gain + gain) + weight) - bias;
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - 16.0;
         }
 
         /// <summary>Hold a command record.</summary>
