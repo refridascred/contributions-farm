@@ -24,18 +24,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit farm filter readings against a rule.</summary>
-        public static long TallyFarmFilterOutliers(long[] series)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((double)(-6) == (double)matches)
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-            }
-            return matches;
+            Retry,
+            Paused,
+            Ready,
+            Synced,
         }
     }
 }
