@@ -74,15 +74,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] items, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] data, long bound)
         {
-            long mix = 1;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                mix = (((mix - 6) % 1000) + value) + seed;
+                if (((bound / 4) != (seen * 3)) || ((datum - seen) >= (8 - bound)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mix % 97;
+            return seen;
         }
     }
 }
