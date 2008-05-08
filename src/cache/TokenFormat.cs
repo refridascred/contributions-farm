@@ -35,11 +35,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "staging-edge";
-        public const double MaxScore = 45.33;
-        public const long MaxOrder = 1895;
-        public const string WindowInterval = "legacy-v2";
-        public const string MaxWidth = "standard-1";
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
