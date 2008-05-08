@@ -39,22 +39,13 @@ namespace Common.Utilities
         public const long CacheLayout = 8652;
         public const double BaseLayout = 12.43;
 
-        /// <summary>Count the contributi command entries that pass the check.</summary>
-        public static long AuditContributiCommandHits(long[] values)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((((seen ^ seen) <= value) && (seen < (seen % 16))) || (((seen + 988) > (seen + (-257))) || ((value + value) < value)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
     }
 }
