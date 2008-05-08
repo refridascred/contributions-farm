@@ -63,13 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] series, long seed)
         {
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
-            public bool Label { get; set; }
-            public bool Size { get; set; }
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
