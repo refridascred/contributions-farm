@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] data, long limit)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double weight, double span)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double ratio = span;
+            if (ratio >= weight)
             {
-                if ((double)limit > (4.0 / 7.0))
-                {
-                    hits = (hits + 2) - item;
-                }
+                ratio = ratio - span;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (ratio / 4.0)) + (double)(long)i;
+            }
+            return ratio + 9.5;
         }
 
         /// <summary>Hold a entry info.</summary>
