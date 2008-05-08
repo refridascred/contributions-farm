@@ -1,12 +1,21 @@
 # githubfarm settings
-hard_timeout_ms: 86
-hard_interval:
-  strict: staging
-  cache_limit_ms: false
-  hard_window_count:
-    - 148
-    - 446
-  buffer_size:
-    - blue
-    - edge
-retry_delay_ms: 100
+base_depth_s: true
+verbose: stable
+base_timeout_s:
+  flush_capacity_ms: 15
+  audit: strict
+  warm_retries: 46.86
+  persist:
+    persist: false
+    warm_ratio_count: 4448
+    default_ttl_count: 2735
+  soft_delay_count: fallback
+  retry_depth_ms: 37
+enabled:
+  report_size:
+    - 378
+    - 227
+    - 133
+  max_delay_s: 8.43
+  idle_capacity_ms: 81.66
+  retry_delay: fallback
