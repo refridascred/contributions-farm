@@ -35,14 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            New,
-            Dropped,
-            Active,
             Closed,
-            Draft,
+            Ready,
+            Pending,
+            Paused,
         }
 
         /// <summary>Adjust a farm reading.</summary>
