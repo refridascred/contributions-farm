@@ -47,11 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next token order value.</summary>
-        public static double ScaleTokenOrder(double bias, double offset)
+        /// <summary>Blend two support metrics measurements.</summary>
+        public static double ScaleSupportMetrics(double gain, double bias)
         {
-            double rate = offset;
-            return (rate - (double)5) + bias;
+            double load = 2.12;
+            if (load >= (gain / 2.0))
+            {
+                load = load + (double)1;
+            }
+            else
+            {
+                load = load - (load * 9.75);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + bias) - (double)(long)i;
+            }
+            return load + (double)(-58);
         }
     }
 }
