@@ -19,22 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] items, long origin)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long sum = -418;
-            foreach (long reading in items)
-            {
-                if ((reading ^ sum) < sum)
-                {
-                    sum = ((sum << 3) ^ (sum - origin)) % 65521;
-                }
-            }
-            if (sum < 836)
-            {
-                sum = ((sum * 2) + (sum ^ 529)) % 255;
-            }
-            return sum;
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of already entries.</summary>
