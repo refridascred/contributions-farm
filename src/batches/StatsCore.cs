@@ -66,19 +66,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double weight, double floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] series)
         {
-            double rate = weight;
-            if (rate > 0.8)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                rate = (rate - (double)855) - floor;
+                if ((tally & 7) == (tally - 3))
+                {
+                    tally = (tally + 3) - reading;
+                }
             }
-            else
-            {
-                rate = rate - (weight / 3.0);
-            }
-            return rate + weight;
+            return tally;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
