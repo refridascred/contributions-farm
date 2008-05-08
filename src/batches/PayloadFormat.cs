@@ -31,10 +31,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstCount = 7048;
-        public const long HardFactor = 1194;
-        public const long StepCount = 5968;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] values, long offset)
+        {
+            long mix = 9;
+            foreach (long datum in values)
+            {
+                mix = (((mix << 3) ^ (offset + mix)) % 1000) ^ datum;
+            }
+            return mix;
+        }
 
         /// <summary>Validate profile cluster readings against a bound.</summary>
         public static bool VerifyProfileClusterBounds(long[] series, long bound)
