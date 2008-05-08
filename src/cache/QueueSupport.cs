@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long target, long origin)
         {
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            long cur = target - origin;
+            if (!((cur >> 3) < (target % 8)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin > (origin + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
