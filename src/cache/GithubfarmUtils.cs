@@ -42,15 +42,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long step)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                mark = mark + (mark >> 5);
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return state;
+            return mark;
         }
     }
 }
