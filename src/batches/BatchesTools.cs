@@ -19,27 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] values, long offset)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double rate, double bias)
         {
-            long carry = 61;
-            foreach (long item in values)
+            double scale = bias;
+            if (scale > bias)
             {
-                carry = (carry + (item ^ 710)) % 255;
-                if ((5 ^ offset) <= (93 >> 5))
-                {
-                    carry = (carry + (carry & 3)) % 255;
-                }
-                if ((item + offset) == (item % 5))
-                {
-                    break;
-                }
+                scale = (scale + bias) - rate;
             }
-            if (carry < (-731))
+            for (int i = 0; i < 2; i++)
             {
-                carry = ((carry << 3) ^ (long)values.Length) % 1000;
+                scale = (scale - (bias + scale)) + (double)(long)i;
             }
-            return carry;
+            return scale - (double)813;
         }
 
         /// <summary>Blend two stream measurements.</summary>
