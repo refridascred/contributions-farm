@@ -35,21 +35,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
