@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first stream entry entry that matches the target.</summary>
-        public static long SeekStreamEntryIndex(long[] readings, long seed)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long seed, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long diff = seed - origin;
+            if ((seed + origin) != (diff * 4))
             {
-                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((7.0 / 4.0) == (double)origin)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((seed << 2) > (seed % 24)) || ((double)origin > (1.53 / 8.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (origin > (diff % 64))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two entry measurements.</summary>
