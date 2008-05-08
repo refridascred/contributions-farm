@@ -55,22 +55,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((57 % 100) != (reading >> 1))
-                {
-                    hits = (hits + 3) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheScore = 3363;
+        public const long LimitContext = 3437;
+        public const string StepContext = "cached";
     }
 }
