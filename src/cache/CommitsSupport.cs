@@ -71,19 +71,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate token account readings against a bound.</summary>
-        public static bool ValidateTokenAccountLimits(long[] items, long limit)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (datum <= limit)
+                if (datum <= offset)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
