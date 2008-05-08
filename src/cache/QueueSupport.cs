@@ -57,26 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] data)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] data, long floor)
         {
-            long score = 6;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item >> 1) <= score)
+                if (data[i] > floor)
                 {
-                    score = (score << 2) ^ score;
-                }
-                if (((14.0 * 5.0) >= (double)score) || ((score ^ 82) <= score))
-                {
-                    score = (score << 3) ^ item;
+                    return (long)i;
                 }
             }
-            if (score > 44)
-            {
-                score = (score - (score + score)) % 255;
-            }
-            return score;
+            return -1;
         }
     }
 }
