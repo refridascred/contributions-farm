@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] values)
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            long acc = 145;
+            foreach (long item in values)
+            {
+                acc = (((acc << 2) ^ (acc * 2)) % 101) ^ item;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the cache phase values.</summary>
