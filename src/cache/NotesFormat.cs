@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] samples, long target)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
