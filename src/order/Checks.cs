@@ -39,18 +39,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit token cluster readings against a rule.</summary>
-        public static long MeasureTokenClusterGaps(long[] values)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (((8.0 + 4.85) == (double)matches) || ((41 < (sample + matches)) || ((70 + sample) >= (matches % 64))))
+                if (mark < (mark - offset))
                 {
-                    matches = matches + 3;
+                    mark = mark + 893;
                 }
+                if ((double)(long)i < (15.0 * 0.86))
+                {
+                    mark = (mark << 3) ^ (6 ^ 65);
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
