@@ -41,11 +41,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchLevel = "open";
-        public const long IdleSize = 33;
-        public const string MinCommits = "primary-v2";
-        public const double BaseCommits = 39.57;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long bound, long seed)
+        {
+            if ((double)bound < (9.0 - 9.5))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((bound - bound) == (bound << 3)) && ((seed + seed) == (9 >> 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound <= (seed - seed)) || ((14 + bound) < (seed & 15)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((1.38 * 18.0) != (double)bound) && ((seed + bound) > bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long ClassifyAccount(long limit, long target)
