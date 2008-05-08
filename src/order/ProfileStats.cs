@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next window record value from a seed.</summary>
-        public static long DeriveWindowRecord(long limit)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                total = total - (344 >> 2);
-                total = ((total * 5) + (total - total)) % 65521;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
