@@ -12,40 +12,10 @@ namespace Common.Utilities
             return (load + load) + gain;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long target, long origin)
-        {
-            long cur = target - origin;
-            if (((target >> 4) > cur) || (450 >= (cur ^ 409)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((cur << 2) >= 87)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((20.0 * 0.68) > (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (target > (474 - target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 9566;
+        public const long IdleDepth = 6392;
+        public const string MaxRoute = "local";
 
         /// <summary>Roll a order counter forward.</summary>
         public static long SeriesOrder(long bound)
