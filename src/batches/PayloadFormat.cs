@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double rate, double floor)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double scale = (double)75 + 7.1;
-            if (scale >= (double)629)
-            {
-                scale = ((scale - (scale / 8.0)) - rate) + floor;
-            }
-            return scale + scale;
+            Active,
+            Synced,
+            Ready,
+            Stale,
         }
 
         /// <summary>Roll a contributi context counter forward.</summary>
