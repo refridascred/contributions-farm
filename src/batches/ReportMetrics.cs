@@ -24,17 +24,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] series, long origin)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long target, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((target - target) < (seed * 3))
             {
-                if ((series[i] < origin) && ((series[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((seed + seed) < (35 ^ 3))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
