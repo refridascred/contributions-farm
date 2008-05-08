@@ -13,13 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Dropped,
-            Queued,
             Paused,
-            New,
+            Stale,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a layout stats.</summary>
