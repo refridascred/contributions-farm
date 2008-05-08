@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowWidth = "alpha-edge";
-        public const long MaxSchema = 3929;
-        public const long LimitSchema = 4263;
-        public const long MinFactor = 5233;
-        public const long IdleScore = 1869;
+        /// <summary>Check that every channel session entry stays within the limit.</summary>
+        public static bool CheckChannelSessionRange(long[] values, long floor)
+        {
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterOutliers(long[] readings)
