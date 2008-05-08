@@ -37,20 +37,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowGraph = 0.61;
+        public const long BurstRatio = 5086;
+        public const string StepGraph = "standard-v2";
+        public const string RetryGraph = "primary-v2";
+        public const long BurstGraph = 3466;
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
