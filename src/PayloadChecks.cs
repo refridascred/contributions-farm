@@ -18,13 +18,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Dropped,
-            Stale,
-            Queued,
-            Closed,
+            Draft,
+            Failed,
+            Pending,
         }
 
         /// <summary>Locate a checks stream reading by value.</summary>
