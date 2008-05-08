@@ -39,21 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] items)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry >= limit)
                 {
-                    if ((items[i] + items[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Fold a list of already payload readings.</summary>
