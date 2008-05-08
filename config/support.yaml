@@ -1,19 +1,14 @@
 # support settings
-enabled:
-  poll_depth_s: legacy
-  idle_delay: true
-  layout_depth: 67.92
-retry_threshold_s:
-  - 389
-  - 246
-  - 217
-  - 355
-batch_limit:
-  verbose: 4878
-  min_retries: 91
-  max_threshold: 89
-  burst_size_ms: eu-west
-  base_limit_ms: true
-  hard_capacity_ms: 32.94
-sync_timeout_ms: true
-sync_capacity: 14.71
+burst_size_pct:
+  editor_depth:
+    - 360
+    - 250
+  batch_window_pct: eu-west
+  hard_ttl_pct: 96.93
+  audit: open
+  flush_delay_pct:
+    - blue
+    - primary
+    - strict
+report_interval: 7517
+poll_depth_pct: false
