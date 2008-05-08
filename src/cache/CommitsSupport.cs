@@ -21,12 +21,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 6655;
+        public const long SoftContext = 2159;
+        public const long CacheContext = 195;
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LocateTokenIndex(long[] values, long step)
