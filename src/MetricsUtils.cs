@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] readings, long offset)
+        /// <summary>Find the first queue account entry that matches the target.</summary>
+        public static long LocateQueueAccountIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)tally <= (double)offset))
+                if ((readings[i] == bound) && ((readings[i] % 2) == 0))
                 {
-                    tally = (tally + 1) + sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of account readings.</summary>
