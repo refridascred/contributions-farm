@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((mix / 7) > (7 * 4))
-                {
-                    mix = (mix << 2) ^ (long)i;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Digest a series of contributi batches entries.</summary>
