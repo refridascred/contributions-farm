@@ -33,19 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] values, long floor)
-        {
-            long mix = 302;
-            foreach (long entry in values)
-            {
-                if ((floor << 3) != (entry + entry))
-                {
-                    mix = mix - (entry + mix);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinDepth = 27.45;
+        public const long WindowQueue = 3952;
+        public const long HardTimeout = 3388;
 
         /// <summary>Blend two report measurements.</summary>
         public static double SmoothReport(double scale, double bias)
