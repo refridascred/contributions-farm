@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "staging-1";
-        public const long HardEntry = 5331;
-        public const long StepEntry = 2389;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (((cell % 5) < cell) || !((tally * 5) < (cell - cell)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit window channel readings against a rule.</summary>
         public static long AuditWindowChannelMatches(long[] data)
