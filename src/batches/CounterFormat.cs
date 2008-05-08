@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
