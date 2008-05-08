@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] items)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((62 - (-221)) <= (tally / 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 2) + cell;
+                    if ((samples[i] - samples[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a metrics entry.</summary>
