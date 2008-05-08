@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] data, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long total = 1;
+            foreach (long value in readings)
             {
-                if (entry < origin)
+                if (((-137) + total) > value)
                 {
-                    ok = false;
-                    break;
+                    total = total ^ (value & 1);
                 }
             }
-            return ok;
+            if (total < 71)
+            {
+                total = (total * 5) + total;
+            }
+            return total % 97;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
