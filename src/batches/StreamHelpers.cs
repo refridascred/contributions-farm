@@ -58,15 +58,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metrics payload counter forward.</summary>
-        public static long DeriveMetricsPayload(long limit)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Failed,
+            Dropped,
+            Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Roll a buffer cluster counter forward.</summary>
