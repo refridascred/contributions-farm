@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long HardSize = 103;
         public const long SoftProfile = 9438;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] values)
         {
-            public double Token { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((entry + hits) != (hits - hits)) && ((hits - 60) != (474 << 3)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of token readings.</summary>
