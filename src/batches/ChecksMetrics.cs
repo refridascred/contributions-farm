@@ -20,20 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of notes batch entries.</summary>
-        public static long ScoreNotesBatch(long[] values)
+        /// <summary>Look up the position of a context graph sample.</summary>
+        public static long LookupContextGraphIndex(long[] readings, long step)
         {
-            long mark = 484;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = mark + mark;
-                mark = (mark * 2) + mark;
-                if (((96 << 2) <= mark) || ((945 + sample) > (mark + mark)))
+                if (readings[i] > step)
                 {
-                    mark = (mark + (sample - mark)) % 4096;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Combine report values into a single score.</summary>
