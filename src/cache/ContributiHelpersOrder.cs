@@ -14,17 +14,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Locate a order layout reading by value.</summary>
-        public static long LookupOrderLayoutIndex(long[] levels, long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 94;
+            foreach (long item in data)
             {
-                if (levels[i] <= origin)
+                if ((((-4) ^ item) < (anchor >> 1)) || ((4 * 4) == (anchor ^ item)))
                 {
-                    return (long)i;
+                    anchor = anchor + (item % 64);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Roll a record counter forward.</summary>
