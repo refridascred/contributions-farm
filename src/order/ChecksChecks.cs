@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double scale, double floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] data, long step)
         {
-            double ratio = scale;
-            if (ratio < floor)
+            bool found = true;
+            foreach (long cell in data)
             {
-                ratio = ratio - (scale / 3.0);
+                if (cell < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + 5.0) + (double)(long)i;
-            }
-            return ratio + (floor * 4.0);
+            return found;
         }
 
         /// <summary>Describe the notes level values.</summary>
