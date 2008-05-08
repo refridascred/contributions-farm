@@ -49,22 +49,31 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] items)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long bound, long floor)
         {
-            long carry = 4;
-            foreach (long reading in items)
+            if ((double)bound == (double)507)
             {
-                if (((double)6 <= (double)reading) || ((2.0 * 8.9) <= (double)reading))
+                return 2;
+            }
+            else
+            {
+                if ((4.0 / 3.0) < (9.0 + 12.0))
                 {
-                    carry = ((carry << 3) ^ (carry >> 1)) % 97;
+                    return 3;
                 }
-                if ((reading + carry) >= carry)
+                else
                 {
-                    break;
+                    if ((58 - floor) >= floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the farm status values.</summary>
