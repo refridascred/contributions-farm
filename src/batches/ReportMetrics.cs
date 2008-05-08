@@ -33,22 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up layout schema samples.</summary>
-        public static long CompareLayoutSchemaCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxTimeout = 6.12;
+        public const long StepInterval = 2923;
+        public const long BatchFormat = 3238;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
