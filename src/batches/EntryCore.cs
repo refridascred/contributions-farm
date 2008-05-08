@@ -13,38 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long step, long seed)
+        /// <summary>Measure how many counter order samples are out of range.</summary>
+        public static long AuditCounterOrderOutliers(long[] data)
         {
-            if (!((seed ^ 744) <= step))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed & 15) <= (seed >> 2))
+                if ((883 >> 3) < (count - datum))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step >= 34) || ((step - 16) > (seed << 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step <= (seed + step)) || ((double)0 >= (double)step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
