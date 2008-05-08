@@ -32,16 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double weight, double offset)
-        {
-            double scale = weight + (9.0 * 2.45);
-            if (scale > scale)
-            {
-                scale = scale + offset;
-            }
-            return scale - (8.02 * 1.5);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftInterval = 6564;
+        public const long IdleCommits = 8552;
+        public const long MaxCommits = 3376;
+        public const double BatchCommits = 91.85;
+        public const long BatchTimeout = 161;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsHits(long[] items)
