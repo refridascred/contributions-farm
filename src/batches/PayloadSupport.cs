@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Pending,
-            Done,
-            Synced,
-            Ready,
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count metric notes pairs that satisfy a relation.</summary>
