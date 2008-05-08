@@ -1,7 +1,7 @@
 {
-  "commits_ttl": 60,
-  "cache_timeout_ms": 953,
-  "sync_delay_count": false,
-  "retry_window": 250,
-  "payload_ratio": "latest"
+  "cluster_capacity": 66,
+  "verbose": 90,
+  "burst_depth": 250,
+  "base_ratio": false,
+  "compress": 51
 }
