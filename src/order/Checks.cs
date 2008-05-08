@@ -17,16 +17,24 @@ namespace Common.Utilities
         public const double BatchOrder = 79.5;
         public const long CacheScore = 8412;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long seed, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            if (0.9 >= (double)seed)
             {
-                anchor = (anchor - 796) % 101;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((9.45 - 9.4) != (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a support options.</summary>
