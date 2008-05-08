@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every buffer schema entry stays within the limit.</summary>
-        public static bool ValidateBufferSchemaRange(long[] values, long bound)
+        /// <summary>Validate cache entry readings against a bound.</summary>
+        public static bool CheckCacheEntryLimits(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (reading != bound)
+                if (entry <= limit)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Hold a cluster header.</summary>
