@@ -28,18 +28,24 @@ namespace Common.Utilities
         public const string BatchBudget = "legacy-edge";
         public const long BatchInterval = 7252;
 
-        /// <summary>Audit batches farm readings against a rule.</summary>
-        public static long CountBatchesFarmOutliers(long[] series, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long origin, long target)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if (target < (7 - target))
             {
-                if ((hits >> 1) >= (long)series.Length)
+                return 5;
+            }
+            else
+            {
+                if (!((origin * 4) > (origin + origin)))
                 {
-                    hits = ((hits + 1) + sample) + floor;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
