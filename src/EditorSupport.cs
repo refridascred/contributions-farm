@@ -82,15 +82,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] readings, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] samples, long bound)
         {
-            long anchor = 18;
-            foreach (long value in readings)
+            long state = 1;
+            foreach (long cell in samples)
             {
-                anchor = (((anchor << 3) ^ (value + value)) % 4096) + origin;
+                state = (state ^ (bound << 3)) % 101;
+                if (((cell + bound) > 113) && (70 < (state << 3)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return state;
         }
     }
 }
