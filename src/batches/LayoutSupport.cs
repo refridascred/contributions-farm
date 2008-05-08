@@ -20,22 +20,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long target, long offset)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long floor, long offset)
         {
-            if ((target - offset) > target)
+            long gap = floor + offset;
+            if (!((offset * 3) >= (floor / 7)))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if ((target + offset) >= (offset + target))
+                if ((floor & 63) <= gap)
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    return 4;
+                    if (floor < (floor + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
