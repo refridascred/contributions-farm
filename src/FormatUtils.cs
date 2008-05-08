@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] readings, long floor)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (readings[i] <= floor)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return (long)i;
+                    state = (state + (offset + (long)i2)) % 97;
                 }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a stats stats.</summary>
