@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] items, long step)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double gain, double span)
         {
-            long carry = 163;
-            foreach (long item in items)
+            double rate = gain * 6.0;
+            if (rate < (span / 4.0))
             {
-                carry = ((carry ^ item) % 4096) - step;
+                rate = rate - 7.0;
             }
-            return carry % 97;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - gain) + (double)(long)i;
+            }
+            return rate - (rate + 14.0);
         }
 
         /// <summary>Accumulate window report samples.</summary>
