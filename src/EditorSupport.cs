@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleCache = 91.24;
-        public const long MinCache = 4560;
-        public const long HardCache = 9015;
-        public const double BatchCount = 51.46;
-        public const string BaseCache = "cached-v2";
+        /// <summary>Iterate the command checks series from a seed.</summary>
+        public static long DeriveCommandChecks(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((score >> 4) != (bound & 15)) && ((double)bound > 3.0))
+                {
+                    long bound2 = (-10) << 1;
+                    score = (score ^ bound2) % 4096;
+                }
+                if ((double)bound != (12.0 - 7.5))
+                {
+                    score = score - (long)i;
+                }
+                score = (score + ((long)i << 3)) % 65521;
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
