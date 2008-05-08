@@ -16,18 +16,19 @@ namespace Common.Utilities
             return scale - (ratio + scale);
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long origin)
         {
-            long total = 12;
-            foreach (long reading in readings)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((6 % 8) > (total / 2))
+                if (!((double)origin < (9.8 - 12.0)))
                 {
-                    total = (total ^ 23) + reading;
+                    mix = mix ^ origin;
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
