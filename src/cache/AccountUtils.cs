@@ -13,19 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many queue farm samples are out of range.</summary>
-        public static long CountQueueFarmOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((6 / 4) == (value % 100)) && ((matches / 5) != (matches << 1)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchInterval = 7457;
+        public const double MinCounter = 80.87;
+        public const long BatchCounter = 761;
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
