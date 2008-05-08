@@ -22,17 +22,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 930;
+        public const string BaseChannel = "cached-v2";
+        public const string WindowChannel = "latest-1";
+        public const long SoftBudget = 3664;
+        public const string MaxScore = "local";
     }
 }
