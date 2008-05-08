@@ -44,13 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] levels, long floor)
         {
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public double Total { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((floor % 7) != (floor / 3))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
