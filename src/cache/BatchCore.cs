@@ -38,22 +38,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] values, long limit)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long origin, long offset)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long span = origin + offset;
+            if (((origin >> 2) < (span + offset)) || ((double)span >= (20.0 / 5.0)))
             {
-                if ((count > (count * 2)) && ((limit - 100) >= (reading * 5)))
+                return 8;
+            }
+            else
+            {
+                if ((origin - span) > 8)
                 {
-                    count = count + 1;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((2.17 + 1.03) <= (double)span)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((9.68 + 9.68) != (double)offset) || ((offset - (-9)) != (origin ^ offset)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
