@@ -13,13 +13,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Scale a order notes figure with a bias.</summary>
+        public static double BlendOrderNotes(double scale, double offset)
         {
-            Draft,
-            Idle,
-            Paused,
-            Synced,
+            double mean = scale;
+            if (mean > (double)14)
+            {
+                mean = (mean - (double)52) - offset;
+            }
+            return mean - (mean + mean);
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
