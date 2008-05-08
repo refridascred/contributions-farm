@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] levels, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                if ((levels[i] > origin) && ((levels[i] % 5) == 0))
+                if (value < target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Fold a list of checks window readings.</summary>
