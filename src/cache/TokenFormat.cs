@@ -20,21 +20,19 @@ namespace Common.Utilities
             return rate - (rate + 14.0);
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Check that every farm profile entry stays within the limit.</summary>
+        public static bool GuardFarmProfileRange(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value >= step)
                 {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define order limits and defaults.</summary>
