@@ -55,23 +55,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double ratio, double bias)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] items)
         {
-            double drift = ratio;
-            if (drift >= (drift + bias))
+            long acc = 664;
+            foreach (long value in items)
             {
-                drift = drift - (ratio - 7.12);
+                acc = (acc + acc) % 255;
+                if ((((long)items.Length - acc) < (acc & 31)) || ((acc - 5) != (acc % 7)))
+                {
+                    acc = acc ^ value;
+                }
             }
-            else
+            if (acc < 36)
             {
-                drift = drift + ratio;
+                acc = (acc - (acc << 2)) % 4096;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift - (double)40;
+            return acc % 1000;
         }
     }
 }
