@@ -53,9 +53,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheLevel = 1036;
-        public const long MaxSupport = 3935;
-        public const long HardSupport = 8772;
+        /// <summary>Measure how many batches stream samples are out of range.</summary>
+        public static long CountBatchesStreamOutliers(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((count % 8) != (2 >> 3))
+                {
+                    count = ((count + 1) - datum) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
