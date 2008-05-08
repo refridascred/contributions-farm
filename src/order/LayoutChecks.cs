@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 3510;
+        public const double StepBatches = 64.47;
+        public const string CacheDepth = "staging";
+        public const double BurstBatches = 98.62;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string CacheContributi = "staging-edge";
