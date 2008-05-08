@@ -1,11 +1,7 @@
 {
-  "format_delay": 1024,
-  "persist": "legacy",
-  "default_interval": {
-    "base_limit_ms": true,
-    "buffer_delay": true,
-    "base_limit_count": true,
-    "idle_delay_pct": 8419,
-    "poll_threshold_count": 1
-  }
+  "soft_retries_pct": "eu-west",
+  "audit": 82.93,
+  "record_ttl": [399, 381, 447],
+  "tools_window": 30,
+  "batch_ratio_ms": "latest"
 }
