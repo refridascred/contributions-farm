@@ -1,8 +1,12 @@
 {
-  "strict": "legacy",
-  "contributi_ratio": 3047,
-  "poll_timeout_pct": false,
-  "editor_ratio": true,
-  "max_size_s": [5, 83],
-  "verbose": true
+  "idle_retries_count": false,
+  "enabled": {
+    "route_threshold": [138, 90],
+    "batch_timeout": [12, 8],
+    "entry_threshold": "open",
+    "poll_interval_s": true,
+    "idle_limit_count": 250,
+    "poll_retries_s": "latest"
+  },
+  "audit": false
 }
