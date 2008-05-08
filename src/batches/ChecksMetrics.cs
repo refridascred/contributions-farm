@@ -76,19 +76,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] items, long origin)
+        /// <summary>Count the stream report entries that pass the check.</summary>
+        public static long MeasureStreamReportHits(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (sample < origin)
+                if ((item >> 3) > (long)items.Length)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
