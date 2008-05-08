@@ -30,13 +30,21 @@ namespace Common.Utilities
         public const long BaseWidth = 5141;
         public const long DefaultSupport = 546;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            Ready,
-            Dropped,
-            Draft,
-            Active,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
