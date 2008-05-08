@@ -1,6 +1,9 @@
-id,count,ratio
-1,67.63,79
-2,321,553
-3,62.59,35
-4,eu-west,latest
-5,35,412
+id,weight,count,token
+1,16.1,814,156
+2,341,78,91.21
+3,59.64,strict,standard
+4,edge,452,33.7
+5,60.42,strict,717
+6,782,primary,741
+7,44.57,85.58,464
+8,green,294,45.44
