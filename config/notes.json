@@ -1,6 +1,20 @@
 {
-  "batches_ratio": true,
-  "strict": "local",
-  "poll_ratio": ["local", "fallback"],
-  "max_threshold_ms": false
+  "idle_ratio": {
+    "contributi_delay": 33.51,
+    "idle_ratio_count": [481, 468, 70, 497],
+    "idle_ratio": "latest",
+    "soft_ratio": 56,
+    "cache_delay_count": true
+  },
+  "audit": "legacy",
+  "max_ttl_ms": {
+    "retry_timeout": 23,
+    "warm_capacity": 25.15,
+    "verbose": {
+      "burst_threshold": "open",
+      "burst_limit_ms": 62.11,
+      "min_interval_s": 38.35,
+      "layout_timeout": 19.86
+    }
+  }
 }
