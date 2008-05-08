@@ -1,8 +1,8 @@
-id,rank,score,level
-1,31,local,37
-2,515,549,55
-3,21.34,fallback,350
-4,356,78.91,48.32
-5,504,eu-west,37.98
-6,64,stable,910
-7,262,green,808
+id,rank,ratio
+1,762,351
+2,114,267
+3,30.69,strict
+4,local,65.86
+5,52.66,133
+6,fallback,67.47
+7,284,853
