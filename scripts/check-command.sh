@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    edge)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,6 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable strict; do
+for item in staging open blue fallback; do
     log "checking ${item}"
 done
