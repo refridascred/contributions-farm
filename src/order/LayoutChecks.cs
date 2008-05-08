@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] levels, long origin)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((origin % 5) >= (366 >> 2)) && (seen >= (item >> 3)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Find the first report window entry that matches the target.</summary>
