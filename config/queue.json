@@ -1,6 +1,11 @@
 {
-  "buffer_window": 17.85,
-  "readonly": 4213,
-  "githubfarm_capacity": "stable",
-  "persist": ["cached", "primary", "green"]
+  "min_ratio_s": {
+    "default_ttl_ms": false,
+    "buffer_ttl": "strict",
+    "min_threshold_count": 30
+  },
+  "queue_interval": "legacy",
+  "batch_threshold_s": 45.02,
+  "hard_ttl_ms": 76.49,
+  "cluster_ratio": "cached"
 }
