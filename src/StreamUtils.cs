@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 6722;
-        public const string WindowGraph = "alpha-edge";
-        public const string MinWidth = "local";
-        public const long LimitTimeout = 6989;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                total = (total * 5) + limit;
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long PairCounterCount(long[] data)
