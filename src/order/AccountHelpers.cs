@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] samples, long target)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
