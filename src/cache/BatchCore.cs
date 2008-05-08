@@ -50,15 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Paused,
-            Synced,
-            Active,
-            Done,
-            Retry,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftFactor = 5399;
+        public const double MaxGithubfarm = 42.07;
+        public const long IdleGithubfarm = 2072;
+        public const long HardFactor = 7017;
+        public const double MaxCount = 72.78;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long WindowContributi = 3351;
