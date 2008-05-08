@@ -1,7 +1,7 @@
 {
-  "enabled": true,
-  "verbose": "legacy",
-  "window_ttl": false,
-  "checks_window": "latest",
-  "batch_ratio_ms": "open"
+  "batch_interval_pct": 73.84,
+  "cache_delay": [394, 396],
+  "filter_ttl": "strict",
+  "flush_window_s": true,
+  "flush_size_pct": false
 }
