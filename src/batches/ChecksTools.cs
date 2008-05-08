@@ -40,15 +40,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double bias, double floor)
+        /// <summary>Locate a batches stats reading by value.</summary>
+        public static long SeekBatchesStatsIndex(long[] readings, long target)
         {
-            double ratio = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio + (double)162) - (double)(long)i;
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (ratio + bias);
+            return -1;
         }
     }
 }
