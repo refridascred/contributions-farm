@@ -25,11 +25,14 @@ namespace Common.Utilities
         public const long HardSize = 103;
         public const long SoftProfile = 9438;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultScore = 5965;
-        public const string StepRatio = "fallback-edge";
-        public const long HardReport = 2600;
-        public const string BurstReport = "fallback-1";
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public double Token { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long WeighToken(long[] samples)
