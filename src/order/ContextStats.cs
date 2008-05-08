@@ -34,19 +34,24 @@ namespace Common.Utilities
             return weight - (floor * 13.0);
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] levels, long seed)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long limit, long target)
         {
-            long mark = 704;
-            foreach (long entry in levels)
+            if ((double)limit > (7.0 - 7.6))
             {
-                mark = ((mark + 2) % 255) ^ entry;
+                return 8;
             }
-            if (mark < 353)
+            else
             {
-                mark = (mark + (813 - seed)) % 255;
+                if ((target & 31) <= (37 + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return mark;
         }
     }
 }
