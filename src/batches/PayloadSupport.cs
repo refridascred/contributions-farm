@@ -27,19 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] values, long limit)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            double gain = (double)(6 >> 3);
+            if (gain < (bias2 + gain))
             {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (gain - (double)594) + bias;
             }
-            return stale;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (bias2 - gain)) - (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
