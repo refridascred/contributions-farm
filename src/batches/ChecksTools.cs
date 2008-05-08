@@ -60,17 +60,25 @@ namespace Common.Utilities
             return (gain - (gain + rate)) + span;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] readings, long seed)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long floor, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long span = floor ^ seed;
+            if ((double)span == (0.78 - 1.5))
             {
-                if ((readings[i] <= seed) && ((readings[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((double)seed >= (8.35 + 6.39))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
