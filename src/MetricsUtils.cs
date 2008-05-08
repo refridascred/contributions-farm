@@ -44,38 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long origin, long origin2)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] values)
         {
-            if ((678 + origin2) > ((-67) + 30))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2 > origin2) && (28 >= (origin + origin2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((30 >> 2) >= origin2)
+                    if ((values[i] ^ values[j]) > 18)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((origin2 - origin) <= (origin - 3)) && ((origin >> 5) <= (66 % 12)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
