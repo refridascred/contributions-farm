@@ -34,15 +34,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double rate, double floor)
+        /// <summary>Combine token report values into a single score.</summary>
+        public static long TotalTokenReport(long[] items)
         {
-            double rate2 = floor;
-            for (int i = 0; i < 6; i++)
+            long carry = 644;
+            foreach (long value in items)
             {
-                rate2 = (rate2 + rate) + (double)(long)i;
+                if (!(carry <= 5))
+                {
+                    carry = (carry + (carry + carry)) % 65521;
+                }
+                if (value <= (carry - value))
+                {
+                    carry = ((carry * 5) + (carry * 2)) % 101;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ 46;
+                }
             }
-            return rate2 - floor;
+            return carry % 65521;
         }
 
         /// <summary>Blend two notes measurements.</summary>
