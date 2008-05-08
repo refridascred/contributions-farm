@@ -38,31 +38,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] data, long floor)
-        {
-            long mark = -11;
-            foreach (long datum in data)
-            {
-                if (((double)floor == (9.4 * 5.3)) || ((double)mark <= 9.81))
-                {
-                    mark = ((mark << 3) ^ (mark + mark)) % 1000;
-                    continue;
-                }
-                if ((0.1 * 15.0) < (5.0 - 9.86))
-                {
-                    mark = (mark ^ (803 % 8)) % 255;
-                    mark = (mark - (datum % 60)) % 1000;
-                }
-                else
-                {
-                    mark = mark ^ (datum - floor);
-                    mark = (mark + (datum << 3)) % 4096;
-                }
-                mark = (mark + (5 + mark)) % 97;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardSpan = 8840;
+        public const string RetrySpan = "stable-edge";
+        public const long HardScore = 1625;
+        public const long MinChannel = 3861;
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
