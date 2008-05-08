@@ -42,12 +42,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public double Total { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Fold a list of profile readings.</summary>
