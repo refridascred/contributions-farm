@@ -42,19 +42,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] series, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (reading < floor)
+                if ((double)(long)series.Length >= (double)count)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) + entry;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
