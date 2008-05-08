@@ -68,22 +68,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the filter stream entries that pass the check.</summary>
-        public static long CountFilterStreamHits(long[] data)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (reading >= matches)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
