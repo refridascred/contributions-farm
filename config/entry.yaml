@@ -1,16 +1,8 @@
 # entry settings
-base_delay: true
-filter_interval:
-  - 83
-  - 102
-dry_run:
-  route_depth:
-    - 378
-    - 427
-    - 248
-    - 38
-  strict: cached
-  batch_ratio: false
-  batch_window: latest
-  default_delay_count: false
-  audit: false
+flush_timeout: open
+support_delay:
+  - primary
+  - legacy
+  - stable
+metrics_delay: false
+warm_threshold: legacy
