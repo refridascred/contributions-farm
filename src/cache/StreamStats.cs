@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many command stream samples are out of range.</summary>
-        public static long TallyCommandStreamGaps(long[] readings)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long step, long offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            if (offset <= step)
             {
-                if ((double)value < (double)matches)
+                return 4;
+            }
+            else
+            {
+                if (((step / 4) != (step ^ step)) || (6 > (offset << 2)))
                 {
-                    matches = matches + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (8.2 >= (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a channel reading.</summary>
