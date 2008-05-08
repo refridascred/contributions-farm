@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
