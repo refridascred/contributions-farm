@@ -35,12 +35,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public double Owner { get; set; }
-            public bool Level { get; set; }
-            public double Offset { get; set; }
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
