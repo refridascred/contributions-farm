@@ -1,6 +1,6 @@
 {
-  "default_ttl": false,
-  "base_interval": "green",
-  "hard_timeout": "stable",
-  "cache_window_s": true
+  "soft_timeout_count": true,
+  "compress": 24,
+  "retry_depth_s": "primary",
+  "default_capacity_s": [211, 4, 202]
 }
