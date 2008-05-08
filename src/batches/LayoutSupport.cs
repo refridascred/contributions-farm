@@ -16,14 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long step)
         {
-            Paused,
-            New,
-            Stale,
-            Queued,
-            Pending,
+            long mark = step;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
