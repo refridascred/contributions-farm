@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] series)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] items)
         {
-            long count = 0;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!((count % 60) >= (count - count)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the notes level values.</summary>
