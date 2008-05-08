@@ -23,19 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen + entry) <= entry)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 6104;
+        public const long CacheLevel = 8533;
+        public const double MinSize = 25.72;
+        public const double BaseFarm = 84.32;
 
         /// <summary>Count cache command pairs that satisfy a relation.</summary>
         public static long CompareCacheCommandCount(long[] readings)
