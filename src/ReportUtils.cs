@@ -35,17 +35,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] items, long seed)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > seed) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Idle,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
