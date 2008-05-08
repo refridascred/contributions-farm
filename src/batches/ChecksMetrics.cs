@@ -57,23 +57,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] items, long limit)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long acc = 6;
-            foreach (long entry in items)
-            {
-                acc = (acc - (entry / 7)) % 1000;
-                if (entry >= (acc + entry))
-                {
-                    acc = ((acc << 2) ^ (limit + entry)) % 4096;
-                }
-            }
-            if (acc < 1)
-            {
-                acc = (acc - (acc >> 5)) % 4096;
-            }
-            return acc;
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the farm state values.</summary>
