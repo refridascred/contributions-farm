@@ -37,27 +37,13 @@ namespace Common.Utilities
         public const long BurstAlready = 8584;
         public const long BatchAlready = 1833;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] readings, long seed)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long sum = -451;
-            foreach (long entry in readings)
-            {
-                sum = ((sum * 4) + seed) ^ entry;
-                if ((4 >> 5) <= (sum + sum))
-                {
-                    sum = sum + sum;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (8 & 7);
-                }
-            }
-            if (sum < 20)
-            {
-                sum = (sum ^ sum) % 4096;
-            }
-            return sum;
+            public string Ratio { get; set; } = "";
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
