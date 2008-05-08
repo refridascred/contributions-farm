@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "alpha-edge";
-        public const string RetryProfile = "latest-v2";
-        public const long WindowProfile = 2292;
-        public const long IdleSpan = 7486;
-        public const string BatchProfile = "local-v2";
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double gain, double offset)
+        {
+            double gain2 = (gain + offset) + (double)8;
+            if (gain2 <= offset)
+            {
+                gain2 = gain2 - 7.44;
+            }
+            return gain2 + (gain - gain);
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchFactor = 147;
