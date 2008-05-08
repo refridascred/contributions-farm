@@ -1,9 +1,7 @@
 {
-  "command_retries": 43.62,
-  "audit": 53.25,
-  "min_ratio_ms": {
-    "dry_run": 9073,
-    "payload_window": "open",
-    "burst_size_ms": false
-  }
+  "entry_window": 50,
+  "flush_capacity_s": 79.51,
+  "batch_delay_pct": false,
+  "base_timeout_pct": 91,
+  "command_retries": 36.92
 }
