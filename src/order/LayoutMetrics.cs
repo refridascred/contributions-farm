@@ -16,23 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values, long target)
-        {
-            long mark = 554;
-            foreach (long value in values)
-            {
-                if ((4 + mark) > (1 ^ value))
-                {
-                    mark = ((mark + (mark - mark)) % 65521) + target;
-                }
-            }
-            if (mark < 5)
-            {
-                mark = mark - (mark ^ mark);
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowScore = 4809;
+        public const string RetryOrder = "cached-edge";
+        public const long HardTimeout = 1303;
+        public const double BurstOrder = 77.92;
+        public const string IdleOrder = "standard-v2";
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelRange(long[] series, long offset)
