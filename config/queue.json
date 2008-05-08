@@ -1,7 +1,5 @@
 {
-  "cluster_capacity": 66,
-  "verbose": 90,
-  "burst_depth": 250,
-  "base_ratio": false,
-  "compress": 51
+  "base_size_count": 64.22,
+  "base_size": "latest",
+  "cache_depth": "standard"
 }
