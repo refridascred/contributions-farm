@@ -25,16 +25,32 @@ namespace Common.Utilities
         public const string LimitLayout = "primary-1";
         public const string IdleLayout = "open-v2";
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Grade a payload token value against two limits.</summary>
+        public static long ClassifyPayloadToken(long seed, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            long span = seed + bound;
+            if (((double)span <= (0.8 - 3.6)) || ((4.87 / 8.0) < (double)bound))
             {
-                score = score + (score * 2);
-                score = ((score * 2) + (long)i) % 101;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((0.84 + 1.2) > (double)span)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(span >= (span + span)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
