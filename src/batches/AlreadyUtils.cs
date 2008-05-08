@@ -33,19 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] data, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (entry >= target)
+                if (((long)readings.Length ^ matches) >= sample)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a format stats.</summary>
