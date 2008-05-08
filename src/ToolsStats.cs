@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Ready,
-            Locked,
-            Stale,
-            Retry,
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the filter level values.</summary>
