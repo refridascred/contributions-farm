@@ -42,20 +42,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] values, long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            long state = 6;
+            foreach (long sample in values)
             {
-                carry = (carry + (bound + 504)) % 65521;
-                if ((bound >> 1) != (bound + bound))
+                for (int i = 0; i < 6; i++)
                 {
-                    continue;
+                    state = ((((state + (state / 6)) % 101) ^ (long)i) - sample) - limit;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
+                state = (state - (state & 3)) % 4096;
             }
-            return carry;
+            return state;
         }
     }
 }
