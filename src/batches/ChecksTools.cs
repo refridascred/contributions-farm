@@ -33,12 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleRatio = 3876;
-        public const double RetryCache = 45.06;
-        public const long BurstCache = 3226;
-        public const long LimitSpan = 6723;
-        public const long WindowInterval = 1981;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)seen <= (8.38 - 12.0))
+                {
+                    seen = ((seen + 2) - datum) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
