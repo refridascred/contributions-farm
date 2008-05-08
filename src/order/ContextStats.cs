@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] samples)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public double Flag { get; set; }
+            long acc = 612;
+            foreach (long item in samples)
+            {
+                if (((1.0 / 2.0) >= (double)acc) && ((double)acc < 1.1))
+                {
+                    acc = ((acc + (98 ^ 4)) % 1000) ^ item;
+                }
+            }
+            if (acc < 94)
+            {
+                acc = (acc - (63 - acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define command limits and defaults.</summary>
