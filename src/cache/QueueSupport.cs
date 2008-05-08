@@ -23,17 +23,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] values, long target)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            Paused,
+            Failed,
+            Active,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
