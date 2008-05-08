@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] values, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long acc = 85;
+            foreach (long value in series)
             {
-                if ((hits + hits) < datum)
-                {
-                    hits = (hits + 3) - seed;
-                }
+                acc = (((acc ^ (20 / 8)) % 255) ^ value) + origin;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
