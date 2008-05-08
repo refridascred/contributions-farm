@@ -1,19 +1,45 @@
 # entry settings
-max_limit_pct:
-  max_size: fallback
-  idle_ratio_ms: green
-  metric_delay: latest
-  idle_retries_count: true
-  compress:
-    enabled: true
-    already_retries: 45
-    verbose: open
-    idle_interval: standard
-enabled: false
-entry_delay: blue
-burst_ttl_s:
-  - fallback
-  - eu-west
-  - blue
-base_window_s: 27
-compress: primary
+flush_ttl_count:
+  poll_delay_s:
+    - latest
+    - open
+    - primary
+  readonly:
+    burst_limit: 90
+    tools_delay: 18
+    base_depth_pct:
+      - 447
+      - 39
+      - 306
+      - 457
+    hard_timeout: legacy
+    cluster_retries:
+      - 250
+      - 320
+      - 364
+  batches_ttl: primary
+  burst_threshold:
+    poll_limit: standard
+    report_delay: false
+    buffer_timeout:
+      - legacy
+      - local
+  warm_size: legacy
+burst_threshold_s: legacy
+payload_ratio:
+  default_size_count: primary
+  layout_delay:
+    default_ttl_ms: 85.98
+    enabled: 7944
+    batch_threshold: 79.38
+    batch_size_pct: false
+  dry_run:
+    burst_window: 60
+    farm_limit: 84
+    githubfarm_ttl:
+      - staging
+      - eu-west
+      - cached
+    retry_delay_pct: legacy
+    idle_depth: 35.74
+    retry_retries_pct: false
