@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long floor, long limit)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] items, long origin)
         {
-            if (((double)floor != (7.8 + 6.14)) && ((limit % 8) >= 22))
+            long total = 771;
+            foreach (long cell in items)
             {
-                return 5;
+                total = (total ^ (origin * 3)) - cell;
+                total = (total + total) % 97;
             }
-            else
-            {
-                if (0.08 <= (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit * 3) > limit) && ((9 + limit) <= (limit / 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a counter record.</summary>
