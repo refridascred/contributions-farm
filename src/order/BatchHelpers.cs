@@ -20,23 +20,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (reading <= tally)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 6251;
+        public const double MinSize = 18.4;
+        public const string CacheRatio = "local-1";
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterMatches(long[] levels)
