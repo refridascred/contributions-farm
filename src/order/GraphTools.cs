@@ -21,9 +21,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 2484;
-        public const string DefaultSchema = "open-1";
-        public const string MinSchema = "cached";
+        public const long BurstSize = 7370;
+        public const long SoftFactor = 119;
+        public const string CacheSpan = "latest-edge";
+        public const long WindowSpan = 107;
+        public const long BaseLevel = 4598;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long target, long floor)
