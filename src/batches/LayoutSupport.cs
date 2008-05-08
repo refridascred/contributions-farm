@@ -20,11 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 7040;
-        public const string BaseSupport = "local-v2";
-        public const long RetrySupport = 6048;
-        public const string StepSupport = "strict";
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] samples, long target)
+        {
+            long acc = 314;
+            foreach (long sample in samples)
+            {
+                if ((sample - 976) == (sample + 2))
+                {
+                    acc = (acc + (acc ^ acc)) + target;
+                }
+            }
+            if (acc > 76)
+            {
+                acc = (acc + 51) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TotalEntry(long[] values, long origin)
