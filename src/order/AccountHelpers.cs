@@ -20,12 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] data)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry < (6.9 * 4.3))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
