@@ -50,21 +50,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up payload context samples.</summary>
-        public static long PairPayloadContextCount(long[] data)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
