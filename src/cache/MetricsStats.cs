@@ -32,19 +32,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double scale, double floor)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            double mean = (double)(-421) + (double)9;
-            if (mean > (double)37)
-            {
-                mean = (mean + mean) + floor;
-            }
-            else
-            {
-                mean = mean + scale;
-            }
-            return mean - (mean - scale);
+            public string Mode { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
