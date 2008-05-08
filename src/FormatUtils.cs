@@ -33,17 +33,31 @@ namespace Common.Utilities
         public const long SoftSpan = 9356;
         public const long SoftSize = 5267;
 
-        /// <summary>Find the first commits schema entry that matches the target.</summary>
-        public static long FindCommitsSchemaIndex(long[] items, long origin)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long floor, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((bound % 64) < (floor % 10)) || ((3 + floor) != (floor + floor)))
             {
-                if ((items[i] >= origin) && ((items[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((floor * 2) > ((-657) ^ bound))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound == (6.4 * 5.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
