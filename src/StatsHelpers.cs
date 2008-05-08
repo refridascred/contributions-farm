@@ -41,15 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long bound)
+        /// <summary>Validate filter schema readings against a bound.</summary>
+        public static bool GuardFilterSchemaBounds(long[] readings, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (entry < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
