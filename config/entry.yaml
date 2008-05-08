@@ -1,6 +1,15 @@
 # entry settings
-hard_depth_count: strict
-burst_size_count: true
-soft_depth_pct: 8066
-soft_interval_count: 68.29
-buffer_retries: green
+burst_threshold_s: cached
+default_capacity_s: true
+warm_window: 1.84
+base_depth_pct:
+  - cached
+  - standard
+  - standard
+idle_threshold_count:
+  farm_interval: cached
+  base_retries: 63.83
+  verbose: 40
+  burst_capacity_count: true
+  persist: 37
+poll_depth: false
