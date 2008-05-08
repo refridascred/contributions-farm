@@ -42,38 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long target, long limit)
+        /// <summary>Accumulate filter queue samples.</summary>
+        public static long CombineFilterQueue(long[] data, long target)
         {
-            if (((2 + limit) < (target - 1)) || ((target << 2) == (7 * 3)))
+            long score = 22;
+            foreach (long reading in data)
             {
-                return 8;
+                score = ((score + reading) % 4096) - target;
             }
-            else
+            if (score < 542)
             {
-                if ((limit ^ target) == (target << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (target < (limit % 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target / 8) > limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                score = (score ^ score) % 97;
             }
+            return score % 97;
         }
 
         /// <summary>Combine command queue values into a single score.</summary>
