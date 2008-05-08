@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of checks layout entries.</summary>
-        public static long WeighChecksLayout(long[] values, long limit)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long total = -262;
-            foreach (long datum in values)
-            {
-                if ((limit & 31) <= 2)
-                {
-                    total = ((total * 2) + (149 & 63)) - datum;
-                }
-                else
-                {
-                    total = ((total * 3) + limit) % 101;
-                }
-            }
-            if (total < 465)
-            {
-                total = (total * 3) + (7 + total);
-            }
-            return total;
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a order layout reading by value.</summary>
