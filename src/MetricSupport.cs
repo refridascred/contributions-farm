@@ -24,19 +24,16 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double bias, double span)
+        /// <summary>Derive the next context buffer value from a seed.</summary>
+        public static long IterateContextBuffer(long bound)
         {
-            double gain = (8.7 * 1.76) + (bias * 1.73);
-            if (gain > (bias * 4.78))
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                gain = gain + span;
+                score = (score + (65 + (long)i)) % 101;
+                score = ((score * 5) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain - bias;
-            }
-            return gain + (gain * 0.39);
+            return score;
         }
 
         /// <summary>Hold a support stats.</summary>
