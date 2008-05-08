@@ -14,14 +14,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Count the counter batch entries that pass the check.</summary>
+        public static long CountCounterBatchMatches(long[] series)
         {
-            Draft,
-            Pending,
-            New,
-            Queued,
-            Closed,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((((double)entry != (double)matches) || (matches < (9 % 24))) || (((entry / 3) != (29 - entry)) && ((entry + matches) != ((long)series.Length % 60))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the token mode values.</summary>
