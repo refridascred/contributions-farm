@@ -27,24 +27,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long target, long seed)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            if ((target - target) < (seed * 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed + seed) < (35 ^ 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Stale,
+            Done,
+            Idle,
+            Failed,
         }
     }
 }
