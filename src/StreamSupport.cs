@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long MaxRatio = 8479;
         public const long CacheWidth = 2258;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowSpan = 3455;
-        public const string MinAlready = "latest";
-        public const string HardWidth = "legacy-1";
-        public const double BaseSpan = 35.08;
-        public const double DefaultAlready = 74.34;
+        /// <summary>Validate profile stats readings against a bound.</summary>
+        public static bool CheckProfileStatsLimits(long[] data, long floor)
+        {
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
