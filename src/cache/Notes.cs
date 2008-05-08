@@ -53,31 +53,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long seed, long seed2)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] levels, long bound)
         {
-            if ((13.0 + 3.91) >= (double)seed)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed2 << 2) <= seed2)
+                if (value >= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((525 - seed2) >= (714 % 12))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
