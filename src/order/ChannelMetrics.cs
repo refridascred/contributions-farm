@@ -26,15 +26,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] samples, long step)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long state = 1;
-            foreach (long cell in samples)
-            {
-                state = (state - cell) - step;
-            }
-            return state;
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
