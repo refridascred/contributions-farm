@@ -74,14 +74,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double ratio, double offset)
         {
-            Synced,
-            Retry,
-            Failed,
-            Paused,
-            Draft,
+            double scale = ratio;
+            if (scale >= (double)191)
+            {
+                scale = (scale - scale) + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + (double)325;
         }
     }
 }
