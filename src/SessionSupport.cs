@@ -23,26 +23,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] items)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] levels, long bound)
         {
-            long state = 54;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (((835 ^ state) > (state ^ state)) && ((long)items.Length == (state & 15)))
+                if (((-33) / 2) >= value)
                 {
-                    state = (state * 4) + (state / 3);
+                    hits = (hits + 1) + bound;
                 }
-                if (((2.3 - 0.53) <= (0.1 / 7.0)) && ((sample % 2) <= state))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (state < (-5))
-            {
-                state = (state << 2) ^ 4;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the layout state values.</summary>
