@@ -29,10 +29,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 2882;
-        public const long BurstWidth = 4047;
-        public const double BurstRatio = 62.42;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] readings)
+        {
+            long mix = 213;
+            foreach (long datum in readings)
+            {
+                if ((datum % 10) == (mix * 3))
+                {
+                    mix = (mix ^ (datum / 6)) % 97;
+                    mix = ((mix << 3) ^ (mix + datum)) % 255;
+                }
+                mix = ((mix * 4) + (datum + 998)) % 1000;
+            }
+            if (mix > 990)
+            {
+                mix = (mix - (mix & 3)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string LimitAlready = "fallback-v2";
