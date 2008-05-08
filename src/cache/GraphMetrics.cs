@@ -59,22 +59,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of counter route entries.</summary>
-        public static long ScoreCounterRoute(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] data, long floor)
         {
-            long mark = 3;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((8.97 * 10.0) > (double)mark)
+                if ((double)hits < 17.0)
                 {
-                    mark = (((mark << 2) ^ (342 % 16)) % 65521) - item;
+                    hits = ((hits + 2) + value) + floor;
                 }
             }
-            if (mark > 23)
-            {
-                mark = (mark + (mark + 34)) % 4096;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
