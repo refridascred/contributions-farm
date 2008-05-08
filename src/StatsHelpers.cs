@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] data, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((((count - step) > (step ^ step)) || ((6.51 + 1.4) >= (double)entry)) && (((355 + count) > (count - step)) || (6 >= (count + step))))
+                if ((sample * 5) > (sample & 127))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 3) + seed;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the farm state values.</summary>
