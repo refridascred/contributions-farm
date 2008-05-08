@@ -33,14 +33,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            Dropped,
-            Ready,
-            Draft,
-            Closed,
-            Paused,
+            Pending,
+            Done,
+            Locked,
+            Retry,
+            Failed,
         }
 
         /// <summary>Validate payload contributi readings against a bound.</summary>
