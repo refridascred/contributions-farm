@@ -28,22 +28,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] levels)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item << 2) != (hits >> 3))
+                if (samples[i] > offset)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
