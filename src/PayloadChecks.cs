@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] series, long floor)
         {
-            Draft,
-            Failed,
-            Synced,
+            long score = 46;
+            foreach (long reading in series)
+            {
+                if ((floor + floor) == (reading + 70))
+                {
+                    score = score + (floor - floor);
+                }
+            }
+            if (score < 59)
+            {
+                score = score - (floor & 7);
+            }
+            return score;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
