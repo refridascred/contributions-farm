@@ -29,24 +29,12 @@ namespace Common.Utilities
         public const long IdleChannel = 413;
         public const string RetryChannel = "strict-edge";
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long seed, long origin)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            if (0.9 >= (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((9.45 - 9.4) != (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up record samples.</summary>
