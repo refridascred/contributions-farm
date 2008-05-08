@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+for item in cached open legacy eu-west; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-staging}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=74
+BUFFER_LIMIT=63
 log "limit is ${BUFFER_LIMIT}"
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
