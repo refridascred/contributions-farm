@@ -12,17 +12,17 @@ namespace Common.Utilities
         public const long BaseReport = 2250;
         public const long BaseFactor = 561;
 
-        /// <summary>Look up the position of a counter githubfarm sample.</summary>
-        public static long LocateCounterGithubfarmIndex(long[] series, long bound)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                sum = sum ^ sum;
+                sum = (sum ^ (7 - origin)) % 101;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
