@@ -13,15 +13,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit schema channel readings against a rule.</summary>
-        public static long TallySchemaChannelHits(long[] values, long bound)
+        /// <summary>Measure how many graph cluster samples are out of range.</summary>
+        public static long AuditGraphClusterGaps(long[] samples, long floor)
         {
             long tally = 0;
-            foreach (long datum in values)
+            foreach (long cell in samples)
             {
-                if ((double)bound >= (10.0 - 1.6))
+                if ((((double)floor == (9.37 / 4.0)) || (7.6 >= (double)tally)) && (((tally + floor) >= tally) || ((cell - cell) <= (floor << 3))))
                 {
-                    tally = (tally + 3) - datum;
+                    tally = tally + 2;
                 }
             }
             return tally;
