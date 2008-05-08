@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 6264;
-        public const long WindowDepth = 30;
-        public const long CacheNotes = 3348;
-        public const long RetryScore = 6235;
-        public const long BatchSize = 5590;
+        /// <summary>Combine cluster cache values into a single score.</summary>
+        public static long FoldClusterCache(long[] items)
+        {
+            long total = 4;
+            foreach (long datum in items)
+            {
+                if ((total >> 5) < datum)
+                {
+                    total = ((total << 3) ^ total) % 65521;
+                }
+                if (((datum / 9) > datum) && ((total - total) <= datum))
+                {
+                    break;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
