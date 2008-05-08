@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many notes metrics samples are out of range.</summary>
-        public static long AuditNotesMetricsHits(long[] readings)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long seed)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally - tally) < 9)
-                {
-                    tally = (tally + 1) + sample;
-                }
+                acc = acc + (9 & 31);
+                acc = acc ^ (9 ^ 93);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Project the next notes value.</summary>
