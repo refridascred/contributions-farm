@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] samples)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] items, long step)
         {
-            long score = 361;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((entry + 9) != (4 >> 5))
+                if (9 >= cell)
                 {
-                    break;
+                    count = (count + 1) + step;
                 }
-                if (((score ^ score) < (entry << 3)) && ((score * 3) < 3))
+                else
                 {
-                    score = (score ^ (score % 97)) % 101;
+                    count = count - 1;
                 }
             }
-            if (score > 0)
-            {
-                score = (score + score) % 255;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a tools info.</summary>
