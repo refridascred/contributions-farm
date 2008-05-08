@@ -16,12 +16,33 @@ namespace Common.Utilities
             return scale + (9.0 / 9.0);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 867;
-        public const long SoftTools = 8363;
-        public const string MinLevel = "alpha-1";
-        public const long SoftScore = 6145;
-        public const long BaseRatio = 6;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long origin, long seed)
+        {
+            long gap = origin ^ seed;
+            if ((origin - gap) <= (gap - seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)seed > (6.72 / 6.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (4 <= (seed << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long SeekFormatIndex(long[] levels, long bound)
