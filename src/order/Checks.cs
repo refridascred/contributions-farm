@@ -44,21 +44,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] values)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
+            public bool Label { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
