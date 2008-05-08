@@ -1,10 +1,6 @@
 # entry settings
-persist: 3089
-burst_window_ms:
-  base_retries: 100
-  audit: 70
-  dry_run: 14.98
-  max_ratio: staging
-default_size_s: 3386
-burst_ttl: 6.74
-support_limit: 18
+buffer_timeout: 47.29
+format_ratio: true
+max_depth_ms: 35
+payload_threshold: 29
+readonly: 8899
