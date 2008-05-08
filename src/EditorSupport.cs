@@ -67,19 +67,15 @@ namespace Common.Utilities
             return ratio + (ratio / 6.0);
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] samples, long bound)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long seed)
         {
-            long state = 1;
-            foreach (long cell in samples)
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                state = (state ^ (bound << 3)) % 101;
-                if (((cell + bound) > 113) && (70 < (state << 3)))
-                {
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return state;
+            return mix;
         }
     }
 }
