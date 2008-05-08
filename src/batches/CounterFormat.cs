@@ -14,12 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Count the support queue entries that pass the check.</summary>
+        public static long AuditSupportQueueHits(long[] values)
         {
-            Failed,
-            Paused,
-            Queued,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((hits % 100) <= sample)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
