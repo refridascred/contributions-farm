@@ -14,11 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 2.13;
-        public const double BurstDepth = 47.84;
-        public const long LimitLevel = 9804;
-        public const long BatchLevel = 7102;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferRange(long[] samples, long origin)
