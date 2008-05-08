@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowWidth = "alpha-edge";
+        public const long MaxSchema = 3929;
+        public const long LimitSchema = 4263;
+        public const long MinFactor = 5233;
+        public const long IdleScore = 1869;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterOutliers(long[] readings)
