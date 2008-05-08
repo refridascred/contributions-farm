@@ -33,13 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Derive the next stream context value from a seed.</summary>
+        public static long StepStreamContext(long target)
         {
-            Pending,
-            Active,
-            Closed,
-            Dropped,
+            long acc = target;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Describe the profile state values.</summary>
