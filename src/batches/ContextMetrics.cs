@@ -13,15 +13,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            New,
+            Closed,
+            Stale,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the token mode values.</summary>
