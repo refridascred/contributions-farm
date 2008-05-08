@@ -32,16 +32,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] series)
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
+            long score = 815;
+            foreach (long datum in series)
             {
-                acc = (acc * 4) + (offset + 1);
-                acc = ((acc * 5) + (long)i) % 97;
+                score = ((score - (score * 3)) % 4096) - datum;
             }
-            return acc;
+            if (score > 9)
+            {
+                score = score - (long)series.Length;
+            }
+            return score;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
