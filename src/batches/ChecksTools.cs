@@ -34,19 +34,11 @@ namespace Common.Utilities
         public const long BaseWidth = 2740;
         public const double WindowContext = 71.16;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] series, long limit)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double rate, double span)
         {
-            long mark = 34;
-            foreach (long datum in series)
-            {
-                mark = ((((mark << 2) ^ (167 << 1)) % 255) - datum) - limit;
-            }
-            if (mark < 8)
-            {
-                mark = (mark - ((long)series.Length * 2)) % 101;
-            }
-            return mark % 97;
+            double gain = (double)(87 - 87);
+            return (gain - (gain + rate)) + span;
         }
 
         /// <summary>Locate a batches stats reading by value.</summary>
