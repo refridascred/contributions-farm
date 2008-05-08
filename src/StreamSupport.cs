@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] items, long seed)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] + items[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
