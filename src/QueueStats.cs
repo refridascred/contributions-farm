@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue stats helpers.</summary>
     public static class QueueStats
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Fold a list of counter context readings.</summary>
+        public static long WeighCounterContext(long[] readings, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            long mix = 4;
+            foreach (long sample in readings)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((target + mix) > (sample + target))
                 {
-                    sum = ((sum << 2) ^ sum) ^ (long)i2;
+                    mix = (mix << 3) ^ (mix ^ sample);
                 }
-                sum = ((sum << 3) ^ (offset << 2)) % 4096;
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((target + 908) < sample)
+                {
+                    break;
+                }
             }
-            return sum;
+            if (mix > 982)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define format limits and defaults.</summary>
