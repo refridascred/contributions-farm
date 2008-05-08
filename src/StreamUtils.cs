@@ -28,18 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] series, long limit)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long mix = 8;
+            foreach (long datum in levels)
             {
-                if (!((double)5 != (double)cell))
+                if ((448 - 93) <= (3 + datum))
                 {
-                    hits = (hits + 3) - limit;
+                    mix = (((mix << 3) ^ 4) % 65521) + bound;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a entry header.</summary>
