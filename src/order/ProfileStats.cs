@@ -43,38 +43,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long floor, long target)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] series)
         {
-            if ((target + target) != (63 ^ 31))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (11.0 <= (double)target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)floor == (16.0 * 6.18)))
+                    if ((series[i] ^ series[j]) == 20)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor > (floor ^ 4)) && (49 < (floor * 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
