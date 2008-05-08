@@ -13,18 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long carry = 48;
-            foreach (long cell in samples)
-            {
-                if ((cell < (cell ^ carry)) && ((carry - carry) > (20 & 63)))
-                {
-                    carry = (carry - (cell / 7)) % 97;
-                }
-            }
-            return carry % 4096;
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the already mode values.</summary>
