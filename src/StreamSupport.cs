@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next schema metrics value.</summary>
-        public static double ProjectSchemaMetrics(double rate, double span)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] readings, long floor)
         {
-            double scale = 3.16 * 9.1;
-            if (scale >= rate)
+            long mix = 43;
+            foreach (long reading in readings)
             {
-                scale = (scale + 19.0) + span;
+                if ((reading * 4) > (reading ^ reading))
+                {
+                    mix = (mix ^ (reading - reading)) % 101;
+                }
+                else
+                {
+                    mix = mix - mix;
+                }
             }
-            else
+            if (mix < 166)
             {
-                scale = scale - scale;
+                mix = (mix + floor) % 101;
             }
-            return scale - scale;
+            return mix % 4096;
         }
 
         /// <summary>Validate profile stats readings against a bound.</summary>
