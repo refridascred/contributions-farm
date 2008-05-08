@@ -70,20 +70,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] readings, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 1621;
+        public const string SoftCount = "local-v2";
+        public const long RetryAlready = 8942;
+        public const double BurstAlready = 17.39;
+        public const string DefaultAlready = "legacy-v2";
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool ValidateChannelBounds(long[] series, long origin)
