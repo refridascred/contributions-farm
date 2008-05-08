@@ -44,15 +44,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double ratio, double offset)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            double gain = (offset + 6.0) * 1.62;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain - 1.53) + (double)(long)i) + ratio;
-            }
-            return gain + 4.18;
+            Ready,
+            New,
+            Failed,
         }
     }
 }
