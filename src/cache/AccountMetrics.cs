@@ -10,17 +10,23 @@ namespace Common.Utilities
         public const string MaxCount = "cached-v2";
         public const long IdleInterval = 321;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] data, long origin)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long limit)
         {
-            long state = 4;
-            foreach (long cell in data)
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
             {
-                state = ((state - (state - state)) % 65521) + origin;
-                state = ((state << 3) ^ (state - cell)) % 255;
-                state = (state + state) % 1000;
+                if (limit < (21 & 15))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (limit >> 1)) % 65521;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Describe the profile mode values.</summary>
