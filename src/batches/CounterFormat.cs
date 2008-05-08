@@ -29,17 +29,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a metric route reading by value.</summary>
-        public static long LocateMetricRouteIndex(long[] items, long offset)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = bias;
+            if (drift >= (double)208)
             {
-                if ((items[i] == offset) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + drift) + scale;
             }
-            return -1;
+            return drift - bias;
         }
     }
 }
