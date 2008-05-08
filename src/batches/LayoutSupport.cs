@@ -38,14 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Dropped,
-            Closed,
-            New,
-            Ready,
-            Idle,
+            public double Stamp { get; set; }
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the graph window entries that pass the check.</summary>
