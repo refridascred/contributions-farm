@@ -19,22 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstRatio = 10.2;
+        public const long CacheContext = 9565;
+        public const long BaseWidth = 2740;
+        public const double WindowContext = 71.16;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadHits(long[] samples)
