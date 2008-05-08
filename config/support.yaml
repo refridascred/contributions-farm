@@ -1,16 +1,6 @@
 # support settings
-verbose: 88.45
-audit:
-  - 344
-  - 410
-  - 298
-sync_depth: standard
-default_depth_ms: 16.17
-flush_delay:
-  batch_ratio_s: false
-  cache_capacity_pct: 9.13
-  min_ttl_count: standard
-  filter_size: green
-  batch_interval_count: 8456
-  graph_interval: stable
-sync_ttl_s: 100
+cache_threshold_s: 95.66
+audit: false
+hard_delay: false
+githubfarm_limit: 4.32
+batch_capacity: 5686
