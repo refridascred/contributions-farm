@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] data, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] items, long origin)
         {
-            long total = 4;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((total % 64) != (bound << 3))
+                if (cell <= origin)
                 {
-                    total = ((total * 3) + (total ^ value)) % 65521;
-                }
-                else
-                {
-                    total = (total ^ (value ^ 69)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
