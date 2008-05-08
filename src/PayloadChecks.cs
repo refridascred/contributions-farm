@@ -92,22 +92,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] items)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long carry = 76;
-            foreach (long entry in items)
-            {
-                if ((503 * 4) != (carry & 127))
-                {
-                    carry = ((carry * 4) + (159 << 2)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 3) + entry) % 1000;
-                }
-            }
-            return carry % 1000;
+            Queued,
+            Synced,
+            Locked,
+            Failed,
         }
     }
 }
