@@ -33,18 +33,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many schema profile samples are out of range.</summary>
-        public static long AuditSchemaProfileMatches(long[] levels, long limit)
+        /// <summary>Locate a metric route reading by value.</summary>
+        public static long LocateMetricRouteIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)value < (7.0 + 3.0))
+                if ((items[i] == offset) && ((items[i] % 2) != 0))
                 {
-                    matches = (matches + 1) - limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
