@@ -20,12 +20,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double bias, double span)
-        {
-            double weight = bias;
-            return (weight - (double)(-2)) + span;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "cached-v2";
+        public const long MaxCommand = 9757;
+        public const long BaseBudget = 5307;
+        public const long DefaultCommand = 3327;
+        public const long SoftCount = 5309;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long IterateProfile(long seed)
