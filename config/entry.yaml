@@ -1,9 +1,8 @@
 # entry settings
-burst_ratio_ms:
-  - stable
-  - stable
-  - latest
-min_retries_s: true
-default_limit_count: 1024
-batch_interval: 250
-warm_ttl_pct: false
+dry_run:
+  - 293
+  - 489
+burst_ttl: 100
+idle_interval_pct: false
+soft_timeout_ms: 30.13
+max_timeout_count: 4208
