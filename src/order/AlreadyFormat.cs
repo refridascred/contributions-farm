@@ -28,11 +28,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseScore = 2522;
-        public const long BatchFilter = 9071;
-        public const string SoftInterval = "fallback";
-        public const long MinDepth = 9633;
+        /// <summary>Measure how many schema cluster samples are out of range.</summary>
+        public static long CountSchemaClusterHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (((count - reading) < (count / 7)) && (reading >= (long)levels.Length))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long MatchSessionCount(long[] series)
