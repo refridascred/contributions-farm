@@ -1,11 +1,6 @@
 {
-  "min_ratio_s": {
-    "default_ttl_ms": false,
-    "buffer_ttl": "strict",
-    "min_threshold_count": 30
-  },
-  "queue_interval": "legacy",
-  "batch_threshold_s": 45.02,
-  "hard_ttl_ms": 76.49,
-  "cluster_ratio": "cached"
+  "default_timeout": ["latest", "eu-west", "strict", "fallback"],
+  "batch_ttl_s": 88,
+  "min_capacity_pct": "open",
+  "max_retries": [37, 246, 231]
 }
