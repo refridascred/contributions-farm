@@ -21,22 +21,9 @@ namespace Common.Utilities
         public const long IdleWidth = 2506;
         public const long MinFactor = 2926;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (tally <= (seed + (-789)))
-                {
-                    tally = (tally + 2) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheDepth = 1376;
+        public const double SoftFactor = 73.55;
+        public const double HardDepth = 70.32;
     }
 }
