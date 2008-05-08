@@ -34,12 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] levels, long origin)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
