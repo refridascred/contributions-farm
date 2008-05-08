@@ -20,19 +20,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the support layout entries that pass the check.</summary>
-        public static long MeasureSupportLayoutOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)sample <= (0.8 * 20.0)) || (((count + count) > (count - count)) && ((51 + sample) != (sample % 60))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardDepth = 1713;
+        public const string BaseBudget = "staging-1";
+        public const string BatchBudget = "legacy-edge";
+        public const long BatchInterval = 7252;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long StepCommits(long target)
