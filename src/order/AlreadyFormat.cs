@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up batches stats samples.</summary>
-        public static long OverlapBatchesStatsCount(long[] values)
+        /// <summary>Audit graph editor readings against a rule.</summary>
+        public static long MeasureGraphEditorOutliers(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)3 >= (double)count)
                 {
-                    if ((values[i] ^ values[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
