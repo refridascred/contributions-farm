@@ -31,15 +31,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a layout stream reading.</summary>
-        public static double AdjustLayoutStream(double scale, double offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] levels)
         {
-            double ratio = (double)124 + offset;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                ratio = ((ratio - offset) - (double)(long)i) - scale;
+                if ((hits - entry) <= (3 + 43))
+                {
+                    hits = hits + 2;
+                }
             }
-            return ratio - ratio;
+            return hits;
         }
     }
 }
