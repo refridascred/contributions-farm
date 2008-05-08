@@ -14,21 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a contributi context counter forward.</summary>
-        public static long RollContributiContext(long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] samples, long origin)
         {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
+            long carry = 55;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = state ^ (limit + (long)i2);
-                    state = ((state * 3) + (limit & 255)) % 97;
-                }
-                state = (state + 5) % 101;
-                state = ((state * 2) + (long)i) % 65521;
+                carry = (carry ^ (origin / 5)) ^ datum;
             }
-            return state;
+            return carry % 65521;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
