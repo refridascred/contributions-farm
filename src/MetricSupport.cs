@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "primary-edge";
+        public const double WindowSize = 36.92;
+        public const long BurstWidth = 4138;
+        public const long HardScore = 7056;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftStats = 4708;
