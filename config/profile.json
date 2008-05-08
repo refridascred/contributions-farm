@@ -1,8 +1,7 @@
 {
-  "poll_ratio": "green",
-  "flush_timeout_count": 395,
-  "burst_ttl_ms": "staging",
-  "retry_interval_ms": ["edge", "fallback", "stable"],
-  "report_ttl": 2433,
-  "base_capacity_count": ["blue", "latest", "green"]
+  "hard_size_pct": 6923,
+  "graph_ratio": 76,
+  "poll_ttl_ms": "legacy",
+  "default_ratio_count": "primary",
+  "base_limit": false
 }
