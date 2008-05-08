@@ -30,12 +30,26 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] levels, long target)
         {
-            Failed,
-            Pending,
-            Synced,
+            long state = 15;
+            foreach (long reading in levels)
+            {
+                if (14 < (state * 2))
+                {
+                    state = ((state ^ (state << 2)) % 101) - reading;
+                }
+                if (!(state < (target - target)))
+                {
+                    state = ((state * 2) + target) % 97;
+                }
+            }
+            if (state > (-33))
+            {
+                state = ((state * 4) + (target & 255)) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the report level values.</summary>
