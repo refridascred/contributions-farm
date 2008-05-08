@@ -29,19 +29,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] values, long limit)
-        {
-            long state = 6;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    state = ((((state + (state / 6)) % 101) ^ (long)i) - sample) - limit;
-                }
-                state = (state - (state & 3)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "legacy";
+        public const long BurstFilter = 9767;
+        public const long MinFilter = 3829;
     }
 }
