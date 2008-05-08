@@ -20,11 +20,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long bound)
         {
-            public bool Count { get; set; }
-            public bool Level { get; set; }
+            long state = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((4.19 - 8.3) <= (double)bound))
+                {
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
