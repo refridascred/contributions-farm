@@ -32,18 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryBudget = 96.99;
+        public const long DefaultBatch = 987;
+        public const long IdleCount = 4019;
+        public const long BurstBatch = 4646;
+        public const long HardSize = 1068;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long GradeMetrics(long seed, long step)
