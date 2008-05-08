@@ -33,19 +33,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate payload contributi readings against a bound.</summary>
-        public static bool VerifyPayloadContributiLimits(long[] data, long floor)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Grade a window value against two limits.</summary>
