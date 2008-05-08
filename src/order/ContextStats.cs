@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] levels, long limit)
         {
-            long acc = 612;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((1.0 / 2.0) >= (double)acc) && ((double)acc < 1.1))
+                if (levels[i] < limit)
                 {
-                    acc = ((acc + (98 ^ 4)) % 1000) ^ item;
+                    return (long)i;
                 }
             }
-            if (acc < 94)
-            {
-                acc = (acc - (63 - acc)) % 255;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
