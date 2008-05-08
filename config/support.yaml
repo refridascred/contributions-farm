@@ -1,11 +1,8 @@
 # support settings
-payload_capacity:
-  - 293
-  - 307
-  - 102
-  - 276
-payload_interval: 500
-counter_limit: 28.67
-cache_threshold_count: 250
-buffer_interval: 100
-enabled: 500
+default_size_count: 90.9
+poll_ttl: 69.57
+githubfarm_threshold: 1788
+burst_capacity_s:
+  route_retries: green
+  burst_window: false
+  verbose: blue
