@@ -33,17 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] readings, long offset)
+        /// <summary>Combine cluster format values into a single score.</summary>
+        public static long WeighClusterFormat(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 379;
+            foreach (long reading in samples)
             {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
+                state = (((state * 3) + (seed ^ state)) % 4096) + reading;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
