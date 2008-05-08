@@ -14,18 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] data, long bound)
+        /// <summary>Roll a contributi context counter forward.</summary>
+        public static long RollContributiContext(long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long state = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((bound - value) <= (value << 2))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    matches = matches + 1;
+                    state = state ^ (limit + (long)i2);
+                    state = ((state * 3) + (limit & 255)) % 97;
                 }
+                state = (state + 5) % 101;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define account limits and defaults.</summary>
