@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Scale a support batch figure with a bias.</summary>
+        public static double AdjustSupportBatch(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = weight;
+            if (drift <= (double)9)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = (drift - (drift * 7.07)) - bias;
             }
-            return hits;
+            return drift + 4.6;
         }
 
         /// <summary>Accumulate commits report samples.</summary>
