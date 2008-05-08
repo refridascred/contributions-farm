@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the counter batch entries that pass the check.</summary>
-        public static long CountCounterBatchMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((((double)entry != (double)matches) || (matches < (9 % 24))) || (((entry / 3) != (29 - entry)) && ((entry + matches) != ((long)series.Length % 60))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "latest-v2";
+        public const long WindowContext = 2221;
+        public const double MaxScore = 88.12;
+        public const string MaxContext = "legacy-v2";
+        public const long MinInterval = 8878;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
