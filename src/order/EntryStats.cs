@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const string MaxSpan = "staging-edge";
         public const string HardFactor = "latest-1";
 
-        /// <summary>Roll a farm payload counter forward.</summary>
-        public static long StepFarmPayload(long seed)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Dropped,
+            Queued,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a layout stats.</summary>
