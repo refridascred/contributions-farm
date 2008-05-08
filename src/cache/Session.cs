@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardTimeout = 1552;
+        public const long SoftContributi = 2708;
+        public const long CacheContributi = 4511;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionMatches(long[] items, long origin)
