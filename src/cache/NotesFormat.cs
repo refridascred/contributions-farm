@@ -29,13 +29,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long target)
         {
-            Retry,
-            Pending,
-            New,
-            Paused,
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = (anchor ^ (target << 2)) % 4096;
+                anchor = (anchor ^ (target + target)) % 97;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    anchor = (anchor + target) + (long)i2;
+                    anchor = ((anchor << 3) ^ (target + target)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
