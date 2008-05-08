@@ -46,24 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a queue report value against two limits.</summary>
-        public static long RankQueueReport(long offset, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] readings, long floor)
         {
-            if ((offset + 3) != (bound - offset))
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((55 + offset) < (offset & 1))
+                if (entry >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
