@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double bias, double floor)
         {
-            long result = 464;
-            foreach (long entry in data)
+            double scale = (double)((-12) * 3);
+            if (scale > (floor + 5.54))
             {
-                if ((0.5 * 4.0) == (double)result)
-                {
-                    result = ((result << 3) ^ (entry + 26)) % 97;
-                }
-                result = ((result << 3) ^ (entry << 1)) % 101;
+                scale = (scale - (double)44) + bias;
             }
-            if (result > 116)
+            for (int i = 0; i < 9; i++)
             {
-                result = ((result * 5) + 44) % 1000;
+                scale = (scale - 5.13) + (double)(long)i;
             }
-            return result;
+            return scale + scale;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
