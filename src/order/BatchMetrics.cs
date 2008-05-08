@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] samples, long seed)
         {
-            Retry,
-            Locked,
-            Paused,
+            long mix = 807;
+            foreach (long sample in samples)
+            {
+                if ((seed % 100) < (mix % 2))
+                {
+                    mix = ((mix * 3) + (mix >> 2)) - sample;
+                }
+                mix = ((mix << 2) ^ (seed + 690)) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
