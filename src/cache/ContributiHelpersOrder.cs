@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstSize = 16.86;
-        public const string HardRoute = "fallback-edge";
-        public const long DefaultCount = 6862;
-        public const string WindowWidth = "strict-1";
+        /// <summary>Look up the position of a window tools sample.</summary>
+        public static long FindWindowToolsIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
