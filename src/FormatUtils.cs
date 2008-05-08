@@ -77,18 +77,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] values)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((double)tally > 0.38)
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
+            Ready,
+            Stale,
+            Active,
+            Retry,
         }
 
         /// <summary>Compare every pair of commits metric readings.</summary>
