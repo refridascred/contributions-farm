@@ -1,22 +1,8 @@
 # support settings
-session_window: 28.61
-cache_ttl:
-  - 276
-  - 76
-  - 214
-session_ttl:
-  poll_delay_pct: 71.71
-  retry_limit: green
-  counter_threshold:
-    - edge
-    - blue
-  strict:
-    - latest
-    - local
-  poll_retries:
-    - 62
-    - 71
-retry_window_s:
-  - 7
-  - 170
-base_ttl_s: standard
+min_size_ms: 73
+cache_interval:
+  - eu-west
+  - staging
+buffer_timeout: true
+report_capacity: true
+soft_retries: green
