@@ -12,6 +12,8 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
-for item in primary strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
