@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] readings, long offset)
         {
-            Retry,
-            Queued,
-            Stale,
-            Pending,
-            Closed,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen ^ offset) > offset)
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
