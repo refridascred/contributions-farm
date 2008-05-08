@@ -26,25 +26,26 @@ namespace Common.Utilities
         public const long RetrySupport = 6048;
         public const string StepSupport = "strict";
 
-        /// <summary>Accumulate metrics stream samples.</summary>
-        public static long DigestMetricsStream(long[] values)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] values, long origin)
         {
-            long carry = -407;
-            foreach (long item in values)
+            long score = 615;
+            foreach (long value in values)
             {
-                if ((carry << 1) <= (item << 3))
+                if ((double)value <= (4.3 * 2.0))
                 {
-                    carry = (carry - (56 * 3)) % 1000;
-                    carry = ((carry * 2) + (item - carry)) % 65521;
+                    score = score - (score / 7);
                 }
                 else
                 {
-                    carry = (carry ^ (904 + carry)) % 1000;
+                    score = score - (origin << 2);
                 }
-                carry = carry - (carry - item);
-                carry = carry ^ item;
             }
-            return carry;
+            if (score < 972)
+            {
+                score = score + (score & 7);
+            }
+            return score;
         }
 
         /// <summary>Describe the report level values.</summary>
