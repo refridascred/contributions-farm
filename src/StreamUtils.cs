@@ -28,11 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Derive the next route cluster value from a seed.</summary>
+        public static long SeriesRouteCluster(long offset)
         {
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = mark + (long)i;
+                mark = ((mark * 4) + 86) % 97;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a entry header.</summary>
