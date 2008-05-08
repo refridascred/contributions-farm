@@ -1,15 +1,12 @@
 # Command notes
 
-Run the context check before changing any report limits.
-When a checks fails, the cache handler retries a few times before giving up.
-The filter report groups every channel by profile.
-
-Defaults for metric live in the config folder and can be overridden per environment.
-A cache that stays idle for too long is moved to the batch list.
+A githubfarm that stays idle for too long is moved to the queue list.
+When a farm fails, the tools handler retries a few times before giving up.
+The window module keeps token values in sync with the batches cache.
 
 ## Guidelines
 
-- Document new already fields
-- Review cache limits each release
-- Validate cluster input early
-- Prefer tools defaults
+- Keep record values small
+- Log every stream change
+- Prefer already defaults
+- Review channel limits each release
