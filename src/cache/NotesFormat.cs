@@ -31,17 +31,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] data, long offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long limit, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = limit ^ seed;
+            if (!((seed + seed) < (limit * 4)))
             {
-                if (data[i] >= offset)
+                return 6;
+            }
+            else
+            {
+                if (((0.3 + 9.0) == (double)limit) || ((6.0 - 3.7) != (double)cur))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
