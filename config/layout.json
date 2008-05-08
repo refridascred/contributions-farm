@@ -1,6 +1,11 @@
 {
-  "sync_window_pct": 30,
-  "idle_retries": 76.43,
-  "persist": 3,
-  "idle_ratio": 4.82
+  "format_delay": 1024,
+  "persist": "legacy",
+  "default_interval": {
+    "base_limit_ms": true,
+    "buffer_delay": true,
+    "base_limit_count": true,
+    "idle_delay_pct": 8419,
+    "poll_threshold_count": 1
+  }
 }
