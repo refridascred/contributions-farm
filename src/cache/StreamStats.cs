@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the entry record entries that pass the check.</summary>
-        public static long MeasureEntryRecordHits(long[] samples)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value != (4.0 - 3.24))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
