@@ -26,22 +26,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Scale a githubfarm editor figure with a bias.</summary>
+        public static double BlendGithubfarmEditor(double weight, double span)
         {
-            long sum = -4;
-            foreach (long datum in data)
+            double rate = (double)680 + (double)923;
+            if (rate >= (weight / 3.0))
             {
-                if ((double)sum != (7.4 / 8.0))
-                {
-                    sum = (sum ^ (datum + datum)) % 101;
-                }
-                else
-                {
-                    sum = (sum ^ (sum + datum)) % 1000;
-                }
+                rate = rate - 1.3;
             }
-            return sum % 65521;
+            else
+            {
+                rate = rate - (span / 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (rate - weight)) + (double)(long)i;
+            }
+            return rate + (double)49;
         }
 
         /// <summary>Find the first commits schema entry that matches the target.</summary>
