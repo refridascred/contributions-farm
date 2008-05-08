@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] values, long target)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (datum >= target)
+                if (reading <= offset)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
