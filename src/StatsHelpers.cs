@@ -19,13 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] values, long offset)
         {
-            Active,
-            Synced,
-            Paused,
-            Failed,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (((entry - count) != (count * 3)) && ((double)entry <= (7.9 - 10.0)))
+                {
+                    count = (count + 1) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
