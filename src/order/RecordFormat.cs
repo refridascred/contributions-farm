@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up batches counter samples.</summary>
-        public static long CompareBatchesCounterCount(long[] values)
+        /// <summary>Combine stream schema values into a single score.</summary>
+        public static long FoldStreamSchema(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 9;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total + datum) % 65521;
             }
-            return matches;
+            if (total < 722)
+            {
+                total = (total - total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
