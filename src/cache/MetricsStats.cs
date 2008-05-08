@@ -51,12 +51,15 @@ namespace Common.Utilities
             return mean - (mean - scale);
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double ratio, double span)
         {
-            Pending,
-            New,
-            Failed,
+            double bias = span + (span + ratio);
+            if (bias > 4.0)
+            {
+                bias = bias - (1.6 * 6.4);
+            }
+            return bias + (double)(-90);
         }
     }
 }
