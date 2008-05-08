@@ -42,19 +42,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate profile cluster readings against a bound.</summary>
-        public static bool VerifyProfileClusterBounds(long[] series, long bound)
+        /// <summary>Iterate the cluster format series from a seed.</summary>
+        public static long SeriesClusterFormat(long step)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (sample < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result * 5) + (step >> 3)) % 4096;
+                result = result - (step + 776);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return ready;
+            return result;
         }
     }
 }
