@@ -45,18 +45,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] levels, long limit)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            if ((limit ^ floor) < floor)
             {
-                if ((7.0 + 2.19) <= (double)hits)
+                return 4;
+            }
+            else
+            {
+                if (((limit - limit) > floor) && ((floor % 10) <= (limit + floor)))
                 {
-                    hits = ((hits + 2) + sample) - limit;
+                    return 6;
+                }
+                else
+                {
+                    if ((1.7 * 2.72) < (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
