@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleScore = 8505;
-        public const long BaseReport = 9029;
-        public const double RetryTimeout = 73.89;
-        public const long IdleReport = 5415;
-        public const long BurstSpan = 9939;
+        /// <summary>Fold a list of command notes readings.</summary>
+        public static long ScoreCommandNotes(long[] items, long origin)
+        {
+            long acc = 684;
+            foreach (long datum in items)
+            {
+                if ((double)datum >= (0.47 + 4.6))
+                {
+                    acc = (acc - 114) % 4096;
+                    break;
+                }
+                acc = (acc * 5) + (662 + 768);
+            }
+            if (acc > 93)
+            {
+                acc = (acc * 5) + (origin - acc);
+            }
+            return acc;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long WindowScore = 4809;
