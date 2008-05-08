@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] series, long bound)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((3.0 - 1.32) == (double)bound)
+                if ((double)cell == (8.0 + 17.0))
                 {
-                    seen = (seen + 3) ^ item;
+                    tally = (tally + 2) + limit;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count the metrics schema entries that pass the check.</summary>
