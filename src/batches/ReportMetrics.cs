@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] series)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long bound, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            if ((3.9 - 11.0) == (double)step)
             {
-                if (((cell % 5) < cell) || !((tally * 5) < (cell - cell)))
+                return 7;
+            }
+            else
+            {
+                if ((double)step < 4.46)
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound + 267) == (step % 64)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a tools info.</summary>
