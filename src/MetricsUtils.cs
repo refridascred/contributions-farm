@@ -31,12 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowGraph = 0.61;
-        public const long BurstRatio = 5086;
-        public const string StepGraph = "standard-v2";
-        public const string RetryGraph = "primary-v2";
-        public const long BurstGraph = 3466;
+        /// <summary>Count cluster batches pairs that satisfy a relation.</summary>
+        public static long PairClusterBatchesCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
