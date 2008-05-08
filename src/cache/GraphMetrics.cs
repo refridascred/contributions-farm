@@ -57,22 +57,26 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many account token samples are out of range.</summary>
-        public static long AuditAccountTokenHits(long[] values, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long result = -976;
+            foreach (long reading in levels)
             {
-                if (offset >= (offset / 8))
+                if ((reading & 3) != (result + reading))
                 {
-                    count = (count + 1) + cell;
+                    result = (result * 3) + (reading ^ reading);
                 }
                 else
                 {
-                    count = count - 1;
+                    result = ((result * 4) + result) % 101;
                 }
             }
-            return count;
+            if (result < 78)
+            {
+                result = (result - (15 - result)) % 1000;
+            }
+            return result;
         }
     }
 }
