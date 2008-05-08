@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a account stream reading by value.</summary>
-        public static long FindAccountStreamIndex(long[] readings, long target)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] <= target) && ((readings[i] % 5) != 0))
+                if (samples[i] > target)
                 {
                     return (long)i;
                 }
