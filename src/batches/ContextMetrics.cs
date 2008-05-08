@@ -42,15 +42,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] levels, long origin)
+        /// <summary>Derive the next command metrics value from a seed.</summary>
+        public static long StepCommandMetrics(long limit)
         {
-            long total = 220;
-            foreach (long datum in levels)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                total = ((total + (origin % 3)) % 97) + datum;
+                if ((double)mark < (double)limit)
+                {
+                    mark = mark - limit;
+                    mark = mark - (limit + 14);
+                }
+                if ((3.4 - 2.4) <= (double)mark)
+                {
+                    break;
+                }
+                mark = (mark + ((long)i ^ (long)i)) % 4096;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Hold a filter summary.</summary>
