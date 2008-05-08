@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] data)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] readings)
         {
-            long carry = 441;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (!((carry - carry) <= (344 - sample)))
+                if ((count & 3) < (cell + cell))
                 {
-                    carry = (carry ^ (carry * 2)) % 4096;
+                    count = count + 3;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
