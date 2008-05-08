@@ -21,19 +21,22 @@ namespace Common.Utilities
         public const long IdleWidth = 2506;
         public const long MinFactor = 2926;
 
-        /// <summary>Check that every entry order entry stays within the limit.</summary>
-        public static bool ValidateEntryOrderBounds(long[] readings, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (cell > offset)
+                if (tally <= (seed + (-789)))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
