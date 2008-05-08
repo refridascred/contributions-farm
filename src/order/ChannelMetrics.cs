@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] data, long offset)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 8583;
+        public const long BatchCluster = 4618;
+        public const long SoftCluster = 814;
+        public const long IdleCluster = 2290;
+        public const string BatchFactor = "stable";
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
