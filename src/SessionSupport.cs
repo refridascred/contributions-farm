@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinLevel = "latest-edge";
-        public const string StepDepth = "latest-v2";
-        public const double StepBuffer = 5.26;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + seen) <= (seen / 2))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TotalReport(long[] items)
