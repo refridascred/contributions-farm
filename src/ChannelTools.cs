@@ -23,17 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] series, long offset)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Locked,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define order limits and defaults.</summary>
