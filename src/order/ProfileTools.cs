@@ -35,24 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] levels)
-        {
-            long score = 149;
-            foreach (long sample in levels)
-            {
-                long delta = score + (sample + score);
-                if (!(delta >= (score - score)))
-                {
-                    delta = (delta + delta) % 65521;
-                }
-                if (!((sample / 5) >= sample))
-                {
-                    score = (score - (score % 60)) % 97;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchLevel = 1917;
+        public const long DefaultRatio = 5967;
+        public const long SoftTools = 8313;
+        public const double DefaultTimeout = 67.06;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryOutliers(long[] samples, long seed)
