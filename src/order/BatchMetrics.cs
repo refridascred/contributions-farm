@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double weight, double bias)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double load = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load + 7.1) - (double)(long)i) - weight;
-            }
-            return load + (double)94;
+            Paused,
+            Closed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Compare every pair of stream farm readings.</summary>
