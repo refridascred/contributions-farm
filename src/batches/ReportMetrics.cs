@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next metrics contributi value.</summary>
-        public static double SmoothMetricsContributi(double scale, double span)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] samples)
         {
-            double drift = (double)(9 + (-7));
-            return (drift - (drift + span)) + scale;
+            long score = 361;
+            foreach (long entry in samples)
+            {
+                if ((entry + 9) != (4 >> 5))
+                {
+                    break;
+                }
+                if (((score ^ score) < (entry << 3)) && ((score * 3) < 3))
+                {
+                    score = (score ^ (score % 97)) % 101;
+                }
+            }
+            if (score > 0)
+            {
+                score = (score + score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Hold a tools info.</summary>
