@@ -40,32 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a farm record pair into a bucket.</summary>
-        public static long GradeFarmRecord(long seed, long offset)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double scale, double span)
         {
-            long edge = seed - offset;
-            if ((double)seed == (8.6 * 5.5))
+            double gain = 11.0;
+            if (gain <= span)
             {
-                return 6;
+                gain = (gain + gain) - scale;
             }
-            else
-            {
-                if ((edge > (offset << 2)) && ((double)seed == (17.0 / 5.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed >= (offset + seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return gain + 9.6;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
