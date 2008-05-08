@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long BaseReport = 2250;
         public const long BaseFactor = 561;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                sum = sum ^ sum;
-                sum = (sum ^ (7 - origin)) % 101;
-                sum = ((sum * 4) + (long)i) % 97;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
