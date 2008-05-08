@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] series, long offset)
+        /// <summary>Locate a account stream reading by value.</summary>
+        public static long FindAccountStreamIndex(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= offset)
+                if ((readings[i] <= target) && ((readings[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
