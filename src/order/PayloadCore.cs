@@ -26,25 +26,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long limit, long bound)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long bound2 = limit + bound;
-            if ((bound << 1) >= (bound2 * 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound2) < (bound2 % 100))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
