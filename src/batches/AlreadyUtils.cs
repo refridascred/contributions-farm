@@ -45,11 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Project the next schema channel value.</summary>
+        public static double ProjectSchemaChannel(double gain, double floor)
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
+            double scale = gain;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = ((scale + (gain - gain)) + (double)(long)i) - floor;
+            }
+            return scale - (double)(-46);
         }
 
         /// <summary>Look up the position of a window token sample.</summary>
