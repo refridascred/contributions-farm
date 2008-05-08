@@ -75,21 +75,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up stats account samples.</summary>
-        public static long MatchStatsAccountCount(long[] samples)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
