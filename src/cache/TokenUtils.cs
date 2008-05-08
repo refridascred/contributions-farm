@@ -20,19 +20,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] samples, long origin)
+        /// <summary>Audit farm metric readings against a rule.</summary>
+        public static long CountFarmMetricHits(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (reading < origin)
+                if ((entry + seen) >= (seen << 3))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
