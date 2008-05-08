@@ -16,16 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 6848;
+        public const double SoftAccount = 15.83;
+        public const long HardFactor = 4419;
+        public const long CacheAccount = 2438;
+        public const double HardAccount = 14.27;
 
         /// <summary>Audit context window readings against a rule.</summary>
         public static long CountContextWindowOutliers(long[] values, long target)
