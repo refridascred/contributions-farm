@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next contributi checks value from a seed.</summary>
-        public static long DeriveContributiChecks(long bound)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                state = (state << 3) ^ (state * 5);
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public bool Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
