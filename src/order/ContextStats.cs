@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] series)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (((seen & 7) >= (seen + cell)) || (((14.0 * 3.4) > (double)seen) || ((700 - (long)series.Length) <= (cell - 43))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
