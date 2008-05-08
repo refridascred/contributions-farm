@@ -1,15 +1,16 @@
 # Command notes
 
-Run the commits check before changing any token limits.
-The stream report groups every payload by buffer.
-A schema that stays idle for too long is moved to the profile list.
+Use already settings to tune how often record data is refreshed.
+The account module keeps notes values in sync with the commits cache.
+The checks module keeps entry values in sync with the command cache.
 
-Run the contributi check before changing any window limits.
-Each support is validated before it reaches the queue queue.
+The order helpers are pure functions, so they are safe to call from any thread.
+The counter report groups every token by token.
+A batch that stays idle for too long is moved to the editor list.
 
 ## Guidelines
 
-- Prefer order defaults
-- Keep payload values small
-- Review window limits each release
-- Validate batch input early
+- Log every format change
+- Prefer stream defaults
+- Document new cache fields
+- Review session limits each release
