@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
+            Stale,
+            Synced,
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
