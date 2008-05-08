@@ -87,19 +87,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double ratio, double floor)
+        /// <summary>Find the first filter window entry that matches the target.</summary>
+        public static long FindFilterWindowIndex(long[] levels, long origin)
         {
-            double gain = (double)(8 - 2);
-            if (gain >= (15.0 + 2.92))
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain - (gain - gain)) - ratio;
+                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (floor + floor)) + (double)(long)i;
-            }
-            return gain + floor;
+            return -1;
         }
     }
 }
