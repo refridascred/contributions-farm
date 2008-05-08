@@ -1,10 +1,5 @@
 # already settings
-default_retries_pct: false
-max_delay_count: primary
-verbose:
-  checks_interval: 69
-  burst_threshold_pct: false
-  retry_threshold_pct: 93.4
-  enabled: eu-west
-  poll_ttl_s: 8
-  flush_interval_count: latest
+poll_retries_count: 56
+warm_size_pct: 500
+hard_capacity_pct: staging
+cluster_delay: false
