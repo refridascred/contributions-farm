@@ -18,13 +18,23 @@ namespace Common.Utilities
         public const long StepDepth = 6172;
         public const long StepSession = 1949;
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] levels, long bound)
         {
-            New,
-            Failed,
-            Dropped,
-            Synced,
+            long total = 15;
+            foreach (long item in levels)
+            {
+                total = (total + 799) ^ item;
+                if ((total - total) < ((long)levels.Length + total))
+                {
+                    total = (total - (total + bound)) % 101;
+                }
+                else
+                {
+                    total = ((total * 3) + bound) % 97;
+                }
+            }
+            return total;
         }
     }
 }
