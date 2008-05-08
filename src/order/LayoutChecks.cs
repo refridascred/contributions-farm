@@ -14,18 +14,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Find the first report window entry that matches the target.</summary>
-        public static long LookupReportWindowIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == step) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheContributi = "staging-edge";
+        public const long BatchSize = 7739;
+        public const string MaxSpan = "staging-1";
+        public const long BatchContributi = 5377;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] values, long origin)
