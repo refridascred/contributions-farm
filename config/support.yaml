@@ -1,14 +1,6 @@
 # support settings
-sync_capacity: true
-hard_window_s:
-  strict: true
-  poll_size: 30
-  soft_size_ms:
-    - 229
-    - 466
-    - 478
-  max_size: 30
-  warm_delay: 64.27
-  verbose: staging
-batch_window_ms: 8370
-token_size: 22
+audit: 100
+filter_timeout: 2080
+default_depth: 71.98
+batches_ratio: 2
+persist: 1024
