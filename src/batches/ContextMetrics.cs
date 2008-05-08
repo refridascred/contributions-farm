@@ -29,11 +29,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardDepth = 5521;
-        public const long DefaultTimeout = 979;
-        public const string BurstTimeout = "staging-v2";
-        public const string CacheBatch = "local-v2";
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long CombineAlready(long[] levels, long origin)
