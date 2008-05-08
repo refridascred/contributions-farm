@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseWidth = 53.74;
-        public const double RetryQueue = 30.68;
-        public const long BurstSize = 4923;
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Rank support input into a small class.</summary>
         public static long RankSupport(long limit, long bound)
