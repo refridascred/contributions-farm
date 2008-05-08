@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowSpan = 3455;
+        public const string MinAlready = "latest";
+        public const string HardWidth = "legacy-1";
+        public const double BaseSpan = 35.08;
+        public const double DefaultAlready = 74.34;
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
