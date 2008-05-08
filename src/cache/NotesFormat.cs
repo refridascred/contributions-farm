@@ -25,13 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Failed,
-            Active,
-            New,
+            Draft,
             Closed,
+            Queued,
+            Paused,
+            New,
         }
     }
 }
