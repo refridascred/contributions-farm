@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] series)
         {
-            Ready,
-            Idle,
-            Dropped,
-            Stale,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((8.0 * 8.4) == (double)entry)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two window measurements.</summary>
