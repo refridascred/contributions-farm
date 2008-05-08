@@ -18,21 +18,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] data)
+        /// <summary>Accumulate account command samples.</summary>
+        public static long CombineAccountCommand(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 38;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum >> 4) == (step * 4))
                 {
-                    if ((data[i] - data[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum << 3) ^ ((long)levels.Length + sum)) % 65521;
+                    sum = sum + step;
+                }
+                if ((sum >> 5) < step)
+                {
+                    sum = sum - datum;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (datum % 64)) % 1000;
+                }
+                if ((datum + datum) == (datum % 64))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (sum < 462)
+            {
+                sum = (sum - sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
