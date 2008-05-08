@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] samples, long floor)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            double gain = bias2 / 8.0;
+            if (gain > bias)
             {
-                if ((double)floor == (double)sample)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = gain - bias;
             }
-            return matches;
+            else
+            {
+                gain = gain + bias2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
