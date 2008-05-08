@@ -1,8 +1,11 @@
 # githubfarm settings
-metric_threshold: 60
-retry_ttl_s: 61.69
-report_window:
-  - 316
-  - 345
-warm_ratio: 6164
-layout_retries: fallback
+checks_size: false
+hard_delay_count: staging
+poll_window_count: 76.26
+filter_interval:
+  - primary
+  - eu-west
+  - latest
+  - staging
+order_delay: local
+editor_interval: 2635
