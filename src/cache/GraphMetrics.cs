@@ -57,10 +57,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "local-edge";
-        public const long MinTimeout = 114;
-        public const double IdleTimeout = 68.19;
-        public const long SoftFactor = 7153;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinFilter = 4.16;
+        public const long LimitSize = 1349;
+        public const long RetryTimeout = 9961;
+        public const double HardLevel = 93.69;
+        public const string DefaultBudget = "cached-edge";
     }
 }
