@@ -75,16 +75,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the commits token series from a seed.</summary>
-        public static long RollCommitsToken(long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long seed, long seed2)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            if ((13.0 + 3.91) >= (double)seed)
             {
-                state = ((state << 2) ^ (state >> 4)) % 65521;
-                state = ((state * 3) + (long)i) % 4093;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((seed2 << 2) <= seed2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((525 - seed2) >= (714 % 12))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
