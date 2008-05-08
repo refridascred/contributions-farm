@@ -42,14 +42,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Locate a commits farm reading by value.</summary>
+        public static long SeekCommitsFarmIndex(long[] samples, long limit)
         {
-            Ready,
-            Draft,
-            Dropped,
-            Queued,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
