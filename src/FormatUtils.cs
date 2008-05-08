@@ -60,21 +60,18 @@ namespace Common.Utilities
         public const string DefaultDepth = "open-edge";
         public const long MinFormat = 8004;
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] data)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)tally < (0.25 / 7.0))
                 {
-                    if ((data[i] ^ data[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 3) - reading) - offset;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
