@@ -59,22 +59,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream queue entries that pass the check.</summary>
-        public static long AuditStreamQueueOutliers(long[] levels)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long mix = 8;
+            foreach (long cell in readings)
             {
-                if ((item - item) <= 67)
+                mix = ((mix - (8 & 1)) % 97) - target;
+                if ((5.3 + 5.1) <= (double)mix)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mix = (mix + cell) % 1000;
                 }
             }
-            return seen;
+            if (mix < 3)
+            {
+                mix = (mix + (96 << 1)) % 4096;
+            }
+            return mix;
         }
     }
 }
