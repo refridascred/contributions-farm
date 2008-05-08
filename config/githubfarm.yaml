@@ -1,26 +1,8 @@
 # githubfarm settings
-max_timeout_s: local
-verbose: 32.54
-cache_timeout_count:
-  token_limit: 10.99
-  already_window:
-    burst_size: 95
-    tools_retries: 22.32
-    idle_capacity_s: 96.33
-    channel_retries: green
-    burst_size_s: false
-    idle_retries_s:
-      - 5
-      - 6
-  max_limit: green
-  compress: 93.41
-  burst_ttl_s:
-    strict: eu-west
-    persist: strict
-    enabled: legacy
-    dry_run: 5915
-  poll_capacity:
-    sync_window_pct: primary
-    dry_run: legacy
-    default_capacity_s: 30
-sync_depth_s: 39.72
+metric_threshold: 60
+retry_ttl_s: 61.69
+report_window:
+  - 316
+  - 345
+warm_ratio: 6164
+layout_retries: fallback
