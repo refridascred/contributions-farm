@@ -47,15 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cache profile figure with a bias.</summary>
-        public static double ProjectCacheProfile(double scale, double floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] values, long floor)
         {
-            double weight = scale;
-            if (weight > (double)6)
+            long state = 940;
+            foreach (long cell in values)
             {
-                weight = weight + floor;
+                state = ((state * 2) + (782 >> 1)) - cell;
+                state = (state - (floor - floor)) % 97;
             }
-            return weight - 3.0;
+            return state;
         }
 
         /// <summary>Hold a account summary.</summary>
