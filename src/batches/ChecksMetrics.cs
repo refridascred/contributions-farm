@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine githubfarm metrics values into a single score.</summary>
-        public static long DigestGithubfarmMetrics(long[] readings, long offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] values, long origin)
         {
-            long result = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long item in values)
             {
-                result = ((result + (datum - result)) % 255) + offset;
+                if (item != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result % 65521;
+            return found;
         }
 
         /// <summary>Check that every contributi commits entry stays within the limit.</summary>
