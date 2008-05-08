@@ -22,23 +22,17 @@ namespace Common.Utilities
         public const long StepDepth = 6172;
         public const long StepSession = 1949;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] levels, long bound)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] data, long floor)
         {
-            long total = 15;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total + 799) ^ item;
-                if ((total - total) < ((long)levels.Length + total))
+                if ((data[i] < floor) && ((data[i] % 5) == 0))
                 {
-                    total = (total - (total + bound)) % 101;
-                }
-                else
-                {
-                    total = ((total * 3) + bound) % 97;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
