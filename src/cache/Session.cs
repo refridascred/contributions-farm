@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryBudget = "open-edge";
+        public const string StepSpan = "primary-edge";
+        public const long DefaultFactor = 6139;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LookupContributiIndex(long[] levels, long limit)
