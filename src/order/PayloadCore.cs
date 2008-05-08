@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxOrder = "local-v2";
-        public const string SoftDepth = "strict-v2";
-        public const long WindowOrder = 3439;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen % 97) >= (step ^ 1))
+                {
+                    seen = (seen + 1) - cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long DigestStats(long[] samples)
