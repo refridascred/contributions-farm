@@ -41,38 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long bound, long seed)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long bound)
         {
-            if ((double)bound < (9.0 - 9.5))
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (((bound - bound) == (bound << 3)) && ((seed + seed) == (9 >> 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound <= (seed - seed)) || ((14 + bound) < (seed & 15)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((1.38 * 18.0) != (double)bound) && ((seed + bound) > bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
