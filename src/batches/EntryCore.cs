@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many counter order samples are out of range.</summary>
-        public static long AuditCounterOrderOutliers(long[] data)
+        /// <summary>Check that every metric route entry stays within the limit.</summary>
+        public static bool CheckMetricRouteLimits(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((883 >> 3) < (count - datum))
+                if (entry >= origin)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the session phase values.</summary>
