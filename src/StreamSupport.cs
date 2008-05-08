@@ -42,39 +42,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long limit, long step)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long bound)
         {
-            long next = limit ^ step;
-            if (((13 & 7) > (step * 4)) && ((next - limit) <= (limit - limit)))
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-2) - next) <= (limit - step))
+                carry = (carry + (bound + 504)) % 65521;
+                if ((bound >> 1) != (bound + bound))
                 {
-                    return 3;
+                    continue;
                 }
-                else
-                {
-                    if (((step ^ step) == (limit * 2)) || ((limit >> 3) == (step + step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((limit + step) < (next + limit)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
+            return carry;
         }
     }
 }
