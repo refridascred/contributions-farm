@@ -21,19 +21,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double weight, double offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series, long target)
         {
-            double bias = 4.49;
-            if (bias > (bias * 3.0))
+            long acc = 61;
+            foreach (long cell in series)
             {
-                bias = (bias - (offset / 8.0)) + weight;
+                if (((double)acc != (8.06 - 0.9)) || ((double)cell <= (3.9 / 2.0)))
+                {
+                    acc = (acc ^ (cell + target)) % 1000;
+                }
             }
-            else
-            {
-                bias = bias - offset;
-            }
-            return bias + (double)1;
+            return acc;
         }
 
         /// <summary>Adjust a context reading.</summary>
