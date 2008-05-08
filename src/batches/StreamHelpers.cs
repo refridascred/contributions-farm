@@ -20,22 +20,12 @@ namespace Common.Utilities
             return rate + (double)(-60);
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] samples, long offset)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long total = 5;
-            foreach (long item in samples)
-            {
-                if ((5.1 + 4.0) > (double)offset)
-                {
-                    total = (((total << 3) ^ (total * 4)) % 101) - item;
-                }
-                else
-                {
-                    total = (total * 4) + (total - total);
-                }
-            }
-            return total;
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
