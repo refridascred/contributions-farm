@@ -25,21 +25,21 @@ namespace Common.Utilities
         public const long HardTimeout = 9656;
         public const string MinRatio = "latest";
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] data)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            long count = 0;
+            long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) < 18)
+                    if ((data[i] ^ data[j]) == 17)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
