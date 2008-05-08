@@ -74,15 +74,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double rate, double floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            double mean = (rate - floor) / 3.0;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (double)(-735)) + (double)(long)i;
-            }
-            return mean + mean;
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
