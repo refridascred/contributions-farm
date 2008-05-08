@@ -48,9 +48,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 4079;
-        public const string SoftAccount = "legacy";
-        public const double BurstAccount = 34.97;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 3889;
+        public const double LimitScore = 11.49;
+        public const long LimitSupport = 29;
     }
 }
