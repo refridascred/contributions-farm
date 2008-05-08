@@ -52,14 +52,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Closed,
-            Draft,
+            Synced,
+            Done,
             Retry,
-            Dropped,
-            Queued,
+            Closed,
         }
     }
 }
