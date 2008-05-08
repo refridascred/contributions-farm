@@ -33,39 +33,11 @@ namespace Common.Utilities
         public const long HardReport = 2600;
         public const string BurstReport = "fallback-1";
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long bound, long offset)
-        {
-            if ((2.03 * 2.4) <= (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset < 6.0)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset < (bound >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((bound % 60) != (offset + bound)) || ((offset - offset) <= offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardTimeout = "open-v2";
+        public const double WindowSize = 44.43;
+        public const long BaseRoute = 8578;
+        public const double MaxScore = 66.13;
 
         /// <summary>Adjust a already reading.</summary>
         public static double AdjustAlready(double rate, double offset)
