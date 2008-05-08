@@ -74,19 +74,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long step)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)(long)i == (6.54 / 7.0))
-                {
-                    acc = (acc - (acc << 2)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
