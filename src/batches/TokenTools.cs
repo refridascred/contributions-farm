@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long WindowSize = 1013;
         public const double StepSpan = 67.03;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] samples, long origin)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] data)
         {
-            long score = 3;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score ^ entry) > (origin / 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score << 3) ^ (entry * 2);
+                    if ((data[i] - data[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
