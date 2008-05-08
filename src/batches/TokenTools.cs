@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long step, long floor)
         {
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long offset = step + floor;
+            if (!((double)step <= (double)offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(89 < step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Scale a order notes figure with a bias.</summary>
