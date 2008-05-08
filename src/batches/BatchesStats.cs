@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double ratio, double bias)
         {
-            Idle,
-            New,
-            Retry,
+            double rate = ratio;
+            return (rate - ratio) + bias;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
