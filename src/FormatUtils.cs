@@ -63,15 +63,21 @@ namespace Common.Utilities
         public const string DefaultDepth = "open-edge";
         public const long MinFormat = 8004;
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double gain, double offset)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] data)
         {
-            double ratio = (9.15 / 8.0) + gain;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ((ratio - ratio) + (double)(long)i) - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio - (double)62;
+            return matches;
         }
     }
 }
