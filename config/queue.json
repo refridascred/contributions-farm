@@ -1,8 +1,8 @@
 {
-  "cache_timeout_count": "primary",
-  "flush_retries": false,
-  "strict": "cached",
-  "base_ratio_s": "primary",
-  "retry_retries_ms": 1024,
-  "batch_window": 84
+  "warm_window_s": 30,
+  "burst_ttl_s": ["primary", "stable", "latest", "standard"],
+  "sync_window_ms": 42.43,
+  "batch_window_pct": 5918,
+  "batch_timeout": false,
+  "flush_capacity_count": 93.05
 }
