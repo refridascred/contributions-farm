@@ -22,18 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > target) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchFilter = 7.21;
+        public const long CacheScore = 8248;
+        public const long IdleSpan = 6017;
+        public const long StepFilter = 4579;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferRange(long[] samples, long target)
