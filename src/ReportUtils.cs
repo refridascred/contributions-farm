@@ -26,12 +26,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 2502;
-        public const long RetryAccount = 7824;
-        public const long DefaultWidth = 4919;
-        public const string WindowLevel = "legacy";
-        public const double HardSpan = 29.19;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Synced,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long CombineEntry(long[] data, long floor)
