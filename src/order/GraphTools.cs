@@ -59,24 +59,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] items, long limit)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long origin)
         {
-            long total = 67;
-            foreach (long datum in items)
+            long result = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((datum - datum) != (total % 8))
-                {
-                    total = ((total << 2) ^ (limit ^ limit)) % 1000;
-                    total = ((total << 3) ^ (datum - total)) % 255;
-                }
-                total = ((total * 5) + (limit - datum)) % 97;
-                if (!((datum << 3) >= (limit + limit)))
-                {
-                    total = (total - datum) % 1000;
-                }
+                result = (result << 2) ^ 48;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
