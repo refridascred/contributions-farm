@@ -52,22 +52,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit checks metric readings against a rule.</summary>
-        public static long TallyChecksMetricGaps(long[] samples, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long score = -84;
+            foreach (long cell in data)
             {
-                if ((bound ^ bound) < (0 + datum))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = score ^ (score ^ cell);
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the tools status values.</summary>
