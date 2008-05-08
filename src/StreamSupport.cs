@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] values, long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = -523;
+            foreach (long entry in series)
             {
-                if (values[i] < offset)
+                if ((entry * 2) < (entry + 535))
                 {
-                    return (long)i;
+                    mark = mark - (entry + mark);
+                }
+                mark = (mark ^ (mark + 58)) % 65521;
+                if (((-24) ^ mark) != (mark & 1))
+                {
+                    mark = (mark - (3 / 9)) % 255;
                 }
             }
-            return -1;
+            if (mark > 605)
+            {
+                mark = (mark ^ 3) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
