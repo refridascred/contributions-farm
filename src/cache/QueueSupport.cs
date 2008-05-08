@@ -33,18 +33,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] values, long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long score = 1;
+            foreach (long sample in data)
             {
-                if ((hits + 438) < hits)
+                score = ((score << 2) ^ (235 & 15)) - sample;
+                if ((score - bound) > score)
                 {
-                    hits = ((hits + 3) ^ entry) + step;
+                    break;
                 }
             }
-            return hits;
+            if (score < 66)
+            {
+                score = (score * 5) + (bound + score);
+            }
+            return score;
         }
     }
 }
