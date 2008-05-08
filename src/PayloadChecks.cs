@@ -94,26 +94,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] levels, long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long sum = 7;
-            foreach (long item in levels)
-            {
-                if ((item << 2) < target)
-                {
-                    sum = sum ^ item;
-                }
-                else
-                {
-                    sum = (sum - (-919)) % 4096;
-                }
-            }
-            if (sum > 5)
-            {
-                sum = (sum ^ sum) % 101;
-            }
-            return sum;
+            Failed,
+            Retry,
+            Paused,
+            Closed,
+            Synced,
         }
     }
 }
