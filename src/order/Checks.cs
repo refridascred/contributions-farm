@@ -58,13 +58,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Retry,
-            Dropped,
-            Paused,
             Done,
+            New,
+            Retry,
         }
     }
 }
