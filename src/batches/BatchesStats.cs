@@ -13,22 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long total = 53;
-            foreach (long entry in values)
-            {
-                if (entry >= (entry >> 5))
-                {
-                    total = (total ^ entry) % 101;
-                }
-            }
-            if (total > 57)
-            {
-                total = ((total * 3) + (7 ^ 42)) % 1000;
-            }
-            return total;
+            Draft,
+            Queued,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
