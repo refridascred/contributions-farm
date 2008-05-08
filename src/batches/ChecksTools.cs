@@ -36,11 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public double Count { get; set; }
-            public long Mode { get; set; }
+            Closed,
+            Dropped,
+            Synced,
+            Paused,
+            Draft,
         }
     }
 }
