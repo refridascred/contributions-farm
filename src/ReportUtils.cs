@@ -67,19 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] samples, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long state = 207;
+            foreach (long sample in samples)
             {
-                if (cell > step)
+                if (((state - state) > (sample ^ 77)) || ((bound >> 1) < bound))
                 {
-                    stale = false;
-                    break;
+                    state = (state * 5) + 667;
                 }
             }
-            return stale;
+            return state;
         }
     }
 }
