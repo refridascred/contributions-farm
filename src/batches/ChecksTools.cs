@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] samples, long floor)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((((double)floor < 5.4) || (item > (item + floor))) || !((double)floor <= (3.38 / 6.0)))
+                if ((score % 7) > (offset + offset))
                 {
-                    hits = hits + 2;
+                    score = score - (score + 7);
+                    score = score ^ offset;
                 }
+                else
+                {
+                    score = score ^ (score << 3);
+                    score = (score - 84) % 101;
+                }
+                score = ((score << 2) ^ (long)i) % 4096;
+                if (6 < offset)
+                {
+                    score = (score ^ (score + 488)) % 1000;
+                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
