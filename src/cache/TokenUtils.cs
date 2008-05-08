@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double gain, double bias)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long offset, long target)
         {
-            double weight = gain;
-            return (weight + (gain / 4.0)) + bias;
+            long prev = offset - target;
+            if (!((1.53 + 7.69) != (double)target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset >= (1.0 * 7.3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset - target) >= (prev - target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)prev <= (7.0 - 8.5)) || ((prev - offset) > (target / 9)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel kind values.</summary>
