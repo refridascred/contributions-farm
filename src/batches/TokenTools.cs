@@ -26,12 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxFactor = 5986;
-        public const string CacheNotes = "open-v2";
-        public const string StepNotes = "standard";
-        public const string WindowNotes = "staging-edge";
-        public const string StepLevel = "latest-v2";
+        /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
+        public static bool VerifyQueueGithubfarmBounds(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long OverlapStreamCount(long[] readings)
