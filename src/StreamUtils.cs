@@ -44,15 +44,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] values, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] samples)
         {
-            long score = -746;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                score = (score ^ (limit % 60)) + value;
+                if (!((353 + 8) < (long)samples.Length))
+                {
+                    count = (count + 2) + cell;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Combine batches support values into a single score.</summary>
