@@ -1,5 +1,5 @@
 {
-  "dry_run": true,
-  "strict": "standard",
-  "idle_threshold": "green"
+  "command_threshold": 849,
+  "cache_limit": 7748,
+  "checks_capacity": [337, 73, 61, 159]
 }
