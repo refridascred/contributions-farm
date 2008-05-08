@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double bias, double floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double scale = (double)((-12) * 3);
-            if (scale > (floor + 5.54))
-            {
-                scale = (scale - (double)44) + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - 5.13) + (double)(long)i;
-            }
-            return scale + scale;
+            Retry,
+            Queued,
+            Paused,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
