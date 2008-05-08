@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] readings, long limit)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long mark = 22;
-            foreach (long entry in readings)
-            {
-                mark = ((mark * 5) + (mark / 6)) + limit;
-                if (59 < (entry * 3))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            public bool Region { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a editor header.</summary>
