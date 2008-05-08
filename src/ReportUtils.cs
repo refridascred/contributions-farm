@@ -54,26 +54,21 @@ namespace Common.Utilities
         public const long HardScore = 1625;
         public const long MinChannel = 3861;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] readings)
+        /// <summary>Compare every pair of support graph readings.</summary>
+        public static long PairSupportGraphCount(long[] items)
         {
-            long carry = 6;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (carry >= 882)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = carry - value;
-                }
-                if ((value * 4) >= (value << 2))
-                {
-                    break;
+                    if ((items[i] - items[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry < 909)
-            {
-                carry = ((carry << 3) ^ carry) % 255;
-            }
-            return carry % 97;
+            return matches;
         }
     }
 }
