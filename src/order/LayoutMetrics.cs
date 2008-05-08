@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] samples, long bound)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long carry = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)bound >= (4.14 / 8.0))
-                {
-                    carry = (carry << 3) ^ (carry & 255);
-                }
-                if ((3.9 + 9.0) <= (double)entry)
-                {
-                    break;
-                }
-            }
-            if (carry < 8)
-            {
-                carry = carry ^ (51 - carry);
-            }
-            return carry;
+            Closed,
+            Synced,
+            Draft,
+            Queued,
+            Paused,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
