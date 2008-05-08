@@ -15,10 +15,20 @@ namespace Common.Utilities
         public const long MinLevel = 2698;
         public const long BaseTimeout = 8314;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitCount = 2978;
-        public const string RetryFactor = "latest";
-        public const string BatchSpan = "local-1";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] items, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string BatchTimeout = "legacy";
