@@ -74,13 +74,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long step)
         {
-            Locked,
-            New,
-            Pending,
-            Retry,
+            long acc = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((double)(long)i == (6.54 / 7.0))
+                {
+                    acc = (acc - (acc << 2)) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
