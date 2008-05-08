@@ -66,18 +66,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] data, long limit)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (!!(9.2 > (1.0 + 8.4)))
+                bool ok = !((sum + 82) < (origin + origin));
+                if ((sum > origin) || ok)
                 {
-                    count = ((count + 1) + reading) + limit;
+                    sum = (sum - (long)i) % 4096;
                 }
+                if (!((double)(long)i != (8.0 + 4.6)))
+                {
+                    ok = ((sum & 255) == (sum - 689)) || ((long)i < sum);
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
     }
 }
