@@ -38,23 +38,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] values)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] samples, long offset)
         {
-            long sum = -2;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (((datum ^ sum) >= (-5)) && ((datum % 5) == (datum * 2)))
+                if (item <= 27)
                 {
-                    sum = (sum - (datum + sum)) % 1000;
+                    hits = (hits + 2) - offset;
                 }
-                sum = (sum << 2) ^ datum;
             }
-            if (sum < (-13))
-            {
-                sum = sum + ((-43) >> 2);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
