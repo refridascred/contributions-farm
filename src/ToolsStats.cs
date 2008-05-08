@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Ready,
-            Done,
-            Locked,
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
