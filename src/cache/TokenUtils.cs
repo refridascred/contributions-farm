@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the checks filter entries that pass the check.</summary>
-        public static long AuditChecksFilterOutliers(long[] readings, long step)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (0 < seen)
-                {
-                    seen = ((seen + 3) ^ item) - step;
-                }
-            }
-            return seen;
+            double weight = gain;
+            return (weight + (gain / 4.0)) + bias;
         }
 
         /// <summary>Describe the channel kind values.</summary>
