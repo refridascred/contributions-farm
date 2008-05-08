@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] readings)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
