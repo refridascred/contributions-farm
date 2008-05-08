@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count tools metric pairs that satisfy a relation.</summary>
-        public static long OverlapToolsMetricCount(long[] items)
+        /// <summary>Check that every buffer schema entry stays within the limit.</summary>
+        public static bool ValidateBufferSchemaRange(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading != bound)
                 {
-                    if ((items[i] - items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the already status values.</summary>
