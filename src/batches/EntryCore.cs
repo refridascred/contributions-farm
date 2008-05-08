@@ -42,11 +42,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultEditor = "cached";
-        public const long DefaultCount = 1640;
-        public const long BurstRatio = 7861;
-        public const double RetryEditor = 40.2;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstBudget = 5.47;
+        public const long IdleWidth = 4614;
+        public const long MinCount = 3504;
+        public const double IdleRatio = 41.86;
 
         /// <summary>Scale a editor window figure with a bias.</summary>
         public static double AdjustEditorWindow(double rate, double offset)
