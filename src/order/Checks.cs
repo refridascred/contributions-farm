@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheGraph = "legacy-v2";
+        public const long LimitSpan = 938;
+        public const long MinGraph = 8979;
+        public const string CacheSize = "latest-1";
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long SeekFilterIndex(long[] samples, long bound)
