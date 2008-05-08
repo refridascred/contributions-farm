@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Locked,
-            Paused,
-            Idle,
-            Active,
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Blend two cache measurements.</summary>
