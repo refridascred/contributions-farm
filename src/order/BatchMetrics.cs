@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double ratio, double floor)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double weight, double bias)
         {
-            double scale = floor / 2.0;
-            return (scale - (double)(-1)) + ratio;
+            double load = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load + 7.1) - (double)(long)i) - weight;
+            }
+            return load + (double)94;
         }
 
         /// <summary>Compare every pair of stream farm readings.</summary>
