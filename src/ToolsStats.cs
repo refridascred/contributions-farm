@@ -48,21 +48,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count command format pairs that satisfy a relation.</summary>
-        public static long CompareCommandFormatCount(long[] levels)
+        /// <summary>Audit checks metric readings against a rule.</summary>
+        public static long TallyChecksMetricGaps(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((bound ^ bound) < (0 + datum))
                 {
-                    if ((levels[i] ^ levels[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the tools status values.</summary>
