@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinFactor = 923;
-        public const double WindowScore = 35.08;
-        public const string StepTimeout = "strict-1";
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                score = score ^ (score >> 2);
+                score = (score ^ (floor - (long)i)) % 101;
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
