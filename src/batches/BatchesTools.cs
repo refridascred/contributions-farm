@@ -33,18 +33,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit counter checks readings against a rule.</summary>
-        public static long AuditCounterChecksMatches(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((double)floor <= (double)hits)
-                {
-                    hits = (hits + 1) - entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 2533;
+        public const long LimitWidth = 3454;
+        public const long CacheBatches = 7820;
+        public const long WindowBatches = 9968;
+        public const long BurstBatches = 3125;
     }
 }
