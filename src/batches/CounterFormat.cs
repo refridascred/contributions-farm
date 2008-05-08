@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] items, long seed)
+        /// <summary>Roll a command window counter forward.</summary>
+        public static long IterateCommandWindow(long bound)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading <= seed)
+                if ((anchor % 24) > 34)
                 {
-                    valid = false;
-                    break;
+                    anchor = anchor + ((long)i / 6);
                 }
+                else
+                {
+                    anchor = (anchor * 3) + (anchor * 3);
+                }
+                anchor = anchor + (anchor + bound);
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = (((anchor * 3) + (bound / 2)) % 1000) + (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
