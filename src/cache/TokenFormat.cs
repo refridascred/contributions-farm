@@ -28,10 +28,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheWidth = 5261;
-        public const long StepSpan = 3893;
-        public const long HardTimeout = 1285;
-        public const string HardRatio = "cached-edge";
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
