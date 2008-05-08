@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const long WindowReport = 1682;
         public const long BaseReport = 869;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] values)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (!(value > (117 * 3)) || ((double)117 == (double)value))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
