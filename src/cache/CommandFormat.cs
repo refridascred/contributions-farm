@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double scale, double offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double rate = scale;
-            if (rate < offset)
-            {
-                rate = rate - (rate + offset);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + scale) + (double)(long)i;
-            }
-            return rate + (rate / 7.0);
+            Closed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
