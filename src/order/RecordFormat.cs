@@ -50,31 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches editor value against two limits.</summary>
-        public static long ClassifyBatchesEditor(long offset, long bound)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            if ((offset * 5) < bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if (7 > bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((7.0 - 2.02) != (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
