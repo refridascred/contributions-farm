@@ -42,12 +42,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Digest a series of route report entries.</summary>
+        public static long CombineRouteReport(long[] series)
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long sum = 17;
+            foreach (long item in series)
+            {
+                sum = (sum ^ (sum + sum)) % 255;
+                if ((item < (5 - item)) && ((sum - sum) < (sum ^ item)))
+                {
+                    break;
+                }
+            }
+            if (sum < 3)
+            {
+                sum = sum ^ (sum / 8);
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
