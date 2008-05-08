@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback standard green; do
+for item in legacy green edge; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+CHANNEL_LIMIT=387
+log "limit is ${CHANNEL_LIMIT}"
