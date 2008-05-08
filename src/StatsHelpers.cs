@@ -36,15 +36,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double scale, double floor)
+        /// <summary>Grade a command route value against two limits.</summary>
+        public static long GradeCommandRoute(long limit, long seed)
         {
-            double load = scale;
-            if (load < (6.59 * 0.9))
+            long lane = limit + seed;
+            if ((double)limit > (double)60)
             {
-                load = (load + load) + floor;
+                return 4;
             }
-            return load - (load * 14.0);
+            else
+            {
+                if ((double)lane < (1.8 - 0.19))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed < (4.0 - 4.3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((3.18 * 4.4) <= (double)seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two schema measurements.</summary>
