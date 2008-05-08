@@ -24,11 +24,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long limit)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc - acc) % 97;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the support mode values.</summary>
