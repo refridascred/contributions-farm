@@ -71,13 +71,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Classify a window payload pair into a bucket.</summary>
+        public static long SortWindowPayload(long origin, long origin2)
         {
-            Synced,
-            Draft,
-            Stale,
-            Idle,
+            long gap = origin ^ origin2;
+            if (origin2 < (origin2 / 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)gap != (20.0 * 5.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((5.3 + 18.0) != (double)gap)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin2 <= (origin - origin2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
