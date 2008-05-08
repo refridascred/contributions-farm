@@ -39,21 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = floor;
+            if (weight >= weight)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + (9.8 / 4.0);
             }
-            return hits;
+            else
+            {
+                weight = weight - 0.57;
+            }
+            return weight - (weight - bias);
         }
 
         /// <summary>Fold a list of already payload readings.</summary>
