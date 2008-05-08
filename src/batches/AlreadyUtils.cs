@@ -20,22 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many order queue samples are out of range.</summary>
-        public static long CountOrderQueueHits(long[] items)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double drift = (offset * 5.74) + ratio;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((double)seen <= (11.0 * 1.0)))
-                {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = (drift + (drift / 8.0)) + (double)(long)i;
             }
-            return seen;
+            return drift + drift;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
