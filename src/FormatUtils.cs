@@ -18,12 +18,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Failed,
-            Paused,
-            Retry,
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate contributi graph samples.</summary>
