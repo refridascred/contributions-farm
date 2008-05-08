@@ -32,19 +32,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] samples, long step)
+        /// <summary>Digest a series of window payload entries.</summary>
+        public static long CombineWindowPayload(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long total = 30;
+            foreach (long cell in series)
             {
-                if (datum != step)
+                total = ((total * 2) + cell) % 255;
+                if (!((31 * 2) > ((long)series.Length * 3)))
                 {
-                    valid = false;
-                    break;
+                    total = total ^ (total + cell);
                 }
             }
-            return valid;
+            if (total < 616)
+            {
+                total = (total * 5) + total;
+            }
+            return total;
         }
     }
 }
