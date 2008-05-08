@@ -12,29 +12,23 @@ namespace Common.Utilities
         public const string MaxSpan = "staging-edge";
         public const string HardFactor = "latest-1";
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long floor, long floor2)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long floor, long target)
         {
-            if (526 >= (floor2 & 15))
+            long offset = floor - target;
+            if ((floor / 2) > (offset + 9))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((floor & 3) > floor2)
+                if (((1 & 63) >= offset) || ((target * 4) > floor))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((floor2 / 8) >= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 0;
                 }
             }
         }
