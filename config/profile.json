@@ -1,5 +1,13 @@
 {
-  "enabled": false,
-  "cluster_ttl": "standard",
-  "metrics_size": true
+  "dry_run": "strict",
+  "session_ttl": 20,
+  "hard_interval": "stable",
+  "hard_timeout": "primary",
+  "retry_threshold_count": {
+    "burst_threshold": 21.87,
+    "buffer_capacity": 1024,
+    "max_window": 54.19,
+    "already_delay": "stable"
+  },
+  "farm_window": true
 }
