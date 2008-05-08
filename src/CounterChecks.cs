@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Synced,
-            Paused,
-            Dropped,
+            Locked,
+            Idle,
+            Active,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
