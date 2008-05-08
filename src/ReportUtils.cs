@@ -44,11 +44,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardSpan = 8840;
-        public const string RetrySpan = "stable-edge";
-        public const long HardScore = 1625;
-        public const long MinChannel = 3861;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryRatio = 96.57;
+        public const string LimitWidth = "fallback-edge";
+        public const long StepCommits = 9538;
+        public const long MaxInterval = 5087;
 
         /// <summary>Compare every pair of support graph readings.</summary>
         public static long PairSupportGraphCount(long[] items)
