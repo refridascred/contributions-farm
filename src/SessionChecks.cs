@@ -20,25 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long step, long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] values, long floor)
         {
-            long step2 = step + origin;
-            if ((step <= step2) || (origin < step))
+            bool valid = true;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((16.0 * 0.6) < (double)step) && ((origin % 16) < (step >> 2)))
+                if (item > floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the token class values.</summary>
