@@ -74,13 +74,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] items, long seed)
         {
-            Paused,
-            Locked,
-            Pending,
-            Retry,
+            long mix = 1;
+            foreach (long value in items)
+            {
+                mix = (((mix - 6) % 1000) + value) + seed;
+            }
+            return mix % 97;
         }
     }
 }
