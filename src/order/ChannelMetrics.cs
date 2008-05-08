@@ -22,19 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] series, long step)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long result = 27;
-            foreach (long value in series)
-            {
-                result = ((result ^ value) % 1000) + step;
-            }
-            if (result > 85)
-            {
-                result = result + (result + result);
-            }
-            return result;
+            Synced,
+            Ready,
+            Queued,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
