@@ -86,13 +86,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long step)
         {
-            public double Total { get; set; }
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            long result = step;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Accumulate session samples.</summary>
