@@ -18,17 +18,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a token account reading by value.</summary>
-        public static long FindTokenAccountIndex(long[] items, long seed)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Accumulate commits samples.</summary>
