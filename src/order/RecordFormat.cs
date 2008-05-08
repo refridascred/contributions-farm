@@ -18,17 +18,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = (acc + acc) % 101;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftFactor = 4500;
+        public const long MinSpan = 3796;
+        public const double BurstFactor = 22.26;
+        public const string MinFactor = "fallback-v2";
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long target)
