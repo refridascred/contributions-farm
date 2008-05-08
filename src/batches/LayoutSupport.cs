@@ -20,37 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long step, long target)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long target, long offset)
         {
-            long edge = step + target;
-            if ((double)edge <= (double)step)
+            if ((target - offset) > target)
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((double)edge >= (5.16 + 17.0))
+                if ((target + offset) >= (offset + target))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if (((double)edge < (8.5 / 4.0)) && (4.6 > (double)target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (edge >= (edge / 9))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
