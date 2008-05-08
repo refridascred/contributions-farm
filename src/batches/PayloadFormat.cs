@@ -27,11 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftSpan = 3041;
-        public const double BatchLayout = 22.32;
-        public const long CacheLayout = 8652;
-        public const double BaseLayout = 12.43;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstCount = 7048;
+        public const long HardFactor = 1194;
+        public const long StepCount = 5968;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
