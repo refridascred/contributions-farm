@@ -24,18 +24,38 @@ namespace Common.Utilities
             return ratio + (floor * 4.0);
         }
 
-        /// <summary>Count the metrics schema entries that pass the check.</summary>
-        public static long TallyMetricsSchemaHits(long[] samples, long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long floor, long target)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            if (!((double)target != (1.2 / 7.0)))
             {
-                if ((double)seen < (double)datum)
+                return 0;
+            }
+            else
+            {
+                if (((-2) / 5) == (floor ^ target))
                 {
-                    seen = (seen + 2) - limit;
+                    return 1;
+                }
+                else
+                {
+                    if ((target > (floor * 3)) || ((double)target >= 2.84))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5.0 - 19.0) >= (double)floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a farm header.</summary>
