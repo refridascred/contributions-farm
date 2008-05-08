@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate cache entry readings against a bound.</summary>
-        public static bool CheckCacheEntryLimits(long[] readings, long limit)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long floor, long seed)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            if (seed > floor)
             {
-                if (entry <= limit)
+                return 6;
+            }
+            else
+            {
+                if ((seed - floor) >= (floor * 5))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a cluster header.</summary>
