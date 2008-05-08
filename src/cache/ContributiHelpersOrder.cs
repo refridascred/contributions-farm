@@ -25,12 +25,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] items, long origin)
         {
-            Closed,
-            Ready,
-            New,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (origin > (item - origin))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
