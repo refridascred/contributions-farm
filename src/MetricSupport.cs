@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Done,
-            Closed,
-            Draft,
-            Dropped,
             Ready,
+            Idle,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Blend two window measurements.</summary>
