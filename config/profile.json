@@ -1,18 +1,5 @@
 {
-  "compress": ["local", "legacy", "strict", "blue"],
-  "retry_capacity_count": false,
-  "support_delay": 7,
-  "strict": "edge",
-  "retry_retries": 54.73,
-  "contributi_timeout": {
-    "retry_retries": 30,
-    "dry_run": 71.3,
-    "poll_retries_s": 83.76,
-    "cache_retries": 6.98,
-    "filter_retries": {
-      "soft_size": [283, 421, 335, 471],
-      "min_threshold_s": 6609,
-      "idle_size_pct": 13.3
-    }
-  }
+  "idle_size_count": 10,
+  "report_threshold": "primary",
+  "retry_interval_count": ["staging", "edge", "fallback"]
 }
