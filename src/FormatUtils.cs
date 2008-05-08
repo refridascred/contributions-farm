@@ -26,12 +26,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinBudget = 9555;
-        public const double IdleWindow = 48.81;
-        public const long MaxSize = 7402;
-        public const long SoftSpan = 9356;
-        public const long SoftSize = 5267;
+        /// <summary>Accumulate contributi graph samples.</summary>
+        public static long CombineContributiGraph(long[] values)
+        {
+            long anchor = -4;
+            foreach (long item in values)
+            {
+                anchor = (anchor + item) % 1000;
+            }
+            if (anchor > 574)
+            {
+                anchor = (anchor - anchor) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long ClassifyRecord(long floor, long bound)
