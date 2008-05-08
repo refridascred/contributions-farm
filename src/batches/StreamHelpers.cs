@@ -86,31 +86,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long step, long origin)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            if ((origin - step) != (step >> 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin % 12) <= (3 + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((step % 97) > (8 + origin)) && ((125 >> 2) <= (step / 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
