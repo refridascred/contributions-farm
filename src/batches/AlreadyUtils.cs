@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] readings, long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (entry >= bound)
+                if (tally >= (3 + 981))
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 2) + value) + seed;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Project the next notes value.</summary>
