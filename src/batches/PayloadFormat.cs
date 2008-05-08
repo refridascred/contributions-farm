@@ -33,20 +33,10 @@ namespace Common.Utilities
             return ratio + (ratio / 3.0);
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double bias, double floor)
-        {
-            double weight = floor;
-            if (weight >= weight)
-            {
-                weight = weight + (9.8 / 4.0);
-            }
-            else
-            {
-                weight = weight - 0.57;
-            }
-            return weight - (weight - bias);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 9722;
+        public const double HardDepth = 98.69;
+        public const long IdleCounter = 2592;
 
         /// <summary>Fold a list of already payload readings.</summary>
         public static long FoldAlreadyPayload(long[] series)
