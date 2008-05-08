@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] values, long target)
+        /// <summary>Locate a token buffer reading by value.</summary>
+        public static long LookupTokenBufferIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] > target)
+                if (readings[i] >= seed)
                 {
                     return (long)i;
                 }
