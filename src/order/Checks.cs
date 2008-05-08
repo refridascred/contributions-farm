@@ -42,15 +42,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] readings, long floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long bound)
         {
-            long mark = 970;
-            foreach (long entry in readings)
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                mark = (((mark * 4) + entry) % 97) - floor;
+                if (((68 + bound) == (total * 3)) && (total >= (39 << 3)))
+                {
+                    total = ((total * 2) + bound) % 97;
+                    total = total + (total >> 2);
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Describe the batch phase values.</summary>
