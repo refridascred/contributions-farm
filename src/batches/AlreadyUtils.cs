@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] data, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] data, long limit)
         {
             bool found = true;
-            foreach (long cell in data)
+            foreach (long value in data)
             {
-                if (cell >= bound)
+                if (value != limit)
                 {
                     found = false;
                     break;
