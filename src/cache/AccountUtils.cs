@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((seen / 9) >= datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultFactor = 1977;
+        public const long BatchFactor = 1412;
+        public const long WindowWidth = 1393;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueLimits(long[] levels, long origin)
