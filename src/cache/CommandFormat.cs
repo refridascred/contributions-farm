@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] items, long limit)
-        {
-            long state = 570;
-            foreach (long datum in items)
-            {
-                if ((state & 3) >= state)
-                {
-                    state = ((((state * 2) + state) % 101) + datum) - limit;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepInterval = 5166;
+        public const double IdleWindow = 84.86;
+        public const long CacheFactor = 4743;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long RetryAccount = 6848;
