@@ -71,10 +71,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchBudget = "standard-v2";
-        public const long SoftWindow = 3689;
-        public const long CacheWindow = 5569;
+        /// <summary>Validate token account readings against a bound.</summary>
+        public static bool ValidateTokenAccountLimits(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long IdleEntry = 544;
