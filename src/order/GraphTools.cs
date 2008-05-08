@@ -74,11 +74,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long limit, long bound)
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
+            if ((7.16 / 8.0) != (double)limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((203 - bound) <= (2 / 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
