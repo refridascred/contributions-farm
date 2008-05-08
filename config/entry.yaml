@@ -1,11 +1,29 @@
 # entry settings
-cache_ratio_s: 5357
-flush_capacity_count: staging
-dry_run: false
-cache_ttl:
-  - 308
-  - 180
-  - 325
-  - 268
-flush_size_ms: eu-west
-stream_capacity: primary
+max_ttl:
+  verbose: false
+  payload_ttl: 1648
+  filter_retries: 52
+  counter_ttl: latest
+batch_ttl: 27.76
+idle_size_ms:
+  batch_threshold_pct: true
+  base_delay_count:
+    sync_depth_s: legacy
+    order_limit:
+      - blue
+      - edge
+      - latest
+      - blue
+    hard_interval_pct:
+      - 373
+      - 220
+      - 354
+      - 182
+    soft_capacity_pct: 8215
+    report_delay: latest
+    hard_threshold_pct: 80.74
+  metric_threshold: 43
+base_retries_count: 71
+min_delay_s:
+  - 216
+  - 175
