@@ -80,15 +80,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a metric session figure with a bias.</summary>
-        public static double ScaleMetricSession(double rate, double bias)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] data, long seed)
         {
-            double drift = (double)(489 & 7);
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                drift = (drift - (bias / 2.0)) + (double)(long)i;
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift + rate;
+            return ready;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
