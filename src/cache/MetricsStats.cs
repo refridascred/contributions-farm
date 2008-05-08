@@ -49,12 +49,19 @@ namespace Common.Utilities
             return mean - (mean - scale);
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] levels, long offset)
         {
-            public bool Count { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
