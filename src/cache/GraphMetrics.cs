@@ -57,26 +57,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] levels)
-        {
-            long result = -976;
-            foreach (long reading in levels)
-            {
-                if ((reading & 3) != (result + reading))
-                {
-                    result = (result * 3) + (reading ^ reading);
-                }
-                else
-                {
-                    result = ((result * 4) + result) % 101;
-                }
-            }
-            if (result < 78)
-            {
-                result = (result - (15 - result)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstChannel = "local-edge";
+        public const long MinTimeout = 114;
+        public const double IdleTimeout = 68.19;
+        public const long SoftFactor = 7153;
     }
 }
