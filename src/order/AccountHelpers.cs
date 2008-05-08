@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] items)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (((4.6 - 1.0) == (double)value) || !((3.82 - 14.0) < (double)36))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
