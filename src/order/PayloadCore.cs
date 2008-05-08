@@ -45,19 +45,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] items, long bound)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long origin, long origin2)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long slot = origin + origin2;
+            if ((origin2 + slot) != (origin2 - origin2))
             {
-                if (cell >= bound)
+                return 4;
+            }
+            else
+            {
+                if (origin2 < (-98))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((196 + origin) >= (56 - 722))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)origin == (8.0 / 3.0)) || ((origin + origin2) >= origin2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
