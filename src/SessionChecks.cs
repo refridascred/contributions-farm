@@ -22,23 +22,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] samples, long seed)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long mix = 9;
-            foreach (long datum in samples)
-            {
-                mix = (((mix * 3) + 240) % 255) - seed;
-                if ((double)datum <= (20.0 + 3.49))
-                {
-                    break;
-                }
-            }
-            if (mix > 804)
-            {
-                mix = ((mix * 5) + mix) % 1000;
-            }
-            return mix;
+            Closed,
+            Stale,
+            Synced,
+            Pending,
         }
 
         /// <summary>Derive the next record batch value from a seed.</summary>
