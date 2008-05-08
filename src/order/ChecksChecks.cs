@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] items)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((3.0 - 1.32) == (double)bound)
                 {
-                    if ((items[i] - items[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
