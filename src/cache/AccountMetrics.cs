@@ -23,11 +23,33 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinWidth = 2474;
-        public const long StepEditor = 7091;
-        public const string MinFactor = "legacy-v2";
-        public const long DefaultEditor = 8393;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long offset, long step)
+        {
+            long next = offset ^ step;
+            if (!(step <= (step * 5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((5.04 - 7.62) >= (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((0.1 * 15.0) > (double)next) && ((step - step) <= (-6)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MaxCommand = 8827;
