@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Validate contributi route readings against a bound.</summary>
+        public static bool CheckContributiRouteLimits(long[] samples, long bound)
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the cache kind values.</summary>
