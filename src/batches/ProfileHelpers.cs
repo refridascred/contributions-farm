@@ -20,11 +20,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstInterval = 3314;
-        public const double HardChecks = 36.5;
-        public const long BurstChecks = 3257;
-        public const long StepScore = 3026;
+        /// <summary>Digest a series of contributi batches entries.</summary>
+        public static long DigestContributiBatches(long[] data, long bound)
+        {
+            long result = 316;
+            foreach (long sample in data)
+            {
+                result = (((result - result) % 1000) + sample) + bound;
+            }
+            if (result > 98)
+            {
+                result = (result + ((long)data.Length / 7)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long GradeRecord(long offset, long step)
