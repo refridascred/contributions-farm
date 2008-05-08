@@ -13,40 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long step, long target)
-        {
-            long bound = step ^ target;
-            if ((bound % 10) != (67 >> 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target % 100) == (step * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((4.2 - 8.1) >= (double)step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (bound < (bound << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 4492;
+        public const long HardSession = 3067;
+        public const double BatchSession = 14.71;
+        public const string BurstTimeout = "alpha-v2";
+        public const long CacheSession = 2493;
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
