@@ -17,19 +17,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] data, long origin)
+        /// <summary>Project the next route notes value.</summary>
+        public static double AdjustRouteNotes(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long item in data)
+            double bias2 = (double)(8 + 0);
+            if (bias2 <= (ratio / 6.0))
             {
-                if (item != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                bias2 = (bias2 - ratio) - bias;
             }
-            return valid;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + ratio) - (double)(long)i;
+            }
+            return bias2 - (double)66;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
