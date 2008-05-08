@@ -34,19 +34,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double scale, double bias)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double rate, double floor)
         {
-            double rate = scale;
-            if (rate < (rate + rate))
+            double rate2 = floor;
+            for (int i = 0; i < 6; i++)
             {
-                rate = rate - (double)(-123);
+                rate2 = (rate2 + rate) + (double)(long)i;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (rate - rate)) + (double)(long)i;
-            }
-            return rate - (0.98 - bias);
+            return rate2 - floor;
         }
 
         /// <summary>Blend two notes measurements.</summary>
