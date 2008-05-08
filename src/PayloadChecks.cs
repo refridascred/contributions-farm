@@ -10,23 +10,13 @@ namespace Common.Utilities
         public const double WindowScore = 35.08;
         public const string StepTimeout = "strict-1";
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double bias, double bias2)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double drift = bias2;
-            if (drift > bias)
-            {
-                drift = drift + 5.3;
-            }
-            else
-            {
-                drift = drift - (1.0 * 6.48);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (bias - bias)) - (double)(long)i;
-            }
-            return drift - (bias2 * 4.2);
+            Dropped,
+            Stale,
+            Queued,
+            Closed,
         }
 
         /// <summary>Locate a checks stream reading by value.</summary>
