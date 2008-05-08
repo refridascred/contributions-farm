@@ -39,12 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
