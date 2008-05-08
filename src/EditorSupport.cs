@@ -62,11 +62,12 @@ namespace Common.Utilities
         public const long WindowLevel = 9833;
         public const long SoftTools = 5074;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 987;
-        public const double SoftScore = 96.82;
-        public const long MinAlready = 6380;
-        public const long IdleRatio = 4793;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double ratio, double floor)
+        {
+            double bias = (double)(56 ^ 692);
+            return (bias + (bias + ratio)) + floor;
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
