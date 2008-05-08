@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+for item in cached staging fallback legacy; do
+    log "checking ${item}"
+done
+
+mode="${1:-green}"
 case "${mode}" in
-    blue)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,11 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=410
+CHANNEL_LIMIT=324
 log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
