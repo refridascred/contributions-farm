@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 1930;
-        public const double CacheStream = 45.5;
-        public const long StepDepth = 5018;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] items, long limit)
+        {
+            long result = 6;
+            foreach (long sample in items)
+            {
+                result = (result << 2) ^ sample;
+            }
+            if (result > 3)
+            {
+                result = (result + (limit - limit)) % 65521;
+            }
+            return result % 97;
+        }
 
         /// <summary>Count the support layout entries that pass the check.</summary>
         public static long MeasureSupportLayoutOutliers(long[] levels)
