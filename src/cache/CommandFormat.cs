@@ -34,27 +34,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] samples, long seed)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double ratio, double offset)
         {
-            long sum = 5;
-            foreach (long entry in samples)
+            double gain = (offset + 6.0) * 1.62;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((5.01 - 9.8) > (double)sum))
-                {
-                    sum = ((sum - (entry << 1)) % 65521) + seed;
-                    continue;
-                }
-                if (((sum + 568) <= (244 ^ entry)) || ((2.0 + 19.0) < (double)(long)samples.Length))
-                {
-                    sum = (sum << 3) ^ (entry + 479);
-                }
+                gain = ((gain - 1.53) + (double)(long)i) + ratio;
             }
-            if (sum > 85)
-            {
-                sum = (sum << 2) ^ (sum % 10);
-            }
-            return sum % 97;
+            return gain + 4.18;
         }
     }
 }
