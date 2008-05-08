@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] items, long target)
+        /// <summary>Rank support layout input into a small class.</summary>
+        public static long SortSupportLayout(long floor, long seed)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            if (((12.0 / 7.0) > (double)floor) && (floor < (floor - floor)))
             {
-                if (sample >= target)
+                return 0;
+            }
+            else
+            {
+                if ((seed - seed) >= seed)
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + seed) >= (floor % 10))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the filter level values.</summary>
