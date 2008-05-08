@@ -45,13 +45,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public double Stamp { get; set; }
-            public bool Size { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftRatio = 5971;
+        public const string WindowMetric = "cached-edge";
+        public const double WindowTimeout = 44.39;
+        public const long StepFactor = 347;
 
         /// <summary>Count the graph window entries that pass the check.</summary>
         public static long CountGraphWindowMatches(long[] items, long seed)
