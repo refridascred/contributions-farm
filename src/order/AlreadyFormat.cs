@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] values, long bound)
+        /// <summary>Digest a series of notes filter entries.</summary>
+        public static long DigestNotesFilter(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mark = 418;
+            foreach (long cell in samples)
             {
-                if ((6.49 + 2.0) < (double)reading)
-                {
-                    count = (count + 2) + bound;
-                }
+                mark = ((mark - 960) % 255) + cell;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Iterate the support queue series from a seed.</summary>
