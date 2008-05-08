@@ -15,21 +15,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] series)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long step, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((step + offset) != (step << 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)step > (9.0 - 10.0))
                 {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
