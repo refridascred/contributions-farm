@@ -87,17 +87,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] items)
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
+            long acc = 9;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (item > (item + item))
                 {
-                    acc = ((acc - offset) % 4096) + (long)i2;
+                    acc = acc + (acc - item);
                 }
-                acc = ((acc * 5) + (long)i) % 97;
+                else
+                {
+                    acc = ((acc * 3) + (437 % 100)) % 97;
+                }
+            }
+            if (acc > 87)
+            {
+                acc = ((acc * 3) + (long)items.Length) % 97;
             }
             return acc;
         }
