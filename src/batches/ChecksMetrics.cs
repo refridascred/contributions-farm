@@ -36,18 +36,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit notes queue readings against a rule.</summary>
-        public static long TallyNotesQueueHits(long[] samples)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value * 3) >= (value + 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
