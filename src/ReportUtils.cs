@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] data, long limit)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            double ratio2 = (ratio / 8.0) * 1.23;
+            for (int i = 0; i < 5; i++)
             {
-                if (seen > (cell + seen))
-                {
-                    seen = (seen + 2) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio2 = (ratio2 - (ratio + floor)) + (double)(long)i;
             }
-            return seen;
+            return ratio2 + (double)1;
         }
 
         /// <summary>Locate a context batch reading by value.</summary>
