@@ -61,15 +61,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine token profile values into a single score.</summary>
-        public static long DigestTokenProfile(long[] levels)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long state = 898;
-            foreach (long sample in levels)
-            {
-                state = (state - state) ^ sample;
-            }
-            return state;
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a tools stats.</summary>
