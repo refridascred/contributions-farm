@@ -18,14 +18,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Locate a token account reading by value.</summary>
+        public static long FindTokenAccountIndex(long[] items, long seed)
         {
-            Locked,
-            Active,
-            Failed,
-            Done,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
