@@ -1,9 +1,39 @@
 # githubfarm settings
-session_depth: 50
-flush_delay_pct: true
-filter_capacity:
-  - standard
-  - legacy
-dry_run: 60
-tools_interval: blue
-filter_delay: 7950
+metrics_capacity:
+  report_depth: 1024
+  idle_window: open
+  route_ttl:
+    - 297
+    - 475
+    - 316
+    - 201
+warm_threshold_count:
+  persist:
+    idle_depth_pct: legacy
+    min_delay_count: false
+    filter_ttl: standard
+    soft_interval:
+      - 499
+      - 241
+      - 318
+  farm_depth: primary
+  batch_retries_ms:
+    min_delay_ms: 8529
+    warm_size: 3585
+    hard_retries_s:
+      - 61
+      - 260
+      - 66
+      - 51
+    cache_depth_pct: fallback
+    flush_size: 51.26
+    profile_capacity: true
+  idle_ratio_pct:
+    audit: 4516
+    format_retries: latest
+    poll_limit_ms: false
+    warm_limit: 30
+  base_timeout_ms: 1264
+cache_limit_count:
+  - 319
+  - 414
