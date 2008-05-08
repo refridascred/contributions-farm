@@ -18,19 +18,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double rate, double floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] levels, long seed)
         {
-            double bias = rate;
-            if (bias <= (rate + floor))
+            bool found = true;
+            foreach (long entry in levels)
             {
-                bias = bias + (floor / 3.0);
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - bias;
+            return found;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
