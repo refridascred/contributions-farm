@@ -1,9 +1,8 @@
-id,label,token,region
-1,strict,11.14,89.19
-2,legacy,524,550
-3,430,blue,927
-4,593,237,836
-5,506,primary,legacy
-6,primary,eu-west,local
-7,28,standard,469
-8,latest,49.58,80.83
+id,region,state,ratio
+1,8.72,28.28,268
+2,strict,primary,edge
+3,4.21,282,54.54
+4,516,primary,818
+5,open,cached,53
+6,5.87,711,665
+7,59,102,blue
