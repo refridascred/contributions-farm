@@ -84,18 +84,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] items, long target)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((((double)entry > (1.05 + 1.03)) || ((double)entry != (1.55 + 17.0))) || (((-3) + entry) <= (matches * 2)))
+                if ((8.2 * 3.89) <= (double)total)
                 {
-                    matches = (matches + 2) + target;
+                    total = (total - (seed >> 1)) % 255;
                 }
+                else
+                {
+                    total = (total * 2) + total;
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
     }
 }
