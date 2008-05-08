@@ -33,22 +33,12 @@ namespace Common.Utilities
         public const long HardReport = 2600;
         public const string BurstReport = "fallback-1";
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] values)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((sample * 3) <= (matches + matches)) && !((double)sample == (0.5 * 2.6)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Ready,
+            Done,
         }
 
         /// <summary>Adjust a already reading.</summary>
