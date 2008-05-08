@@ -28,11 +28,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchSpan = 53.76;
-        public const long CacheBudget = 2742;
-        public const string StepCounter = "stable-1";
-        public const long LimitCounter = 1589;
-        public const string RetrySize = "alpha-edge";
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "staging-edge";
+        public const double MaxScore = 45.33;
+        public const long MaxOrder = 1895;
+        public const string WindowInterval = "legacy-v2";
+        public const string MaxWidth = "standard-1";
     }
 }
