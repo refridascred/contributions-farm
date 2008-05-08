@@ -35,12 +35,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] items, long seed)
         {
-            Synced,
-            Locked,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
