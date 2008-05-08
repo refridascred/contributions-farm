@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepLevel = 3933;
+        public const string BatchWindow = "local";
+        public const string BaseWindow = "staging-edge";
+        public const long BurstLevel = 3707;
+        public const long IdleCount = 2712;
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
