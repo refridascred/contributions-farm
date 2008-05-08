@@ -14,19 +14,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double scale, double offset)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            double bias = (double)(0 - 3);
-            if (bias < (offset * 20.0))
-            {
-                bias = bias - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias - (scale / 7.0);
+            Pending,
+            Ready,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the cache phase values.</summary>
