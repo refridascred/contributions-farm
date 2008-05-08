@@ -41,19 +41,11 @@ namespace Common.Utilities
         public const string DefaultRatio = "latest-edge";
         public const long BatchCount = 555;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] values, long origin)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long state = 240;
-            foreach (long reading in values)
-            {
-                state = (((state ^ (state - 858)) % 101) - reading) - origin;
-            }
-            if (state > 6)
-            {
-                state = (state * 2) + (state << 3);
-            }
-            return state % 97;
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Match up token samples.</summary>
