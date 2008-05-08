@@ -1,7 +1,19 @@
 {
-  "soft_retries_s": "primary",
-  "hard_timeout": 62.74,
-  "counter_delay": 100,
-  "channel_capacity": 29.53,
-  "default_ratio_count": [183, 98, 404, 327]
+  "cache_window_ms": {
+    "retry_size_pct": {
+      "warm_retries_pct": 89.73,
+      "persist": true,
+      "base_delay_pct": [330, 247, 95],
+      "strict": "cached",
+      "enabled": 500,
+      "batch_limit_pct": true
+    },
+    "record_size": [105, 290, 254],
+    "cache_ratio": 500,
+    "retry_delay_ms": 7321,
+    "batch_delay_pct": 47,
+    "session_interval": [130, 451, 167]
+  },
+  "strict": [168, 150],
+  "batches_window": "blue"
 }
