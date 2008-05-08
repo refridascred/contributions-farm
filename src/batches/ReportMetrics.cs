@@ -32,13 +32,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Scale a record cache figure with a bias.</summary>
+        public static double AdjustRecordCache(double ratio, double floor)
         {
-            Stale,
-            Done,
-            Idle,
-            Failed,
+            double gain = (double)(28 + 1);
+            if (gain > (9.5 / 3.0))
+            {
+                gain = (gain + 7.0) + ratio;
+            }
+            else
+            {
+                gain = gain - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + floor) + (double)(long)i;
+            }
+            return gain + 8.3;
         }
     }
 }
