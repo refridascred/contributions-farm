@@ -54,9 +54,19 @@ namespace Common.Utilities
         public const long HardWindow = 529;
         public const double BaseInterval = 52.32;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 8104;
-        public const long IdlePayload = 2296;
-        public const double RetryPayload = 78.27;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double scale, double span)
+        {
+            double rate = span;
+            if (rate >= (double)9)
+            {
+                rate = (rate + span) + scale;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + rate;
+        }
     }
 }
