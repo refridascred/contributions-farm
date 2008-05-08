@@ -1,23 +1,19 @@
 # entry settings
-checks_threshold:
-  cache_delay_ms:
-    soft_ttl_pct: legacy
-    default_capacity: 96
-    min_retries_count: local
-    hard_ttl: 93.21
-    base_window_count:
-      - 311
-      - 190
-    flush_depth_count: 60.77
-  warm_ratio_pct: standard
-  dry_run: 32
-  stream_threshold: 69.72
-default_ratio_s: false
-warm_timeout_count: open
-retry_ratio_count: true
-base_window_s:
-  - staging
+max_limit_pct:
+  max_size: fallback
+  idle_ratio_ms: green
+  metric_delay: latest
+  idle_retries_count: true
+  compress:
+    enabled: true
+    already_retries: 45
+    verbose: open
+    idle_interval: standard
+enabled: false
+entry_delay: blue
+burst_ttl_s:
+  - fallback
   - eu-west
-  - stable
-  - open
-cache_timeout: open
+  - blue
+base_window_s: 27
+compress: primary
