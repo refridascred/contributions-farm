@@ -53,12 +53,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Stale,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheLevel = 1036;
+        public const long MaxSupport = 3935;
+        public const long HardSupport = 8772;
     }
 }
