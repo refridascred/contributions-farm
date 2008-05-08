@@ -15,11 +15,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 4406;
-        public const long CacheCount = 6992;
-        public const string IdleToken = "stable-1";
-        public const string WindowFactor = "standard";
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double bias, double span)
+        {
+            double gain = (8.7 * 1.76) + (bias * 1.73);
+            if (gain > (bias * 4.78))
+            {
+                gain = gain + span;
+            }
+            else
+            {
+                gain = gain - bias;
+            }
+            return gain + (gain * 0.39);
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long StepAccount(long bound)
