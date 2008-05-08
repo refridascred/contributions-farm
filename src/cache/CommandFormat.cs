@@ -24,12 +24,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseBudget = 2704;
-        public const string CacheSpan = "staging-v2";
-        public const double MinCluster = 3.12;
-        public const double DefaultWidth = 72.08;
-        public const long BaseCluster = 9722;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            New,
+            Dropped,
+            Active,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TotalEditor(long[] samples, long seed)
