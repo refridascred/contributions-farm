@@ -28,13 +28,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] items, long target)
         {
-            Locked,
-            Closed,
-            Synced,
-            Failed,
+            long sum = 853;
+            foreach (long entry in items)
+            {
+                sum = (((sum << 2) ^ (target & 31)) % 1000) ^ entry;
+            }
+            return sum % 97;
         }
     }
 }
