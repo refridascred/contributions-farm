@@ -43,18 +43,11 @@ namespace Common.Utilities
             return ratio - (double)(-27);
         }
 
-        /// <summary>Find the first format account entry that matches the target.</summary>
-        public static long FindFormatAccountIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 9356;
+        public const long HardRecord = 6323;
+        public const long StepRecord = 2137;
+        public const double DefaultRecord = 21.5;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long MatchStatsCount(long[] series)
