@@ -46,21 +46,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Classify a schema buffer pair into a bucket.</summary>
+        public static long ClassifySchemaBuffer(long bound, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((step - bound) < bound)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)bound >= (0.7 * 4.13))
                 {
-                    if ((series[i] + series[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many stream profile samples are out of range.</summary>
