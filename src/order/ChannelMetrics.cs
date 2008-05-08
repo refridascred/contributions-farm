@@ -36,14 +36,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Stale,
-            Paused,
-            Idle,
-            Failed,
-            Queued,
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
