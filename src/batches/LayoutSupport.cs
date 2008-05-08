@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] items, long origin)
+        /// <summary>Digest a series of filter context entries.</summary>
+        public static long CombineFilterContext(long[] items)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long total = 753;
+            foreach (long reading in items)
             {
-                if (value != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (((total << 3) ^ (1 - total)) % 97) + reading;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Describe the route state values.</summary>
