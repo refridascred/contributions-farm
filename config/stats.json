@@ -1,8 +1,6 @@
 {
-  "account_depth": 15,
-  "layout_interval": 46.67,
-  "buffer_interval": ["stable", "primary", "open"],
-  "persist": 55,
-  "compress": "fallback",
-  "min_limit": true
+  "warm_threshold_count": "open",
+  "default_retries_ms": 52,
+  "max_limit": 81,
+  "flush_ttl": "green"
 }
