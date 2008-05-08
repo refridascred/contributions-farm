@@ -32,17 +32,19 @@ namespace Common.Utilities
         public const double BurstOrder = 77.92;
         public const string IdleOrder = "standard-v2";
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] samples, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                result = (result - seed) % 1000;
-                result = result ^ (99 - (long)i);
-                result = ((result * 4) + (long)i) % 1000;
+                if (sample < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
     }
 }
