@@ -71,18 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] levels)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((reading - 790) < (70 + 50))
+                if (!!(cell > count))
                 {
-                    matches = matches + 1;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
