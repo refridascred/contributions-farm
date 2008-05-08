@@ -1,8 +1,13 @@
 {
-  "max_window": 84,
-  "enabled": 92.08,
-  "graph_interval": 23,
-  "poll_ttl_pct": "standard",
-  "verbose": true,
-  "batch_capacity_ms": ["legacy", "fallback", "strict"]
+  "dry_run": {
+    "verbose": [84, 410, 69, 285],
+    "burst_interval": "blue",
+    "audit": "blue",
+    "queue_timeout": 97,
+    "retry_size": 30,
+    "payload_depth": "primary"
+  },
+  "batch_delay_ms": 53.22,
+  "warm_interval_ms": "local",
+  "compress": 9944
 }
