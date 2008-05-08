@@ -1,18 +1,6 @@
 {
-  "commits_window": "standard",
-  "audit": "fallback",
-  "poll_threshold": {
-    "enabled": {
-      "readonly": "edge",
-      "burst_timeout_ms": "open",
-      "record_ratio": 47.89,
-      "dry_run": 96
-    },
-    "profile_timeout": true,
-    "burst_capacity_count": 23,
-    "compress": true,
-    "poll_ttl": 97
-  },
-  "burst_limit": 60,
-  "base_window_count": "blue"
+  "enabled": [1, 48, 29, 296],
+  "flush_window_s": 44.13,
+  "window_timeout": 98.3,
+  "dry_run": ["cached", "open"]
 }
