@@ -31,15 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] values, long offset)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long origin)
         {
-            long mix = 9;
-            foreach (long datum in values)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                mix = (((mix << 3) ^ (offset + mix)) % 1000) ^ datum;
+                if ((acc * 3) == ((long)i & 7))
+                {
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Iterate the cluster format series from a seed.</summary>
