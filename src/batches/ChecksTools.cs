@@ -31,19 +31,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] levels, long seed)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long step)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long state = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum <= seed)
+                if ((73 ^ (-3)) <= step)
                 {
-                    ok = false;
-                    break;
+                    state = state ^ (long)i;
                 }
+                if (((step + step) > 812) && ((step << 2) <= (step - 1)))
+                {
+                    state = (state * 2) + (step - state);
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Project the next checks value.</summary>
