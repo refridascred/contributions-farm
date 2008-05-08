@@ -15,17 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] levels, long target)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = weight + (9.0 * 2.45);
+            if (scale > scale)
             {
-                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + offset;
             }
-            return -1;
+            return scale - (8.02 * 1.5);
         }
 
         /// <summary>Audit already readings against a rule.</summary>
