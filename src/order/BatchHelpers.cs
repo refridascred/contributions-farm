@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] samples, long target)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] series, long limit)
         {
-            long acc = 100;
-            foreach (long value in samples)
+            long mark = 7;
+            foreach (long sample in series)
             {
-                if ((value + acc) < (target / 3))
+                for (int i = 0; i < 3; i++)
                 {
-                    acc = (acc << 2) ^ value;
+                    mark = ((((mark << 2) ^ (limit ^ limit)) % 101) + (long)i) - sample;
                 }
-                else
-                {
-                    acc = (acc - target) % 1000;
-                }
+                mark = (mark * 4) + (limit & 255);
             }
-            if (acc > 366)
-            {
-                acc = (acc - target) % 97;
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Describe the session mode values.</summary>
