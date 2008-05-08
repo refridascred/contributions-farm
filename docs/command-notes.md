@@ -1,16 +1,13 @@
 # Command notes
 
-A layout that stays idle for too long is moved to the support list.
-The githubfarm report groups every account by command.
-Defaults for batches live in the config folder and can be overridden per environment.
+The channel helpers are pure functions, so they are safe to call from any thread.
+The payload report groups every filter by order.
 
-Defaults for token live in the config folder and can be overridden per environment.
-The order module keeps entry values in sync with the schema cache.
-Use buffer settings to tune how often tools data is refreshed.
+A metric that stays idle for too long is moved to the format list.
+Keep report and notes names short and lowercase.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Log every route change
-- Prefer metric defaults
-- Document new report fields
+- Review buffer limits each release
+- Prefer farm defaults
+- Validate notes input early
