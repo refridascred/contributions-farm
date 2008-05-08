@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] values, long target)
+        /// <summary>Combine contributi stats values into a single score.</summary>
+        public static long TallyContributiStats(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 6;
+            foreach (long sample in items)
             {
-                if (values[i] > target)
+                if ((double)anchor > (13.0 - 4.5))
                 {
-                    return (long)i;
+                    anchor = ((anchor + 875) % 65521) - sample;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a editor header.</summary>
