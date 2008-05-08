@@ -1,6 +1,8 @@
 {
-  "soft_timeout_count": true,
-  "compress": 24,
-  "retry_depth_s": "primary",
-  "default_capacity_s": [211, 4, 202]
+  "poll_ratio": "green",
+  "flush_timeout_count": 395,
+  "burst_ttl_ms": "staging",
+  "retry_interval_ms": ["edge", "fallback", "stable"],
+  "report_ttl": 2433,
+  "base_capacity_count": ["blue", "latest", "green"]
 }
