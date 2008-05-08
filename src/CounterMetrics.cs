@@ -25,12 +25,16 @@ namespace Common.Utilities
         public const string LimitLayout = "primary-1";
         public const string IdleLayout = "open-v2";
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long floor)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long score = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                score = score + (score * 2);
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
