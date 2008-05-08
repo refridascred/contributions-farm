@@ -48,11 +48,13 @@ namespace Common.Utilities
         public const long WindowCluster = 1376;
         public const string SoftCluster = "legacy-v2";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 7132;
-        public const long DefaultSpan = 7103;
-        public const long HardWindow = 529;
-        public const double BaseInterval = 52.32;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Queued,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double SmoothSchema(double scale, double span)
