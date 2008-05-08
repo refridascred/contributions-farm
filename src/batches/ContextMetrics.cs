@@ -33,19 +33,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] data, long offset)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
