@@ -38,12 +38,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
