@@ -17,10 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 7332;
-        public const double CacheScore = 63.19;
-        public const string StepInterval = "latest-edge";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 3863;
+        public const string StepStream = "legacy";
+        public const long BaseSpan = 6624;
+        public const double MinWidth = 35.29;
+        public const double StepDepth = 51.88;
 
         /// <summary>Derive the next route cluster value from a seed.</summary>
         public static long SeriesRouteCluster(long offset)
