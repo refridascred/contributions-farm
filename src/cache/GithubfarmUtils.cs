@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const long LimitContributi = 3747;
         public const string LimitFactor = "strict-edge";
 
-        /// <summary>Combine cluster format values into a single score.</summary>
-        public static long WeighClusterFormat(long[] samples, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] samples, long floor)
         {
-            long state = 379;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                state = (((state * 3) + (seed ^ state)) % 4096) + reading;
+                if ((double)floor == (double)sample)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
