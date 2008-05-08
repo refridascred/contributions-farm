@@ -1,6 +1,6 @@
 {
-  "readonly": "legacy",
-  "payload_timeout": "cached",
-  "persist": "edge",
-  "burst_size": "latest"
+  "compress": 30,
+  "verbose": true,
+  "idle_ttl_pct": 60,
+  "payload_timeout": 297
 }
