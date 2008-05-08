@@ -1,5 +1,33 @@
 # support settings
-burst_interval: legacy
-graph_ttl: 90.27
-default_capacity: legacy
-max_delay_count: 66
+counter_threshold:
+  entry_delay:
+    - 211
+    - 356
+    - 291
+    - 491
+  audit:
+    verbose: 97
+    max_retries_count: blue
+    filter_timeout: local
+  burst_size_count:
+    cache_retries_ms: 74.26
+    report_timeout: 164
+    base_ratio_pct: true
+  flush_depth_count:
+    batch_window: standard
+    max_size_s: blue
+    burst_capacity: 7921
+    stats_interval:
+      - 304
+      - 460
+      - 302
+    max_threshold_ms: 57.62
+farm_delay: eu-west
+channel_threshold:
+  - green
+  - stable
+  - standard
+  - eu-west
+hard_timeout: 18
+sync_ttl: 250
+max_depth_s: false
