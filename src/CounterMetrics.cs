@@ -36,18 +36,26 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] levels, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] items)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long mix = 19;
+            foreach (long datum in items)
             {
-                if ((2 & 3) != (value + matches))
+                if ((mix + (-8)) != (datum - mix))
                 {
-                    matches = (matches + 1) + origin;
+                    mix = mix ^ (mix + mix);
+                }
+                else
+                {
+                    mix = (mix - (9 * 4)) % 1000;
+                }
+                if ((datum + mix) < (mix * 2))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
