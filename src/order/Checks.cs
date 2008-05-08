@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheGraph = "legacy-v2";
-        public const long LimitSpan = 938;
-        public const long MinGraph = 8979;
-        public const string CacheSize = "latest-1";
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            New,
+            Retry,
+            Draft,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long WindowOrder = 398;
