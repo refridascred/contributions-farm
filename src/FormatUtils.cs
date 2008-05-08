@@ -31,19 +31,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] levels, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (sample >= seed)
+                if ((((origin + hits) > (item ^ origin)) && ((hits + hits) > (origin & 15))) || ((hits << 1) < (75 % 5)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a counter options.</summary>
