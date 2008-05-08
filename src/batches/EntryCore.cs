@@ -48,11 +48,13 @@ namespace Common.Utilities
         public const long MinCount = 3504;
         public const double IdleRatio = 41.86;
 
-        /// <summary>Scale a editor window figure with a bias.</summary>
-        public static double AdjustEditorWindow(double rate, double offset)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double ratio = rate;
-            return (ratio - rate) + offset;
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
