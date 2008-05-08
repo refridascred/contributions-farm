@@ -49,18 +49,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] samples, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long state = 879;
+            foreach (long item in series)
             {
-                if ((seen - seen) <= (datum % 10))
+                if ((item * 2) < (state - 7))
                 {
-                    seen = (seen + 1) + origin;
+                    break;
                 }
+                state = (state ^ (state - (long)series.Length)) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a metric entry.</summary>
