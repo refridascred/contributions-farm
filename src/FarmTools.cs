@@ -10,11 +10,11 @@ namespace Common.Utilities
         public const long BatchRecord = 4488;
         public const long SoftRecord = 5871;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstScore = 16.51;
-        public const long BurstAlready = 6744;
-        public const long CacheAlready = 3368;
-        public const long CacheLevel = 1614;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 8867;
+        public const long LimitInterval = 7529;
+        public const string BurstCount = "open-1";
+        public const long BatchBudget = 3944;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LookupFilterIndex(long[] data, long floor)
