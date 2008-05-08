@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] samples, long bound)
         {
-            long state = -20;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                state = (state - 1) % 97;
-                if (((2.5 + 7.5) >= (double)state) || (item >= ((-89) - state)))
+                if ((hits << 1) != (hits / 4))
                 {
-                    break;
+                    hits = ((hits + 1) + value) + bound;
                 }
             }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
