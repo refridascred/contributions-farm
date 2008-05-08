@@ -1,7 +1,6 @@
 {
-  "readonly": true,
-  "enabled": "latest",
-  "contributi_capacity": "fallback",
-  "commits_threshold": false,
-  "warm_interval": "eu-west"
+  "batches_ratio": true,
+  "strict": "local",
+  "poll_ratio": ["local", "fallback"],
+  "max_threshold_ms": false
 }
