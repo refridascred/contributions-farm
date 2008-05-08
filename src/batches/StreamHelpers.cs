@@ -41,19 +41,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter queue samples.</summary>
-        public static long CombineFilterQueue(long[] data, long target)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] items)
         {
-            long score = 22;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score + reading) % 4096) - target;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (score < 542)
-            {
-                score = (score ^ score) % 97;
-            }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Roll a metrics payload counter forward.</summary>
