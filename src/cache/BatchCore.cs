@@ -32,21 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of already format readings.</summary>
-        public static long CompareAlreadyFormatCount(long[] data)
+        /// <summary>Validate counter layout readings against a bound.</summary>
+        public static bool ValidateCounterLayoutRange(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry >= target)
                 {
-                    if ((data[i] + data[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the account mode values.</summary>
