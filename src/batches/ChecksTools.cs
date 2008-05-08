@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long BaseWidth = 2740;
         public const double WindowContext = 71.16;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] samples)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long mark = 34;
+            foreach (long datum in series)
             {
-                if ((datum - tally) >= (4 + tally))
-                {
-                    tally = tally + 2;
-                }
+                mark = ((((mark << 2) ^ (167 << 1)) % 255) - datum) - limit;
             }
-            return tally;
+            if (mark < 8)
+            {
+                mark = (mark - ((long)series.Length * 2)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Adjust a already reading.</summary>
