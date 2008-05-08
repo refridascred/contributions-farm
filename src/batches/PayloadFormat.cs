@@ -48,17 +48,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the cluster format series from a seed.</summary>
-        public static long SeriesClusterFormat(long step)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double weight, double span)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
+            double scale = (double)(633 << 2);
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result * 5) + (step >> 3)) % 4096;
-                result = result - (step + 776);
-                result = ((result * 5) + (long)i) % 65521;
+                scale = (scale + (double)(long)i) - span;
             }
-            return result;
+            return scale - weight;
         }
     }
 }
