@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] readings, long step)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultOrder = "standard-v2";
+        public const string IdleTimeout = "staging-1";
+        public const long HardScore = 8555;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
