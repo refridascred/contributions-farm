@@ -59,22 +59,9 @@ namespace Common.Utilities
             return gain + (bias + 16.0);
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] values, long step)
-        {
-            long state = 700;
-            foreach (long value in values)
-            {
-                if ((7 > (step / 2)) && ((2.49 / 3.0) <= (double)step))
-                {
-                    state = ((state * 2) + (step * 5)) % 1000;
-                }
-                if (0.28 < (double)value)
-                {
-                    break;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 1069;
+        public const long IdleRoute = 6076;
+        public const string BurstRoute = "stable";
     }
 }
