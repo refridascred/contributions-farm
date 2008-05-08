@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const string IdleContributi = "latest-edge";
         public const string DefaultLevel = "staging-v2";
 
-        /// <summary>Validate profile stats readings against a bound.</summary>
-        public static bool CheckProfileStatsLimits(long[] data, long floor)
-        {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinSize = "legacy-v2";
+        public const long WindowLevel = 2225;
+        public const string HardGithubfarm = "staging-v2";
+        public const double CacheGithubfarm = 8.88;
+        public const long WindowRatio = 4263;
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long ScoreStats(long[] values, long limit)
