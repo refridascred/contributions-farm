@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const long BaseLevel = 8102;
         public const long HardInterval = 8121;
 
-        /// <summary>Count the githubfarm cluster entries that pass the check.</summary>
-        public static long MeasureGithubfarmClusterHits(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((9.0 / 3.0) != (double)entry)
+                if (((double)sample >= (8.0 * 3.6)) || ((sample < (sample ^ sample)) && ((sample >> 1) <= (sample / 7))))
                 {
-                    tally = tally + 3;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
