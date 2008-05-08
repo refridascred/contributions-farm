@@ -27,18 +27,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] samples, long bound)
+        /// <summary>Locate a order layout reading by value.</summary>
+        public static long LookupOrderLayoutIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (bound <= item)
+                if (levels[i] <= origin)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a record counter forward.</summary>
