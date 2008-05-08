@@ -1,13 +1,7 @@
 {
-  "dry_run": {
-    "verbose": [84, 410, 69, 285],
-    "burst_interval": "blue",
-    "audit": "blue",
-    "queue_timeout": 97,
-    "retry_size": 30,
-    "payload_depth": "primary"
-  },
-  "batch_delay_ms": 53.22,
-  "warm_interval_ms": "local",
-  "compress": 9944
+  "soft_retries_s": "primary",
+  "hard_timeout": 62.74,
+  "counter_delay": 100,
+  "channel_capacity": 29.53,
+  "default_ratio_count": [183, 98, 404, 327]
 }
