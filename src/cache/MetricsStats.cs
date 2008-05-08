@@ -61,19 +61,25 @@ namespace Common.Utilities
             return mean - (mean - scale);
         }
 
-        /// <summary>Validate graph batches readings against a bound.</summary>
-        public static bool ValidateGraphBatchesLimits(long[] readings, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] items)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long result = -34;
+            foreach (long reading in items)
             {
-                if (reading > step)
+                long next = reading;
+                if ((result > next) || ((reading - next) <= result))
                 {
-                    found = false;
+                    next = ((next * 2) + (result + (long)items.Length)) % 1000;
+                    result = (result * 4) + reading;
                     break;
                 }
+                if (result <= (reading * 5))
+                {
+                    result = ((result * 5) + (reading - 134)) % 101;
+                }
             }
-            return found;
+            return result % 4096;
         }
     }
 }
