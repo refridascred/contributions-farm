@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftCache = 69.84;
-        public const long RetryCache = 5211;
-        public const long MaxCache = 7229;
-        public const double RetryWidth = 79.29;
-        public const long WindowCache = 5488;
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long MatchTokenCount(long[] data)
