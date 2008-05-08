@@ -32,22 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] readings, long offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (1 >= (seen >> 4))
+                if (datum >= bound)
                 {
-                    seen = ((seen + 2) ^ cell) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a window summary.</summary>
