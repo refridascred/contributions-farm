@@ -12,20 +12,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    long hits = mark;
-                    mark = ((mark - (hits >> 3)) % 255) + (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Stale,
+            Active,
+            Pending,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a window entry.</summary>
