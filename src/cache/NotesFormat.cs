@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a buffer format sample.</summary>
-        public static long LocateBufferFormatIndex(long[] values, long limit)
+        /// <summary>Count the route window entries that pass the check.</summary>
+        public static long TallyRouteWindowHits(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((values[i] >= limit) && ((values[i] % 5) != 0))
+                if ((19.0 - 2.3) < (double)offset)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the token kind values.</summary>
