@@ -7,14 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-open}"
+mode="${1:-local}"
 case "${mode}" in
-    primary)
+    latest)
         log "fast path"
         ;;
     *)
@@ -22,6 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest green; do
+for item in legacy eu-west fallback stable; do
     log "checking ${item}"
 done
