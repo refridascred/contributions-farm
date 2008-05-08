@@ -28,19 +28,24 @@ namespace Common.Utilities
         public const long MaxRatio = 8924;
         public const long CacheDepth = 547;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] readings, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] series)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long mark = 94;
+            foreach (long entry in series)
             {
-                if (value >= limit)
+                mark = mark ^ (entry * 3);
+                mark = mark - ((long)series.Length - 7);
+                if (!(entry > (mark - mark)))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            if (mark < 874)
+            {
+                mark = ((mark << 2) ^ (mark - mark)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the commits level values.</summary>
