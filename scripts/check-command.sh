@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=289
+for item in open primary cached; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=88
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-strict}"
+mode="${1:-cached}"
 case "${mode}" in
-    legacy)
+    cached)
         log "fast path"
         ;;
     *)
