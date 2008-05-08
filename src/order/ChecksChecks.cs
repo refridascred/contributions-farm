@@ -24,22 +24,12 @@ namespace Common.Utilities
             return ratio + (floor * 4.0);
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] levels, long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading >> 1) < (2 << 3)) || ((4 ^ 734) <= (offset + reading)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Synced,
+            New,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
