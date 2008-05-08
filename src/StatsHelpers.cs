@@ -36,11 +36,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowWidth = 19.09;
-        public const long StepInterval = 6869;
-        public const double WindowScore = 68.73;
-        public const string HardFactor = "local-1";
+        /// <summary>Rank route stream input into a small class.</summary>
+        public static long RankRouteStream(long floor, long floor2)
+        {
+            if ((578 < floor) && ((double)floor >= (3.9 * 11.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((floor & 15) < floor2) && (floor < (floor + floor)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor >= (6.4 / 6.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountOutliers(long[] series)
