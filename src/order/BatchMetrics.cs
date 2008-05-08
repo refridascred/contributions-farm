@@ -18,20 +18,10 @@ namespace Common.Utilities
         public const double HardFilter = 66.35;
         public const double StepRatio = 55.12;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleInterval = 9871;
+        public const long BaseWidth = 5141;
+        public const long DefaultSupport = 546;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
