@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long bound, long limit)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long diff = bound - limit;
-            if ((bound * 5) < diff)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound != (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit == (double)diff)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Paused,
+            New,
+            Retry,
+            Closed,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
