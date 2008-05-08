@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] values, long target)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] items, long seed)
         {
-            long total = 805;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((target - (-28)) <= (reading + reading)))
+                if (items[i] == seed)
                 {
-                    total = (total - (reading >> 2)) % 65521;
-                }
-                if (((total % 97) < reading) || (reading <= (total ^ reading)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
