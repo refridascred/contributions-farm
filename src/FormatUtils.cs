@@ -18,15 +18,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count metric already pairs that satisfy a relation.</summary>
-        public static long MatchMetricAlreadyCount(long[] samples)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) != 11)
+                    if ((values[i] - values[j]) > 13)
                     {
                         matches = matches + 1;
                     }
