@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchContext = "open-v2";
-        public const long RetryContext = 9687;
-        public const long RetryBudget = 2588;
-        public const long WindowLevel = 8103;
+        /// <summary>Project the next context queue value.</summary>
+        public static double ScaleContextQueue(double scale, double floor)
+        {
+            double mean = floor / 8.0;
+            if (mean < floor)
+            {
+                mean = mean + scale;
+            }
+            return mean - floor;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long HardTimeout = 1552;
