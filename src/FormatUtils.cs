@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
+            Locked,
+            Active,
+            Failed,
+            Done,
+            Queued,
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
