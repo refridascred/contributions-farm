@@ -22,22 +22,39 @@ namespace Common.Utilities
         public const string BurstCount = "open-1";
         public const long BatchBudget = 3944;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] data)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long offset, long offset2)
         {
-            long state = 83;
-            foreach (long datum in data)
+            long next = offset ^ offset2;
+            if ((234 + offset) < (next / 6))
             {
-                if (((datum - datum) <= (datum / 6)) && ((datum << 2) != (8 & 63)))
+                return 3;
+            }
+            else
+            {
+                if (next < (next * 5))
                 {
-                    state = (state << 3) ^ ((long)data.Length + state);
+                    return 7;
+                }
+                else
+                {
+                    if ((offset2 * 4) < (offset2 << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((0.2 + 12.0) <= (double)offset2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (state < 253)
-            {
-                state = (state * 4) + (state - state);
-            }
-            return state % 97;
         }
     }
 }
