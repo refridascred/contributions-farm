@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] samples, long offset)
+        /// <summary>Adjust a stats metrics reading.</summary>
+        public static double AdjustStatsMetrics(double scale, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (double)114 / 4.0;
+            if (rate < (bias + rate))
             {
-                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)9) - scale;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate + (double)(-60);
         }
 
         /// <summary>Accumulate support samples.</summary>
