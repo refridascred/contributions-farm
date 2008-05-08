@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Derive the next window record value from a seed.</summary>
+        public static long DeriveWindowRecord(long limit)
         {
-            Failed,
-            Draft,
-            Paused,
+            long total = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                total = total - (344 >> 2);
+                total = ((total * 5) + (total - total)) % 65521;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Measure how many graph cluster samples are out of range.</summary>
