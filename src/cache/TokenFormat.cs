@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a channel account counter forward.</summary>
-        public static long SeriesChannelAccount(long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] data, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long item in data)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Hold a buffer info.</summary>
