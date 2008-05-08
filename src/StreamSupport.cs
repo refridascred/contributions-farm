@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double gain, double bias)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double scale = gain;
-            if (scale >= (19.0 * 9.1))
-            {
-                scale = scale - (bias - bias);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - scale) - (double)(long)i;
-            }
-            return scale - (gain * 10.0);
+            public double Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
