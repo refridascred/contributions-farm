@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Retry,
-            Locked,
-            New,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 1930;
+        public const double CacheStream = 45.5;
+        public const long StepDepth = 5018;
 
         /// <summary>Rank tools commits input into a small class.</summary>
         public static long SortToolsCommits(long step, long floor)
