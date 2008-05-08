@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm profile entry stays within the limit.</summary>
-        public static bool GuardFarmProfileRange(long[] series, long step)
+        /// <summary>Count session support pairs that satisfy a relation.</summary>
+        public static long MatchSessionSupportCount(long[] readings)
         {
-            bool found = true;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value >= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a schema entry.</summary>
