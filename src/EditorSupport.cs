@@ -28,20 +28,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double gain, double span)
-        {
-            double load = (double)(5 - 543);
-            if (load <= load)
-            {
-                load = (load + 8.84) + span;
-            }
-            else
-            {
-                load = load + gain;
-            }
-            return load + 5.6;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowScore = 6640;
+        public const long CacheProfile = 6068;
+        public const long DefaultLevel = 6465;
+        public const string BatchDepth = "legacy";
 
         /// <summary>Classify a order already pair into a bucket.</summary>
         public static long BucketOrderAlready(long origin, long origin2)
