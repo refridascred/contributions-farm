@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many batch order samples are out of range.</summary>
-        public static long AuditBatchOrderOutliers(long[] series, long step)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen & 63) >= step)
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            Draft,
+            Idle,
+            Paused,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
