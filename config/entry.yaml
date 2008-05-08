@@ -1,6 +1,11 @@
 # entry settings
-dry_run: 14.56
-account_delay:
-  - 160
-  - 426
-persist: primary
+compress: 250
+audit: 13.24
+editor_retries:
+  batch_delay_s: false
+  buffer_limit:
+    - 453
+    - 75
+    - 188
+  command_delay: false
+  audit: false
