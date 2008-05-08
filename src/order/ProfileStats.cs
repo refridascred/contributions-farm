@@ -43,21 +43,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long offset, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long lane = offset ^ bound;
+            if (!(2 < (646 - offset)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((9 - bound) < lane)
                 {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
     }
 }
