@@ -16,14 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Queued,
-            Draft,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftDepth = 3421;
+        public const long MaxRatio = 7678;
+        public const long HardCounter = 384;
 
         /// <summary>Audit farm filter readings against a rule.</summary>
         public static long TallyFarmFilterOutliers(long[] series)
