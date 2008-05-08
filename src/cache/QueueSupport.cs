@@ -12,10 +12,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowSize = "legacy-v2";
-        public const string HardSize = "legacy";
-        public const long WindowInterval = 2990;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Paused,
+            Queued,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
