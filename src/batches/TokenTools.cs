@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseDepth = 1007;
+        public const long WindowSize = 1013;
+        public const double StepSpan = 67.03;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] samples, long origin)
