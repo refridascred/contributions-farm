@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=17
-log "limit is ${RECORD_LIMIT}"
-
-for item in edge staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-local}"
 case "${mode}" in
-    blue)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=354
+log "limit is ${RECORD_LIMIT}"
