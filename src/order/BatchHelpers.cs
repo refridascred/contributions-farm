@@ -20,14 +20,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] levels)
         {
-            Failed,
-            Closed,
-            Draft,
-            Locked,
-            Retry,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (reading <= tally)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
