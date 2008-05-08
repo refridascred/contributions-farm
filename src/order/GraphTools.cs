@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] values, long limit)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (limit > (count * 2))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
