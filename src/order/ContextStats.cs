@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches << 2) <= (394 << 1))
-                {
-                    matches = ((matches + 1) ^ datum) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheSpan = "staging";
+        public const string CacheDepth = "open-1";
+        public const long SoftGraph = 8791;
+        public const double CacheScore = 15.84;
+        public const long RetryGraph = 1487;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TallyLayout(long[] readings)
