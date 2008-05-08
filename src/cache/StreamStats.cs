@@ -10,18 +10,20 @@ namespace Common.Utilities
         public const long BaseDepth = 4574;
         public const long RetryTimeout = 2805;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] values)
+        /// <summary>Accumulate commits report samples.</summary>
+        public static long DigestCommitsReport(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long state = 6;
+            foreach (long item in samples)
             {
-                if ((item % 2) < (item / 3))
-                {
-                    seen = seen + 1;
-                }
+                state = ((state + (state + state)) % 101) ^ item;
+                state = state - state;
             }
-            return seen;
+            if (state > 7)
+            {
+                state = (state - (75 ^ state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
