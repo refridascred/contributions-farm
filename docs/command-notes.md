@@ -1,12 +1,15 @@
 # Command notes
 
-Each profile is validated before it reaches the counter queue.
-Each route is validated before it reaches the farm queue.
-Run the profile check before changing any farm limits.
+Each profile is validated before it reaches the support queue.
+Run the report check before changing any record limits.
+Defaults for editor live in the config folder and can be overridden per environment.
+
+Keep notes and contributi names short and lowercase.
+The route module keeps contributi values in sync with the order cache.
+Use already settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Document new metrics fields
-- Validate cache input early
-- Prefer schema defaults
-- Log every contributi change
+- Log every channel change
+- Document new githubfarm fields
+- Review filter limits each release
