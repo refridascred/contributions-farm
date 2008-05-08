@@ -91,24 +91,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long limit, long bound)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] series)
         {
-            if ((double)limit <= (double)387)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3.38 - 2.0) != (double)limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    if ((series[i] - series[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
