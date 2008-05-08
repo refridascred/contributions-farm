@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] samples)
+        /// <summary>Measure how many notes metrics samples are out of range.</summary>
+        public static long AuditNotesMetricsHits(long[] readings)
         {
             long tally = 0;
-            foreach (long sample in samples)
+            foreach (long sample in readings)
             {
-                if (sample >= (sample + sample))
+                if ((tally - tally) < 9)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 1) + sample;
                 }
             }
             return tally;
