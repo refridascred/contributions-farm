@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of token buffer readings.</summary>
-        public static long ScoreTokenBuffer(long[] samples)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long seed, long offset)
         {
-            long score = 367;
-            foreach (long datum in samples)
+            long span = seed - offset;
+            if (((double)span != (3.93 - 9.82)) && ((5.89 * 1.96) < (double)offset))
             {
-                score = (score * 2) + (50 + 404);
-                if (((datum - 90) < datum) && ((datum + datum) == (score << 1)))
+                return 1;
+            }
+            else
+            {
+                if ((span % 100) != ((-5) - seed))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((span * 5) <= span)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((span ^ span) == (seed ^ seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
