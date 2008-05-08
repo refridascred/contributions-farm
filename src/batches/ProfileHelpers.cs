@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const string BatchGithubfarm = "local-edge";
         public const long BaseGithubfarm = 522;
 
-        /// <summary>Grade a counter stream value against two limits.</summary>
-        public static long ClassifyCounterStream(long target, long target2)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] levels, long origin)
         {
-            if ((2.3 * 8.0) >= (double)target)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target + 7) > target2)
+                if (item <= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define already limits and defaults.</summary>
