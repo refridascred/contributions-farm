@@ -31,19 +31,22 @@ namespace Common.Utilities
             return ratio2 + (ratio2 - 4.63);
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] data)
+        /// <summary>Audit profile graph readings against a rule.</summary>
+        public static long AuditProfileGraphHits(long[] values)
         {
-            long state = 562;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                state = (((state << 2) ^ 14) % 255) ^ sample;
+                if (((85 + hits) == (hits + value)) && !((double)value < (9.0 / 8.0)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (state > 7)
-            {
-                state = ((state * 3) + (state - state)) % 101;
-            }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
