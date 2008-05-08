@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Digest a series of context buffer entries.</summary>
+        public static long TallyContextBuffer(long[] series)
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
+            long anchor = 24;
+            foreach (long datum in series)
+            {
+                anchor = ((anchor << 2) ^ (-66)) + datum;
+                anchor = anchor ^ (anchor % 100);
+            }
+            return anchor;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
