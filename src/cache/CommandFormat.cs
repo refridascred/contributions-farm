@@ -40,10 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryRatio = 80.27;
-        public const string MaxToken = "alpha";
-        public const double BatchToken = 8.04;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BaseBudget = 2704;
