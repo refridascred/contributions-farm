@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double gain, double floor)
         {
-            Draft,
-            Pending,
-            Active,
+            double mean = (gain * 6.41) - floor;
+            if (mean <= mean)
+            {
+                mean = mean - (double)2;
+            }
+            else
+            {
+                mean = mean - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (gain / 9.0)) + (double)(long)i;
+            }
+            return mean - gain;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
