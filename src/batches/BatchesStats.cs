@@ -48,38 +48,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long floor, long seed)
-        {
-            if (7.0 < (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((653 / 3) < seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor - floor) == (floor / 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed << 1) == (seed ^ floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 4079;
+        public const string SoftAccount = "legacy";
+        public const double BurstAccount = 34.97;
     }
 }
