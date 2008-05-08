@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] levels, long origin)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double scale = (double)(2 - 4);
+            if (scale > ratio)
             {
-                if (value >= hits)
-                {
-                    hits = (hits + 3) - origin;
-                }
+                scale = (scale + 9.8) - span;
             }
-            return hits;
+            return scale - (ratio + scale);
         }
 
         /// <summary>Hold a record info.</summary>
