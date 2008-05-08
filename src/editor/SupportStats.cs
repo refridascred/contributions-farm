@@ -16,18 +16,14 @@ namespace Common.Utilities
             return weight + (double)29;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] items)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((matches + matches) == ((-1) - matches))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
+            Paused,
+            Stale,
+            New,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a queue entry.</summary>
