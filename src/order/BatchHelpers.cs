@@ -33,19 +33,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] samples, long target)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Closed,
+            Failed,
         }
     }
 }
