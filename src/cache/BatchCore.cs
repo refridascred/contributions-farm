@@ -28,19 +28,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a cache support reading.</summary>
-        public static double SmoothCacheSupport(double weight, double span)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            double bias = span;
-            if (bias >= (20.0 + weight))
-            {
-                bias = bias - (span / 2.0);
-            }
-            else
-            {
-                bias = bias - 14.0;
-            }
-            return bias + bias;
+            Idle,
+            Stale,
+            Done,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
