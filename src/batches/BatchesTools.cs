@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] samples, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                carry = (carry - (long)i) % 65521;
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((entry - offset) >= hits)
+                {
+                    hits = hits + 2;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a profile summary.</summary>
