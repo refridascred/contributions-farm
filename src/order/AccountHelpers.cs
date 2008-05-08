@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Active,
-            New,
-            Stale,
+            Done,
+            Locked,
+            Failed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
