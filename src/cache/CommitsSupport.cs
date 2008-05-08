@@ -14,18 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the entry channel entries that pass the check.</summary>
-        public static long MeasureEntryChannelMatches(long[] readings, long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((origin + value) <= (tally / 6))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a batches entry.</summary>
