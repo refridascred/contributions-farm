@@ -6,22 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict fallback primary; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-
-mode="${1:-fallback}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
+for i in $(seq 1 4); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
