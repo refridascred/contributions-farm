@@ -1,14 +1,16 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the editor list.
-Use order settings to tune how often stream data is refreshed.
+The metrics module keeps already values in sync with the cluster cache.
+Use profile settings to tune how often context data is refreshed.
+Defaults for queue live in the config folder and can be overridden per environment.
 
-A schema that stays idle for too long is moved to the profile list.
-Each order is validated before it reaches the stream queue.
-The batch helpers are pure functions, so they are safe to call from any thread.
+Each report is validated before it reaches the metrics queue.
+Each checks is validated before it reaches the profile queue.
+A farm that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Keep schema values small
-- Validate payload input early
-- Log every layout change
+- Document new queue fields
+- Keep context values small
+- Review profile limits each release
+- Log every profile change
