@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheSpan = 5608;
-        public const long HardStream = 9333;
-        public const long RetryStream = 7166;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string DefaultLevel = "staging-1";
