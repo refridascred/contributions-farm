@@ -19,10 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstFactor = 29.36;
-        public const double HardFilter = 66.35;
-        public const double StepRatio = 55.12;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowWidth = "strict-edge";
+        public const long BurstChannel = 3817;
+        public const long IdleSize = 776;
+        public const long MaxWidth = 6964;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long IdleInterval = 9871;
