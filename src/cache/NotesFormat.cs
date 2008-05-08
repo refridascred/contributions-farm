@@ -29,14 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Draft,
-            Closed,
-            Queued,
-            Paused,
-            New,
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Level { get; set; }
         }
     }
 }
