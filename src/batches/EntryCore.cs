@@ -42,18 +42,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] values)
+        /// <summary>Fold a list of entry command readings.</summary>
+        public static long CombineEntryCommand(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long state = 5;
+            foreach (long item in levels)
             {
-                if ((seen + 47) > (seen ^ entry))
+                if (((-4) & 3) >= (state + 2))
                 {
-                    seen = seen + 2;
+                    state = state ^ (item + origin);
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a profile stats.</summary>
