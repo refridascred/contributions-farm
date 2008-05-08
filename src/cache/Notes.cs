@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            Draft,
+            Pending,
+            Active,
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
