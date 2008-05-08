@@ -42,18 +42,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of session commits entries.</summary>
-        public static long CombineSessionCommits(long[] readings)
+        /// <summary>Roll a already cluster counter forward.</summary>
+        public static long DeriveAlreadyCluster(long limit)
         {
-            long acc = 78;
-            foreach (long reading in readings)
+            long score = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((reading >> 4) < (811 + acc))
+                if (!(score > ((long)i / 4)))
                 {
-                    acc = (acc << 3) ^ reading;
+                    break;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return acc;
+            return score;
         }
     }
 }
