@@ -40,13 +40,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Idle,
-            Stale,
-            Done,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheScore = "legacy-v2";
+        public const string HardFactor = "fallback-1";
+        public const long SoftSpan = 4236;
+        public const long WindowReport = 445;
+        public const double WindowWidth = 55.24;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long CacheFactor = 3061;
