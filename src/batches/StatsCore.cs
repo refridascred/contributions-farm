@@ -51,13 +51,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long bound)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = (mix << 3) ^ (mix % 16);
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
