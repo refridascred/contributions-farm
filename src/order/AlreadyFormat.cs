@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ratio + 9.5;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Look up the position of a context route sample.</summary>
+        public static long LookupContextRouteIndex(long[] readings, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
