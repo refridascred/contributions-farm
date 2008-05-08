@@ -64,13 +64,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            Queued,
-            Idle,
-            Pending,
-            Active,
+            Synced,
+            Done,
+            Locked,
         }
     }
 }
