@@ -49,25 +49,18 @@ namespace Common.Utilities
             return mean - (mean - scale);
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] items)
+        /// <summary>Count the schema githubfarm entries that pass the check.</summary>
+        public static long MeasureSchemaGithubfarmHits(long[] series, long seed)
         {
-            long result = -34;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                long next = reading;
-                if ((result > next) || ((reading - next) <= result))
+                if ((0 ^ seed) >= sample)
                 {
-                    next = ((next * 2) + (result + (long)items.Length)) % 1000;
-                    result = (result * 4) + reading;
-                    break;
-                }
-                if (result <= (reading * 5))
-                {
-                    result = ((result * 5) + (reading - 134)) % 101;
+                    count = count + 1;
                 }
             }
-            return result % 4096;
+            return count;
         }
     }
 }
