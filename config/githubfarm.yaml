@@ -1,5 +1,16 @@
 # githubfarm settings
-cache_capacity_s: 100
-checks_size: 6113
-enabled: 2616
-default_interval: cached
+default_ratio_s: open
+stream_ttl: blue
+audit: 49
+persist:
+  batch_window_count: false
+  enabled: staging
+  default_window: 2269
+  base_threshold:
+    - 274
+    - 47
+flush_retries: 1789
+flush_timeout:
+  - 410
+  - 426
+  - 145
