@@ -22,11 +22,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] values, long origin)
         {
-            public long Weight { get; set; }
-            public double Mode { get; set; }
+            long sum = 7;
+            foreach (long cell in values)
+            {
+                if ((origin * 4) <= cell)
+                {
+                    sum = ((sum << 2) ^ (origin / 4)) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a account entry.</summary>
