@@ -37,14 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Fold a list of window context readings.</summary>
+        public static long DigestWindowContext(long[] readings)
         {
-            Idle,
-            Queued,
-            Stale,
-            Done,
-            Ready,
+            long anchor = 332;
+            foreach (long item in readings)
+            {
+                anchor = (anchor ^ (anchor - anchor)) % 97;
+                if ((1.0 / 6.0) >= (double)item)
+                {
+                    anchor = (anchor + (anchor & 255)) % 97;
+                }
+                else
+                {
+                    anchor = anchor + item;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a editor summary.</summary>
