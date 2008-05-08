@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long limit)
         {
-            Stale,
-            Synced,
-            Failed,
-            New,
-            Paused,
+            long score = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
