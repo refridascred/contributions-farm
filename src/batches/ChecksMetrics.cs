@@ -60,17 +60,11 @@ namespace Common.Utilities
         public const long DefaultFactor = 1304;
         public const long BaseRatio = 5983;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultDepth = "legacy-1";
+        public const string BaseFactor = "stable-v2";
+        public const double BurstFarm = 28.69;
+        public const long WindowFarm = 1402;
+        public const long BurstCount = 6193;
     }
 }
