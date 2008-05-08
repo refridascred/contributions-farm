@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Draft,
-            Pending,
-            Closed,
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
