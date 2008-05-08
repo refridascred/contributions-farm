@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] samples, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] data)
         {
-            long mix = 807;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((seed % 100) < (mix % 2))
+                if ((sample / 5) < (659 * 3))
                 {
-                    mix = ((mix * 3) + (mix >> 2)) - sample;
+                    seen = seen + 2;
                 }
-                mix = ((mix << 2) ^ (seed + 690)) % 97;
             }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
