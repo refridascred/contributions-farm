@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi session samples are out of range.</summary>
-        public static long CountContributiSessionGaps(long[] data, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (!(((datum - count) >= (count << 2)) && (origin < (datum % 64))))
+                if ((bound - value) <= (value << 2))
                 {
-                    count = count + 2;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
