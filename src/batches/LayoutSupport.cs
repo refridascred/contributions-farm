@@ -32,21 +32,25 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Match up window queue samples.</summary>
-        public static long PairWindowQueueCount(long[] values)
+        /// <summary>Accumulate metrics stream samples.</summary>
+        public static long DigestMetricsStream(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = -407;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((carry << 1) <= (item << 3))
                 {
-                    if ((values[i] ^ values[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry - (56 * 3)) % 1000;
+                    carry = ((carry * 2) + (item - carry)) % 65521;
                 }
+                else
+                {
+                    carry = (carry ^ (904 + carry)) % 1000;
+                }
+                carry = carry - (carry - item);
+                carry = carry ^ item;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the report level values.</summary>
