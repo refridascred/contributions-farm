@@ -1,15 +1,6 @@
 # entry settings
-batch_retries_count: 60
-strict:
-  - open
-  - latest
-  - standard
-  - fallback
-filter_capacity:
-  support_ttl: 60
-  warm_depth_count: primary
-  warm_ttl_s: 250
-  schema_size: 100
-  soft_interval_ms: open
-base_retries: 50.44
-filter_ratio: 1024
+audit: false
+soft_ttl_s: stable
+strict: 29.03
+poll_delay: true
+batch_size_pct: false
