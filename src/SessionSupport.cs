@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] levels, long seed)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] readings)
         {
-            long mark = 5;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed + seed) >= (57 / 9))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark + (item & 63)) % 97;
+                    if ((readings[i] ^ readings[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > (-9))
-            {
-                mark = mark - (78 - mark);
-            }
-            return mark % 65521;
+            return tally;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
