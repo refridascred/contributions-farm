@@ -59,20 +59,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Iterate the format farm series from a seed.</summary>
-        public static long RollFormatFarm(long target)
+        /// <summary>Count cache entry pairs that satisfy a relation.</summary>
+        public static long CompareCacheEntryCount(long[] samples)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (target >= score)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score * 2) + (score - score)) % 255;
-                    score = (score - 409) % 65521;
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return count;
         }
     }
 }
