@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            New,
+            Paused,
+            Idle,
             Active,
-            Locked,
-            Dropped,
-            Done,
+            Ready,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
