@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 88.87;
-        public const long CacheSize = 4369;
-        public const double StepCount = 32.39;
-        public const long BurstReport = 9067;
-        public const string BaseInterval = "legacy-edge";
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
