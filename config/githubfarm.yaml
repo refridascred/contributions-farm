@@ -1,47 +1,8 @@
 # githubfarm settings
-warm_limit_ms:
-  metrics_window:
-    - 108
-    - 263
-    - 220
-  metric_size:
-    - 70
-    - 70
-    - 378
-  stream_depth: legacy
-  compress: staging
-format_capacity: 30
-metrics_size:
-  cache_limit_pct: standard
-  warm_limit_ms:
-    - 311
-    - 294
-    - 457
-    - 467
-  flush_interval: primary
-  batch_threshold_s:
-    filter_size: 46
-    hard_ratio_pct: 5883
-    sync_window_count: 3775
-  warm_threshold_ms: stable
-  strict:
-    burst_size_count: false
-    enabled: legacy
-    cache_size_s: eu-west
-    dry_run: 5274
-min_ttl_count:
-  channel_depth:
-    - 196
-    - 332
-    - 288
-    - 167
-  audit:
-    - 173
-    - 210
-    - 155
-    - 445
-  session_threshold:
-    - standard
-    - cached
-  channel_limit: green
-  batch_delay_ms: 7954
+dry_run: 500
+filter_window: 58
+base_depth_s: green
+persist: fallback
+editor_delay:
+  - 457
+  - 8
