@@ -19,15 +19,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] values)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] samples, long floor)
         {
-            long total = 3;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total ^ 634) ^ value;
+                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
