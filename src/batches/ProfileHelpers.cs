@@ -81,18 +81,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the channel order entries that pass the check.</summary>
-        public static long TallyChannelOrderHits(long[] samples, long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] series)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long acc = 10;
+            foreach (long reading in series)
             {
-                if ((floor - count) == (item % 64))
+                if (((reading & 31) >= (acc + acc)) || ((double)reading < 11.0))
                 {
-                    count = count + 3;
+                    acc = (acc + (acc - acc)) % 1000;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
