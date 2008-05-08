@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long MinGraph = 8979;
         public const string CacheSize = "latest-1";
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 398;
+        public const long BurstOrder = 3152;
+        public const double BatchOrder = 79.5;
+        public const long CacheScore = 8412;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long SeriesQueue(long floor)
