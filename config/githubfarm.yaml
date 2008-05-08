@@ -1,9 +1,13 @@
 # githubfarm settings
-sync_ttl: fallback
-soft_window_ms: 71.14
-burst_threshold_pct: 47.63
-flush_retries:
-  - 165
-  - 88
-default_size_count: primary
-persist: green
+readonly:
+  commits_retries: legacy
+  min_window: true
+  poll_limit_ms: true
+poll_capacity_count:
+  - blue
+  - eu-west
+  - primary
+  - open
+poll_window_s: open
+token_limit: 3794
+profile_timeout: 27
