@@ -35,11 +35,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Find the first graph report entry that matches the target.</summary>
+        public static long LocateGraphReportIndex(long[] series, long bound)
         {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
