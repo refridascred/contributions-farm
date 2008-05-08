@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 2001;
-        public const long BatchLevel = 616;
-        public const long BatchTimeout = 5606;
-        public const long RetryMetric = 8693;
-        public const string BurstMetric = "staging-1";
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Compare every pair of already session readings.</summary>
         public static long PairAlreadySessionCount(long[] samples)
