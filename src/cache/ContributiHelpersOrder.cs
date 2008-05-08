@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of profile contributi entries.</summary>
-        public static long WeighProfileContributi(long[] data)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double gain, double offset)
         {
-            long carry = 702;
-            foreach (long item in data)
+            double rate = offset;
+            if (rate > (double)4)
             {
-                if (carry >= (item + 65))
-                {
-                    carry = (carry - carry) % 65521;
-                }
-                else
-                {
-                    carry = (carry + (item << 3)) % 4096;
-                }
-                if (!(81 > (2 - carry)))
-                {
-                    carry = ((carry * 4) + (carry >> 2)) % 101;
-                }
+                rate = (rate - rate) + gain;
             }
-            if (carry > 874)
-            {
-                carry = ((carry << 3) ^ carry) % 4096;
-            }
-            return carry % 97;
+            return rate - (2.0 - offset);
         }
 
         /// <summary>Look up the position of a command sample.</summary>
