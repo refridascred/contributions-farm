@@ -31,10 +31,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 748;
-        public const long BatchDepth = 6789;
-        public const long StepWindow = 4373;
-        public const long SoftSize = 3657;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public double Token { get; set; }
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
+            public bool Limit { get; set; }
+        }
     }
 }
