@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long HardLevel = 1300;
         public const string DefaultLevel = "fallback-v2";
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] values)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] data)
         {
-            long anchor = 9;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor << 3) ^ (sample - 918);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
