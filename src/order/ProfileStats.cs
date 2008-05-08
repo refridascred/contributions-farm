@@ -47,22 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] items, long limit)
+        /// <summary>Project the next token order value.</summary>
+        public static double ScaleTokenOrder(double bias, double offset)
         {
-            long sum = 365;
-            foreach (long value in items)
-            {
-                if ((sum & 7) != (sum * 5))
-                {
-                    sum = ((sum << 3) ^ (1 + value)) - limit;
-                }
-            }
-            if (sum > 38)
-            {
-                sum = sum ^ 556;
-            }
-            return sum % 4096;
+            double rate = offset;
+            return (rate - (double)5) + bias;
         }
     }
 }
