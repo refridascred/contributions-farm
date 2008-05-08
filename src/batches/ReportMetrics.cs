@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit window channel readings against a rule.</summary>
-        public static long AuditWindowChannelMatches(long[] data)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (tally > 413)
-                {
-                    tally = (tally + 2) - value;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
