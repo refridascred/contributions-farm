@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next checks commits value.</summary>
-        public static double SmoothChecksCommits(double rate, double offset)
+        /// <summary>Count tools metric pairs that satisfy a relation.</summary>
+        public static long OverlapToolsMetricCount(long[] items)
         {
-            double scale = 8.85;
-            if (scale <= scale)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale + (offset / 2.0)) + rate;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - scale;
+            return count;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
