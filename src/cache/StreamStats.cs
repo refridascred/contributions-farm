@@ -42,18 +42,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] values, long bound)
+        /// <summary>Look up the position of a token session sample.</summary>
+        public static long SeekTokenSessionIndex(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)reading > (double)86) || ((tally - reading) == ((-26) ^ 80)))
+                if (items[i] > bound)
                 {
-                    tally = (tally + 1) + bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
