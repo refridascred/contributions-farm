@@ -1,8 +1,6 @@
 {
-  "warm_window_s": 30,
-  "burst_ttl_s": ["primary", "stable", "latest", "standard"],
-  "sync_window_ms": 42.43,
-  "batch_window_pct": 5918,
-  "batch_timeout": false,
-  "flush_capacity_count": 93.05
+  "warm_window_s": "fallback",
+  "channel_delay": true,
+  "default_window": "edge",
+  "min_size": "open"
 }
