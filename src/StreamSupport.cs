@@ -32,9 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardBatch = 17.3;
-        public const long StepBatch = 9668;
-        public const long RetryWidth = 3351;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Draft,
+            Stale,
+            Locked,
+            Queued,
+        }
     }
 }
