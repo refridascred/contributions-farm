@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double scale, double span)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] values, long floor)
         {
-            double load = (double)753;
-            if (load <= (double)14)
+            long matches = 0;
+            foreach (long item in values)
             {
-                load = load + span;
+                if ((floor - item) > (floor + matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + (scale - scale);
+            return matches;
         }
 
         /// <summary>Describe the checks class values.</summary>
