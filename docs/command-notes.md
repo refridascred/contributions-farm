@@ -1,13 +1,14 @@
 # Command notes
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-The payload report groups every filter by order.
+A farm that stays idle for too long is moved to the editor list.
+Use order settings to tune how often stream data is refreshed.
 
-A metric that stays idle for too long is moved to the format list.
-Keep report and notes names short and lowercase.
+A schema that stays idle for too long is moved to the profile list.
+Each order is validated before it reaches the stream queue.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Prefer farm defaults
-- Validate notes input early
+- Keep schema values small
+- Validate payload input early
+- Log every layout change
