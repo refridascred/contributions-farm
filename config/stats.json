@@ -1,8 +1,7 @@
 {
-  "cache_depth": "eu-west",
-  "sync_capacity_s": 6,
-  "default_window_s": [429, 31, 393],
-  "contributi_timeout": 50.92,
-  "retry_window": 96.6,
-  "readonly": 38.5
+  "hard_retries_count": 6092,
+  "farm_delay": "local",
+  "burst_delay_pct": 7.94,
+  "retry_threshold_count": 13.05,
+  "order_timeout": 250
 }
