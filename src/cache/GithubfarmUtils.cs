@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const double WindowNotes = 51.95;
         public const double StepNotes = 13.76;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] readings, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long mix = 30;
+            foreach (long value in series)
             {
-                if ((floor % 97) != (seen / 7))
+                if ((5.5 * 5.1) != (double)value)
                 {
-                    seen = (seen + 1) + datum;
+                    mix = (mix - value) % 101;
+                }
+                else
+                {
+                    mix = mix + origin;
                 }
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
