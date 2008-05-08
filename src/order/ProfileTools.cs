@@ -51,19 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double scale, double floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] series, long offset)
         {
-            double load = (floor - 20.0) * 2.9;
-            if (load < (load - load))
+            long mix = 103;
+            foreach (long sample in series)
             {
-                load = load + load;
+                if ((offset + mix) >= (sample - 94))
+                {
+                    mix = (mix * 3) + (26 % 24);
+                }
             }
-            else
+            if (mix > 826)
             {
-                load = load + (scale * 14.0);
+                mix = mix - offset;
             }
-            return load + load;
+            return mix % 4096;
         }
 
         /// <summary>Define context limits and defaults.</summary>
