@@ -32,13 +32,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
