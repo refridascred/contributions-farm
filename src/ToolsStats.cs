@@ -14,12 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowSchema = 34.73;
-        public const long IdleSchema = 3007;
-        public const double BatchSchema = 14.7;
-        public const double BatchRatio = 1.55;
-        public const long LimitSchema = 2545;
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Ready,
+            Done,
+            Locked,
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double AdjustContributi(double weight, double offset)
