@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double ratio, double floor)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            double ratio2 = (ratio / 8.0) * 1.23;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio2 = (ratio2 - (ratio + floor)) + (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio2 + (double)1;
+            return count;
         }
 
         /// <summary>Locate a context batch reading by value.</summary>
