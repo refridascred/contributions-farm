@@ -1,7 +1,7 @@
-id,token,weight,level,score
-1,staging,11,78.78,strict
-2,edge,146,468,fallback
-3,499,96.07,310,235
-4,eu-west,187,74.34,21.24
-5,legacy,51.17,52.56,78.12
-6,98.44,open,1.89,776
+id,label,owner
+1,41.24,8.51
+2,362,396
+3,legacy,staging
+4,816,blue
+5,14,655
+6,primary,66.2
