@@ -21,11 +21,19 @@ namespace Common.Utilities
         public const long IdleWidth = 2506;
         public const long MinFactor = 2926;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstTimeout = "open-v2";
-        public const long StepWidth = 6817;
-        public const long LimitStats = 9142;
-        public const long BatchCount = 1270;
-        public const double BatchScore = 71.69;
+        /// <summary>Check that every entry order entry stays within the limit.</summary>
+        public static bool ValidateEntryOrderBounds(long[] readings, long offset)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
