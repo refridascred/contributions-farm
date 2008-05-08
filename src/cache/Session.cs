@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const string StepSpan = "primary-edge";
         public const long DefaultFactor = 6139;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] readings, long seed)
         {
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
-            public double Size { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
