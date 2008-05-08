@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long sum = 1;
-            foreach (long sample in items)
-            {
-                sum = sum - (62 ^ 82);
-                if (!((sample << 2) != (sample * 5)))
-                {
-                    sum = (sum + (2 - sum)) % 255;
-                }
-            }
-            return sum;
+            public string Region { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Adjust a cache support reading.</summary>
