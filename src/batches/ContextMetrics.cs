@@ -27,19 +27,21 @@ namespace Common.Utilities
         public const double HardSupport = 87.41;
         public const double LimitCount = 20.87;
 
-        /// <summary>Validate window filter readings against a bound.</summary>
-        public static bool VerifyWindowFilterLimits(long[] readings, long bound)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Derive the next command metrics value from a seed.</summary>
