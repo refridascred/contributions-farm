@@ -26,11 +26,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long offset)
         {
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
