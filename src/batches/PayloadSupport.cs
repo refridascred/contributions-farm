@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 4039;
+        public const string BatchCluster = "stable-v2";
+        public const long BaseCluster = 3948;
+        public const long DefaultCluster = 4863;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long RollCommand(long offset)
