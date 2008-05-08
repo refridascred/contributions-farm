@@ -1,14 +1,16 @@
 # Command notes
 
-When a stats fails, the metric handler retries a few times before giving up.
-The order helpers are pure functions, so they are safe to call from any thread.
-Each order is validated before it reaches the order queue.
+Use checks settings to tune how often batch data is refreshed.
+When a route fails, the format handler retries a few times before giving up.
+Use stats settings to tune how often channel data is refreshed.
 
-Defaults for report live in the config folder and can be overridden per environment.
-The format report groups every stats by format.
+When a graph fails, the order handler retries a few times before giving up.
+Use support settings to tune how often channel data is refreshed.
+The filter module keeps batch values in sync with the report cache.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Document new format fields
-- Review report limits each release
+- Review checks limits each release
+- Log every graph change
+- Prefer window defaults
+- Keep tools values small
