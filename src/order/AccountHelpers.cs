@@ -84,12 +84,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 1621;
-        public const string SoftCount = "local-v2";
-        public const long RetryAlready = 8942;
-        public const double BurstAlready = 17.39;
-        public const string DefaultAlready = "legacy-v2";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 6751;
+        public const long BaseChannel = 1891;
+        public const long DefaultDepth = 5834;
+        public const long StepBudget = 4511;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool ValidateChannelBounds(long[] series, long origin)
