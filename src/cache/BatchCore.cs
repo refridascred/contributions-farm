@@ -30,39 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long origin, long offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] levels, long offset)
         {
-            long span = origin + offset;
-            if (((origin >> 2) < (span + offset)) || ((double)span >= (20.0 / 5.0)))
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin - span) > 8)
+                if (sample <= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((2.17 + 1.03) <= (double)span)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((9.68 + 9.68) != (double)offset) || ((offset - (-9)) != (origin ^ offset)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
