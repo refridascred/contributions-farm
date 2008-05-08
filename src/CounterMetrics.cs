@@ -41,18 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] data)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen % 24) < (seen - seen))
+                if ((items[i] == limit) && ((items[i] % 3) != 0))
                 {
-                    seen = (seen + 2) + item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
