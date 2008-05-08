@@ -34,18 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] readings)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double scale, double bias)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double rate = scale;
+            if (rate < (rate + rate))
             {
-                if (0.79 < (double)count)
-                {
-                    count = (count + 1) + entry;
-                }
+                rate = rate - (double)(-123);
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (rate - rate)) + (double)(long)i;
+            }
+            return rate - (0.98 - bias);
         }
 
         /// <summary>Blend two notes measurements.</summary>
