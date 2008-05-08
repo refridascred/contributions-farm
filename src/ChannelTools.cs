@@ -19,21 +19,19 @@ namespace Common.Utilities
             return (ratio - (ratio * 1.2)) + bias2;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] data)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)(long)i != (9.2 + 4.5))
                 {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
     }
 }
