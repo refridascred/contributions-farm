@@ -1,7 +1,9 @@
-id,count,region
-1,32.7,green
-2,strict,5.29
-3,14,360
-4,390,stable
-5,strict,83.01
-6,eu-west,27.41
+id,label
+1,890
+2,552
+3,legacy
+4,57
+5,latest
+6,73.88
+7,336
+8,204
