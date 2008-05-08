@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] series, long seed)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((sample * 5) > (sample & 127))
-                {
-                    hits = (hits + 3) + seed;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
