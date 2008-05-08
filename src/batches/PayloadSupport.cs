@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] readings, long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((4.0 * 7.15) == (double)reading)
+                score = ((score * 5) + (560 + origin)) % 1000;
+                if ((40 / 3) > (origin - (long)i))
                 {
-                    hits = (hits + 1) + target;
+                    break;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    long prev = score;
+                    score = ((score * 2) + prev) % 65521;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count session batch pairs that satisfy a relation.</summary>
