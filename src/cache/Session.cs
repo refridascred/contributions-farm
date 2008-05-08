@@ -16,10 +16,22 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardTimeout = 1552;
-        public const long SoftContributi = 2708;
-        public const long CacheContributi = 4511;
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool ValidateMetricBounds(long[] levels, long floor)
