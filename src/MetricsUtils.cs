@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] readings, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] samples)
         {
-            long mark = 1;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((1.58 * 0.4) >= (double)mark)
+                if (((1.97 * 7.61) >= (double)hits) || (((long)samples.Length + (-809)) < value))
                 {
-                    mark = (mark + reading) % 65521;
-                    mark = mark - (offset - mark);
-                }
-                else
-                {
-                    mark = (mark + offset) % 1000;
-                }
-                if ((9.87 / 2.0) != (double)mark)
-                {
-                    mark = mark + reading;
+                    hits = hits + 2;
                 }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
