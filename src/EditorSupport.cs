@@ -62,15 +62,11 @@ namespace Common.Utilities
             return ratio + (ratio / 6.0);
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
