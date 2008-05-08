@@ -59,31 +59,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long target, long step)
+        /// <summary>Blend two filter order measurements.</summary>
+        public static double BlendFilterOrder(double bias, double floor)
         {
-            if ((target < (step & 3)) && ((target ^ step) > 43))
+            double gain = bias;
+            if (gain <= floor)
             {
-                return 2;
+                gain = gain + bias;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)step <= (1.2 - 11.0)) || (5.07 <= (double)step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(target >= (step ^ step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                gain = (gain + gain) + (double)(long)i;
             }
+            return gain + 5.64;
         }
     }
 }
