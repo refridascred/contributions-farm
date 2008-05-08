@@ -58,23 +58,18 @@ namespace Common.Utilities
             return ((rate2 - (rate2 * 8.12)) + rate) + offset;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Count the channel editor entries that pass the check.</summary>
+        public static long MeasureChannelEditorHits(long[] items)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((offset - offset) == (sum + 0))
+                if ((9.56 / 6.0) < (double)datum)
                 {
-                    sum = (sum * 3) + (sum * 2);
+                    matches = matches + 3;
                 }
-                else
-                {
-                    sum = (sum - 51) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
     }
 }
