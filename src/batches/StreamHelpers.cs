@@ -68,28 +68,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a buffer cluster counter forward.</summary>
-        public static long RollBufferCluster(long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] items, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (62 >= ((long)i / 8))
+                if (sample >= seed)
                 {
-                    acc = (acc - (70 + acc)) % 65521;
+                    stale = false;
                     break;
                 }
-                else
-                {
-                    acc = (acc - 988) % 101;
-                }
-                if (!((bound + acc) > (bound + bound)))
-                {
-                    acc = (acc ^ bound) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return stale;
         }
     }
 }
