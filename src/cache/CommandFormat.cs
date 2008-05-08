@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] samples, long floor)
+        /// <summary>Measure how many commits queue samples are out of range.</summary>
+        public static long TallyCommitsQueueOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((((7.0 - 4.0) < (double)sample) || ((sample << 2) == (seen << 3))) && ((seen >> 3) != (sample >> 2)))
+                if ((count / 3) != ((-55) * 2))
                 {
-                    seen = (seen + 2) + floor;
+                    count = (count + 2) + value;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
