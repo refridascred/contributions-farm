@@ -74,22 +74,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the tools record entries that pass the check.</summary>
-        public static long MeasureToolsRecordMatches(long[] samples)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally >> 5) == (tally * 5))
-                {
-                    tally = (tally + 2) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
