@@ -48,10 +48,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 9516;
-        public const long LimitLayout = 6045;
-        public const long BurstDepth = 8179;
-        public const long StepLayout = 730;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Idle,
+            Ready,
+            Locked,
+        }
     }
 }
