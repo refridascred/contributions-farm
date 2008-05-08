@@ -1,22 +1,4 @@
 # support settings
-default_delay_pct: 97
-metrics_delay:
-  idle_interval_pct: 30
-  persist: 61
-  tools_window: 59.2
-  readonly: strict
-  default_size_ms: 40
-max_interval_count:
-  - 382
-  - 438
-strict: standard
-sync_interval_count: 500
-base_interval_ms:
-  max_interval: 0.19
-  base_threshold_count:
-    - 462
-    - 472
-    - 79
-    - 194
-  stats_limit: false
-  flush_size: 51.36
+max_delay_pct: fallback
+sync_depth_s: 70.05
+support_timeout: true
