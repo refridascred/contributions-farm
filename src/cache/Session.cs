@@ -37,13 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
+            Idle,
+            Queued,
+            Stale,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a editor summary.</summary>
