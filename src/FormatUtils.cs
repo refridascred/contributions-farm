@@ -59,11 +59,15 @@ namespace Common.Utilities
         public const string DefaultDepth = "open-edge";
         public const long MinFormat = 8004;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleRatio = 916;
-        public const double StepLevel = 70.62;
-        public const long WindowProfile = 9738;
-        public const string WindowBudget = "open-v2";
-        public const string BatchInterval = "alpha";
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double gain, double offset)
+        {
+            double ratio = (9.15 / 8.0) + gain;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ((ratio - ratio) + (double)(long)i) - offset;
+            }
+            return ratio - (double)62;
+        }
     }
 }
