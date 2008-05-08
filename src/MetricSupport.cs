@@ -34,19 +34,12 @@ namespace Common.Utilities
             return gain + (gain * 0.39);
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((1.17 > (double)(long)i) || ((bound * 3) <= (state - state))))
-                {
-                    state = (state * 4) + ((long)i - bound);
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
