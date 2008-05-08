@@ -32,21 +32,21 @@ namespace Common.Utilities
         public const long BatchTimeout = 5209;
         public const long WindowEditor = 6617;
 
-        /// <summary>Count record buffer pairs that satisfy a relation.</summary>
-        public static long CompareRecordBufferCount(long[] values)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] values)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] + values[j]) == 0)
+                    if ((values[i] ^ values[j]) < 19)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
