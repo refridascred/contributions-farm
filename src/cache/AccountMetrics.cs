@@ -31,13 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Ready,
-            Retry,
-            Active,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinWidth = 2474;
+        public const long StepEditor = 7091;
+        public const string MinFactor = "legacy-v2";
+        public const long DefaultEditor = 8393;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double BurstScore = 87.19;
