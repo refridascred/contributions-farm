@@ -26,12 +26,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] values)
         {
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (!(value > (117 * 3)) || ((double)117 == (double)value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
