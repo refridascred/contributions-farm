@@ -58,11 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public double Score { get; set; }
+            public double Offset { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
