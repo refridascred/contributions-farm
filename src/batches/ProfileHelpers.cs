@@ -37,13 +37,18 @@ namespace Common.Utilities
         public const long BurstAlready = 8584;
         public const long BatchAlready = 1833;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] samples, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (((11 < (reading - seed)) && ((seed >> 3) < (seed + seed))) || ((43 - seed) < (count << 1)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
