@@ -20,32 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long floor, long offset)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long gap = floor + offset;
-            if (!((offset * 3) >= (floor / 7)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor & 63) <= gap)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor < (floor + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Paused,
+            New,
+            Stale,
+            Queued,
+            Pending,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
