@@ -1,7 +1,4 @@
 # githubfarm settings
-max_threshold_count: 68
-enabled:
-  - eu-west
-  - fallback
-  - fallback
-idle_limit: fallback
+flush_window: 1.03
+retry_retries_ms: cached
+token_depth: primary
