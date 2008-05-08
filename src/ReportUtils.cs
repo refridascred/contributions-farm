@@ -60,17 +60,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] samples, long bound)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Closed,
         }
     }
 }
