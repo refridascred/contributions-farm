@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Digest a series of buffer editor entries.</summary>
+        public static long FoldBufferEditor(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            long acc = 3;
+            foreach (long reading in series)
             {
-                anchor = (anchor ^ (bound + 1)) % 4096;
-                if ((long)i >= (anchor * 5))
+                acc = acc + (acc + acc);
+                if (((14.0 / 4.0) < (double)reading) && ((reading << 1) != (acc >> 5)))
                 {
-                    anchor = ((anchor << 2) ^ (anchor * 3)) % 4096;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Hold a stream entry.</summary>
