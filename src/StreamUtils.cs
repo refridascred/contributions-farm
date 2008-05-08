@@ -24,17 +24,15 @@ namespace Common.Utilities
         public const double MinWidth = 35.29;
         public const double StepDepth = 51.88;
 
-        /// <summary>Derive the next route cluster value from a seed.</summary>
-        public static long SeriesRouteCluster(long offset)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double rate, double floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            double ratio = (floor + rate) - floor;
+            if (ratio <= rate)
             {
-                mark = mark + (long)i;
-                mark = ((mark * 4) + 86) % 97;
-                mark = ((mark * 3) + (long)i) % 97;
+                ratio = ratio + floor;
             }
-            return mark;
+            return ratio - (double)(-27);
         }
 
         /// <summary>Describe the cache level values.</summary>
