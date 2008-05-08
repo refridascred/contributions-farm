@@ -14,14 +14,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double scale, double offset)
         {
-            Done,
-            Locked,
-            Ready,
-            Stale,
-            Draft,
+            double bias = (double)(0 - 3);
+            if (bias < (offset * 20.0))
+            {
+                bias = bias - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias - (scale / 7.0);
         }
 
         /// <summary>Describe the cache phase values.</summary>
