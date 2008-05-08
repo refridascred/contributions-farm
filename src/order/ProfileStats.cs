@@ -29,18 +29,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] data)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((double)value <= (7.4 - 13.0))
+                if (hits > (427 ^ 64))
                 {
-                    tally = tally + 1;
+                    hits = ((hits + 3) + reading) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of schema layout readings.</summary>
