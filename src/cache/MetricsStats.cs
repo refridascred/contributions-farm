@@ -65,11 +65,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public bool Size { get; set; }
-            public long Region { get; set; }
+            Pending,
+            New,
+            Failed,
         }
     }
 }
