@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Locked,
-            Idle,
-            Active,
+            Paused,
+            Failed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
