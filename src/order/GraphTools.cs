@@ -26,12 +26,13 @@ namespace Common.Utilities
         public const long BaseReport = 8443;
         public const long RetryReport = 5528;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Draft,
+            Pending,
+            Active,
+            Closed,
             Dropped,
-            Paused,
         }
 
         /// <summary>Describe the profile state values.</summary>
