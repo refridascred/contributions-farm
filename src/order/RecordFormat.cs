@@ -47,14 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] readings, long bound)
         {
-            Ready,
-            Locked,
-            Retry,
-            Synced,
-            Draft,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (sample <= 301)
+                {
+                    count = (count + 1) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
