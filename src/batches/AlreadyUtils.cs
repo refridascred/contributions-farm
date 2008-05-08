@@ -49,19 +49,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] samples, long target)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a window token sample.</summary>
