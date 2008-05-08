@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double scale, double offset)
         {
-            Paused,
-            Closed,
-            Stale,
-            Idle,
+            double scale2 = (scale - scale) * 7.3;
+            if (scale2 < (double)2)
+            {
+                scale2 = scale2 - scale2;
+            }
+            return scale2 - offset;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
