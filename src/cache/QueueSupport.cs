@@ -23,15 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double gain, double bias)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double ratio = bias;
-            if (ratio >= gain)
-            {
-                ratio = ratio + (bias + gain);
-            }
-            return ratio + gain;
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
