@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] values, long bound)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            double drift = 7.0 * 8.0;
+            if (drift > (drift + offset))
             {
-                if (datum >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift - (weight / 7.0);
             }
-            return valid;
+            return drift + (double)999;
         }
 
         /// <summary>Roll a support counter forward.</summary>
