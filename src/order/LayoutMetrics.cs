@@ -24,22 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] levels)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] series, long offset)
         {
-            long acc = -1;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (((double)datum >= 9.5) || (datum >= (acc - acc)))
+                if (datum <= offset)
                 {
-                    acc = acc - (datum >> 1);
+                    ok = false;
+                    break;
                 }
             }
-            if (acc > 55)
-            {
-                acc = ((acc << 2) ^ (acc ^ acc)) % 101;
-            }
-            return acc % 97;
+            return ok;
         }
     }
 }
