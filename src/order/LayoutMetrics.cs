@@ -23,11 +23,17 @@ namespace Common.Utilities
         public const double BurstOrder = 77.92;
         public const string IdleOrder = "standard-v2";
 
-        /// <summary>Adjust a counter format reading.</summary>
-        public static double BlendCounterFormat(double rate, double span)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            double rate2 = (double)215 / 4.0;
-            return ((rate2 + (double)52) + rate) + span;
+            long result = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                result = (result - seed) % 1000;
+                result = result ^ (99 - (long)i);
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
