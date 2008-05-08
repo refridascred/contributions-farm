@@ -1,7 +1,5 @@
 {
-  "readonly": 33.08,
-  "idle_ratio": 28.84,
-  "batch_interval": false,
-  "persist": "eu-west",
-  "idle_capacity_pct": 57.73
+  "graph_size": "green",
+  "audit": "standard",
+  "sync_capacity_count": 25.08
 }
