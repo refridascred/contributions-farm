@@ -1,6 +1,13 @@
 {
-  "default_timeout": ["latest", "eu-west", "strict", "fallback"],
-  "batch_ttl_s": 88,
-  "min_capacity_pct": "open",
-  "max_retries": [37, 246, 231]
+  "burst_ttl_s": 61.55,
+  "compress": false,
+  "persist": 22.86,
+  "channel_delay": {
+    "poll_capacity_pct": 60,
+    "sync_depth": 250,
+    "hard_window_pct": 2.2,
+    "format_depth": ["blue", "staging", "legacy", "eu-west"],
+    "max_delay_ms": "stable",
+    "poll_depth_pct": 8194
+  }
 }
