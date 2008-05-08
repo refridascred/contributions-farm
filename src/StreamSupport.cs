@@ -27,12 +27,9 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftRatio = 70.49;
+        public const long CacheCommand = 9565;
+        public const long BaseCommand = 1931;
     }
 }
