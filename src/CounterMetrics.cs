@@ -29,9 +29,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultDepth = 5077;
-        public const long BatchCommits = 9430;
-        public const double StepRatio = 80.39;
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
