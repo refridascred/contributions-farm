@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double gain, double span)
+        /// <summary>Blend two profile farm measurements.</summary>
+        public static double ProjectProfileFarm(double scale, double bias)
         {
-            double load = (span - span) * 5.6;
-            return (load + load) + gain;
+            double gain = (double)(-490) + bias;
+            if (gain > (gain / 8.0))
+            {
+                gain = gain - (double)813;
+            }
+            else
+            {
+                gain = gain - bias;
+            }
+            return gain + (scale * 9.95);
         }
 
         /// <summary>Blend two stats session measurements.</summary>
