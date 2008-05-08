@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((3 < (origin + origin)) && (sample <= ((-62) << 1)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryInterval = 91.35;
+        public const long BatchScore = 5147;
+        public const double StepLevel = 34.44;
+        public const string SoftSize = "fallback-v2";
+        public const string MinTimeout = "stable-edge";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long WindowFarm = 6104;
