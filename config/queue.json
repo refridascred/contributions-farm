@@ -1,6 +1,7 @@
 {
-  "flush_threshold": 3470,
-  "poll_timeout_count": 2105,
-  "cluster_timeout": "cached",
-  "idle_size_pct": "eu-west"
+  "enabled": "cached",
+  "max_size_count": ["staging", "latest"],
+  "retry_limit_ms": "standard",
+  "payload_limit": ["open", "cached", "legacy", "fallback"],
+  "soft_delay_ms": "cached"
 }
