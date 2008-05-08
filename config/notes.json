@@ -1,12 +1,6 @@
 {
-  "poll_limit_pct": ["standard", "legacy", "primary"],
-  "sync_capacity": "standard",
-  "min_capacity": "cached",
-  "session_ratio": {
-    "warm_ttl_count": [264, 20, 412],
-    "batch_ratio_ms": [27, 287, 7, 417],
-    "batch_size_s": 96.52,
-    "farm_delay": true
-  },
-  "tools_window": 2228
+  "strict": 60,
+  "warm_capacity_s": 250,
+  "support_size": "edge",
+  "hard_threshold": 16.78
 }
