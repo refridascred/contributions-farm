@@ -43,19 +43,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter schema readings against a bound.</summary>
-        public static bool GuardFilterSchemaBounds(long[] readings, long target)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
