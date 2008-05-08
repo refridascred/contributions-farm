@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 906;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)bound > 13.0)
                 {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum - sum) % 101) - entry;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
