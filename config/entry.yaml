@@ -1,6 +1,16 @@
 # entry settings
-audit: false
-soft_ttl_s: stable
-strict: 29.03
-poll_delay: true
-batch_size_pct: false
+base_delay: true
+filter_interval:
+  - 83
+  - 102
+dry_run:
+  route_depth:
+    - 378
+    - 427
+    - 248
+    - 38
+  strict: cached
+  batch_ratio: false
+  batch_window: latest
+  default_delay_count: false
+  audit: false
