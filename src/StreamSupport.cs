@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleReport = "local-1";
-        public const long CacheBudget = 6994;
-        public const long WindowReport = 2689;
-        public const long BaseReport = 2250;
-        public const long BaseFactor = 561;
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double gain, double bias)
+        {
+            double scale = gain;
+            if (scale >= (19.0 * 9.1))
+            {
+                scale = scale - (bias - bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - scale) - (double)(long)i;
+            }
+            return scale - (gain * 10.0);
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long OverlapFormatCount(long[] data)
