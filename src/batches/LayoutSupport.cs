@@ -27,15 +27,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next profile contributi value from a seed.</summary>
-        public static long StepProfileContributi(long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] levels, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
+            long mark = 172;
+            foreach (long datum in levels)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if ((mark & 3) > (datum + 962))
+                {
+                    mark = (mark + (limit + mark)) % 4096;
+                }
             }
-            return score;
+            if (mark > 70)
+            {
+                mark = mark + ((long)levels.Length / 4);
+            }
+            return mark;
         }
 
         /// <summary>Hold a batch entry.</summary>
