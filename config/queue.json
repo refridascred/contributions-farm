@@ -1,14 +1,5 @@
 {
-  "max_delay_count": 1999,
-  "command_threshold": 59,
-  "retry_size": 60,
-  "default_threshold": 250,
-  "sync_ttl_ms": {
-    "order_interval": false,
-    "batch_timeout_s": false,
-    "contributi_threshold": true,
-    "flush_capacity_ms": "latest",
-    "command_ratio": [415, 463]
-  },
-  "payload_retries": true
+  "dry_run": 60,
+  "compress": "latest",
+  "route_threshold": "standard"
 }
