@@ -33,39 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route stats value against two limits.</summary>
-        public static long SortRouteStats(long origin, long offset)
-        {
-            if (((1 & 63) > (offset * 4)) && ((offset % 3) <= (offset / 7)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((origin + 4) > origin) || ((offset + origin) >= (623 << 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin >= (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset >> 3) != ((-35) + offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 8310;
+        public const double IdleSpan = 67.78;
+        public const long IdleSchema = 8290;
+        public const string DefaultRatio = "latest-edge";
+        public const long BatchCount = 555;
 
         /// <summary>Accumulate session samples.</summary>
         public static long TallySession(long[] values, long origin)
