@@ -20,11 +20,13 @@ namespace Common.Utilities
             return weight + (weight + 4.34);
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            Active,
+            Synced,
+            Paused,
+            Failed,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
