@@ -29,11 +29,17 @@ namespace Common.Utilities
         public const long BaseWidth = 5141;
         public const long DefaultSupport = 546;
 
-        /// <summary>Scale a graph support figure with a bias.</summary>
-        public static double BlendGraphSupport(double rate, double floor)
+        /// <summary>Locate a format buffer reading by value.</summary>
+        public static long LocateFormatBufferIndex(long[] data, long bound)
         {
-            double rate2 = rate / 8.0;
-            return (rate2 - (double)18) + floor;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
