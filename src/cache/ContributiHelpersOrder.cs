@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long DefaultCount = 6862;
         public const string WindowWidth = "strict-1";
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] samples)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long carry = 9;
-            foreach (long sample in samples)
-            {
-                carry = (carry << 3) ^ (sample << 2);
-            }
-            return carry % 4096;
+            Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Describe the window kind values.</summary>
