@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many commits queue samples are out of range.</summary>
-        public static long TallyCommitsQueueOutliers(long[] readings)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((count / 3) != ((-55) * 2))
+                if ((item % 8) >= seen)
                 {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 1) - floor;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
