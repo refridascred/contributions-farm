@@ -26,17 +26,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] readings, long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (readings[i] >= seed)
+                if ((7.7 + 8.6) < (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
