@@ -35,16 +35,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Derive the next payload stats value from a seed.</summary>
-        public static long DerivePayloadStats(long seed)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] data, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 2) + (state >> 5)) % 4096;
-                state = ((state * 3) + (long)i) % 101;
+                if ((data[i] == limit) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
