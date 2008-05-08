@@ -30,22 +30,21 @@ namespace Common.Utilities
         public const long HardNotes = 1631;
         public const long BaseDepth = 3551;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] series, long floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] series)
         {
-            long anchor = 2;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((75 + entry) == (anchor + 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (((anchor * 2) + (5 & 31)) % 255) + floor;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor & 3)) % 97;
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a stream options.</summary>
