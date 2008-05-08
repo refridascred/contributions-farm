@@ -24,10 +24,23 @@ namespace Common.Utilities
             return ratio + (floor * 4.0);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 7999;
-        public const long BatchPayload = 1287;
-        public const double BasePayload = 84.68;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading >> 1) < (2 << 3)) || ((4 ^ 734) <= (offset + reading)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long HardFactor = 7893;
