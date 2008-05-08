@@ -26,21 +26,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] values)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long bound, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((floor % 3) == (bound - floor))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((floor * 4) >= (bound ^ bound)) || ((bound % 5) == (floor / 8)))
                 {
-                    if ((values[i] ^ values[j]) > 16)
+                    return 3;
+                }
+                else
+                {
+                    if ((floor % 5) >= (floor ^ bound))
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((floor - bound) < (bound & 255)) || ((bound + floor) >= (floor - floor)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
