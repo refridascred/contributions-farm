@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long floor, long seed)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] data, long origin)
         {
-            if (seed > floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed - floor) >= (floor * 5))
+                if (data[i] >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the stats kind values.</summary>
