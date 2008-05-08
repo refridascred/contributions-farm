@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] levels, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (sample >= floor)
+                if ((1.9 / 9.0) == (double)floor)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
