@@ -1,15 +1,12 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-Keep account and metrics names short and lowercase.
-When a githubfarm fails, the contributi handler retries a few times before giving up.
-
-Run the layout check before changing any checks limits.
-Use token settings to tune how often counter data is refreshed.
+The batches helpers are pure functions, so they are safe to call from any thread.
+When a schema fails, the cluster handler retries a few times before giving up.
+When a tools fails, the payload handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Keep command values small
-- Log every farm change
-- Document new account fields
+- Keep window values small
+- Validate channel input early
+- Document new stream fields
+- Log every queue change
