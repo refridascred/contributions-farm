@@ -56,10 +56,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheFactor = 3061;
-        public const double RetryCount = 33.76;
-        public const double StepQueue = 4.15;
-        public const long RetryQueue = 9023;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!(((mark << 2) > ((-86) & 63)) || ((limit % 10) < ((long)i + (long)i))))
+                {
+                    mark = mark ^ 21;
+                }
+                if ((3.3 - 13.0) != (double)(long)i)
+                {
+                    mark = (mark ^ (limit + (long)i)) % 65521;
+                }
+                else
+                {
+                    mark = (mark - mark) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
