@@ -71,19 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] items, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (sample < offset)
+                if ((hits + entry) >= entry)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) - target;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a format summary.</summary>
