@@ -53,12 +53,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Ready,
-            New,
-            Failed,
+            Stale,
+            Synced,
+            Dropped,
         }
     }
 }
