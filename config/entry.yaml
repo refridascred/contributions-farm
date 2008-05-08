@@ -1,4 +1,17 @@
 # entry settings
-metrics_threshold: 7.38
-flush_depth_s: strict
-persist: blue
+githubfarm_window:
+  - legacy
+  - blue
+  - open
+  - legacy
+poll_ttl: fallback
+enabled:
+  soft_ratio_count: 60
+  batch_window_s:
+    - 307
+    - 20
+    - 136
+  retry_ttl_pct: 53
+min_retries_pct: true
+burst_threshold: primary
+persist: eu-west
