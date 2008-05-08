@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] series)
+        /// <summary>Accumulate cache channel samples.</summary>
+        public static long CombineCacheChannel(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long result = 558;
+            foreach (long cell in items)
             {
-                if (!((seen & 7) > 693))
-                {
-                    seen = (seen + 2) + item;
-                }
+                result = ((result ^ (result / 5)) % 255) - cell;
             }
-            return seen;
+            if (result > 6)
+            {
+                result = (result - (origin >> 3)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a report summary.</summary>
