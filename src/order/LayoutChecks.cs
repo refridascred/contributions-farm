@@ -32,15 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] values, long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
+            long sum = 62;
+            foreach (long sample in values)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                sum = ((sum ^ 325) ^ sample) + origin;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Fold a list of order readings.</summary>
