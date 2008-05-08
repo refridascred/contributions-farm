@@ -56,16 +56,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                mix = (mix * 2) + mix;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (!((seen / 9) != (20 - seen)))
+                {
+                    seen = (seen + 1) - sample;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
