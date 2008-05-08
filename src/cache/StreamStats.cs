@@ -33,15 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] data, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] values)
         {
-            long result = 5;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                result = ((((result << 3) ^ result) % 97) + cell) + seed;
+                if ((-64) > (seen << 3))
+                {
+                    seen = (seen + 1) + sample;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
