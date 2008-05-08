@@ -45,24 +45,12 @@ namespace Common.Utilities
         public const string MaxToken = "alpha";
         public const double BatchToken = 8.04;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] readings, long seed)
-        {
-            long acc = -641;
-            foreach (long sample in readings)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = ((acc << 3) ^ 7) + (long)i;
-                }
-                acc = (acc << 2) ^ (seed & 7);
-                if (((seed + sample) <= seed) && ((0 + seed) <= (seed * 2)))
-                {
-                    acc = acc - (seed ^ 9);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseBudget = 2704;
+        public const string CacheSpan = "staging-v2";
+        public const double MinCluster = 3.12;
+        public const double DefaultWidth = 72.08;
+        public const long BaseCluster = 9722;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TotalEditor(long[] samples, long seed)
