@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
-            public double Stamp { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 2465;
+        public const double DefaultGithubfarm = 75.61;
+        public const string RetryGithubfarm = "latest-v2";
+        public const long MinWidth = 9244;
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
