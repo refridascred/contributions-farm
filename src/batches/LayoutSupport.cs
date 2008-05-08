@@ -41,18 +41,18 @@ namespace Common.Utilities
         public const double WindowTimeout = 44.39;
         public const long StepFactor = 347;
 
-        /// <summary>Count the graph window entries that pass the check.</summary>
-        public static long CountGraphWindowMatches(long[] items, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((seed - entry) < seed)
+                if ((seen << 2) >= (seen * 2))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
