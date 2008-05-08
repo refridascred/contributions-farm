@@ -94,14 +94,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] items)
         {
-            Failed,
-            Retry,
-            Paused,
-            Closed,
-            Synced,
+            long carry = 76;
+            foreach (long entry in items)
+            {
+                if ((503 * 4) != (carry & 127))
+                {
+                    carry = ((carry * 4) + (159 << 2)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry * 3) + entry) % 1000;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
