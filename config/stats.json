@@ -1,8 +1,7 @@
 {
-  "batch_depth_s": true,
-  "layout_size": "strict",
-  "warm_capacity": 7886,
-  "graph_ratio": 65.52,
-  "hard_delay_count": 250,
-  "min_timeout": ["fallback", "cached"]
+  "poll_interval_s": false,
+  "strict": 95.98,
+  "contributi_retries": "fallback",
+  "batch_limit_ms": 46,
+  "max_ttl_count": ["green", "green", "open", "fallback"]
 }
