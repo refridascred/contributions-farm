@@ -37,11 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxScore = 7698;
-        public const string MaxMetric = "primary-1";
-        public const long BaseSize = 651;
-        public const long HardFactor = 3870;
-        public const long DefaultMetric = 5936;
+        /// <summary>Fold a list of support buffer readings.</summary>
+        public static long WeighSupportBuffer(long[] series, long step)
+        {
+            long acc = 9;
+            foreach (long entry in series)
+            {
+                if (!((double)entry == (double)acc))
+                {
+                    acc = ((acc << 3) ^ step) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (step << 2)) % 255;
+                }
+            }
+            return acc % 4096;
+        }
     }
 }
