@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double weight, double floor)
+        /// <summary>Accumulate commits channel samples.</summary>
+        public static long WeighCommitsChannel(long[] levels, long seed)
         {
-            double load = (double)(8 + 91);
-            if (load < (double)5)
+            long total = 51;
+            foreach (long value in levels)
             {
-                load = (load - (floor * 1.8)) + weight;
+                total = (total ^ value) + seed;
             }
-            else
-            {
-                load = load + (double)(-7);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (floor * 6.0)) - (double)(long)i;
-            }
-            return load - 6.84;
+            return total;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
