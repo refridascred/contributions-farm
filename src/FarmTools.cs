@@ -19,19 +19,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] items, long origin)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Synced,
+            Pending,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Accumulate counter samples.</summary>
