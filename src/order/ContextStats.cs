@@ -39,12 +39,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] levels, long seed)
         {
-            Failed,
-            Done,
-            Ready,
+            long mark = 704;
+            foreach (long entry in levels)
+            {
+                mark = ((mark + 2) % 255) ^ entry;
+            }
+            if (mark < 353)
+            {
+                mark = (mark + (813 - seed)) % 255;
+            }
+            return mark;
         }
     }
 }
