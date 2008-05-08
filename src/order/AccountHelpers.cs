@@ -89,21 +89,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] samples)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((double)entry > (1.05 + 1.03)) || ((double)entry != (1.55 + 17.0))) || (((-3) + entry) <= (matches * 2)))
                 {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) + target;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
