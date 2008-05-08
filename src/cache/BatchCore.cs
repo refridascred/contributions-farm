@@ -32,39 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long floor, long step)
+        /// <summary>Compare every pair of already format readings.</summary>
+        public static long CompareAlreadyFormatCount(long[] data)
         {
-            long diff = floor + step;
-            if ((diff >> 5) == (diff + 3))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor > (diff * 4)) && ((floor % 16) < 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor % 60) < (step - 2))
+                    if ((data[i] + data[j]) == 9)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((76 - step) <= (diff & 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
