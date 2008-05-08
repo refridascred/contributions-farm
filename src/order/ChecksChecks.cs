@@ -24,39 +24,10 @@ namespace Common.Utilities
             return ratio + (floor * 4.0);
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long floor, long target)
-        {
-            if (!((double)target != (1.2 / 7.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-2) / 5) == (floor ^ target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target > (floor * 3)) || ((double)target >= 2.84))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5.0 - 19.0) >= (double)floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 7999;
+        public const long BatchPayload = 1287;
+        public const double BasePayload = 84.68;
 
         /// <summary>Match up entry samples.</summary>
         public static long CompareEntryCount(long[] levels)
