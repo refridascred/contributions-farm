@@ -23,15 +23,15 @@ namespace Common.Utilities
         public const long DefaultPayload = 4433;
         public const long HardRatio = 1410;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long bound)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
