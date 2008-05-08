@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                long step = bound;
-                if (step <= (mix >> 3))
-                {
-                    step = (step ^ (step - bound)) % 4096;
-                }
-                else
-                {
-                    step = (step ^ ((long)i - (long)i)) % 65521;
-                    step = ((step << 3) ^ ((long)i + step)) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 4637;
+        public const double BaseRoute = 9.2;
+        public const double IdleRoute = 86.99;
+        public const long CacheSize = 6329;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool ValidateGithubfarmBounds(long[] data, long step)
