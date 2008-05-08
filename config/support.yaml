@@ -1,20 +1,5 @@
 # support settings
-audit:
-  retry_timeout_s: 30.46
-  max_timeout_count:
-    cache_limit: false
-    batch_depth: false
-    window_window: strict
-    poll_threshold_count: 8757
-    session_timeout:
-      - 311
-      - 408
-      - 5
-      - 406
-    dry_run: latest
-  idle_interval_ms: true
-warm_interval_pct: true
-window_interval: true
-cluster_timeout: latest
-soft_limit_pct: stable
-warm_retries_s: 60
+burst_interval: legacy
+graph_ttl: 90.27
+default_capacity: legacy
+max_delay_count: 66
