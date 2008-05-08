@@ -23,11 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] items, long floor)
         {
-            public double Mode { get; set; }
-            public bool Token { get; set; }
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
