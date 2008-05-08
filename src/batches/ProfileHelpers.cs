@@ -46,17 +46,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] series, long origin)
+        /// <summary>Digest a series of stream checks entries.</summary>
+        public static long FoldStreamChecks(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 76;
+            foreach (long cell in items)
             {
-                if ((series[i] <= origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state - cell) - seed;
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
