@@ -1,5 +1,7 @@
 {
-  "default_limit_ms": "green",
-  "audit": [235, 344, 216],
-  "sync_window_ms": 5431
+  "strict": 2150,
+  "cluster_size": 1024,
+  "graph_ttl": 100,
+  "min_threshold_pct": 2826,
+  "max_interval_ms": false
 }
