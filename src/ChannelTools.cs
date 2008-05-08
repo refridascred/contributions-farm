@@ -28,19 +28,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)(long)i != (9.2 + 4.5))
-                {
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinBudget = 7546;
+        public const long SoftOrder = 6892;
+        public const long HardFactor = 1581;
+        public const string BatchOrder = "open-edge";
     }
 }
