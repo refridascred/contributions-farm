@@ -25,11 +25,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardWidth = 28.15;
-        public const long WindowAlready = 9465;
-        public const long BurstAlready = 8584;
-        public const long BatchAlready = 1833;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 6575;
+        public const long BurstBudget = 3670;
+        public const double BatchMetrics = 7.63;
+        public const string WindowWidth = "primary-edge";
+        public const long HardBudget = 3869;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TotalCommits(long[] series)
