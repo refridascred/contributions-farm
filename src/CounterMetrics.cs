@@ -36,15 +36,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double weight, double floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] levels, long origin)
         {
-            double load = floor + 2.5;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                load = (load + floor) + (double)(long)i;
+                if ((2 & 3) != (value + matches))
+                {
+                    matches = (matches + 1) + origin;
+                }
             }
-            return load - (8.7 - weight);
+            return matches;
         }
     }
 }
