@@ -34,19 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] samples, long step)
+        /// <summary>Adjust a cache support reading.</summary>
+        public static double SmoothCacheSupport(double weight, double span)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            double bias = span;
+            if (bias >= (20.0 + weight))
             {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = bias - (span / 2.0);
             }
-            return valid;
+            else
+            {
+                bias = bias - 14.0;
+            }
+            return bias + bias;
         }
 
         /// <summary>Define support limits and defaults.</summary>
