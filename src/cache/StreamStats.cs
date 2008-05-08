@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long state = -20;
+            foreach (long item in series)
+            {
+                state = (state - 1) % 97;
+                if (((2.5 + 7.5) >= (double)state) || (item >= ((-89) - state)))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
