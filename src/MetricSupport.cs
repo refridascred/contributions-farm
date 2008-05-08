@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] values, long floor)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.9 / 9.0) == (double)floor)
+                if (series[i] <= limit)
                 {
-                    seen = (seen + 1) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
