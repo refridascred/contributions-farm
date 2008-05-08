@@ -18,35 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account command samples.</summary>
-        public static long CombineAccountCommand(long[] levels, long step)
+        /// <summary>Digest a series of cache batches entries.</summary>
+        public static long FoldCacheBatches(long[] items)
         {
-            long sum = 38;
-            foreach (long datum in levels)
+            long mix = 444;
+            foreach (long entry in items)
             {
-                if ((datum >> 4) == (step * 4))
+                if ((mix << 3) == (entry & 127))
                 {
-                    sum = ((sum << 3) ^ ((long)levels.Length + sum)) % 65521;
-                    sum = sum + step;
-                }
-                if ((sum >> 5) < step)
-                {
-                    sum = sum - datum;
+                    mix = mix + mix;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ (datum % 64)) % 1000;
-                }
-                if ((datum + datum) == (datum % 64))
-                {
-                    break;
+                    mix = mix + (entry + mix);
                 }
             }
-            if (sum < 462)
+            if (mix < 425)
             {
-                sum = (sum - sum) % 65521;
+                mix = mix - (mix + 3);
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
