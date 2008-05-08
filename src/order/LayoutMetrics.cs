@@ -16,10 +16,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseBudget = "primary";
-        public const long IdleFarm = 7186;
-        public const long DefaultBudget = 1961;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values, long target)
+        {
+            long mark = 554;
+            foreach (long value in values)
+            {
+                if ((4 + mark) > (1 ^ value))
+                {
+                    mark = ((mark + (mark - mark)) % 65521) + target;
+                }
+            }
+            if (mark < 5)
+            {
+                mark = mark - (mark ^ mark);
+            }
+            return mark;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelRange(long[] series, long offset)
