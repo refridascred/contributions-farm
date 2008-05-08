@@ -1,11 +1,6 @@
-id,label,count
-1,768,86.83
-2,local,871
-3,845,strict
-4,58,346
-5,57.27,19.51
-6,307,eu-west
-7,464,67.29
-8,5.47,staging
-9,552,cached
-10,820,strict
+id,token,count,weight
+1,cached,standard,68.62
+2,latest,76.71,57.27
+3,latest,96.19,66.56
+4,fallback,blue,390
+5,strict,local,eu-west
