@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=361
+COMMAND_LIMIT=31
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-fallback}"
+mode="${1:-green}"
 case "${mode}" in
-    standard)
+    blue)
         log "fast path"
         ;;
     *)
@@ -19,6 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in standard legacy; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
