@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] readings)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] series)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long acc = 399;
+            foreach (long cell in series)
             {
-                if (!(((item + (-1)) < item) && ((20.0 - 6.6) != (double)item)))
+                if (((cell - acc) >= cell) || ((cell ^ cell) < 30))
                 {
-                    count = count + 1;
+                    acc = (acc << 2) ^ (593 << 1);
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
