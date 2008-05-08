@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double weight, double bias)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long bound)
         {
-            double weight2 = (double)(54 / 5);
-            for (int i = 0; i < 7; i++)
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                weight2 = ((weight2 + (bias + 6.75)) + (double)(long)i) - weight;
+                anchor = (anchor ^ (bound + 1)) % 4096;
+                if ((long)i >= (anchor * 5))
+                {
+                    anchor = ((anchor << 2) ^ (anchor * 3)) % 4096;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return weight2 + (double)91;
+            return anchor;
         }
 
         /// <summary>Hold a stream entry.</summary>
