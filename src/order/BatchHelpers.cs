@@ -34,13 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] samples, long target)
         {
-            Retry,
-            Paused,
-            Ready,
-            Synced,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
