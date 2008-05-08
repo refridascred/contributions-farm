@@ -59,16 +59,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] samples)
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry - (limit - carry)) % 65521;
-                carry = ((carry * 4) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
