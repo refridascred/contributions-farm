@@ -50,22 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] series)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (item >= (tally >> 4))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Stale,
+            Queued,
+            Active,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
