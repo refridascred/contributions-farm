@@ -47,19 +47,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a counter queue figure with a bias.</summary>
-        public static double BlendCounterQueue(double bias, double floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long seed, long step)
         {
-            double ratio = (floor * 2.0) - (floor / 8.0);
-            if (ratio > (double)82)
+            if ((double)seed == (0.59 / 5.0))
             {
-                ratio = ratio - floor;
+                return 8;
             }
             else
             {
-                ratio = ratio + ratio;
+                if (seed < (step + 98))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return ratio - bias;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
