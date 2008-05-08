@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi route readings against a bound.</summary>
-        public static bool CheckContributiRouteLimits(long[] samples, long bound)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
