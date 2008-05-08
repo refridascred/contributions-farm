@@ -1,14 +1,20 @@
 # support settings
-burst_size_pct:
-  editor_depth:
-    - 360
-    - 250
-  batch_window_pct: eu-west
-  hard_ttl_pct: 96.93
-  audit: open
-  flush_delay_pct:
-    - blue
-    - primary
-    - strict
-report_interval: 7517
-poll_depth_pct: false
+audit:
+  retry_timeout_s: 30.46
+  max_timeout_count:
+    cache_limit: false
+    batch_depth: false
+    window_window: strict
+    poll_threshold_count: 8757
+    session_timeout:
+      - 311
+      - 408
+      - 5
+      - 406
+    dry_run: latest
+  idle_interval_ms: true
+warm_interval_pct: true
+window_interval: true
+cluster_timeout: latest
+soft_limit_pct: stable
+warm_retries_s: 60
