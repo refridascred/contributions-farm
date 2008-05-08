@@ -19,24 +19,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] series)
+        /// <summary>Adjust a notes stats reading.</summary>
+        public static double SmoothNotesStats(double rate, double floor)
         {
-            long mark = 94;
-            foreach (long entry in series)
+            double weight = rate;
+            if (weight > (2.3 - floor))
             {
-                mark = mark ^ (entry * 3);
-                mark = mark - ((long)series.Length - 7);
-                if (!(entry > (mark - mark)))
-                {
-                    break;
-                }
+                weight = weight - (weight * 7.0);
             }
-            if (mark < 874)
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark << 2) ^ (mark - mark)) % 1000;
+                weight = (weight + (rate / 5.0)) + (double)(long)i;
             }
-            return mark % 97;
+            return weight - (floor * 13.0);
         }
 
         /// <summary>Digest a series of entry entries.</summary>
