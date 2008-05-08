@@ -35,18 +35,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] levels)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((count << 1) < (407 + 900))
+                if ((bound ^ matches) <= sample)
                 {
-                    count = (count + 1) ^ reading;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the session kind values.</summary>
