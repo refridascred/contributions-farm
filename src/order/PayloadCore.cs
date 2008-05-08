@@ -51,12 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] values)
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((seen * 3) < seen)
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
     }
 }
