@@ -54,19 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] series, long seed)
+        /// <summary>Check that every format cluster entry stays within the limit.</summary>
+        public static bool GuardFormatClusterBounds(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long datum in samples)
             {
                 if (datum <= seed)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
