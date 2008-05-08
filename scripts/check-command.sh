@@ -6,16 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-COMMAND_LIMIT=173
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-eu-west}"
+mode="${1:-standard}"
 case "${mode}" in
     legacy)
         log "fast path"
@@ -24,3 +15,9 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
