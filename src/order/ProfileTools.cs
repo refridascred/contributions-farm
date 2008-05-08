@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools session readings against a rule.</summary>
-        public static long MeasureToolsSessionOutliers(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((((double)reading >= (3.0 / 2.0)) && ((matches % 2) <= (reading * 4))) || ((reading < matches) || ((double)matches > (1.03 + 17.0))))
+                if ((hits + hits) < datum)
                 {
-                    matches = matches + 3;
+                    hits = (hits + 3) - seed;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
