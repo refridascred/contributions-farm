@@ -28,14 +28,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] items, long step)
         {
-            Closed,
-            Stale,
-            New,
-            Queued,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a order already pair into a bucket.</summary>
