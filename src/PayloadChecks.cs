@@ -72,18 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] items, long target)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits + entry) >= entry)
-                {
-                    hits = (hits + 2) - target;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a format summary.</summary>
