@@ -28,18 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] levels, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] values, long step)
         {
-            long mix = 8;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((448 - 93) <= (3 + datum))
+                if ((double)step != (double)reading)
                 {
-                    mix = (((mix << 3) ^ 4) % 65521) + bound;
+                    count = count + 3;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a entry header.</summary>
