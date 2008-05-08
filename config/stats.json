@@ -1,6 +1,18 @@
 {
-  "sync_timeout_count": "standard",
-  "route_retries": 79.55,
-  "persist": "standard",
-  "burst_limit_pct": 75.33
+  "queue_retries": 4695,
+  "verbose": true,
+  "base_window": 3,
+  "enabled": "primary",
+  "window_ratio": {
+    "soft_interval": true,
+    "warm_retries_pct": true,
+    "burst_capacity": "latest",
+    "audit": {
+      "cache_window": ["primary", "edge", "local", "legacy"],
+      "batch_retries_count": 29.1,
+      "idle_window": 30,
+      "soft_delay_pct": 1
+    }
+  },
+  "burst_delay": 34
 }
