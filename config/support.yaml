@@ -1,13 +1,25 @@
 # support settings
-channel_interval: 80.4
-dry_run: 79.77
-readonly:
-  poll_retries: green
-  support_timeout: 25
-  readonly: open
-  filter_delay: 3
-  enabled: false
-  min_depth_ms: false
-stream_threshold: staging
-persist: 8995
-command_retries: 85
+default_timeout:
+  - fallback
+  - local
+  - standard
+  - latest
+idle_window_s: fallback
+verbose: 84.22
+default_depth:
+  default_ratio_count:
+    - 66
+    - 126
+  profile_depth: true
+  idle_threshold:
+    - 314
+    - 93
+  batch_capacity: green
+  hard_capacity_count:
+    - 334
+    - 88
+  cache_size:
+    - 202
+    - 92
+    - 360
+    - 239
