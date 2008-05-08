@@ -36,23 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if (mark < (mark - offset))
-                {
-                    mark = mark + 893;
-                }
-                if ((double)(long)i < (15.0 * 0.86))
-                {
-                    mark = (mark << 3) ^ (6 ^ 65);
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Compare every pair of command readings.</summary>
