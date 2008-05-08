@@ -36,13 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] samples)
         {
-            public double Limit { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum - tally) >= (4 + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a already reading.</summary>
