@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sample ^ 888) == (sample - hits))
                 {
-                    if ((items[i] + items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) - step;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
