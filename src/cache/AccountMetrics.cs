@@ -37,11 +37,20 @@ namespace Common.Utilities
         public const string MinFactor = "legacy-v2";
         public const long DefaultEditor = 8393;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstScore = 87.19;
-        public const string MaxFilter = "latest";
-        public const double IdleFilter = 87.81;
-        public const long IdleSpan = 8787;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] items, long offset)
+        {
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every checks queue entry stays within the limit.</summary>
         public static bool GuardChecksQueueBounds(long[] items, long step)
