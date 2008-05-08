@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Fold a list of batches contributi readings.</summary>
+        public static long TotalBatchesContributi(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 377;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark ^ mark) - reading;
             }
-            return tally;
+            if (mark < 1)
+            {
+                mark = (mark - (mark - offset)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Validate contributi route readings against a bound.</summary>
