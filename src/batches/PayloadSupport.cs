@@ -25,15 +25,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next profile checks value.</summary>
-        public static double SmoothProfileChecks(double gain, double floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] readings, long target)
         {
-            double weight = (double)665 / 3.0;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight - weight) + (double)(long)i;
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (floor - gain);
+            return -1;
         }
     }
 }
