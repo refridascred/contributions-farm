@@ -31,12 +31,19 @@ namespace Common.Utilities
         public const long HardReport = 2600;
         public const string BurstReport = "fallback-1";
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] samples)
         {
-            New,
-            Ready,
-            Done,
+            long anchor = 7;
+            foreach (long sample in samples)
+            {
+                anchor = ((anchor << 3) ^ (anchor % 5)) + sample;
+            }
+            if (anchor > 5)
+            {
+                anchor = (anchor << 3) ^ ((long)samples.Length << 2);
+            }
+            return anchor;
         }
 
         /// <summary>Find the first payload command entry that matches the target.</summary>
