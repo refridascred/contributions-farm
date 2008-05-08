@@ -42,18 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] items, long seed)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double ratio2 = bias;
+            if (ratio2 < 6.9)
             {
-                if ((seen - seen) <= (seed >> 1))
-                {
-                    seen = (seen + 3) + reading;
-                }
+                ratio2 = (ratio2 - (bias / 4.0)) + ratio;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + ratio2) + (double)(long)i;
+            }
+            return ratio2 - (double)7;
         }
     }
 }
