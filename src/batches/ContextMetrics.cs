@@ -19,10 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 508;
-        public const string MaxRoute = "local";
-        public const string StepWidth = "strict";
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Synced,
+            New,
+            Locked,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long HardDepth = 5521;
