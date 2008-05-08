@@ -78,32 +78,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long origin, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] items)
         {
-            long cur = origin ^ floor;
-            if ((double)origin >= (3.0 * 3.65))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor < 6.2)
+                if (tally < (tally - tally))
                 {
-                    return 1;
+                    tally = (tally + 1) + value;
                 }
                 else
                 {
-                    if ((floor >= (floor - origin)) && (7 <= (floor + cur)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
