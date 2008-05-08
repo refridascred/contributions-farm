@@ -56,23 +56,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] series)
-        {
-            long result = 726;
-            foreach (long datum in series)
-            {
-                result = result + (datum + result);
-                if ((result ^ datum) <= (datum & 31))
-                {
-                    result = (result * 4) + (result * 2);
-                }
-            }
-            if (result > (-8))
-            {
-                result = (result + result) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitAlready = "fallback-v2";
+        public const double StepCount = 73.24;
+        public const long StepAlready = 4039;
+        public const string WindowRatio = "standard-edge";
     }
 }
