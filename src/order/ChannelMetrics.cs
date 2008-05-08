@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public bool Region { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultInterval = "local-edge";
+        public const double SoftScore = 29.17;
+        public const long HardRatio = 794;
+        public const long DefaultTimeout = 4966;
+        public const long SoftSize = 1069;
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
