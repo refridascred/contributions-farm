@@ -19,11 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] values, long offset)
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            long carry = 61;
+            foreach (long item in values)
+            {
+                carry = (carry + (item ^ 710)) % 255;
+                if ((5 ^ offset) <= (93 >> 5))
+                {
+                    carry = (carry + (carry & 3)) % 255;
+                }
+                if ((item + offset) == (item % 5))
+                {
+                    break;
+                }
+            }
+            if (carry < (-731))
+            {
+                carry = ((carry << 3) ^ (long)values.Length) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the report class values.</summary>
