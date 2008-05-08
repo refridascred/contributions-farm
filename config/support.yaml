@@ -1,24 +1,4 @@
 # support settings
-strict:
-  batch_capacity:
-    compress: staging
-    base_limit_s: eu-west
-    warm_ratio: strict
-    retry_size: 701
-    soft_delay_s: local
-  dry_run:
-    base_timeout_count:
-      - staging
-      - standard
-      - local
-    soft_size_count: 16
-    verbose: blue
-    retry_depth_s: local
-    default_interval_s: 75.85
-  strict: 61.0
-  payload_window: strict
-  sync_limit_pct: 18
-flush_threshold_ms: staging
-soft_threshold_pct:
-  - 217
-  - 422
+session_timeout: standard
+poll_retries_s: 500
+min_threshold_count: 100
