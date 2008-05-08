@@ -86,18 +86,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] values, long limit)
+        /// <summary>Count the channel order entries that pass the check.</summary>
+        public static long TallyChannelOrderHits(long[] samples, long floor)
         {
-            long anchor = 3;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (!((double)(long)values.Length <= (double)item))
+                if ((floor - count) == (item % 64))
                 {
-                    anchor = ((anchor << 2) ^ limit) % 65521;
+                    count = count + 3;
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
