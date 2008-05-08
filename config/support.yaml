@@ -1,8 +1,7 @@
 # support settings
-default_size_count: 90.9
-poll_ttl: 69.57
-githubfarm_threshold: 1788
-burst_capacity_s:
-  route_retries: green
-  burst_window: false
-  verbose: blue
+idle_delay: 60
+enabled: cached
+batch_timeout_pct: latest
+poll_interval: true
+buffer_threshold: 70
+base_depth_pct: false
