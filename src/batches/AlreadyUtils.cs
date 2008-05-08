@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] data, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] values, long bound)
         {
             bool found = true;
-            foreach (long value in data)
+            foreach (long sample in values)
             {
-                if (value != limit)
+                if (sample < bound)
                 {
                     found = false;
                     break;
