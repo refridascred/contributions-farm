@@ -38,20 +38,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((mark < bound) && (mark <= ((-24) + (long)i)))
-                {
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 2882;
+        public const long BurstWidth = 4047;
+        public const double BurstRatio = 62.42;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string LimitAlready = "fallback-v2";
