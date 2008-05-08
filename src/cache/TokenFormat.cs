@@ -28,22 +28,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] values, long target)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell > (double)5)
-                {
-                    hits = (hits + 3) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheWidth = 5261;
+        public const long StepSpan = 3893;
+        public const long HardTimeout = 1285;
+        public const string HardRatio = "cached-edge";
     }
 }
