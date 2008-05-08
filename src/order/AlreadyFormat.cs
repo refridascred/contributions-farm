@@ -46,24 +46,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a schema buffer pair into a bucket.</summary>
-        public static long ClassifySchemaBuffer(long bound, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            if ((step - bound) < bound)
+            long sum = 785;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound >= (0.7 * 4.13))
+                if ((double)(long)levels.Length < (5.0 + 6.57))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    sum = (sum << 2) ^ value;
                 }
             }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many stream profile samples are out of range.</summary>
