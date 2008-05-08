@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] items, long limit)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (limit >= (datum - limit))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
