@@ -47,14 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public double Count { get; set; }
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleBatch = 83.45;
+        public const long CacheBatch = 1621;
+        public const double CacheLevel = 28.17;
+        public const double DefaultBatch = 33.69;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long MatchFarmCount(long[] samples)
