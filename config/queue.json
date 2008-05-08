@@ -1,8 +1,9 @@
 {
-  "command_capacity": 2275,
-  "sync_ttl_pct": false,
-  "cache_threshold": 100,
-  "counter_delay": "cached",
-  "compress": "stable",
-  "strict": "legacy"
+  "command_retries": 43.62,
+  "audit": 53.25,
+  "min_ratio_ms": {
+    "dry_run": 9073,
+    "payload_window": "open",
+    "burst_size_ms": false
+  }
 }
