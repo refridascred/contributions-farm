@@ -22,11 +22,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 930;
-        public const string BaseChannel = "cached-v2";
-        public const string WindowChannel = "latest-1";
-        public const long SoftBudget = 3664;
-        public const string MaxScore = "local";
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc << 2) ^ (floor + (-986));
+                if (!(((floor ^ floor) <= (acc * 3)) || ((acc << 3) >= acc)))
+                {
+                    acc = acc - acc;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
