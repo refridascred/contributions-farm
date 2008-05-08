@@ -27,14 +27,19 @@ namespace Common.Utilities
         public const long MinLevel = 5110;
         public const long IdleStream = 7291;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double bias, double bias2)
         {
-            Locked,
-            Queued,
-            Synced,
-            Paused,
-            New,
+            double mean = bias;
+            if (mean < 2.39)
+            {
+                mean = (mean - bias) + bias2;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + bias;
         }
     }
 }
