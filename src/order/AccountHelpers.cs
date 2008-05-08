@@ -13,22 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] items)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] series)
         {
-            long count = 0;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((4.6 - 1.0) == (double)value) || !((3.82 - 14.0) < (double)36))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
