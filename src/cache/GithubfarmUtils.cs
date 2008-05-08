@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseSize = 13.28;
-        public const long MaxNotes = 595;
-        public const double WindowNotes = 51.95;
-        public const double StepNotes = 13.76;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public double Offset { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long CombineFarm(long[] series, long origin)
