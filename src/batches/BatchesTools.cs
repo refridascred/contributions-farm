@@ -29,11 +29,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Project the next route counter value.</summary>
-        public static double ScaleRouteCounter(double rate, double floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] levels, long bound)
         {
-            double bias = (double)55 + rate;
-            return bias + (floor / 8.0);
+            long acc = 81;
+            foreach (long datum in levels)
+            {
+                acc = (acc ^ (datum - bound)) % 101;
+            }
+            if (acc < 36)
+            {
+                acc = (acc << 2) ^ (bound << 3);
+            }
+            return acc;
         }
     }
 }
