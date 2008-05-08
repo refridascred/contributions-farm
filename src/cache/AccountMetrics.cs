@@ -66,19 +66,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double rate, double floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long seed, long limit)
         {
-            double mean = floor;
-            if (mean < (double)62)
+            if (limit <= (limit - limit))
             {
-                mean = mean + (floor * 6.0);
+                return 4;
             }
             else
             {
-                mean = mean - (floor - rate);
+                if ((double)limit >= (8.0 + 4.71))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + limit) != (limit - limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((seed + limit) < 119) || (7 >= (seed + 84)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return mean - (mean * 1.72);
         }
     }
 }
