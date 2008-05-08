@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
