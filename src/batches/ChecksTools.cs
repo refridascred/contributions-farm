@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long target, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] items, long bound)
         {
-            if ((target - target) != (837 * 2))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit + target) >= (target * 5))
+                if ((16.0 / 6.0) < (double)count)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target <= (8.0 / 8.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target - 670) >= ((-81) ^ target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = ((count + 1) ^ sample) + bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the cache phase values.</summary>
