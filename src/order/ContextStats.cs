@@ -29,32 +29,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank metrics already input into a small class.</summary>
-        public static long SortMetricsAlready(long bound, long seed)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double gain, double floor)
         {
-            long span = bound - seed;
-            if ((57 + bound) > (seed + span))
+            double load = (floor / 4.0) - (2.9 - gain);
+            if (load > (floor + 1.53))
             {
-                return 4;
+                load = load + floor;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (bound < (span & 31))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((8.27 / 8.0) >= (double)span)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                load = (load + gain) - (double)(long)i;
             }
+            return load - 9.0;
         }
 
         /// <summary>Accumulate githubfarm window samples.</summary>
