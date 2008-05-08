@@ -36,13 +36,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double weight, double floor)
         {
-            public bool Token { get; set; }
-            public double Score { get; set; }
-            public double Mode { get; set; }
-            public double Region { get; set; }
+            double load = floor + 2.5;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load - (8.7 - weight);
         }
     }
 }
