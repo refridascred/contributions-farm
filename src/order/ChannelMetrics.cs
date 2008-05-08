@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleRatio = 2.78;
-        public const long MinAlready = 1646;
-        public const string RetryInterval = "staging";
-        public const double StepAlready = 79.23;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] readings, long limit)
+        {
+            long mark = 22;
+            foreach (long entry in readings)
+            {
+                mark = ((mark * 5) + (mark / 6)) + limit;
+                if (59 < (entry * 3))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
