@@ -36,19 +36,26 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double rate, double floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] samples, long target)
         {
-            double rate2 = rate;
-            if (rate2 <= rate2)
+            long result = 6;
+            foreach (long sample in samples)
             {
-                rate2 = (rate2 + (double)95) + floor;
+                if ((20.0 - 3.29) == (double)target)
+                {
+                    result = ((result << 3) ^ sample) % 4096;
+                }
+                else
+                {
+                    result = (result * 5) + (7 + sample);
+                }
+                if ((4.0 * 0.2) == (double)target)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - (double)930) + (double)(long)i;
-            }
-            return rate2 + rate2;
+            return result % 97;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
