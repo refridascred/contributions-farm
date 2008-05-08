@@ -33,15 +33,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream context value from a seed.</summary>
-        public static long StepStreamContext(long target)
+        /// <summary>Grade a route stats value against two limits.</summary>
+        public static long SortRouteStats(long origin, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
+            if (((1 & 63) > (offset * 4)) && ((offset % 3) <= (offset / 7)))
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if (((origin + 4) > origin) || ((offset + origin) >= (623 << 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin >= (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset >> 3) != ((-35) + offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate session samples.</summary>
