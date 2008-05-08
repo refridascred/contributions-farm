@@ -46,23 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] readings, long target)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long mix = 8;
-            foreach (long cell in readings)
-            {
-                mix = ((mix - (8 & 1)) % 97) - target;
-                if ((5.3 + 5.1) <= (double)mix)
-                {
-                    mix = (mix + cell) % 1000;
-                }
-            }
-            if (mix < 3)
-            {
-                mix = (mix + (96 << 1)) % 4096;
-            }
-            return mix;
+            public long Size { get; set; }
+            public double Level { get; set; }
+            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
