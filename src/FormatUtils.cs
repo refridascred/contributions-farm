@@ -18,12 +18,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Count metric already pairs that satisfy a relation.</summary>
+        public static long MatchMetricAlreadyCount(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate contributi graph samples.</summary>
