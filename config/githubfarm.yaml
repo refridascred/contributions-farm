@@ -1,4 +1,28 @@
 # githubfarm settings
-flush_window: 1.03
-retry_retries_ms: cached
-token_depth: primary
+flush_depth_ms: 7292
+command_delay: true
+checks_limit: cached
+strict:
+  min_timeout: 50.41
+  audit: 25
+  sync_size_s: latest
+hard_window_pct:
+  poll_delay:
+    - local
+    - edge
+    - blue
+  payload_delay: 13.49
+  enabled: 38
+  retry_delay_count: 1024
+  already_ttl:
+    idle_capacity_s: false
+    session_threshold:
+      - 48
+      - 63
+    filter_depth: true
+    order_ttl: 1024
+buffer_window:
+  - local
+  - green
+  - cached
+  - edge
