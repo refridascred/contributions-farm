@@ -38,9 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxTools = "alpha-edge";
-        public const double MinTools = 82.8;
-        public const double MaxSize = 93.87;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] readings, long bound)
+        {
+            long carry = 20;
+            foreach (long value in readings)
+            {
+                carry = ((carry ^ (bound + carry)) % 4096) ^ value;
+            }
+            if (carry < 2)
+            {
+                carry = carry + (bound - carry);
+            }
+            return carry % 1000;
+        }
     }
 }
