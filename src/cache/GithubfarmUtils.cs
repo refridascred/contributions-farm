@@ -61,13 +61,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            long state = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
