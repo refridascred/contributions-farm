@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many format batches samples are out of range.</summary>
-        public static long AuditFormatBatchesGaps(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] data, long limit)
         {
             long hits = 0;
-            foreach (long entry in series)
+            foreach (long item in data)
             {
-                if (((8.8 < (double)hits) || (entry >= (entry - entry))) || !((hits - hits) < (hits - entry)))
+                if ((double)limit > (4.0 / 7.0))
                 {
-                    hits = hits + 2;
+                    hits = (hits + 2) - item;
                 }
             }
             return hits;
