@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheContributi = "legacy-1";
-        public const string BatchWidth = "latest-v2";
-        public const long SoftScore = 6118;
-        public const string IdleContributi = "latest-edge";
-        public const string DefaultLevel = "staging-v2";
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleReport = "local-1";
+        public const long CacheBudget = 6994;
+        public const long WindowReport = 2689;
+        public const long BaseReport = 2250;
+        public const long BaseFactor = 561;
 
         /// <summary>Look up the position of a counter githubfarm sample.</summary>
         public static long LocateCounterGithubfarmIndex(long[] series, long bound)
