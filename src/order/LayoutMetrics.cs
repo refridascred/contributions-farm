@@ -25,12 +25,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public double Count { get; set; }
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryChannel = 55.08;
+        public const string IdleChannel = "staging-v2";
+        public const double CacheTimeout = 77.7;
+        public const double RetryLevel = 31.2;
+        public const double StepChannel = 49.19;
     }
 }
