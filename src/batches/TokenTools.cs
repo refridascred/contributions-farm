@@ -26,16 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a order notes figure with a bias.</summary>
-        public static double BlendOrderNotes(double scale, double offset)
-        {
-            double mean = scale;
-            if (mean > (double)14)
-            {
-                mean = (mean - (double)52) - offset;
-            }
-            return mean - (mean + mean);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxFactor = 5986;
+        public const string CacheNotes = "open-v2";
+        public const string StepNotes = "standard";
+        public const string WindowNotes = "staging-edge";
+        public const string StepLevel = "latest-v2";
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long OverlapStreamCount(long[] readings)
