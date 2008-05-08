@@ -43,11 +43,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Scale a counter tools figure with a bias.</summary>
-        public static double ProjectCounterTools(double weight, double floor)
+        /// <summary>Validate support context readings against a bound.</summary>
+        public static bool GuardSupportContextBounds(long[] levels, long offset)
         {
-            double ratio = weight - (weight * 18.0);
-            return (ratio - weight) + floor;
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
