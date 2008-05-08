@@ -49,18 +49,12 @@ namespace Common.Utilities
             return mean - (mean - scale);
         }
 
-        /// <summary>Count the schema githubfarm entries that pass the check.</summary>
-        public static long MeasureSchemaGithubfarmHits(long[] series, long seed)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((0 ^ seed) >= sample)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
