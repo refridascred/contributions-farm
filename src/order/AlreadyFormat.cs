@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] samples, long bound)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (samples[i] >= bound)
+                if ((seen << 1) <= (264 << 2))
                 {
-                    return (long)i;
+                    seen = ((seen + 1) + sample) - target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Classify a editor notes pair into a bucket.</summary>
