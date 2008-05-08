@@ -45,15 +45,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next schema channel value.</summary>
-        public static double ProjectSchemaChannel(double gain, double floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] samples, long offset)
         {
-            double scale = gain;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = ((scale + (gain - gain)) + (double)(long)i) - floor;
+                if ((samples[i] >= offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - (double)(-46);
+            return -1;
         }
 
         /// <summary>Look up the position of a window token sample.</summary>
