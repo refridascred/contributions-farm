@@ -64,19 +64,15 @@ namespace Common.Utilities
         public const double SoftDepth = 33.1;
         public const double MinScore = 16.21;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] items, long seed)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double scale, double span)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            double ratio = scale;
+            if (ratio < (scale - scale))
             {
-                if (sample >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio - ratio;
             }
-            return stale;
+            return ratio + span;
         }
     }
 }
