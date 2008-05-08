@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long floor, long bound)
         {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
+            long delta = floor + bound;
+            if (((floor - floor) == (delta - delta)) || ((906 * 4) > floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((floor + bound) > 452))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((18.0 + 2.95) <= (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor < (3.18 / 4.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
