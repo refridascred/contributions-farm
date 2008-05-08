@@ -33,12 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] readings, long floor)
         {
-            Active,
-            Queued,
-            Synced,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((floor + floor) == (matches / 6))
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the account phase values.</summary>
