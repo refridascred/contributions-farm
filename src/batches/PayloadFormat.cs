@@ -39,17 +39,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] readings, long seed)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 507;
+            foreach (long item in samples)
             {
-                if (readings[i] <= seed)
+                if (((double)target < (3.8 - 5.39)) || (target >= (item * 5)))
                 {
-                    return (long)i;
+                    carry = ((carry * 3) + carry) % 65521;
+                }
+                else
+                {
+                    carry = (carry - (target % 100)) % 4096;
+                }
+                carry = ((carry << 3) ^ (target - item)) % 1000;
+                if ((item + item) == (90 + 0))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry < (-293))
+            {
+                carry = (carry + (target ^ carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of already payload readings.</summary>
