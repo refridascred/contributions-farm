@@ -42,16 +42,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = (mix << 3) ^ (mix % 16);
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            Ready,
+            Draft,
+            Dropped,
+            Queued,
+            Synced,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
