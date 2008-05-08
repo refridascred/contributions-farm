@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine cluster cache values into a single score.</summary>
-        public static long FoldClusterCache(long[] items)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] levels, long floor)
         {
-            long total = 4;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((total >> 5) < datum)
+                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
                 {
-                    total = ((total << 3) ^ total) % 65521;
-                }
-                if (((datum / 9) > datum) && ((total - total) <= datum))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
