@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long origin, long bound)
         {
-            Done,
-            Locked,
-            Failed,
-            Ready,
-            Pending,
+            if ((double)bound < (6.1 + 7.07))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(((-32) & 15) > origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((11.0 + 8.91) != (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
