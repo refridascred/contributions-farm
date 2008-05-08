@@ -12,10 +12,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultFactor = 1977;
-        public const long BatchFactor = 1412;
-        public const long WindowWidth = 1393;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public long Total { get; set; }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long LimitGraph = 9250;
