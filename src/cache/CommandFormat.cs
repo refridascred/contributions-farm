@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long seed, long offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long span = seed - offset;
-            if (((double)span != (3.93 - 9.82)) && ((5.89 * 1.96) < (double)offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((span % 100) != ((-5) - seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((span * 5) <= span)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((span ^ span) == (seed ^ seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
