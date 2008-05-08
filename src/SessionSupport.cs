@@ -22,20 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstWidth = "primary-v2";
+        public const string IdleStream = "latest";
+        public const long BurstCount = 2610;
+        public const long CacheSpan = 2872;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long SeriesPayload(long offset)
