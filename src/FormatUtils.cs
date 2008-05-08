@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the queue token series from a seed.</summary>
-        public static long RollQueueToken(long target)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long target)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                sum = ((sum * 4) + 0) % 4096;
-                sum = sum ^ ((long)i ^ sum);
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((double)(long)i > (double)anchor)
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 4096;
+                }
+                if ((anchor + target) < (target & 15))
+                {
+                    long span = target;
+                    anchor = (anchor - ((long)i ^ span)) % 101;
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Match up window samples.</summary>
