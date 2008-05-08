@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const long SoftContributi = 2708;
         public const long CacheContributi = 4511;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] items, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (!((0.6 + 6.91) == (double)(long)items.Length))
+                if (cell <= floor)
                 {
-                    tally = ((tally + 1) + value) - origin;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define window limits and defaults.</summary>
