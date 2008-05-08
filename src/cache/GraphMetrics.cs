@@ -48,27 +48,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] items)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] levels, long floor)
         {
-            long carry = 12;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry + (value << 2)) % 65521;
-                if (((carry * 4) == (value + value)) && ((3.6 - 4.81) < (double)carry))
+                if (levels[i] == floor)
                 {
-                    carry = ((carry << 2) ^ (248 - carry)) % 101;
-                }
-                if ((value ^ value) >= value)
-                {
-                    carry = (carry ^ (carry >> 5)) % 101;
+                    return (long)i;
                 }
             }
-            if (carry > (-977))
-            {
-                carry = ((carry << 3) ^ (carry + carry)) % 101;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a command options.</summary>
