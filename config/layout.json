@@ -1,6 +1,24 @@
 {
-  "audit": 100,
-  "default_depth_count": false,
-  "enabled": ["strict", "cached", "strict"],
-  "strict": "open"
+  "cache_capacity": "standard",
+  "commits_capacity": 50,
+  "tools_depth": [32, 160],
+  "command_retries": 78.21,
+  "soft_interval_s": {
+    "metrics_interval": "open",
+    "persist": "strict",
+    "retry_capacity_pct": {
+      "dry_run": "fallback",
+      "default_window": 1392,
+      "soft_ttl": [223, 267, 358],
+      "stats_depth": "open"
+    },
+    "soft_ttl_ms": false,
+    "editor_ratio": 68.11,
+    "readonly": {
+      "batch_timeout": true,
+      "already_window": [461, 30, 385],
+      "session_delay": false
+    }
+  },
+  "soft_window_pct": 10
 }
