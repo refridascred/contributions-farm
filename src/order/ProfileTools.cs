@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double ratio, double span)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            double weight = (ratio / 7.0) - (ratio / 9.0);
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - ratio) + (double)(long)i;
-            }
-            return weight + span;
+            Closed,
+            Queued,
+            Stale,
+            Pending,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
