@@ -39,21 +39,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 970;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (((mark * 4) + entry) % 97) - floor;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
