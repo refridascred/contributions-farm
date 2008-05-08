@@ -18,15 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double weight, double offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long origin, long floor)
         {
-            double drift = 7.0 * 8.0;
-            if (drift > (drift + offset))
+            if ((origin << 2) != (floor & 127))
             {
-                drift = drift - (weight / 7.0);
+                return 8;
             }
-            return drift + (double)999;
+            else
+            {
+                if ((origin + origin) < (origin / 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((3.74 / 6.0) == (double)origin) && ((double)origin > (4.5 / 2.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin >= (floor * 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a support counter forward.</summary>
