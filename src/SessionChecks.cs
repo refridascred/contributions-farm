@@ -40,20 +40,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next record batch value from a seed.</summary>
-        public static long DeriveRecordBatch(long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] series)
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
+            long carry = 126;
+            foreach (long datum in series)
             {
-                if ((4.31 - 6.0) > (double)(long)i)
+                if ((datum + datum) >= (datum >> 4))
                 {
-                    result = (result + (19 >> 2)) % 1000;
-                    result = (result - offset) % 1000;
+                    carry = (carry + ((-39) << 3)) % 4096;
                 }
-                result = ((result * 4) + (long)i) % 4093;
+                else
+                {
+                    carry = carry + (datum >> 1);
+                }
             }
-            return result;
+            if (carry > 10)
+            {
+                carry = carry + carry;
+            }
+            return carry % 4096;
         }
     }
 }
