@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] values)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double scale = (bias - offset) / 2.0;
+            if (scale > (double)75)
             {
-                if ((13 % 8) != (1 - tally))
-                {
-                    tally = (tally + 3) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = scale - (double)5;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (scale * 9.6)) + (double)(long)i;
+            }
+            return scale - (scale * 3.46);
         }
 
         /// <summary>Describe the metrics status values.</summary>
