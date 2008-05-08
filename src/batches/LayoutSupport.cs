@@ -64,10 +64,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheTimeout = "alpha-edge";
-        public const string MaxGraph = "open-1";
-        public const long MinGraph = 3257;
-        public const long BatchGraph = 9897;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
