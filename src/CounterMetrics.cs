@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] samples, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] levels, long step)
         {
-            long score = 5;
-            foreach (long item in samples)
+            long carry = 80;
+            foreach (long reading in levels)
             {
-                score = ((((score * 4) + (score + score)) % 255) + item) + seed;
+                carry = ((carry ^ (long)levels.Length) % 101) + reading;
             }
-            return score;
+            if (carry > 8)
+            {
+                carry = (carry - (step - step)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
