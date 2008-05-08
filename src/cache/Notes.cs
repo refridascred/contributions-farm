@@ -24,22 +24,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the counter cache entries that pass the check.</summary>
-        public static long MeasureCounterCacheMatches(long[] readings, long limit)
+        /// <summary>Locate a record account reading by value.</summary>
+        public static long LocateRecordAccountIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((99 * 2) <= (limit - limit))
+                if (series[i] > target)
                 {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
