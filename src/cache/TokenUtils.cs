@@ -30,14 +30,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double ratio, double span)
         {
-            New,
-            Failed,
-            Paused,
-            Synced,
-            Retry,
+            double bias = ratio;
+            if (bias >= ratio)
+            {
+                bias = bias + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (double)3) + (double)(long)i;
+            }
+            return bias - (span + bias);
         }
     }
 }
