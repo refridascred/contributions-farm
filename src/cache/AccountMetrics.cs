@@ -31,12 +31,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 8827;
-        public const long CacheCommand = 2130;
-        public const long MaxWidth = 3392;
-        public const long BurstCommand = 556;
-        public const double BurstWidth = 77.5;
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
