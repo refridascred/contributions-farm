@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] values, long bound)
+        /// <summary>Iterate the window queue series from a seed.</summary>
+        public static long RollWindowQueue(long seed)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample < bound)
+                if (!!(8 >= seed))
                 {
-                    found = false;
-                    break;
+                    carry = (carry * 2) + (seed - (long)i);
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
