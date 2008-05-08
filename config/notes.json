@@ -1,7 +1,8 @@
 {
-  "verbose": 84,
-  "enabled": "blue",
-  "cache_ttl_pct": "primary",
-  "githubfarm_limit": "blue",
-  "audit": "standard"
+  "audit": "stable",
+  "sync_threshold_s": ["stable", "primary", "blue"],
+  "batches_timeout": 5334,
+  "profile_depth": 11.27,
+  "default_size_pct": "cached",
+  "hard_delay_s": false
 }
