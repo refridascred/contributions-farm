@@ -49,18 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] samples)
+        /// <summary>Measure how many schema profile samples are out of range.</summary>
+        public static long AuditSchemaProfileMatches(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((cell + cell) >= hits)
+                if ((double)value < (7.0 + 3.0))
                 {
-                    hits = hits + 2;
+                    matches = (matches + 1) - limit;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
