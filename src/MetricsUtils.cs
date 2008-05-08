@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Closed,
-            Draft,
-            Active,
+            Stale,
+            New,
+            Queued,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
