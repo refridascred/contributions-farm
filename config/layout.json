@@ -1,12 +1,5 @@
 {
-  "idle_retries_count": false,
-  "enabled": {
-    "route_threshold": [138, 90],
-    "batch_timeout": [12, 8],
-    "entry_threshold": "open",
-    "poll_interval_s": true,
-    "idle_limit_count": 250,
-    "poll_retries_s": "latest"
-  },
-  "audit": false
+  "soft_retries_ms": "staging",
+  "readonly": "primary",
+  "payload_depth": 49.08
 }
