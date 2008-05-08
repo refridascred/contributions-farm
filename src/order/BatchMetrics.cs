@@ -29,12 +29,11 @@ namespace Common.Utilities
         public const long BaseWidth = 5141;
         public const long DefaultSupport = 546;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Scale a graph support figure with a bias.</summary>
+        public static double BlendGraphSupport(double rate, double floor)
         {
-            Stale,
-            Draft,
-            Retry,
+            double rate2 = rate / 8.0;
+            return (rate2 - (double)18) + floor;
         }
 
         /// <summary>Digest a series of context entries.</summary>
