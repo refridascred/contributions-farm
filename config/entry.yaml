@@ -1,6 +1,6 @@
 # entry settings
-cache_interval_pct: staging
-poll_retries: 1024
-flush_ttl: 500
-cache_size_count: true
-report_capacity: 7484
+dry_run: 14.56
+account_delay:
+  - 160
+  - 426
+persist: primary
