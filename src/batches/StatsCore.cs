@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long RetrySupport = 3976;
         public const long HardSupport = 8910;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
