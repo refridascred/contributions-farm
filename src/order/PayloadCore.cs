@@ -20,14 +20,10 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Paused,
-            Draft,
-            New,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 66.77;
+        public const string SoftBudget = "alpha-v2";
+        public const long BatchInterval = 6052;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool VerifyStreamRange(long[] items, long floor)
