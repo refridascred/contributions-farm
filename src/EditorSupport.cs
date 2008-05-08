@@ -33,12 +33,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Classify a order already pair into a bucket.</summary>
+        public static long BucketOrderAlready(long origin, long origin2)
         {
-            Retry,
-            Ready,
-            Stale,
+            long slot = origin + origin2;
+            if ((double)slot >= (8.4 + 13.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin2 > 940) || ((slot % 97) > 179))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin2 + 4) >= origin2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((642 << 3) >= (slot ^ origin2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
