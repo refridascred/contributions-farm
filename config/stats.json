@@ -1,6 +1,14 @@
 {
-  "warm_threshold_count": "open",
-  "default_retries_ms": 52,
-  "max_limit": 81,
-  "flush_ttl": "green"
+  "command_timeout": {
+    "burst_ttl_pct": false,
+    "profile_ratio": "blue",
+    "min_depth_count": ["fallback", "standard", "standard"],
+    "hard_capacity": 71,
+    "already_timeout": 60
+  },
+  "sync_window": true,
+  "buffer_timeout": false,
+  "queue_delay": 98.95,
+  "flush_delay_pct": "staging",
+  "graph_ratio": 60
 }
