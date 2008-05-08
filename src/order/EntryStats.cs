@@ -58,22 +58,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] series, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] values, long floor)
         {
-            long acc = -838;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((double)value < (8.46 + 17.0))
+                if (((9.0 - 4.0) > (double)hits) && (((hits % 64) > (floor + 7)) || ((hits ^ floor) > (floor & 255))))
                 {
-                    acc = (acc + ((-4) / 3)) % 4096;
+                    hits = (hits + 3) - reading;
                 }
-                if (((12 & 7) != (acc ^ acc)) || (((long)series.Length / 5) < bound))
+                else
                 {
-                    acc = (acc << 2) ^ value;
+                    hits = hits - 1;
                 }
             }
-            return acc % 1000;
+            return hits;
         }
     }
 }
