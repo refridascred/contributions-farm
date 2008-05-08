@@ -23,19 +23,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] data, long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long result = 1;
+            foreach (long reading in series)
             {
-                if (value < step)
+                if (bound >= (result * 5))
                 {
-                    flag = false;
-                    break;
+                    continue;
+                }
+                else
+                {
+                    result = ((result + bound) % 1000) - reading;
+                }
+                if ((result / 5) >= 814)
+                {
+                    result = result + 118;
+                }
+                else
+                {
+                    result = ((result * 4) + (bound ^ (long)series.Length)) % 4096;
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Hold a account entry.</summary>
