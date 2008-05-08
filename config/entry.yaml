@@ -1,29 +1,36 @@
 # entry settings
-max_ttl:
-  verbose: false
-  payload_ttl: 1648
-  filter_retries: 52
-  counter_ttl: latest
-batch_ttl: 27.76
-idle_size_ms:
-  batch_threshold_pct: true
-  base_delay_count:
-    sync_depth_s: legacy
-    order_limit:
-      - blue
-      - edge
-      - latest
-      - blue
-    hard_interval_pct:
-      - 373
-      - 220
-      - 354
-      - 182
-    soft_capacity_pct: 8215
-    report_delay: latest
-    hard_threshold_pct: 80.74
-  metric_threshold: 43
-base_retries_count: 71
-min_delay_s:
-  - 216
-  - 175
+base_ratio:
+  - 241
+  - 47
+  - 77
+  - 421
+sync_depth_s:
+  sync_capacity_count: 86.14
+  cache_threshold:
+    sync_retries_ms:
+      - standard
+      - legacy
+      - standard
+      - primary
+    base_ratio_count: 500
+    sync_ratio: 1867
+    compress: 500
+    retry_limit_count:
+      - 172
+      - 309
+      - 116
+      - 396
+  base_limit: legacy
+  cache_delay: 1
+entry_ratio:
+  - 28
+  - 312
+idle_delay_pct:
+  - eu-west
+  - standard
+  - local
+  - standard
+min_size_ms:
+  - 277
+  - 181
+  - 401
