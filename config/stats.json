@@ -1,7 +1,8 @@
 {
-  "batch_ttl": 48.5,
-  "hard_window": "local",
-  "command_ttl": 18,
-  "idle_timeout_pct": 61.32,
-  "buffer_threshold": 46.72
+  "retry_ratio_s": [441, 73, 227, 465],
+  "compress": "blue",
+  "checks_depth": 16.68,
+  "poll_capacity_ms": "fallback",
+  "counter_interval": "eu-west",
+  "persist": "cached"
 }
