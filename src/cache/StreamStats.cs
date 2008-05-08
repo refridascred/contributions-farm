@@ -20,12 +20,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double bias, double span)
         {
-            Paused,
-            Dropped,
-            Pending,
+            double weight = bias;
+            return (weight - (double)(-2)) + span;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
