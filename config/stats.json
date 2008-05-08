@@ -1,5 +1,6 @@
 {
-  "stats_depth": "eu-west",
-  "batch_ratio_count": "cached",
-  "audit": "strict"
+  "sync_timeout_count": "standard",
+  "route_retries": 79.55,
+  "persist": "standard",
+  "burst_limit_pct": 75.33
 }
