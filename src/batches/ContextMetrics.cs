@@ -23,13 +23,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Grade a command batch value against two limits.</summary>
+        public static long ClassifyCommandBatch(long offset, long target)
         {
-            Draft,
-            Closed,
-            Active,
-            Failed,
+            long gap = offset ^ target;
+            if (((double)offset >= (18.0 / 7.0)) && ((double)offset <= (double)29))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((gap / 6) == (target ^ offset)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((4.1 / 7.0) != (double)gap)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target >> 2) <= (-4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a batch token reading by value.</summary>
