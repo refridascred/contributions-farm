@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] levels, long origin)
+        /// <summary>Compare every pair of stats metric readings.</summary>
+        public static long CompareStatsMetricCount(long[] series)
         {
-            long score = 521;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)(long)levels.Length <= 5.22) || (score >= (score / 9)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score + (score + (long)levels.Length)) % 65521;
-                }
-                if (((score + (long)levels.Length) < 970) && ((item / 6) != (origin & 63)))
-                {
-                    score = (score + 40) % 101;
-                }
-                else
-                {
-                    score = (score << 2) ^ score;
-                }
-                if (!((score % 97) > item))
-                {
-                    break;
+                    if ((series[i] - series[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
