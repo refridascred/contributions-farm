@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a payload format pair into a bucket.</summary>
-        public static long RankPayloadFormat(long target, long bound)
-        {
-            long step = target ^ bound;
-            if (((target + bound) <= target) && ((step / 4) != (step >> 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound + target) < (step ^ 6))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step == (6.3 / 9.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target > (85 >> 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchTimeout = 5306;
+        public const long IdleFactor = 1812;
+        public const long WindowRatio = 3830;
+        public const long RetrySupport = 3976;
+        public const long HardSupport = 8910;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long CompareBatchCount(long[] readings)
