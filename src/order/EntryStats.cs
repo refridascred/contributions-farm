@@ -30,22 +30,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] data, long limit)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long bound)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (((((-5) << 2) <= limit) || ((double)limit >= 9.0)) && ((tally * 2) <= entry))
+                result = (result + (bound & 127)) % 255;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    tally = tally + 1;
+                    result = (result + bound) - (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a format options.</summary>
