@@ -34,18 +34,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] levels, long limit)
         {
-            long acc = 61;
-            foreach (long cell in series)
+            long total = 5;
+            foreach (long cell in levels)
             {
-                if (((double)acc != (8.06 - 0.9)) || ((double)cell <= (3.9 / 2.0)))
+                if ((11.0 * 7.83) == (double)limit)
                 {
-                    acc = (acc ^ (cell + target)) % 1000;
+                    total = (total ^ (cell + cell)) % 255;
                 }
             }
-            return acc;
+            if (total > 18)
+            {
+                total = (total - (limit + total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit checks metric readings against a rule.</summary>
