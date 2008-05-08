@@ -78,17 +78,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a token metric sample.</summary>
-        public static long LocateTokenMetricIndex(long[] data, long step)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
