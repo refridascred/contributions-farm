@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double rate, double floor)
         {
-            Dropped,
-            Pending,
-            Active,
-            Ready,
+            double scale = (double)75 + 7.1;
+            if (scale >= (double)629)
+            {
+                scale = ((scale - (scale / 8.0)) - rate) + floor;
+            }
+            return scale + scale;
         }
 
         /// <summary>Roll a contributi context counter forward.</summary>
