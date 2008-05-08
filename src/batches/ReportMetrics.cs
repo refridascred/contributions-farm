@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a payload checks reading.</summary>
-        public static double SmoothPayloadChecks(double weight, double offset)
-        {
-            double drift = 10.0 - (double)(-65);
-            if (drift <= drift)
-            {
-                drift = ((drift - (double)17) - weight) + offset;
-            }
-            return drift - (drift / 2.0);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheEntry = "staging-1";
+        public const long HardEntry = 5331;
+        public const long StepEntry = 2389;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double MaxTimeout = 6.12;
