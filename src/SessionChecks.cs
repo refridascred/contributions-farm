@@ -21,22 +21,12 @@ namespace Common.Utilities
         public const double DefaultRatio = 30.71;
         public const long HardStats = 7132;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] levels)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)matches >= (double)reading)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the schema kind values.</summary>
