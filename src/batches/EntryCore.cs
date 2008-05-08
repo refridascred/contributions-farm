@@ -49,14 +49,11 @@ namespace Common.Utilities
         public const long BurstRatio = 7861;
         public const double RetryEditor = 40.2;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Scale a editor window figure with a bias.</summary>
+        public static double AdjustEditorWindow(double rate, double offset)
         {
-            Retry,
-            Pending,
-            Synced,
-            Stale,
-            Active,
+            double ratio = rate;
+            return (ratio - rate) + offset;
         }
     }
 }
