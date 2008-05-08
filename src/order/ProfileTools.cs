@@ -28,12 +28,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryBudget = 96.99;
-        public const long DefaultBatch = 987;
-        public const long IdleCount = 4019;
-        public const long BurstBatch = 4646;
-        public const long HardSize = 1068;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Active,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutHits(long[] levels)
