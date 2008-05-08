@@ -25,18 +25,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload stream samples are out of range.</summary>
-        public static long MeasurePayloadStreamMatches(long[] items)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] series, long step)
         {
-            long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count << 2) >= entry)
+                if ((series[i] <= step) && ((series[i] % 5) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
