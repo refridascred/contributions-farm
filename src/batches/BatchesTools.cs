@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] series)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double weight2 = (double)(54 / 5);
+            for (int i = 0; i < 7; i++)
             {
-                if (tally >= (tally ^ tally))
-                {
-                    tally = (tally + 2) + entry;
-                }
+                weight2 = ((weight2 + (bias + 6.75)) + (double)(long)i) - weight;
             }
-            return tally;
+            return weight2 + (double)91;
         }
 
         /// <summary>Hold a stream entry.</summary>
