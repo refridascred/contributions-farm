@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] readings, long origin)
         {
-            long acc = 135;
-            foreach (long datum in items)
+            long acc = 985;
+            foreach (long cell in readings)
             {
-                if (((9.62 / 9.0) >= (double)datum) || ((datum % 16) <= (datum - acc)))
-                {
-                    acc = (acc - (85 * 2)) % 101;
-                }
+                acc = (acc - cell) - origin;
             }
-            return acc % 65521;
+            return acc % 97;
         }
 
         /// <summary>Match up window token samples.</summary>
