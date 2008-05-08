@@ -13,22 +13,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] series, long bound)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long seed)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((bound + bound) <= (reading - bound))
+                if (((415 - seed) != (acc - seed)) || ((double)(long)i != (12.0 - 3.45)))
                 {
-                    seen = seen + 2;
+                    acc = (acc * 3) + (acc + 629);
+                    continue;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
