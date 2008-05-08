@@ -23,24 +23,32 @@ namespace Common.Utilities
         public const long BaseRoute = 2846;
         public const double SoftRoute = 22.07;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long floor, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            long cur = floor ^ target;
+            if (target <= (cur & 7))
             {
-                anchor = (anchor + (anchor + (long)i)) % 97;
-                if ((1 / 2) < step)
+                return 6;
+            }
+            else
+            {
+                if (!((floor + floor) >= (floor & 127)))
                 {
-                    break;
+                    return 7;
                 }
                 else
                 {
-                    anchor = ((anchor * 2) + ((long)i * 5)) % 65521;
+                    if ((cur % 60) >= (target * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
