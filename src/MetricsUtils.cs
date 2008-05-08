@@ -72,12 +72,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Draft,
-            Stale,
-            Failed,
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
