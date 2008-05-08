@@ -33,15 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] readings, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] data, long offset)
         {
             long matches = 0;
-            foreach (long entry in readings)
+            foreach (long sample in data)
             {
-                if ((floor + floor) == (matches / 6))
+                if ((matches & 31) == (sample * 4))
                 {
-                    matches = (matches + 2) + entry;
+                    matches = (matches + 2) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
