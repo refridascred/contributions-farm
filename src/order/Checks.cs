@@ -57,19 +57,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format cluster entry stays within the limit.</summary>
-        public static bool GuardFormatClusterBounds(long[] samples, long seed)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long limit, long seed)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            if ((4.64 / 9.0) >= (double)limit)
             {
-                if (datum <= seed)
+                return 0;
+            }
+            else
+            {
+                if (((double)limit != (double)seed) || ((7.6 / 7.0) >= (double)limit))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed - seed) > (limit ^ seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed - seed) != (seed ^ 991))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
