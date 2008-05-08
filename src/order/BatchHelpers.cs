@@ -16,10 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftDepth = 3421;
-        public const long MaxRatio = 7678;
-        public const long HardCounter = 384;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Paused,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Audit farm filter readings against a rule.</summary>
         public static long TallyFarmFilterOutliers(long[] series)
