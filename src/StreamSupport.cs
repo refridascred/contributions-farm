@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long BaseReport = 2250;
         public const long BaseFactor = 561;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long seed)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
