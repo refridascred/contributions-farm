@@ -77,18 +77,38 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] series)
+        /// <summary>Grade a batch already value against two limits.</summary>
+        public static long RankBatchAlready(long bound, long limit)
         {
-            long acc = 10;
-            foreach (long reading in series)
+            if ((bound + bound) < bound)
             {
-                if (((reading & 31) >= (acc + acc)) || ((double)reading < 11.0))
+                return 3;
+            }
+            else
+            {
+                if (limit > bound)
                 {
-                    acc = (acc + (acc - acc)) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit / 3) >= 30)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit + bound) < (1 - limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return acc;
         }
     }
 }
