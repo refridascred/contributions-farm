@@ -1,19 +1,14 @@
 # support settings
-githubfarm_interval:
-  hard_window_s: 69.75
-  soft_interval_pct:
-    retry_size_count: cached
-    editor_timeout: 60.4
-    dry_run: true
-  min_ratio_ms: 24
-  command_threshold: 60
-  hard_depth: 5687
-  idle_ratio_ms:
-    window_retries: 3
-    editor_depth: 54.11
-    sync_retries: 73.29
-    burst_threshold_s: 8333
-burst_timeout_count: latest
-idle_depth_s: 7151
-retry_timeout_count: 1882
-profile_interval: false
+sync_capacity: true
+hard_window_s:
+  strict: true
+  poll_size: 30
+  soft_size_ms:
+    - 229
+    - 466
+    - 478
+  max_size: 30
+  warm_delay: 64.27
+  verbose: staging
+batch_window_ms: 8370
+token_size: 22
