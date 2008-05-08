@@ -1,13 +1,8 @@
 {
-  "cache_capacity_s": false,
-  "flush_ratio_ms": {
-    "max_timeout": "cached",
-    "soft_threshold_count": true,
-    "stream_limit": [321, 244, 55, 1],
-    "batch_ratio": false,
-    "flush_depth_pct": 78
-  },
-  "token_window": 85.49,
-  "max_depth": 60,
-  "dry_run": 4692
+  "verbose": true,
+  "burst_capacity": true,
+  "metric_retries": "legacy",
+  "readonly": 250,
+  "warm_delay_ms": true,
+  "checks_size": "green"
 }
