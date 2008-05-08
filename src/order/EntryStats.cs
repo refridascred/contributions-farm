@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinBudget = "open-v2";
-        public const long HardRatio = 1696;
-        public const long MinInterval = 4475;
-        public const string MaxSpan = "staging-edge";
-        public const string HardFactor = "latest-1";
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Retry,
+            Stale,
+            Active,
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
