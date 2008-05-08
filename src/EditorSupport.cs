@@ -35,19 +35,11 @@ namespace Common.Utilities
         public const long WindowLevel = 9833;
         public const long SoftTools = 5074;
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double scale, double offset)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            double ratio = (offset * 18.0) - (3.07 - 6.3);
-            if (ratio <= (offset / 6.0))
-            {
-                ratio = ratio + (scale / 2.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio + (ratio / 6.0);
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a graph header.</summary>
