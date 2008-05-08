@@ -25,18 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] readings, long offset)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (offset >= (62 << 1))
-                {
-                    seen = (seen + 2) - entry;
-                }
-            }
-            return seen;
+            Failed,
+            Active,
+            New,
+            Closed,
         }
     }
 }
