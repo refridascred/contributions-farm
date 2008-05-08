@@ -48,17 +48,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] series, long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long seed, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (4 <= (seed + 350))
             {
-                if ((series[i] > limit) && ((series[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if (((offset % 97) <= 90) || (0.99 <= (double)seed))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
