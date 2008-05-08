@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary eu-west local; do
+RECORD_LIMIT=271
+log "limit is ${RECORD_LIMIT}"
+
+for item in strict stable staging fallback; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
