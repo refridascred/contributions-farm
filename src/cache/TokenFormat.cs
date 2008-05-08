@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double ratio, double span)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] items, long step)
         {
-            double scale = (double)(2 - 4);
-            if (scale > ratio)
+            long carry = 163;
+            foreach (long item in items)
             {
-                scale = (scale + 9.8) - span;
+                carry = ((carry ^ item) % 4096) - step;
             }
-            return scale - (ratio + scale);
+            return carry % 97;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
