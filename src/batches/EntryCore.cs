@@ -37,18 +37,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of entry command readings.</summary>
-        public static long CombineEntryCommand(long[] levels, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] series)
         {
-            long state = 5;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (((-4) & 3) >= (state + 2))
+                if (!(9.0 < (double)value))
                 {
-                    state = state ^ (item + origin);
+                    seen = seen + 2;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Digest a series of metric format entries.</summary>
