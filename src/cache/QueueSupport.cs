@@ -23,14 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double gain, double bias)
         {
-            Dropped,
-            Ready,
-            Paused,
-            Failed,
-            Active,
+            double ratio = bias;
+            if (ratio >= gain)
+            {
+                ratio = ratio + (bias + gain);
+            }
+            return ratio + gain;
         }
 
         /// <summary>Combine record values into a single score.</summary>
