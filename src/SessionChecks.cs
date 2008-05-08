@@ -36,13 +36,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] levels)
         {
-            Closed,
-            Stale,
-            Synced,
-            Pending,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)matches >= (double)reading)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the notes phase values.</summary>
