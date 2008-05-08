@@ -62,13 +62,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            Closed,
+            Stale,
+            Done,
         }
     }
 }
