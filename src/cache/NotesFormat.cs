@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseInterval = 3120;
-        public const string SoftSpan = "latest-edge";
-        public const long BatchSpan = 1380;
-        public const long MaxRatio = 1257;
-        public const double LimitStream = 60.0;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Stale,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double SmoothCommits(double weight, double span)
