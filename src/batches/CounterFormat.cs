@@ -14,20 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] readings, long seed)
-        {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 5118;
+        public const double DefaultInterval = 72.27;
+        public const double LimitInterval = 37.54;
+        public const long IdleSize = 5108;
 
         /// <summary>Project the next editor value.</summary>
         public static double BlendEditor(double scale, double bias)
