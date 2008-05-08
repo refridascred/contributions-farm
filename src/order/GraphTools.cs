@@ -59,19 +59,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = ((result << 3) ^ ((long)i2 % 7)) % 65521;
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                carry = (carry - (limit - carry)) % 65521;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
