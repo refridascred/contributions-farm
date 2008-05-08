@@ -31,17 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] data, long limit)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (data[i] > limit)
+                if ((7.0 * 15.0) == (double)anchor)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (60 >> 4)) % 4096;
                 }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Match up metrics samples.</summary>
