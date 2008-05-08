@@ -58,24 +58,19 @@ namespace Common.Utilities
             return ((rate2 - (rate2 * 8.12)) + rate) + offset;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double gain, double span)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            double scale = (double)((-390) % 10);
+            if (scale < (double)108)
             {
-                long seen = (score << 1) & 15;
-                if ((double)seen != (double)origin)
-                {
-                    continue;
-                }
-                if ((seen - seen) == (origin * 5))
-                {
-                    seen = seen - ((long)i - origin);
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                scale = (scale + (7.45 * 11.0)) + gain;
             }
-            return score;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + span) + (double)(long)i;
+            }
+            return scale + span;
         }
     }
 }
