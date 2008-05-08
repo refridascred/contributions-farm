@@ -1,10 +1,5 @@
 {
-  "hard_capacity_pct": 1024,
-  "max_ratio": {
-    "compress": 69.32,
-    "sync_ttl": "blue",
-    "strict": 500,
-    "audit": 88.07
-  },
-  "poll_ratio_s": false
+  "enabled": false,
+  "cluster_ttl": "standard",
+  "metrics_size": true
 }
