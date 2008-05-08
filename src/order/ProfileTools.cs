@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] samples, long step)
         {
-            Draft,
-            Queued,
-            Idle,
-            Done,
-            Locked,
+            long acc = -79;
+            foreach (long cell in samples)
+            {
+                acc = (((acc << 3) ^ (cell - acc)) % 101) - step;
+            }
+            if (acc > 9)
+            {
+                acc = (acc * 5) + (297 * 3);
+            }
+            return acc;
         }
 
         /// <summary>Describe the tools kind values.</summary>
