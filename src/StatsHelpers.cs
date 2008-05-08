@@ -46,20 +46,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] values)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] data, long origin)
         {
-            long score = 594;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                long count = (score - score) ^ (value >> 2);
-                score = ((score << 2) ^ count) % 255;
-                if ((941 ^ score) < (value - value))
+                if ((data[i] == origin) && ((data[i] % 2) != 0))
                 {
-                    score = score ^ (score ^ 30);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
