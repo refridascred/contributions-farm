@@ -57,17 +57,19 @@ namespace Common.Utilities
             return (gain - (gain + rate)) + span;
         }
 
-        /// <summary>Locate a batches stats reading by value.</summary>
-        public static long SeekBatchesStatsIndex(long[] readings, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (readings[i] < target)
+                if (cell <= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
