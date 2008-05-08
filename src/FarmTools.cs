@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] readings)
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if (!(((item + (-1)) < item) && ((20.0 - 6.6) != (double)item)))
+                {
+                    count = count + 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Fold a list of token readings.</summary>
