@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] readings)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long score = 5;
+            foreach (long item in samples)
             {
-                if (((-91) - cell) == (seen % 3))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((((score * 4) + (score + score)) % 255) + item) + seed;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
