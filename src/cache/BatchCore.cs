@@ -57,10 +57,19 @@ namespace Common.Utilities
         public const long HardFactor = 7017;
         public const double MaxCount = 72.78;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 3351;
-        public const double RetryCount = 55.08;
-        public const long LimitContributi = 225;
-        public const long RetryBudget = 671;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] levels, long seed)
+        {
+            long mark = 146;
+            foreach (long item in levels)
+            {
+                if (item > mark)
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (mark + mark)) - seed;
+            }
+            return mark;
+        }
     }
 }
