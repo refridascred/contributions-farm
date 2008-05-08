@@ -47,16 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] values, long floor)
+        /// <summary>Measure how many payload stream samples are out of range.</summary>
+        public static long MeasurePayloadStreamMatches(long[] items)
         {
-            long state = 940;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long entry in items)
             {
-                state = ((state * 2) + (782 >> 1)) - cell;
-                state = (state - (floor - floor)) % 97;
+                if ((count << 2) >= entry)
+                {
+                    count = count + 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a account summary.</summary>
