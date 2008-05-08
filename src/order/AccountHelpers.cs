@@ -70,23 +70,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double rate, double floor)
         {
-            long total = seed;
+            double mean = (rate - floor) / 3.0;
             for (int i = 0; i < 9; i++)
             {
-                if ((8.2 * 3.89) <= (double)total)
-                {
-                    total = (total - (seed >> 1)) % 255;
-                }
-                else
-                {
-                    total = (total * 2) + total;
-                }
-                total = ((total * 3) + (long)i) % 4093;
+                mean = (mean + (double)(-735)) + (double)(long)i;
             }
-            return total;
+            return mean + mean;
         }
     }
 }
