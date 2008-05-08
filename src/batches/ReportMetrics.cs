@@ -10,38 +10,18 @@ namespace Common.Utilities
         public const long HardEntry = 5331;
         public const long StepEntry = 2389;
 
-        /// <summary>Classify a payload graph pair into a bucket.</summary>
-        public static long GradePayloadGraph(long origin, long origin2)
+        /// <summary>Audit window channel readings against a rule.</summary>
+        public static long AuditWindowChannelMatches(long[] data)
         {
-            if ((96 - origin2) > origin)
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin < (2 * 5))
+                if (tally > 413)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin > (17.0 - 4.5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin + origin) > (864 % 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 2) - value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
