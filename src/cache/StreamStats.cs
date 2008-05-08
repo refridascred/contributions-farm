@@ -16,20 +16,17 @@ namespace Common.Utilities
             return drift + 4.6;
         }
 
-        /// <summary>Accumulate commits report samples.</summary>
-        public static long DigestCommitsReport(long[] samples)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] levels, long target)
         {
-            long state = 6;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state + (state + state)) % 101) ^ item;
-                state = state - state;
+                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > 7)
-            {
-                state = (state - (75 ^ state)) % 97;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
