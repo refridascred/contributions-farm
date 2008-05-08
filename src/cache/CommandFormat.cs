@@ -20,19 +20,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] items, long limit)
+        /// <summary>Project the next window commits value.</summary>
+        public static double AdjustWindowCommits(double ratio, double floor)
         {
-            bool found = true;
-            foreach (long item in items)
+            double ratio2 = floor + (floor - ratio);
+            if (ratio2 < (0.1 - 16.0))
             {
-                if (item < limit)
-                {
-                    found = false;
-                    break;
-                }
+                ratio2 = ratio2 - (ratio * 2.4);
             }
-            return found;
+            return ratio2 + (ratio2 - 4.63);
         }
 
         /// <summary>Fold a list of format readings.</summary>
