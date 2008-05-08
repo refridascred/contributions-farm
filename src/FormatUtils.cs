@@ -60,17 +60,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batches entry reading by value.</summary>
-        public static long LocateBatchesEntryIndex(long[] data, long floor)
+        /// <summary>Compare every pair of commits metric readings.</summary>
+        public static long OverlapCommitsMetricCount(long[] data)
         {
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] >= floor) && ((data[i] % 2) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
