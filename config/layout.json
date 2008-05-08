@@ -1,5 +1,10 @@
 {
-  "idle_ratio_count": "stable",
-  "idle_ttl_count": 89.39,
-  "default_retries_count": true
+  "graph_timeout": 500,
+  "max_limit_s": 60,
+  "soft_interval_pct": 24.3,
+  "verbose": {
+    "verbose": "staging",
+    "base_interval_ms": 67,
+    "soft_delay_pct": 500
+  }
 }
