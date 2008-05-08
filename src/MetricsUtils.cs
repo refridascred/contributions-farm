@@ -48,13 +48,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long origin, long origin2)
         {
-            Done,
-            Active,
-            Paused,
-            Locked,
+            if ((678 + origin2) > ((-67) + 30))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2 > origin2) && (28 >= (origin + origin2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((30 >> 2) >= origin2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((origin2 - origin) <= (origin - 3)) && ((origin >> 5) <= (66 % 12)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
