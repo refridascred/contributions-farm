@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] readings, long floor)
-        {
-            long mix = 43;
-            foreach (long reading in readings)
-            {
-                if ((reading * 4) > (reading ^ reading))
-                {
-                    mix = (mix ^ (reading - reading)) % 101;
-                }
-                else
-                {
-                    mix = mix - mix;
-                }
-            }
-            if (mix < 166)
-            {
-                mix = (mix + floor) % 101;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheContributi = "legacy-1";
+        public const string BatchWidth = "latest-v2";
+        public const long SoftScore = 6118;
+        public const string IdleContributi = "latest-edge";
+        public const string DefaultLevel = "staging-v2";
 
         /// <summary>Validate profile stats readings against a bound.</summary>
         public static bool CheckProfileStatsLimits(long[] data, long floor)
