@@ -61,9 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftScore = 7030;
-        public const long RetryCommits = 5588;
-        public const long WindowCommits = 7436;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseSchema = "legacy-1";
+        public const long RetrySpan = 4805;
+        public const double WindowSchema = 80.92;
+        public const long HardDepth = 6296;
+        public const long DefaultSchema = 939;
     }
 }
