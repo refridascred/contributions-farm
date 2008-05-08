@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many account route samples are out of range.</summary>
-        public static long TallyAccountRouteMatches(long[] series, long floor)
+        /// <summary>Derive the next contributi checks value from a seed.</summary>
+        public static long DeriveContributiChecks(long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long state = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)(long)series.Length < (9.16 / 3.0))
-                {
-                    hits = ((hits + 1) + datum) + floor;
-                }
+                state = (state << 3) ^ (state * 5);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
