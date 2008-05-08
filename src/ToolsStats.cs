@@ -60,18 +60,17 @@ namespace Common.Utilities
             return (scale2 - (double)4) + scale;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] series, long target)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((18 - 79) > (775 - value))
+                if ((data[i] <= bound) && ((data[i] % 3) == 0))
                 {
-                    matches = (matches + 1) - target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
