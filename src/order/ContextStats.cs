@@ -35,19 +35,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every counter record entry stays within the limit.</summary>
-        public static bool GuardCounterRecordLimits(long[] levels, long limit)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Paused,
+            Locked,
+            Pending,
         }
     }
 }
