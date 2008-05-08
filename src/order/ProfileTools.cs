@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] items, long step)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] readings, long target)
         {
-            long carry = 38;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry ^ (583 - step)) ^ sample;
-                carry = (carry - (carry + carry)) % 1000;
+                if ((readings[i] > target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 38)
-            {
-                carry = (carry * 3) + (carry + 727);
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Audit tools session readings against a rule.</summary>
