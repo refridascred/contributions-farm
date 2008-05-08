@@ -104,17 +104,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first report payload entry that matches the target.</summary>
-        public static long LocateReportPayloadIndex(long[] values, long limit)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((values[i] == limit) && ((values[i] % 2) != 0))
+                if (datum > step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Accumulate order samples.</summary>
