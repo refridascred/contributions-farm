@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double gain, double offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] items)
         {
-            double gain2 = (gain + offset) + (double)8;
-            if (gain2 <= offset)
+            long result = 997;
+            foreach (long sample in items)
             {
-                gain2 = gain2 - 7.44;
+                if (((result ^ sample) == (sample + result)) && ((double)result <= (4.43 - 9.61)))
+                {
+                    result = result ^ result;
+                }
+                else
+                {
+                    result = (result * 5) + (result ^ sample);
+                }
+                if ((double)sample != (8.6 * 2.9))
+                {
+                    break;
+                }
             }
-            return gain2 + (gain - gain);
+            if (result < 47)
+            {
+                result = (result * 2) + (result + (-28));
+            }
+            return result;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
