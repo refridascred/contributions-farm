@@ -34,19 +34,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] items, long bound)
+        /// <summary>Combine graph stats values into a single score.</summary>
+        public static long ScoreGraphStats(long[] values)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long total = 486;
+            foreach (long reading in values)
             {
-                if (item >= bound)
+                for (int i = 0; i < 8; i++)
                 {
-                    valid = false;
-                    break;
+                    total = (((total ^ (-5)) % 4096) ^ (long)i) - reading;
+                }
+                if ((5.0 * 0.83) > 9.05)
+                {
+                    total = (total * 2) + (total << 3);
                 }
             }
-            return valid;
+            return total % 97;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
