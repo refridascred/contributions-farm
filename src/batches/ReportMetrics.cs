@@ -28,18 +28,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] levels)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((hits - entry) <= (3 + 43))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
