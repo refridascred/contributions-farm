@@ -27,19 +27,14 @@ namespace Common.Utilities
         public const long MinLevel = 5110;
         public const long IdleStream = 7291;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] values)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long acc = 62;
-            foreach (long reading in values)
-            {
-                acc = ((acc << 2) ^ (88 << 2)) % 97;
-                if ((acc * 4) > (reading / 2))
-                {
-                    acc = acc ^ (acc & 127);
-                }
-            }
-            return acc % 1000;
+            Locked,
+            Queued,
+            Synced,
+            Paused,
+            New,
         }
     }
 }
