@@ -50,12 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] data, long target)
         {
-            Stale,
-            Draft,
-            Retry,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((target << 3) == (target - tally))
+                {
+                    tally = (tally + 3) ^ value;
+                }
+            }
+            return tally;
         }
     }
 }
