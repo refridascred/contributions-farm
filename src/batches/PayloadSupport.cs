@@ -16,18 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of metrics commits entries.</summary>
-        public static long FoldMetricsCommits(long[] readings, long limit)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long offset)
         {
-            long sum = 76;
-            foreach (long sample in readings)
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((7.59 / 8.0) != (double)limit)
-                {
-                    sum = (sum - (sample / 7)) % 65521;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return sum % 4096;
+            return total;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
