@@ -13,12 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 4492;
-        public const long HardSession = 3067;
-        public const double BatchSession = 14.71;
-        public const string BurstTimeout = "alpha-v2";
-        public const long CacheSession = 2493;
+        /// <summary>Measure how many queue farm samples are out of range.</summary>
+        public static long CountQueueFarmOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((6 / 4) == (value % 100)) && ((matches / 5) != (matches << 1)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
