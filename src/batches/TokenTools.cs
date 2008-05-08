@@ -20,10 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 2496;
-        public const long BurstFactor = 7739;
-        public const string HardWindow = "fallback-1";
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] samples, long origin)
+        {
+            long score = 3;
+            foreach (long entry in samples)
+            {
+                if ((score ^ entry) > (origin / 3))
+                {
+                    score = (score << 3) ^ (entry * 2);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long StepBatches = 9561;
