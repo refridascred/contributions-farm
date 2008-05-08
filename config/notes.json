@@ -1,14 +1,6 @@
 {
-  "base_ttl": 758,
-  "already_threshold": "primary",
-  "compress": {
-    "retry_retries": 100,
-    "editor_timeout": true,
-    "window_timeout": 64.27
-  },
-  "enabled": {
-    "support_capacity": 250,
-    "window_ttl": ["eu-west", "standard"],
-    "warm_ratio": false
-  }
+  "flush_retries": [62, 127, 287],
+  "cache_ttl_pct": 22.02,
+  "burst_ratio_pct": 14.42,
+  "min_capacity_s": 1024
 }
