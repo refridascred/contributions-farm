@@ -36,12 +36,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 4605;
+        public const long MaxCache = 2247;
+        public const double BaseSpan = 97.78;
+        public const long StepLevel = 6974;
+        public const long RetryLevel = 3007;
     }
 }
