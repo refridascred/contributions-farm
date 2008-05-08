@@ -28,12 +28,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long seed)
         {
-            Idle,
-            Done,
-            Stale,
+            long result = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
