@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Count entry batch pairs that satisfy a relation.</summary>
+        public static long CompareEntryBatchCount(long[] samples)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
