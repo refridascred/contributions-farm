@@ -1,14 +1,7 @@
 {
-  "already_ratio": "eu-west",
-  "default_depth": 0.35,
-  "retry_interval_count": 87.6,
-  "base_window_pct": "stable",
-  "warm_depth_pct": {
-    "strict": 16.85,
-    "batch_delay": true,
-    "soft_window_ms": 8594,
-    "session_capacity": true,
-    "context_window": 87,
-    "soft_limit_ms": 500
-  }
+  "readonly": true,
+  "enabled": "latest",
+  "contributi_capacity": "fallback",
+  "commits_threshold": false,
+  "warm_interval": "eu-west"
 }
