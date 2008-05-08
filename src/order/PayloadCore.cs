@@ -54,18 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] values)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seen * 3) < seen)
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
