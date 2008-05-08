@@ -48,21 +48,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] data)
+        /// <summary>Count the tools record entries that pass the check.</summary>
+        public static long MeasureToolsRecordMatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally >> 5) == (tally * 5))
                 {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
