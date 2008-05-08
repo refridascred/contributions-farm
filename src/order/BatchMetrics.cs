@@ -53,39 +53,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long offset, long seed)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long next = offset ^ seed;
-            if ((5.37 / 8.0) < (double)seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((87 - 8) >= (next & 15)) || ((double)offset <= (0.38 - 8.1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed << 3) == (seed / 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset <= 6)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Draft,
+            Retry,
+            Dropped,
+            Queued,
         }
     }
 }
