@@ -54,17 +54,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] readings, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((readings[i] > floor) && ((readings[i] % 3) == 0))
+                if ((0.3 - 14.0) == (double)reading)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
