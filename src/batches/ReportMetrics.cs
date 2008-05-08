@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Measure how many cache githubfarm samples are out of range.</summary>
+        public static long TallyCacheGithubfarmHits(long[] items)
         {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry / 4) >= (39 + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
