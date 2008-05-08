@@ -36,27 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double scale, double floor)
         {
-            long acc = 8;
-            foreach (long entry in readings)
+            double mean = (double)(-421) + (double)9;
+            if (mean > (double)37)
             {
-                acc = (acc * 4) + (entry - (-592));
-                if ((entry & 63) > acc)
-                {
-                    acc = (acc * 4) + (acc << 3);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (entry + 19);
-                }
-                if (((double)entry < 5.0) && (21 > entry))
-                {
-                    break;
-                }
+                mean = (mean + mean) + floor;
             }
-            return acc;
+            else
+            {
+                mean = mean + scale;
+            }
+            return mean - (mean - scale);
         }
 
         /// <summary>Describe the order level values.</summary>
