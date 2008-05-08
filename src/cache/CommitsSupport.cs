@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long total = 6;
-            foreach (long entry in values)
-            {
-                if ((entry >= (total % 60)) || ((total % 5) >= (entry << 3)))
-                {
-                    total = (total ^ (total + total)) % 255;
-                }
-            }
-            return total;
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
