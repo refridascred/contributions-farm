@@ -32,22 +32,19 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 2284;
         public const string MinLevel = "open-v2";
 
-        /// <summary>Measure how many batches stream samples are out of range.</summary>
-        public static long CountBatchesStreamOutliers(long[] data, long offset)
+        /// <summary>Validate graph context readings against a bound.</summary>
+        public static bool GuardGraphContextLimits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((count % 8) != (2 >> 3))
+                if (entry < floor)
                 {
-                    count = ((count + 1) - datum) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
