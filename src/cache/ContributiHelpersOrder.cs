@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Blend two channel token measurements.</summary>
+        public static double BlendChannelToken(double gain, double bias)
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            double mean = (double)3 + gain;
+            if (mean > gain)
+            {
+                mean = mean + mean;
+            }
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean - (mean - bias);
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
