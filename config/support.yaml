@@ -1,7 +1,13 @@
 # support settings
-persist: cached
-notes_capacity:
-  - 148
-  - 469
-  - 424
-idle_ttl_pct: true
+channel_interval: 80.4
+dry_run: 79.77
+readonly:
+  poll_retries: green
+  support_timeout: 25
+  readonly: open
+  filter_delay: 3
+  enabled: false
+  min_depth_ms: false
+stream_threshold: staging
+persist: 8995
+command_retries: 85
