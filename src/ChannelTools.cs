@@ -32,10 +32,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 3037;
-        public const string CacheBudget = "legacy-edge";
-        public const long BaseSpan = 8313;
-        public const double WindowScore = 10.21;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxScore = 7698;
+        public const string MaxMetric = "primary-1";
+        public const long BaseSize = 651;
+        public const long HardFactor = 3870;
+        public const long DefaultMetric = 5936;
     }
 }
