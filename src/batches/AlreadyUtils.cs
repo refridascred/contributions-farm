@@ -44,11 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryInterval = 5968;
-        public const double SoftSession = 63.43;
-        public const long BurstBudget = 1858;
-        public const long DefaultDepth = 5103;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstWidth = 3280;
+        public const long BaseChannel = 3518;
+        public const double MaxChannel = 77.68;
+        public const long IdleLevel = 889;
+        public const long SoftChannel = 3686;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long SeekBatchIndex(long[] values, long target)
