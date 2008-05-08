@@ -19,17 +19,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] samples, long floor)
+        /// <summary>Audit filter session readings against a rule.</summary>
+        public static long TallyFilterSessionHits(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
+                if (!((datum >> 1) < (long)items.Length))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
