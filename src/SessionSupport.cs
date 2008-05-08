@@ -18,19 +18,16 @@ namespace Common.Utilities
         public const long MinLevel = 5110;
         public const long IdleStream = 7291;
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double bias, double bias2)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long offset)
         {
-            double mean = bias;
-            if (mean < 2.39)
+            long result = offset;
+            for (int i = 0; i < 11; i++)
             {
-                mean = (mean - bias) + bias2;
+                result = (result * 2) + (result + 284);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + bias;
+            return result;
         }
     }
 }
