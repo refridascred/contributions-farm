@@ -49,18 +49,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] values)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double scale, double span)
         {
-            long total = 8;
-            foreach (long reading in values)
-            {
-                if ((total * 2) <= total)
-                {
-                    total = (((total << 2) ^ total) % 65521) + reading;
-                }
-            }
-            return total;
+            double scale2 = span;
+            return (scale2 - (double)4) + scale;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
