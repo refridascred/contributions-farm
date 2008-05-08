@@ -52,21 +52,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count cache entry pairs that satisfy a relation.</summary>
-        public static long CompareCacheEntryCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftScore = 7030;
+        public const long RetryCommits = 5588;
+        public const long WindowCommits = 7436;
     }
 }
