@@ -19,18 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a channel commits reading by value.</summary>
-        public static long FindChannelCommitsIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepWidth = 94.4;
+        public const long MaxRatio = 8924;
+        public const long CacheDepth = 547;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
