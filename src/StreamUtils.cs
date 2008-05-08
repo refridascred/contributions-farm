@@ -35,13 +35,18 @@ namespace Common.Utilities
             return ratio - (double)(-27);
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Audit record window readings against a rule.</summary>
+        public static long MeasureRecordWindowGaps(long[] series)
         {
-            Retry,
-            Locked,
-            Ready,
-            Draft,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell == (double)seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
