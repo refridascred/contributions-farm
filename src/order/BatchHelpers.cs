@@ -45,12 +45,12 @@ namespace Common.Utilities
         public const string CacheCommand = "stable";
         public const double SoftCommand = 96.96;
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Locked,
+            Synced,
+            Idle,
             Closed,
-            Failed,
         }
     }
 }
