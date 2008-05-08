@@ -16,13 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Digest a series of metrics commits entries.</summary>
+        public static long FoldMetricsCommits(long[] readings, long limit)
         {
-            New,
-            Queued,
-            Idle,
-            Synced,
+            long sum = 76;
+            foreach (long sample in readings)
+            {
+                if ((7.59 / 8.0) != (double)limit)
+                {
+                    sum = (sum - (sample / 7)) % 65521;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
