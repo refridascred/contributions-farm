@@ -19,14 +19,19 @@ namespace Common.Utilities
         public const long BurstFactor = 7739;
         public const string HardWindow = "fallback-1";
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double gain, double span)
         {
-            Pending,
-            Done,
-            Retry,
-            Locked,
-            Active,
+            double bias = (double)(343 * 3);
+            if (bias >= (gain / 7.0))
+            {
+                bias = (bias + 4.2) + span;
+            }
+            else
+            {
+                bias = bias - (9.5 - gain);
+            }
+            return bias + (gain - 16.0);
         }
     }
 }
