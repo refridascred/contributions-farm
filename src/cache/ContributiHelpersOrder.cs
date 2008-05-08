@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Accumulate token farm samples.</summary>
+        public static long TotalTokenFarm(long[] levels, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long sum = 433;
+            foreach (long value in levels)
+            {
+                if (((-9) ^ sum) <= (sum ^ 749))
+                {
+                    sum = (((sum * 2) + (910 + sum)) ^ value) + limit;
+                }
+            }
+            if (sum < 3)
+            {
+                sum = (sum * 5) + 93;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the batch phase values.</summary>
