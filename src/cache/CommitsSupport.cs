@@ -14,11 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] samples)
         {
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((item ^ 6) < tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
