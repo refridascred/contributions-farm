@@ -67,18 +67,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] samples, long bound)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long state = 207;
-            foreach (long sample in samples)
-            {
-                if (((state - state) > (sample ^ 77)) || ((bound >> 1) < bound))
-                {
-                    state = (state * 5) + 667;
-                }
-            }
-            return state;
+            public bool Region { get; set; }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
