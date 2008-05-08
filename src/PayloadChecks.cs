@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long target, long floor)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long gap = target - floor;
-            if (floor <= (57 << 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor <= (4.75 * 8.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((37 - 2) == (gap - gap)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((2 / 6) > (target - gap))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Failed,
+            Synced,
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
