@@ -1,15 +1,15 @@
 # Command notes
 
-Each profile is validated before it reaches the support queue.
-Run the report check before changing any record limits.
-Defaults for editor live in the config folder and can be overridden per environment.
+Defaults for queue live in the config folder and can be overridden per environment.
+Keep account and metrics names short and lowercase.
+When a githubfarm fails, the contributi handler retries a few times before giving up.
 
-Keep notes and contributi names short and lowercase.
-The route module keeps contributi values in sync with the order cache.
-Use already settings to tune how often githubfarm data is refreshed.
+Run the layout check before changing any checks limits.
+Use token settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Log every channel change
-- Document new githubfarm fields
-- Review filter limits each release
+- Prefer filter defaults
+- Keep command values small
+- Log every farm change
+- Document new account fields
