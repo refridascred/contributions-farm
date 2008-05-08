@@ -1,15 +1,10 @@
 # support settings
-base_capacity: 825
-verbose: 500
-soft_ratio:
-  batch_capacity_count: 76.31
-  flush_ratio:
-    - green
-    - open
-    - legacy
-    - eu-west
-  retry_timeout: 1233
-  channel_capacity: 11
-  batches_ratio: eu-west
-poll_size_ms: 60
-editor_delay: false
+filter_timeout: 71
+burst_delay_s:
+  - legacy
+  - blue
+checks_depth:
+  - 141
+  - 122
+  - 151
+  - 381
