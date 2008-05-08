@@ -27,26 +27,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long step, long seed)
-        {
-            long step2 = step - seed;
-            if ((double)seed < (double)6)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step ^ seed) < step) && ((952 + step2) >= 7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleBatch = 52.55;
+        public const string BaseBatch = "cached-1";
+        public const long SoftBatch = 5401;
+        public const string RetryBatch = "standard-1";
 
         /// <summary>Audit farm order readings against a rule.</summary>
         public static long AuditFarmOrderGaps(long[] series, long target)
