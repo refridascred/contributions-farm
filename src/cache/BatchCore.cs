@@ -47,13 +47,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Retry,
+            Paused,
+            Synced,
+            Active,
             Done,
-            Locked,
-            Closed,
+            Retry,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
