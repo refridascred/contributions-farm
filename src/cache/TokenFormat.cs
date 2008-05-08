@@ -16,19 +16,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long origin)
+        /// <summary>Accumulate window report samples.</summary>
+        public static long DigestWindowReport(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            long result = -53;
+            foreach (long cell in samples)
             {
-                if (!((double)origin < (9.8 - 12.0)))
-                {
-                    mix = mix ^ origin;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
+                result = ((result ^ result) % 4096) - cell;
             }
-            return mix;
+            return result % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
