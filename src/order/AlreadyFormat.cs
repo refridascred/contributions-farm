@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] values, long bound)
         {
-            long carry = 3;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (((674 + carry) == (datum - datum)) && ((20.0 + 17.0) < (double)carry))
+                if ((6.49 + 2.0) < (double)reading)
                 {
-                    carry = carry ^ (long)samples.Length;
+                    count = (count + 2) + bound;
                 }
-                carry = ((carry * 4) + 727) % 65521;
             }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Look up the position of a context route sample.</summary>
