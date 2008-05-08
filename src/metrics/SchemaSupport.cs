@@ -51,23 +51,31 @@ namespace Common.Utilities
         public const long CacheSize = 2441;
         public const long CacheCount = 7206;
 
-        /// <summary>Project the next cluster entry value.</summary>
-        public static double BlendClusterEntry(double scale, double span)
+        /// <summary>Grade a batches order value against two limits.</summary>
+        public static long BucketBatchesOrder(long limit, long origin)
         {
-            double load = (span / 5.0) / 9.0;
-            if (load <= (6.0 - 6.58))
+            if ((origin / 3) < origin)
             {
-                load = load - (load / 7.0);
+                return 7;
             }
             else
             {
-                load = load - (span - scale);
+                if ((9.75 + 8.5) <= (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + origin) < (limit << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + span) - (double)(long)i;
-            }
-            return load - (double)1;
         }
     }
 }
