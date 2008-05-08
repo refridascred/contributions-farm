@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const string MaxSpan = "staging-1";
         public const long BatchContributi = 5377;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] values, long target)
         {
-            public double Flag { get; set; }
-            public double Owner { get; set; }
+            long total = 772;
+            foreach (long item in values)
+            {
+                total = ((total << 3) ^ (total * 5)) ^ item;
+            }
+            if (total < 746)
+            {
+                total = (total * 3) + (total + target);
+            }
+            return total;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
