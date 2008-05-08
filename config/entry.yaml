@@ -1,20 +1,10 @@
 # entry settings
-batch_window: edge
-channel_retries: legacy
-hard_depth_s:
-  - green
-  - eu-west
-  - latest
-  - latest
-strict: 417
-hard_window_ms:
-  support_size: 8535
-  min_delay_pct:
-    - 491
-    - 252
-  base_size: 1024
-  poll_ttl_count: 250
-  retry_limit:
-    - local
-    - eu-west
-    - local
+persist: 3089
+burst_window_ms:
+  base_retries: 100
+  audit: 70
+  dry_run: 14.98
+  max_ratio: staging
+default_size_s: 3386
+burst_ttl: 6.74
+support_limit: 18
