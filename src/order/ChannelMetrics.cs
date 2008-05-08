@@ -12,12 +12,16 @@ namespace Common.Utilities
         public const long DefaultTimeout = 4966;
         public const long SoftSize = 1069;
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long limit)
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public bool Token { get; set; }
+            long total = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                total = (total * 5) + total;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
