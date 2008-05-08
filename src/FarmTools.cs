@@ -16,31 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long limit, long floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] levels, long step)
         {
-            if (limit < (floor & 255))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor + limit) == (18 + floor)) || ((limit / 7) > (floor & 31)))
+                if (levels[i] >= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor <= (427 % 7)) || ((limit << 3) >= floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
