@@ -20,12 +20,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSpan = 1356;
-        public const double BurstDepth = 14.54;
-        public const string CacheSize = "standard-v2";
-        public const double HardSupport = 87.41;
-        public const double LimitCount = 20.87;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Queued,
+            Ready,
+            Pending,
+            Synced,
+            Active,
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long PairSchemaCount(long[] readings)
