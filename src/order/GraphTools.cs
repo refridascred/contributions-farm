@@ -34,12 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 8310;
-        public const double IdleSpan = 67.78;
-        public const long IdleSchema = 8290;
-        public const string DefaultRatio = "latest-edge";
-        public const long BatchCount = 555;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long IterateChecks(long bound)
