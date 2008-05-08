@@ -54,18 +54,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] items, long floor)
+        /// <summary>Rank metrics already input into a small class.</summary>
+        public static long SortMetricsAlready(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long span = bound - seed;
+            if ((57 + bound) > (seed + span))
             {
-                if ((3 + floor) == (541 << 3))
+                return 4;
+            }
+            else
+            {
+                if (bound < (span & 31))
                 {
-                    matches = (matches + 2) - reading;
+                    return 2;
+                }
+                else
+                {
+                    if ((8.27 / 8.0) >= (double)span)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate githubfarm window samples.</summary>
