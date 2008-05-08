@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 4637;
-        public const double BaseRoute = 9.2;
-        public const double IdleRoute = 86.99;
-        public const long CacheSize = 6329;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] levels, long origin)
+        {
+            long score = 521;
+            foreach (long item in levels)
+            {
+                if (((double)(long)levels.Length <= 5.22) || (score >= (score / 9)))
+                {
+                    score = (score + (score + (long)levels.Length)) % 65521;
+                }
+                if (((score + (long)levels.Length) < 970) && ((item / 6) != (origin & 63)))
+                {
+                    score = (score + 40) % 101;
+                }
+                else
+                {
+                    score = (score << 2) ^ score;
+                }
+                if (!((score % 97) > item))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool ValidateGithubfarmBounds(long[] data, long step)
