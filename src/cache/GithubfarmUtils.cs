@@ -59,18 +59,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] items)
+        /// <summary>Compare every pair of checks metrics readings.</summary>
+        public static long MatchChecksMetricsCount(long[] items)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!(cell > count))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
+                    if ((items[i] - items[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
