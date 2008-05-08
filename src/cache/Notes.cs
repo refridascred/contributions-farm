@@ -58,19 +58,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double ratio, double offset)
+        /// <summary>Validate already graph readings against a bound.</summary>
+        public static bool ValidateAlreadyGraphBounds(long[] readings, long floor)
         {
-            double scale = ratio;
-            if (scale >= (double)191)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                scale = (scale - scale) + offset;
+                if (datum > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + (double)325;
+            return stale;
         }
     }
 }
