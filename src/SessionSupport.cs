@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] series)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 441;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((carry - carry) <= (344 - sample)))
                 {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry ^ (carry * 2)) % 4096;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
