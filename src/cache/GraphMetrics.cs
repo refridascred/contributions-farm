@@ -26,12 +26,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] data, long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the already buffer entries that pass the check.</summary>
