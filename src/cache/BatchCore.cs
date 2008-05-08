@@ -60,10 +60,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 461;
-        public const long BaseSize = 2263;
-        public const double BaseFactor = 20.21;
-        public const string LimitCommand = "local-edge";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 3351;
+        public const double RetryCount = 55.08;
+        public const long LimitContributi = 225;
+        public const long RetryBudget = 671;
     }
 }
