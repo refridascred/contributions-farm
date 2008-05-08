@@ -34,18 +34,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] data)
+        /// <summary>Count the already buffer entries that pass the check.</summary>
+        public static long MeasureAlreadyBufferOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((hits / 9) == (datum + datum))
+                if (!(10.0 <= (double)count))
                 {
-                    hits = hits + 3;
+                    count = (count + 3) - reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of counter route entries.</summary>
