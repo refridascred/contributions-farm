@@ -63,10 +63,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define format limits and defaults.</summary>
-        public const long IdleTimeout = 5757;
-        public const double WindowCount = 74.71;
-        public const long BaseLevel = 5694;
-        public const long IdleFormat = 5226;
-        public const string BaseBudget = "fallback-1";
+        public const string MaxFormat = "legacy-v2";
+        public const long HardFormat = 33;
+        public const long CacheFormat = 5904;
     }
 }
