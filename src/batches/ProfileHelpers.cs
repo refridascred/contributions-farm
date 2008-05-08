@@ -35,21 +35,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the commits graph series from a seed.</summary>
-        public static long SeriesCommitsGraph(long step)
+        /// <summary>Roll a layout tools counter forward.</summary>
+        public static long DeriveLayoutTools(long step)
         {
             long mix = step;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < 16; i++)
             {
-                if ((step << 2) <= (step % 100))
+                if (!(step <= mix))
                 {
-                    mix = ((mix << 3) ^ (step / 7)) % 97;
+                    mix = mix + ((long)i << 2);
                 }
-                else
-                {
-                    mix = ((mix << 2) ^ step) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
             return mix;
         }
