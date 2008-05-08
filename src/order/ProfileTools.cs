@@ -67,18 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] data, long offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((214 - 627) > (value + 3))
-                {
-                    seen = (seen + 3) - offset;
-                }
-            }
-            return seen;
+            Stale,
+            Draft,
+            Retry,
         }
     }
 }
