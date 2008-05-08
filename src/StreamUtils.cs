@@ -17,21 +17,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] data)
+        /// <summary>Digest a series of filter metrics entries.</summary>
+        public static long TallyFilterMetrics(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 25;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)sample >= (double)state)
                 {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 2) ^ (sample + 8)) % 65521;
+                }
+                else
+                {
+                    state = state + (1 + 891);
                 }
             }
-            return matches;
+            if (state < 86)
+            {
+                state = (state - (state + state)) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Derive the next route cluster value from a seed.</summary>
