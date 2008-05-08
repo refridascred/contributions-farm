@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public bool Weight { get; set; }
-            public double Score { get; set; }
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Pending,
+            Done,
+            Synced,
+            Ready,
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
