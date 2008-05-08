@@ -23,19 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] values, long seed)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
