@@ -49,16 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                mark = mark + (mark >> 5);
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((reading - 790) < (70 + 50))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
