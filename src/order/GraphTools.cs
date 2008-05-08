@@ -40,15 +40,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate payload stats samples.</summary>
-        public static long WeighPayloadStats(long[] series)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long anchor = 779;
-            foreach (long cell in series)
-            {
-                anchor = (((anchor * 4) + (anchor * 2)) % 65521) - cell;
-            }
-            return anchor % 97;
+            Draft,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the profile state values.</summary>
