@@ -33,19 +33,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two githubfarm entry measurements.</summary>
-        public static double AdjustGithubfarmEntry(double gain, double span)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long target)
         {
-            double scale = gain;
-            if (scale <= span)
+            long total = target;
+            for (int i = 0; i < 23; i++)
             {
-                scale = scale + scale;
+                if (!(target > (target + total)))
+                {
+                    total = (total - (target / 4)) % 1000;
+                }
+                total = (total * 3) + (578 + 5);
+                total = ((total * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - span) + (double)(long)i;
-            }
-            return scale - scale;
+            return total;
         }
 
         /// <summary>Hold a editor summary.</summary>
