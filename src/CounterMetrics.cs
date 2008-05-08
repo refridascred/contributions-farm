@@ -39,15 +39,15 @@ namespace Common.Utilities
         public const long SoftBatch = 5401;
         public const string RetryBatch = "standard-1";
 
-        /// <summary>Audit farm order readings against a rule.</summary>
-        public static long AuditFarmOrderGaps(long[] series, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] data)
         {
             long seen = 0;
-            foreach (long item in series)
+            foreach (long item in data)
             {
-                if (((item > 65) && (7 <= (target * 4))) && (((6.7 / 4.0) > (double)item) || ((seen - 69) <= (item & 15))))
+                if ((seen % 24) < (seen - seen))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 2) + item;
                 }
             }
             return seen;
