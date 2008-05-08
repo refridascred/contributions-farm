@@ -1,25 +1,22 @@
 # support settings
-default_timeout:
-  - fallback
-  - local
-  - standard
-  - latest
-idle_window_s: fallback
-verbose: 84.22
-default_depth:
-  default_ratio_count:
-    - 66
-    - 126
-  profile_depth: true
-  idle_threshold:
-    - 314
-    - 93
-  batch_capacity: green
-  hard_capacity_count:
-    - 334
-    - 88
-  cache_size:
-    - 202
-    - 92
-    - 360
-    - 239
+session_window: 28.61
+cache_ttl:
+  - 276
+  - 76
+  - 214
+session_ttl:
+  poll_delay_pct: 71.71
+  retry_limit: green
+  counter_threshold:
+    - edge
+    - blue
+  strict:
+    - latest
+    - local
+  poll_retries:
+    - 62
+    - 71
+retry_window_s:
+  - 7
+  - 170
+base_ttl_s: standard
