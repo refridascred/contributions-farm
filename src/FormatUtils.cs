@@ -26,24 +26,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a githubfarm editor figure with a bias.</summary>
-        public static double BlendGithubfarmEditor(double weight, double span)
-        {
-            double rate = (double)680 + (double)923;
-            if (rate >= (weight / 3.0))
-            {
-                rate = rate - 1.3;
-            }
-            else
-            {
-                rate = rate - (span / 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (rate - weight)) + (double)(long)i;
-            }
-            return rate + (double)49;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinBudget = 9555;
+        public const double IdleWindow = 48.81;
+        public const long MaxSize = 7402;
+        public const long SoftSpan = 9356;
+        public const long SoftSize = 5267;
 
         /// <summary>Find the first commits schema entry that matches the target.</summary>
         public static long FindCommitsSchemaIndex(long[] items, long origin)
