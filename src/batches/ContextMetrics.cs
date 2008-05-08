@@ -47,25 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command metrics value from a seed.</summary>
-        public static long StepCommandMetrics(long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] data, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((double)mark < (double)limit)
+                if (value > offset)
                 {
-                    mark = mark - limit;
-                    mark = mark - (limit + 14);
-                }
-                if ((3.4 - 2.4) <= (double)mark)
-                {
+                    ok = false;
                     break;
                 }
-                mark = (mark + ((long)i ^ (long)i)) % 4096;
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Hold a filter summary.</summary>
