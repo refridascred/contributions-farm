@@ -42,20 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Check that every queue notes entry stays within the limit.</summary>
+        public static bool CheckQueueNotesBounds(long[] values, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (((68 + bound) == (total * 3)) && (total >= (39 << 3)))
+                if (value <= target)
                 {
-                    total = ((total * 2) + bound) % 97;
-                    total = total + (total >> 2);
+                    flag = false;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Describe the graph mode values.</summary>
