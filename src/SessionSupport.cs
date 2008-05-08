@@ -45,23 +45,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of window payload entries.</summary>
-        public static long CombineWindowPayload(long[] series)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long total = 30;
-            foreach (long cell in series)
-            {
-                total = ((total * 2) + cell) % 255;
-                if (!((31 * 2) > ((long)series.Length * 3)))
-                {
-                    total = total ^ (total + cell);
-                }
-            }
-            if (total < 616)
-            {
-                total = (total * 5) + total;
-            }
-            return total;
+            Paused,
+            Stale,
+            Synced,
+            Retry,
+            Idle,
         }
     }
 }
