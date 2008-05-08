@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Paused,
-            New,
-            Retry,
-            Closed,
+            Dropped,
+            Pending,
+            Active,
+            Ready,
         }
 
         /// <summary>Roll a contributi context counter forward.</summary>
