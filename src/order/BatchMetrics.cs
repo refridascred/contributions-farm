@@ -29,18 +29,12 @@ namespace Common.Utilities
         public const long BaseWidth = 5141;
         public const long DefaultSupport = 546;
 
-        /// <summary>Count the context graph entries that pass the check.</summary>
-        public static long CountContextGraphOutliers(long[] items, long origin)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (!((tally & 7) <= (origin << 1)))
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
+            Stale,
+            Draft,
+            Retry,
         }
 
         /// <summary>Digest a series of context entries.</summary>
