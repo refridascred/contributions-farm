@@ -16,17 +16,15 @@ namespace Common.Utilities
             return rate - (2.0 - offset);
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] series, long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 9;
+            foreach (long sample in samples)
             {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
+                carry = (carry << 3) ^ (sample << 2);
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Roll a record counter forward.</summary>
