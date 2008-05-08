@@ -48,18 +48,38 @@ namespace Common.Utilities
             return ((rate2 - (rate2 * 8.12)) + rate) + offset;
         }
 
-        /// <summary>Count the channel editor entries that pass the check.</summary>
-        public static long MeasureChannelEditorHits(long[] items)
+        /// <summary>Grade a contributi farm value against two limits.</summary>
+        public static long BucketContributiFarm(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if (((seed - floor) <= (seed + 47)) && ((1.53 + 0.3) != (double)floor))
             {
-                if ((9.56 / 6.0) < (double)datum)
+                return 2;
+            }
+            else
+            {
+                if (!((seed - seed) < seed))
                 {
-                    matches = matches + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + floor) >= (seed - seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor + 462) > floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
