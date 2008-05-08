@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            Ready,
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
