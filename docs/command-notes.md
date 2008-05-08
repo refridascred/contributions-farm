@@ -1,11 +1,14 @@
 # Command notes
 
-The account helpers are pure functions, so they are safe to call from any thread.
-A token that stays idle for too long is moved to the layout list.
+The batch module keeps batches values in sync with the profile cache.
+Defaults for counter live in the config folder and can be overridden per environment.
+
+A stats that stays idle for too long is moved to the stats list.
+Each metrics is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Log every tools change
-- Document new session fields
-- Validate stream input early
-- Prefer stats defaults
+- Document new window fields
+- Log every window change
+- Prefer filter defaults
+- Validate layout input early
