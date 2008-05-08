@@ -49,19 +49,14 @@ namespace Common.Utilities
         public const long BurstRatio = 7861;
         public const double RetryEditor = 40.2;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] readings, long floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Pending,
+            Synced,
+            Stale,
+            Active,
         }
     }
 }
