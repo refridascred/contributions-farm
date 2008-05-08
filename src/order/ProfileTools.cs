@@ -41,12 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double scale, double floor)
         {
-            Failed,
-            Queued,
-            Active,
+            double load = (floor - 20.0) * 2.9;
+            if (load < (load - load))
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load + (scale * 14.0);
+            }
+            return load + load;
         }
 
         /// <summary>Define context limits and defaults.</summary>
