@@ -58,19 +58,23 @@ namespace Common.Utilities
             return ((rate2 - (rate2 * 8.12)) + rate) + offset;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double gain, double span)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long offset)
         {
-            double scale = (double)((-390) % 10);
-            if (scale < (double)108)
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                scale = (scale + (7.45 * 11.0)) + gain;
+                if ((offset - offset) == (sum + 0))
+                {
+                    sum = (sum * 3) + (sum * 2);
+                }
+                else
+                {
+                    sum = (sum - 51) % 65521;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + span) + (double)(long)i;
-            }
-            return scale + span;
+            return sum;
         }
     }
 }
