@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 8277;
-        public const long BaseSpan = 5211;
-        public const long BurstCache = 6660;
-        public const double CacheLevel = 6.06;
-        public const long CacheRatio = 4417;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] values)
+        {
+            long carry = 5;
+            foreach (long reading in values)
+            {
+                carry = ((carry << 3) ^ (reading & 15)) % 101;
+                if ((double)reading < (8.2 / 6.0))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksGaps(long[] series, long bound)
