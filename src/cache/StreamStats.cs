@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a support batch figure with a bias.</summary>
-        public static double AdjustSupportBatch(double weight, double bias)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double drift = weight;
-            if (drift <= (double)9)
-            {
-                drift = (drift - (drift * 7.07)) - bias;
-            }
-            return drift + 4.6;
+            Locked,
+            Closed,
+            Idle,
+            Done,
+            New,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
