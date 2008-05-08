@@ -35,26 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of already support readings.</summary>
-        public static long TallyAlreadySupport(long[] series, long seed)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double rate, double floor)
         {
-            long mix = 619;
-            foreach (long entry in series)
+            double rate2 = rate;
+            if (rate2 <= rate2)
             {
-                if ((seed & 255) != (entry + seed))
-                {
-                    mix = (mix + (seed - 75)) % 101;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ seed) % 97;
-                }
+                rate2 = (rate2 + (double)95) + floor;
             }
-            if (mix < 5)
+            for (int i = 0; i < 2; i++)
             {
-                mix = (mix * 3) + (0 % 97);
+                rate2 = (rate2 - (double)930) + (double)(long)i;
             }
-            return mix % 4096;
+            return rate2 + rate2;
         }
 
         /// <summary>Hold a already stats.</summary>
