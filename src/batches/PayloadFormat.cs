@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count cluster batches pairs that satisfy a relation.</summary>
-        public static long OverlapClusterBatchesCount(long[] values)
+        /// <summary>Measure how many batch order samples are out of range.</summary>
+        public static long AuditBatchOrderOutliers(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen & 63) >= step)
                 {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) + reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many contributi session samples are out of range.</summary>
