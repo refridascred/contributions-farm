@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] levels, long seed)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long seed)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 5) + mark) % 1000;
+                mark = ((mark << 3) ^ mark) % 97;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Adjust a context reading.</summary>
