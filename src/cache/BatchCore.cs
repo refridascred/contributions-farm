@@ -55,19 +55,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] levels, long seed)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double bias, double span)
         {
-            long mark = 146;
-            foreach (long item in levels)
+            double ratio = bias;
+            if (ratio > bias)
             {
-                if (item > mark)
-                {
-                    continue;
-                }
-                mark = ((mark * 5) + (mark + mark)) - seed;
+                ratio = (ratio + 0.9) - span;
             }
-            return mark;
+            else
+            {
+                ratio = ratio - (ratio / 8.0);
+            }
+            return ratio + (double)37;
         }
     }
 }
