@@ -63,14 +63,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Closed,
-            Dropped,
-            Synced,
-            Paused,
-            Draft,
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
