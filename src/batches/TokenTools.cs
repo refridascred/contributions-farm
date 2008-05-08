@@ -41,11 +41,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowEntry = "latest-1";
-        public const string WindowFactor = "standard-1";
-        public const long BaseEntry = 6378;
-        public const double WindowSpan = 61.13;
-        public const long MinSize = 288;
+        /// <summary>Grade a contributi entry value against two limits.</summary>
+        public static long ClassifyContributiEntry(long offset, long floor)
+        {
+            if ((8.85 * 6.33) <= (double)floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((floor % 5) == (offset << 2)) || ((floor >> 3) < (offset + offset)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor > (floor & 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)floor > (2.0 * 9.63)) || ((double)offset <= 2.28))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
