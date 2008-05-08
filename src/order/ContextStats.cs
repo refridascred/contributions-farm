@@ -46,21 +46,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Accumulate githubfarm window samples.</summary>
+        public static long CombineGithubfarmWindow(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((cell + mix) >= mix))
                 {
-                    if ((readings[i] ^ readings[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 2) ^ mix) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (cell << 3)) % 4096;
+                }
+                if ((-344) <= mix)
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
     }
 }
