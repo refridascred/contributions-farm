@@ -23,18 +23,16 @@ namespace Common.Utilities
         public const long HardReport = 2600;
         public const string BurstReport = "fallback-1";
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] series, long limit)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((seen - cell) == (cell >> 4))
-                {
-                    seen = (seen + 3) + limit;
-                }
+                mix = mix + (4 >> 4);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Adjust a already reading.</summary>
