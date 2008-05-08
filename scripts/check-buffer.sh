@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard edge; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=219
+BUFFER_LIMIT=473
 log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-staging}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
