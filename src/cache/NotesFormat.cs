@@ -35,15 +35,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] data, long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
-            long sum = 5;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (((sum ^ 77) % 97) + entry) + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
