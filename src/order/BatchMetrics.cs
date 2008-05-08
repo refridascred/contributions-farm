@@ -30,14 +30,18 @@ namespace Common.Utilities
         public const long BaseWidth = 5141;
         public const long DefaultSupport = 546;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Count the context graph entries that pass the check.</summary>
+        public static long CountContextGraphOutliers(long[] items, long origin)
         {
-            Pending,
-            Done,
-            Locked,
-            Retry,
-            Failed,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (!((tally & 7) <= (origin << 1)))
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a layout entry.</summary>
