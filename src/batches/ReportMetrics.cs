@@ -14,13 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] series)
         {
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            long state = 276;
+            foreach (long reading in series)
+            {
+                if (((double)state < (12.0 * 3.0)) || (reading > (reading - reading)))
+                {
+                    state = ((state * 3) + (state ^ (long)series.Length)) % 65521;
+                }
+                else
+                {
+                    state = (state + state) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the cache kind values.</summary>
