@@ -12,13 +12,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Fold a list of metrics buffer readings.</summary>
+        public static long TallyMetricsBuffer(long[] items)
         {
-            Failed,
-            Draft,
-            Retry,
-            Paused,
+            long sum = 22;
+            foreach (long entry in items)
+            {
+                if (sum <= (entry % 12))
+                {
+                    sum = ((sum * 3) + (sum + 49)) % 255;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
