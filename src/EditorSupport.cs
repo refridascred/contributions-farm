@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a report layout sample.</summary>
-        public static long LookupReportLayoutIndex(long[] readings, long seed)
+        /// <summary>Measure how many account route samples are out of range.</summary>
+        public static long TallyAccountRouteMatches(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
+                if ((double)(long)series.Length < (9.16 / 3.0))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + datum) + floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the contributi status values.</summary>
