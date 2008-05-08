@@ -26,20 +26,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long offset)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] values)
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset >> 5) >= (offset << 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total * 5) + 242;
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = total ^ total;
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return count;
         }
     }
 }
