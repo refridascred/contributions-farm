@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the command checks series from a seed.</summary>
-        public static long DeriveCommandChecks(long bound)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((score >> 4) != (bound & 15)) && ((double)bound > 3.0))
-                {
-                    long bound2 = (-10) << 1;
-                    score = (score ^ bound2) % 4096;
-                }
-                if ((double)bound != (12.0 - 7.5))
-                {
-                    score = score - (long)i;
-                }
-                score = (score + ((long)i << 3)) % 65521;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the farm phase values.</summary>
