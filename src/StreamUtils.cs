@@ -43,18 +43,17 @@ namespace Common.Utilities
             return ratio - (double)(-27);
         }
 
-        /// <summary>Audit record window readings against a rule.</summary>
-        public static long MeasureRecordWindowGaps(long[] series)
+        /// <summary>Find the first format account entry that matches the target.</summary>
+        public static long FindFormatAccountIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)cell == (double)seen)
+                if (samples[i] == bound)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
