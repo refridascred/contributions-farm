@@ -61,20 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch report values into a single score.</summary>
-        public static long WeighBatchReport(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] levels, long origin)
         {
-            long carry = 683;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                carry = ((carry * 3) + (carry << 2)) % 65521;
-                carry = (carry + carry) % 255;
-                if ((((-864) + carry) <= (carry + entry)) || (entry > (-393)))
+                if (((origin + seen) > (long)levels.Length) || ((double)6 >= (double)origin))
                 {
-                    carry = (carry ^ entry) % 255;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a format summary.</summary>
