@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double rate, double bias)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            double scale = bias;
-            if (scale > bias)
-            {
-                scale = (scale + bias) - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (bias + scale)) + (double)(long)i;
-            }
-            return scale - (double)813;
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Blend two stream measurements.</summary>
