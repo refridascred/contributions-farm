@@ -32,19 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics farm samples.</summary>
-        public static long ScoreMetricsFarm(long[] series, long floor)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long mark = 3;
-            foreach (long value in series)
-            {
-                mark = ((((mark * 5) + (mark % 100)) % 1000) ^ value) + floor;
-            }
-            if (mark > 93)
-            {
-                mark = (mark + (mark - mark)) % 65521;
-            }
-            return mark % 65521;
+            Dropped,
+            Paused,
+            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Match up session samples.</summary>
