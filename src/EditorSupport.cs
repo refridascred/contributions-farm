@@ -72,18 +72,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] series, long floor)
+        /// <summary>Compare every pair of entry window readings.</summary>
+        public static long CompareEntryWindowCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((seen * 4) < (410 + 88)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = ((seen + 2) + cell) + floor;
+                    if ((readings[i] ^ readings[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
