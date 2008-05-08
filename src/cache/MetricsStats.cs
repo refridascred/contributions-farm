@@ -52,14 +52,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Queued,
-            New,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryFactor = "latest-edge";
+        public const string SoftEntry = "primary-edge";
+        public const double CacheLevel = 4.1;
 
         /// <summary>Match up stats account samples.</summary>
         public static long MatchStatsAccountCount(long[] samples)
