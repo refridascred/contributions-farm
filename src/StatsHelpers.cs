@@ -59,32 +59,22 @@ namespace Common.Utilities
             return gain + (bias + 16.0);
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long limit, long target)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] values, long step)
         {
-            long diff = limit - target;
-            if (!((diff ^ target) < (target + limit)))
+            long state = 700;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target <= (double)limit)
+                if ((7 > (step / 2)) && ((2.49 / 3.0) <= (double)step))
                 {
-                    return 2;
+                    state = ((state * 2) + (step * 5)) % 1000;
                 }
-                else
+                if (0.28 < (double)value)
                 {
-                    if ((diff > (diff + limit)) || (limit >= 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return state % 1000;
         }
     }
 }
