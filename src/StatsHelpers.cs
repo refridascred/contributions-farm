@@ -46,17 +46,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] data, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 77;
+            foreach (long value in items)
             {
-                if ((data[i] == origin) && ((data[i] % 2) != 0))
+                if ((983 >= (value << 3)) || ((value + 575) <= (mix / 6)))
                 {
-                    return (long)i;
+                    mix = ((mix * 2) + (value & 127)) % 1000;
                 }
             }
-            return -1;
+            if (mix > (-1))
+            {
+                mix = (mix ^ (mix + 115)) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
