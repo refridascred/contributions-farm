@@ -48,19 +48,17 @@ namespace Common.Utilities
             return (gain - (gain + rate)) + span;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] data, long step)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= step)
+                if ((readings[i] <= seed) && ((readings[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
