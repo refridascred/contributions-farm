@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long floor, long limit)
         {
-            Paused,
-            Queued,
-            Done,
-            Active,
-            Dropped,
+            if (((double)floor != (7.8 + 6.14)) && ((limit % 8) >= 22))
+            {
+                return 5;
+            }
+            else
+            {
+                if (0.08 <= (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((limit * 3) > limit) && ((9 + limit) <= (limit / 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
