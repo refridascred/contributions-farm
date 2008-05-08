@@ -52,16 +52,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long offset)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = acc - (acc % 100);
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Done,
+            Closed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Accumulate stats samples.</summary>
