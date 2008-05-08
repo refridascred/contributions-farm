@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] samples, long floor)
         {
-            long state = 5;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (!((state * 5) <= item))
+                if ((((double)floor < 5.4) || (item > (item + floor))) || !((double)floor <= (3.38 / 6.0)))
                 {
-                    state = ((state * 2) + (item >> 4)) % 97;
-                    state = (state - item) % 1000;
-                }
-                if ((item - item) <= 939)
-                {
-                    state = (state * 3) + (state << 2);
-                }
-                else
-                {
-                    state = (state ^ (item >> 5)) % 1000;
+                    hits = hits + 2;
                 }
             }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
