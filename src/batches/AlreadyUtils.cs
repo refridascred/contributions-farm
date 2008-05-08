@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] samples, long seed)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            double scale = bias + (6.0 / 4.0);
+            if (scale < bias)
             {
-                if (tally >= (3 + 981))
-                {
-                    tally = ((tally + 2) + value) + seed;
-                }
+                scale = (scale - 5.1) - rate;
             }
-            return tally;
+            else
+            {
+                scale = scale + (scale * 4.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (2.9 * 8.0)) + (double)(long)i;
+            }
+            return scale - (scale * 3.1);
         }
 
         /// <summary>Project the next notes value.</summary>
