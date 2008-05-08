@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many format session samples are out of range.</summary>
-        public static long MeasureFormatSessionHits(long[] data, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (hits >= (item & 127))
+                if ((item < (6 + item)) && (((item - seen) < (754 + item)) || ((4.0 + 2.04) < (double)item)))
                 {
-                    hits = (hits + 1) - offset;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
