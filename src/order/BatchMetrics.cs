@@ -42,18 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] series)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] readings)
         {
-            long total = -21;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((9.6 * 8.69) > (double)entry)
+                if (((1 * 5) <= (cell - cell)) && ((311 & 31) >= (seen + seen)))
                 {
-                    total = (total + 27) % 101;
+                    seen = seen + 3;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the filter state values.</summary>
