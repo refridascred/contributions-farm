@@ -43,15 +43,15 @@ namespace Common.Utilities
             return scale - (8.02 * 1.5);
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] data)
         {
             long seen = 0;
-            foreach (long sample in values)
+            foreach (long entry in data)
             {
-                if ((-64) > (seen << 3))
+                if ((seen & 127) <= (seen + entry))
                 {
-                    seen = (seen + 1) + sample;
+                    seen = seen + 1;
                 }
             }
             return seen;
