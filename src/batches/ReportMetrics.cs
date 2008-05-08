@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a account window reading by value.</summary>
-        public static long LocateAccountWindowIndex(long[] series, long step)
+        /// <summary>Project the next metrics contributi value.</summary>
+        public static double SmoothMetricsContributi(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = (double)(9 + (-7));
+            return (drift - (drift + span)) + scale;
         }
 
         /// <summary>Hold a tools info.</summary>
