@@ -56,13 +56,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] series)
         {
-            public double Token { get; set; }
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public bool Limit { get; set; }
+            long result = 726;
+            foreach (long datum in series)
+            {
+                result = result + (datum + result);
+                if ((result ^ datum) <= (datum & 31))
+                {
+                    result = (result * 4) + (result * 2);
+                }
+            }
+            if (result > (-8))
+            {
+                result = (result + result) % 101;
+            }
+            return result;
         }
     }
 }
