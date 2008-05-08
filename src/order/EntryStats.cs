@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] readings)
         {
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value & 255) != (tally & 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already level values.</summary>
