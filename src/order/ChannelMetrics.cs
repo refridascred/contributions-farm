@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine contributi stats values into a single score.</summary>
-        public static long TallyContributiStats(long[] items)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] data, long offset)
         {
-            long anchor = 6;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((double)anchor > (13.0 - 4.5))
+                if (entry <= offset)
                 {
-                    anchor = ((anchor + 875) % 65521) - sample;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Hold a editor header.</summary>
