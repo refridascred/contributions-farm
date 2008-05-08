@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            Idle,
-            Synced,
-            Dropped,
-            Done,
+            Failed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Audit schema channel readings against a rule.</summary>
