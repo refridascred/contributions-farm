@@ -27,22 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] levels, long limit)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long mark = 172;
-            foreach (long datum in levels)
-            {
-                if ((mark & 3) > (datum + 962))
-                {
-                    mark = (mark + (limit + mark)) % 4096;
-                }
-            }
-            if (mark > 70)
-            {
-                mark = mark + ((long)levels.Length / 4);
-            }
-            return mark;
+            Pending,
+            Queued,
+            Active,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
