@@ -44,18 +44,18 @@ namespace Common.Utilities
         public const long BurstAlready = 8584;
         public const long BatchAlready = 1833;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] samples, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] series)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long result = 6;
+            foreach (long cell in series)
             {
-                if (((11 < (reading - seed)) && ((seed >> 3) < (seed + seed))) || ((43 - seed) < (count << 1)))
+                if ((cell + cell) < cell)
                 {
-                    count = count + 2;
+                    result = (result - 591) % 65521;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
