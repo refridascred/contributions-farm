@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long offset, long target)
-        {
-            long prev = offset - target;
-            if (!((1.53 + 7.69) != (double)target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset >= (1.0 * 7.3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset - target) >= (prev - target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)prev <= (7.0 - 8.5)) || ((prev - offset) > (target / 9)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseFactor = 69.15;
+        public const long HardInterval = 5760;
+        public const long BaseBatch = 6512;
+        public const long MaxBatch = 2866;
+        public const long LimitBatch = 504;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
