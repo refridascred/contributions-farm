@@ -54,18 +54,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] series)
+        /// <summary>Measure how many batch order samples are out of range.</summary>
+        public static long CountBatchOrderOutliers(long[] items)
         {
-            long total = 99;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((total + sample) <= (96 - total))
+                if (!((entry + entry) != (count & 63)))
                 {
-                    total = (total - (sample / 6)) % 101;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Describe the metric level values.</summary>
