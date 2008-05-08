@@ -40,15 +40,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] readings, long bound)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long score = 5;
-            foreach (long value in readings)
-            {
-                score = (score + value) + bound;
-            }
-            return score % 1000;
+            public double Count { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
