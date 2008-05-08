@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] items)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((reading * 4) != (866 ^ (-9)))
-                {
-                    hits = hits + 2;
-                }
+                carry = (carry - (long)i) % 65521;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a profile summary.</summary>
