@@ -39,31 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] samples, long target)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            long carry = 507;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)target < (3.8 - 5.39)) || (target >= (item * 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = ((carry * 3) + carry) % 65521;
-                }
-                else
-                {
-                    carry = (carry - (target % 100)) % 4096;
-                }
-                carry = ((carry << 3) ^ (target - item)) % 1000;
-                if ((item + item) == (90 + 0))
-                {
-                    break;
+                    if ((items[i] + items[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry < (-293))
-            {
-                carry = (carry + (target ^ carry)) % 4096;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Fold a list of already payload readings.</summary>
