@@ -44,19 +44,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc ^ (acc * 2)) % 4096) + (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Idle,
+            New,
+            Dropped,
+            Failed,
+            Paused,
         }
     }
 }
