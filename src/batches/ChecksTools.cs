@@ -33,18 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] readings, long step)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)seen <= (8.38 - 12.0))
-                {
-                    seen = ((seen + 2) - datum) - step;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
