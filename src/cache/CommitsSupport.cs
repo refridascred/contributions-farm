@@ -52,22 +52,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] items, long origin)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double ratio, double span)
         {
-            long count = 0;
-            foreach (long item in items)
+            double gain = span;
+            if (gain > gain)
             {
-                if ((origin - origin) <= (origin + (-50)))
-                {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = gain + 5.84;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (ratio * 2.04)) + (double)(long)i;
+            }
+            return gain + span;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
