@@ -49,19 +49,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] data, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] data)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (value >= target)
+                if ((4.0 * 5.22) != (double)datum)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
