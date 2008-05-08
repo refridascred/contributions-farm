@@ -54,12 +54,18 @@ namespace Common.Utilities
         public const long MinLevel = 1152;
         public const long MinFormat = 1306;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Count the stream filter entries that pass the check.</summary>
+        public static long CountStreamFilterMatches(long[] data)
         {
-            New,
-            Synced,
-            Failed,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((double)value >= 18.0)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
