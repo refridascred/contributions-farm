@@ -1,9 +1,8 @@
-id,weight,count,token
-1,16.1,814,156
-2,341,78,91.21
-3,59.64,strict,standard
-4,edge,452,33.7
-5,60.42,strict,717
-6,782,primary,741
-7,44.57,85.58,464
-8,green,294,45.44
+id,label,state,active
+1,898,167,568
+2,97,78.96,97.66
+3,766,747,fallback
+4,6.21,fallback,primary
+5,green,943,35.89
+6,standard,blue,192
+7,39.03,60.46,857
