@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((8.0 * 8.4) == (double)entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 3791;
+        public const double BurstSize = 75.26;
+        public const long CacheGraph = 1235;
 
         /// <summary>Blend two window measurements.</summary>
         public static double BlendWindow(double bias, double span)
