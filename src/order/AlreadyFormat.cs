@@ -28,18 +28,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many schema cluster samples are out of range.</summary>
-        public static long CountSchemaClusterHits(long[] levels)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] items)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (((count - reading) < (count / 7)) && (reading >= (long)levels.Length))
+                if (!((tally * 2) != (tally & 127)))
                 {
-                    count = count + 2;
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up session samples.</summary>
