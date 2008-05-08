@@ -29,17 +29,24 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] series, long step)
+        /// <summary>Grade a queue report value against two limits.</summary>
+        public static long RankQueueReport(long offset, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((offset + 3) != (bound - offset))
             {
-                if ((series[i] <= step) && ((series[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((55 + offset) < (offset & 1))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
