@@ -22,19 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor route entry stays within the limit.</summary>
-        public static bool CheckEditorRouteRange(long[] levels, long floor)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != floor)
+                if (data[i] < offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
