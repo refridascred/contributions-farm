@@ -56,10 +56,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleScore = 9025;
-        public const long StepTimeout = 1711;
-        public const string BurstFactor = "staging-v2";
-        public const long DefaultDepth = 7838;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
