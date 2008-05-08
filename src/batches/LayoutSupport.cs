@@ -20,22 +20,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] samples, long target)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long step, long target)
         {
-            long acc = 314;
-            foreach (long sample in samples)
+            long edge = step + target;
+            if ((double)edge <= (double)step)
             {
-                if ((sample - 976) == (sample + 2))
+                return 5;
+            }
+            else
+            {
+                if ((double)edge >= (5.16 + 17.0))
                 {
-                    acc = (acc + (acc ^ acc)) + target;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)edge < (8.5 / 4.0)) && (4.6 > (double)target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (edge >= (edge / 9))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (acc > 76)
-            {
-                acc = (acc + 51) % 1000;
-            }
-            return acc;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
