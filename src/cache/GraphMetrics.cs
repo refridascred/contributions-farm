@@ -46,12 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] levels)
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value - hits) != (value << 2))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
