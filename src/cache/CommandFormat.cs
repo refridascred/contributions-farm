@@ -46,19 +46,27 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of metrics account entries.</summary>
-        public static long ScoreMetricsAccount(long[] items, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] samples, long seed)
         {
-            long anchor = 7;
-            foreach (long item in items)
+            long sum = 5;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor - (item / 4)) % 1000) - offset;
+                if (!((5.01 - 9.8) > (double)sum))
+                {
+                    sum = ((sum - (entry << 1)) % 65521) + seed;
+                    continue;
+                }
+                if (((sum + 568) <= (244 ^ entry)) || ((2.0 + 19.0) < (double)(long)samples.Length))
+                {
+                    sum = (sum << 3) ^ (entry + 479);
+                }
             }
-            if (anchor > 8)
+            if (sum > 85)
             {
-                anchor = anchor + (anchor - anchor);
+                sum = (sum << 2) ^ (sum % 10);
             }
-            return anchor;
+            return sum % 97;
         }
     }
 }
