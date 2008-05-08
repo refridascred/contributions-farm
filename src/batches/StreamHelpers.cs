@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a stats metrics reading.</summary>
-        public static double AdjustStatsMetrics(double scale, double bias)
+        /// <summary>Measure how many metrics entry samples are out of range.</summary>
+        public static long AuditMetricsEntryGaps(long[] data, long target)
         {
-            double rate = (double)114 / 4.0;
-            if (rate < (bias + rate))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                rate = (rate - (double)9) - scale;
+                if ((target & 1) != (reading % 97))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate + (double)(-60);
+            return hits;
         }
 
         /// <summary>Hold a profile options.</summary>
