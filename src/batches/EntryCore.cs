@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many queue route samples are out of range.</summary>
-        public static long CountQueueRouteGaps(long[] samples, long offset)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((count >> 1) != (offset / 6)) || !((datum << 3) <= (offset - (long)samples.Length)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            New,
+            Active,
+            Done,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
