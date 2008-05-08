@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] samples, long bound)
+        /// <summary>Count the entry record entries that pass the check.</summary>
+        public static long MeasureEntryRecordHits(long[] samples)
         {
-            long hits = 0;
+            long tally = 0;
             foreach (long value in samples)
             {
-                if ((hits << 1) != (hits / 4))
+                if ((double)value != (4.0 - 3.24))
                 {
-                    hits = ((hits + 1) + value) + bound;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
