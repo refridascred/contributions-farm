@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double gain, double offset)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            double drift = offset;
-            return (drift + drift) + gain;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
