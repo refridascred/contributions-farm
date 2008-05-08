@@ -1,7 +1,5 @@
 {
-  "hard_size_pct": 6923,
-  "graph_ratio": 76,
-  "poll_ttl_ms": "legacy",
-  "default_ratio_count": "primary",
-  "base_limit": false
+  "burst_interval_count": false,
+  "window_retries": true,
+  "max_ttl": 3221
 }
