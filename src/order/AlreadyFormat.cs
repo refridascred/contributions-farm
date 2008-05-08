@@ -32,38 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a editor notes pair into a bucket.</summary>
-        public static long BucketEditorNotes(long floor, long offset)
+        /// <summary>Measure how many metrics stream samples are out of range.</summary>
+        public static long TallyMetricsStreamOutliers(long[] series, long limit)
         {
-            if ((double)offset < (1.0 - 1.09))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((561 << 3) >= (offset / 5))
+                if ((seen + 35) <= (limit + seen))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + (-340)) > offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset - floor) >= (offset ^ floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = (seen + 2) - entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up session samples.</summary>
