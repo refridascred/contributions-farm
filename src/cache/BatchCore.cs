@@ -52,20 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] samples, long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((carry + carry) < (step + step)))
+                if ((samples[i] < bound) && ((samples[i] % 3) != 0))
                 {
-                    carry = ((carry * 3) + ((long)i >> 3)) % 101;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (step % 60)) % 1000;
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
