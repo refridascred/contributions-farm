@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long seed)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double weight, double offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            double bias = 4.49;
+            if (bias > (bias * 3.0))
             {
-                mark = ((mark * 5) + mark) % 1000;
-                mark = ((mark << 3) ^ mark) % 97;
-                mark = ((mark * 5) + (long)i) % 4093;
+                bias = (bias - (offset / 8.0)) + weight;
             }
-            return mark;
+            else
+            {
+                bias = bias - offset;
+            }
+            return bias + (double)1;
         }
 
         /// <summary>Adjust a context reading.</summary>
