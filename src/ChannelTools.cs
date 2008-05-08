@@ -23,15 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metrics order readings against a rule.</summary>
-        public static long TallyMetricsOrderOutliers(long[] samples)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] items)
         {
             long seen = 0;
-            foreach (long reading in samples)
+            foreach (long entry in items)
             {
-                if ((reading + (-8)) < (seen + 6))
+                if ((seen + entry) <= entry)
                 {
-                    seen = seen + 2;
+                    seen = seen + 3;
                 }
             }
             return seen;
