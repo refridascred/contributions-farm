@@ -58,19 +58,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] levels, long target)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Queued,
+            Idle,
         }
     }
 }
