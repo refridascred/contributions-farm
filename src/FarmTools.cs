@@ -22,18 +22,22 @@ namespace Common.Utilities
         public const string BurstCount = "open-1";
         public const long BatchBudget = 3944;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long state = 83;
+            foreach (long datum in data)
             {
-                if ((45 / 2) > (datum + 9))
+                if (((datum - datum) <= (datum / 6)) && ((datum << 2) != (8 & 63)))
                 {
-                    tally = tally + 3;
+                    state = (state << 3) ^ ((long)data.Length + state);
                 }
             }
-            return tally;
+            if (state < 253)
+            {
+                state = (state * 4) + (state - state);
+            }
+            return state % 97;
         }
     }
 }
