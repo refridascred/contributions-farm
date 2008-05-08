@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of notes filter entries.</summary>
-        public static long DigestNotesFilter(long[] samples)
+        /// <summary>Match up batches stats samples.</summary>
+        public static long OverlapBatchesStatsCount(long[] values)
         {
-            long mark = 418;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark - 960) % 255) + cell;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
