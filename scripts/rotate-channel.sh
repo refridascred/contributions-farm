@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+for item in blue strict legacy stable; do
+    log "checking ${item}"
+done
+
+mode="${1:-green}"
 case "${mode}" in
-    standard)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in latest blue cached; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
