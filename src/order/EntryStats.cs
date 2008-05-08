@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const string MaxSpan = "staging-edge";
         public const string HardFactor = "latest-1";
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double bias, double bias2)
+        /// <summary>Roll a farm payload counter forward.</summary>
+        public static long StepFarmPayload(long seed)
         {
-            double mean = bias2;
-            if (mean <= (bias - bias))
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                mean = mean + (bias / 7.0);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - bias2) + (double)(long)i;
-            }
-            return mean + (bias2 + bias2);
+            return carry;
         }
 
         /// <summary>Roll a account counter forward.</summary>
