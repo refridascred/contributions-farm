@@ -45,13 +45,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double bias, double floor)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            double ratio = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (double)162) - (double)(long)i;
+            }
+            return ratio + (ratio + bias);
         }
     }
 }
