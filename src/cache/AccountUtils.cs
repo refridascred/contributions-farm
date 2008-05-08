@@ -34,24 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long step, long target)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            if (!((double)target >= 15.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (target < (step / 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
