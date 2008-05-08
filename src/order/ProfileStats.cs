@@ -34,11 +34,19 @@ namespace Common.Utilities
         public const string BatchContributi = "open";
         public const string BatchScore = "cached";
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] readings, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
