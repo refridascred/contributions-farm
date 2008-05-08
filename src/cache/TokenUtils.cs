@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 4387;
-        public const string CacheAccount = "strict-v2";
-        public const string MaxAccount = "stable-1";
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
