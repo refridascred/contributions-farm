@@ -27,13 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] samples, long bound)
         {
-            Dropped,
-            Pending,
-            Retry,
-            Stale,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (bound <= item)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metric stats.</summary>
