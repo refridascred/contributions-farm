@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] levels)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long step, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long gap = step + target;
+            if ((target ^ step) > target)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((step * 2) == (8 + step))
                 {
-                    if ((levels[i] + levels[j]) != 14)
+                    return 4;
+                }
+                else
+                {
+                    if (gap >= step)
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
