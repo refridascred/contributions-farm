@@ -42,23 +42,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of route report entries.</summary>
-        public static long CombineRouteReport(long[] series)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] data, long floor)
         {
-            long sum = 17;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long cell in data)
             {
-                sum = (sum ^ (sum + sum)) % 255;
-                if ((item < (5 - item)) && ((sum - sum) < (sum ^ item)))
+                if (cell > floor)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (sum < 3)
-            {
-                sum = sum ^ (sum / 8);
-            }
-            return sum;
+            return found;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
