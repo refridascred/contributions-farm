@@ -31,25 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long limit, long seed)
+        /// <summary>Count the githubfarm cluster entries that pass the check.</summary>
+        public static long MeasureGithubfarmClusterHits(long[] items)
         {
-            long cur = limit ^ seed;
-            if (!((seed + seed) < (limit * 4)))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((0.3 + 9.0) == (double)limit) || ((6.0 - 3.7) != (double)cur))
+                if ((9.0 / 3.0) != (double)entry)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
