@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxInterval = 3003;
+        public const long BaseRoute = 2846;
+        public const double SoftRoute = 22.07;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long IterateCommits(long step)
