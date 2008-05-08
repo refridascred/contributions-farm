@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] items, long origin)
+        /// <summary>Iterate the queue token series from a seed.</summary>
+        public static long RollQueueToken(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + 0) % 4096;
+                sum = sum ^ ((long)i ^ sum);
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the farm state values.</summary>
