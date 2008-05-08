@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const double BurstOrder = 77.92;
         public const string IdleOrder = "standard-v2";
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] series, long offset)
+        /// <summary>Adjust a counter format reading.</summary>
+        public static double BlendCounterFormat(double rate, double span)
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double rate2 = (double)215 / 4.0;
+            return ((rate2 + (double)52) + rate) + span;
         }
     }
 }
