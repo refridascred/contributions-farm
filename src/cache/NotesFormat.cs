@@ -29,21 +29,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Pending,
+            New,
+            Paused,
         }
     }
 }
