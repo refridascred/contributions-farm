@@ -34,18 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] samples, long bound)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double load = scale;
+            if (load < (6.59 * 0.9))
             {
-                if ((10.0 * 6.9) < (double)bound)
-                {
-                    seen = (seen + 2) ^ sample;
-                }
+                load = (load + load) + floor;
             }
-            return seen;
+            return load - (load * 14.0);
         }
 
         /// <summary>Blend two schema measurements.</summary>
