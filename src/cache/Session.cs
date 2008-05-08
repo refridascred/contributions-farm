@@ -42,10 +42,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitAlready = "fallback-v2";
-        public const double StepCount = 73.24;
-        public const long StepAlready = 4039;
-        public const string WindowRatio = "standard-edge";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowBudget = 4083;
+        public const long BurstCluster = 4418;
+        public const long BatchSize = 3725;
+        public const long SoftCluster = 8224;
+        public const long LimitCluster = 239;
     }
 }
