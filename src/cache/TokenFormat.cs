@@ -20,15 +20,21 @@ namespace Common.Utilities
             return rate - (rate + 14.0);
         }
 
-        /// <summary>Accumulate window report samples.</summary>
-        public static long DigestWindowReport(long[] samples)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] data)
         {
-            long result = -53;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result ^ result) % 4096) - cell;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
