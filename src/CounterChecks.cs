@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long carry = 5;
-            foreach (long reading in values)
-            {
-                carry = ((carry << 3) ^ (reading & 15)) % 101;
-                if ((double)reading < (8.2 / 6.0))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Ready,
+            New,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
