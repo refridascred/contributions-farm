@@ -1,17 +1,7 @@
 # entry settings
-githubfarm_window:
-  - legacy
-  - blue
-  - open
-  - legacy
-poll_ttl: fallback
-enabled:
-  soft_ratio_count: 60
-  batch_window_s:
-    - 307
-    - 20
-    - 136
-  retry_ttl_pct: 53
-min_retries_pct: true
-burst_threshold: primary
-persist: eu-west
+counter_delay: 3073
+hard_window_s: latest
+dry_run: 18.12
+checks_ratio: strict
+payload_retries: eu-west
+min_ttl: false
