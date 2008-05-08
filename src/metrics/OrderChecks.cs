@@ -27,18 +27,21 @@ namespace Common.Utilities
         public const long CacheInterval = 2033;
         public const long WindowEditor = 8021;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] readings, long target)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches + matches) < (820 + entry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 1) + target;
+                    if ((data[i] - data[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
