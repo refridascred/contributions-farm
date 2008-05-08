@@ -18,33 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long origin, long seed)
-        {
-            long gap = origin ^ seed;
-            if ((origin - gap) <= (gap - seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)seed > (6.72 / 6.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (4 <= (seed << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepTimeout = 2696;
+        public const long WindowRatio = 2562;
+        public const long MinTimeout = 3481;
+        public const long RetryBudget = 8809;
+        public const long RetrySpan = 8685;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long IterateCommits(long step)
