@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 4708;
-        public const long MinStats = 4455;
-        public const string MaxSpan = "alpha-1";
-        public const long BaseStats = 6057;
-        public const long MaxStats = 6665;
+        /// <summary>Audit stream tools readings against a rule.</summary>
+        public static long CountStreamToolsMatches(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((hits ^ 76) == (offset - hits))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long CombineTools(long[] values, long offset)
