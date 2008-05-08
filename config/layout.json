@@ -1,24 +1,25 @@
 {
-  "cache_capacity": "standard",
-  "commits_capacity": 50,
-  "tools_depth": [32, 160],
-  "command_retries": 78.21,
-  "soft_interval_s": {
-    "metrics_interval": "open",
-    "persist": "strict",
-    "retry_capacity_pct": {
-      "dry_run": "fallback",
-      "default_window": 1392,
-      "soft_ttl": [223, 267, 358],
-      "stats_depth": "open"
-    },
-    "soft_ttl_ms": false,
-    "editor_ratio": 68.11,
-    "readonly": {
-      "batch_timeout": true,
-      "already_window": [461, 30, 385],
-      "session_delay": false
-    }
+  "format_ratio": {
+    "default_retries_count": [131, 109, 488, 483],
+    "audit": false,
+    "default_capacity": [380, 224]
   },
-  "soft_window_pct": 10
+  "warm_window_s": 25.82,
+  "sync_retries_ms": 100,
+  "cache_window_ms": "stable",
+  "enabled": {
+    "route_threshold": "staging",
+    "enabled": {
+      "hard_limit_pct": 94,
+      "schema_timeout": false,
+      "batch_ttl_pct": false,
+      "burst_threshold": 52.72,
+      "default_size_pct": false,
+      "min_depth": 73.79
+    },
+    "burst_capacity": "eu-west",
+    "warm_threshold_s": true,
+    "stream_ratio": "stable",
+    "cache_interval": ["edge", "legacy", "cached", "cached"]
+  }
 }
