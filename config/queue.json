@@ -1,6 +1,8 @@
 {
-  "readonly": 1280,
-  "verbose": 86.53,
-  "default_interval": "open",
-  "base_timeout_ms": [487, 283, 20, 278]
+  "command_capacity": 2275,
+  "sync_ttl_pct": false,
+  "cache_threshold": 100,
+  "counter_delay": "cached",
+  "compress": "stable",
+  "strict": "legacy"
 }
