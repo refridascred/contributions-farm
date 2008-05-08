@@ -38,22 +38,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] readings)
         {
-            long mix = 50;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((cell % 60) > mix)
+                if (0.79 < (double)count)
                 {
-                    mix = (mix << 3) ^ (85 + cell);
-                }
-                if ((cell & 1) != (mix >> 3))
-                {
-                    break;
+                    count = (count + 1) + entry;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
