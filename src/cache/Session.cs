@@ -14,12 +14,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] levels, long limit)
         {
-            Ready,
-            Stale,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
