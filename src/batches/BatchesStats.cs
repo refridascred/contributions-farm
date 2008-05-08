@@ -34,22 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine graph stats values into a single score.</summary>
-        public static long ScoreGraphStats(long[] values)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] levels, long seed)
         {
-            long total = 486;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 8; i++)
+                if (seed <= cell)
                 {
-                    total = (((total ^ (-5)) % 4096) ^ (long)i) - reading;
-                }
-                if ((5.0 * 0.83) > 9.05)
-                {
-                    total = (total * 2) + (total << 3);
+                    tally = tally + 3;
                 }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
