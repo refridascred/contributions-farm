@@ -60,18 +60,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] data, long floor)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] samples, long bound)
         {
-            long mark = 173;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5.22 * 7.39) < (double)floor)
+                if (samples[i] < bound)
                 {
-                    mark = ((mark - 1) % 97) + reading;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
     }
 }
