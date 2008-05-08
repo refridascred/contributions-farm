@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleRatio = 2.78;
+        public const long MinAlready = 1646;
+        public const string RetryInterval = "staging";
+        public const double StepAlready = 79.23;
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
