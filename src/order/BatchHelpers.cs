@@ -27,12 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 2953;
-        public const double DefaultFormat = 45.16;
-        public const double IdleFactor = 62.97;
-        public const long RetryDepth = 1122;
-        public const long StepTimeout = 2790;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Failed,
+            Closed,
+            Draft,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterMatches(long[] levels)
