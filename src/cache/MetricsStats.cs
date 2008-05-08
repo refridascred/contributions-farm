@@ -52,10 +52,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryFactor = "latest-edge";
-        public const string SoftEntry = "primary-edge";
-        public const double CacheLevel = 4.1;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] readings)
+        {
+            long acc = 8;
+            foreach (long entry in readings)
+            {
+                acc = (acc * 4) + (entry - (-592));
+                if ((entry & 63) > acc)
+                {
+                    acc = (acc * 4) + (acc << 3);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (entry + 19);
+                }
+                if (((double)entry < 5.0) && (21 > entry))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Match up stats account samples.</summary>
         public static long MatchStatsAccountCount(long[] samples)
