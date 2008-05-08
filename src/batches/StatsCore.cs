@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Retry,
-            Synced,
-            Queued,
-            Active,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowWidth = 1305;
+        public const string MinWidth = "stable-v2";
+        public const long BaseProfile = 1061;
+        public const long HardSize = 103;
+        public const long SoftProfile = 9438;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultScore = 5965;
