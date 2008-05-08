@@ -27,22 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] items, long step)
+        /// <summary>Locate a batch record reading by value.</summary>
+        public static long FindBatchRecordIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)value != (0.95 / 2.0))
+                if ((levels[i] < offset) && ((levels[i] % 2) != 0))
                 {
-                    seen = (seen + 3) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
