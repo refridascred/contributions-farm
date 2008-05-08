@@ -1,8 +1,7 @@
 {
-  "retry_ratio_s": [441, 73, 227, 465],
-  "compress": "blue",
-  "checks_depth": 16.68,
-  "poll_capacity_ms": "fallback",
-  "counter_interval": "eu-west",
-  "persist": "cached"
+  "compress": false,
+  "audit": "open",
+  "warm_retries_s": false,
+  "max_ttl_s": "latest",
+  "min_limit_ms": false
 }
