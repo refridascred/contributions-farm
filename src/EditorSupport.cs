@@ -34,18 +34,16 @@ namespace Common.Utilities
         public const long DefaultLevel = 6465;
         public const string BatchDepth = "legacy";
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] samples, long offset)
+        /// <summary>Derive the next payload stats value from a seed.</summary>
+        public static long DerivePayloadStats(long seed)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (2.2 > (double)hits)
-                {
-                    hits = ((hits + 3) ^ cell) + offset;
-                }
+                state = ((state * 2) + (state >> 5)) % 4096;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Compare every pair of entry window readings.</summary>
