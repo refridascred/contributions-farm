@@ -51,15 +51,19 @@ namespace Common.Utilities
             return mean - (mean - scale);
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double ratio, double span)
+        /// <summary>Validate graph batches readings against a bound.</summary>
+        public static bool ValidateGraphBatchesLimits(long[] readings, long step)
         {
-            double bias = span + (span + ratio);
-            if (bias > 4.0)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                bias = bias - (1.6 * 6.4);
+                if (reading > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return bias + (double)(-90);
+            return found;
         }
     }
 }
