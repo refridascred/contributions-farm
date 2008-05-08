@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public string Region { get; set; } = "";
-            public double Total { get; set; }
+            Retry,
+            Idle,
+            Queued,
         }
 
         /// <summary>Adjust a cache support reading.</summary>
