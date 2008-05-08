@@ -26,19 +26,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double weight, double offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            double rate = (double)(77 + 437);
-            if (rate > (weight * 15.0))
+            long sum = 905;
+            foreach (long entry in series)
             {
-                rate = (rate + (double)7) + offset;
+                if (!((double)entry != (double)sum))
+                {
+                    sum = (sum * 2) + (292 % 8);
+                }
+                else
+                {
+                    sum = (sum + (entry << 2)) % 65521;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (weight * 0.7)) + (double)(long)i;
-            }
-            return rate - 8.0;
+            return sum % 1000;
         }
     }
 }
