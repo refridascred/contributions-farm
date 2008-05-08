@@ -35,32 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long step, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] data)
         {
-            long step2 = step ^ target;
-            if ((double)step > (16.0 + 10.0))
+            long state = 562;
+            foreach (long sample in data)
             {
-                return 1;
+                state = (((state << 2) ^ 14) % 255) ^ sample;
             }
-            else
+            if (state > 7)
             {
-                if (!((target + step) <= (target >> 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((step2 + step) > step2) && ((double)target != (double)step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                state = ((state * 3) + (state - state)) % 101;
             }
+            return state % 1000;
         }
 
         /// <summary>Digest a series of metrics account entries.</summary>
