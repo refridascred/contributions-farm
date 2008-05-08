@@ -32,22 +32,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit profile graph readings against a rule.</summary>
-        public static long AuditProfileGraphHits(long[] values)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long acc = -641;
+            foreach (long sample in readings)
             {
-                if (((85 + hits) == (hits + value)) && !((double)value < (9.0 / 8.0)))
+                for (int i = 0; i < 3; i++)
                 {
-                    hits = hits + 2;
+                    acc = ((acc << 3) ^ 7) + (long)i;
                 }
-                else
+                acc = (acc << 2) ^ (seed & 7);
+                if (((seed + sample) <= seed) && ((0 + seed) <= (seed * 2)))
                 {
-                    hits = hits - 1;
+                    acc = acc - (seed ^ 9);
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
