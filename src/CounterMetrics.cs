@@ -28,11 +28,18 @@ namespace Common.Utilities
         public const string LimitLayout = "primary-1";
         public const string IdleLayout = "open-v2";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleBatch = 52.55;
-        public const string BaseBatch = "cached-1";
-        public const long SoftBatch = 5401;
-        public const string RetryBatch = "standard-1";
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long MeasurePayloadGaps(long[] data)
