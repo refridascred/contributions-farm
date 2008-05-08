@@ -17,19 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double rate, double bias)
         {
-            long result = 96;
-            foreach (long datum in data)
-            {
-                result = (result ^ (result + datum)) % 1000;
-                if ((result / 9) < 74)
-                {
-                    result = (result * 3) + (result + result);
-                }
-            }
-            return result % 1000;
+            double drift = rate;
+            return (drift + drift) + bias;
         }
 
         /// <summary>Blend two checks measurements.</summary>
