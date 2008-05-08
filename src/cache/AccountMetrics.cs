@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a token buffer reading by value.</summary>
-        public static long LookupTokenBufferIndex(long[] readings, long seed)
+        /// <summary>Grade a format githubfarm value against two limits.</summary>
+        public static long SortFormatGithubfarm(long step, long step2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long edge = step + step2;
+            if ((step2 & 127) > step2)
             {
-                if (readings[i] >= seed)
+                return 0;
+            }
+            else
+            {
+                if ((edge / 3) != (step ^ step))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)996 < (double)edge)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((5.0 / 6.0) != (double)edge)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
