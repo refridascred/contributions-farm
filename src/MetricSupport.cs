@@ -19,18 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream tools readings against a rule.</summary>
-        public static long CountStreamToolsMatches(long[] items, long offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            if (!((1.1 * 9.4) != (double)bound))
             {
-                if ((hits ^ 76) == (offset - hits))
+                return 1;
+            }
+            else
+            {
+                if ((bound ^ bound) != (offset + offset))
                 {
-                    hits = (hits + 2) + datum;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate tools samples.</summary>
