@@ -60,22 +60,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] series, long seed)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((seed + value) <= (hits ^ hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 5198;
+        public const long MinWidth = 5306;
+        public const long IdleTools = 9647;
+        public const long LimitRatio = 9382;
     }
 }
