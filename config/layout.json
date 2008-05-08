@@ -1,7 +1,5 @@
 {
-  "soft_size_pct": "legacy",
-  "base_threshold": "green",
-  "graph_limit": false,
-  "format_delay": "cached",
-  "dry_run": true
+  "idle_ratio_count": "stable",
+  "idle_ttl_count": 89.39,
+  "default_retries_count": true
 }
