@@ -41,18 +41,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] levels, long limit)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen << 3) == (limit + seen))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            Failed,
+            Queued,
+            Active,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
