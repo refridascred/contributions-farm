@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] items, long seed)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
