@@ -19,22 +19,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit filter session readings against a rule.</summary>
-        public static long TallyFilterSessionHits(long[] items)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((datum >> 1) < (long)items.Length))
+                if ((carry % 16) <= (carry >> 3))
                 {
-                    tally = tally + 1;
+                    carry = (carry - carry) % 1000;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
