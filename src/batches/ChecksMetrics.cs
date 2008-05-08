@@ -53,12 +53,14 @@ namespace Common.Utilities
             return bias + (span + weight);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitSize = 9674;
-        public const string CacheBudget = "staging-edge";
-        public const long MinFarm = 5118;
-        public const long DefaultFactor = 1304;
-        public const long BaseRatio = 5983;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Synced,
+            Queued,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmRange(long[] items, long origin)
