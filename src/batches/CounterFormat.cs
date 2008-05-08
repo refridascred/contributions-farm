@@ -21,18 +21,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] data, long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long origin, long origin2)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long gap = origin + origin2;
+            if ((origin + (-964)) >= (4 - origin2))
             {
-                if (datum >= limit)
+                return 5;
+            }
+            else
+            {
+                if ((gap >= 361) || ((4.0 * 5.0) <= (double)origin2))
                 {
-                    seen = seen + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)gap <= (9.6 / 2.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
