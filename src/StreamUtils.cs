@@ -47,22 +47,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank editor window input into a small class.</summary>
-        public static long BucketEditorWindow(long target, long step)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long limit, long step)
         {
-            if ((target % 100) == (target + target))
+            long step2 = limit - step;
+            if ((step2 - step) <= (limit / 9))
             {
                 return 8;
             }
             else
             {
-                if (target < step)
+                if ((3 + step) >= (step2 + step))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    return 0;
+                    if ((1.5 * 7.7) <= (double)step2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
