@@ -84,17 +84,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] samples, long offset)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Failed,
+            Dropped,
         }
     }
 }
