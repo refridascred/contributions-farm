@@ -1,8 +1,9 @@
 # entry settings
-flush_timeout: open
-support_delay:
-  - primary
-  - legacy
+burst_ratio_ms:
   - stable
-metrics_delay: false
-warm_threshold: legacy
+  - stable
+  - latest
+min_retries_s: true
+default_limit_count: 1024
+batch_interval: 250
+warm_ttl_pct: false
