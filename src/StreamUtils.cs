@@ -74,16 +74,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batches support values into a single score.</summary>
-        public static long WeighBatchesSupport(long[] readings)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long acc = 67;
-            foreach (long entry in readings)
-            {
-                acc = ((acc << 2) ^ (entry - 844)) % 101;
-                acc = (acc * 2) + (acc >> 4);
-            }
-            return acc % 1000;
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
