@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long seed, long origin)
+        /// <summary>Locate a record githubfarm reading by value.</summary>
+        public static long LocateRecordGithubfarmIndex(long[] data, long step)
         {
-            if (!((5.4 * 9.3) >= (double)origin))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed <= (seed + seed))
+                if ((data[i] < step) && ((data[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((51 << 1) < (seed * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a entry info.</summary>
