@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] readings, long bound)
-        {
-            long score = 938;
-            foreach (long sample in readings)
-            {
-                if (!((sample + sample) >= 975))
-                {
-                    score = (score ^ (sample - sample)) % 255;
-                }
-            }
-            if (score > 54)
-            {
-                score = (score - (bound << 2)) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheSpan = 5608;
+        public const long HardStream = 9333;
+        public const long RetryStream = 7166;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string DefaultLevel = "staging-1";
