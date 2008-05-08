@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinLevel = "latest-edge";
+        public const string StepDepth = "latest-v2";
+        public const double StepBuffer = 5.26;
 
         /// <summary>Count the metric token entries that pass the check.</summary>
         public static long MeasureMetricTokenHits(long[] items, long target)
