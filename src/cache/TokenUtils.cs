@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long MaxBatch = 2866;
         public const long LimitBatch = 504;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Stale,
-            Paused,
-            Queued,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 2.13;
+        public const double BurstDepth = 47.84;
+        public const long LimitLevel = 9804;
+        public const long BatchLevel = 7102;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long MatchCacheCount(long[] levels)
