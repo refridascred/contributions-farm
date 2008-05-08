@@ -64,11 +64,18 @@ namespace Common.Utilities
         public const double BatchProfile = 5.82;
         public const long DefaultProfile = 8121;
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] series, long limit)
         {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen - cell) == (cell >> 4))
+                {
+                    seen = (seen + 3) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a token metric sample.</summary>
