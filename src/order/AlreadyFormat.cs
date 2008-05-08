@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] levels, long step)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            if (!((5.4 * 9.3) >= (double)origin))
             {
-                if (step >= entry)
+                return 4;
+            }
+            else
+            {
+                if (seed <= (seed + seed))
                 {
-                    matches = matches + 1;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((51 << 1) < (seed * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a entry info.</summary>
