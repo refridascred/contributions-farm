@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] values)
+        /// <summary>Check that every farm format entry stays within the limit.</summary>
+        public static bool ValidateFarmFormatRange(long[] values, long target)
         {
-            long acc = 145;
+            bool stale = true;
             foreach (long item in values)
             {
-                acc = (((acc << 2) ^ (acc * 2)) % 101) ^ item;
+                if (item >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc % 4096;
+            return stale;
         }
 
         /// <summary>Describe the cache phase values.</summary>
