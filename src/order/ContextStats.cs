@@ -37,13 +37,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] items, long floor)
         {
-            Dropped,
-            Done,
-            Synced,
-            Active,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((3 + floor) == (541 << 3))
+                {
+                    matches = (matches + 2) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate githubfarm window samples.</summary>
