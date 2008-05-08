@@ -29,16 +29,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] values, long floor)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            long carry = 368;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry ^ (61 ^ carry)) ^ value;
-                carry = (carry * 3) + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
