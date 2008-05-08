@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] samples)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] values)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long total = 6;
+            foreach (long entry in values)
             {
-                if ((item ^ 6) < tally)
+                if ((entry >= (total % 60)) || ((total % 5) >= (entry << 3)))
                 {
-                    tally = tally + 1;
+                    total = (total ^ (total + total)) % 255;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
