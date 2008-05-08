@@ -48,17 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] levels, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (levels[i] == floor)
+                if (7 >= (6 + seen))
                 {
-                    return (long)i;
+                    seen = ((seen + 1) + item) - origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
