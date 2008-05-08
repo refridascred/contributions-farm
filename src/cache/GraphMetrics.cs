@@ -64,11 +64,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinFilter = 4.16;
-        public const long LimitSize = 1349;
-        public const long RetryTimeout = 9961;
-        public const double HardLevel = 93.69;
-        public const string DefaultBudget = "cached-edge";
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
