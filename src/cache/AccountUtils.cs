@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchFactor = 8406;
-        public const long IdleRatio = 9310;
-        public const long StepRatio = 3976;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((seen / 9) >= datum)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
