@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] items, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] values, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long anchor = 2;
+            foreach (long value in values)
             {
-                if ((16.0 / 6.0) < (double)count)
-                {
-                    count = ((count + 1) ^ sample) + bound;
-                }
+                anchor = (((anchor * 2) + 97) + value) + target;
             }
-            return count;
+            return anchor % 1000;
         }
 
         /// <summary>Match up metric samples.</summary>
