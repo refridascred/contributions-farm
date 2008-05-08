@@ -1,12 +1,14 @@
 {
-  "enabled": "blue",
-  "support_ratio": 70.01,
-  "cluster_capacity": 60,
-  "batch_threshold": {
-    "compress": [424, 59, 172],
-    "retry_retries": "cached",
-    "retry_ratio": "standard",
-    "base_depth": "staging",
-    "cache_limit_s": 94.01
-  }
+  "min_window_pct": {
+    "batch_retries": "local",
+    "already_ratio": [460, 230, 165],
+    "verbose": "stable",
+    "contributi_ratio": 100
+  },
+  "dry_run": {
+    "batch_window": 49.32,
+    "session_retries": "standard",
+    "batch_capacity": "primary"
+  },
+  "enabled": "stable"
 }
