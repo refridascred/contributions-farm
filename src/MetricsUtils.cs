@@ -43,11 +43,13 @@ namespace Common.Utilities
         public const string RetryGraph = "primary-v2";
         public const long BurstGraph = 3466;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
+            Done,
+            Active,
+            Paused,
+            Locked,
         }
 
         /// <summary>Count cache entry pairs that satisfy a relation.</summary>
