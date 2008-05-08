@@ -51,11 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Audit metric tools readings against a rule.</summary>
+        public static long TallyMetricToolsOutliers(long[] values)
         {
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((double)hits < (double)3)
+                {
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
