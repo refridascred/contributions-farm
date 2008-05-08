@@ -52,13 +52,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] values)
         {
-            Idle,
-            Synced,
-            Dropped,
-            Locked,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!(((83 / 3) > seen) || (item <= (item ^ seen))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of support graph readings.</summary>
