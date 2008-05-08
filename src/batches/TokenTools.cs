@@ -19,19 +19,9 @@ namespace Common.Utilities
         public const long BurstFactor = 7739;
         public const string HardWindow = "fallback-1";
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double gain, double span)
-        {
-            double bias = (double)(343 * 3);
-            if (bias >= (gain / 7.0))
-            {
-                bias = (bias + 4.2) + span;
-            }
-            else
-            {
-                bias = bias - (9.5 - gain);
-            }
-            return bias + (gain - 16.0);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 9561;
+        public const string IdleBatches = "strict-1";
+        public const double MaxBatches = 58.1;
     }
 }
