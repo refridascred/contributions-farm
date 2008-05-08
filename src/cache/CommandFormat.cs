@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate commits channel samples.</summary>
-        public static long WeighCommitsChannel(long[] levels, long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] samples, long floor)
         {
-            long total = 51;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                total = (total ^ value) + seed;
+                if ((((7.0 - 4.0) < (double)sample) || ((sample << 2) == (seen << 3))) && ((seen >> 3) != (sample >> 2)))
+                {
+                    seen = (seen + 2) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
