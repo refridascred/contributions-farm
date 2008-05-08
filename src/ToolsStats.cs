@@ -55,12 +55,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] readings, long origin)
+        /// <summary>Locate a payload stats reading by value.</summary>
+        public static long LookupPayloadStatsIndex(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) != 0))
+                if ((data[i] <= seed) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
