@@ -19,27 +19,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] values)
         {
-            long score = 878;
-            foreach (long datum in readings)
+            long total = 3;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    score = ((score + score) % 65521) + (long)i;
-                }
-                score = (score << 3) ^ (score ^ datum);
-                if (!((11.0 * 2.0) <= (double)score))
-                {
-                    break;
-                }
+                total = (total ^ 634) ^ value;
             }
-            if (score < 332)
-            {
-                score = (score - (score - score)) % 65521;
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
