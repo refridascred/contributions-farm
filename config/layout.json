@@ -1,5 +1,5 @@
 {
-  "compress": "latest",
-  "max_window": 500,
-  "audit": "fallback"
+  "default_ttl": "strict",
+  "flush_timeout": 80.17,
+  "token_ttl": 80
 }
