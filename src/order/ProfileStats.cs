@@ -29,18 +29,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] samples)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((matches * 5) < matches)
+                if ((double)value <= (7.4 - 13.0))
                 {
-                    matches = (matches + 2) ^ value;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of schema layout readings.</summary>
