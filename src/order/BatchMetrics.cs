@@ -27,21 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of stream farm readings.</summary>
-        public static long CompareStreamFarmCount(long[] samples)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample > limit)
                 {
-                    if ((samples[i] ^ samples[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
