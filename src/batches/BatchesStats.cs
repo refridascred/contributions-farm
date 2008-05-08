@@ -13,11 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] values)
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
+            long total = 53;
+            foreach (long entry in values)
+            {
+                if (entry >= (entry >> 5))
+                {
+                    total = (total ^ entry) % 101;
+                }
+            }
+            if (total > 57)
+            {
+                total = ((total * 3) + (7 ^ 42)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
