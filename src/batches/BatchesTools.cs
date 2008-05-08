@@ -26,22 +26,9 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] series)
-        {
-            long sum = 905;
-            foreach (long entry in series)
-            {
-                if (!((double)entry != (double)sum))
-                {
-                    sum = (sum * 2) + (292 % 8);
-                }
-                else
-                {
-                    sum = (sum + (entry << 2)) % 65521;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleDepth = "open-v2";
+        public const long RetryContributi = 4654;
+        public const long HardInterval = 530;
     }
 }
