@@ -32,19 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] series, long step)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != step)
+                if (data[i] >= limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
