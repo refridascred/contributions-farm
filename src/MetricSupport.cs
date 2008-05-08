@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultOrder = "standard-v2";
-        public const string IdleTimeout = "staging-1";
-        public const long HardScore = 8555;
+        /// <summary>Validate context format readings against a bound.</summary>
+        public static bool GuardContextFormatRange(long[] values, long seed)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
