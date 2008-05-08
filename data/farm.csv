@@ -1,8 +1,8 @@
-id,label,state,active
-1,898,167,568
-2,97,78.96,97.66
-3,766,747,fallback
-4,6.21,fallback,primary
-5,green,943,35.89
-6,standard,blue,192
-7,39.03,60.46,857
+id,rank
+1,blue
+2,6.05
+3,stable
+4,stable
+5,52.71
+6,standard
+7,299
