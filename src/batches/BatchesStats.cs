@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit batch checks readings against a rule.</summary>
-        public static long CountBatchChecksMatches(long[] items, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((reading + 1) == (seen / 3))
+                if ((double)datum <= (double)tally)
                 {
-                    seen = (seen + 3) + limit;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine tools context values into a single score.</summary>
