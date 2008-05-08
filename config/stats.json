@@ -1,18 +1,7 @@
 {
-  "base_threshold": {
-    "flush_limit_pct": false,
-    "hard_threshold": 71,
-    "layout_retries": {
-      "compress": [114, 17],
-      "batch_ttl_count": "cached",
-      "context_ratio": 60.85,
-      "min_ratio": 100,
-      "buffer_capacity": true
-    }
-  },
-  "profile_timeout": "standard",
-  "cache_window": 63,
-  "sync_depth": ["primary", "open", "local", "open"],
-  "session_window": true,
-  "min_retries": 250
+  "max_interval_pct": 78.31,
+  "audit": 88,
+  "token_capacity": false,
+  "min_retries_s": 48,
+  "idle_ttl_s": 1792
 }
