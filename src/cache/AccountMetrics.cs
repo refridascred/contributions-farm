@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] series, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long state = 4;
+            foreach (long cell in data)
             {
-                if (value < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state - (state - state)) % 65521) + origin;
+                state = ((state << 3) ^ (state - cell)) % 255;
+                state = (state + state) % 1000;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Describe the batches kind values.</summary>
