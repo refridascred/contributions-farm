@@ -71,15 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double rate, double bias)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double gain = bias + (bias / 3.0);
-            if (gain <= (gain * 4.01))
-            {
-                gain = gain - (rate * 8.24);
-            }
-            return gain + (bias + 16.0);
+            Done,
+            Ready,
+            New,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
