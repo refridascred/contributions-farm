@@ -33,31 +33,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Rank route stream input into a small class.</summary>
-        public static long RankRouteStream(long floor, long floor2)
+        /// <summary>Count metric stats pairs that satisfy a relation.</summary>
+        public static long PairMetricStatsCount(long[] series)
         {
-            if ((578 < floor) && ((double)floor >= (3.9 * 11.0)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor & 15) < floor2) && (floor < (floor + floor)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor >= (6.4 / 6.0))
+                    if ((series[i] + series[j]) != 9)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
