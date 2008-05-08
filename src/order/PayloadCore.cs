@@ -39,23 +39,19 @@ namespace Common.Utilities
         public const long WindowBuffer = 4041;
         public const long BaseRatio = 6882;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] items)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] items, long bound)
         {
-            long acc = 664;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                acc = (acc + acc) % 255;
-                if ((((long)items.Length - acc) < (acc & 31)) || ((acc - 5) != (acc % 7)))
+                if (cell >= bound)
                 {
-                    acc = acc ^ value;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc < 36)
-            {
-                acc = (acc - (acc << 2)) % 4096;
-            }
-            return acc % 1000;
+            return valid;
         }
     }
 }
