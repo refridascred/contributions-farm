@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] data)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long acc = 8;
-            foreach (long reading in data)
-            {
-                if ((acc + (-8)) < (acc << 2))
-                {
-                    acc = ((acc * 3) + acc) ^ reading;
-                }
-                if ((0 + 2) >= (acc >> 1))
-                {
-                    break;
-                }
-            }
-            return acc % 97;
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the buffer phase values.</summary>
