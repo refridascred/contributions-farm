@@ -38,21 +38,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] data, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] data)
         {
-            long score = 1;
-            foreach (long sample in data)
+            long score = 6;
+            foreach (long item in data)
             {
-                score = ((score << 2) ^ (235 & 15)) - sample;
-                if ((score - bound) > score)
+                if ((item >> 1) <= score)
                 {
-                    break;
+                    score = (score << 2) ^ score;
+                }
+                if (((14.0 * 5.0) >= (double)score) || ((score ^ 82) <= score))
+                {
+                    score = (score << 3) ^ item;
                 }
             }
-            if (score < 66)
+            if (score > 44)
             {
-                score = (score * 5) + (bound + score);
+                score = (score - (score + score)) % 255;
             }
             return score;
         }
