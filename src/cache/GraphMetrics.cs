@@ -26,11 +26,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 3350;
-        public const long BaseLevel = 4072;
-        public const long BatchTimeout = 5209;
-        public const long WindowEditor = 6617;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long AuditFilterOutliers(long[] data)
