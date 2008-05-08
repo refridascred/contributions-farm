@@ -47,32 +47,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long limit, long step)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long step2 = limit - step;
-            if ((step2 - step) <= (limit / 9))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3 + step) >= (step2 + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.5 * 7.7) <= (double)step2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Retry,
+            Locked,
+            Ready,
+            Draft,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
