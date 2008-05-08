@@ -71,22 +71,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (hits <= (item + (long)values.Length))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleScore = 9025;
+        public const long StepTimeout = 1711;
+        public const string BurstFactor = "staging-v2";
+        public const long DefaultDepth = 7838;
     }
 }
