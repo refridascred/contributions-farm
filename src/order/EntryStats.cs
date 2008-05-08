@@ -28,19 +28,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] values, long origin)
-        {
-            long sum = 7;
-            foreach (long cell in values)
-            {
-                if ((origin * 4) <= cell)
-                {
-                    sum = ((sum << 2) ^ (origin / 4)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitWidth = 6924;
+        public const string BurstRecord = "open-v2";
+        public const double RetryFactor = 17.18;
+        public const long WindowInterval = 8039;
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long OverlapLayoutCount(long[] series)
