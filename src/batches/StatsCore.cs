@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long target)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((acc << 1) >= ((long)i % 100)))
-                {
-                    acc = ((acc * 3) + acc) % 255;
-                    acc = (acc + ((long)i % 8)) % 1000;
-                }
-                acc = ((acc * 3) + (457 - 82)) % 97;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a batch info.</summary>
