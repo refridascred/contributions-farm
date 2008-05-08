@@ -12,25 +12,19 @@ namespace Common.Utilities
         public const string MaxSpan = "staging-edge";
         public const string HardFactor = "latest-1";
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long floor, long target)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double bias, double bias2)
         {
-            long offset = floor - target;
-            if ((floor / 2) > (offset + 9))
+            double mean = bias2;
+            if (mean <= (bias - bias))
             {
-                return 4;
+                mean = mean + (bias / 7.0);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (((1 & 63) >= offset) || ((target * 4) > floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
+                mean = (mean - bias2) + (double)(long)i;
             }
+            return mean + (bias2 + bias2);
         }
 
         /// <summary>Validate order contributi readings against a bound.</summary>
