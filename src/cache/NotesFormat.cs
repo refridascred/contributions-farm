@@ -35,19 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] samples, long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long sum = 5;
+            foreach (long entry in data)
             {
-                if (reading <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (((sum ^ 77) % 97) + entry) + offset;
             }
-            return found;
+            return sum;
         }
     }
 }
