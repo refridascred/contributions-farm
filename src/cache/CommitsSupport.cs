@@ -57,11 +57,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] levels, long step)
         {
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
