@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell == (8.0 + 17.0))
-                {
-                    tally = (tally + 2) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinDepth = 1707;
+        public const long CachePayload = 4541;
+        public const long CacheSize = 2519;
+        public const long LimitWidth = 7717;
 
         /// <summary>Count the metrics schema entries that pass the check.</summary>
         public static long TallyMetricsSchemaHits(long[] samples, long limit)
