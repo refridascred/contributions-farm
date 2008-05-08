@@ -19,19 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of contributi batches entries.</summary>
-        public static long DigestContributiBatches(long[] data, long bound)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long offset)
         {
-            long result = 316;
-            foreach (long sample in data)
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                result = (((result - result) % 1000) + sample) + bound;
+                if ((double)anchor < 5.7)
+                {
+                    anchor = (anchor - (anchor * 2)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor - (offset + anchor)) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            if (result > 98)
-            {
-                result = (result + ((long)data.Length / 7)) % 1000;
-            }
-            return result;
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
