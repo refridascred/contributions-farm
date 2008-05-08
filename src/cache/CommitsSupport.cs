@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Failed,
             Paused,
-            Dropped,
             Queued,
+            Done,
+            Active,
+            Dropped,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
