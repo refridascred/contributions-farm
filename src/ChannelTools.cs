@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] items)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double gain, double span)
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (value >= (41 + (long)items.Length))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double load = (span - span) * 5.6;
+            return (load + load) + gain;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
