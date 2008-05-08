@@ -12,18 +12,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of metrics buffer readings.</summary>
-        public static long TallyMetricsBuffer(long[] items)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] values, long origin)
         {
-            long sum = 22;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sum <= (entry % 12))
+                if (values[i] < origin)
                 {
-                    sum = ((sum * 3) + (sum + 49)) % 255;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
