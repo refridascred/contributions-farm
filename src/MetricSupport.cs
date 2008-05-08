@@ -25,12 +25,11 @@ namespace Common.Utilities
             return gain + (gain * 0.39);
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public long Ratio { get; set; }
-            public double Region { get; set; }
-            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
