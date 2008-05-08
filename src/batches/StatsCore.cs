@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchTimeout = 5306;
-        public const long IdleFactor = 1812;
-        public const long WindowRatio = 3830;
-        public const long RetrySupport = 3976;
-        public const long HardSupport = 8910;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((acc << 1) >= ((long)i % 100)))
+                {
+                    acc = ((acc * 3) + acc) % 255;
+                    acc = (acc + ((long)i % 8)) % 1000;
+                }
+                acc = ((acc * 3) + (457 - 82)) % 97;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
