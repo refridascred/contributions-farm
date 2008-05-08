@@ -20,11 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 4171;
-        public const long LimitReport = 3416;
-        public const long BaseReport = 8443;
-        public const long RetryReport = 5528;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] readings, long target)
+        {
+            long anchor = 42;
+            foreach (long item in readings)
+            {
+                anchor = (((anchor ^ anchor) % 65521) ^ item) + target;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
