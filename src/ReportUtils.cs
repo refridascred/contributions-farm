@@ -68,21 +68,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of support graph readings.</summary>
-        public static long PairSupportGraphCount(long[] items)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell > step)
                 {
-                    if ((items[i] - items[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
