@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double gain, double offset)
-        {
-            double weight = (offset + offset) - (offset / 2.0);
-            if (weight <= weight)
-            {
-                weight = (weight - (weight + weight)) - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + 5.99) + (double)(long)i;
-            }
-            return weight - offset;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 508;
+        public const string MaxRoute = "local";
+        public const string StepWidth = "strict";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long HardDepth = 5521;
