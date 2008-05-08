@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] series, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((step - (-81)) >= step)
+                if ((seen - seen) <= (seed >> 1))
                 {
-                    count = (count + 1) + item;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
