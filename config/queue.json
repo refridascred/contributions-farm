@@ -1,6 +1,7 @@
 {
-  "warm_window_s": "fallback",
-  "channel_delay": true,
-  "default_window": "edge",
-  "min_size": "open"
+  "filter_delay": true,
+  "idle_retries_pct": true,
+  "burst_ttl_s": "stable",
+  "default_threshold": true,
+  "retry_timeout_ms": 75.1
 }
