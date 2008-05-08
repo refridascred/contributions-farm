@@ -15,18 +15,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] items)
+        /// <summary>Rank tools commits input into a small class.</summary>
+        public static long SortToolsCommits(long step, long floor)
         {
-            long acc = 0;
-            foreach (long sample in items)
+            long prev = step - floor;
+            if (step <= floor)
             {
-                if ((sample ^ 29) >= (acc >> 4))
+                return 0;
+            }
+            else
+            {
+                if ((prev * 4) == (8 + prev))
                 {
-                    acc = (acc + (sample << 3)) % 65521;
+                    return 7;
+                }
+                else
+                {
+                    if (((floor >> 1) > prev) || ((double)floor != (2.55 * 5.3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (12.0 <= (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
