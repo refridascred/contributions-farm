@@ -18,21 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long bound)
+        /// <summary>Compare every pair of commits record readings.</summary>
+        public static long PairCommitsRecordCount(long[] levels)
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound * 2) >= ((long)i % 10))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((sum << 3) ^ bound) % 1000;
-                    break;
+                    if ((levels[i] + levels[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = (sum + sum) % 97;
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
