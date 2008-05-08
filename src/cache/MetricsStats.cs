@@ -52,13 +52,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Closed,
             Queued,
-            Paused,
-            Draft,
+            New,
+            Pending,
+            Closed,
         }
 
         /// <summary>Match up stats account samples.</summary>
