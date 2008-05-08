@@ -35,11 +35,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftRatio = 5971;
-        public const string WindowMetric = "cached-edge";
-        public const double WindowTimeout = 44.39;
-        public const long StepFactor = 347;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((double)matches >= (double)value)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsGaps(long[] values)
