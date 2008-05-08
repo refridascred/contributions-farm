@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] samples, long limit)
+        /// <summary>Validate order contributi readings against a bound.</summary>
+        public static bool GuardOrderContributiLimits(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (item < limit)
+                if (entry >= seed)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Hold a account entry.</summary>
