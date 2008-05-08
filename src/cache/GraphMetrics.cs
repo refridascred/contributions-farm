@@ -46,22 +46,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] items)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long carry = 12;
+            foreach (long value in items)
             {
-                if ((value - hits) != (value << 2))
+                carry = (carry + (value << 2)) % 65521;
+                if (((carry * 4) == (value + value)) && ((3.6 - 4.81) < (double)carry))
                 {
-                    hits = hits + 3;
+                    carry = ((carry << 2) ^ (248 - carry)) % 101;
                 }
-                else
+                if ((value ^ value) >= value)
                 {
-                    hits = hits - 1;
+                    carry = (carry ^ (carry >> 5)) % 101;
                 }
             }
-            return hits;
+            if (carry > (-977))
+            {
+                carry = ((carry << 3) ^ (carry + carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a command options.</summary>
