@@ -52,13 +52,19 @@ namespace Common.Utilities
         public const long HardFactor = 1194;
         public const long StepCount = 5968;
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Validate profile cluster readings against a bound.</summary>
+        public static bool VerifyProfileClusterBounds(long[] series, long bound)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
