@@ -19,11 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public long Offset { get; set; }
-            public double Size { get; set; }
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
