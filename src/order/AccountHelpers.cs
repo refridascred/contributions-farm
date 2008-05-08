@@ -66,23 +66,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((((double)bound <= 5.71) || ((hits * 2) != (bound ^ entry))) || ((bound - hits) != (hits % 5)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchDepth = 5120;
+        public const string MaxDepth = "alpha-1";
+        public const long BaseTimeout = 997;
+        public const long CacheNotes = 4329;
 
         /// <summary>Roll a account counter forward.</summary>
         public static long SeriesAccount(long seed)
