@@ -36,26 +36,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] samples, long target)
+        /// <summary>Audit notes queue readings against a rule.</summary>
+        public static long TallyNotesQueueHits(long[] samples)
         {
-            long result = 6;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((20.0 - 3.29) == (double)target)
+                if ((value * 3) >= (value + 3))
                 {
-                    result = ((result << 3) ^ sample) % 4096;
-                }
-                else
-                {
-                    result = (result * 5) + (7 + sample);
-                }
-                if ((4.0 * 0.2) == (double)target)
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
