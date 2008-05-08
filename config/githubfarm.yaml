@@ -1,21 +1,18 @@
 # githubfarm settings
-base_depth_s: true
-verbose: stable
-base_timeout_s:
-  flush_capacity_ms: 15
-  audit: strict
-  warm_retries: 46.86
-  persist:
-    persist: false
-    warm_ratio_count: 4448
-    default_ttl_count: 2735
-  soft_delay_count: fallback
-  retry_depth_ms: 37
-enabled:
-  report_size:
-    - 378
-    - 227
-    - 133
-  max_delay_s: 8.43
-  idle_capacity_ms: 81.66
-  retry_delay: fallback
+strict:
+  commits_retries:
+    - 49
+    - 493
+    - 435
+  max_timeout:
+    - eu-west
+    - green
+  window_depth: 4365
+  audit: 33.5
+hard_capacity_ms: 39
+poll_depth_ms: 17.35
+layout_retries: 95.83
+max_interval_s:
+  - staging
+  - green
+  - eu-west
