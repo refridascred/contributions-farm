@@ -1,10 +1,6 @@
 {
-  "channel_window": {
-    "burst_window_s": 58,
-    "strict": false,
-    "verbose": 87.43,
-    "burst_capacity": "blue"
-  },
-  "idle_interval": "cached",
-  "retry_size": [261, 2, 231, 396]
+  "buffer_window": 17.85,
+  "readonly": 4213,
+  "githubfarm_capacity": "stable",
+  "persist": ["cached", "primary", "green"]
 }
