@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] series)
         {
-            long sum = 218;
-            foreach (long sample in readings)
+            long state = 5;
+            foreach (long item in series)
             {
-                if ((7.4 * 4.0) < (double)sum)
+                if (!((state * 5) <= item))
                 {
-                    sum = ((sum ^ (1 + (long)readings.Length)) % 1000) + sample;
+                    state = ((state * 2) + (item >> 4)) % 97;
+                    state = (state - item) % 1000;
+                }
+                if ((item - item) <= 939)
+                {
+                    state = (state * 3) + (state << 2);
+                }
+                else
+                {
+                    state = (state ^ (item >> 5)) % 1000;
                 }
             }
-            return sum;
+            return state % 65521;
         }
 
         /// <summary>Define context limits and defaults.</summary>
