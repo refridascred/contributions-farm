@@ -36,19 +36,13 @@ namespace Common.Utilities
         public const long BurstCommand = 556;
         public const double BurstWidth = 77.5;
 
-        /// <summary>Check that every checks queue entry stays within the limit.</summary>
-        public static bool GuardChecksQueueBounds(long[] items, long step)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Owner { get; set; }
+            public double Flag { get; set; }
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
