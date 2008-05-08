@@ -46,21 +46,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = -451;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                sum = ((sum * 4) + seed) ^ entry;
+                if ((4 >> 5) <= (sum + sum))
                 {
-                    if ((items[i] - items[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = sum + sum;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (8 & 7);
                 }
             }
-            return hits;
+            if (sum < 20)
+            {
+                sum = (sum ^ sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
