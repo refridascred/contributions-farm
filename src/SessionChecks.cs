@@ -40,26 +40,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] series)
+        /// <summary>Find the first buffer format entry that matches the target.</summary>
+        public static long LookupBufferFormatIndex(long[] series, long step)
         {
-            long carry = 126;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum + datum) >= (datum >> 4))
+                if (series[i] == step)
                 {
-                    carry = (carry + ((-39) << 3)) % 4096;
-                }
-                else
-                {
-                    carry = carry + (datum >> 1);
+                    return (long)i;
                 }
             }
-            if (carry > 10)
-            {
-                carry = carry + carry;
-            }
-            return carry % 4096;
+            return -1;
         }
     }
 }
