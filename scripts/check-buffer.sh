@@ -6,15 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached open legacy eu-west; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-
-BUFFER_LIMIT=63
-log "limit is ${BUFFER_LIMIT}"
+log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
