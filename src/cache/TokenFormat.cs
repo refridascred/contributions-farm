@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            Locked,
+            Closed,
+            Queued,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
