@@ -41,19 +41,19 @@ namespace Common.Utilities
         public const string DefaultRatio = "latest-edge";
         public const long BatchCount = 555;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] values, long floor)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long bound)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long result = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (item <= floor)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    valid = false;
-                    break;
+                    result = ((result << 3) ^ ((long)i2 % 7)) % 65521;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Match up token samples.</summary>
