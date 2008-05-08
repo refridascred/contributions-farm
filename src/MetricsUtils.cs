@@ -13,17 +13,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] items, long seed)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = (double)352 - (bias + scale);
+            if (gain < scale)
             {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
+                gain = gain - (bias + gain);
             }
-            return -1;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain + (scale / 2.0);
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
