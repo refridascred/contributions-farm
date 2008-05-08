@@ -13,10 +13,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchInterval = 7457;
-        public const double MinCounter = 80.87;
-        public const long BatchCounter = 761;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
