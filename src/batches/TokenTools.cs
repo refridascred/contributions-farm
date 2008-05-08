@@ -23,16 +23,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = (acc + (acc >> 2)) % 101;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Draft,
+            Idle,
+            Paused,
+            Synced,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
