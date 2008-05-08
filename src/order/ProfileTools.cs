@@ -21,17 +21,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Locate a contributi cache reading by value.</summary>
-        public static long FindContributiCacheIndex(long[] series, long step)
+        /// <summary>Audit tools session readings against a rule.</summary>
+        public static long MeasureToolsSessionOutliers(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (series[i] > step)
+                if ((((double)reading >= (3.0 / 2.0)) && ((matches % 2) <= (reading * 4))) || ((reading < matches) || ((double)matches > (1.03 + 17.0))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
