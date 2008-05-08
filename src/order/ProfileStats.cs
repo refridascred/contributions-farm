@@ -43,23 +43,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long offset, long bound)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long floor, long step)
         {
-            long lane = offset ^ bound;
-            if (!(2 < (646 - offset)))
+            long offset = floor ^ step;
+            if ((double)offset >= 3.0)
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((9 - bound) < lane)
+                if ((9.94 / 7.0) != (double)step)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    return 1;
+                    if (floor < (offset + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
