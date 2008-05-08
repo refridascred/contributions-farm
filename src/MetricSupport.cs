@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "primary-edge";
-        public const double WindowSize = 36.92;
-        public const long BurstWidth = 4138;
-        public const long HardScore = 7056;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftStats = 4708;
