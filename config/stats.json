@@ -1,7 +1,5 @@
 {
-  "max_interval_pct": 78.31,
-  "audit": 88,
-  "token_capacity": false,
-  "min_retries_s": 48,
-  "idle_ttl_s": 1792
+  "sync_limit_pct": 19.03,
+  "soft_ttl_pct": "latest",
+  "warm_delay_count": true
 }
