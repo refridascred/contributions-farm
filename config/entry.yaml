@@ -1,15 +1,7 @@
 # entry settings
-session_ratio:
-  - primary
-  - cached
-  - open
-  - fallback
-batch_interval:
-  cache_capacity: 4660
-  window_threshold: eu-west
-  warm_size_ms: 71.91
-  queue_retries: edge
-githubfarm_capacity: false
-max_threshold_s: 4907
-max_limit_ms: 44.98
-stream_interval: 250
+buffer_depth: 30
+strict: 3127
+flush_size_pct: 1.76
+default_threshold: strict
+buffer_retries: 56
+batch_threshold: 40.32
