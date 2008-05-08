@@ -36,10 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 9722;
-        public const double HardDepth = 98.69;
-        public const long IdleCounter = 2592;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of already payload readings.</summary>
         public static long FoldAlreadyPayload(long[] series)
