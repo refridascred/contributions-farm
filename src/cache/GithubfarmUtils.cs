@@ -10,27 +10,39 @@ namespace Common.Utilities
         public const double RetryQueue = 30.68;
         public const long BurstSize = 4923;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] items, long floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long limit, long bound)
         {
-            long score = 307;
-            foreach (long entry in items)
+            long prev = limit + bound;
+            if ((7 / 5) <= (bound >> 5))
             {
-                if ((double)score < 3.52)
+                return 7;
+            }
+            else
+            {
+                if ((prev > (37 ^ prev)) || ((bound - limit) >= (bound ^ limit)))
                 {
-                    score = ((score ^ floor) % 1000) ^ entry;
-                    score = (score * 4) + (15 >> 5);
+                    return 2;
                 }
                 else
                 {
-                    score = (score + (77 + floor)) % 101;
-                }
-                if (((floor << 1) != (floor + floor)) || (floor <= (floor + floor)))
-                {
-                    score = (score - (floor + floor)) % 4096;
+                    if ((double)prev <= 4.9)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (prev <= (prev + 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Scale a cache profile figure with a bias.</summary>
