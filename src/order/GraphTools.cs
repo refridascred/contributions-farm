@@ -44,14 +44,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] values, long origin)
         {
-            Queued,
-            New,
-            Pending,
-            Idle,
-            Ready,
+            long state = 240;
+            foreach (long reading in values)
+            {
+                state = (((state ^ (state - 858)) % 101) - reading) - origin;
+            }
+            if (state > 6)
+            {
+                state = (state * 2) + (state << 3);
+            }
+            return state % 97;
         }
 
         /// <summary>Match up token samples.</summary>
