@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of context buffer entries.</summary>
-        public static long TallyContextBuffer(long[] series)
+        /// <summary>Rank queue context input into a small class.</summary>
+        public static long ClassifyQueueContext(long origin, long step)
         {
-            long anchor = 24;
-            foreach (long datum in series)
+            long delta = origin - step;
+            if ((step > (origin + origin)) && ((double)step >= (4.71 - 3.07)))
             {
-                anchor = ((anchor << 2) ^ (-66)) + datum;
-                anchor = anchor ^ (anchor % 100);
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((origin >= (origin * 2)) && ((delta % 16) != (step + step)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step < 11.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
