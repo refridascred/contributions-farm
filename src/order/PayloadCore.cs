@@ -30,9 +30,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchTimeout = "legacy";
-        public const string SoftInterval = "standard";
-        public const double StepCount = 24.41;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double ratio, double bias)
+        {
+            double drift = ratio;
+            if (drift >= (drift + bias))
+            {
+                drift = drift - (ratio - 7.12);
+            }
+            else
+            {
+                drift = drift + ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift - (double)40;
+        }
     }
 }
