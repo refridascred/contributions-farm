@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long step, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            long delta = step + target;
+            if ((delta + delta) > step)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                return 5;
             }
-            return score;
+            else
+            {
+                if (step > (target - target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((9 << 3) != (target - step)) && (306 < (step + 56)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up layout schema samples.</summary>
