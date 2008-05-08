@@ -62,19 +62,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (reading >= ((-234) - 556))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "latest-edge";
+        public const long MinLevel = 1152;
+        public const long MinFormat = 1306;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
