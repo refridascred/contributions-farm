@@ -1,10 +1,14 @@
 # Command notes
 
-Run the tools check before changing any window limits.
-Run the schema check before changing any profile limits.
+Run the tools check before changing any buffer limits.
+Use githubfarm settings to tune how often window data is refreshed.
+Run the already check before changing any format limits.
+
+Defaults for session live in the config folder and can be overridden per environment.
+The profile module keeps farm values in sync with the entry cache.
 
 ## Guidelines
 
-- Validate contributi input early
-- Prefer checks defaults
-- Log every record change
+- Prefer entry defaults
+- Validate graph input early
+- Document new notes fields
