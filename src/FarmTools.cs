@@ -16,11 +16,32 @@ namespace Common.Utilities
             return bias - (double)3;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 8867;
-        public const long LimitInterval = 7529;
-        public const string BurstCount = "open-1";
-        public const long BatchBudget = 3944;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long limit, long floor)
+        {
+            if (limit < (floor & 255))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((floor + limit) == (18 + floor)) || ((limit / 7) > (floor & 31)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor <= (427 % 7)) || ((limit << 3) >= floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long SortBatches(long offset, long offset2)
