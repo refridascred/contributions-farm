@@ -15,15 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] levels, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] readings, long target)
         {
-            long score = 63;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                score = ((((score * 2) + (score & 127)) % 101) ^ sample) - floor;
+                if (sample <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score % 65521;
+            return ready;
         }
 
         /// <summary>Describe the editor class values.</summary>
