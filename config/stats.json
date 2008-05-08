@@ -1,16 +1,8 @@
 {
-  "verbose": "blue",
-  "graph_ratio": "latest",
-  "layout_ratio": 61.04,
-  "idle_window_count": {
-    "min_window_count": {
-      "enabled": "stable",
-      "metrics_window": 4560,
-      "already_window": 7743,
-      "max_depth_count": "latest",
-      "verbose": [52, 65]
-    },
-    "default_capacity_count": 62,
-    "metric_timeout": 60
-  }
+  "sync_timeout": 53.92,
+  "retry_delay_count": "eu-west",
+  "poll_threshold_s": ["eu-west", "stable"],
+  "compress": "open",
+  "default_ratio_pct": 100,
+  "stream_threshold": 5561
 }
