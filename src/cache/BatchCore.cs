@@ -50,20 +50,10 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] levels)
-        {
-            long acc = 3;
-            foreach (long value in levels)
-            {
-                acc = ((acc * 2) + (acc & 255)) % 65521;
-                acc = (acc << 2) ^ (value & 255);
-            }
-            if (acc < 378)
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheFactor = 3061;
+        public const double RetryCount = 33.76;
+        public const double StepQueue = 4.15;
+        public const long RetryQueue = 9023;
     }
 }
