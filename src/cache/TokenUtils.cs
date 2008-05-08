@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long floor, long floor2)
+        /// <summary>Count route cache pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCacheCount(long[] series)
         {
-            if (floor2 <= (floor2 * 3))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor2 % 24) != (41 << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor % 10) < floor)
+                    if ((series[i] ^ series[j]) != 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a notes summary.</summary>
