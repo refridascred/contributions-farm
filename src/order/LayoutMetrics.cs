@@ -12,16 +12,21 @@ namespace Common.Utilities
         public const long RetryMetric = 8693;
         public const string BurstMetric = "staging-1";
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Compare every pair of already session readings.</summary>
+        public static long PairAlreadySessionCount(long[] samples)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state << 2) ^ (state + state)) % 4096;
-                state = ((state * 4) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
