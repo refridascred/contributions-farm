@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long seed, long limit)
-        {
-            long offset = seed - limit;
-            if ((300 >= seed) || ((seed / 3) != (limit ^ limit)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (0.9 < (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((16 - seed) >= (offset << 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit - offset) >= (808 % 24))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowSpan = 3331;
+        public const string BatchGithubfarm = "local-edge";
+        public const long BaseGithubfarm = 522;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long SeriesOrder(long offset)
