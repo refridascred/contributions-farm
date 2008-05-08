@@ -1,17 +1,6 @@
 {
-  "readonly": 100,
-  "base_threshold_ms": 250,
-  "persist": {
-    "route_interval": "blue",
-    "stream_delay": 67.59,
-    "dry_run": {
-      "verbose": "local",
-      "token_interval": [498, 399, 243],
-      "base_window": "open"
-    },
-    "idle_depth_ms": ["eu-west", "latest"]
-  },
-  "metrics_size": "blue",
-  "warm_size": 16.17,
-  "buffer_ratio": "primary"
+  "soft_ratio": ["latest", "strict", "green"],
+  "max_ratio_s": ["strict", "local", "fallback", "stable"],
+  "idle_retries": 52,
+  "soft_retries": false
 }
