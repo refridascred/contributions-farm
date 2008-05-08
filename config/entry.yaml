@@ -1,15 +1,20 @@
 # entry settings
-burst_threshold_s: cached
-default_capacity_s: true
-warm_window: 1.84
-base_depth_pct:
-  - cached
-  - standard
-  - standard
-idle_threshold_count:
-  farm_interval: cached
-  base_retries: 63.83
-  verbose: 40
-  burst_capacity_count: true
-  persist: 37
-poll_depth: false
+batch_window: edge
+channel_retries: legacy
+hard_depth_s:
+  - green
+  - eu-west
+  - latest
+  - latest
+strict: 417
+hard_window_ms:
+  support_size: 8535
+  min_delay_pct:
+    - 491
+    - 252
+  base_size: 1024
+  poll_ttl_count: 250
+  retry_limit:
+    - local
+    - eu-west
+    - local
