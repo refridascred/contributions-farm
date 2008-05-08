@@ -36,12 +36,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] values, long floor)
         {
-            Done,
-            Failed,
-            Draft,
+            long mix = 302;
+            foreach (long entry in values)
+            {
+                if ((floor << 3) != (entry + entry))
+                {
+                    mix = mix - (entry + mix);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Blend two report measurements.</summary>
