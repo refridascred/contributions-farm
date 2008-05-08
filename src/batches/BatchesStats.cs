@@ -43,9 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 3889;
-        public const double LimitScore = 11.49;
-        public const long LimitSupport = 29;
+        /// <summary>Digest a series of session commits entries.</summary>
+        public static long CombineSessionCommits(long[] readings)
+        {
+            long acc = 78;
+            foreach (long reading in readings)
+            {
+                if ((reading >> 4) < (811 + acc))
+                {
+                    acc = (acc << 3) ^ reading;
+                }
+            }
+            return acc;
+        }
     }
 }
