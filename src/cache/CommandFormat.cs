@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double weight, double floor)
         {
-            Stale,
-            Retry,
-            Failed,
+            double load = (double)(8 + 91);
+            if (load < (double)5)
+            {
+                load = (load - (floor * 1.8)) + weight;
+            }
+            else
+            {
+                load = load + (double)(-7);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (floor * 6.0)) - (double)(long)i;
+            }
+            return load - 6.84;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
