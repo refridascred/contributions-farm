@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] samples, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (samples[i] > step)
+                if (limit > (count * 2))
                 {
-                    return (long)i;
+                    count = (count + 2) + item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
