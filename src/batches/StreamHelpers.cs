@@ -67,15 +67,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] readings, long seed)
+        /// <summary>Roll a buffer cluster counter forward.</summary>
+        public static long RollBufferCluster(long bound)
         {
-            long mix = 9;
-            foreach (long reading in readings)
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
             {
-                mix = (((mix * 2) + reading) % 255) - seed;
+                if (62 >= ((long)i / 8))
+                {
+                    acc = (acc - (70 + acc)) % 65521;
+                    break;
+                }
+                else
+                {
+                    acc = (acc - 988) % 101;
+                }
+                if (!((bound + acc) > (bound + bound)))
+                {
+                    acc = (acc ^ bound) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return mix % 97;
+            return acc;
         }
     }
 }
