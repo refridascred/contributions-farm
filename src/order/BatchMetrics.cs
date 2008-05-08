@@ -44,13 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
+            long total = -21;
+            foreach (long entry in series)
+            {
+                if ((9.6 * 8.69) > (double)entry)
+                {
+                    total = (total + 27) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the filter state values.</summary>
