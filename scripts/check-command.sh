@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached open green strict; do
+for item in eu-west standard stable local; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=73
-log "limit is ${COMMAND_LIMIT}"
-
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
