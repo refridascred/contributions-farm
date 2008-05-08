@@ -1,13 +1,5 @@
 # githubfarm settings
-readonly:
-  commits_retries: legacy
-  min_window: true
-  poll_limit_ms: true
-poll_capacity_count:
-  - blue
-  - eu-west
-  - primary
-  - open
-poll_window_s: open
-token_limit: 3794
-profile_timeout: 27
+cache_capacity_s: 100
+checks_size: 6113
+enabled: 2616
+default_interval: cached
