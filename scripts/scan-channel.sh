@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west local blue standard; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=78
+CHANNEL_LIMIT=91
 log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-local}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
