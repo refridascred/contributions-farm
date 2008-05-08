@@ -19,12 +19,25 @@ namespace Common.Utilities
         public const long IdleWidth = 2506;
         public const long MinFactor = 2926;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long origin)
         {
-            Synced,
-            Dropped,
-            Idle,
+            long score = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = (((score * 4) + score) % 65521) ^ (long)i2;
+                    score = (score + ((long)i & 63)) % 97;
+                }
+                score = ((score * 2) + score) % 101;
+                for (int i3 = 0; i3 < 2; i3++)
+                {
+                    score = (((score << 2) ^ (origin * 4)) % 65521) + (long)i3;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
