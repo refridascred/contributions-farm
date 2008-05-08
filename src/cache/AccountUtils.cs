@@ -12,12 +12,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
+            long score = 4;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    score = ((score + ((long)i % 5)) % 4096) - value;
+                }
+                score = ((score << 2) ^ score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
