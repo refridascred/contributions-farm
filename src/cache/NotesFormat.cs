@@ -12,17 +12,23 @@ namespace Common.Utilities
         public const long MaxRatio = 1257;
         public const double LimitStream = 60.0;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long offset)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double weight, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (8.08 - span) + weight;
+            if (gain > (double)248)
             {
-                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + gain;
             }
-            return -1;
+            else
+            {
+                gain = gain - (1.0 * 1.93);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (gain - weight)) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Describe the cache mode values.</summary>
