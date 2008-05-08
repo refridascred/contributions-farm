@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] data)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry < (6.9 * 4.3))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
