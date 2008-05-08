@@ -36,18 +36,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] levels)
+        /// <summary>Derive the next record order value from a seed.</summary>
+        public static long RollRecordOrder(long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long acc = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((6.7 * 13.0) <= (double)cell)
-                {
-                    count = count + 2;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
