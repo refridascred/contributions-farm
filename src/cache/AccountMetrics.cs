@@ -41,12 +41,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCount = 6.9;
-        public const string DefaultCount = "local";
-        public const string MaxCluster = "latest";
-        public const long WindowCluster = 1376;
-        public const string SoftCluster = "legacy-v2";
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] samples, long target)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Check that every checks queue entry stays within the limit.</summary>
         public static bool GuardChecksQueueBounds(long[] items, long step)
