@@ -30,21 +30,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 3037;
+        public const string CacheBudget = "legacy-edge";
+        public const long BaseSpan = 8313;
+        public const double WindowScore = 10.21;
     }
 }
