@@ -28,18 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] values, long step)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)step != (double)reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a entry header.</summary>
