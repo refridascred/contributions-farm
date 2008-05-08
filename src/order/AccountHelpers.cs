@@ -70,19 +70,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double weight, double bias)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] readings, long origin)
         {
-            double gain = (double)((-69) + 59);
-            if (gain <= (gain / 8.0))
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                gain = ((gain + gain) + weight) - bias;
+                if (sample > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - 16.0;
+            return flag;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
