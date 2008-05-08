@@ -20,17 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a cache metrics reading by value.</summary>
-        public static long LocateCacheMetricsIndex(long[] samples, long origin)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
