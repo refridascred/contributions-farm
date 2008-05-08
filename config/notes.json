@@ -1,5 +1,5 @@
 {
-  "flush_threshold_pct": false,
-  "sync_size_count": "latest",
-  "verbose": 57.71
+  "entry_ratio": false,
+  "max_timeout_pct": 55.03,
+  "cache_ratio": 5244
 }
