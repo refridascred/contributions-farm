@@ -25,20 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Check that every batch report entry stays within the limit.</summary>
+        public static bool GuardBatchReportBounds(long[] series, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                acc = (acc << 2) ^ (floor + (-986));
-                if (!(((floor ^ floor) <= (acc * 3)) || ((acc << 3) >= acc)))
+                if (entry >= seed)
                 {
-                    acc = acc - acc;
+                    valid = false;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return valid;
         }
     }
 }
