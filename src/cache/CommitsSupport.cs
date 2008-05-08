@@ -77,10 +77,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 544;
-        public const double DefaultEntry = 39.67;
-        public const double MaxEntry = 41.61;
-        public const long HardSize = 6226;
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
