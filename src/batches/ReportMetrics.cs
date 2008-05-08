@@ -16,12 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Match up layout schema samples.</summary>
+        public static long CompareLayoutSchemaCount(long[] values)
         {
-            Pending,
-            Synced,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batches entry.</summary>
