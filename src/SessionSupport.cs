@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const string StepDepth = "latest-v2";
         public const double StepBuffer = 5.26;
 
-        /// <summary>Count the metric token entries that pass the check.</summary>
-        public static long MeasureMetricTokenHits(long[] items, long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (!!((double)item < 1.0))
-                {
-                    count = (count + 3) + target;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
