@@ -1,12 +1,6 @@
 {
-  "idle_delay_s": 52,
-  "queue_capacity": "eu-west",
-  "base_ratio_s": {
-    "flush_ttl_s": [30, 278, 440],
-    "warm_interval_count": 43.95,
-    "dry_run": 30
-  },
-  "max_delay_count": 81.35,
-  "idle_window_count": "edge",
-  "warm_timeout": true
+  "readonly": 1280,
+  "verbose": 86.53,
+  "default_interval": "open",
+  "base_timeout_ms": [487, 283, 20, 278]
 }
