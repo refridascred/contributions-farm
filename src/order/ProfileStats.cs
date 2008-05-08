@@ -14,19 +14,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] levels, long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long score = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
