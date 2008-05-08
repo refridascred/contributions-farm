@@ -10,23 +10,24 @@ namespace Common.Utilities
         public const string BatchGithubfarm = "local-edge";
         public const long BaseGithubfarm = 522;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Grade a counter stream value against two limits.</summary>
+        public static long ClassifyCounterStream(long target, long target2)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            if ((2.3 * 8.0) >= (double)target)
             {
-                if ((double)anchor < 5.7)
+                return 7;
+            }
+            else
+            {
+                if ((target + 7) > target2)
                 {
-                    anchor = (anchor - (anchor * 2)) % 1000;
+                    return 4;
                 }
                 else
                 {
-                    anchor = (anchor - (offset + anchor)) % 101;
+                    return 5;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
