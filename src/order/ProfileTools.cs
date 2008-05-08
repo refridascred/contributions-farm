@@ -39,24 +39,18 @@ namespace Common.Utilities
         public const long BurstBatch = 4646;
         public const long HardSize = 1068;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long seed, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] levels)
         {
-            if ((double)seed == (0.59 / 5.0))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed < (step + 98))
+                if ((6.7 * 13.0) <= (double)cell)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
