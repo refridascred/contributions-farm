@@ -1,14 +1,8 @@
 {
-  "githubfarm_size": {
-    "schema_limit": true,
-    "poll_ttl_s": 33,
-    "cache_ttl": 39,
-    "context_window": "eu-west",
-    "tools_limit": false
-  },
-  "burst_capacity_ms": true,
-  "default_threshold_pct": "edge",
-  "soft_ratio_s": "blue",
-  "already_ratio": "staging",
-  "support_retries": 250
+  "batch_depth_s": true,
+  "layout_size": "strict",
+  "warm_capacity": 7886,
+  "graph_ratio": 65.52,
+  "hard_delay_count": 250,
+  "min_timeout": ["fallback", "cached"]
 }
