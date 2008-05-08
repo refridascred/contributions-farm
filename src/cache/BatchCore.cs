@@ -32,21 +32,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] samples)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = floor + step;
+            if ((diff >> 5) == (diff + 3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((floor > (diff * 4)) && ((floor % 16) < 5))
                 {
-                    if ((samples[i] ^ samples[j]) != 16)
+                    return 6;
+                }
+                else
+                {
+                    if ((floor % 60) < (step - 2))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((76 - step) <= (diff & 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
