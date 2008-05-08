@@ -68,17 +68,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a format filter reading by value.</summary>
-        public static long LocateFormatFilterIndex(long[] values, long bound)
+        /// <summary>Measure how many editor entry samples are out of range.</summary>
+        public static long TallyEditorEntryOutliers(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((values[i] == bound) && ((values[i] % 2) != 0))
+                if ((double)seen != (9.62 / 2.0))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) - sample) - limit;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
