@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 2465;
-        public const double DefaultGithubfarm = 75.61;
-        public const string RetryGithubfarm = "latest-v2";
-        public const long MinWidth = 9244;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (tally >= (tally ^ tally))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up already session samples.</summary>
         public static long MatchAlreadySessionCount(long[] samples)
