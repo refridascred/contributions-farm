@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRoute = 47.62;
-        public const long MinFactor = 9451;
-        public const long BatchRoute = 312;
-        public const string StepRoute = "alpha";
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((13 % 8) != (1 - tally))
+                {
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
