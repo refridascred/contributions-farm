@@ -22,19 +22,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] samples, long origin)
         {
-            long score = 815;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                score = ((score - (score * 3)) % 4096) - datum;
+                if ((seen - seen) <= (datum % 10))
+                {
+                    seen = (seen + 1) + origin;
+                }
             }
-            if (score > 9)
-            {
-                score = score - (long)series.Length;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
