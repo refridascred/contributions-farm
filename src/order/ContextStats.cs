@@ -33,13 +33,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            New,
-            Paused,
-            Locked,
-            Pending,
+            Failed,
+            Done,
+            Ready,
         }
     }
 }
