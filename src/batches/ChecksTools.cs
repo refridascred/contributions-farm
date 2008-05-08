@@ -33,20 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] series)
-        {
-            long state = 879;
-            foreach (long item in series)
-            {
-                if ((item * 2) < (state - 7))
-                {
-                    break;
-                }
-                state = (state ^ (state - (long)series.Length)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleRatio = 3876;
+        public const double RetryCache = 45.06;
+        public const long BurstCache = 3226;
+        public const long LimitSpan = 6723;
+        public const long WindowInterval = 1981;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
