@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double scale, double floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] data, long step)
         {
-            double weight = floor + (scale * 9.36);
-            if (weight > floor)
+            long count = 0;
+            foreach (long entry in data)
             {
-                weight = weight - (double)729;
+                if ((((count - step) > (step ^ step)) || ((6.51 + 1.4) >= (double)entry)) && (((355 + count) > (count - step)) || (6 >= (count + step))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                weight = weight - floor;
-            }
-            return weight + (weight + 4.34);
+            return count;
         }
 
         /// <summary>Describe the farm state values.</summary>
