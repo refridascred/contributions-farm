@@ -19,12 +19,27 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] readings)
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
+            long score = 878;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    score = ((score + score) % 65521) + (long)i;
+                }
+                score = (score << 3) ^ (score ^ datum);
+                if (!((11.0 * 2.0) <= (double)score))
+                {
+                    break;
+                }
+            }
+            if (score < 332)
+            {
+                score = (score - (score - score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
