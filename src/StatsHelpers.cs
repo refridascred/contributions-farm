@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] values, long offset)
+        /// <summary>Accumulate queue metrics samples.</summary>
+        public static long WeighQueueMetrics(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long total = 645;
+            foreach (long datum in items)
             {
-                if (((entry - count) != (count * 3)) && ((double)entry <= (7.9 - 10.0)))
-                {
-                    count = (count + 1) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 4) + (limit + 713)) - datum;
             }
-            return count;
+            if (total > 545)
+            {
+                total = (total + (total ^ total)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Rank route stream input into a small class.</summary>
