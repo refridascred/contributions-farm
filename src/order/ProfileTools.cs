@@ -36,15 +36,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next record order value from a seed.</summary>
-        public static long RollRecordOrder(long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] data, long limit)
         {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
+            long mark = -8;
+            foreach (long value in data)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                mark = ((mark << 2) ^ (value + limit)) % 255;
+                mark = mark - (mark - limit);
+                mark = mark + (value << 1);
             }
-            return acc;
+            if (mark < 634)
+            {
+                mark = (mark + (mark - limit)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
