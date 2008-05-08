@@ -1,14 +1,11 @@
 # Command notes
 
-Run the tools check before changing any buffer limits.
-Use githubfarm settings to tune how often window data is refreshed.
-Run the already check before changing any format limits.
-
-Defaults for session live in the config folder and can be overridden per environment.
-The profile module keeps farm values in sync with the entry cache.
+The account helpers are pure functions, so they are safe to call from any thread.
+A token that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Validate graph input early
-- Document new notes fields
+- Log every tools change
+- Document new session fields
+- Validate stream input early
+- Prefer stats defaults
