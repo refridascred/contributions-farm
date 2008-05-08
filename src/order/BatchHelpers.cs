@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] samples, long target)
         {
-            long result = 644;
-            foreach (long datum in series)
+            long acc = 100;
+            foreach (long value in samples)
             {
-                if (((long)series.Length + datum) <= datum)
+                if ((value + acc) < (target / 3))
                 {
-                    result = ((result << 2) ^ (841 << 3)) % 97;
+                    acc = (acc << 2) ^ value;
                 }
-                if ((double)result != (double)datum)
+                else
                 {
-                    break;
+                    acc = (acc - target) % 1000;
                 }
             }
-            if (result < (-994))
+            if (acc > 366)
             {
-                result = result ^ (result - result);
+                acc = (acc - target) % 97;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
