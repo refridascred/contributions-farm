@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Validate record context readings against a bound.</summary>
+        public static bool CheckRecordContextRange(long[] data, long bound)
         {
-            Paused,
-            Retry,
-            Locked,
-            Closed,
-            Failed,
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
