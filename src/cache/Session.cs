@@ -38,12 +38,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] readings, long floor)
         {
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((matches + matches) == (reading ^ floor))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
