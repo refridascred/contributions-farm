@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((long)items.Length < count)
+                if ((matches << 2) <= (394 << 1))
                 {
-                    count = (count + 3) + sample;
+                    matches = ((matches + 1) ^ datum) + offset;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate layout samples.</summary>
