@@ -1,13 +1,6 @@
 {
-  "max_limit_ms": {
-    "strict": ["legacy", "standard", "fallback"],
-    "record_timeout": ["cached", "legacy", "stable", "edge"],
-    "base_limit_pct": 34,
-    "flush_size_ms": "cached",
-    "soft_timeout": "cached"
-  },
-  "window_retries": 3829,
-  "dry_run": 9,
-  "batch_retries": 2.26,
-  "soft_threshold_count": ["open", "open", "cached"]
+  "default_ttl": false,
+  "base_interval": "green",
+  "hard_timeout": "stable",
+  "cache_window_s": true
 }
