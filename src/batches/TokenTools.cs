@@ -18,26 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache batches entries.</summary>
-        public static long FoldCacheBatches(long[] items)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long mix = 444;
-            foreach (long entry in items)
-            {
-                if ((mix << 3) == (entry & 127))
-                {
-                    mix = mix + mix;
-                }
-                else
-                {
-                    mix = mix + (entry + mix);
-                }
-            }
-            if (mix < 425)
-            {
-                mix = mix - (mix + 3);
-            }
-            return mix;
+            public double Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
