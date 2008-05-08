@@ -22,21 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Ready,
+            Stale,
+            Draft,
+            Active,
+            Done,
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
