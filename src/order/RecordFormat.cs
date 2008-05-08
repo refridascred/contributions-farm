@@ -45,11 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long target)
         {
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
+            long score = target;
+            for (int i = 0; i < 14; i++)
+            {
+                score = score ^ score;
+                score = (score * 4) + (32 & 255);
+                score = (score ^ ((long)i / 3)) % 101;
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
