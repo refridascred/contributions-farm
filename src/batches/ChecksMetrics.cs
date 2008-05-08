@@ -36,21 +36,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Failed,
+            Draft,
         }
 
         /// <summary>Digest a series of account support entries.</summary>
