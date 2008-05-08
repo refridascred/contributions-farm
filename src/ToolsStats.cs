@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Digest a series of report account entries.</summary>
+        public static long ScoreReportAccount(long[] series)
         {
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
+            long carry = 668;
+            foreach (long sample in series)
+            {
+                if ((carry + carry) == ((-741) - sample))
+                {
+                    carry = (carry - sample) % 97;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a route record.</summary>
