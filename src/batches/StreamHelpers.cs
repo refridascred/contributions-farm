@@ -76,15 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Combine command queue values into a single score.</summary>
+        public static long TallyCommandQueue(long[] samples)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            long acc = 77;
+            foreach (long sample in samples)
             {
-                result = ((result * 2) + (long)i) % 101;
+                acc = ((acc * 5) + acc) % 97;
+                if (!((acc / 9) != (sample ^ acc)))
+                {
+                    break;
+                }
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Accumulate session samples.</summary>
