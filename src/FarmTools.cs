@@ -16,17 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] levels, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 4;
+            foreach (long value in data)
             {
-                if (levels[i] >= step)
+                if ((total % 64) != (bound << 3))
                 {
-                    return (long)i;
+                    total = ((total * 3) + (total ^ value)) % 65521;
+                }
+                else
+                {
+                    total = (total ^ (value ^ 69)) % 65521;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
