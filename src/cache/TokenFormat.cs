@@ -19,39 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long seed, long seed2)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long next = seed - seed2;
-            if ((4.44 / 4.0) >= (double)seed2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed2 != (double)next)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed2 <= 6.63)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((5.0 * 7.6) >= (double)next)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
