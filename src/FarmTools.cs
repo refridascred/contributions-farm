@@ -31,17 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 5) + ((long)i + (long)i)) % 97;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstScore = 16.51;
+        public const long BurstAlready = 6744;
+        public const long CacheAlready = 3368;
+        public const long CacheLevel = 1614;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LookupFilterIndex(long[] data, long floor)
