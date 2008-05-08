@@ -32,11 +32,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Scale a profile cache figure with a bias.</summary>
-        public static double ProjectProfileCache(double bias, double offset)
+        /// <summary>Match up window queue samples.</summary>
+        public static long PairWindowQueueCount(long[] values)
         {
-            double gain = (offset - bias) * 10.0;
-            return gain + bias;
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the report level values.</summary>
