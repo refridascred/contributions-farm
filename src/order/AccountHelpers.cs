@@ -85,13 +85,19 @@ namespace Common.Utilities
             return gain - 16.0;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] series, long origin)
         {
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a record header.</summary>
