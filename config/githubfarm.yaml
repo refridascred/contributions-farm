@@ -1,10 +1,9 @@
 # githubfarm settings
-base_delay_pct: 2292
-base_threshold_pct:
-  poll_retries_s: true
-  enabled: true
-  profile_delay: 100
-  flush_ttl: 60
-  contributi_window: 30
-  soft_delay_count: 82.71
-context_delay: true
+sync_ttl: fallback
+soft_window_ms: 71.14
+burst_threshold_pct: 47.63
+flush_retries:
+  - 165
+  - 88
+default_size_count: primary
+persist: green
