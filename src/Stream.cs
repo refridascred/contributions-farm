@@ -57,22 +57,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] samples, long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((seen % 24) != (seen - seen))
+                if (entry <= origin)
                 {
-                    seen = ((seen + 3) ^ entry) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
