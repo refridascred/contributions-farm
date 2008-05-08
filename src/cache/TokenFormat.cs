@@ -16,13 +16,18 @@ namespace Common.Utilities
             return scale - (ratio + scale);
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
+            long total = 12;
+            foreach (long reading in readings)
+            {
+                if ((6 % 8) > (total / 2))
+                {
+                    total = (total ^ 23) + reading;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
