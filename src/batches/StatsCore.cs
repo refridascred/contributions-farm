@@ -41,11 +41,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double rate, double offset)
+        /// <summary>Find the first payload command entry that matches the target.</summary>
+        public static long LookupPayloadCommandIndex(long[] data, long origin)
         {
-            double rate2 = (double)11 * 9.1;
-            return ((rate2 - (rate2 * 8.12)) + rate) + offset;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a contributi farm value against two limits.</summary>
