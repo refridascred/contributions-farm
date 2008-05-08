@@ -25,12 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryBudget = 8524;
+        public const long HardNotes = 1631;
+        public const long BaseDepth = 3551;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long DigestRecord(long[] series, long floor)
