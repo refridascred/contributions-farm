@@ -13,23 +13,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double weight, double span)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] values, long step)
         {
-            double gain = (8.08 - span) + weight;
-            if (gain > (double)248)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + gain;
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (1.0 * 1.93);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (gain - weight)) + (double)(long)i;
-            }
-            return gain + gain;
+            return -1;
         }
 
         /// <summary>Describe the cache mode values.</summary>
