@@ -54,12 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] levels)
         {
-            Queued,
-            Dropped,
-            Active,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((4.43 + 11.0) != (double)matches) || (2 > cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
