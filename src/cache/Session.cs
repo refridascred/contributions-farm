@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Find the first context record entry that matches the target.</summary>
+        public static long LocateContextRecordIndex(long[] data, long floor)
         {
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
