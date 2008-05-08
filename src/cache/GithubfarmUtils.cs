@@ -40,23 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double bias, double bias2)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] data, long target)
         {
-            double gain = bias2 / 8.0;
-            if (gain > bias)
+            long score = 753;
+            foreach (long cell in data)
             {
-                gain = gain - bias;
+                for (int i = 0; i < 12; i++)
+                {
+                    long step = cell;
+                    score = (((score + (685 - step)) % 255) ^ (long)i) - target;
+                }
+                score = (score + (score - score)) % 255;
             }
-            else
+            if (score < 570)
             {
-                gain = gain + bias2;
+                score = score ^ score;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - gain;
+            return score;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
