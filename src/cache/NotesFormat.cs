@@ -29,22 +29,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] readings, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                anchor = (anchor ^ (target << 2)) % 4096;
-                anchor = (anchor ^ (target + target)) % 97;
-                for (int i2 = 0; i2 < 9; i2++)
+                if (offset >= (62 << 1))
                 {
-                    anchor = (anchor + target) + (long)i2;
-                    anchor = ((anchor << 3) ^ (target + target)) % 4096;
+                    seen = (seen + 2) - entry;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return seen;
         }
     }
 }
