@@ -1,18 +1,7 @@
 # githubfarm settings
-checks_window:
-  stats_delay: 37
-  min_interval_pct: true
-  hard_ttl: legacy
-  warm_ttl_s: fallback
-compress:
-  persist:
-    enabled: 55.66
-    idle_size: open
-    retry_ratio_s: strict
-  sync_size: green
-  report_ttl: cached
-dry_run:
-  sync_interval_count: 8
-  default_window: 6.71
-  idle_threshold: strict
-  flush_ratio_pct: eu-west
+max_threshold_count: 68
+enabled:
+  - eu-west
+  - fallback
+  - fallback
+idle_limit: fallback
