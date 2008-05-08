@@ -68,14 +68,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Ready,
-            Stale,
-            Active,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultQueue = 0.79;
+        public const string BatchQueue = "primary-1";
+        public const string BurstQueue = "staging-edge";
+        public const long BurstScore = 2358;
+        public const long BaseQueue = 4517;
 
         /// <summary>Compare every pair of commits metric readings.</summary>
         public static long OverlapCommitsMetricCount(long[] data)
