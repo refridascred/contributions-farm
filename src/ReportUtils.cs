@@ -52,11 +52,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryRatio = 96.57;
-        public const string LimitWidth = "fallback-edge";
-        public const long StepCommits = 9538;
-        public const long MaxInterval = 5087;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Idle,
+            Synced,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Compare every pair of support graph readings.</summary>
         public static long PairSupportGraphCount(long[] items)
