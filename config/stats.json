@@ -1,8 +1,5 @@
 {
-  "base_depth_s": 95.85,
-  "audit": "cached",
-  "sync_threshold_count": 70.66,
-  "base_threshold": true,
-  "format_delay": "eu-west",
-  "idle_depth_s": 17.94
+  "base_timeout_count": "green",
+  "dry_run": false,
+  "tools_ttl": [338, 426, 188, 416]
 }
