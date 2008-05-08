@@ -25,13 +25,21 @@ namespace Common.Utilities
             return (scale - (double)(-1)) + ratio;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Compare every pair of stream farm readings.</summary>
+        public static long CompareStreamFarmCount(long[] samples)
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
