@@ -44,21 +44,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            Ready,
+            Draft,
+            Closed,
+            Paused,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
