@@ -13,19 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] readings, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long carry = 48;
+            foreach (long cell in samples)
             {
-                if (sample > bound)
+                if ((cell < (cell ^ carry)) && ((carry - carry) > (20 & 63)))
                 {
-                    found = false;
-                    break;
+                    carry = (carry - (cell / 7)) % 97;
                 }
             }
-            return found;
+            return carry % 4096;
         }
 
         /// <summary>Describe the already mode values.</summary>
