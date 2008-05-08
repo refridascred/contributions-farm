@@ -12,10 +12,12 @@ namespace Common.Utilities
             return (load + load) + gain;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 9566;
-        public const long IdleDepth = 6392;
-        public const string MaxRoute = "local";
+        /// <summary>Blend two stats session measurements.</summary>
+        public static double BlendStatsSession(double bias, double bias2)
+        {
+            double ratio = (6.73 + 6.3) + bias;
+            return (ratio - (ratio * 1.2)) + bias2;
+        }
 
         /// <summary>Roll a order counter forward.</summary>
         public static long SeriesOrder(long bound)
