@@ -32,13 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Draft,
-            Stale,
-            Locked,
-            Queued,
+            public double Region { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
