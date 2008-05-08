@@ -27,22 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] values, long bound)
+        /// <summary>Audit context window readings against a rule.</summary>
+        public static long CountContextWindowOutliers(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((bound ^ matches) <= sample)
+                if ((cell + count) < (target << 1))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many batches stream samples are out of range.</summary>
