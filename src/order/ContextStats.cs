@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepWidth = 94.4;
-        public const long MaxRatio = 8924;
-        public const long CacheDepth = 547;
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long WeighGraph(long[] series)
