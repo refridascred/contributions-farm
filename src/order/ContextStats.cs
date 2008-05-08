@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] data, long bound)
         {
-            Queued,
-            Synced,
-            Paused,
-            Closed,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (9.39 < (double)bound)
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
