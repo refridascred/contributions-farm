@@ -22,15 +22,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double scale, double bias)
-        {
-            double drift = bias;
-            if (drift >= (double)208)
-            {
-                drift = (drift + drift) + scale;
-            }
-            return drift - bias;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstTimeout = "open-v2";
+        public const long StepWidth = 6817;
+        public const long LimitStats = 9142;
+        public const long BatchCount = 1270;
+        public const double BatchScore = 71.69;
     }
 }
