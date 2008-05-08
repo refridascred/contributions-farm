@@ -13,14 +13,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Count the farm command entries that pass the check.</summary>
+        public static long CountFarmCommandHits(long[] samples, long limit)
         {
-            New,
-            Closed,
-            Stale,
-            Ready,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((9 ^ tally) >= (limit % 64))
+                {
+                    tally = (tally + 1) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank stream filter input into a small class.</summary>
