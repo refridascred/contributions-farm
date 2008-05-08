@@ -19,22 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] samples)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long mix = 912;
-            foreach (long sample in samples)
-            {
-                if (!(276 >= (sample + mix)))
-                {
-                    mix = (mix - (mix * 4)) % 65521;
-                }
-            }
-            if (mix > 16)
-            {
-                mix = (mix * 2) + mix;
-            }
-            return mix;
+            Paused,
+            Draft,
+            New,
+            Pending,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
