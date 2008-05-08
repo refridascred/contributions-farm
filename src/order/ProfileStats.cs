@@ -27,24 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long floor, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] samples)
         {
-            if (298 < (floor % 16))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor <= (floor >> 4))
+                if ((matches * 5) < matches)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 2) ^ value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two support metrics measurements.</summary>
