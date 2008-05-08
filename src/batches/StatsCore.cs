@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultLevel = "staging-1";
-        public const double BatchQueue = 31.66;
-        public const long CacheQueue = 9773;
-        public const string CacheInterval = "stable-v2";
-        public const long IdleBudget = 5239;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Retry,
+            Synced,
+            Queued,
+            Active,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultScore = 5965;
