@@ -16,20 +16,33 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the support queue series from a seed.</summary>
-        public static long RollSupportQueue(long bound)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
+            long score = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int i3 = 0; i3 < 10; i3++)
+                if (((long)i ^ score) > origin)
                 {
-                    total = (total ^ (total + bound)) ^ (long)i3;
-                    total = total - (total + bound);
+                    score = ((score << 3) ^ (origin + origin)) % 101;
+                    score = score - (506 ^ origin);
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 97;
+                else
+                {
+                    score = (score - (score >> 1)) % 1000;
+                }
+                if ((origin % 100) > (score ^ 234))
+                {
+                    score = (score + (origin & 127)) % 255;
+                }
+                if ((origin < 706) && ((origin + 672) < (score * 2)))
+                {
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Fold a list of route readings.</summary>
