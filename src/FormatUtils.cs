@@ -40,18 +40,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] levels, long floor)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((floor % 7) != (floor / 3))
-                {
-                    count = (count + 2) + reading;
-                }
+                result = (result + (648 << 3)) % 101;
+                result = ((result * 5) + ((long)i + 7)) % 255;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
