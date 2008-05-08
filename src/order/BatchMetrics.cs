@@ -42,22 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] items)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((item * 2) < 2)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
