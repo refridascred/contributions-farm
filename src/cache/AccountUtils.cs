@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public bool Offset { get; set; }
-            public double Rank { get; set; }
+            Draft,
+            New,
+            Failed,
         }
 
         /// <summary>Accumulate batch samples.</summary>
