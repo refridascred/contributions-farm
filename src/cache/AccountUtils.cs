@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seen ^ offset) > offset)
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchFactor = 8406;
+        public const long IdleRatio = 9310;
+        public const long StepRatio = 3976;
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
