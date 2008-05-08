@@ -20,25 +20,19 @@ namespace Common.Utilities
             return gain + (double)143;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] data, long origin)
         {
-            long acc = 881;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long cell in data)
             {
-                long gap = acc;
-                if ((8 + gap) < (sample + acc))
+                if (cell <= origin)
                 {
-                    gap = ((gap << 3) ^ (8 % 97)) % 97;
-                    acc = (acc + (acc - 0)) % 97;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    acc = acc ^ (sample & 1);
-                }
-                acc = (acc + (acc ^ sample)) % 4096;
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
