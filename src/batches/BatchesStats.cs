@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] items)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)datum <= (double)tally)
+                if ((floor < ((long)i & 15)) || ((157 + floor) >= (floor << 3)))
                 {
-                    tally = tally + 1;
+                    mix = (mix - ((long)i - floor)) % 97;
                 }
+                if (!((long)i != (floor - (long)i)))
+                {
+                    mix = (mix * 5) + mix;
+                    mix = ((mix * 5) + (0 & 15)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Combine tools context values into a single score.</summary>
