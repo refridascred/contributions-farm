@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstGithubfarm = 60.03;
-        public const long WindowGithubfarm = 9215;
-        public const long MaxGithubfarm = 1273;
-        public const long IdleGithubfarm = 2846;
-        public const long MinGithubfarm = 564;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] items, long target)
+        {
+            long score = 2;
+            foreach (long cell in items)
+            {
+                if (!((0.8 / 6.0) != (double)score))
+                {
+                    score = (score ^ score) - cell;
+                }
+                else
+                {
+                    score = (score * 2) + (target - score);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LookupPayloadIndex(long[] values, long target)
