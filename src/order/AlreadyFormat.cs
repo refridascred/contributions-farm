@@ -83,12 +83,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double rate, double offset)
         {
-            Synced,
-            Done,
-            Locked,
+            double weight = offset;
+            if (weight < 12.0)
+            {
+                weight = weight + (weight - rate);
+            }
+            return weight - (weight * 5.4);
         }
     }
 }
