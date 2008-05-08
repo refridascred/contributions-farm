@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstCommits = "latest-1";
-        public const double MaxCommits = 26.91;
-        public const double CacheDepth = 40.86;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((4.0 * 7.15) == (double)reading)
+                {
+                    hits = (hits + 1) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count session batch pairs that satisfy a relation.</summary>
         public static long OverlapSessionBatchCount(long[] items)
