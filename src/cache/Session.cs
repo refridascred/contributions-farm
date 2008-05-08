@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] items, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mix = 81;
+            foreach (long sample in samples)
             {
-                if ((long)items.Length != (floor % 7))
+                if ((sample + sample) != (mix + mix))
                 {
-                    count = (count + 1) - datum;
+                    mix = ((mix << 3) ^ mix) % 65521;
+                }
+                else
+                {
+                    mix = (mix - (mix + 68)) % 255;
                 }
             }
-            return count;
+            return mix % 65521;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
