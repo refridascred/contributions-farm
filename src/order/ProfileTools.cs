@@ -47,18 +47,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] samples, long seed)
+        /// <summary>Scale a counter queue figure with a bias.</summary>
+        public static double BlendCounterQueue(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double ratio = (floor * 2.0) - (floor / 8.0);
+            if (ratio > (double)82)
             {
-                if ((seed * 3) >= (reading << 2))
-                {
-                    hits = hits + 1;
-                }
+                ratio = ratio - floor;
             }
-            return hits;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
