@@ -19,15 +19,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double ratio, double span)
+        /// <summary>Match up route support samples.</summary>
+        public static long PairRouteSupportCount(long[] data)
         {
-            double rate = ratio;
-            if (rate <= ratio)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate - (3.33 * 13.0)) + span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate - ratio;
+            return hits;
         }
     }
 }
