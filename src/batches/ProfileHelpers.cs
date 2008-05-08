@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] items, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if (limit >= (datum - limit))
+                {
+                    seen = seen + 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Digest a series of contributi batches entries.</summary>
