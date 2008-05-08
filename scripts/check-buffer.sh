@@ -6,14 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+for item in strict fallback; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+BUFFER_LIMIT=395
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-cached}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
