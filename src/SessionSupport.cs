@@ -22,23 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((-33) / 2) >= value)
-                {
-                    hits = (hits + 1) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardDepth = 0.94;
+        public const long MinLevel = 5110;
+        public const long IdleStream = 7291;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long FoldBuffer(long[] values)
