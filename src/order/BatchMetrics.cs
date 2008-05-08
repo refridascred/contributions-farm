@@ -25,10 +25,16 @@ namespace Common.Utilities
         public const long IdleSize = 776;
         public const long MaxWidth = 6964;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleInterval = 9871;
-        public const long BaseWidth = 5141;
-        public const long DefaultSupport = 546;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long OverlapGraphCount(long[] series)
