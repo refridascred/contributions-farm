@@ -51,22 +51,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleScore = 7444;
+        public const long HardCount = 9150;
+        public const double IdleProfile = 94.01;
+        public const long IdleDepth = 6939;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
