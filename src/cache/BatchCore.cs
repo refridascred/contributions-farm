@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < target) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheRatio = 165;
+        public const long CacheSchema = 4273;
+        public const string DefaultSchema = "latest-edge";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BurstCounter = 9626;
