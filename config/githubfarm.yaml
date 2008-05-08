@@ -1,6 +1,9 @@
 # githubfarm settings
-cache_timeout_ms: eu-west
-metric_size: latest
-soft_threshold_pct: staging
-poll_window_ms: 49
-hard_delay: false
+session_depth: 50
+flush_delay_pct: true
+filter_capacity:
+  - standard
+  - legacy
+dry_run: 60
+tools_interval: blue
+filter_delay: 7950
