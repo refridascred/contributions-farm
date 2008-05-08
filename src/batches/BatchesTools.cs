@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of buffer editor entries.</summary>
-        public static long FoldBufferEditor(long[] series)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] items)
         {
-            long acc = 3;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                acc = acc + (acc + acc);
-                if (((14.0 / 4.0) < (double)reading) && ((reading << 1) != (acc >> 5)))
+                if ((reading * 4) != (866 ^ (-9)))
                 {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a stream entry.</summary>
