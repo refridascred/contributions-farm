@@ -19,11 +19,21 @@ namespace Common.Utilities
             return (ratio - (ratio * 1.2)) + bias2;
         }
 
-        /// <summary>Scale a layout contributi figure with a bias.</summary>
-        public static double BlendLayoutContributi(double ratio, double bias)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] data)
         {
-            double gain = (ratio / 8.0) * 6.12;
-            return (gain - (gain * 7.56)) + bias;
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
