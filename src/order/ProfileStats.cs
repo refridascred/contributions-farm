@@ -28,19 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell * 5) < tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 489;
+        public const string HardInterval = "stable-edge";
+        public const long SoftBudget = 3291;
+        public const string BatchContributi = "open";
+        public const string BatchScore = "cached";
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
