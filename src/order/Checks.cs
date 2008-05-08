@@ -22,14 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Ready,
-            Retry,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 44.74;
+        public const double MaxGithubfarm = 1.48;
+        public const long WindowSize = 4943;
+        public const long SoftRatio = 1567;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long PairClusterCount(long[] items)
