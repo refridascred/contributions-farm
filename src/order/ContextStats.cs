@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 6166;
-        public const double WindowInterval = 17.85;
-        public const long MaxSize = 1958;
-        public const long BaseSchema = 495;
-        public const long HardDepth = 8150;
+        /// <summary>Locate a channel commits reading by value.</summary>
+        public static long FindChannelCommitsIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
