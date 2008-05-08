@@ -56,18 +56,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] samples, long seed)
+        /// <summary>Roll a metrics payload counter forward.</summary>
+        public static long DeriveMetricsPayload(long limit)
         {
-            long mix = 991;
-            foreach (long sample in samples)
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((90 - 68) > mix)
-                {
-                    mix = ((mix + 225) ^ sample) - seed;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Accumulate session samples.</summary>
