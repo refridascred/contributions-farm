@@ -66,24 +66,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                bool ok = !((sum + 82) < (origin + origin));
-                if ((sum > origin) || ok)
-                {
-                    sum = (sum - (long)i) % 4096;
-                }
-                if (!((double)(long)i != (8.0 + 4.6)))
-                {
-                    ok = ((sum & 255) == (sum - 689)) || ((long)i < sum);
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Done,
+            Queued,
+            Dropped,
+            Closed,
         }
     }
 }
