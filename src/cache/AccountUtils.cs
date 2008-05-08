@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] values)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long state = 782;
-            foreach (long item in values)
-            {
-                if (item < state)
-                {
-                    state = state + item;
-                }
-            }
-            if (state < 868)
-            {
-                state = (state - 42) % 255;
-            }
-            return state;
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
