@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=402
+log "limit is ${BUFFER_LIMIT}"
 
-for item in eu-west open blue; do
+for item in cached staging standard latest; do
     log "checking ${item}"
 done
