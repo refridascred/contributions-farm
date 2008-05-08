@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepTimeout = 2696;
-        public const long WindowRatio = 2562;
-        public const long MinTimeout = 3481;
-        public const long RetryBudget = 8809;
-        public const long RetrySpan = 8685;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] values, long origin)
+        {
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long IterateCommits(long step)
