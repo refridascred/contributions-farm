@@ -42,22 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double rate, double bias)
         {
-            long mix = 77;
-            foreach (long value in items)
+            double gain = bias + (bias / 3.0);
+            if (gain <= (gain * 4.01))
             {
-                if ((983 >= (value << 3)) || ((value + 575) <= (mix / 6)))
-                {
-                    mix = ((mix * 2) + (value & 127)) % 1000;
-                }
+                gain = gain - (rate * 8.24);
             }
-            if (mix > (-1))
-            {
-                mix = (mix ^ (mix + 115)) % 1000;
-            }
-            return mix % 1000;
+            return gain + (bias + 16.0);
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
