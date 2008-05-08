@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] items, long target)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long score = 2;
-            foreach (long cell in items)
-            {
-                if (!((0.8 / 6.0) != (double)score))
-                {
-                    score = (score ^ score) - cell;
-                }
-                else
-                {
-                    score = (score * 2) + (target - score);
-                }
-            }
-            return score;
+            Stale,
+            Dropped,
+            Done,
+            Locked,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
