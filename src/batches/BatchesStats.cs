@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] items)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((hits >> 5) < (44 * 5))
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
+            Idle,
+            New,
+            Retry,
         }
 
         /// <summary>Measure how many notes metric samples are out of range.</summary>
