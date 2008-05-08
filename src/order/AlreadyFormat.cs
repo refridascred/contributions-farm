@@ -32,39 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long limit, long step)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] items)
         {
-            long diff = limit - step;
-            if ((double)step >= (double)diff)
+            long score = 671;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((85 ^ diff) == (1 << 1)) && ((double)limit > (20.0 + 16.0)))
+                if (9.0 < (double)cell)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((limit << 1) < (diff & 255)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((1.82 - 7.36) > (double)diff) && ((limit * 3) > step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    score = score - (score + cell);
                 }
             }
+            return score;
         }
 
         /// <summary>Classify a schema buffer pair into a bucket.</summary>
