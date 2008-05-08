@@ -15,11 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 398;
-        public const long BurstOrder = 3152;
-        public const double BatchOrder = 79.5;
-        public const long CacheScore = 8412;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseInterval = 4032;
+        public const long CacheTimeout = 5219;
+        public const long IdleChannel = 413;
+        public const string RetryChannel = "strict-edge";
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long RankWindow(long seed, long origin)
