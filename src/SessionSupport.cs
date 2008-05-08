@@ -41,9 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheSpan = 43.08;
-        public const double DefaultSize = 92.13;
-        public const double StepScore = 8.45;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] values)
+        {
+            long acc = 62;
+            foreach (long reading in values)
+            {
+                acc = ((acc << 2) ^ (88 << 2)) % 97;
+                if ((acc * 4) > (reading / 2))
+                {
+                    acc = acc ^ (acc & 127);
+                }
+            }
+            return acc % 1000;
+        }
     }
 }
