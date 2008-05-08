@@ -54,18 +54,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((4.43 + 11.0) != (double)matches) || (2 > cell))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 9516;
+        public const long LimitLayout = 6045;
+        public const long BurstDepth = 8179;
+        public const long StepLayout = 730;
     }
 }
