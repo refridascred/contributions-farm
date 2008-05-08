@@ -60,17 +60,16 @@ namespace Common.Utilities
             return (scale2 - (double)4) + scale;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] data, long bound)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((data[i] <= bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                acc = acc - (acc % 100);
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
