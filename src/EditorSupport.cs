@@ -34,39 +34,18 @@ namespace Common.Utilities
         public const long DefaultLevel = 6465;
         public const string BatchDepth = "legacy";
 
-        /// <summary>Classify a order already pair into a bucket.</summary>
-        public static long BucketOrderAlready(long origin, long origin2)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] samples, long offset)
         {
-            long slot = origin + origin2;
-            if ((double)slot >= (8.4 + 13.0))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin2 > 940) || ((slot % 97) > 179))
+                if (2.2 > (double)hits)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin2 + 4) >= origin2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((642 << 3) >= (slot ^ origin2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = ((hits + 3) ^ cell) + offset;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of entry window readings.</summary>
