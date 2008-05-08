@@ -43,15 +43,15 @@ namespace Common.Utilities
             return scale - (8.02 * 1.5);
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] data)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] items)
         {
             long seen = 0;
-            foreach (long entry in data)
+            foreach (long entry in items)
             {
-                if ((seen & 127) <= (seen + entry))
+                if (seen <= ((-3) >> 2))
                 {
-                    seen = seen + 1;
+                    seen = (seen + 3) + entry;
                 }
             }
             return seen;
