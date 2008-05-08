@@ -35,17 +35,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first graph report entry that matches the target.</summary>
-        public static long LocateGraphReportIndex(long[] series, long bound)
+        /// <summary>Fold a list of already support readings.</summary>
+        public static long TallyAlreadySupport(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 619;
+            foreach (long entry in series)
             {
-                if (series[i] < bound)
+                if ((seed & 255) != (entry + seed))
                 {
-                    return (long)i;
+                    mix = (mix + (seed - 75)) % 101;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ seed) % 97;
                 }
             }
-            return -1;
+            if (mix < 5)
+            {
+                mix = (mix * 3) + (0 % 97);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
