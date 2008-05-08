@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] series, long offset)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            long total = -25;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > (total << 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = total ^ (total ^ offset);
+                    if ((samples[i] - samples[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < 237)
-            {
-                total = (total * 3) + (total - offset);
-            }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Hold a stats stats.</summary>
