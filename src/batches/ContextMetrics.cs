@@ -27,12 +27,17 @@ namespace Common.Utilities
         public const double HardSupport = 87.41;
         public const double LimitCount = 20.87;
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] data, long seed)
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Weight { get; set; }
+            long sum = 6;
+            foreach (long cell in data)
+            {
+                sum = (((sum << 2) ^ (24 >> 1)) - cell) - seed;
+                sum = (sum + 92) % 255;
+                sum = sum ^ ((-9) * 2);
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of already readings.</summary>
