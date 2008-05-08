@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double weight, double span)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] samples)
         {
-            double ratio = span;
-            if (ratio >= weight)
+            long carry = 3;
+            foreach (long datum in samples)
             {
-                ratio = ratio - span;
+                if (((674 + carry) == (datum - datum)) && ((20.0 + 17.0) < (double)carry))
+                {
+                    carry = carry ^ (long)samples.Length;
+                }
+                carry = ((carry * 4) + 727) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (ratio / 4.0)) + (double)(long)i;
-            }
-            return ratio + 9.5;
+            return carry % 65521;
         }
 
         /// <summary>Look up the position of a context route sample.</summary>
