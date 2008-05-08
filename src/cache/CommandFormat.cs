@@ -35,13 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] levels)
         {
-            Closed,
-            Ready,
-            Pending,
-            Paused,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((count << 1) < (407 + 900))
+                {
+                    count = (count + 1) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the session kind values.</summary>
