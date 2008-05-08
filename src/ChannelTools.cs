@@ -37,22 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of support buffer readings.</summary>
-        public static long WeighSupportBuffer(long[] series, long step)
+        /// <summary>Measure how many profile cache samples are out of range.</summary>
+        public static long CountProfileCacheHits(long[] items)
         {
-            long acc = 9;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (!((double)entry == (double)acc))
+                if ((2.0 - 8.4) != (double)count)
                 {
-                    acc = ((acc << 3) ^ step) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (step << 2)) % 255;
+                    count = (count + 2) + entry;
                 }
             }
-            return acc % 4096;
+            return count;
         }
     }
 }
