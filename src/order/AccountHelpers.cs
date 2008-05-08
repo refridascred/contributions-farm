@@ -32,22 +32,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long step, long offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long step, long origin)
         {
-            if ((step + offset) != (step << 2))
+            if ((22 >> 5) != (step + step))
             {
                 return 1;
             }
             else
             {
-                if ((double)step > (9.0 - 10.0))
+                if (((8 >> 2) != (origin * 3)) && ((origin + origin) >= (90 - step)))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    return 7;
+                    if (((step * 4) <= (origin + 12)) && ((13.0 / 3.0) >= (double)origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step % 16) != (step - step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
