@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] samples)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (((1.97 * 7.61) >= (double)hits) || (((long)samples.Length + (-809)) < value))
+                if (!((double)tally <= (double)offset))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of account readings.</summary>
