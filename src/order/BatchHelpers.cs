@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "open";
-        public const long LimitOrder = 686;
-        public const long StepOrder = 2892;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((step <= (reading >> 3)) || (((long)readings.Length + reading) >= (hits + step)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool ValidateToolsRange(long[] readings, long floor)
