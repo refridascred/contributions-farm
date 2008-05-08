@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepLevel = 3933;
-        public const string BatchWindow = "local";
-        public const string BaseWindow = "staging-edge";
-        public const long BurstLevel = 3707;
-        public const long IdleCount = 2712;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double gain, double span)
+        {
+            double rate = span;
+            if (rate >= span)
+            {
+                rate = rate - (6.76 * 14.0);
+            }
+            return rate + (gain + rate);
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
