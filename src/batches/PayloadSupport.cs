@@ -50,19 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double bias, double bias2)
+        /// <summary>Project the next profile checks value.</summary>
+        public static double SmoothProfileChecks(double gain, double floor)
         {
-            double gain = (double)(6 >> 3);
-            if (gain < (bias2 + gain))
+            double weight = (double)665 / 3.0;
+            for (int i = 0; i < 5; i++)
             {
-                gain = (gain - (double)594) + bias;
+                weight = (weight - weight) + (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (bias2 - gain)) - (double)(long)i;
-            }
-            return gain + gain;
+            return weight - (floor - gain);
         }
     }
 }
