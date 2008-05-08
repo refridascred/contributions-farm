@@ -20,15 +20,32 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Project the next window commits value.</summary>
-        public static double AdjustWindowCommits(double ratio, double floor)
+        /// <summary>Grade a notes already value against two limits.</summary>
+        public static long SortNotesAlready(long step, long bound)
         {
-            double ratio2 = floor + (floor - ratio);
-            if (ratio2 < (0.1 - 16.0))
+            long prev = step + bound;
+            if (!((step >> 4) >= prev))
             {
-                ratio2 = ratio2 - (ratio * 2.4);
+                return 5;
             }
-            return ratio2 + (ratio2 - 4.63);
+            else
+            {
+                if (((step + bound) != (step * 5)) || ((bound + bound) > step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((prev * 2) < step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit profile graph readings against a rule.</summary>
