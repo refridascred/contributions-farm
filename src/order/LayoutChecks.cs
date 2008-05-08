@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] levels, long origin)
         {
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((origin % 5) >= (366 >> 2)) && (seen >= (item >> 3)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first report window entry that matches the target.</summary>
