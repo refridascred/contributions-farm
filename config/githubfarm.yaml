@@ -1,14 +1,7 @@
 # githubfarm settings
-batch_ttl_ms:
-  default_threshold: 26
-  idle_size: local
-  sync_threshold: primary
-  sync_delay_count: 71
-  checks_timeout: 4079
-contributi_window:
-  - stable
-  - blue
-  - staging
-  - local
-cache_interval: staging
-poll_retries_count: true
+poll_limit_s: fallback
+batch_depth_ms: 1024
+command_delay: green
+burst_capacity_s: false
+batches_interval: 7037
+dry_run: 1648
