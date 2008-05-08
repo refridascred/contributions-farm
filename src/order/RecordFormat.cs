@@ -42,21 +42,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count metrics githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareMetricsGithubfarmCount(long[] readings)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = acc - (acc + 24);
+                acc = (acc << 2) ^ acc;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a command summary.</summary>
