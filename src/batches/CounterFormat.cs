@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] items, long seed)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
