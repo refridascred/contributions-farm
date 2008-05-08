@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] items, long floor)
         {
-            public bool Token { get; set; }
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((long)items.Length != (floor % 7))
+                {
+                    count = (count + 1) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
