@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 6199;
+        public const double WindowFilter = 66.23;
+        public const string BurstBudget = "open";
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long AuditFilterOutliers(long[] values)
