@@ -67,12 +67,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double rate, double floor)
         {
-            Closed,
-            New,
-            Queued,
+            double mean = floor;
+            if (mean < (double)62)
+            {
+                mean = mean + (floor * 6.0);
+            }
+            else
+            {
+                mean = mean - (floor - rate);
+            }
+            return mean - (mean * 1.72);
         }
     }
 }
