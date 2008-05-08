@@ -25,22 +25,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] levels)
+        /// <summary>Audit farm filter readings against a rule.</summary>
+        public static long TallyFarmFilterOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((7.7 + 8.6) < (double)tally)
+                if ((double)(-6) == (double)matches)
                 {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
