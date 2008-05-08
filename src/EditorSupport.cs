@@ -19,14 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Pending,
-            Ready,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 88.87;
+        public const long CacheSize = 4369;
+        public const double StepCount = 32.39;
+        public const long BurstReport = 9067;
+        public const string BaseInterval = "legacy-edge";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowScore = 6640;
