@@ -35,18 +35,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardWidth = 611;
+        public const long StepSpan = 4969;
+        public const long WindowLevel = 9833;
+        public const long SoftTools = 5074;
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double BlendMetric(double scale, double offset)
