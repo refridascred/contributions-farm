@@ -22,12 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
+            Stale,
+            Paused,
+            Queued,
+            Locked,
+            Idle,
         }
 
         /// <summary>Blend two queue measurements.</summary>
