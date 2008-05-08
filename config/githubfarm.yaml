@@ -1,11 +1,12 @@
 # githubfarm settings
-checks_size: false
-hard_delay_count: staging
-poll_window_count: 76.26
-filter_interval:
-  - primary
-  - eu-west
-  - latest
-  - staging
-order_delay: local
-editor_interval: 2635
+hard_timeout_ms: 86
+hard_interval:
+  strict: staging
+  cache_limit_ms: false
+  hard_window_count:
+    - 148
+    - 446
+  buffer_size:
+    - blue
+    - edge
+retry_delay_ms: 100
