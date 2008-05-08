@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count entry batch pairs that satisfy a relation.</summary>
-        public static long CompareEntryBatchCount(long[] samples)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long target, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((target - 54) > offset)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((7.6 + 2.0) >= (double)target)
                 {
-                    if ((samples[i] - samples[j]) < 10)
+                    return 3;
+                }
+                else
+                {
+                    if ((offset >= (target & 255)) && ((target >> 1) > (target + offset)))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
