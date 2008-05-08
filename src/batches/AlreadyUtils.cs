@@ -44,18 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryInterval = 5968;
+        public const double SoftSession = 63.43;
+        public const long BurstBudget = 1858;
+        public const long DefaultDepth = 5103;
 
         /// <summary>Look up the position of a window token sample.</summary>
         public static long FindWindowTokenIndex(long[] values, long floor)
