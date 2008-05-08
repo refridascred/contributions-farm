@@ -25,19 +25,9 @@ namespace Common.Utilities
         public const long BatchFactor = 1412;
         public const long WindowWidth = 1393;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] levels, long origin)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 9250;
+        public const long MaxGraph = 8767;
+        public const string RetrySpan = "primary-v2";
     }
 }
