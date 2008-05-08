@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] readings)
         {
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading ^ tally) >= (tally >> 5))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank support input into a small class.</summary>
