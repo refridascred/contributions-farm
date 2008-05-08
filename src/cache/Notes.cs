@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double ratio, double span)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            double scale = ratio;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + span) + (double)(long)i;
-            }
-            return scale + (9.0 / 9.0);
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
