@@ -32,18 +32,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metrics stream samples are out of range.</summary>
-        public static long TallyMetricsStreamOutliers(long[] series, long limit)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long limit, long step)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long diff = limit - step;
+            if ((double)step >= (double)diff)
             {
-                if ((seen + 35) <= (limit + seen))
+                return 4;
+            }
+            else
+            {
+                if (((85 ^ diff) == (1 << 1)) && ((double)limit > (20.0 + 16.0)))
                 {
-                    seen = (seen + 2) - entry;
+                    return 5;
+                }
+                else
+                {
+                    if (!((limit << 1) < (diff & 255)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((1.82 - 7.36) > (double)diff) && ((limit * 3) > step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a schema buffer pair into a bucket.</summary>
