@@ -33,11 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
+            public long Total { get; set; }
+            public long Offset { get; set; }
             public long Mode { get; set; }
-            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
