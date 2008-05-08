@@ -42,12 +42,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long limit, long step)
         {
-            public double Region { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            long next = limit ^ step;
+            if (((13 & 7) > (step * 4)) && ((next - limit) <= (limit - limit)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((-2) - next) <= (limit - step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((step ^ step) == (limit * 2)) || ((limit >> 3) == (step + step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((limit + step) < (next + limit)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
