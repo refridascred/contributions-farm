@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultRecord = 38.14;
-        public const long BaseDepth = 4574;
-        public const long RetryTimeout = 2805;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate commits report samples.</summary>
         public static long DigestCommitsReport(long[] samples)
