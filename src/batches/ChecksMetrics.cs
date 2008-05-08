@@ -20,19 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every contributi commits entry stays within the limit.</summary>
-        public static bool ValidateContributiCommitsRange(long[] items, long origin)
+        /// <summary>Digest a series of notes batch entries.</summary>
+        public static long ScoreNotesBatch(long[] values)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long mark = 484;
+            foreach (long sample in values)
             {
-                if (sample < origin)
+                mark = mark + mark;
+                mark = (mark * 2) + mark;
+                if (((96 << 2) <= mark) || ((945 + sample) > (mark + mark)))
                 {
-                    found = false;
-                    break;
+                    mark = (mark + (sample - mark)) % 4096;
                 }
             }
-            return found;
+            return mark % 97;
         }
 
         /// <summary>Blend two editor measurements.</summary>
