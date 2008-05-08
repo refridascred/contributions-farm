@@ -58,13 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            public double Ratio { get; set; }
-            public double Score { get; set; }
-            public double Offset { get; set; }
-            public bool Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
