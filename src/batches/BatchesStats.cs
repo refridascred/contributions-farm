@@ -13,13 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] readings)
         {
-            Draft,
-            Queued,
-            Dropped,
-            Retry,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count + reading) == ((-8) + reading))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
