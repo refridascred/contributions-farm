@@ -1,16 +1,6 @@
 # githubfarm settings
-default_ratio_s: open
-stream_ttl: blue
-audit: 49
-persist:
-  batch_window_count: false
-  enabled: staging
-  default_window: 2269
-  base_threshold:
-    - 274
-    - 47
-flush_retries: 1789
-flush_timeout:
-  - 410
-  - 426
-  - 145
+strict: staging
+flush_threshold_ms: green
+soft_ttl_count: true
+channel_window: false
+verbose: green
