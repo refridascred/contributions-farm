@@ -52,19 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double ratio, double bias)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            double ratio2 = bias;
-            if (ratio2 < 6.9)
-            {
-                ratio2 = (ratio2 - (bias / 4.0)) + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + ratio2) + (double)(long)i;
-            }
-            return ratio2 - (double)7;
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
