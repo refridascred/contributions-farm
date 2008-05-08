@@ -33,11 +33,23 @@ namespace Common.Utilities
         public const long HardReport = 2600;
         public const string BurstReport = "fallback-1";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardTimeout = "open-v2";
-        public const double WindowSize = 44.43;
-        public const long BaseRoute = 8578;
-        public const double MaxScore = 66.13;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (((sample * 3) <= (matches + matches)) && !((double)sample == (0.5 * 2.6)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a already reading.</summary>
         public static double AdjustAlready(double rate, double offset)
