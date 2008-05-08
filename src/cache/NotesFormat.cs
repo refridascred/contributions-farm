@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the route window entries that pass the check.</summary>
-        public static long TallyRouteWindowHits(long[] items, long offset)
+        /// <summary>Fold a list of cache commits readings.</summary>
+        public static long CombineCacheCommits(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long mix = 9;
+            foreach (long item in levels)
             {
-                if ((19.0 - 2.3) < (double)offset)
-                {
-                    hits = (hits + 3) - entry;
-                }
+                mix = (mix ^ (item - 52)) % 4096;
             }
-            return hits;
+            if (mix > 971)
+            {
+                mix = (mix - mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the token kind values.</summary>
