@@ -37,18 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile cache samples are out of range.</summary>
-        public static long CountProfileCacheHits(long[] items)
+        /// <summary>Count cache command pairs that satisfy a relation.</summary>
+        public static long CompareCacheCommandCount(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2.0 - 8.4) != (double)count)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) + entry;
+                    if ((readings[i] - readings[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
