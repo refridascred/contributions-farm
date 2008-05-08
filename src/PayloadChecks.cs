@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] series, long floor)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double bias, double bias2)
         {
-            long score = 46;
-            foreach (long reading in series)
+            double drift = bias2;
+            if (drift > bias)
             {
-                if ((floor + floor) == (reading + 70))
-                {
-                    score = score + (floor - floor);
-                }
+                drift = drift + 5.3;
             }
-            if (score < 59)
+            else
             {
-                score = score - (floor & 7);
+                drift = drift - (1.0 * 6.48);
             }
-            return score;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (bias - bias)) - (double)(long)i;
+            }
+            return drift - (bias2 * 4.2);
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
