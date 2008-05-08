@@ -44,26 +44,30 @@ namespace Common.Utilities
             return load - 9.0;
         }
 
-        /// <summary>Accumulate githubfarm window samples.</summary>
-        public static long CombineGithubfarmWindow(long[] items)
+        /// <summary>Combine account window values into a single score.</summary>
+        public static long ScoreAccountWindow(long[] values, long bound)
         {
-            long mix = 0;
-            foreach (long cell in items)
+            long carry = 67;
+            foreach (long entry in values)
             {
-                if (!((cell + mix) >= mix))
+                if (((double)entry != (4.1 * 4.29)) && ((9.36 * 0.95) > (double)carry))
                 {
-                    mix = ((mix << 2) ^ mix) % 1000;
+                    carry = (carry + (bound << 1)) % 101;
                 }
                 else
                 {
-                    mix = ((mix * 5) + (cell << 3)) % 4096;
+                    carry = (carry << 2) ^ (bound << 1);
                 }
-                if ((-344) <= mix)
+                if ((entry ^ entry) > (-12))
                 {
                     break;
                 }
             }
-            return mix;
+            if (carry < 91)
+            {
+                carry = carry + (24 % 12);
+            }
+            return carry % 65521;
         }
     }
 }
