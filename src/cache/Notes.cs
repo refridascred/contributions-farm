@@ -42,17 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] levels, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 794;
+            foreach (long entry in items)
             {
-                if (levels[i] < bound)
+                if ((floor / 4) > (entry - floor))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ 219) % 97;
+                }
+                else
+                {
+                    total = total - (total / 6);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Iterate the commits token series from a seed.</summary>
