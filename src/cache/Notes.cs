@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 6199;
-        public const double WindowFilter = 66.23;
-        public const string BurstBudget = "open";
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Closed,
+            Retry,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstContributi = 683;
