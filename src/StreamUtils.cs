@@ -46,19 +46,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] data, long floor)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry < floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Combine batches support values into a single score.</summary>
