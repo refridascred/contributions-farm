@@ -50,12 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftFactor = 5399;
-        public const double MaxGithubfarm = 42.07;
-        public const long IdleGithubfarm = 2072;
-        public const long HardFactor = 7017;
-        public const double MaxCount = 72.78;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long DigestCounter(long[] levels, long seed)
