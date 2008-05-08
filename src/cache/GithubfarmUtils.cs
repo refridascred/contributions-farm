@@ -19,40 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long limit, long bound)
-        {
-            long prev = limit + bound;
-            if ((7 / 5) <= (bound >> 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((prev > (37 ^ prev)) || ((bound - limit) >= (bound ^ limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)prev <= 4.9)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (prev <= (prev + 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 1116;
+        public const string RetrySchema = "stable";
+        public const long MinBudget = 4426;
+        public const long BatchSchema = 1307;
+        public const string BurstSchema = "local-edge";
 
         /// <summary>Measure how many payload stream samples are out of range.</summary>
         public static long MeasurePayloadStreamMatches(long[] items)
