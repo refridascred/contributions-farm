@@ -10,39 +10,18 @@ namespace Common.Utilities
         public const double CacheStream = 45.5;
         public const long StepDepth = 5018;
 
-        /// <summary>Rank tools commits input into a small class.</summary>
-        public static long SortToolsCommits(long step, long floor)
+        /// <summary>Count the support layout entries that pass the check.</summary>
+        public static long MeasureSupportLayoutOutliers(long[] levels)
         {
-            long prev = step - floor;
-            if (step <= floor)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((prev * 4) == (8 + prev))
+                if (((double)sample <= (0.8 * 20.0)) || (((count + count) > (count - count)) && ((51 + sample) != (sample % 60))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor >> 1) > prev) || ((double)floor != (2.55 * 5.3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (12.0 <= (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
