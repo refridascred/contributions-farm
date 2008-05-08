@@ -23,22 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up window token samples.</summary>
-        public static long MatchWindowTokenCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string LimitFactor = "primary";
+        public const string LimitLayout = "primary-1";
+        public const string IdleLayout = "open-v2";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double IdleBatch = 52.55;
