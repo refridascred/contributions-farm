@@ -1,4 +1,7 @@
 # support settings
-session_timeout: standard
-poll_retries_s: 500
-min_threshold_count: 100
+verbose: 30
+route_retries: open
+soft_delay: 95.02
+queue_threshold: fallback
+idle_window_pct: 42
+flush_limit_s: false
