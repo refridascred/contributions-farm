@@ -30,20 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                result = (result + (bound & 127)) % 255;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = (result + bound) - (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a format options.</summary>
