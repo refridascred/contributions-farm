@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 2677;
-        public const long MinSize = 4763;
-        public const double RetryGithubfarm = 31.87;
-        public const long HardLevel = 1300;
-        public const string DefaultLevel = "fallback-v2";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 4387;
+        public const string CacheAccount = "strict-v2";
+        public const string MaxAccount = "stable-1";
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
