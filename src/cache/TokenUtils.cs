@@ -24,18 +24,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit farm metric readings against a rule.</summary>
-        public static long CountFarmMetricHits(long[] series)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double scale, double span)
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry + seen) >= (seen << 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double drift = span + (2.0 / 9.0);
+            return (drift + (span / 7.0)) + scale;
         }
     }
 }
