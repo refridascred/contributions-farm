@@ -1,8 +1,17 @@
 {
-  "audit": "stable",
-  "sync_threshold_s": ["stable", "primary", "blue"],
-  "batches_timeout": 5334,
-  "profile_depth": 11.27,
-  "default_size_pct": "cached",
-  "hard_delay_s": false
+  "min_limit_pct": {
+    "base_threshold": [165, 45, 10],
+    "idle_ttl_count": "latest",
+    "strict": false,
+    "dry_run": false,
+    "cache_window_s": {
+      "base_depth": 250,
+      "editor_ratio": 1024,
+      "profile_ratio": false,
+      "burst_threshold": 60
+    },
+    "warm_threshold": 7689
+  },
+  "batch_window": true,
+  "support_ratio": 500
 }
