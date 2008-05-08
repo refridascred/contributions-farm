@@ -1,7 +1,13 @@
 {
-  "stream_limit": false,
-  "batch_ratio_pct": 44,
-  "flush_ratio_pct": 55,
-  "enabled": 95.58,
-  "idle_threshold_s": "local"
+  "strict": false,
+  "editor_interval": {
+    "readonly": 26.85,
+    "compress": "primary",
+    "enabled": "fallback",
+    "idle_retries": 864,
+    "hard_ratio": 64,
+    "burst_ttl_ms": 5593
+  },
+  "burst_threshold_count": 37.39,
+  "cache_retries_s": 7.28
 }
