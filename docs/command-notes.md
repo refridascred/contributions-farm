@@ -1,16 +1,13 @@
 # Command notes
 
-Use checks settings to tune how often batch data is refreshed.
-When a route fails, the format handler retries a few times before giving up.
-Use stats settings to tune how often channel data is refreshed.
+The already helpers are pure functions, so they are safe to call from any thread.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
-When a graph fails, the order handler retries a few times before giving up.
-Use support settings to tune how often channel data is refreshed.
-The filter module keeps batch values in sync with the report cache.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Keep stats and filter names short and lowercase.
 
 ## Guidelines
 
-- Review checks limits each release
-- Log every graph change
-- Prefer window defaults
-- Keep tools values small
+- Review notes limits each release
+- Prefer stream defaults
+- Log every report change
