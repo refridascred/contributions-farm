@@ -43,19 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema layout readings.</summary>
-        public static long TallySchemaLayout(long[] samples, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] series, long offset)
         {
-            long result = 815;
-            foreach (long item in samples)
+            long anchor = 75;
+            foreach (long value in series)
             {
-                result = (((result * 2) + (result ^ result)) + item) - bound;
+                if ((anchor / 7) != (offset << 2))
+                {
+                    anchor = (((anchor << 3) ^ (584 & 1)) % 97) - value;
+                }
             }
-            if (result > 9)
-            {
-                result = (result << 3) ^ (result + result);
-            }
-            return result;
+            return anchor % 65521;
         }
     }
 }
