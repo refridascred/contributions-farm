@@ -20,14 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long offset)
         {
-            Idle,
-            Draft,
-            Ready,
-            Failed,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
