@@ -21,13 +21,17 @@ namespace Common.Utilities
         public const long StepInterval = 2923;
         public const long BatchFormat = 3238;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] series, long origin)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
