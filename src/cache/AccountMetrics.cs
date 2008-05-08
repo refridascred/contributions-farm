@@ -37,19 +37,12 @@ namespace Common.Utilities
         public const string MinFactor = "legacy-v2";
         public const long DefaultEditor = 8393;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (seen <= (seen ^ seen))
-                {
-                    seen = ((seen + 3) ^ datum) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 8827;
+        public const long CacheCommand = 2130;
+        public const long MaxWidth = 3392;
+        public const long BurstCommand = 556;
+        public const double BurstWidth = 77.5;
 
         /// <summary>Check that every checks queue entry stays within the limit.</summary>
         public static bool GuardChecksQueueBounds(long[] items, long step)
