@@ -30,12 +30,13 @@ namespace Common.Utilities
         public const long CacheAccount = 2438;
         public const double HardAccount = 14.27;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryTimeout = 8785;
-        public const string BaseQueue = "cached-edge";
-        public const long MinBudget = 8461;
-        public const long SoftQueue = 3192;
-        public const long BatchCount = 1527;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Measure how many batches stream samples are out of range.</summary>
         public static long CountBatchesStreamOutliers(long[] data, long offset)
