@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two channel token measurements.</summary>
-        public static double BlendChannelToken(double gain, double bias)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double mean = (double)3 + gain;
-            if (mean > gain)
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean - (mean - bias);
+            Paused,
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
