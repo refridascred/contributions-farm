@@ -115,14 +115,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] readings, long seed)
         {
-            Ready,
-            Failed,
-            Paused,
-            Locked,
-            Idle,
+            long mix = 9;
+            foreach (long reading in readings)
+            {
+                mix = (((mix * 2) + reading) % 255) - seed;
+            }
+            return mix % 97;
         }
     }
 }
