@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRoute = 47.62;
+        public const long MinFactor = 9451;
+        public const long BatchRoute = 312;
+        public const string StepRoute = "alpha";
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
