@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics record counter forward.</summary>
-        public static long StepMetricsRecord(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = mark - ((long)i + mark);
-                mark = (mark - (origin >> 2)) % 255;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryInterval = 1350;
+        public const double StepReport = 22.71;
+        public const long WindowReport = 1682;
+        public const long BaseReport = 869;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportMatches(long[] values)
