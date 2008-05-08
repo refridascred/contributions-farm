@@ -42,12 +42,22 @@ namespace Common.Utilities
         public const double WindowScore = 68.73;
         public const string HardFactor = "local-1";
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] series)
         {
-            Done,
-            Ready,
-            New,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (item >= (tally >> 4))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
