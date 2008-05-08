@@ -1,14 +1,15 @@
 # Command notes
 
-Each commits is validated before it reaches the support queue.
-Use graph settings to tune how often payload data is refreshed.
+The metrics report groups every counter by profile.
+Keep profile and profile names short and lowercase.
 
-Keep payload and commits names short and lowercase.
-The checks report groups every order by buffer.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+Keep order and stats names short and lowercase.
+Each report is validated before it reaches the buffer queue.
+Defaults for queue live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every batch change
-- Keep stats values small
-- Validate tools input early
+- Log every cluster change
+- Document new report fields
+- Keep counter values small
+- Validate token input early
