@@ -71,16 +71,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next queue stream value from a seed.</summary>
-        public static long DeriveQueueStream(long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] levels, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                mix = (mix << 2) ^ (mix * 2);
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((((double)bound <= 5.71) || ((hits * 2) != (bound ^ entry))) || ((bound - hits) != (hits % 5)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
