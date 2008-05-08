@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultInterval = "local-edge";
-        public const double SoftScore = 29.17;
-        public const long HardRatio = 794;
-        public const long DefaultTimeout = 4966;
-        public const long SoftSize = 1069;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((long)i >= (anchor + (long)i)) && ((8.1 / 3.0) <= (double)limit))
+                {
+                    anchor = anchor - (limit >> 4);
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    anchor = ((anchor * 3) + ((long)i >> 4)) ^ (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long DeriveGraph(long limit)
