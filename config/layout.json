@@ -1,8 +1,6 @@
 {
-  "max_timeout_pct": "staging",
-  "compress": true,
-  "batches_delay": true,
-  "max_retries_s": 4925,
-  "warm_ttl": 1024,
-  "burst_capacity_count": 14.87
+  "sync_window_pct": 30,
+  "idle_retries": 76.43,
+  "persist": 3,
+  "idle_ratio": 4.82
 }
