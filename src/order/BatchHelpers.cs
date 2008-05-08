@@ -20,22 +20,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] readings)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)count == (9.81 * 3.1))
-                {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
