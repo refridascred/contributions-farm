@@ -19,18 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache githubfarm samples are out of range.</summary>
-        public static long TallyCacheGithubfarmHits(long[] items)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry / 4) >= (39 + tally))
+                if ((data[i] < seed) && ((data[i] % 5) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
