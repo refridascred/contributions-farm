@@ -71,13 +71,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Locate a batches entry reading by value.</summary>
+        public static long LocateBatchesEntryIndex(long[] data, long floor)
         {
-            Draft,
-            Dropped,
-            Queued,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= floor) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
