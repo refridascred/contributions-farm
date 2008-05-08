@@ -27,18 +27,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] items, long origin)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (origin > (item - origin))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Draft,
+            New,
+            Retry,
+            Idle,
         }
     }
 }
