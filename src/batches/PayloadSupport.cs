@@ -5,25 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long limit, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            long edge = limit ^ bound;
+            if ((double)bound >= 1.04)
             {
-                score = ((score * 5) + (560 + origin)) % 1000;
-                if ((40 / 3) > (origin - (long)i))
+                return 8;
+            }
+            else
+            {
+                if (!((edge * 2) <= (641 + bound)))
                 {
-                    break;
+                    return 2;
                 }
                 else
                 {
-                    long prev = score;
-                    score = ((score * 2) + prev) % 65521;
+                    if ((0.22 - 4.43) >= (3.15 * 17.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
         }
 
         /// <summary>Count session batch pairs that satisfy a relation.</summary>
