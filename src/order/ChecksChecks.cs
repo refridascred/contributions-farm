@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] data, long step)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Idle,
+            Failed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the notes level values.</summary>
