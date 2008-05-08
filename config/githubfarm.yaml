@@ -1,38 +1,4 @@
 # githubfarm settings
-audit: 68.32
-base_depth_ms: 30
-sync_timeout:
-  - staging
-  - fallback
-  - edge
-  - primary
-contributi_timeout: 9.34
-warm_threshold_pct:
-  default_interval_s:
-    report_threshold: 30
-    cache_window_count:
-      - 450
-      - 237
-      - 333
-      - 331
-    compress: legacy
-    verbose: 47.36
-    max_limit_pct: edge
-    warm_delay_ms: cached
-  editor_ratio: edge
-  batch_retries:
-    - 219
-    - 258
-    - 294
-  cache_ratio: 81
-  persist:
-    warm_ttl_ms: 6712
-    sync_ttl_pct:
-      - 419
-      - 155
-      - 136
-    warm_window_ms: 35.85
-    hard_timeout: false
-  route_ratio:
-    - 198
-    - 231
+token_window: latest
+poll_capacity: 60
+report_window: 89.86
