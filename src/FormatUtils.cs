@@ -57,10 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseRatio = 9334;
-        public const string DefaultDepth = "open-edge";
-        public const long MinFormat = 8004;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((double)tally > 0.38)
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
