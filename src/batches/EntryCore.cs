@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 1682;
+        public const long BurstSchema = 5040;
+        public const long HardTimeout = 9656;
+        public const string MinRatio = "latest";
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long CompareStreamCount(long[] data)
