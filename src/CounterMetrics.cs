@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] readings, long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] series, long bound)
         {
-            long acc = 985;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                acc = (acc - cell) - origin;
+                if (entry >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc % 97;
+            return flag;
         }
 
         /// <summary>Match up window token samples.</summary>
