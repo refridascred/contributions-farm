@@ -27,38 +27,18 @@ namespace Common.Utilities
         public const long WindowSpan = 107;
         public const long BaseLevel = 4598;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long target, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] data, long seed)
         {
-            if (4 <= (target * 3))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor - 4) > (60 + target))
+                if (!((double)seed <= (4.22 * 9.0)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.5 * 7.0) != (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((floor + target) >= (target % 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 2) ^ datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
