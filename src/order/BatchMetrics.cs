@@ -48,18 +48,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] data, long bound)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long next = offset ^ seed;
+            if ((5.37 / 8.0) < (double)seed)
             {
-                if (((bound / 4) != (seen * 3)) || ((datum - seen) >= (8 - bound)))
+                return 3;
+            }
+            else
+            {
+                if (((87 - 8) >= (next & 15)) || ((double)offset <= (0.38 - 8.1)))
                 {
-                    seen = seen + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed << 3) == (seed / 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset <= 6)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
