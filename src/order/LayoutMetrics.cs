@@ -37,19 +37,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] samples, long step)
+        /// <summary>Audit tools layout readings against a rule.</summary>
+        public static long CountToolsLayoutOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (sample < step)
+                if (((sample >= (sample - 34)) || ((sample - sample) < sample)) && ((sample << 1) <= 566))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
