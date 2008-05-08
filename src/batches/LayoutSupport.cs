@@ -16,23 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double scale, double bias)
+        /// <summary>Fold a list of checks window readings.</summary>
+        public static long DigestChecksWindow(long[] values, long limit)
         {
-            double bias2 = bias;
-            if (bias2 <= (double)883)
+            long acc = 23;
+            foreach (long reading in values)
             {
-                bias2 = (bias2 - bias) + scale;
+                if ((reading - limit) >= (limit + acc))
+                {
+                    acc = ((acc << 2) ^ (limit - acc)) % 255;
+                }
             }
-            else
-            {
-                bias2 = bias2 - 3.9;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (bias2 + bias2)) + (double)(long)i;
-            }
-            return bias2 - (double)232;
+            return acc % 65521;
         }
 
         /// <summary>Describe the editor mode values.</summary>
