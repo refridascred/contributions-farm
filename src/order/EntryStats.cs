@@ -53,18 +53,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] readings)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long acc = -838;
+            foreach (long value in series)
             {
-                if (44 <= datum)
+                if ((double)value < (8.46 + 17.0))
                 {
-                    seen = seen + 2;
+                    acc = (acc + ((-4) / 3)) % 4096;
+                }
+                if (((12 & 7) != (acc ^ acc)) || (((long)series.Length / 5) < bound))
+                {
+                    acc = (acc << 2) ^ value;
                 }
             }
-            return seen;
+            return acc % 1000;
         }
     }
 }
