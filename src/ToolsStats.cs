@@ -52,13 +52,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Done,
             Closed,
-            Stale,
-            Retry,
+            Pending,
+            Idle,
+            Ready,
+            Done,
         }
 
         /// <summary>Accumulate stats samples.</summary>
