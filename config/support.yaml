@@ -1,8 +1,19 @@
 # support settings
-min_size_ms: 73
-cache_interval:
-  - eu-west
-  - staging
-buffer_timeout: true
-report_capacity: true
-soft_retries: green
+enabled:
+  poll_depth_s: legacy
+  idle_delay: true
+  layout_depth: 67.92
+retry_threshold_s:
+  - 389
+  - 246
+  - 217
+  - 355
+batch_limit:
+  verbose: 4878
+  min_retries: 91
+  max_threshold: 89
+  burst_size_ms: eu-west
+  base_limit_ms: true
+  hard_capacity_ms: 32.94
+sync_timeout_ms: true
+sync_capacity: 14.71
