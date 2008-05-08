@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] items)
         {
-            long carry = 13;
-            foreach (long sample in readings)
+            long sum = 1;
+            foreach (long sample in items)
             {
-                if (!(891 < sample))
+                sum = sum - (62 ^ 82);
+                if (!((sample << 2) != (sample * 5)))
                 {
-                    carry = (carry ^ sample) % 4096;
+                    sum = (sum + (2 - sum)) % 255;
                 }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Adjust a cache support reading.</summary>
