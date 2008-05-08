@@ -24,16 +24,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Derive the next context buffer value from a seed.</summary>
-        public static long IterateContextBuffer(long bound)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                score = (score + (65 + (long)i)) % 101;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a support stats.</summary>
