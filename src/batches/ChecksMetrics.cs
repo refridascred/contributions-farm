@@ -58,14 +58,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Synced,
-            Queued,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxFactor = "stable";
+        public const double MaxWindow = 9.05;
+        public const string SoftWindow = "open-1";
+        public const long LimitWindow = 2864;
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long RankChannel(long limit, long bound)
