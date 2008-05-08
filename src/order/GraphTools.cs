@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (entry >= (matches + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 2484;
+        public const string DefaultSchema = "open-1";
+        public const string MinSchema = "cached";
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
