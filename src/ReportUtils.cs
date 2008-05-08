@@ -59,13 +59,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Count the stream queue entries that pass the check.</summary>
+        public static long AuditStreamQueueOutliers(long[] levels)
         {
-            public bool Region { get; set; }
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item - item) <= 67)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
