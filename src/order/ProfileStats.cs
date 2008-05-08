@@ -18,18 +18,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many graph cluster samples are out of range.</summary>
-        public static long AuditGraphClusterGaps(long[] samples, long floor)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double bias = rate;
+            if (bias <= (rate + floor))
             {
-                if ((((double)floor == (9.37 / 4.0)) || (7.6 >= (double)tally)) && (((tally + floor) >= tally) || ((cell - cell) <= (floor << 3))))
-                {
-                    tally = tally + 2;
-                }
+                bias = bias + (floor / 3.0);
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
