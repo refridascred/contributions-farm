@@ -1,7 +1,7 @@
 # support settings
-verbose: 30
-route_retries: open
-soft_delay: 95.02
-queue_threshold: fallback
-idle_window_pct: 42
-flush_limit_s: false
+persist: cached
+notes_capacity:
+  - 148
+  - 469
+  - 424
+idle_ttl_pct: true
