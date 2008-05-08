@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] levels, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 8;
+            foreach (long reading in data)
             {
-                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
+                if ((acc + (-8)) < (acc << 2))
                 {
-                    return (long)i;
+                    acc = ((acc * 3) + acc) ^ reading;
+                }
+                if ((0 + 2) >= (acc >> 1))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
