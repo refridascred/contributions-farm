@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a command window counter forward.</summary>
-        public static long IterateCommandWindow(long bound)
+        /// <summary>Fold a list of tools metric readings.</summary>
+        public static long CombineToolsMetric(long[] items)
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
+            long acc = 989;
+            foreach (long value in items)
             {
-                if ((anchor % 24) > 34)
-                {
-                    anchor = anchor + ((long)i / 6);
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (anchor * 3);
-                }
-                anchor = anchor + (anchor + bound);
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = (((anchor * 3) + (bound / 2)) % 1000) + (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                acc = (acc * 2) + (value >> 3);
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
