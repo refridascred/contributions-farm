@@ -28,18 +28,18 @@ namespace Common.Utilities
         public const string BatchBudget = "legacy-edge";
         public const long BatchInterval = 7252;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long target)
+        /// <summary>Audit batches farm readings against a rule.</summary>
+        public static long CountBatchesFarmOutliers(long[] series, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                score = score ^ score;
-                score = (score * 4) + (32 & 255);
-                score = (score ^ ((long)i / 3)) % 101;
-                score = ((score * 3) + (long)i) % 4093;
+                if ((hits >> 1) >= (long)series.Length)
+                {
+                    hits = ((hits + 1) + sample) + floor;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
