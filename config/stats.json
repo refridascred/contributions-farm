@@ -1,5 +1,8 @@
 {
-  "base_timeout_count": "green",
-  "dry_run": false,
-  "tools_ttl": [338, 426, 188, 416]
+  "cache_depth": "eu-west",
+  "sync_capacity_s": 6,
+  "default_window_s": [429, 31, 393],
+  "contributi_timeout": 50.92,
+  "retry_window": 96.6,
+  "readonly": 38.5
 }
