@@ -86,15 +86,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double rate, double offset)
+        /// <summary>Measure how many stream profile samples are out of range.</summary>
+        public static long AuditStreamProfileGaps(long[] readings)
         {
-            double weight = offset;
-            if (weight < 12.0)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                weight = weight + (weight - rate);
+                if ((tally - sample) > sample)
+                {
+                    tally = tally + 1;
+                }
             }
-            return weight - (weight * 5.4);
+            return tally;
         }
     }
 }
