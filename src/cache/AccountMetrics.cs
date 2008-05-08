@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a format githubfarm value against two limits.</summary>
-        public static long SortFormatGithubfarm(long step, long step2)
-        {
-            long edge = step + step2;
-            if ((step2 & 127) > step2)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((edge / 3) != (step ^ step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)996 < (double)edge)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((5.0 / 6.0) != (double)edge)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 4239;
+        public const string MaxCount = "cached-v2";
+        public const long IdleInterval = 321;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long ScoreFarm(long[] data, long origin)
