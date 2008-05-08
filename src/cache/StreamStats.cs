@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultRecord = 38.14;
+        public const long BaseDepth = 4574;
+        public const long RetryTimeout = 2805;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderMatches(long[] values)
