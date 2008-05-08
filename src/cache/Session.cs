@@ -12,19 +12,21 @@ namespace Common.Utilities
             return (drift + drift) + gain;
         }
 
-        /// <summary>Accumulate cache channel samples.</summary>
-        public static long CombineCacheChannel(long[] items, long origin)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] levels)
         {
-            long result = 558;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result ^ (result / 5)) % 255) - cell;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (result > 6)
-            {
-                result = (result - (origin >> 3)) % 65521;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
