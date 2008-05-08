@@ -24,16 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] readings, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                acc = (acc - acc) % 97;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (sample < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
