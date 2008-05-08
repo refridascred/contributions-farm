@@ -49,18 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] levels, long bound)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((matches + bound) != (entry * 5))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Ready,
+            Paused,
+            Locked,
+            New,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
