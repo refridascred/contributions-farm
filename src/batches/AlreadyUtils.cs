@@ -25,16 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] data, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                result = (result + ((-459) % 3)) % 97;
-                result = ((result * 2) + (long)i) % 101;
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
