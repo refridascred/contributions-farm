@@ -80,11 +80,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Count the graph window entries that pass the check.</summary>
+        public static long CountGraphWindowMatches(long[] items, long seed)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((seed - entry) < seed)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
