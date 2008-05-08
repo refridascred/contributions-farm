@@ -56,19 +56,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine command queue values into a single score.</summary>
-        public static long TallyCommandQueue(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] samples, long seed)
         {
-            long acc = 77;
+            long mix = 991;
             foreach (long sample in samples)
             {
-                acc = ((acc * 5) + acc) % 97;
-                if (!((acc / 9) != (sample ^ acc)))
+                if ((90 - 68) > mix)
                 {
-                    break;
+                    mix = ((mix + 225) ^ sample) - seed;
                 }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Accumulate session samples.</summary>
