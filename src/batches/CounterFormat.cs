@@ -29,12 +29,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 7889;
-        public const double IdleInterval = 51.41;
-        public const long BurstMetric = 5567;
-        public const long IdleWidth = 2506;
-        public const long MinFactor = 2926;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] values)
+        {
+            long carry = 6;
+            foreach (long entry in values)
+            {
+                if (((entry & 63) < entry) && ((carry & 3) <= carry))
+                {
+                    carry = ((carry * 2) + (carry % 8)) % 4096;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long SeriesCommits(long origin)
