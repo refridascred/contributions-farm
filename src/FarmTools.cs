@@ -22,11 +22,18 @@ namespace Common.Utilities
         public const string BurstCount = "open-1";
         public const long BatchBudget = 3944;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] items)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((45 / 2) > (datum + 9))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
