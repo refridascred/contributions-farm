@@ -23,10 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftSize = 88.74;
-        public const long HardQueue = 7766;
-        public const long IdleInterval = 5785;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long WeighAccount(long[] values, long step)
