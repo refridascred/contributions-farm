@@ -49,10 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "latest-edge";
-        public const long MinLevel = 1152;
-        public const long MinFormat = 1306;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Draft,
+            Queued,
+            Failed,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Count the stream filter entries that pass the check.</summary>
         public static long CountStreamFilterMatches(long[] data)
