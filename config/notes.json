@@ -1,7 +1,14 @@
 {
-  "retry_retries_pct": 250,
-  "persist": "strict",
-  "warm_delay_count": true,
-  "batch_interval": [454, 498, 88],
-  "burst_ratio_pct": true
+  "base_ttl": 758,
+  "already_threshold": "primary",
+  "compress": {
+    "retry_retries": 100,
+    "editor_timeout": true,
+    "window_timeout": 64.27
+  },
+  "enabled": {
+    "support_capacity": 250,
+    "window_ttl": ["eu-west", "standard"],
+    "warm_ratio": false
+  }
 }
