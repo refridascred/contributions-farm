@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long result = 997;
-            foreach (long sample in items)
-            {
-                if (((result ^ sample) == (sample + result)) && ((double)result <= (4.43 - 9.61)))
-                {
-                    result = result ^ result;
-                }
-                else
-                {
-                    result = (result * 5) + (result ^ sample);
-                }
-                if ((double)sample != (8.6 * 2.9))
-                {
-                    break;
-                }
-            }
-            if (result < 47)
-            {
-                result = (result * 2) + (result + (-28));
-            }
-            return result;
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
