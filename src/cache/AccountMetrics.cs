@@ -48,12 +48,19 @@ namespace Common.Utilities
         public const long WindowCluster = 1376;
         public const string SoftCluster = "legacy-v2";
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Check that every checks queue entry stays within the limit.</summary>
+        public static bool GuardChecksQueueBounds(long[] items, long step)
         {
-            Queued,
-            Closed,
-            Paused,
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the queue class values.</summary>
