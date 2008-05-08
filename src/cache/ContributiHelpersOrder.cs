@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] data)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long anchor = 94;
-            foreach (long item in data)
-            {
-                if ((((-4) ^ item) < (anchor >> 1)) || ((4 * 4) == (anchor ^ item)))
-                {
-                    anchor = anchor + (item % 64);
-                }
-            }
-            return anchor;
+            Idle,
+            Queued,
+            Closed,
+            Paused,
         }
 
         /// <summary>Roll a record counter forward.</summary>
