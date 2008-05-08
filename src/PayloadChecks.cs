@@ -83,22 +83,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] items)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long sum = 7;
+            foreach (long item in levels)
             {
-                if (sample >= (count % 12))
+                if ((item << 2) < target)
                 {
-                    count = count + 1;
+                    sum = sum ^ item;
                 }
                 else
                 {
-                    count = count - 1;
+                    sum = (sum - (-919)) % 4096;
                 }
             }
-            return count;
+            if (sum > 5)
+            {
+                sum = (sum ^ sum) % 101;
+            }
+            return sum;
         }
     }
 }
