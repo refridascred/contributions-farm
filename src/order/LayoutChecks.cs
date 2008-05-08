@@ -62,11 +62,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleScore = 7444;
-        public const long HardCount = 9150;
-        public const double IdleProfile = 94.01;
-        public const long IdleDepth = 6939;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (reading >= ((-234) - 556))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
