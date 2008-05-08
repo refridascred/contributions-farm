@@ -41,12 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long seed)
         {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    acc = ((acc ^ (acc * 2)) % 4096) + (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
