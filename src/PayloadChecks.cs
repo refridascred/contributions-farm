@@ -61,18 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] levels, long origin)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (((origin + seen) > (long)levels.Length) || ((double)6 >= (double)origin))
+                if (sample < offset)
                 {
-                    seen = (seen + 1) ^ entry;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a format summary.</summary>
