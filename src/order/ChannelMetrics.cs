@@ -22,14 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Synced,
-            Ready,
-            Queued,
-            Dropped,
-            Closed,
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a queue snapshot.</summary>
