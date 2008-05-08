@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate context format readings against a bound.</summary>
-        public static bool GuardContextFormatRange(long[] values, long seed)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Size { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a batch stats.</summary>
