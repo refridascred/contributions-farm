@@ -24,19 +24,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] samples, long floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long floor)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (item >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor - 796) % 101;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
