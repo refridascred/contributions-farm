@@ -19,18 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] values, long target)
+        /// <summary>Iterate the support queue series from a seed.</summary>
+        public static long RollSupportQueue(long bound)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long total = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((seen << 1) <= (264 << 2))
+                for (int i3 = 0; i3 < 10; i3++)
                 {
-                    seen = ((seen + 1) + sample) - target;
+                    total = (total ^ (total + bound)) ^ (long)i3;
+                    total = total - (total + bound);
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Classify a editor notes pair into a bucket.</summary>
