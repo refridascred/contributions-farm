@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchFilter = 7.21;
-        public const long CacheScore = 8248;
-        public const long IdleSpan = 6017;
-        public const long StepFilter = 4579;
+        /// <summary>Count the metrics schema entries that pass the check.</summary>
+        public static long TallyMetricsSchemaHits(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)seen < (double)datum)
+                {
+                    seen = (seen + 2) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferRange(long[] samples, long target)
