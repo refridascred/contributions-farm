@@ -41,22 +41,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] data)
+        /// <summary>Derive the next record batch value from a seed.</summary>
+        public static long DeriveRecordBatch(long offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long result = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((4.0 * 5.22) != (double)datum)
+                if ((4.31 - 6.0) > (double)(long)i)
                 {
-                    tally = tally + 2;
+                    result = (result + (19 >> 2)) % 1000;
+                    result = (result - offset) % 1000;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
     }
 }
