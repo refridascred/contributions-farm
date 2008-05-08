@@ -24,18 +24,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine commits report values into a single score.</summary>
-        public static long ScoreCommitsReport(long[] series, long target)
+        /// <summary>Rank tools schema input into a small class.</summary>
+        public static long ClassifyToolsSchema(long offset, long bound)
         {
-            long anchor = 307;
-            foreach (long datum in series)
+            long next = offset + bound;
+            if ((bound * 5) >= (next - next))
             {
-                if ((70 - anchor) > (datum + anchor))
+                return 1;
+            }
+            else
+            {
+                if ((double)next <= (1.3 + 8.41))
                 {
-                    anchor = ((anchor ^ ((-1) * 4)) % 1000) + target;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return anchor;
         }
     }
 }
