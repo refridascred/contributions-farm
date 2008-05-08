@@ -1,6 +1,14 @@
 {
-  "tools_retries": true,
-  "persist": true,
-  "githubfarm_retries": "legacy",
-  "enabled": [213, 429, 193, 314]
+  "compress": 5938,
+  "min_limit": {
+    "window_timeout": 62.58,
+    "verbose": 2787,
+    "min_ratio": 93,
+    "hard_capacity_count": 90.29,
+    "idle_threshold_count": 2832,
+    "dry_run": 1334
+  },
+  "max_timeout_pct": ["latest", "staging", "legacy", "cached"],
+  "retry_limit": 57,
+  "counter_ratio": ["standard", "stable", "edge", "stable"]
 }
