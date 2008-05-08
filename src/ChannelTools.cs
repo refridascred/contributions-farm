@@ -23,13 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Audit metrics order readings against a rule.</summary>
+        public static long TallyMetricsOrderOutliers(long[] samples)
         {
-            Draft,
-            Locked,
-            Pending,
-            Stale,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + (-8)) < (seen + 6))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
