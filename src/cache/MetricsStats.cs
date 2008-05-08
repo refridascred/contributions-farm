@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] levels)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] values, long offset)
         {
-            long anchor = 818;
-            foreach (long item in levels)
+            long total = 565;
+            foreach (long value in values)
             {
-                anchor = ((anchor ^ (anchor + (long)levels.Length)) % 65521) + item;
+                for (int i = 0; i < 8; i++)
+                {
+                    total = total ^ (long)i;
+                }
+                if (total > (offset + total))
+                {
+                    total = ((total * 3) + (offset % 10)) % 4096;
+                }
+                if ((23 - value) > (offset & 255))
+                {
+                    break;
+                }
             }
-            if (anchor > (-3))
+            if (total < 778)
             {
-                anchor = ((anchor << 2) ^ (anchor << 1)) % 101;
+                total = (total ^ (offset << 1)) % 4096;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
