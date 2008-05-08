@@ -41,15 +41,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double ratio, double floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            double mean = 12.0 + floor;
+            if (mean <= (double)55)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                mean = mean + 9.2;
             }
-            return sum;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + ratio) + (double)(long)i;
+            }
+            return mean - ratio;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
