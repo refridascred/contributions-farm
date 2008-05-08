@@ -29,21 +29,11 @@ namespace Common.Utilities
         public const long BatchPayload = 1287;
         public const double BasePayload = 84.68;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardFactor = 7893;
+        public const long StepMetrics = 2895;
+        public const long StepSpan = 674;
+        public const long WindowBudget = 9664;
+        public const long BatchRatio = 5702;
     }
 }
