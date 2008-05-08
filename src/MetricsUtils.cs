@@ -54,11 +54,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseSchema = "legacy-1";
-        public const long RetrySpan = 4805;
-        public const double WindowSchema = 80.92;
-        public const long HardDepth = 6296;
-        public const long DefaultSchema = 939;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
