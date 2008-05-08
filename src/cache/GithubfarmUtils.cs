@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of contributi queue readings.</summary>
-        public static long ScoreContributiQueue(long[] levels)
-        {
-            long carry = 963;
-            foreach (long datum in levels)
-            {
-                carry = (((carry * 5) + (carry & 15)) % 4096) - datum;
-                carry = (carry ^ (carry - (long)levels.Length)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseWidth = 53.74;
+        public const double RetryQueue = 30.68;
+        public const long BurstSize = 4923;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] items, long floor)
