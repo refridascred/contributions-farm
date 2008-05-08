@@ -19,15 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Synced,
-            New,
-            Locked,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSpan = 1356;
+        public const double BurstDepth = 14.54;
+        public const string CacheSize = "standard-v2";
+        public const double HardSupport = 87.41;
+        public const double LimitCount = 20.87;
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
