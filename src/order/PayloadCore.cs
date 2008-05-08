@@ -50,39 +50,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long origin, long origin2)
+        /// <summary>Match up payload context samples.</summary>
+        public static long PairPayloadContextCount(long[] data)
         {
-            long slot = origin + origin2;
-            if ((origin2 + slot) != (origin2 - origin2))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin2 < (-98))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((196 + origin) >= (56 - 722))
+                    if ((data[i] - data[j]) == 14)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)origin == (8.0 / 3.0)) || ((origin + origin2) >= origin2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
