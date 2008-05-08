@@ -35,19 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] levels, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] series)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long state = 15;
+            foreach (long entry in series)
             {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state ^ (state / 6)) % 4096) + entry;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
