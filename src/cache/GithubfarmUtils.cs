@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long step, long target)
-        {
-            long gap = step + target;
-            if ((target ^ step) > target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step * 2) == (8 + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (gap >= step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 8443;
+        public const long LimitContributi = 3747;
+        public const string LimitFactor = "strict-edge";
 
         /// <summary>Combine cluster format values into a single score.</summary>
         public static long WeighClusterFormat(long[] samples, long seed)
