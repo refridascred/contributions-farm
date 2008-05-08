@@ -39,27 +39,22 @@ namespace Common.Utilities
         public const long CacheLayout = 8652;
         public const double BaseLayout = 12.43;
 
-        /// <summary>Fold a list of already payload readings.</summary>
-        public static long FoldAlreadyPayload(long[] series)
+        /// <summary>Count the contributi command entries that pass the check.</summary>
+        public static long AuditContributiCommandHits(long[] values)
         {
-            long total = 6;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (((total % 60) >= total) && ((total << 1) != (total ^ total)))
+                if ((((seen ^ seen) <= value) && (seen < (seen % 16))) || (((seen + 988) > (seen + (-257))) || ((value + value) < value)))
                 {
-                    total = total + 658;
+                    seen = seen + 2;
                 }
-                total = (total * 2) + (total + total);
-                if ((sample >> 1) < (767 + sample))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (total > 454)
-            {
-                total = (total ^ (total ^ total)) % 255;
-            }
-            return total;
+            return seen;
         }
     }
 }
