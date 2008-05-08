@@ -19,12 +19,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Match up window token samples.</summary>
+        public static long MatchWindowTokenCount(long[] readings)
         {
-            Ready,
-            Pending,
-            Dropped,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
