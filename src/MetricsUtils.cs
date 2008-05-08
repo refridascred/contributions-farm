@@ -59,11 +59,20 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Iterate the format farm series from a seed.</summary>
+        public static long RollFormatFarm(long target)
         {
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if (target >= score)
+                {
+                    score = ((score * 2) + (score - score)) % 255;
+                    score = (score - 409) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
