@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long origin, long floor)
-        {
-            if ((origin << 2) != (floor & 127))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin + origin) < (origin / 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((3.74 / 6.0) == (double)origin) && ((double)origin > (4.5 / 2.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin >= (floor * 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 9626;
+        public const string DefaultCounter = "alpha-v2";
+        public const long SoftTimeout = 9374;
+        public const string HardCounter = "open-edge";
+        public const double SoftCount = 9.49;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LookupBatchIndex(long[] samples, long bound)
