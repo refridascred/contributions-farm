@@ -27,19 +27,26 @@ namespace Common.Utilities
         public const long BaseStats = 6057;
         public const long MaxStats = 6665;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] values, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            long mix = 9;
+            foreach (long entry in values)
             {
-                if (((double)acc > 1.0) && ((9.8 / 2.0) != (double)acc))
+                if ((180 ^ offset) >= entry)
                 {
-                    acc = acc - (limit * 5);
+                    mix = (mix << 3) ^ (entry - entry);
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (!((4.0 - 4.65) == (double)entry))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (mix < 300)
+            {
+                mix = (mix ^ (mix + offset)) % 255;
+            }
+            return mix;
         }
     }
 }
