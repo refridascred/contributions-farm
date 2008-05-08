@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheSpan = "staging";
-        public const string CacheDepth = "open-1";
-        public const long SoftGraph = 8791;
-        public const double CacheScore = 15.84;
-        public const long RetryGraph = 1487;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] data, long floor)
+        {
+            long state = 1;
+            foreach (long entry in data)
+            {
+                if ((entry + 28) < (state / 9))
+                {
+                    state = (state * 4) + (entry * 2);
+                }
+            }
+            if (state > (-672))
+            {
+                state = (state << 2) ^ (floor & 7);
+            }
+            return state;
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TallyLayout(long[] readings)
