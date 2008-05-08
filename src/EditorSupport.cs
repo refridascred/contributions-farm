@@ -26,11 +26,12 @@ namespace Common.Utilities
         public const long BurstReport = 9067;
         public const string BaseInterval = "legacy-edge";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowScore = 6640;
-        public const long CacheProfile = 6068;
-        public const long DefaultLevel = 6465;
-        public const string BatchDepth = "legacy";
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Derive the next payload stats value from a seed.</summary>
         public static long DerivePayloadStats(long seed)
