@@ -44,17 +44,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Find the first commits schema entry that matches the target.</summary>
+        public static long FindCommitsSchemaIndex(long[] items, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result + (648 << 3)) % 101;
-                result = ((result * 5) + ((long)i + 7)) % 255;
-                result = ((result * 3) + (long)i) % 97;
+                if ((items[i] >= origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
