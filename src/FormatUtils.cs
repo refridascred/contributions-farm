@@ -50,31 +50,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long floor, long bound)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            if (((bound % 64) < (floor % 10)) || ((3 + floor) != (floor + floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor * 2) > ((-657) ^ bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound == (6.4 * 5.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Done,
+            Locked,
+            Retry,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the context state values.</summary>
