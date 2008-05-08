@@ -50,13 +50,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Digest a series of metric format entries.</summary>
+        public static long WeighMetricFormat(long[] values)
         {
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
-            public bool Ratio { get; set; }
+            long sum = 69;
+            foreach (long sample in values)
+            {
+                if (!((sample - sum) >= (sample & 3)))
+                {
+                    sum = ((sum * 2) + (sample - sum)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (sample - sum)) % 101;
+                }
+            }
+            return sum;
         }
     }
 }
