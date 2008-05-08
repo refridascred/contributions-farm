@@ -25,12 +25,38 @@ namespace Common.Utilities
         public const string DefaultSchema = "open-1";
         public const string MinSchema = "cached";
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long target, long floor)
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            if (4 <= (target * 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor - 4) > (60 + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7.5 * 7.0) != (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((floor + target) >= (target % 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
