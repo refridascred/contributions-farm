@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long bound, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] series, long step)
         {
-            if ((3.9 - 11.0) == (double)step)
+            bool stale = true;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step < 4.46)
+                if (value < step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound + 267) == (step % 64)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a tools info.</summary>
