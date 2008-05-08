@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] values)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long mark = 5;
+            foreach (long item in levels)
             {
-                if ((entry + seen) <= (seen / 2))
+                if ((seed + seed) >= (57 / 9))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mark = (mark + (item & 63)) % 97;
                 }
             }
-            return seen;
+            if (mark > (-9))
+            {
+                mark = mark - (78 - mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of report readings.</summary>
