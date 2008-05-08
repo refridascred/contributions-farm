@@ -2,10 +2,13 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    owner TEXT NOT NULL,
-    weight REAL,
     active INTEGER NOT NULL DEFAULT 1,
-    label TEXT
+    ratio REAL,
+    label TEXT,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_created_at ON commits_records (created_at);
+CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
+
+INSERT INTO commits_records (active, ratio, label, token) VALUES (30, 24.36, 'standard', 'strict');
+INSERT INTO commits_records (active, ratio, label, token) VALUES (39, 54.66, 'fallback', 'green');
