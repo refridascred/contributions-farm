@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Measure how many metric graph samples are out of range.</summary>
+        public static long AuditMetricGraphHits(long[] levels)
         {
-            long mix = 81;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((sample + sample) != (mix + mix))
+                if (((double)tally < (7.0 - 4.0)) && ((sample >> 5) > (tally << 3)))
                 {
-                    mix = ((mix << 3) ^ mix) % 65521;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    mix = (mix - (mix + 68)) % 255;
+                    tally = tally - 1;
                 }
             }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Accumulate cache channel samples.</summary>
