@@ -30,15 +30,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) == 5)
+                    if ((values[i] ^ values[j]) > 11)
                     {
                         hits = hits + 1;
                     }
