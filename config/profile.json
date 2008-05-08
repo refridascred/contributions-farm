@@ -1,5 +1,12 @@
 {
-  "idle_size_count": 10,
-  "report_threshold": "primary",
-  "retry_interval_count": ["staging", "edge", "fallback"]
+  "checks_ttl": {
+    "readonly": 6904,
+    "soft_retries": 5,
+    "compress": "edge",
+    "already_limit": [120, 258, 300]
+  },
+  "max_delay_pct": [171, 422],
+  "warm_threshold_count": ["green", "cached", "blue"],
+  "idle_depth_pct": true,
+  "base_interval": 61
 }
