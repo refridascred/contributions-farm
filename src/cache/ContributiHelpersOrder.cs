@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double gain, double offset)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            double rate = offset;
-            if (rate > (double)4)
-            {
-                rate = (rate - rate) + gain;
-            }
-            return rate - (2.0 - offset);
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
