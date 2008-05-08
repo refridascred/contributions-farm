@@ -87,13 +87,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long offset)
         {
-            Queued,
-            Synced,
-            Locked,
-            Failed,
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = ((acc - offset) % 4096) + (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
