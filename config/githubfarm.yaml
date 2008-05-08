@@ -1,7 +1,6 @@
 # githubfarm settings
-audit: 1.33
-entry_interval:
-  - 480
-  - 233
-idle_interval: legacy
-tools_timeout: 60
+cache_timeout_ms: eu-west
+metric_size: latest
+soft_threshold_pct: staging
+poll_window_ms: 49
+hard_delay: false
