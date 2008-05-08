@@ -37,13 +37,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] data, long origin)
         {
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
