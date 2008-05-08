@@ -12,15 +12,31 @@ namespace Common.Utilities
         public const string MaxSpan = "staging-edge";
         public const string HardFactor = "latest-1";
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long floor, long floor2)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            if (526 >= (floor2 & 15))
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if ((floor & 3) > floor2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor2 / 8) >= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine record values into a single score.</summary>
