@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] readings, long target)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] samples, long step)
         {
-            long anchor = 42;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (((anchor ^ anchor) % 65521) ^ item) + target;
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Describe the token state values.</summary>
