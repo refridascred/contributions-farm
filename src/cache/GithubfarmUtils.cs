@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading ^ tally) >= (tally >> 5))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseSize = 13.28;
+        public const long MaxNotes = 595;
+        public const double WindowNotes = 51.95;
+        public const double StepNotes = 13.76;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MaxSchema = 1116;
