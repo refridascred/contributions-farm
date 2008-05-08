@@ -1,36 +1,6 @@
 # entry settings
-base_ratio:
-  - 241
-  - 47
-  - 77
-  - 421
-sync_depth_s:
-  sync_capacity_count: 86.14
-  cache_threshold:
-    sync_retries_ms:
-      - standard
-      - legacy
-      - standard
-      - primary
-    base_ratio_count: 500
-    sync_ratio: 1867
-    compress: 500
-    retry_limit_count:
-      - 172
-      - 309
-      - 116
-      - 396
-  base_limit: legacy
-  cache_delay: 1
-entry_ratio:
-  - 28
-  - 312
-idle_delay_pct:
-  - eu-west
-  - standard
-  - local
-  - standard
-min_size_ms:
-  - 277
-  - 181
-  - 401
+idle_capacity_pct: standard
+default_size_pct: false
+channel_capacity:
+  - 386
+  - 316
