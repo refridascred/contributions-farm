@@ -37,20 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long target)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!(target > (target + total)))
-                {
-                    total = (total - (target / 4)) % 1000;
-                }
-                total = (total * 3) + (578 + 5);
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a editor summary.</summary>
