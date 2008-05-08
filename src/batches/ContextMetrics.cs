@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] series, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long anchor = 91;
+            foreach (long sample in values)
             {
-                if (((datum * 2) < (seen + (long)series.Length)) || ((seen << 1) <= floor))
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((anchor * 5) + sample) % 65521;
             }
-            return seen;
+            if (anchor < 0)
+            {
+                anchor = anchor + (anchor ^ 58);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define support limits and defaults.</summary>
