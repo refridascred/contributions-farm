@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the window queue series from a seed.</summary>
-        public static long RollWindowQueue(long seed)
+        /// <summary>Measure how many order queue samples are out of range.</summary>
+        public static long CountOrderQueueHits(long[] items)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (!!(8 >= seed))
+                if (!((double)seen <= (11.0 * 1.0)))
                 {
-                    carry = (carry * 2) + (seed - (long)i);
+                    seen = (seen + 2) + reading;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
