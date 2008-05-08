@@ -16,12 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Paused,
-            Stale,
-            Queued,
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
