@@ -60,19 +60,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] readings, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (entry >= floor)
+                if (value <= offset)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Compare every pair of checks metrics readings.</summary>
