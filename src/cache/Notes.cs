@@ -23,32 +23,22 @@ namespace Common.Utilities
         public const long BaseRoute = 2846;
         public const double SoftRoute = 22.07;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long floor, long target)
+        /// <summary>Count the counter cache entries that pass the check.</summary>
+        public static long MeasureCounterCacheMatches(long[] readings, long limit)
         {
-            long cur = floor ^ target;
-            if (target <= (cur & 7))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((floor + floor) >= (floor & 127)))
+                if ((99 * 2) <= (limit - limit))
                 {
-                    return 7;
+                    count = (count + 2) ^ value;
                 }
                 else
                 {
-                    if ((cur % 60) >= (target * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
