@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long limit, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] readings, long target)
         {
-            long edge = limit ^ bound;
-            if ((double)bound >= 1.04)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((edge * 2) <= (641 + bound)))
+                if (value < target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((0.22 - 4.43) >= (3.15 * 17.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Count session batch pairs that satisfy a relation.</summary>
