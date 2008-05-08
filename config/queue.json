@@ -1,8 +1,12 @@
 {
-  "context_threshold": "cached",
-  "audit": 31.51,
-  "max_retries_pct": 18,
-  "readonly": true,
-  "queue_size": "primary",
-  "base_window": "primary"
+  "idle_delay_s": 52,
+  "queue_capacity": "eu-west",
+  "base_ratio_s": {
+    "flush_ttl_s": [30, 278, 440],
+    "warm_interval_count": 43.95,
+    "dry_run": 30
+  },
+  "max_delay_count": 81.35,
+  "idle_window_count": "edge",
+  "warm_timeout": true
 }
