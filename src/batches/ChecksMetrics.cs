@@ -20,16 +20,25 @@ namespace Common.Utilities
             return gain + (double)143;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
+            long acc = 881;
+            foreach (long sample in series)
             {
-                score = (score ^ (bound & 255)) % 101;
-                score = ((score * 3) + (long)i) % 1000;
+                long gap = acc;
+                if ((8 + gap) < (sample + acc))
+                {
+                    gap = ((gap << 3) ^ (8 % 97)) % 97;
+                    acc = (acc + (acc - 0)) % 97;
+                }
+                else
+                {
+                    acc = acc ^ (sample & 1);
+                }
+                acc = (acc + (acc ^ sample)) % 4096;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
