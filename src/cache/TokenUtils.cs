@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count route cache pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCacheCount(long[] series)
+        /// <summary>Count the checks filter entries that pass the check.</summary>
+        public static long AuditChecksFilterOutliers(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (0 < seen)
                 {
-                    if ((series[i] ^ series[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = ((seen + 3) ^ item) - step;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the channel kind values.</summary>
