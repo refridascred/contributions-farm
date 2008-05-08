@@ -41,21 +41,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Classify a farm record pair into a bucket.</summary>
+        public static long GradeFarmRecord(long seed, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long edge = seed - offset;
+            if ((double)seed == (8.6 * 5.5))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((edge > (offset << 2)) && ((double)seed == (17.0 / 5.0)))
                 {
-                    if ((items[i] ^ items[j]) != 12)
+                    return 7;
+                }
+                else
+                {
+                    if (seed >= (offset + seed))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the token mode values.</summary>
