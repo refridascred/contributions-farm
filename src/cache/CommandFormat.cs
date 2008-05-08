@@ -20,32 +20,16 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a notes already value against two limits.</summary>
-        public static long SortNotesAlready(long step, long bound)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long bound)
         {
-            long prev = step + bound;
-            if (!((step >> 4) >= prev))
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 5;
+                state = ((state << 3) ^ (state << 2)) % 101;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (((step + bound) != (step * 5)) || ((bound + bound) > step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((prev * 2) < step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Audit profile graph readings against a rule.</summary>
