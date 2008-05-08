@@ -22,24 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long target, long floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            if (((floor << 1) == (target & 7)) && ((9.7 * 8.6) <= (double)floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if (4.31 < (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Ready,
+            Active,
+            Locked,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
