@@ -12,33 +12,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a batches route pair into a bucket.</summary>
-        public static long SortBatchesRoute(long offset, long limit)
-        {
-            long cur = offset - limit;
-            if (((limit ^ limit) < (limit + limit)) && (8.95 > (double)limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((cur << 2) < (offset + 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((175 >> 2) < (cur - limit)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowSchema = 34.73;
+        public const long IdleSchema = 3007;
+        public const double BatchSchema = 14.7;
+        public const double BatchRatio = 1.55;
+        public const long LimitSchema = 2545;
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double AdjustContributi(double weight, double offset)
