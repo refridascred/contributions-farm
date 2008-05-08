@@ -28,17 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] items, long step)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)(5 - 543);
+            if (load <= load)
             {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
+                load = (load + 8.84) + span;
             }
-            return -1;
+            else
+            {
+                load = load + gain;
+            }
+            return load + 5.6;
         }
 
         /// <summary>Classify a order already pair into a bucket.</summary>
