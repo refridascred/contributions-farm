@@ -30,19 +30,19 @@ namespace Common.Utilities
         public const long BaseStats = 6057;
         public const long MaxStats = 6665;
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((4.19 - 8.3) <= (double)bound))
+                if (((double)acc > 1.0) && ((9.8 / 2.0) != (double)acc))
                 {
-                    break;
+                    acc = acc - (limit * 5);
                 }
-                state = ((state * 2) + (long)i) % 4093;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return state;
+            return acc;
         }
     }
 }
