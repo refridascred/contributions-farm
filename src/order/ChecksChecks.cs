@@ -25,19 +25,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxTools = "alpha-edge";
+        public const double MinTools = 82.8;
+        public const double MaxSize = 93.87;
     }
 }
