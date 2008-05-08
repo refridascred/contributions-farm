@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double scale, double span)
         {
-            long total = 1;
-            foreach (long value in readings)
+            double load = (double)753;
+            if (load <= (double)14)
             {
-                if (((-137) + total) > value)
-                {
-                    total = total ^ (value & 1);
-                }
+                load = load + span;
             }
-            if (total < 71)
+            for (int i = 0; i < 7; i++)
             {
-                total = (total * 5) + total;
+                load = load + (double)(long)i;
             }
-            return total % 97;
+            return load + (scale - scale);
         }
 
         /// <summary>Describe the checks class values.</summary>
