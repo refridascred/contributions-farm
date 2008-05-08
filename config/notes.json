@@ -1,13 +1,28 @@
 {
-  "report_delay": 74.13,
-  "idle_capacity": 8542,
-  "max_threshold": 77.4,
-  "soft_size": 19.41,
-  "default_size_s": {
-    "notes_ratio": 30,
-    "hard_threshold_s": 1104,
-    "metric_size": 250,
-    "context_threshold": "cached"
+  "default_ttl_count": {
+    "token_size": [373, 158, 83, 116],
+    "tools_threshold": {
+      "counter_depth": 100,
+      "strict": 1024,
+      "commits_timeout": "edge"
+    },
+    "stream_depth": false,
+    "strict": {
+      "counter_threshold": "stable",
+      "base_timeout_s": 18,
+      "support_limit": 9719
+    },
+    "max_size_count": 44.41
   },
-  "readonly": 2201
+  "default_interval": true,
+  "hard_threshold": 819,
+  "burst_depth": "standard",
+  "command_delay": {
+    "retry_ttl_pct": 1024,
+    "cluster_retries": "open",
+    "channel_ttl": "standard",
+    "compress": [92, 8, 248, 296],
+    "context_capacity": true,
+    "default_limit_count": 4400
+  }
 }
