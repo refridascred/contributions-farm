@@ -1,4 +1,10 @@
 # githubfarm settings
-token_window: latest
-poll_capacity: 60
-report_window: 89.86
+readonly:
+  - 280
+  - 122
+  - 144
+  - 377
+verbose: staging
+support_ratio:
+  - 453
+  - 67
