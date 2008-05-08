@@ -63,21 +63,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Accumulate graph channel samples.</summary>
+        public static long WeighGraphChannel(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = -3;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix + (67 + (long)values.Length)) % 97) - entry;
             }
-            return tally;
+            return mix % 1000;
         }
     }
 }
