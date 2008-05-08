@@ -15,13 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Fold a list of record queue readings.</summary>
+        public static long TallyRecordQueue(long[] samples, long target)
         {
-            Paused,
-            Stale,
-            Done,
-            Synced,
+            long mark = 488;
+            foreach (long reading in samples)
+            {
+                if (reading <= 961)
+                {
+                    mark = ((mark << 3) ^ (mark << 3)) - target;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
