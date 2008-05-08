@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] items)
+        /// <summary>Adjust a token metric reading.</summary>
+        public static double ProjectTokenMetric(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (3.06 + ratio) / 8.0;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = ((load + (double)479) + (double)(long)i) + floor;
             }
-            return seen;
+            return load + ratio;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
