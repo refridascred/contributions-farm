@@ -13,18 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] items, long floor)
         {
-            long mix = 6;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (!((entry - mix) > (mix - (-748))))
+                if (value <= floor)
                 {
-                    mix = ((mix * 5) + ((-374) - mix)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return found;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
