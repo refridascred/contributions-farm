@@ -30,21 +30,25 @@ namespace Common.Utilities
         public const long HardNotes = 1631;
         public const long BaseDepth = 3551;
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long limit, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long bound2 = limit + bound;
+            if ((bound << 1) >= (bound2 * 4))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound2) < (bound2 % 100))
                 {
-                    if ((series[i] - series[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a stream options.</summary>
