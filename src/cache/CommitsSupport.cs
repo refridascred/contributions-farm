@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] items, long origin)
+        /// <summary>Measure how many already layout samples are out of range.</summary>
+        public static long MeasureAlreadyLayoutOutliers(long[] items, long seed)
         {
-            long total = 771;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                total = (total ^ (origin * 3)) - cell;
-                total = (total + total) % 97;
+                if ((6.18 / 9.0) < (double)seed)
+                {
+                    seen = (seen + 1) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Project the next route notes value.</summary>
