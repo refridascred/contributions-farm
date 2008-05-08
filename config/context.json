@@ -1,14 +1,6 @@
 {
-  "enabled": "cached",
-  "cache_timeout_count": 5,
-  "cluster_depth": {
-    "soft_interval_count": "cached",
-    "cache_size": "fallback",
-    "contributi_capacity": [203, 328, 34, 6],
-    "verbose": "green",
-    "idle_capacity": false,
-    "stream_size": [8, 76, 473]
-  },
-  "default_depth_s": ["staging", "staging", "latest"],
-  "sync_timeout_pct": 67
+  "warm_ratio_pct": "fallback",
+  "base_size": "blue",
+  "burst_delay_pct": 30,
+  "batch_threshold_ms": 42.93
 }
