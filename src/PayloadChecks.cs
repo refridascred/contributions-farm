@@ -37,39 +37,14 @@ namespace Common.Utilities
             return drift - (bias2 * 4.2);
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long origin, long limit)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long prev = origin - limit;
-            if ((prev - limit) >= 1)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)limit < (15.0 * 16.0)) && (origin > (origin % 16)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((prev % 12) >= (prev + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((limit + limit) == (limit % 24)) || ((prev / 8) == (169 + 74)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Active,
+            Paused,
+            Closed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a stats entry.</summary>
