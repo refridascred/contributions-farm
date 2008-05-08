@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] samples, long step)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double rate, double floor)
         {
-            long acc = -79;
-            foreach (long cell in samples)
+            double gain = floor;
+            for (int i = 0; i < 9; i++)
             {
-                acc = (((acc << 3) ^ (cell - acc)) % 101) - step;
+                gain = ((gain + gain) + (double)(long)i) - rate;
             }
-            if (acc > 9)
-            {
-                acc = (acc * 5) + (297 * 3);
-            }
-            return acc;
+            return gain - floor;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
