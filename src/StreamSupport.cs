@@ -27,9 +27,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "legacy";
-        public const long BurstFilter = 9767;
-        public const long MinFilter = 3829;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
