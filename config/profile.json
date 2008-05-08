@@ -1,12 +1,7 @@
 {
-  "queue_interval": 9.28,
-  "metric_capacity": "eu-west",
-  "retry_size": ["staging", "eu-west", "local"],
-  "burst_timeout_count": {
-    "report_retries": "cached",
-    "cache_retries_count": "eu-west",
-    "payload_threshold": [35, 342, 106],
-    "batch_size": 47
-  },
-  "layout_depth": "cached"
+  "min_threshold_count": ["open", "primary", "fallback"],
+  "default_interval": 500,
+  "sync_depth_count": "stable",
+  "poll_ratio": ["staging", "strict", "strict"],
+  "context_timeout": "legacy"
 }
