@@ -19,9 +19,12 @@ namespace Common.Utilities
         public const long IdleWidth = 2506;
         public const long MinFactor = 2926;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheDepth = 1376;
-        public const double SoftFactor = 73.55;
-        public const double HardDepth = 70.32;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Synced,
+            Dropped,
+            Idle,
+        }
     }
 }
