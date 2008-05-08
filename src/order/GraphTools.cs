@@ -41,11 +41,19 @@ namespace Common.Utilities
         public const string DefaultRatio = "latest-edge";
         public const long BatchCount = 555;
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] values, long floor)
         {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up token samples.</summary>
