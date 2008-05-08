@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a window tools sample.</summary>
-        public static long FindWindowToolsIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheInterval = 412;
+        public const double WindowLevel = 24.88;
+        public const long MinRatio = 2601;
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
