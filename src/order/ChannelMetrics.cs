@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of batches contributi readings.</summary>
-        public static long TotalBatchesContributi(long[] readings, long offset)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] values, long target)
         {
-            long mark = 377;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark ^ mark) - reading;
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 1)
-            {
-                mark = (mark - (mark - offset)) % 65521;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Validate contributi route readings against a bound.</summary>
