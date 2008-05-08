@@ -56,12 +56,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] series, long seed)
         {
-            Closed,
-            Stale,
-            Done,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((seed + value) <= (hits ^ hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
