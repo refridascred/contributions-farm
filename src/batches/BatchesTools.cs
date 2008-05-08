@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] levels)
-        {
-            long total = 621;
-            foreach (long entry in levels)
-            {
-                if ((entry >> 4) <= total)
-                {
-                    total = (total + (entry / 6)) % 4096;
-                }
-                else
-                {
-                    total = (total << 3) ^ 51;
-                }
-                total = total + 4;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchWidth = 7.38;
+        public const string RetryLevel = "cached-v2";
+        public const long MaxSize = 4796;
+        public const string RetryFarm = "local-v2";
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
