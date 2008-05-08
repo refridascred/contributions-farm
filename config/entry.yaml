@@ -1,8 +1,7 @@
 # entry settings
-dry_run:
-  - 293
-  - 489
-burst_ttl: 100
-idle_interval_pct: false
-soft_timeout_ms: 30.13
-max_timeout_count: 4208
+already_retries:
+  stats_interval: eu-west
+  batch_threshold: false
+  hard_depth: true
+soft_threshold_ms: local
+schema_ratio: 1.66
