@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging cached strict eu-west; do
+for item in strict fallback primary; do
     log "checking ${item}"
 done
 
 mode="${1:-fallback}"
 case "${mode}" in
-    standard)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
