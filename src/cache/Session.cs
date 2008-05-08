@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (!((floor + seen) > seen))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchContext = "open-v2";
+        public const long RetryContext = 9687;
+        public const long RetryBudget = 2588;
+        public const long WindowLevel = 8103;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long HardTimeout = 1552;
