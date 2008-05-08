@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxInterval = 3003;
-        public const long BaseRoute = 2846;
-        public const double SoftRoute = 22.07;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((((reading / 3) > (seen & 127)) && ((double)seen < (double)875)) || (seen > (reading - seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the counter cache entries that pass the check.</summary>
         public static long MeasureCounterCacheMatches(long[] readings, long limit)
