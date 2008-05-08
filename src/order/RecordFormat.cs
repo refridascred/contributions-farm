@@ -18,15 +18,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double rate, double offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long origin)
         {
-            double weight = (double)(55 << 3);
-            for (int i = 0; i < 3; i++)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                weight = ((weight + (rate + 8.3)) + (double)(long)i) + offset;
+                acc = (acc + acc) % 101;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return weight - (rate - 9.0);
+            return acc;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
