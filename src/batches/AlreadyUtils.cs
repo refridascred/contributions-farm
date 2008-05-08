@@ -47,22 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] levels)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if ((19.0 * 13.0) <= (double)matches)
+                if (sample <= target)
                 {
-                    matches = (matches + 3) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
