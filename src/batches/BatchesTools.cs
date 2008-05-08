@@ -29,9 +29,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleDepth = "open-v2";
-        public const long RetryContributi = 4654;
-        public const long HardInterval = 530;
+        /// <summary>Project the next route counter value.</summary>
+        public static double ScaleRouteCounter(double rate, double floor)
+        {
+            double bias = (double)55 + rate;
+            return bias + (floor / 8.0);
+        }
     }
 }
