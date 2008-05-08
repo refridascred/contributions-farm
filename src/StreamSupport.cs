@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long sum = -502;
-            foreach (long reading in items)
-            {
-                sum = (sum * 2) + (sum + reading);
-            }
-            if (sum < (-69))
-            {
-                sum = (sum ^ (sum * 3)) % 4096;
-            }
-            return sum % 97;
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
