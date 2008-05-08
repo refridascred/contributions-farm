@@ -41,21 +41,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowEntry = "latest-1";
+        public const string WindowFactor = "standard-1";
+        public const long BaseEntry = 6378;
+        public const double WindowSpan = 61.13;
+        public const long MinSize = 288;
     }
 }
