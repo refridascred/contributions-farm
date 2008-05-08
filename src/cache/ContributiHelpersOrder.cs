@@ -25,19 +25,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] items, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Ready,
+            New,
         }
     }
 }
