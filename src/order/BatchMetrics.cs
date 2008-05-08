@@ -29,17 +29,13 @@ namespace Common.Utilities
         public const long BaseWidth = 5141;
         public const long DefaultSupport = 546;
 
-        /// <summary>Locate a format buffer reading by value.</summary>
-        public static long LocateFormatBufferIndex(long[] data, long bound)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Dropped,
+            Draft,
+            Active,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
