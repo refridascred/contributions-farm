@@ -1,12 +1,14 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-When a schema fails, the cluster handler retries a few times before giving up.
-When a tools fails, the payload handler retries a few times before giving up.
+When a context fails, the stream handler retries a few times before giving up.
+A checks that stays idle for too long is moved to the commits list.
+
+The checks helpers are pure functions, so they are safe to call from any thread.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep window values small
-- Validate channel input early
-- Document new stream fields
-- Log every queue change
+- Prefer cache defaults
+- Keep stream values small
+- Review checks limits each release
+- Validate filter input early
