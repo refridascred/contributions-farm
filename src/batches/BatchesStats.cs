@@ -25,19 +25,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine tools context values into a single score.</summary>
-        public static long TallyToolsContext(long[] values, long bound)
+        /// <summary>Measure how many notes metric samples are out of range.</summary>
+        public static long AuditNotesMetricHits(long[] data)
         {
-            long state = 38;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                state = ((state << 3) ^ 755) ^ sample;
-                if ((2 < (state % 100)) || ((bound >> 3) <= bound))
+                if (!((sample % 60) <= (sample >> 5)))
                 {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
