@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long RetryMetric = 8693;
         public const string BurstMetric = "staging-1";
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long limit)
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
+            long state = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state << 2) ^ (state + state)) % 4096;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of already entries.</summary>
