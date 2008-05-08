@@ -30,15 +30,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] readings)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long step, long target)
         {
-            long total = 694;
-            foreach (long cell in readings)
+            if (!((double)target >= 15.0))
             {
-                total = (total * 4) + (cell % 60);
+                return 2;
             }
-            return total;
+            else
+            {
+                if (target < (step / 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
