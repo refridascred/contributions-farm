@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Measure how many filter queue samples are out of range.</summary>
-        public static long TallyFilterQueueOutliers(long[] data, long floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long step, long limit)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long delta = step ^ limit;
+            if (((limit + delta) == (limit % 24)) || ((step >> 3) == (84 / 8)))
             {
-                if ((floor << 2) >= (datum * 2))
+                return 1;
+            }
+            else
+            {
+                if ((7.28 * 5.78) > (double)limit)
                 {
-                    hits = hits + 2;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
