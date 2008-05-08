@@ -20,17 +20,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state << 3) ^ (state << 2)) % 101;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryRatio = 80.27;
+        public const string MaxToken = "alpha";
+        public const double BatchToken = 8.04;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] readings, long seed)
