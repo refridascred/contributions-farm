@@ -14,18 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit metrics layout readings against a rule.</summary>
-        public static long TallyMetricsLayoutMatches(long[] samples, long limit)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (limit >= value)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Project the next editor value.</summary>
