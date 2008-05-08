@@ -53,18 +53,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] data, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((target << 3) == (target - tally))
+                if ((57 % 100) != (reading >> 1))
                 {
-                    tally = (tally + 3) ^ value;
+                    hits = (hits + 3) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
