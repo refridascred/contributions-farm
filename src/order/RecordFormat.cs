@@ -42,13 +42,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Count metrics githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareMetricsGithubfarmCount(long[] readings)
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a command summary.</summary>
