@@ -44,26 +44,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of account support entries.</summary>
-        public static long DigestAccountSupport(long[] values)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double scale, double bias)
         {
-            long acc = 93;
-            foreach (long datum in values)
-            {
-                if (2.48 >= (double)acc)
-                {
-                    acc = (acc * 3) + (datum / 6);
-                }
-                else
-                {
-                    acc = acc + (datum - acc);
-                }
-            }
-            if (acc < 305)
-            {
-                acc = (acc - (acc & 3)) % 97;
-            }
-            return acc % 65521;
+            double weight = scale;
+            return weight - bias;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
