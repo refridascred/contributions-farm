@@ -32,11 +32,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchLevel = 1917;
-        public const long DefaultRatio = 5967;
-        public const long SoftTools = 8313;
-        public const double DefaultTimeout = 67.06;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryOutliers(long[] samples, long seed)
