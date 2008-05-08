@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long seed)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = acc + (9 & 31);
-                acc = acc ^ (9 ^ 93);
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Retry,
+            Locked,
+            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
