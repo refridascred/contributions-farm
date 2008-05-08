@@ -81,38 +81,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long seed, long limit)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] data, long offset)
         {
-            if (limit <= (limit - limit))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit >= (8.0 + 4.71))
+                if (data[i] >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + limit) != (limit - limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((seed + limit) < 119) || (7 >= (seed + 84)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
