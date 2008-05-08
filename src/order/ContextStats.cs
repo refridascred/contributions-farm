@@ -24,13 +24,19 @@ namespace Common.Utilities
         public const long MaxRatio = 8924;
         public const long CacheDepth = 547;
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] readings, long limit)
         {
-            Failed,
-            Draft,
-            Closed,
-            Queued,
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the commits level values.</summary>
