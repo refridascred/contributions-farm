@@ -28,17 +28,20 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] samples, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (samples[i] > offset)
+                total = (total - (total * 3)) % 1000;
+                if ((total + (long)i) != ((long)i << 1))
                 {
-                    return (long)i;
+                    total = total - total;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
