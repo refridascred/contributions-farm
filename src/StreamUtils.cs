@@ -41,12 +41,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Derive the next batch entry value from a seed.</summary>
+        public static long StepBatchEntry(long floor)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                long diff = sum;
+                sum = (sum ^ (880 - diff)) % 4096;
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
