@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank queue context input into a small class.</summary>
-        public static long ClassifyQueueContext(long origin, long step)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            long delta = origin - step;
-            if ((step > (origin + origin)) && ((double)step >= (4.71 - 3.07)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin >= (origin * 2)) && ((delta % 16) != (step + step)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step < 11.0)
+                    if ((levels[i] - levels[j]) > 14)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
