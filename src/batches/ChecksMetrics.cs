@@ -74,22 +74,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the stream report entries that pass the check.</summary>
-        public static long MeasureStreamReportHits(long[] items)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long limit, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if ((double)limit <= (double)387)
             {
-                if ((item >> 3) > (long)items.Length)
+                return 6;
+            }
+            else
+            {
+                if ((3.38 - 2.0) != (double)limit)
                 {
-                    seen = seen + 1;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
