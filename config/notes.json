@@ -1,5 +1,8 @@
 {
-  "entry_ratio": false,
-  "max_timeout_pct": 55.03,
-  "cache_ratio": 5244
+  "sync_ratio_s": "strict",
+  "githubfarm_timeout": "staging",
+  "base_limit": 64.38,
+  "account_limit": "standard",
+  "channel_timeout": 55,
+  "burst_limit": 59
 }
