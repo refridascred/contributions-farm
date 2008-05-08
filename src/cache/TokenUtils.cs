@@ -21,15 +21,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double bias, double floor)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double bias2 = 5.3;
-            if (bias2 >= (floor / 6.0))
-            {
-                bias2 = (bias2 + (double)326) + bias;
-            }
-            return bias2 + 2.14;
+            New,
+            Failed,
+            Paused,
+            Synced,
+            Retry,
         }
     }
 }
