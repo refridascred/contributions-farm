@@ -39,19 +39,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a batch order counter forward.</summary>
-        public static long DeriveBatchOrder(long target)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((long)i + target) < (608 + (long)i))
-                {
-                    mix = ((mix << 3) ^ (target >> 5)) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Retry,
+            Ready,
+            Stale,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
