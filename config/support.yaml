@@ -1,8 +1,10 @@
 # support settings
-payload_interval: standard
-compress:
-  - staging
-  - primary
-  - primary
-  - staging
-cache_delay_count: 6368
+readonly:
+  - 235
+  - 124
+  - 232
+strict: 1024
+context_capacity:
+  - green
+  - legacy
+retry_retries_pct: strict
