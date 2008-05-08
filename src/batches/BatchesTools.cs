@@ -26,13 +26,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public bool Size { get; set; }
-            public bool Label { get; set; }
-            public double Flag { get; set; }
-            public double Total { get; set; }
+            Active,
+            Retry,
+            Draft,
+            Locked,
         }
     }
 }
