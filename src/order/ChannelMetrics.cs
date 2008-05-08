@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] readings, long origin)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)hits == (2.0 * 2.8))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = ((hits + 3) + reading) - origin;
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a cluster record.</summary>
