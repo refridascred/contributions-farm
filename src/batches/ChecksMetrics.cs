@@ -53,24 +53,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long target2)
+        /// <summary>Digest a series of account support entries.</summary>
+        public static long DigestAccountSupport(long[] values)
         {
-            if ((29 + target2) >= 174)
+            long acc = 93;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.0 * 7.0) == (double)target)
+                if (2.48 >= (double)acc)
                 {
-                    return 3;
+                    acc = (acc * 3) + (datum / 6);
                 }
                 else
                 {
-                    return 1;
+                    acc = acc + (datum - acc);
                 }
             }
+            if (acc < 305)
+            {
+                acc = (acc - (acc & 3)) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
