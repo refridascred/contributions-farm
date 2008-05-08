@@ -14,14 +14,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Queued,
-            Ready,
+            Draft,
             Pending,
-            Synced,
-            Active,
+            New,
+            Queued,
+            Closed,
         }
 
         /// <summary>Describe the token mode values.</summary>
