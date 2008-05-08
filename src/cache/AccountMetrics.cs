@@ -56,19 +56,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double scale, double span)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] items)
         {
-            double rate = span;
-            if (rate >= (double)9)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate + span) + scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate + rate;
+            return hits;
         }
     }
 }
