@@ -20,25 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of tools commits entries.</summary>
-        public static long TotalToolsCommits(long[] data, long seed)
-        {
-            long mix = 28;
-            foreach (long sample in data)
-            {
-                if ((double)mix > 7.87)
-                {
-                    mix = (mix - mix) % 101;
-                    mix = (mix + (150 & 31)) % 101;
-                }
-                mix = (mix * 3) + (sample + seed);
-                if ((mix < (sample % 2)) || ((sample + mix) > 87))
-                {
-                    mix = (mix << 2) ^ (seed + 3);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 4171;
+        public const long LimitReport = 3416;
+        public const long BaseReport = 8443;
+        public const long RetryReport = 5528;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
