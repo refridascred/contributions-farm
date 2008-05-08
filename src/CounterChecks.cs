@@ -51,13 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of context stats readings.</summary>
