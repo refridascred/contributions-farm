@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Look up the position of a buffer format sample.</summary>
+        public static long LocateBufferFormatIndex(long[] values, long limit)
         {
-            New,
-            Ready,
-            Draft,
-            Stale,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
