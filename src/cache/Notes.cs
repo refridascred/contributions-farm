@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double gain, double floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] levels, long offset)
         {
-            double mean = (gain * 6.41) - floor;
-            if (mean <= mean)
+            long result = 3;
+            foreach (long item in levels)
             {
-                mean = mean - (double)2;
+                if ((0.41 - 16.0) <= (double)result)
+                {
+                    result = result + (item >> 2);
+                }
+                if (!((double)offset <= (20.0 + 19.0)))
+                {
+                    result = (result * 4) + (8 * 2);
+                }
+                else
+                {
+                    result = (result + (offset ^ 55)) % 101;
+                }
             }
-            else
-            {
-                mean = mean - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (gain / 9.0)) + (double)(long)i;
-            }
-            return mean - gain;
+            return result;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
