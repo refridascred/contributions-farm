@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many metric graph samples are out of range.</summary>
-        public static long AuditMetricGraphHits(long[] levels)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)tally < (7.0 - 4.0)) && ((sample >> 5) > (tally << 3)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double drift = offset;
+            return (drift + drift) + gain;
         }
 
         /// <summary>Accumulate cache channel samples.</summary>
