@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] values, long origin)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double bias, double offset)
         {
-            bool found = true;
-            foreach (long item in values)
+            double gain = offset;
+            if (gain >= bias)
             {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
+                gain = gain - offset;
             }
-            return found;
+            else
+            {
+                gain = gain - offset;
+            }
+            return gain + (double)143;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
