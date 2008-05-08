@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] items, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long state = 570;
+            foreach (long datum in items)
             {
-                if ((item % 8) >= seen)
+                if ((state & 3) >= state)
                 {
-                    seen = (seen + 1) - floor;
+                    state = ((((state * 2) + state) % 101) + datum) - limit;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define account limits and defaults.</summary>
