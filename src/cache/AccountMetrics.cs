@@ -37,19 +37,18 @@ namespace Common.Utilities
         public const string MinFactor = "legacy-v2";
         public const long DefaultEditor = 8393;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] items, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (entry <= offset)
+                if (seen <= (seen ^ seen))
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 3) ^ datum) + floor;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Check that every checks queue entry stays within the limit.</summary>
