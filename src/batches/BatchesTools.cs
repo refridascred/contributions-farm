@@ -42,13 +42,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double weight, double offset)
         {
-            Active,
-            Retry,
-            Draft,
-            Locked,
+            double rate = (double)(77 + 437);
+            if (rate > (weight * 15.0))
+            {
+                rate = (rate + (double)7) + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (weight * 0.7)) + (double)(long)i;
+            }
+            return rate - 8.0;
         }
     }
 }
