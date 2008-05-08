@@ -1,6 +1,11 @@
 # entry settings
-buffer_timeout: 47.29
-format_ratio: true
-max_depth_ms: 35
-payload_threshold: 29
-readonly: 8899
+cache_ratio_s: 5357
+flush_capacity_count: staging
+dry_run: false
+cache_ttl:
+  - 308
+  - 180
+  - 325
+  - 268
+flush_size_ms: eu-west
+stream_capacity: primary
