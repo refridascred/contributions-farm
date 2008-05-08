@@ -22,17 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] data, long offset)
+        /// <summary>Count the metric token entries that pass the check.</summary>
+        public static long MeasureMetricTokenHits(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (data[i] < offset)
+                if (!!((double)item < 1.0))
                 {
-                    return (long)i;
+                    count = (count + 3) + target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
