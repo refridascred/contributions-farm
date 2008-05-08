@@ -1,7 +1,17 @@
 # entry settings
-batch_delay_s: standard
-flush_delay_pct: true
-poll_delay_ms: 4
-stream_size: standard
-persist: 100
-sync_ttl_pct: edge
+min_timeout_count:
+  cache_retries_count: open
+  queue_interval: true
+  batch_size: 100
+  verbose:
+    - 474
+    - 60
+    - 140
+  notes_size: 100
+  batch_threshold:
+    - 80
+    - 455
+    - 167
+    - 254
+persist: latest
+flush_retries: legacy
