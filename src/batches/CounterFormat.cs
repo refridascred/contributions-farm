@@ -21,32 +21,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long origin, long origin2)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long origin)
         {
-            long gap = origin + origin2;
-            if ((origin + (-964)) >= (4 - origin2))
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 5;
+                anchor = (anchor ^ ((long)i + 88)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((gap >= 361) || ((4.0 * 5.0) <= (double)origin2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)gap <= (9.6 / 2.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Measure how many schema profile samples are out of range.</summary>
