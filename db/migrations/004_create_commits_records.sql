@@ -1,13 +1,15 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    owner TEXT NOT NULL,
-    region TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    score REAL NOT NULL DEFAULT 0
+    active INTEGER NOT NULL DEFAULT 1,
+    level INTEGER,
+    state TEXT NOT NULL DEFAULT 'new',
+    score REAL NOT NULL DEFAULT 0,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
+CREATE INDEX IF NOT EXISTS idx_commits_records_score ON commits_records (score);
 
-INSERT INTO commits_records (owner, region, count, score) VALUES ('blue', 'cached', 69, 82.0);
-INSERT INTO commits_records (owner, region, count, score) VALUES ('standard', 'fallback', 15, 62.07);
+INSERT INTO commits_records (active, level, state, score) VALUES (55, 23, 'standard', 73.76);
+INSERT INTO commits_records (active, level, state, score) VALUES (66, 79, 'blue', 89.73);
+INSERT INTO commits_records (active, level, state, score) VALUES (44, 67, 'open', 39.13);
