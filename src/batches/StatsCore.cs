@@ -13,12 +13,26 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Combine editor support values into a single score.</summary>
+        public static long TotalEditorSupport(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Region { get; set; }
+            long state = 421;
+            foreach (long sample in data)
+            {
+                if ((state - sample) != (548 + state))
+                {
+                    state = (state - (sample & 255)) % 1000;
+                }
+                else
+                {
+                    state = state ^ (state >> 1);
+                }
+            }
+            if (state > 797)
+            {
+                state = (state - state) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
