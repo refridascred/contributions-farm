@@ -61,11 +61,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchDepth = 5120;
-        public const string MaxDepth = "alpha-1";
-        public const long BaseTimeout = 997;
-        public const long CacheNotes = 4329;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long SeriesAccount(long seed)
