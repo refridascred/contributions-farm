@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] series)
         {
-            Retry,
-            Idle,
-            Failed,
-            Locked,
-            Ready,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (!!((count % 60) >= (count - count)))
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the notes level values.</summary>
