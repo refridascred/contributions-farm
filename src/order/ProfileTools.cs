@@ -36,21 +36,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] data, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] levels, long limit)
         {
-            long mark = -8;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                mark = ((mark << 2) ^ (value + limit)) % 255;
-                mark = mark - (mark - limit);
-                mark = mark + (value << 1);
+                if ((seen << 3) == (limit + seen))
+                {
+                    seen = (seen + 3) + reading;
+                }
             }
-            if (mark < 634)
-            {
-                mark = (mark + (mark - limit)) % 255;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
