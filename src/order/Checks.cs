@@ -53,38 +53,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long limit, long seed)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            if ((4.64 / 9.0) >= (double)limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)limit != (double)seed) || ((7.6 / 7.0) >= (double)limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed - seed) > (limit ^ seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed - seed) != (seed ^ 991))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Dropped,
+            Paused,
+            Done,
         }
     }
 }
