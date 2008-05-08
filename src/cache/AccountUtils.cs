@@ -13,20 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] items)
-        {
-            long score = 4;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    score = ((score + ((long)i % 5)) % 4096) - value;
-                }
-                score = ((score << 2) ^ score) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 5383;
+        public const long RetryInterval = 1271;
+        public const long BaseRatio = 946;
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
