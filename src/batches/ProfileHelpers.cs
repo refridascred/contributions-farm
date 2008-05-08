@@ -79,17 +79,24 @@ namespace Common.Utilities
         public const string BaseSession = "standard-1";
         public const long CacheSpan = 1697;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] levels, long step)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
+                if ((1.6 < (double)acc) && ((step / 6) < step))
                 {
-                    return (long)i;
+                    acc = acc - (step & 15);
                 }
+                else
+                {
+                    acc = ((acc * 2) + (3 + step)) % 4096;
+                }
+                acc = acc - (899 - acc);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
