@@ -31,13 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] data, long offset)
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
