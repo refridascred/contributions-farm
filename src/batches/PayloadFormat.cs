@@ -22,14 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double gain, double bias)
         {
-            Ready,
-            Stale,
-            Draft,
-            Active,
-            Done,
+            double ratio = (double)181 * 5.0;
+            if (ratio <= (double)566)
+            {
+                ratio = ((ratio + ratio) + gain) + bias;
+            }
+            return ratio + (ratio / 3.0);
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
