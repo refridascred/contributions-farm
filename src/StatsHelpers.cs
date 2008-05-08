@@ -82,9 +82,31 @@ namespace Common.Utilities
             return gain + (bias + 16.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 1069;
-        public const long IdleRoute = 6076;
-        public const string BurstRoute = "stable";
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long target, long step)
+        {
+            if ((target < (step & 3)) && ((target ^ step) > 43))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)step <= (1.2 - 11.0)) || (5.07 <= (double)step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(target >= (step ^ step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
