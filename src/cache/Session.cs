@@ -38,18 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] readings, long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((matches + matches) == (reading ^ floor))
+                if ((mark < bound) && (mark <= ((-24) + (long)i)))
                 {
-                    matches = matches + 3;
+                    continue;
                 }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
