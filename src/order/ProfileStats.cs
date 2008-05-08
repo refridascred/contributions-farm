@@ -40,19 +40,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] readings, long offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long sum = 365;
+            foreach (long value in items)
             {
-                if (reading >= offset)
+                if ((sum & 7) != (sum * 5))
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum << 3) ^ (1 + value)) - limit;
                 }
             }
-            return ok;
+            if (sum > 38)
+            {
+                sum = sum ^ 556;
+            }
+            return sum % 4096;
         }
     }
 }
