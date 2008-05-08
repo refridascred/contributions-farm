@@ -23,13 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine account values into a single score.</summary>
