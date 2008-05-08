@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a layout stream sample.</summary>
-        public static long FindLayoutStreamIndex(long[] levels, long floor)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] >= floor)
+                if (values[i] <= target)
                 {
                     return (long)i;
                 }
