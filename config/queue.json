@@ -1,7 +1,10 @@
 {
-  "filter_delay": true,
-  "idle_retries_pct": true,
-  "burst_ttl_s": "stable",
-  "default_threshold": true,
-  "retry_timeout_ms": 75.1
+  "channel_window": {
+    "burst_window_s": 58,
+    "strict": false,
+    "verbose": 87.43,
+    "burst_capacity": "blue"
+  },
+  "idle_interval": "cached",
+  "retry_size": [261, 2, 231, 396]
 }
