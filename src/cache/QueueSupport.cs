@@ -23,13 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] values, long seed)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine record values into a single score.</summary>
