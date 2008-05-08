@@ -1,6 +1,7 @@
 # entry settings
-burst_ratio_ms: 637
-verbose: 96.31
-persist: false
-readonly: true
-min_ratio_s: false
+batch_delay_s: standard
+flush_delay_pct: true
+poll_delay_ms: 4
+stream_size: standard
+persist: 100
+sync_ttl_pct: edge
