@@ -86,24 +86,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] values, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            long anchor = 3;
+            foreach (long item in values)
             {
-                if ((1.6 < (double)acc) && ((step / 6) < step))
+                if (!((double)(long)values.Length <= (double)item))
                 {
-                    acc = acc - (step & 15);
+                    anchor = ((anchor << 2) ^ limit) % 65521;
                 }
-                else
-                {
-                    acc = ((acc * 2) + (3 + step)) % 4096;
-                }
-                acc = acc - (899 - acc);
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return anchor;
         }
     }
 }
