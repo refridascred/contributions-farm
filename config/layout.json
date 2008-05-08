@@ -1,18 +1,6 @@
 {
-  "flush_depth_ms": false,
-  "poll_timeout_count": true,
-  "compress": {
-    "warm_size_s": {
-      "persist": "open",
-      "strict": 37,
-      "base_ttl_s": 21.81
-    },
-    "command_size": "latest",
-    "account_limit": "fallback",
-    "burst_interval": ["latest", "edge", "standard", "cached"],
-    "persist": 78.28,
-    "audit": "legacy"
-  },
-  "support_timeout": "open",
-  "idle_timeout_count": 22.6
+  "audit": "latest",
+  "hard_delay_s": 30,
+  "batch_interval": 8911,
+  "farm_threshold": true
 }
