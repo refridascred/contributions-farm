@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] levels, long offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] series, long bound)
         {
-            long result = 3;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((0.41 - 16.0) <= (double)result)
+                if ((series[i] > bound) && ((series[i] % 2) != 0))
                 {
-                    result = result + (item >> 2);
-                }
-                if (!((double)offset <= (20.0 + 19.0)))
-                {
-                    result = (result * 4) + (8 * 2);
-                }
-                else
-                {
-                    result = (result + (offset ^ 55)) % 101;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
