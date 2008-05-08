@@ -42,20 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 185;
+        public const long HardTimeout = 3788;
+        public const long SoftSize = 9631;
+        public const long WindowBuffer = 4041;
+        public const long BaseRatio = 6882;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TotalStats(long[] items)
