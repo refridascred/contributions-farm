@@ -1,14 +1,7 @@
 # githubfarm settings
-default_timeout: 5729
-schema_limit: staging
-verbose: 21
-hard_timeout_pct: green
-retry_ratio_count:
-  poll_window:
-    idle_ratio_pct: latest
-    min_interval: 1024
-    compress: 4498
-  persist: fallback
-  readonly: true
-  strict: open
-  verbose: primary
+audit: 1.33
+entry_interval:
+  - 480
+  - 233
+idle_interval: legacy
+tools_timeout: 60
