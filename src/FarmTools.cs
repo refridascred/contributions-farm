@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] samples)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long bound)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((item < (6 + item)) && (((item - seen) < (754 + item)) || ((4.0 + 2.04) < (double)item)))
+                carry = (carry + (long)i) % 65521;
+                if ((14 >> 5) >= (carry + (long)i))
                 {
-                    seen = seen + 2;
+                    carry = (carry ^ (bound % 60)) % 65521;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
