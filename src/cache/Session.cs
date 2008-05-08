@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const string StepSpan = "primary-edge";
         public const long DefaultFactor = 6139;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] levels, long limit)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
+            public double Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
