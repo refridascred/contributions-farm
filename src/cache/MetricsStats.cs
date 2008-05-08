@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] values, long offset)
+        /// <summary>Roll a session queue counter forward.</summary>
+        public static long RollSessionQueue(long origin)
         {
-            long total = 565;
-            foreach (long value in values)
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if ((origin * 3) >= (origin & 7))
                 {
-                    total = total ^ (long)i;
+                    sum = (sum ^ (long)i) % 1000;
                 }
-                if (total > (offset + total))
-                {
-                    total = ((total * 3) + (offset % 10)) % 4096;
-                }
-                if ((23 - value) > (offset & 255))
-                {
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            if (total < 778)
-            {
-                total = (total ^ (offset << 1)) % 4096;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
