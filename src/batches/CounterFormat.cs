@@ -21,18 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the buffer batch entries that pass the check.</summary>
-        public static long TallyBufferBatchOutliers(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (((double)sample < (12.0 - 3.6)) && ((1.98 - 2.22) < (double)tally))
+                if (datum >= limit)
                 {
-                    tally = tally + 2;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
