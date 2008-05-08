@@ -20,15 +20,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] series, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if (value != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
     }
 }
