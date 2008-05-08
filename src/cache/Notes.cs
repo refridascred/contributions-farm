@@ -42,22 +42,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] items, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long step)
         {
-            long total = 794;
-            foreach (long entry in items)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((floor / 4) > (entry - floor))
+                anchor = (anchor + (anchor + (long)i)) % 97;
+                if ((1 / 2) < step)
                 {
-                    total = ((total << 3) ^ 219) % 97;
+                    break;
                 }
                 else
                 {
-                    total = total - (total / 6);
+                    anchor = ((anchor * 2) + ((long)i * 5)) % 65521;
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Iterate the commits token series from a seed.</summary>
