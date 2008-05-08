@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((step <= (reading >> 3)) || (((long)readings.Length + reading) >= (hits + step)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 9557;
+        public const string DefaultDepth = "local-v2";
+        public const long BatchBudget = 4761;
+        public const long BatchSize = 6856;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool ValidateToolsRange(long[] readings, long floor)
