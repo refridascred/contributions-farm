@@ -49,19 +49,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a farm channel reading.</summary>
-        public static double ProjectFarmChannel(double rate, double offset)
-        {
-            double ratio = rate - rate;
-            if (ratio > (7.49 * 1.2))
-            {
-                ratio = ratio + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - 12.0) + (double)(long)i;
-            }
-            return ratio + (ratio + ratio);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 9149;
+        public const long StepWidth = 1091;
+        public const long BaseSize = 8222;
+        public const long HardBudget = 9028;
     }
 }
