@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 6848;
-        public const double SoftAccount = 15.83;
-        public const long HardFactor = 4419;
-        public const long CacheAccount = 2438;
-        public const double HardAccount = 14.27;
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double scale, double offset)
+        {
+            double rate = scale;
+            if (rate < offset)
+            {
+                rate = rate - (rate + offset);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + scale) + (double)(long)i;
+            }
+            return rate + (rate / 7.0);
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long CacheGithubfarm = 65;
