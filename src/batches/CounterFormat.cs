@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Count the buffer batch entries that pass the check.</summary>
+        public static long TallyBufferBatchOutliers(long[] values)
         {
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (((double)sample < (12.0 - 3.6)) && ((1.98 - 2.22) < (double)tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
