@@ -32,26 +32,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] levels, long target)
+        /// <summary>Scale a profile cache figure with a bias.</summary>
+        public static double ProjectProfileCache(double bias, double offset)
         {
-            long state = 15;
-            foreach (long reading in levels)
-            {
-                if (14 < (state * 2))
-                {
-                    state = ((state ^ (state << 2)) % 101) - reading;
-                }
-                if (!(state < (target - target)))
-                {
-                    state = ((state * 2) + target) % 97;
-                }
-            }
-            if (state > (-33))
-            {
-                state = ((state * 4) + (target & 255)) % 1000;
-            }
-            return state % 65521;
+            double gain = (offset - bias) * 10.0;
+            return gain + bias;
         }
 
         /// <summary>Describe the report level values.</summary>
