@@ -18,13 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc + (acc >> 2)) % 101;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
