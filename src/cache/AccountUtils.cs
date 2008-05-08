@@ -27,9 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 9250;
-        public const long MaxGraph = 8767;
-        public const string RetrySpan = "primary-v2";
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Draft,
+            Idle,
+            Active,
+            Locked,
+        }
     }
 }
