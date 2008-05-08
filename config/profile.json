@@ -1,10 +1,8 @@
 {
-  "session_timeout": 7.49,
-  "min_ratio": {
-    "burst_capacity_ms": 68,
-    "context_depth": "standard",
-    "compress": "blue",
-    "cache_ratio_pct": 43
-  },
-  "counter_retries": "standard"
+  "dry_run": "open",
+  "base_limit_s": "cached",
+  "payload_delay": "cached",
+  "warm_ttl": "legacy",
+  "idle_depth_pct": 6310,
+  "audit": 71
 }
