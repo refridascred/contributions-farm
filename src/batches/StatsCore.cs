@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 1305;
+        public const long MaxTools = 7563;
+        public const long MaxInterval = 9204;
+        public const string HardTools = "open-edge";
+        public const long WindowTools = 3854;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowWidth = 1305;
