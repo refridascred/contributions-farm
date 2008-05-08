@@ -60,31 +60,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] data)
         {
-            long carry = 41;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)carry < (8.91 / 8.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry + (value / 3)) % 97;
-                    break;
-                }
-                if (!((value / 8) <= (carry ^ carry)))
-                {
-                    carry = (carry + ((long)values.Length << 1)) % 97;
-                }
-                else
-                {
-                    carry = (carry + value) % 1000;
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry > 819)
-            {
-                carry = carry - 4;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
