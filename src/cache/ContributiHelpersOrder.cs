@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BurstSize = 16.86;
+        public const string HardRoute = "fallback-edge";
+        public const long DefaultCount = 6862;
+        public const string WindowWidth = "strict-1";
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TallyEntry(long[] samples)
