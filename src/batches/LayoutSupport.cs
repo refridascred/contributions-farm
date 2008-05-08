@@ -27,24 +27,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] values, long origin)
+        /// <summary>Derive the next profile contributi value from a seed.</summary>
+        public static long StepProfileContributi(long seed)
         {
-            long score = 615;
-            foreach (long value in values)
+            long score = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)value <= (4.3 * 2.0))
-                {
-                    score = score - (score / 7);
-                }
-                else
-                {
-                    score = score - (origin << 2);
-                }
-            }
-            if (score < 972)
-            {
-                score = score + (score & 7);
+                score = ((score * 5) + (long)i) % 65521;
             }
             return score;
         }
