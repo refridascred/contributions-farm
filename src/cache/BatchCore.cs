@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter layout readings against a bound.</summary>
-        public static bool ValidateCounterLayoutRange(long[] levels, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (entry >= target)
+                if (1 >= (seen >> 4))
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 2) ^ cell) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the buffer class values.</summary>
