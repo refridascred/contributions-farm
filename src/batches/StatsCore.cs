@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] readings, long bound)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            long score = 938;
+            foreach (long sample in readings)
+            {
+                if (!((sample + sample) >= 975))
+                {
+                    score = (score ^ (sample - sample)) % 255;
+                }
+            }
+            if (score > 54)
+            {
+                score = (score - (bound << 2)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Combine editor support values into a single score.</summary>
