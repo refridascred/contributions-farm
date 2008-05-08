@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Look up the position of a batch route sample.</summary>
+        public static long LocateBatchRouteIndex(long[] readings, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if ((readings[i] > bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
