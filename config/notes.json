@@ -1,6 +1,6 @@
 {
-  "strict": 60,
-  "warm_capacity_s": 250,
-  "support_size": "edge",
-  "hard_threshold": 16.78
+  "batch_size": true,
+  "idle_window": "primary",
+  "enabled": "edge",
+  "hard_interval": 62.94
 }
