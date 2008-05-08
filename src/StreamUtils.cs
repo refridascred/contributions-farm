@@ -17,10 +17,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryTimeout = 1152;
-        public const long SoftBatches = 4564;
-        public const long BaseRatio = 104;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 7332;
+        public const double CacheScore = 63.19;
+        public const string StepInterval = "latest-edge";
 
         /// <summary>Derive the next route cluster value from a seed.</summary>
         public static long SeriesRouteCluster(long offset)
