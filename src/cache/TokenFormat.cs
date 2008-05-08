@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] series, long seed)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)(835 % 7);
+            if (ratio < (double)243)
             {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + rate) + span;
             }
-            return -1;
+            return ratio + (double)8;
         }
 
         /// <summary>Define report limits and defaults.</summary>
