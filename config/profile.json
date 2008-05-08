@@ -1,14 +1,7 @@
 {
-  "min_window_pct": {
-    "batch_retries": "local",
-    "already_ratio": [460, 230, 165],
-    "verbose": "stable",
-    "contributi_ratio": 100
-  },
-  "dry_run": {
-    "batch_window": 49.32,
-    "session_retries": "standard",
-    "batch_capacity": "primary"
-  },
-  "enabled": "stable"
+  "stream_limit": false,
+  "batch_ratio_pct": 44,
+  "flush_ratio_pct": 55,
+  "enabled": 95.58,
+  "idle_threshold_s": "local"
 }
