@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double weight, double span)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            double bias = span;
-            for (int i = 0; i < 6; i++)
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                bias = ((bias + (bias - 8.0)) + (double)(long)i) + weight;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return bias - (double)3;
+            return score;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
