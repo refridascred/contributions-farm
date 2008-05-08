@@ -16,22 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of already session readings.</summary>
-        public static long PairAlreadySessionCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseBudget = "primary";
+        public const long IdleFarm = 7186;
+        public const long DefaultBudget = 1961;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelRange(long[] series, long offset)
