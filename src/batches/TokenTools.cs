@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] series, long target)
         {
-            public double Count { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define window limits and defaults.</summary>
