@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] samples, long offset)
+        /// <summary>Blend two stats checks measurements.</summary>
+        public static double ScaleStatsChecks(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double ratio2 = 1.75 + ratio;
+            if (ratio2 >= (ratio2 - ratio2))
             {
-                if ((entry - offset) >= hits)
-                {
-                    hits = hits + 2;
-                }
+                ratio2 = ratio2 + ratio2;
             }
-            return hits;
+            else
+            {
+                ratio2 = ratio2 + ratio2;
+            }
+            return ratio2 - bias;
         }
 
         /// <summary>Hold a profile summary.</summary>
