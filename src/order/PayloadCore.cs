@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Ready,
-            Active,
-            Locked,
-            Synced,
-            Failed,
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
