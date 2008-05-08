@@ -27,24 +27,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] values, long step)
-        {
-            long total = 0;
-            foreach (long cell in values)
-            {
-                total = (total * 4) + step;
-                if ((total - (-9)) < (cell % 12))
-                {
-                    break;
-                }
-            }
-            if (total < 50)
-            {
-                total = ((total << 2) ^ (step >> 4)) % 101;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseScore = 2522;
+        public const long BatchFilter = 9071;
+        public const string SoftInterval = "fallback";
+        public const long MinDepth = 9633;
 
         /// <summary>Match up session samples.</summary>
         public static long MatchSessionCount(long[] series)
