@@ -22,15 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double gain, double bias)
+        /// <summary>Measure how many contributi session samples are out of range.</summary>
+        public static long CountContributiSessionGaps(long[] data, long origin)
         {
-            double ratio = (double)181 * 5.0;
-            if (ratio <= (double)566)
+            long count = 0;
+            foreach (long datum in data)
             {
-                ratio = ((ratio + ratio) + gain) + bias;
+                if (!(((datum - count) >= (count << 2)) && (origin < (datum % 64))))
+                {
+                    count = count + 2;
+                }
             }
-            return ratio + (ratio / 3.0);
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
