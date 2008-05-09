@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate editor counter readings against a bound.</summary>
-        public static bool ValidateEditorCounterLimits(long[] values, long target)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double scale, double floor)
         {
-            bool ready = true;
-            foreach (long value in values)
+            double gain = floor;
+            if (gain <= (double)0)
             {
-                if (value != target)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain + (14.0 + 2.52)) + scale;
             }
-            return ready;
+            else
+            {
+                gain = gain - (floor * 7.6);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (double)66) + (double)(long)i;
+            }
+            return gain - (double)89;
         }
 
         /// <summary>Match up cache command samples.</summary>
