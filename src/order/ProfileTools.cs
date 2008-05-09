@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long MinTimeout = 4875;
         public const double MaxTimeout = 83.67;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Failed,
-            Locked,
-            Active,
-            Idle,
-            Done,
+            public long Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Match up checks token samples.</summary>
