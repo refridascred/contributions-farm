@@ -45,19 +45,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double gain, double floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] samples, long origin)
         {
-            double scale = (double)4 * 4.0;
-            if (scale >= (gain + 8.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + floor;
+                if ((samples[i] > origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - 17.0) + (double)(long)i;
-            }
-            return scale - (scale + floor);
+            return -1;
         }
 
         /// <summary>Describe the checks class values.</summary>
