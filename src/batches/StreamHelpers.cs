@@ -72,21 +72,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Idle,
+            Dropped,
+            Retry,
+            Failed,
         }
 
         /// <summary>Accumulate account samples.</summary>
