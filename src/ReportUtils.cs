@@ -52,11 +52,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Roll a checks stats counter forward.</summary>
+        public static long RollChecksStats(long floor)
         {
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
+            long total = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
