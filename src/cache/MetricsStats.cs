@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate contributi report readings against a bound.</summary>
-        public static bool VerifyContributiReportLimits(long[] levels, long step)
+        /// <summary>Iterate the notes schema series from a seed.</summary>
+        public static long RollNotesSchema(long seed)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum >= step)
+                if (((3.16 / 9.0) == (double)seed) || (sum >= ((-1) * 3)))
                 {
-                    valid = false;
-                    break;
+                    sum = (sum - (76 - sum)) % 65521;
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
