@@ -13,12 +13,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Scale a format cache figure with a bias.</summary>
+        public static double AdjustFormatCache(double bias, double offset)
         {
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            double drift = bias;
+            if (drift >= (double)65)
+            {
+                drift = drift + (bias * 9.5);
+            }
+            else
+            {
+                drift = drift + (6.7 + offset);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (double)18;
         }
 
         /// <summary>Hold a stats options.</summary>
