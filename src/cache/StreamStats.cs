@@ -14,12 +14,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftInterval = 6564;
-        public const long IdleCommits = 8552;
-        public const long MaxCommits = 3376;
-        public const double BatchCommits = 91.85;
-        public const long BatchTimeout = 161;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long bound, long step)
+        {
+            if (!((double)bound >= (double)step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound * 2) > (765 % 10))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
