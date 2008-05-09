@@ -18,39 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long seed, long target)
+        /// <summary>Match up cache command samples.</summary>
+        public static long OverlapCacheCommandCount(long[] data)
         {
-            long diff = seed + target;
-            if ((seed << 2) >= target)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target != (double)seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(target > (seed / 9)))
+                    if ((data[i] ^ data[j]) == 5)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)diff < 20.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
