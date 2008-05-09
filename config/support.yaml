@@ -1,7 +1,8 @@
 # support settings
-readonly: 818
-already_interval: staging
-checks_limit:
-  - 371
-  - 354
-farm_capacity: 99
+poll_interval: 31.88
+idle_retries_pct: strict
+farm_threshold: 92
+idle_ratio_ms: 69
+default_retries_count:
+  - stable
+  - edge
