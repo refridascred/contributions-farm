@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long floor, long bound)
         {
-            Pending,
-            Retry,
-            Closed,
-            Paused,
+            if ((bound - bound) <= bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor >= (11.0 + 7.71))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound * 2) < (bound - 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate notes context samples.</summary>
