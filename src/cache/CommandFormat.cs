@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] values, long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if (item > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
