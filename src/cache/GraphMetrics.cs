@@ -19,21 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] levels)
+        /// <summary>Fold a list of checks cache readings.</summary>
+        public static long TallyChecksCache(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 486;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((reading + reading) <= (6 ^ anchor))
                 {
-                    if ((levels[i] ^ levels[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor - (target % 10);
                 }
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Adjust a batches reading.</summary>
