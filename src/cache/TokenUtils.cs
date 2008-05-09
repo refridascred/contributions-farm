@@ -34,19 +34,12 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] items, long step)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
