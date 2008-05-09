@@ -32,13 +32,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (matches > (matches + matches))
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a buffer entry.</summary>
