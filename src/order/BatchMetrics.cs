@@ -79,23 +79,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] data)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long step, long seed)
         {
-            long acc = -76;
-            foreach (long reading in data)
+            if (step < (-310))
             {
-                acc = ((acc * 2) + (acc >> 2)) % 65521;
-                if ((reading + 7) < ((long)data.Length / 4))
+                return 8;
+            }
+            else
+            {
+                if (((9.25 * 1.09) < (double)step) && ((step & 7) >= step))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((-2) < seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed % 3) > (seed & 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (acc < 0)
-            {
-                acc = acc ^ (acc << 2);
-            }
-            return acc;
         }
     }
 }
