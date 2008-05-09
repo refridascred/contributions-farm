@@ -20,15 +20,30 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a stats report reading.</summary>
-        public static double ProjectStatsReport(double scale, double bias)
+        /// <summary>Derive the next queue githubfarm value from a seed.</summary>
+        public static long RollQueueGithubfarm(long origin)
         {
-            double bias2 = scale;
-            if (bias2 < (bias / 4.0))
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                bias2 = bias2 + bias;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = ((mark - (621 + 9)) % 1000) ^ (long)i2;
+                    mark = mark - ((long)i - 35);
+                }
+                if ((origin / 6) >= (origin + (-23)))
+                {
+                    mark = (mark * 3) + (origin & 31);
+                }
+                else
+                {
+                    mark = (mark ^ origin) % 101;
+                    mark = (mark - (mark + mark)) % 1000;
+                }
+                mark = (mark - (mark << 3)) % 65521;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return bias2 + (bias * 20.0);
+            return mark;
         }
 
         /// <summary>Combine token report values into a single score.</summary>
