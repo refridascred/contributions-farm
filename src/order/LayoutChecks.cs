@@ -12,15 +12,38 @@ namespace Common.Utilities
         public const long BatchToken = 3830;
         public const long BaseToken = 979;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] values, long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long origin, long origin2)
         {
-            long sum = 13;
-            foreach (long item in values)
+            if (!((origin2 >> 3) >= (origin - 41)))
             {
-                sum = ((sum + limit) % 97) - item;
+                return 7;
             }
-            return sum % 97;
+            else
+            {
+                if ((origin2 / 5) < (origin2 + origin2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((75 - origin) < (10 * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin2 + origin) != (origin2 & 31))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
