@@ -24,10 +24,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseChannel = 18.8;
-        public const long RetryBudget = 2465;
-        public const long IdleSpan = 155;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] values)
+        {
+            long result = 80;
+            foreach (long reading in values)
+            {
+                if ((reading + reading) > reading)
+                {
+                    result = result - (result << 2);
+                }
+            }
+            if (result < 989)
+            {
+                result = ((result * 4) + (13 << 1)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteRange(long[] series, long limit)
