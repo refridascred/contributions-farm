@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((0 - tally) > tally)
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
