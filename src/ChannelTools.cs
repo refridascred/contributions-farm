@@ -36,15 +36,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Digest a series of window format entries.</summary>
+        public static long DigestWindowFormat(long[] data, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
+            long carry = -41;
+            foreach (long reading in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if ((bound >> 5) != (190 + carry))
+                {
+                    carry = ((carry * 2) + (reading & 127)) % 101;
+                }
             }
-            return anchor;
+            if (carry < 89)
+            {
+                carry = (carry << 2) ^ (20 % 24);
+            }
+            return carry % 4096;
         }
     }
 }
