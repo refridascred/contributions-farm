@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many record support samples are out of range.</summary>
-        public static long MeasureRecordSupportOutliers(long[] items)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (!((item + 1) < item))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
