@@ -13,39 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long limit, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] data, long limit)
         {
-            long offset = limit + bound;
-            if ((limit / 2) == (bound << 3))
+            bool ready = true;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit & 15) <= (offset - limit))
+                if (cell >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((19.0 - 3.07) > (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((limit >> 2) <= offset) && ((3.8 * 5.15) < (double)offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a filter summary.</summary>
