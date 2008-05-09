@@ -20,31 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long target, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] values, long floor)
         {
-            if (((step + step) >= 1) || ((8.0 - 11.0) >= (3.63 * 9.51)))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (3.0 <= (double)step)
+                if (sample >= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(target < step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Derive the next already githubfarm value from a seed.</summary>
