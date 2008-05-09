@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 4186;
-        public const string StepCount = "legacy-1";
-        public const string StepSize = "alpha-edge";
-        public const long RetryWidth = 4780;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] values)
+        {
+            long total = 81;
+            foreach (long entry in values)
+            {
+                total = ((total << 3) ^ (1 * 4)) % 255;
+                if ((total ^ entry) >= entry)
+                {
+                    total = ((total << 2) ^ (total % 60)) % 1000;
+                }
+                else
+                {
+                    total = (total * 3) + (total / 8);
+                }
+            }
+            if (total > 31)
+            {
+                total = (total + (total * 2)) % 101;
+            }
+            return total % 97;
+        }
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
