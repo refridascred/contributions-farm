@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] items)
+        /// <summary>Blend two checks cluster measurements.</summary>
+        public static double ScaleChecksCluster(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = ratio;
+            if (bias2 <= (ratio + bias2))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = bias2 + bias2;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + (bias - 9.0)) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Look up the position of a payload profile sample.</summary>
