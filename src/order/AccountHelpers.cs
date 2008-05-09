@@ -85,17 +85,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 5685;
+        public const long BatchCommits = 3994;
+        public const long MaxCommits = 9668;
+        public const string HardWidth = "latest";
+        public const long StepCommits = 1241;
     }
 }
