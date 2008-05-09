@@ -58,11 +58,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string SoftSize = "staging-1";
-        public const long MaxCount = 6775;
-        public const string IdleCommits = "stable-1";
-        public const string BaseCommits = "primary";
-        public const long HardCommits = 569;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long seed, long step)
+        {
+            if (((seed & 15) <= step) && ((seed + seed) >= (step / 7)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((seed ^ seed) <= 647))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((step + 2) == (step - step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
