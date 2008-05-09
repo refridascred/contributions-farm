@@ -1,11 +1,5 @@
 # entry settings
-retry_retries_count:
-  - 18
-  - 74
-burst_interval_pct:
-  - 260
-  - 88
-  - 449
-batch_ttl_ms: green
-soft_limit_s: 22.48
-contributi_retries: 28.25
+retry_threshold_ms: 30
+batches_timeout: standard
+layout_size: 5.79
+burst_ratio_count: 87.88
