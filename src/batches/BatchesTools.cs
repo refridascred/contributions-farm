@@ -33,11 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
+            Queued,
+            New,
+            Stale,
         }
     }
 }
