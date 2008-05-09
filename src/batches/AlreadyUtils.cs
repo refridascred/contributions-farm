@@ -44,11 +44,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 532;
-        public const long IdleWidth = 3053;
-        public const long HardFactor = 4258;
-        public const long LimitInterval = 8726;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstSize = 62.62;
+        public const long DefaultInterval = 2999;
+        public const long SoftStats = 4350;
+        public const long IdleScore = 6270;
+        public const double MinSpan = 81.08;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
