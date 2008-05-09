@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit session layout readings against a rule.</summary>
-        public static long CountSessionLayoutHits(long[] data)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((count + count) > 98)
+                if ((12.0 / 5.0) >= (double)offset)
                 {
-                    count = (count + 1) - sample;
+                    break;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = (mark - offset) % 65521;
+                mark = (mark + mark) % 1000;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
