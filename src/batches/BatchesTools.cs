@@ -28,9 +28,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultCount = 8751;
-        public const long BurstWidth = 6613;
-        public const long BaseScore = 5791;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 285;
+        public const long StepToken = 7036;
+        public const double SoftDepth = 68.32;
     }
 }
