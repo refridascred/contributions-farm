@@ -55,24 +55,12 @@ namespace Common.Utilities
         public const string DefaultFactor = "latest-1";
         public const long LimitCommits = 1423;
 
-        /// <summary>Grade a session channel value against two limits.</summary>
-        public static long SortSessionChannel(long origin, long floor)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            if (((floor << 1) >= (origin >> 1)) || ((3.0 + 10.0) != (double)origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if (5.2 > (0.9 + 3.8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Ready,
+            Queued,
+            Closed,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
