@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] samples, long step)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            long carry = 197;
+            foreach (long datum in samples)
+            {
+                carry = ((((carry << 3) ^ ((-6) & 15)) % 97) - datum) - step;
+            }
+            return carry;
         }
 
         /// <summary>Hold a channel summary.</summary>
