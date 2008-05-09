@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long limit, long step)
         {
-            Active,
-            Dropped,
-            Locked,
-            Pending,
-            Retry,
+            if ((double)limit > (18.0 + 8.6))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit + step) < 122)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(step < limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine checks stats values into a single score.</summary>
