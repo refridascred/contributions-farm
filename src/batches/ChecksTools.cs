@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchFactor = 21.32;
-        public const string CacheSpan = "legacy-edge";
-        public const double HardWidth = 6.97;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "fallback";
+        public const string SoftRatio = "local";
+        public const string HardAlready = "standard";
+        public const long MaxAlready = 9028;
+        public const string IdleAlready = "latest-edge";
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long ClassifyMetric(long floor, long offset)
