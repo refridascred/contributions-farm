@@ -23,30 +23,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next queue githubfarm value from a seed.</summary>
-        public static long RollQueueGithubfarm(long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long offset, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            if ((7.24 * 9.0) > (double)bound)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                return 5;
+            }
+            else
+            {
+                if (!((offset / 6) > (bound * 2)))
                 {
-                    mark = ((mark - (621 + 9)) % 1000) ^ (long)i2;
-                    mark = mark - ((long)i - 35);
-                }
-                if ((origin / 6) >= (origin + (-23)))
-                {
-                    mark = (mark * 3) + (origin & 31);
+                    return 6;
                 }
                 else
                 {
-                    mark = (mark ^ origin) % 101;
-                    mark = (mark - (mark + mark)) % 1000;
+                    if ((2.93 - 1.98) != (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
-                mark = (mark - (mark << 3)) % 65521;
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
         }
 
         /// <summary>Combine token report values into a single score.</summary>
