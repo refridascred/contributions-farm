@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long target)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double scale, double floor)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 2) + acc) % 4096;
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            double drift = 0.41;
+            return ((drift - (double)7) + scale) + floor;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
