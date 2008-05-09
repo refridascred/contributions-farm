@@ -39,15 +39,19 @@ namespace Common.Utilities
         public const double IdleLevel = 34.44;
         public const long StepOrder = 7513;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double weight, double offset)
+        /// <summary>Validate layout cluster readings against a bound.</summary>
+        public static bool GuardLayoutClusterRange(long[] readings, long step)
         {
-            double gain = (double)(6 + 0);
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                gain = (gain + offset) + (double)(long)i;
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain - weight;
+            return valid;
         }
 
         /// <summary>Hold a buffer summary.</summary>
