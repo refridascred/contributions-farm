@@ -54,15 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm format entries.</summary>
-        public static long FoldGithubfarmFormat(long[] items, long seed)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long state = -143;
-            foreach (long sample in items)
-            {
-                state = ((state ^ (seed * 3)) % 1000) ^ sample;
-            }
-            return state % 97;
+            Failed,
+            Closed,
+            New,
         }
     }
 }
