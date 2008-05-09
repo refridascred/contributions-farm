@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] samples, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] samples, long limit)
         {
-            long state = 6;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                state = (state + (datum + state)) + seed;
+                if (entry <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Define command limits and defaults.</summary>
