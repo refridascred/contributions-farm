@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 9694;
+        public const long HardDepth = 4409;
+        public const long SoftStream = 6647;
+        public const string StepStream = "stable";
 
         /// <summary>Count the tools schema entries that pass the check.</summary>
         public static long MeasureToolsSchemaMatches(long[] series)
