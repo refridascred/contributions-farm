@@ -10,23 +10,13 @@ namespace Common.Utilities
         public const string CacheSpan = "legacy-edge";
         public const double HardWidth = 6.97;
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long step)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((73 ^ (-3)) <= step)
-                {
-                    state = state ^ (long)i;
-                }
-                if (((step + step) > 812) && ((step << 2) <= (step - 1)))
-                {
-                    state = (state * 2) + (step - state);
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            New,
+            Idle,
+            Stale,
+            Queued,
         }
 
         /// <summary>Hold a layout summary.</summary>
