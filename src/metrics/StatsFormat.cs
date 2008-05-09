@@ -36,13 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Measure how many farm format samples are out of range.</summary>
+        public static long AuditFarmFormatGaps(long[] levels)
         {
-            Paused,
-            Ready,
-            Synced,
-            New,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum & 31) == (53 >> 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
