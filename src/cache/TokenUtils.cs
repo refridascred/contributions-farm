@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] readings)
         {
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (count >= 6)
+                {
+                    count = (count + 2) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cluster record.</summary>
