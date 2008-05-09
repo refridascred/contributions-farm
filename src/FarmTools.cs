@@ -20,22 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] data, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((9.0 - 2.6) <= (double)count)
-                {
-                    count = ((count + 1) + datum) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
