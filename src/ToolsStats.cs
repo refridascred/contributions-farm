@@ -19,19 +19,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] data, long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if ((carry % 16) <= (carry >> 3))
+                if (datum > limit)
                 {
-                    carry = (carry - carry) % 1000;
+                    found = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Accumulate report samples.</summary>
