@@ -16,15 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long step)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            New,
+            Draft,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the queue status values.</summary>
