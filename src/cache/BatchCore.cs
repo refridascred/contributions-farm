@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long CacheSchema = 4273;
         public const string DefaultSchema = "latest-edge";
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstStream = "primary-v2";
+        public const string IdleStream = "staging";
+        public const double SoftCount = 31.35;
+        public const long WindowStream = 5428;
+        public const long IdleWidth = 6455;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LookupBatchIndex(long[] samples, long bound)
