@@ -30,12 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] values)
         {
-            public double Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            long state = 27;
+            foreach (long reading in values)
+            {
+                state = (state * 3) + (reading + state);
+            }
+            return state;
         }
     }
 }
