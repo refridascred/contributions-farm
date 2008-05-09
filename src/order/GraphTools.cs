@@ -21,20 +21,21 @@ namespace Common.Utilities
         public const long BurstPayload = 3906;
         public const double StepWidth = 34.35;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)i << 2) != (offset % 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total - total) % 4096;
-                    total = total - offset;
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Compare every pair of already profile readings.</summary>
