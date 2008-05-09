@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] samples, long bound)
+        /// <summary>Look up the position of a schema session sample.</summary>
+        public static long LookupSchemaSessionIndex(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seen >= 7.5)
+                if (items[i] <= bound)
                 {
-                    seen = ((seen + 1) + reading) + bound;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
