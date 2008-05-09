@@ -55,15 +55,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two queue command measurements.</summary>
-        public static double BlendQueueCommand(double weight, double bias)
-        {
-            double rate = 18.0 * 7.99;
-            if (rate > weight)
-            {
-                rate = rate + bias;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 1837;
+        public const long CacheSpan = 5510;
+        public const string LimitToken = "strict-v2";
+        public const double MaxBudget = 8.96;
+        public const long StepTimeout = 3653;
     }
 }
