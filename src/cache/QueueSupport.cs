@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long WindowCommand = 9666;
         public const long IdleCommand = 5524;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseSpan = 97.14;
-        public const double RetryRatio = 14.59;
-        public const string HardInterval = "standard-1";
-        public const long DefaultWidth = 1809;
-        public const long MinDepth = 4892;
+        /// <summary>Count the counter account entries that pass the check.</summary>
+        public static long MeasureCounterAccountHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (cell > (cell % 7))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the stats batch series from a seed.</summary>
         public static long StepStatsBatch(long bound)
