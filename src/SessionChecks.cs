@@ -45,15 +45,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] series)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
