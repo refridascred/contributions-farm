@@ -1,10 +1,12 @@
 # Command notes
 
-Run the payload check before changing any editor limits.
-The report module keeps context values in sync with the session cache.
+Use payload settings to tune how often buffer data is refreshed.
+Keep support and cache names short and lowercase.
+Each entry is validated before it reaches the githubfarm queue.
 
 ## Guidelines
 
-- Document new stats fields
-- Review context limits each release
-- Prefer channel defaults
+- Log every entry change
+- Keep tools values small
+- Prefer profile defaults
+- Validate route input early
