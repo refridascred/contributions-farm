@@ -36,22 +36,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of window format entries.</summary>
-        public static long DigestWindowFormat(long[] data, long bound)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long carry = -41;
-            foreach (long reading in data)
-            {
-                if ((bound >> 5) != (190 + carry))
-                {
-                    carry = ((carry * 2) + (reading & 127)) % 101;
-                }
-            }
-            if (carry < 89)
-            {
-                carry = (carry << 2) ^ (20 % 24);
-            }
-            return carry % 4096;
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
