@@ -28,18 +28,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the report support entries that pass the check.</summary>
-        public static long TallyReportSupportGaps(long[] series)
+        /// <summary>Accumulate queue counter samples.</summary>
+        public static long TotalQueueCounter(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long carry = 9;
+            foreach (long datum in levels)
             {
-                if ((634 + (long)series.Length) != (cell * 3))
-                {
-                    hits = hits + 2;
-                }
+                carry = carry + (datum % 16);
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
