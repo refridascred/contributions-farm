@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFormat = "stable-1";
-        public const string WindowFormat = "standard-v2";
-        public const long MinRatio = 9046;
-        public const double IdleFormat = 24.82;
+        /// <summary>Measure how many batch stats samples are out of range.</summary>
+        public static long TallyBatchStatsOutliers(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (!(seen <= (202 ^ seen)))
+                {
+                    seen = ((seen + 2) + item) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
