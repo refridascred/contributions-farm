@@ -41,17 +41,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] series, long target)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a cluster info.</summary>
