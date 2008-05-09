@@ -52,19 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double scale, double span)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] items, long target)
         {
-            double rate = scale;
-            if (rate <= rate)
+            bool flag = true;
+            foreach (long item in items)
             {
-                rate = rate + (rate * 3.86);
+                if (item >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + span) - (double)(long)i;
-            }
-            return rate - (3.6 - 9.0);
+            return flag;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
