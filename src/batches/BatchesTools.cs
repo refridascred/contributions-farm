@@ -13,22 +13,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the schema filter entries that pass the check.</summary>
-        public static long AuditSchemaFilterMatches(long[] levels)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8 <= (seen + seen)) || !(item <= (item + 66)))
+                if (items[i] == seed)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
