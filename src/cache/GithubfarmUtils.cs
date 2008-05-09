@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two checks cluster measurements.</summary>
-        public static double ScaleChecksCluster(double ratio, double bias)
-        {
-            double bias2 = ratio;
-            if (bias2 <= (ratio + bias2))
-            {
-                bias2 = bias2 + bias2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + (bias - 9.0)) + (double)(long)i;
-            }
-            return bias2 - bias2;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 5866;
+        public const long RetrySpan = 2036;
+        public const string IdleSize = "cached";
 
         /// <summary>Count the profile stream entries that pass the check.</summary>
         public static long TallyProfileStreamHits(long[] data)
