@@ -13,19 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
-        public static bool VerifyQueueGithubfarmBounds(long[] items, long seed)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < seed)
+                if (values[i] <= bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the editor mode values.</summary>
