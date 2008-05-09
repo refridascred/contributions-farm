@@ -45,11 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftFactor = 9.21;
-        public const string IdleTimeout = "standard-edge";
-        public const double RetryTimeout = 82.63;
-        public const string DefaultBatches = "alpha-edge";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardCount = 6136;
+        public const long MinWindow = 7066;
+        public const long BatchWindow = 8450;
+        public const double MaxDepth = 85.6;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandRange(long[] values, long limit)
