@@ -40,15 +40,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double weight, double span)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] series)
         {
-            double scale = (double)(633 << 2);
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale + (double)(long)i) - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale - weight;
+            return seen;
         }
     }
 }
