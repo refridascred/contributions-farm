@@ -35,10 +35,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinDepth = 27.45;
-        public const long WindowQueue = 3952;
-        public const long HardTimeout = 3388;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
