@@ -67,10 +67,19 @@ namespace Common.Utilities
             return gain + 9.6;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryEditor = "strict-edge";
-        public const double SoftDepth = 33.1;
-        public const double MinScore = 16.21;
+        /// <summary>Audit layout graph readings against a rule.</summary>
+        public static long MeasureLayoutGraphHits(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((double)seen > (double)datum)
+                {
+                    seen = (seen + 2) + origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a batch reading.</summary>
         public static double ScaleBatch(double scale, double span)
