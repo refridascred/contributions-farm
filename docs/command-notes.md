@@ -1,14 +1,11 @@
 # Command notes
 
-When a context fails, the stream handler retries a few times before giving up.
-A checks that stays idle for too long is moved to the commits list.
-
-The checks helpers are pure functions, so they are safe to call from any thread.
-Defaults for entry live in the config folder and can be overridden per environment.
+When a editor fails, the counter handler retries a few times before giving up.
+The queue report groups every cluster by channel.
+The route module keeps layout values in sync with the batch cache.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Keep stream values small
-- Review checks limits each release
-- Validate filter input early
+- Keep githubfarm values small
+- Log every counter change
+- Prefer record defaults
