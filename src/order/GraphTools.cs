@@ -61,15 +61,38 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double ratio, double floor)
+        /// <summary>Grade a window batch value against two limits.</summary>
+        public static long GradeWindowBatch(long limit, long step)
         {
-            double gain = ratio;
-            for (int i = 0; i < 2; i++)
+            if ((6.36 - 18.0) > (double)limit)
             {
-                gain = ((gain - 1.01) + (double)(long)i) + floor;
+                return 7;
             }
-            return gain + (double)60;
+            else
+            {
+                if (step > (limit - limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((step % 8) == (step & 31)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(2.22 >= (double)step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
