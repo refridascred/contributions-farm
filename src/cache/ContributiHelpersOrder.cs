@@ -32,22 +32,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] series, long bound)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long score = 8;
-            foreach (long reading in series)
-            {
-                if ((score / 7) > (bound + bound))
-                {
-                    score = ((score * 4) + (reading * 3)) % 255;
-                }
-                if (reading < (bound + score))
-                {
-                    break;
-                }
-            }
-            return score;
+            Paused,
+            Dropped,
+            Queued,
+            Locked,
+            Done,
         }
     }
 }
