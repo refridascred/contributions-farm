@@ -44,32 +44,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long step, long origin)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long edge = step - origin;
-            if (((double)origin >= (7.62 - 4.9)) || ((double)origin < (1.34 - 6.21)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((-78) * 5) < (step >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.3 / 6.0) <= (double)edge)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
     }
 }
