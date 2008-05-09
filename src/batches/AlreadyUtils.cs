@@ -55,23 +55,21 @@ namespace Common.Utilities
         public const long HardFactor = 4258;
         public const long LimitInterval = 8726;
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] levels)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (3.0 >= (double)(long)i)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score * 3) + origin;
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if ((origin % 8) <= (52 * 3))
-                {
-                    score = score ^ (origin + score);
-                }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return tally;
         }
     }
 }
