@@ -65,17 +65,11 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] samples, long limit)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Locate a profile reading by value.</summary>
