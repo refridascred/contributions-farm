@@ -41,12 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] data, long target)
         {
-            Idle,
-            Ready,
-            Locked,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits / 6) >= (sample + target))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
