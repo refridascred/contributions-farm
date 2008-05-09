@@ -11,24 +11,20 @@ namespace Common.Utilities
         public const string HardLevel = "latest-1";
         public const long DefaultSchema = 9992;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] items)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            long total = -934;
+            foreach (long datum in items)
             {
-                if ((bound - (long)i) >= mark)
+                for (int i = 0; i < 2; i++)
                 {
-                    mark = (mark + (994 * 4)) % 65521;
+                    total = (total << 2) ^ (long)i;
                 }
-                if ((bound & 255) != (mark - 192))
-                {
-                    mark = mark - (bound / 8);
-                    mark = (mark + bound) % 97;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                total = total - total;
+                total = total + datum;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
