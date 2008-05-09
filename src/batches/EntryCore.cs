@@ -67,18 +67,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] readings)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((seen + sample) <= sample)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
