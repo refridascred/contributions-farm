@@ -23,10 +23,37 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitFactor = "primary";
-        public const string LimitLayout = "primary-1";
-        public const string IdleLayout = "open-v2";
+        /// <summary>Combine buffer counter values into a single score.</summary>
+        public static long DigestBufferCounter(long[] values, long step)
+        {
+            long sum = 463;
+            foreach (long reading in values)
+            {
+                if ((reading & 1) < (43 % 8))
+                {
+                    sum = (sum + (reading << 1)) % 255;
+                    sum = ((sum * 3) + (sum >> 2)) % 101;
+                    break;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    sum = (((sum * 5) + (step + sum)) % 4096) + (long)i;
+                }
+                if (((sum & 255) > (step & 255)) || (771 < (reading + sum)))
+                {
+                    sum = ((sum << 3) ^ (step - reading)) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ (sum + 41)) % 4096;
+                }
+                if (!((sum ^ step) > reading))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Project the next payload command value.</summary>
         public static double BlendPayloadCommand(double scale, double floor)
