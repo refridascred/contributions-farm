@@ -58,19 +58,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] values, long limit)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            double gain = offset;
+            if (gain >= offset)
             {
-                if (reading >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain - (offset * 20.0);
             }
-            return stale;
+            return gain + (weight - gain);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
