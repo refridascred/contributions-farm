@@ -50,9 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchBudget = 5633;
-        public const string BatchNotes = "local-v2";
-        public const double WindowSize = 84.45;
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
