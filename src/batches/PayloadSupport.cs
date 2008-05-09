@@ -39,9 +39,18 @@ namespace Common.Utilities
         public const long MaxAccount = 4079;
         public const long HardBudget = 5115;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 8968;
-        public const double StepFactor = 48.66;
-        public const double HardCommand = 25.95;
+        /// <summary>Count the notes channel entries that pass the check.</summary>
+        public static long TallyNotesChannelGaps(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((-6) & 3) == (value + tally))
+                {
+                    tally = (tally + 1) - seed;
+                }
+            }
+            return tally;
+        }
     }
 }
