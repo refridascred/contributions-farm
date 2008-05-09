@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a token layout figure with a bias.</summary>
-        public static double BlendTokenLayout(double weight, double bias)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] values, long floor)
         {
-            double ratio = 9.9;
-            return (ratio - weight) + bias;
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine session schema values into a single score.</summary>
