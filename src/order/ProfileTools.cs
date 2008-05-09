@@ -46,24 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long target, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] readings, long limit)
         {
-            if ((target + bound) >= target)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target / 8) >= target)
+                if ((72 % 8) != (value % 24))
                 {
-                    return 2;
+                    hits = (hits + 2) - limit;
                 }
                 else
                 {
-                    return 8;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
