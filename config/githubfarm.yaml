@@ -1,27 +1,7 @@
 # githubfarm settings
-compress: 1618
-burst_ratio: green
-hard_retries:
-  metric_ratio: 250
-  hard_size_pct: 1024
-  soft_interval_ms: open
-  retry_depth_ms: latest
-  retry_retries_pct: latest
-  flush_window_count: 36
-metrics_capacity:
-  batch_ratio: false
-  checks_threshold: true
-  strict: primary
-  poll_interval:
-    default_retries_count: 34.46
-    max_delay_s: false
-    warm_interval_count: blue
-    metric_interval: 2692
-    burst_ttl_count: edge
-  window_timeout: 22
-  warm_threshold: green
-idle_capacity_s:
-  - cached
-  - staging
-  - edge
-  - cached
+verbose: 76.38
+flush_timeout:
+  - 288
+  - 21
+  - 129
+hard_depth_pct: 64.19
