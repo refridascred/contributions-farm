@@ -1,5 +1,7 @@
 {
-  "warm_interval_count": 60.91,
-  "flush_interval_count": 8.45,
-  "metric_depth": 1024
+  "burst_size": "primary",
+  "cache_window_pct": 54,
+  "stream_interval": false,
+  "compress": "strict",
+  "hard_delay": "latest"
 }
