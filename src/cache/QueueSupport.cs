@@ -11,10 +11,25 @@ namespace Common.Utilities
         public const string HardLevel = "latest-1";
         public const long DefaultSchema = 9992;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseFactor = 9646;
-        public const double CacheSupport = 49.62;
-        public const long IdleSupport = 5995;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((bound - (long)i) >= mark)
+                {
+                    mark = (mark + (994 * 4)) % 65521;
+                }
+                if ((bound & 255) != (mark - 192))
+                {
+                    mark = mark - (bound / 8);
+                    mark = (mark + bound) % 97;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long StepContributi(long limit)
