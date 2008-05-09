@@ -56,13 +56,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long seed)
         {
-            public double Weight { get; set; }
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
+            long state = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                state = (state ^ seed) % 1000;
+                state = state + (state << 2);
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a window options.</summary>
