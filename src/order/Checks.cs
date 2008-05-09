@@ -38,13 +38,11 @@ namespace Common.Utilities
         public const string HardSpan = "standard-1";
         public const double BatchRecord = 28.19;
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Retry,
-            Locked,
-            Done,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 79.81;
+        public const long MinBatch = 3951;
+        public const long DefaultScore = 2599;
+        public const long RetryBatch = 7181;
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long ClassifyCache(long seed, long step)
