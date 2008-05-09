@@ -48,19 +48,22 @@ namespace Common.Utilities
             return (rate - ratio) + bias;
         }
 
-        /// <summary>Accumulate payload contributi samples.</summary>
-        public static long WeighPayloadContributi(long[] series, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] series)
         {
-            long acc = 76;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long item in series)
             {
-                acc = ((acc << 3) ^ (acc * 3)) + entry;
+                if ((item - 58) < (item + item))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (acc > 9)
-            {
-                acc = acc + (floor - floor);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a route record.</summary>
