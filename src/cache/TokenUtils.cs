@@ -19,12 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long floor, long target)
         {
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
+            long prev = floor - target;
+            if (!((7.0 * 8.4) > (double)target))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((-4) + prev) > target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-8) * 3) > prev)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
