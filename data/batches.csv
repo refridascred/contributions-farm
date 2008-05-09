@@ -1,8 +1,8 @@
-id,ratio,active,owner
-1,87.19,strict,712
-2,local,fallback,83.53
-3,620,edge,957
-4,625,672,staging
-5,369,486,885
-6,strict,393,primary
-7,46.76,eu-west,903
+id,weight
+1,local
+2,529
+3,89.51
+4,396
+5,primary
+6,96.93
+7,142
