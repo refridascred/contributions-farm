@@ -1,6 +1,9 @@
-id,score
-1,latest
-2,527
-3,open
-4,55.9
-5,446
+id,token,weight,active
+1,stable,9.81,696
+2,stable,edge,fallback
+3,648,open,109
+4,30.93,575,188
+5,staging,24.2,2.15
+6,74.56,4.1,629
+7,8,blue,stable
+8,eu-west,372,527
