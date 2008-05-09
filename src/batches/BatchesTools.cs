@@ -13,17 +13,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] items, long seed)
+        /// <summary>Roll a queue githubfarm counter forward.</summary>
+        public static long IterateQueueGithubfarm(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
