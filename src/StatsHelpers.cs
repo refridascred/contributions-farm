@@ -51,18 +51,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the session report entries that pass the check.</summary>
-        public static long MeasureSessionReportHits(long[] samples, long limit)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((limit - 64) == (limit * 3))
-                {
-                    seen = (seen + 1) - item;
-                }
-            }
-            return seen;
+            Paused,
+            Idle,
+            Done,
         }
     }
 }
