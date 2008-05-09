@@ -20,13 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            Paused,
+            Stale,
+            Pending,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
