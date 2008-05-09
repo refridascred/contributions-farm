@@ -15,12 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] values, long bound)
         {
-            Dropped,
-            Synced,
-            Locked,
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the window level values.</summary>
