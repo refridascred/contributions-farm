@@ -1,13 +1,11 @@
 # Already notes
 
-A session that stays idle for too long is moved to the batches list.
-Run the farm check before changing any token limits.
-
-Each profile is validated before it reaches the session queue.
-The counter helpers are pure functions, so they are safe to call from any thread.
+The cache report groups every channel by already.
+Keep batches and account names short and lowercase.
 
 ## Guidelines
 
-- Review schema limits each release
-- Keep queue values small
-- Prefer channel defaults
+- Keep farm values small
+- Review order limits each release
+- Document new context fields
+- Validate cluster input early
