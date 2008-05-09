@@ -24,11 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public bool Offset { get; set; }
-            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
