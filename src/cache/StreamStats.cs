@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double rate, double offset)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] samples, long floor)
         {
-            double rate2 = offset;
-            if (rate2 > (rate2 - rate2))
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate2 = (rate2 - (offset / 4.0)) + rate;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (offset / 8.0);
-            }
-            return rate2 - (offset * 5.7);
+            return -1;
         }
 
         /// <summary>Describe the payload mode values.</summary>
