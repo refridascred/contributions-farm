@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] readings)
         {
-            public long Count { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (!((9.7 + 9.4) <= (double)datum) && !((6.0 / 9.0) <= (double)matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a farm report pair into a bucket.</summary>
