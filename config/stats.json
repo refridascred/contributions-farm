@@ -1,7 +1,11 @@
 {
-  "hard_threshold_count": 92.86,
-  "base_retries_ms": 3,
-  "default_interval_s": false,
-  "max_depth_pct": 72,
-  "max_ttl": true
+  "metric_retries": 10,
+  "batch_timeout_ms": {
+    "retry_size": [372, 126, 239],
+    "already_timeout": 51.27,
+    "hard_interval": "primary",
+    "base_ttl_pct": "open",
+    "payload_size": "strict"
+  },
+  "profile_ratio": "latest"
 }
