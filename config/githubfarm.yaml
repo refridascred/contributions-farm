@@ -1,18 +1,27 @@
 # githubfarm settings
-warm_window:
-  warm_threshold_pct:
-    persist:
-      - cached
-      - green
-      - edge
-    readonly: 49.18
-    audit: edge
-    enabled: fallback
-    sync_timeout: standard
-    warm_interval_count: eu-west
-  default_timeout_count: false
-  batch_limit_pct: local
-  dry_run: fallback
-report_interval: false
-compress: green
-verbose: primary
+compress: 1618
+burst_ratio: green
+hard_retries:
+  metric_ratio: 250
+  hard_size_pct: 1024
+  soft_interval_ms: open
+  retry_depth_ms: latest
+  retry_retries_pct: latest
+  flush_window_count: 36
+metrics_capacity:
+  batch_ratio: false
+  checks_threshold: true
+  strict: primary
+  poll_interval:
+    default_retries_count: 34.46
+    max_delay_s: false
+    warm_interval_count: blue
+    metric_interval: 2692
+    burst_ttl_count: edge
+  window_timeout: 22
+  warm_threshold: green
+idle_capacity_s:
+  - cached
+  - staging
+  - edge
+  - cached
