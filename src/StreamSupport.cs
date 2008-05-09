@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] values, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] data, long offset)
         {
-            long acc = 10;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                acc = (((acc + 85) % 4096) ^ reading) - origin;
+                if ((offset & 127) == (cell * 4))
+                {
+                    tally = tally + 1;
+                }
             }
-            if (acc > 777)
-            {
-                acc = (acc ^ (acc / 7)) % 65521;
-            }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
