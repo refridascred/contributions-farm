@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Audit window metrics readings against a rule.</summary>
+        public static long MeasureWindowMetricsOutliers(long[] levels, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (((415 - seed) != (acc - seed)) || ((double)(long)i != (12.0 - 3.45)))
+                if ((long)levels.Length >= floor)
                 {
-                    acc = (acc * 3) + (acc + 629);
-                    continue;
+                    seen = (seen + 2) - item;
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count the window metrics entries that pass the check.</summary>
