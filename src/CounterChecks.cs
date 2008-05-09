@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] series, long target)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double gain, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = span * 2.3;
+            for (int i = 0; i < 6; i++)
             {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (gain * 18.0)) + (double)(long)i;
             }
-            return -1;
+            return rate - span;
         }
 
         /// <summary>Audit window metrics readings against a rule.</summary>
