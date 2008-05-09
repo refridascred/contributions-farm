@@ -37,19 +37,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] levels, long bound)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Weight { get; set; }
+            public string Level { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
