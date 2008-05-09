@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 2720;
-        public const double BaseSize = 63.93;
-        public const long IdleNotes = 9516;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long WindowWidth = 4934;
