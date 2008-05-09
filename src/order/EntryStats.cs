@@ -49,11 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstGithubfarm = 15.05;
-        public const long BaseScore = 3873;
-        public const string DefaultScore = "strict-v2";
-        public const long IdleScore = 6642;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (((seen / 2) >= (reading * 3)) || (seen < ((long)levels.Length ^ seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a cache metric figure with a bias.</summary>
         public static double ProjectCacheMetric(double bias, double offset)
