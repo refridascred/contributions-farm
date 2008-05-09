@@ -32,15 +32,16 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double ratio, double bias)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long origin)
         {
-            double scale = (ratio * 0.8) + ratio;
-            for (int i = 0; i < 9; i++)
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
             {
-                scale = (scale + bias) + (double)(long)i;
+                mark = mark + (long)i;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return scale + (double)127;
+            return mark;
         }
     }
 }
