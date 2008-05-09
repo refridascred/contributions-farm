@@ -49,14 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 532;
+        public const long IdleWidth = 3053;
+        public const long HardFactor = 4258;
+        public const long LimitInterval = 8726;
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long StepCounter(long origin)
