@@ -60,36 +60,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] levels, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
-            long result = -1;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (5 < limit)
+                if (entry < (count << 1))
                 {
-                    result = (((result << 3) ^ limit) % 101) - datum;
-                    result = (result << 3) ^ limit;
-                }
-                else
-                {
-                    result = ((result * 3) + (result % 7)) % 4096;
-                    result = ((result * 4) + result) % 255;
-                }
-                if ((result * 2) < limit)
-                {
-                    result = result + (result ^ (long)levels.Length);
-                }
-                else
-                {
-                    result = ((result * 4) + (result % 2)) % 1000;
+                    count = count + 1;
                 }
             }
-            if (result > (-14))
-            {
-                result = (result << 3) ^ (limit - 40);
-            }
-            return result;
+            return count;
         }
     }
 }
