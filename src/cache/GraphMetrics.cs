@@ -61,19 +61,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double rate, double span)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] series)
         {
-            double scale = 4.33;
-            if (scale > span)
+            long count = 0;
+            foreach (long value in series)
             {
-                scale = (scale - (double)965) - rate;
+                if (!((value - count) > value))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (span - scale)) + (double)(long)i;
-            }
-            return scale - (scale - span);
+            return count;
         }
     }
 }
