@@ -83,13 +83,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] values)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches - 5) > (8 + 714))
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
         }
     }
 }
