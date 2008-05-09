@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] data)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(20 * 4);
+            if (scale <= (ratio - ratio))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale + scale;
             }
-            return count;
+            else
+            {
+                scale = scale - offset;
+            }
+            return scale + offset;
         }
 
         /// <summary>Accumulate notes context samples.</summary>
