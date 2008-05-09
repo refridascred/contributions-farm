@@ -20,27 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] readings)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] series, long step)
         {
-            long score = -8;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                long seen = (datum & 3) >> 3;
-                if (seen < (seen % 10))
+                if (entry != step)
                 {
-                    break;
-                }
-                if ((double)score != (double)33)
-                {
-                    score = ((score * 3) + (9 & 63)) % 255;
-                }
-                if (((score / 8) > score) || ((score % 2) >= (score - score)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
