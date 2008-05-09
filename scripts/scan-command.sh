@@ -7,11 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 1))
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in open local; do
+COMMAND_LIMIT=163
+log "limit is ${COMMAND_LIMIT}"
+
+for item in standard fallback stable blue; do
     log "checking ${item}"
 done
