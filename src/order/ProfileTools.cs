@@ -39,22 +39,11 @@ namespace Common.Utilities
         public const long SoftFilter = 204;
         public const long LimitBudget = 8663;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] series, long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long mix = 103;
-            foreach (long sample in series)
-            {
-                if ((offset + mix) >= (sample - 94))
-                {
-                    mix = (mix * 3) + (26 % 24);
-                }
-            }
-            if (mix > 826)
-            {
-                mix = mix - offset;
-            }
-            return mix % 4096;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
