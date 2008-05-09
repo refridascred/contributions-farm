@@ -22,15 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] data)
+        /// <summary>Look up the position of a payload profile sample.</summary>
+        public static long FindPayloadProfileIndex(long[] samples, long limit)
         {
-            long total = 938;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total << 3) ^ total) ^ item;
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
