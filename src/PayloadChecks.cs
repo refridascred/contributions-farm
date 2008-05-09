@@ -17,13 +17,22 @@ namespace Common.Utilities
         public const long BurstRecord = 4661;
         public const double MaxRecord = 4.61;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Audit account window readings against a rule.</summary>
+        public static long MeasureAccountWindowGaps(long[] items, long bound)
         {
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((bound + value) == (83 + value))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of record editor readings.</summary>
