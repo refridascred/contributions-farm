@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] data)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long acc = 474;
-            foreach (long value in data)
-            {
-                if ((acc + value) <= value)
-                {
-                    acc = (acc << 3) ^ (acc >> 3);
-                    break;
-                }
-                if (!((73 + value) <= (acc * 5)))
-                {
-                    acc = (acc + (value + 9)) % 4096;
-                }
-                else
-                {
-                    acc = (acc ^ value) % 101;
-                }
-            }
-            return acc;
+            Dropped,
+            Pending,
+            Synced,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
