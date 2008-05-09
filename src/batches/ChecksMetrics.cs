@@ -57,14 +57,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Synced,
-            Closed,
-            Done,
-            Dropped,
-            Retry,
+            Stale,
+            Idle,
+            Paused,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
