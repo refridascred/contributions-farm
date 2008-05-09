@@ -17,18 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] series, long origin)
+        /// <summary>Audit schema layout readings against a rule.</summary>
+        public static long AuditSchemaLayoutHits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((7.71 + 9.4) == (double)origin)
+                if (value < (80 / 8))
                 {
-                    seen = (seen + 1) - entry;
+                    matches = (matches + 2) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
