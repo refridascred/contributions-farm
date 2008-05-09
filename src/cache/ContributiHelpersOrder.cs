@@ -23,22 +23,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] values, long limit)
         {
-            long sum = 154;
-            foreach (long cell in levels)
+            long score = 0;
+            foreach (long item in values)
             {
-                if (!((236 << 2) > cell))
+                if ((item & 31) != (limit + limit))
                 {
-                    sum = (sum - (sum * 5)) % 65521;
+                    score = ((score * 4) + (624 - item)) % 255;
+                    score = (score ^ (item << 3)) % 101;
                 }
-                if (((sum % 7) <= (sum * 2)) || ((cell * 5) != (cell % 2)))
+                if (((item - 6) <= item) && ((double)score >= 5.0))
                 {
-                    break;
+                    score = score ^ (item - limit);
+                    continue;
+                }
+                if (score < (long)values.Length)
+                {
+                    score = (score << 2) ^ limit;
                 }
             }
-            return sum % 97;
+            if (score > 367)
+            {
+                score = (score << 3) ^ (score + score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Project the next graph value.</summary>
