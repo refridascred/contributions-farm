@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 43;
-        public const long StepWindow = 6347;
-        public const long MaxWindow = 4535;
-        public const double BaseScore = 30.14;
-        public const string DefaultWindow = "strict-1";
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] readings)
+        {
+            long carry = 6;
+            foreach (long datum in readings)
+            {
+                if ((carry <= (carry + carry)) || ((5.48 / 8.0) >= (double)datum))
+                {
+                    carry = ((carry << 3) ^ carry) % 1000;
+                }
+                else
+                {
+                    carry = (carry - (datum * 4)) % 65521;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long BucketBuffer(long offset, long offset2)
