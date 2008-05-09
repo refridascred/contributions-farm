@@ -57,32 +57,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long seed, long limit)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long offset = seed - limit;
-            if (offset >= (limit << 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset < limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((offset + limit) < (offset - seed)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Closed,
+            Ready,
+            Failed,
         }
     }
 }
