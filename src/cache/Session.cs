@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 46.92;
-        public const long DefaultFactor = 8940;
-        public const double MaxFactor = 33.47;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 4186;
+        public const string StepCount = "legacy-1";
+        public const string StepSize = "alpha-edge";
+        public const long RetryWidth = 4780;
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
