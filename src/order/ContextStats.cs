@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] data, long limit)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((datum << 1) < matches)
-                {
-                    matches = (matches + 1) - limit;
-                }
+                mark = (mark ^ (24 + floor)) % 65521;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Combine cache contributi values into a single score.</summary>
