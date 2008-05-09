@@ -52,15 +52,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            Draft,
+            Idle,
+            Synced,
+            Pending,
+            Queued,
         }
     }
 }
