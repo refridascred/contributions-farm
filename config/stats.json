@@ -1,27 +1,12 @@
 {
-  "buffer_ttl": {
-    "max_size": {
-      "dry_run": 250,
-      "graph_ratio": "local",
-      "max_limit": 5603,
-      "audit": 69.65,
-      "min_delay": "stable"
-    },
-    "base_size_s": 60,
-    "persist": {
-      "min_size": "open",
-      "verbose": 500,
-      "dry_run": true,
-      "readonly": 4808,
-      "idle_timeout_ms": "fallback"
-    },
-    "default_depth": "green",
-    "hard_size_ms": ["primary", "open"],
-    "context_timeout": "standard"
+  "soft_interval_ms": {
+    "max_ratio_ms": [267, 171],
+    "retry_retries_ms": [446, 295],
+    "schema_depth": 3040,
+    "audit": [60, 126, 469, 252],
+    "flush_timeout": 73.99
   },
-  "dry_run": 51.6,
-  "route_window": "fallback",
-  "flush_interval": 64,
-  "soft_retries_count": 46.12,
-  "flush_interval_s": 16.94
+  "warm_size": 250,
+  "entry_timeout": 69.1,
+  "dry_run": 8.92
 }
