@@ -16,12 +16,22 @@ namespace Common.Utilities
             return scale2 - (double)11;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstWidth = 10.2;
-        public const string BaseNotes = "cached-v2";
-        public const long IdleWidth = 271;
-        public const long MaxSize = 4631;
-        public const long WindowNotes = 5141;
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TallyAccount(long[] levels)
