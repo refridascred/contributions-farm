@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] items, long origin)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long target)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell != origin)
+                sum = sum ^ ((long)i & 3);
+                if (!((9.0 * 10.0) >= (double)target))
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum << 2) ^ (53 & 63)) % 1000;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Describe the stream status values.</summary>
