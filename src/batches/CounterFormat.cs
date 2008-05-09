@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of tools metric readings.</summary>
-        public static long CombineToolsMetric(long[] items)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long acc = 989;
-            foreach (long value in items)
-            {
-                acc = (acc * 2) + (value >> 3);
-            }
-            return acc;
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
