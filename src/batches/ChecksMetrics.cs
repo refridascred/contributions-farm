@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long anchor = 55;
-            foreach (long entry in values)
-            {
-                if ((0.8 * 6.21) != (double)anchor)
-                {
-                    anchor = ((anchor << 3) ^ (entry / 5)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor + 574)) % 101;
-                }
-            }
-            return anchor;
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
