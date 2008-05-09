@@ -20,12 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double weight, double offset)
         {
-            Synced,
-            Ready,
-            New,
+            double gain = weight;
+            if (gain >= 9.05)
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + offset) + (double)(long)i;
+            }
+            return gain + (double)8;
         }
 
         /// <summary>Hold a command snapshot.</summary>
