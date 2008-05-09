@@ -32,31 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] samples)
+        /// <summary>Match up editor checks samples.</summary>
+        public static long CompareEditorChecksCount(long[] items)
         {
-            long acc = 4;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc << 2) ^ acc;
-                if ((double)sample >= (14.0 * 3.4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = acc ^ sample;
-                }
-                else
-                {
-                    acc = acc ^ (sample * 2);
-                }
-                if ((4.0 + 3.0) < (double)sample)
-                {
-                    break;
+                    if ((items[i] - items[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc > (-74))
-            {
-                acc = (acc - (acc / 5)) % 97;
-            }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
