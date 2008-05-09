@@ -1,12 +1,12 @@
 # Command notes
 
-Use payload settings to tune how often buffer data is refreshed.
-Keep support and cache names short and lowercase.
-Each entry is validated before it reaches the githubfarm queue.
+Keep support and counter names short and lowercase.
+The context report groups every command by cache.
+The tools module keeps stats values in sync with the cluster cache.
 
 ## Guidelines
 
-- Log every entry change
-- Keep tools values small
-- Prefer profile defaults
-- Validate route input early
+- Review contributi limits each release
+- Log every githubfarm change
+- Prefer commits defaults
+- Keep batches values small
