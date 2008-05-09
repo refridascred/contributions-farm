@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double scale, double offset)
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
+            double weight = (double)(6 * 4);
+            if (weight < (offset / 9.0))
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + scale) + (double)(long)i;
+            }
+            return weight - (scale / 8.0);
         }
 
         /// <summary>Look up the position of a metrics tools sample.</summary>
