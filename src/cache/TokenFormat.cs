@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitScore = "cached-1";
-        public const double CacheSize = 3.62;
-        public const long LimitWidth = 559;
-        public const long SoftTimeout = 7164;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Locked,
+            Queued,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Measure how many account batches samples are out of range.</summary>
         public static long MeasureAccountBatchesMatches(long[] samples, long seed)
