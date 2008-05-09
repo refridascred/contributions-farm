@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a layout tools counter forward.</summary>
-        public static long IterateLayoutTools(long floor)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((state - 974) == (floor & 31)))
-                {
-                    state = ((state * 5) + ((long)i & 15)) % 101;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Draft,
+            Queued,
+            Retry,
+            Failed,
         }
 
         /// <summary>Count the counter account entries that pass the check.</summary>
