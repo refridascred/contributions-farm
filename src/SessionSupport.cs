@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit session filter readings against a rule.</summary>
-        public static long AuditSessionFilterMatches(long[] series)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((((double)matches < 6.0) || ((double)matches < (19.0 / 3.0))) || !((datum - datum) >= matches))
+                if (842 < origin)
                 {
-                    matches = matches + 1;
+                    acc = ((acc * 2) + acc) % 255;
                 }
+                else
+                {
+                    acc = acc ^ 471;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Fold a list of account readings.</summary>
