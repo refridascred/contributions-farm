@@ -13,20 +13,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 4879;
+        public const double BurstPayload = 69.49;
+        public const long MaxWidth = 3401;
+        public const long HardPayload = 2550;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double SmoothCommits(double gain, double bias)
