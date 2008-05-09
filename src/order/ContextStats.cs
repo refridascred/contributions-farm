@@ -17,26 +17,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate report githubfarm samples.</summary>
-        public static long ScoreReportGithubfarm(long[] items, long target)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long floor)
         {
-            long carry = 756;
-            foreach (long sample in items)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    carry = ((((carry << 2) ^ carry) % 97) - (long)i) - target;
-                }
-                if (((sample + sample) < carry) || ((double)carry >= (double)80))
-                {
-                    carry = (carry + (sample >> 1)) % 97;
-                }
-                if (!((530 / 5) >= carry))
-                {
-                    break;
-                }
+                acc = acc ^ (floor + floor);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Project the next format value.</summary>
