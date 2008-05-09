@@ -31,11 +31,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinSession = "stable-edge";
-        public const long DefaultSession = 2517;
-        public const long BatchWidth = 5457;
-        public const string BatchSession = "staging-edge";
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double AdjustGraph(double scale, double bias)
