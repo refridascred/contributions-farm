@@ -30,9 +30,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheSpan = "latest-edge";
-        public const double MaxInterval = 36.49;
-        public const double StepStats = 15.62;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
+        }
     }
 }
