@@ -89,13 +89,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] levels)
         {
-            New,
-            Idle,
-            Retry,
-            Active,
+            long acc = 1;
+            foreach (long reading in levels)
+            {
+                if (acc >= (acc & 7))
+                {
+                    acc = (((acc << 2) ^ (4 << 1)) % 4096) - reading;
+                }
+            }
+            return acc % 1000;
         }
     }
 }
