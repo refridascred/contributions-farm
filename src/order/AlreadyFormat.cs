@@ -38,15 +38,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] series)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double bias, double bias2)
         {
-            long carry = 7;
-            foreach (long entry in series)
-            {
-                carry = (((carry * 4) + (-2)) % 255) ^ entry;
-            }
-            return carry % 97;
+            double bias3 = (double)(53 - 18);
+            return ((bias3 - (double)(-559)) + bias) + bias2;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
