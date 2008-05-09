@@ -69,11 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleFactor = 3559;
-        public const long CacheCounter = 7005;
-        public const double BaseLevel = 86.14;
-        public const string BatchScore = "open-edge";
-        public const long LimitCounter = 1820;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
