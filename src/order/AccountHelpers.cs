@@ -22,38 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long step, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] series)
         {
-            if (floor < (step >> 2))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(step <= (step - floor)))
+                if (entry <= (hits >> 5))
                 {
-                    return 2;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((step - floor) > (step * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor > (78 << 3)) || ((double)step >= (8.0 * 0.87)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate batch samples.</summary>
