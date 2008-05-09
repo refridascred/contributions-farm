@@ -53,13 +53,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Accumulate format entry samples.</summary>
+        public static long WeighFormatEntry(long[] series)
         {
-            Draft,
-            Synced,
-            New,
-            Retry,
+            long mix = 15;
+            foreach (long value in series)
+            {
+                if ((mix - 662) <= mix)
+                {
+                    mix = (mix - (mix + mix)) ^ value;
+                }
+            }
+            if (mix > 2)
+            {
+                mix = (mix << 2) ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the checks kind values.</summary>
