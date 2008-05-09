@@ -1,18 +1,6 @@
 {
-  "retry_retries_ms": {
-    "cluster_retries": ["local", "eu-west"],
-    "sync_retries_pct": [225, 388, 93, 125],
-    "batch_ttl": ["green", "open", "stable"],
-    "max_window_s": ["standard", "fallback"],
-    "tools_limit": 19.86
-  },
-  "strict": {
-    "cache_timeout": true,
-    "poll_interval": false,
-    "burst_retries_pct": 1024,
-    "min_timeout": false
-  },
-  "default_timeout_pct": 5675,
-  "poll_retries": "latest",
-  "editor_capacity": [423, 373, 68]
+  "max_capacity": "cached",
+  "audit": [218, 325, 392, 336],
+  "idle_threshold_pct": 63,
+  "soft_delay_ms": 9485
 }
