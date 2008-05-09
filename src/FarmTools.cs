@@ -32,10 +32,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseQueue = 60.69;
-        public const long StepSize = 531;
-        public const double SoftRatio = 76.71;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] data, long limit)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((9.0 - 2.6) <= (double)count)
+                {
+                    count = ((count + 1) + datum) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up command context samples.</summary>
         public static long CompareCommandContextCount(long[] items)
