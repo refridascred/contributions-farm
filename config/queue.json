@@ -1,12 +1,6 @@
 {
-  "cache_timeout": 88,
-  "batch_threshold_pct": "primary",
-  "enabled": true,
-  "farm_size": false,
-  "idle_limit_count": "blue",
-  "warm_interval_pct": {
-    "hard_ratio_s": 60,
-    "verbose": 100,
-    "strict": false
-  }
+  "persist": false,
+  "max_retries_ms": true,
+  "tools_threshold": false,
+  "checks_depth": "primary"
 }
