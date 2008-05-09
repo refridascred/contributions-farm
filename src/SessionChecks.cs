@@ -44,15 +44,15 @@ namespace Common.Utilities
             return ((mean - mean) + gain) + bias;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] data, long seed)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long seed)
         {
-            long sum = 449;
-            foreach (long item in data)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                sum = ((sum << 2) ^ seed) ^ item;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return sum;
+            return state;
         }
     }
 }
