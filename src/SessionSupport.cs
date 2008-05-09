@@ -35,12 +35,24 @@ namespace Common.Utilities
             return weight - (offset / 7.0);
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long offset, long offset2)
         {
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
+            if (!((offset2 + offset2) > offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset2 < (74 * 2)) || ((offset2 & 1) == (offset * 4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
