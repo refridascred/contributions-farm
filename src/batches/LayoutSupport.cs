@@ -25,18 +25,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((datum + seen) != (seen % 60))
+                if (9.52 >= (double)hits)
                 {
-                    seen = seen + 1;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
