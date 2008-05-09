@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long offset, long bound)
         {
-            public double Total { get; set; }
-            public bool Rank { get; set; }
+            long delta = offset ^ bound;
+            if ((468 - bound) == (offset - delta))
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset >= (offset % 64))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)94 < (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(offset > (bound + 803)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
