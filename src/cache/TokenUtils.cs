@@ -34,12 +34,19 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] readings, long step)
         {
-            Dropped,
-            Synced,
-            Ready,
+            long state = -315;
+            foreach (long entry in readings)
+            {
+                state = (((state * 5) + (state >> 1)) ^ entry) - step;
+            }
+            if (state > 992)
+            {
+                state = (state + (state + state)) % 1000;
+            }
+            return state;
         }
     }
 }
