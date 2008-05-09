@@ -82,15 +82,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double scale, double span)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double ratio = scale;
-            if (ratio < (scale - scale))
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + span;
+            Done,
+            Paused,
+            Idle,
+            Ready,
+            Failed,
         }
     }
 }
