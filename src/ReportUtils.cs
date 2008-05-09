@@ -52,19 +52,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] items, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (cell < floor)
                 {
-                    sum = (((sum * 4) + ((long)i + (long)i)) % 97) ^ (long)i2;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
