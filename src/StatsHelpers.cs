@@ -60,11 +60,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheCount = 8734;
-        public const string CacheTimeout = "latest";
-        public const long StepCount = 2586;
-        public const long RetryReport = 2607;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long WindowInterval = 622;
