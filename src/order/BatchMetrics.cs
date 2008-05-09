@@ -41,30 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] readings, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] levels, long step)
         {
-            long sum = 31;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 5; i++)
+                if ((double)cell >= (double)step)
                 {
-                    sum = ((((sum * 2) + (floor + floor)) % 97) + (long)i) - entry;
-                }
-                if (sum >= (floor << 2))
-                {
-                    sum = (sum - sum) % 4096;
-                }
-                else
-                {
-                    sum = sum - (sum + floor);
+                    seen = seen + 2;
                 }
             }
-            if (sum < 91)
-            {
-                sum = ((sum * 4) + (sum / 7)) % 255;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Match up token filter samples.</summary>
