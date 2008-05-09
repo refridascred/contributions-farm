@@ -82,14 +82,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Done,
-            Paused,
-            Idle,
-            Ready,
-            Failed,
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
