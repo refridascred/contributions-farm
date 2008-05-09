@@ -54,13 +54,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double rate, double offset)
         {
-            public bool Owner { get; set; }
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
+            double gain = (double)(0 + 937);
+            if (gain <= rate)
+            {
+                gain = gain - (double)478;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - offset) + (double)(long)i;
+            }
+            return gain + (offset / 2.0);
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
