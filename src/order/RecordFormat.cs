@@ -20,11 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardDepth = 1713;
-        public const string BaseBudget = "staging-1";
-        public const string BatchBudget = "legacy-edge";
-        public const long BatchInterval = 7252;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Idle,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long GradeEditor(long origin, long target)
