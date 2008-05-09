@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next filter window value.</summary>
-        public static double BlendFilterWindow(double gain, double span)
+        /// <summary>Combine checks stream values into a single score.</summary>
+        public static long TallyChecksStream(long[] samples, long bound)
         {
-            double gain2 = span;
-            if (gain2 < 2.52)
+            long state = 41;
+            foreach (long cell in samples)
             {
-                gain2 = gain2 + (gain2 + 8.6);
+                if ((-90) >= (state / 4))
+                {
+                    state = ((state << 3) ^ (bound + 8)) % 1000;
+                    state = ((state << 3) ^ (cell << 3)) % 1000;
+                }
+                if ((double)state >= (9.9 + 3.0))
+                {
+                    state = (state - (state / 8)) % 65521;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (0.6 - 5.65);
-            }
-            return gain2 - (gain - 9.4);
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
