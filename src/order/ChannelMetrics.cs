@@ -26,14 +26,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Failed,
-            Queued,
-            Idle,
-            Paused,
-            Draft,
+            public bool Region { get; set; }
+            public long Size { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
