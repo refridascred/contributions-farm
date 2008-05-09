@@ -74,26 +74,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long sum = 989;
-            foreach (long entry in items)
-            {
-                if ((sum % 5) > (sum + sum))
-                {
-                    sum = sum + entry;
-                }
-                else
-                {
-                    sum = sum ^ (32 & 31);
-                }
-            }
-            if (sum < 314)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum % 1000;
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
