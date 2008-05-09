@@ -1,5 +1,7 @@
 {
-  "retry_depth_s": "green",
-  "idle_interval_ms": true,
-  "retry_threshold": 81.23
+  "batches_limit": 3.83,
+  "idle_threshold": [452, 72],
+  "default_retries_s": "strict",
+  "metrics_timeout": true,
+  "dry_run": 1024
 }
