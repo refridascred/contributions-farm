@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long LimitSupport = 9023;
         public const double SoftSpan = 53.69;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] data)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
