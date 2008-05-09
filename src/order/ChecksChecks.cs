@@ -32,11 +32,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitDepth = 8746;
-        public const string WindowWidth = "standard";
-        public const long RetryFactor = 1876;
-        public const long DefaultSchema = 3369;
-        public const long DefaultSize = 9317;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)4 < (double)tally)
+                {
+                    tally = ((tally + 2) + datum) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
