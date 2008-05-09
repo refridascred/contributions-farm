@@ -46,23 +46,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next payload command value.</summary>
-        public static double BlendPayloadCommand(double scale, double floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] data, long step)
         {
-            double drift = scale;
-            if (drift < scale)
+            long seen = 0;
+            foreach (long value in data)
             {
-                drift = (drift + (drift * 6.36)) - floor;
+                if ((step & 63) == (value + 669))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (drift * 3.92);
+            return seen;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
