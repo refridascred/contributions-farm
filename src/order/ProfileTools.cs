@@ -30,11 +30,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitFilter = "cached-edge";
-        public const long IdleScore = 4056;
-        public const long SoftFilter = 204;
-        public const long LimitBudget = 8663;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long ClassifyPayload(long limit, long target)
