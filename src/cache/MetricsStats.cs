@@ -37,16 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate queue counter samples.</summary>
-        public static long TotalQueueCounter(long[] levels)
-        {
-            long carry = 9;
-            foreach (long datum in levels)
-            {
-                carry = carry + (datum % 16);
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftTimeout = 4930;
+        public const long MaxScore = 4434;
+        public const long LimitContributi = 2908;
+        public const long DefaultContributi = 3503;
+        public const long MinScore = 6403;
 
         /// <summary>Validate route cache readings against a bound.</summary>
         public static bool GuardRouteCacheBounds(long[] data, long floor)
