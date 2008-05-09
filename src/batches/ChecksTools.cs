@@ -23,12 +23,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Iterate the queue graph series from a seed.</summary>
+        public static long RollQueueGraph(long seed)
         {
-            Done,
-            Locked,
-            New,
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = (mark ^ (mark & 15)) - (long)i2;
+                }
+                if (!((long)i >= (mark + seed)))
+                {
+                    long step = mark;
+                    mark = (mark * 5) + step;
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
