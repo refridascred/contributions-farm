@@ -54,22 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric report samples.</summary>
-        public static long ScoreMetricReport(long[] data, long floor)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long acc = 5;
-            foreach (long sample in data)
-            {
-                if ((4.91 - 13.0) <= (double)floor)
-                {
-                    acc = (((acc << 2) ^ (floor << 3)) % 97) - sample;
-                }
-            }
-            if (acc > 9)
-            {
-                acc = (acc ^ acc) % 97;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a session value against two limits.</summary>
