@@ -13,11 +13,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 4879;
-        public const double BurstPayload = 69.49;
-        public const long MaxWidth = 3401;
-        public const long HardPayload = 2550;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (hits < 15)
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double SmoothCommits(double gain, double bias)
