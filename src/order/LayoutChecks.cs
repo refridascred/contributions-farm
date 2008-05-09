@@ -39,13 +39,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long offset, long target)
         {
-            Draft,
-            Idle,
-            Locked,
-            Pending,
+            long lane = offset + target;
+            if ((0.4 - 16.0) < (double)lane)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target % 2) < (offset + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((9.97 * 12.0) != (double)target) && (67 >= (lane + target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)lane <= 3.2) || ((double)lane >= 7.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the counter level values.</summary>
