@@ -30,23 +30,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] values, long seed)
         {
-            long total = 5;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                for (int i = 0; i < 10; i++)
+                if (datum > seed)
                 {
-                    total = ((total << 2) ^ (reading ^ (long)i)) % 65521;
+                    ok = false;
+                    break;
                 }
-                if (!((7.62 > (double)total) || ((16.0 - 3.7) != (double)reading)))
-                {
-                    total = ((total * 4) + 84) % 255;
-                }
-                total = (total * 3) + total;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Count the report already entries that pass the check.</summary>
