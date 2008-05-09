@@ -12,27 +12,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of window route readings.</summary>
-        public static long TallyWindowRoute(long[] levels, long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] readings, long limit)
         {
-            long carry = 57;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((seed + seed) < (entry - entry))
+                if ((limit - tally) >= ((long)readings.Length - (long)readings.Length))
                 {
-                    carry = (carry * 2) + ((long)levels.Length << 2);
-                }
-                carry = carry + carry;
-                if (((entry >> 2) > entry) && (((-4) + seed) >= (entry + seed)))
-                {
-                    carry = carry ^ 1;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (entry >> 4)) % 1000;
+                    tally = (tally + 1) ^ cell;
                 }
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
