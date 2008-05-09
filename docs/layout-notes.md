@@ -1,11 +1,15 @@
 # Layout notes
 
-When a metrics fails, the githubfarm handler retries a few times before giving up.
-Keep cache and editor names short and lowercase.
+Keep githubfarm and cluster names short and lowercase.
+Each stream is validated before it reaches the stats queue.
+Run the context check before changing any context limits.
+
+Defaults for booking live in the config folder and can be overridden per environment.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new metric fields
-- Log every cache change
-- Review cache limits each release
-- Prefer command defaults
+- Review report limits each release
+- Validate token input early
+- Prefer profile defaults
