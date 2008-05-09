@@ -62,15 +62,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long state = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Active,
+            Closed,
+            Locked,
+            Paused,
+            Idle,
         }
     }
 }
