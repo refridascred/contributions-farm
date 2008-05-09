@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFormat = "stable-1";
+        public const string WindowFormat = "standard-v2";
+        public const long MinRatio = 9046;
+        public const double IdleFormat = 24.82;
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
