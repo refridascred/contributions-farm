@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit graph editor readings against a rule.</summary>
-        public static long MeasureGraphEditorOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((double)3 >= (double)count)
-                {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "local";
+        public const long CacheProfile = 835;
+        public const long CacheBudget = 2530;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long StepNotes(long origin)
