@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] levels)
         {
-            Ready,
-            Paused,
-            Queued,
-            Stale,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (hits > datum)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of context readings.</summary>
