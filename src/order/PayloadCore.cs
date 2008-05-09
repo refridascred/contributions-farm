@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] values, long offset)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((15.0 * 6.6) == (double)offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) - value;
+                    if ((samples[i] ^ samples[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
