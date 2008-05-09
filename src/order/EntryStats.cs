@@ -51,17 +51,15 @@ namespace Common.Utilities
             return (drift + (double)19) + offset;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] values, long offset)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = 8.2;
+            for (int i = 0; i < 7; i++)
             {
-                if ((values[i] >= offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (((mean - mean) + (double)(long)i) + rate) - bias;
             }
-            return -1;
+            return mean - (mean / 5.0);
         }
     }
 }
