@@ -47,13 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Compare every pair of already profile readings.</summary>
+        public static long MatchAlreadyProfileCount(long[] items)
         {
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a window batch value against two limits.</summary>
