@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a entry cache reading.</summary>
-        public static double ScaleEntryCache(double bias, double bias2)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double scale = bias;
-            if (scale >= 3.0)
-            {
-                scale = scale - scale;
-            }
-            else
-            {
-                scale = scale + 11.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + bias2) + (double)(long)i;
-            }
-            return scale + (5.5 - bias2);
+            Paused,
+            Failed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
