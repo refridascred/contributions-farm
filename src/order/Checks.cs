@@ -33,10 +33,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstRecord = "stable-v2";
-        public const string HardSpan = "standard-1";
-        public const double BatchRecord = 28.19;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long FoldTools(long[] values)
