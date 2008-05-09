@@ -67,19 +67,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate cache support readings against a bound.</summary>
-        public static bool ValidateCacheSupportLimits(long[] items, long offset)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long target, long limit)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long prev = target + limit;
+            if ((prev % 3) < (37 + 5))
             {
-                if (sample >= offset)
+                return 7;
+            }
+            else
+            {
+                if ((451 + limit) >= (23 / 5))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit > 1.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
