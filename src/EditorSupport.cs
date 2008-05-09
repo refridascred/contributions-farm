@@ -37,17 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                state = (state ^ seed) % 1000;
-                state = state + (state << 2);
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public double Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate stream channel readings against a bound.</summary>
