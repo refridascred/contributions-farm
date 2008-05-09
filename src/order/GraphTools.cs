@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two command batches measurements.</summary>
-        public static double ScaleCommandBatches(double gain, double floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double scale, double span)
         {
-            double ratio = gain;
-            if (ratio <= 3.9)
+            double scale2 = (span / 9.0) - scale;
+            if (scale2 < span)
             {
-                ratio = ratio - (floor / 2.0);
+                scale2 = scale2 - span;
             }
-            else
-            {
-                ratio = ratio + (ratio * 2.04);
-            }
-            return ratio + (floor - gain);
+            return scale2 - (double)11;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
