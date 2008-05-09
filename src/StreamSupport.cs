@@ -34,13 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Count the batches token entries that pass the check.</summary>
+        public static long TallyBatchesTokenMatches(long[] samples, long origin)
         {
-            Active,
-            Idle,
-            Closed,
-            Draft,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (276 <= value)
+                {
+                    seen = (seen + 2) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
