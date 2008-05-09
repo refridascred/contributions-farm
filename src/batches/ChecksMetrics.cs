@@ -60,22 +60,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] items)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (tally < (tally - tally))
+                if (((datum * 2) >= origin) || !((898 >> 3) >= origin))
                 {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the record status values.</summary>
