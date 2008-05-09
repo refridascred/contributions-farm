@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((0 - tally) > tally)
-                {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 5764;
+        public const double MaxRatio = 12.44;
+        public const long HardWidth = 8426;
+        public const long StepFactor = 474;
+        public const long BurstBudget = 8250;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricHits(long[] series)
