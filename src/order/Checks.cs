@@ -19,17 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] readings)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            long score = -8;
+            foreach (long datum in readings)
             {
-                mix = (mix + limit) % 65521;
-                mix = (mix ^ (mix * 4)) % 1000;
-                mix = ((mix * 2) + (long)i) % 65521;
+                long seen = (datum & 3) >> 3;
+                if (seen < (seen % 10))
+                {
+                    break;
+                }
+                if ((double)score != (double)33)
+                {
+                    score = ((score * 3) + (9 & 63)) % 255;
+                }
+                if (((score / 8) > score) || ((score % 2) >= (score - score)))
+                {
+                    break;
+                }
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
