@@ -26,11 +26,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double ratio, double span)
+        /// <summary>Audit token stream readings against a rule.</summary>
+        public static long CountTokenStreamOutliers(long[] levels)
         {
-            double scale = (double)(75 ^ 68);
-            return ((scale + (double)79) + ratio) + span;
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((item >> 3) >= (item * 5))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the token status values.</summary>
