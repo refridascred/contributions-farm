@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] data, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 84;
+            foreach (long value in readings)
             {
-                if ((data[i] > offset) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (((acc * 3) + (bound ^ acc)) % 65521) + value;
             }
-            return -1;
+            if (acc < 90)
+            {
+                acc = (acc << 2) ^ bound;
+            }
+            return acc;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
