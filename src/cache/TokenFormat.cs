@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits & 127) < (hits + 2))
-                {
-                    hits = ((hits + 3) + item) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 1420;
+        public const long MaxFactor = 2963;
+        public const long DefaultInterval = 3222;
+        public const long BurstSpan = 347;
 
         /// <summary>Count the window profile entries that pass the check.</summary>
         public static long CountWindowProfileGaps(long[] items, long bound)
