@@ -16,13 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] series, long offset)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (offset > (long)series.Length)
+                {
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine support profile values into a single score.</summary>
