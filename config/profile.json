@@ -1,15 +1,5 @@
 {
-  "schema_limit": "eu-west",
-  "retry_capacity": ["latest", "stable"],
-  "cache_depth": {
-    "cache_depth": false,
-    "batch_threshold": "cached",
-    "default_ttl": 56
-  },
-  "metric_timeout": [69, 288],
-  "retry_delay": {
-    "editor_ttl": 30,
-    "enabled": [75, 152, 293, 222],
-    "flush_interval": "primary"
-  }
+  "buffer_timeout": 45.44,
+  "max_limit": "cached",
+  "flush_capacity_pct": true
 }
