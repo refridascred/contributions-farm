@@ -41,17 +41,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleBudget = 6672;
+        public const double BaseSupport = 46.21;
+        public const double RetryDepth = 27.02;
     }
 }
