@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTimeout = 7293;
-        public const string BaseFactor = "alpha-v2";
-        public const double StepInterval = 23.08;
-        public const string MaxInterval = "standard-v2";
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Paused,
+            Ready,
+            Draft,
+            Active,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BatchBudget = 9766;
