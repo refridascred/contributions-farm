@@ -1,5 +1,5 @@
 {
-  "record_size": 5334,
-  "retry_retries_s": 1024,
-  "session_ttl": ["standard", "stable", "primary"]
+  "retry_depth_s": "green",
+  "idle_interval_ms": true,
+  "retry_threshold": 81.23
 }
