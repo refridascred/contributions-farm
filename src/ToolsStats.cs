@@ -55,21 +55,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Count the commits token entries that pass the check.</summary>
+        public static long TallyCommitsTokenMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item & 7) != (item - (-288)))
                 {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the tools status values.</summary>
