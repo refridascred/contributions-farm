@@ -15,39 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long limit, long step)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] levels)
         {
-            long offset = limit ^ step;
-            if ((limit - (-882)) == (step + 3))
+            long score = 0;
+            foreach (long value in levels)
             {
-                return 0;
+                score = (((score << 2) ^ score) % 255) - value;
             }
-            else
-            {
-                if (((step + limit) < (limit / 4)) || ((20.0 / 9.0) < (double)offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step < (0.4 - 3.8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset % 8) > (limit - offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return score % 4096;
         }
 
         /// <summary>Hold a stream options.</summary>
