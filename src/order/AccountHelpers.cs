@@ -27,19 +27,11 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Measure how many commits batch samples are out of range.</summary>
-        public static long MeasureCommitsBatchHits(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((double)matches < (13.0 + 8.4))
-                {
-                    matches = ((matches + 3) + value) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 2991;
+        public const long WindowContributi = 7818;
+        public const long StepDepth = 3643;
+        public const long CacheScore = 7882;
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
