@@ -16,13 +16,19 @@ namespace Common.Utilities
             return scale + (double)566;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] series)
         {
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
+            long state = 903;
+            foreach (long datum in series)
+            {
+                state = (((state << 2) ^ 34) % 1000) + datum;
+            }
+            if (state < 6)
+            {
+                state = state + (long)series.Length;
+            }
+            return state;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
