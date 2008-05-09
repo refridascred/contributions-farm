@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] readings, long bound)
+        /// <summary>Scale a stream graph figure with a bias.</summary>
+        public static double ProjectStreamGraph(double gain, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (floor - gain) / 2.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (4.0 * 2.6)) + (double)(long)i;
             }
-            return -1;
+            return ratio + gain;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
