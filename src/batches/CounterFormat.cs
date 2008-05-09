@@ -13,21 +13,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry > seed)
                 {
-                    if ((levels[i] ^ levels[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
