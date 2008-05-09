@@ -1,17 +1,8 @@
 {
-  "compress": true,
-  "poll_ttl": 34.26,
-  "dry_run": 8.04,
-  "session_threshold": 2495,
-  "sync_timeout": "eu-west",
-  "farm_limit": {
-    "sync_size_s": "staging",
-    "audit": {
-      "poll_ttl_s": 7867,
-      "persist": 89.3,
-      "window_threshold": 14.95,
-      "audit": 28.83
-    },
-    "soft_timeout_s": true
-  }
+  "default_window": "fallback",
+  "dry_run": [3, 241],
+  "editor_retries": 38,
+  "compress": [492, 196, 489, 55],
+  "idle_capacity_count": 9226,
+  "soft_ratio": [99, 18, 117, 493]
 }
