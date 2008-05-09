@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double rate, double bias)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] samples)
         {
-            double drift = rate;
-            return (drift + drift) + bias;
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum >> 5) <= (datum & 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
