@@ -56,13 +56,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long floor, long step)
         {
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            long next = floor + step;
+            if ((6.0 + 1.0) < (double)step)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((floor % 7) == (next / 6)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
