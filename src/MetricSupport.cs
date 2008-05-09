@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mix = 2;
+            foreach (long reading in samples)
             {
-                if ((7.0 * 4.17) < (double)seen)
-                {
-                    seen = (seen + 3) + item;
-                }
+                mix = (((mix * 3) + (floor * 4)) % 97) ^ reading;
+                mix = ((mix << 2) ^ (63 / 8)) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Rank record input into a small class.</summary>
