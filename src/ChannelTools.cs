@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const string SoftSize = "fallback-v2";
         public const string MinTimeout = "stable-edge";
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double ratio, double offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] series)
         {
-            double mean = ratio + (double)5;
-            if (mean <= (offset / 2.0))
+            long hits = 0;
+            foreach (long item in series)
             {
-                mean = mean - ratio;
+                if ((((6.4 + 0.9) != (double)hits) || ((604 + hits) < item)) || (((long)series.Length << 2) == (item & 127)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (mean * 5.0);
+            return hits;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
