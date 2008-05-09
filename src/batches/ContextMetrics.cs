@@ -28,15 +28,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit tools queue readings against a rule.</summary>
-        public static long CountToolsQueueOutliers(long[] data, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] values, long origin)
         {
             long count = 0;
-            foreach (long sample in data)
+            foreach (long cell in values)
             {
-                if (!((33 << 3) < count))
+                if ((cell + origin) == (count * 3))
                 {
-                    count = ((count + 3) ^ sample) + seed;
+                    count = count + 2;
                 }
             }
             return count;
