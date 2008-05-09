@@ -1,11 +1,6 @@
-id,token,state,owner
-1,691,primary,cached
-2,388,31.74,62.74
-3,613,local,299
-4,84.14,latest,789
-5,14.32,open,8.51
-6,677,31.13,97.82
-7,936,14.89,552
-8,primary,775,local
-9,green,56.28,legacy
-10,195,fallback,40
+id,rank,owner,weight,state
+1,legacy,51.37,63.39,legacy
+2,strict,655,931,87.89
+3,463,768,538,528
+4,52.29,50.7,247,510
+5,97.75,latest,fallback,primary
