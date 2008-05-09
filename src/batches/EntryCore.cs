@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] items)
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public double Token { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (item >= (5 & 7))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every metric route entry stays within the limit.</summary>
