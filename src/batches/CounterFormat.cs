@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] levels, long floor)
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-            public double Total { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate batch samples.</summary>
