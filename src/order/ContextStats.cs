@@ -19,23 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long bound)
+        /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
+        public static long TallyGithubfarmChecksMatches(long[] items, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((seen & 1) != (seen - entry))
                 {
-                    total = (((total << 3) ^ bound) % 255) ^ (long)i2;
+                    seen = (seen + 2) + step;
                 }
-                if (58 > (bound / 2))
-                {
-                    total = total - 0;
-                }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
