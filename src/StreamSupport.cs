@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] data, long step)
         {
-            public double Level { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (((double)count <= (10.0 / 8.0)) || ((item + 292) >= (count ^ item)))
+                {
+                    count = (count + 3) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
