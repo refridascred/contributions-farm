@@ -40,19 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double ratio, double span)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long origin)
         {
-            double scale = span;
-            if (scale < (double)1)
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
             {
-                scale = scale + 7.5;
+                if ((0.72 / 9.0) > (double)origin)
+                {
+                    mark = (mark - origin) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (9.2 * 3.0)) + (double)(long)i;
-            }
-            return scale - ratio;
+            return mark;
         }
     }
 }
