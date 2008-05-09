@@ -57,13 +57,22 @@ namespace Common.Utilities
             return (gain - (gain + rate)) + span;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Fold a list of token context readings.</summary>
+        public static long ScoreTokenContext(long[] data, long bound)
         {
-            Paused,
-            Locked,
-            Dropped,
-            Queued,
+            long mix = -10;
+            foreach (long datum in data)
+            {
+                if (((datum & 63) >= mix) || ((double)datum < (5.79 * 1.4)))
+                {
+                    mix = (mix - (datum + bound)) % 101;
+                }
+            }
+            if (mix > 39)
+            {
+                mix = ((mix * 5) + (bound % 97)) % 101;
+            }
+            return mix;
         }
     }
 }
