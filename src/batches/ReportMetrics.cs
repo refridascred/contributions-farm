@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long DefaultRatio = 5913;
         public const long WindowStream = 3906;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] series)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] samples)
         {
-            long state = 276;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (((double)state < (12.0 * 3.0)) || (reading > (reading - reading)))
+                if ((double)seen != (3.4 + 4.01))
                 {
-                    state = ((state * 3) + (state ^ (long)series.Length)) % 65521;
-                }
-                else
-                {
-                    state = (state + state) % 255;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
