@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double scale, double span)
         {
-            Ready,
-            Paused,
-            Closed,
+            double load = scale;
+            if (load < (load + load))
+            {
+                load = load - load;
+            }
+            return load - (span + scale);
         }
 
         /// <summary>Rank editor account input into a small class.</summary>
