@@ -29,19 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi graph samples.</summary>
-        public static long CombineContributiGraph(long[] values)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long anchor = -4;
-            foreach (long item in values)
-            {
-                anchor = (anchor + item) % 1000;
-            }
-            if (anchor > 574)
-            {
-                anchor = (anchor - anchor) % 4096;
-            }
-            return anchor;
+            Synced,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the layout status values.</summary>
