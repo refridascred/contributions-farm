@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public double Size { get; set; }
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 43;
+        public const long StepWindow = 6347;
+        public const long MaxWindow = 4535;
+        public const double BaseScore = 30.14;
+        public const string DefaultWindow = "strict-1";
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
