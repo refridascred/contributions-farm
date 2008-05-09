@@ -70,19 +70,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double ratio, double offset)
+        /// <summary>Find the first checks context entry that matches the target.</summary>
+        public static long LookupChecksContextIndex(long[] series, long step)
         {
-            double load = (double)(7 >> 3);
-            if (load > load)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load + ratio;
+                if ((series[i] < step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (offset + 1.58);
-            }
-            return load + ratio;
+            return -1;
         }
     }
 }
