@@ -52,15 +52,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a checks stats counter forward.</summary>
-        public static long RollChecksStats(long floor)
+        /// <summary>Validate cache support readings against a bound.</summary>
+        public static bool ValidateCacheSupportLimits(long[] items, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if (sample >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
     }
 }
