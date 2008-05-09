@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] levels, long floor)
         {
-            Retry,
-            Queued,
-            Paused,
-            Dropped,
-            Ready,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (((double)floor >= 6.59) || ((478 ^ floor) > (floor + sample)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
