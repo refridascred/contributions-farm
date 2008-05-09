@@ -42,19 +42,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] items, long limit)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Paused,
+            Retry,
         }
     }
 }
