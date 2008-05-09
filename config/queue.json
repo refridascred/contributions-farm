@@ -1,11 +1,10 @@
 {
-  "strict": "latest",
-  "persist": ["local", "latest"],
-  "counter_timeout": {
-    "context_timeout": 7332,
-    "flush_capacity_count": "primary",
-    "report_window": [153, 273, 258, 334],
-    "tools_delay": false,
-    "base_ratio_count": 9
+  "base_size_ms": 60,
+  "idle_ttl": "local",
+  "order_window": {
+    "batch_timeout_pct": 100,
+    "route_depth": 10,
+    "route_limit": "open",
+    "warm_ttl_ms": 35.11
   }
 }
