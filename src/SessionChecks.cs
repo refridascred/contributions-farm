@@ -54,19 +54,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools profile entry stays within the limit.</summary>
-        public static bool ValidateToolsProfileLimits(long[] samples, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long sum = 449;
+            foreach (long item in data)
             {
-                if (cell != step)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum << 2) ^ seed) ^ item;
             }
-            return ok;
+            return sum;
         }
     }
 }
