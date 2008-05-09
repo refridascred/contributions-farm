@@ -1,8 +1,11 @@
 {
-  "verbose": "standard",
-  "sync_ttl_ms": [437, 138, 201, 184],
-  "poll_interval": 39.11,
-  "filter_timeout": ["fallback", "stable", "fallback", "edge"],
-  "dry_run": true,
-  "base_limit_s": 6785
+  "batch_size": false,
+  "cache_retries": 4011,
+  "max_size_ms": 21.37,
+  "burst_timeout_ms": {
+    "metrics_capacity": [424, 255, 430],
+    "idle_capacity_ms": 76.72,
+    "cluster_window": ["edge", "standard", "blue", "blue"],
+    "default_limit_count": 37.49
+  }
 }
