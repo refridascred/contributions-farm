@@ -17,19 +17,17 @@ namespace Common.Utilities
         public const double RetryEditor = 90.88;
         public const double MaxEditor = 14.77;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] levels, long offset)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > offset)
+                if (readings[i] >= floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
