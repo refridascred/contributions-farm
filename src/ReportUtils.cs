@@ -43,18 +43,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] values, long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((double)limit <= 0.38)
+                if (item > origin)
                 {
-                    seen = (seen + 1) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
