@@ -26,15 +26,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            New,
-            Locked,
-            Active,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 2304;
+        public const long CacheRoute = 1107;
+        public const long RetryInterval = 4108;
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long SeriesMetric(long origin)
