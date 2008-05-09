@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] samples, long step)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] samples, long seed)
         {
-            long state = 3;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state + (state / 3)) % 65521;
-                if ((double)(long)samples.Length == (double)step)
+                if ((samples[i] < seed) && ((samples[i] % 3) != 0))
                 {
-                    state = state - (cell & 3);
-                }
-                else
-                {
-                    state = (state ^ (step + 5)) % 101;
-                }
-                if (((state / 8) < (cell << 1)) || (((-345) - 79) > (cell + step)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state < 68)
-            {
-                state = (state + (state % 64)) % 255;
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
