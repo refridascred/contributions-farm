@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] data, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (((double)count <= (10.0 / 8.0)) || ((item + 292) >= (count ^ item)))
+                if (item > limit)
                 {
-                    count = (count + 3) - step;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
