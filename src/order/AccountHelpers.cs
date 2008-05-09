@@ -82,19 +82,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] series, long origin)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (cell < origin)
+                if (entry != seed)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Describe the batch kind values.</summary>
