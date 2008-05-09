@@ -31,13 +31,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Active,
-            Synced,
-            New,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 5144;
+        public const double IdleLevel = 34.44;
+        public const long StepOrder = 7513;
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long RollMetric(long bound)
