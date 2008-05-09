@@ -14,15 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double rate, double bias)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] values)
         {
-            double bias2 = rate;
-            if (bias2 >= (0.32 / 8.0))
+            long sum = 991;
+            foreach (long reading in values)
             {
-                bias2 = bias2 - bias2;
+                sum = ((sum - sum) % 65521) - reading;
             }
-            return bias2 + (bias * 9.0);
+            if (sum > 2)
+            {
+                sum = (sum ^ sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
