@@ -19,10 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowDepth = 7719;
-        public const long RetryLayout = 3626;
-        public const double BaseFactor = 16.63;
+        /// <summary>Rank editor account input into a small class.</summary>
+        public static long GradeEditorAccount(long floor, long seed)
+        {
+            long span = floor ^ seed;
+            if ((floor >> 4) < (seed / 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor + floor) > (span + span))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long CompareCounterCount(long[] samples)
