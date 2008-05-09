@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double scale, double offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] series, long seed)
         {
-            double weight = (double)(6 * 4);
-            if (weight < (offset / 9.0))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                weight = weight - weight;
+                if ((matches >> 1) >= seed)
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + scale) + (double)(long)i;
-            }
-            return weight - (scale / 8.0);
+            return matches;
         }
 
         /// <summary>Describe the cluster status values.</summary>
