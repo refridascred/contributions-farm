@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] samples)
+        /// <summary>Fold a list of buffer already readings.</summary>
+        public static long TallyBufferAlready(long[] items)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long score = 48;
+            foreach (long reading in items)
             {
-                if (!((sample / 9) != ((-9) + 90)))
+                if ((score * 5) == (score & 7))
                 {
-                    count = count + 3;
+                    score = ((score ^ (score + 233)) % 101) - reading;
                 }
             }
-            return count;
+            if (score > 777)
+            {
+                score = score ^ score;
+            }
+            return score % 97;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
