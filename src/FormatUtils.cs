@@ -59,12 +59,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultQueue = 0.79;
-        public const string BatchQueue = "primary-1";
-        public const string BurstQueue = "staging-edge";
-        public const long BurstScore = 2358;
-        public const long BaseQueue = 4517;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Compare every pair of commits metric readings.</summary>
         public static long OverlapCommitsMetricCount(long[] data)
