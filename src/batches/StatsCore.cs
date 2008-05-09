@@ -41,17 +41,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first payload command entry that matches the target.</summary>
-        public static long LookupPayloadCommandIndex(long[] data, long origin)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Grade a contributi farm value against two limits.</summary>
