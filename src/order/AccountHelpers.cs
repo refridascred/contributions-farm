@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] values)
         {
-            long matches = 0;
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] + values[j]) != 14)
+                    if ((values[i] + values[j]) == 9)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
