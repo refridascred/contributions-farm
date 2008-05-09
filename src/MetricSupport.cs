@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every stream notes entry stays within the limit.</summary>
-        public static bool GuardStreamNotesRange(long[] values, long offset)
+        /// <summary>Scale a checks route figure with a bias.</summary>
+        public static double ScaleChecksRoute(double scale, double floor)
         {
-            bool found = true;
-            foreach (long item in values)
+            double drift = (0.71 - floor) + 1.9;
+            if (drift < (scale / 6.0))
             {
-                if (item != offset)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift - drift;
             }
-            return found;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + floor) + (double)(long)i;
+            }
+            return drift - 15.0;
         }
 
         /// <summary>Rank record input into a small class.</summary>
