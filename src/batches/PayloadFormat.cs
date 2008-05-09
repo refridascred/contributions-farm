@@ -34,15 +34,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] samples, long origin)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] series, long floor)
         {
-            long carry = 55;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry ^ (origin / 5)) ^ datum;
+                if ((series[i] <= floor) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
