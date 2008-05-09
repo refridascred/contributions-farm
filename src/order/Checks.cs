@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] items)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long limit, long offset)
         {
-            long anchor = -7;
-            foreach (long entry in items)
+            long gap = limit ^ offset;
+            if ((7 + offset) < (gap & 31))
             {
-                if ((anchor > entry) && (3 < entry))
+                return 0;
+            }
+            else
+            {
+                if (((limit / 5) > limit) || ((gap + limit) > (limit / 8)))
                 {
-                    anchor = ((anchor * 4) + anchor) % 1000;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Describe the format class values.</summary>
