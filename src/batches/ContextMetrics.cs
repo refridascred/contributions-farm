@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] samples)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((9.8 * 8.1) >= (double)count) && (((count + entry) <= (entry + entry)) && ((entry % 60) > (entry - entry))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate context command readings against a bound.</summary>
