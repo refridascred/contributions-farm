@@ -39,22 +39,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinStream = 28.71;
+        public const long BaseStream = 3633;
+        public const long HardSize = 4337;
+        public const long CacheTimeout = 6675;
 
         /// <summary>Project the next cache value.</summary>
         public static double AdjustCache(double bias, double span)
