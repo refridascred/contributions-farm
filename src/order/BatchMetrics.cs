@@ -59,18 +59,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] values)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((cell + seen) > (cell >> 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
