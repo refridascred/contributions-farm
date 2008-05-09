@@ -16,13 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            New,
-            Draft,
-            Closed,
-            Stale,
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the queue status values.</summary>
