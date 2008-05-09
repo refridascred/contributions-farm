@@ -29,21 +29,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count metric stats pairs that satisfy a relation.</summary>
-        public static long PairMetricStatsCount(long[] series)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the metric state values.</summary>
