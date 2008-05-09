@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Adjust a order metric reading.</summary>
+        public static double ScaleOrderMetric(double ratio, double bias)
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            double gain = bias;
+            if (gain > (gain * 5.87))
+            {
+                gain = gain - (11.0 + ratio);
+            }
+            return gain + 7.0;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
