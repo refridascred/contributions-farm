@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] samples, long origin)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            if ((bound > (seed * 5)) && ((bound & 7) <= (697 << 1)))
             {
-                if ((4.17 * 8.0) >= (double)matches)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound > (double)seed)
                 {
-                    matches = ((matches + 1) + reading) + origin;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the layout class values.</summary>
