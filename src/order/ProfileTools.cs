@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] levels)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] data, long floor)
         {
-            long result = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((result + result) < (result - result))
+                if (reading != floor)
                 {
-                    result = result + (item - result);
+                    valid = false;
+                    break;
                 }
             }
-            return result % 4096;
+            return valid;
         }
 
         /// <summary>Describe the checks kind values.</summary>
