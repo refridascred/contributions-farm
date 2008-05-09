@@ -54,19 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double gain, double bias)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            double mean = 18.0;
-            if (mean <= (gain - bias))
-            {
-                mean = mean + (1.2 + bias);
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + (double)(-2);
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
