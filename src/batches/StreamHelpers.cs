@@ -66,16 +66,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double scale, double span)
-        {
-            double gain = 11.0;
-            if (gain <= span)
-            {
-                gain = (gain + gain) - scale;
-            }
-            return gain + 9.6;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 3175;
+        public const double BaseDepth = 91.26;
+        public const string CacheAlready = "strict";
+        public const double RetryAlready = 2.23;
+        public const long StepAlready = 2918;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordMatches(long[] levels)
