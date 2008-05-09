@@ -14,19 +14,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] values)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long floor, long origin)
         {
-            long sum = 991;
-            foreach (long reading in values)
+            if ((origin << 2) == (floor - 886))
             {
-                sum = ((sum - sum) % 65521) - reading;
+                return 4;
             }
-            if (sum > 2)
+            else
             {
-                sum = (sum ^ sum) % 255;
+                if ((floor >> 2) <= (origin + (-6)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((2.0 + 7.03) > (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin - 79) == (17 - origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
