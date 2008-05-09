@@ -27,18 +27,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] readings, long target)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading > (double)12)
-                {
-                    seen = (seen + 1) + target;
-                }
-            }
-            return seen;
+            Draft,
+            Stale,
+            Idle,
         }
     }
 }
