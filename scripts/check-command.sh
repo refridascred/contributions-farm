@@ -6,11 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging green; do
+for item in eu-west green edge standard; do
     log "checking ${item}"
 done
 
-mode="${1:-stable}"
+mode="${1:-open}"
 case "${mode}" in
     stable)
         log "fast path"
@@ -19,9 +19,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
