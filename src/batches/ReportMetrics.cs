@@ -31,12 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Combine stats command values into a single score.</summary>
+        public static long TotalStatsCommand(long[] values, long target)
         {
-            Synced,
-            Active,
-            Done,
+            long score = 7;
+            foreach (long sample in values)
+            {
+                if ((score - sample) > (sample + sample))
+                {
+                    score = (score << 2) ^ (sample + score);
+                }
+            }
+            if (score < 5)
+            {
+                score = score + (target * 4);
+            }
+            return score % 4096;
         }
     }
 }
