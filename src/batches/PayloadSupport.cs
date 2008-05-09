@@ -39,18 +39,18 @@ namespace Common.Utilities
         public const long MaxAccount = 4079;
         public const long HardBudget = 5115;
 
-        /// <summary>Count the notes channel entries that pass the check.</summary>
-        public static long TallyNotesChannelGaps(long[] series, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (((-6) & 3) == (value + tally))
+                if ((count + 204) == (cell + 88))
                 {
-                    tally = (tally + 1) - seed;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
