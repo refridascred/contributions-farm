@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double rate, double bias)
         {
-            Dropped,
-            Closed,
-            Failed,
-            Pending,
-            Paused,
+            double mean = rate;
+            if (mean < (double)24)
+            {
+                mean = mean + (double)4;
+            }
+            return mean + bias;
         }
 
         /// <summary>Accumulate notes context samples.</summary>
