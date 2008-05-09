@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine farm tools values into a single score.</summary>
-        public static long TallyFarmTools(long[] readings)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long seed, long seed2)
         {
-            long state = -15;
-            foreach (long sample in readings)
+            long next = seed ^ seed2;
+            if ((double)next < (14.0 * 5.8))
             {
-                if ((state ^ sample) <= 9)
+                return 8;
+            }
+            else
+            {
+                if (6.7 <= (double)seed)
                 {
-                    state = (state - (sample / 4)) % 65521;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return state;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
