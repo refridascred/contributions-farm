@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double gain, double span)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            double rate = span * 2.3;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (gain * 18.0)) + (double)(long)i;
-            }
-            return rate - span;
+            Retry,
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
