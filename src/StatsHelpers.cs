@@ -50,12 +50,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Paused,
-            Idle,
-            Done,
+            public double Label { get; set; }
+            public bool Limit { get; set; }
+            public long Size { get; set; }
         }
     }
 }
