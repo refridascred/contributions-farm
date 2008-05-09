@@ -33,21 +33,10 @@ namespace Common.Utilities
             return gain2 + (double)(-16);
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 8705;
+        public const double MaxRoute = 67.02;
+        public const long StepSpan = 8132;
+        public const double WindowSize = 23.67;
     }
 }
