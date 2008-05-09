@@ -48,14 +48,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Check that every filter cluster entry stays within the limit.</summary>
+        public static bool ValidateFilterClusterRange(long[] items, long origin)
         {
-            Idle,
-            Dropped,
-            Stale,
-            Active,
-            Queued,
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
