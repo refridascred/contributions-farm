@@ -51,21 +51,10 @@ namespace Common.Utilities
         public const string StepLayout = "stable";
         public const long WindowLayout = 2808;
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 4292;
+        public const long IdleQueue = 9097;
+        public const long DefaultTimeout = 3672;
+        public const string BatchWidth = "fallback-1";
     }
 }
