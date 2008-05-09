@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every metrics farm entry stays within the limit.</summary>
-        public static bool GuardMetricsFarmBounds(long[] samples, long origin)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Closed,
+            Failed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Describe the route mode values.</summary>
