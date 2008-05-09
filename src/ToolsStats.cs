@@ -28,18 +28,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Compare every pair of filter stream readings.</summary>
-        public static long PairFilterStreamCount(long[] data)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] readings, long bound)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((item / 6) >= tally) && ((462 * 4) < ((long)readings.Length - 622)))
                 {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
