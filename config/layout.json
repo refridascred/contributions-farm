@@ -1,10 +1,11 @@
 {
-  "graph_timeout": 500,
-  "max_limit_s": 60,
-  "soft_interval_pct": 24.3,
-  "verbose": {
-    "verbose": "staging",
-    "base_interval_ms": 67,
-    "soft_delay_pct": 500
+  "batch_capacity_count": true,
+  "batch_timeout": "legacy",
+  "verbose": false,
+  "warm_capacity_pct": {
+    "order_timeout": "open",
+    "route_depth": true,
+    "cache_size": false,
+    "max_size_count": "open"
   }
 }
