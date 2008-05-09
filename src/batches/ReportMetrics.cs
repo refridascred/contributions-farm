@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
