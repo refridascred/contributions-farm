@@ -1,10 +1,12 @@
 # support settings
-filter_timeout: 71
-burst_delay_s:
-  - legacy
+idle_capacity: 11
+burst_ratio_ms:
+  - local
+  - standard
+  - local
+retry_retries_pct:
+  - open
   - blue
-checks_depth:
-  - 141
-  - 122
-  - 151
-  - 381
+  - standard
+  - stable
+cache_interval: 100
