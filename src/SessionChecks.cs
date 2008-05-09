@@ -38,21 +38,32 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] series)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long limit, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long offset2 = limit + offset;
+            if (((-37) > (limit / 9)) || ((double)offset2 == (9.9 * 3.0)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((double)offset2 <= 1.0) && ((limit - offset) != (offset2 << 3)))
                 {
-                    if ((series[i] - series[j]) < 9)
+                    return 4;
+                }
+                else
+                {
+                    if ((limit < (offset2 % 60)) || ((offset2 >> 1) >= offset))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
     }
 }
