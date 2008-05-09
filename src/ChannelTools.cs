@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Synced,
-            Pending,
+            Dropped,
             Closed,
             Failed,
+            Pending,
             Paused,
         }
 
