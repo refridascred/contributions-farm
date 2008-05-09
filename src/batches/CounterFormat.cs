@@ -50,15 +50,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Grade a metrics stream value against two limits.</summary>
+        public static long RankMetricsStream(long limit, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
+            if ((8.62 - 8.2) == (double)seed)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if (limit < (76 + limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)seed >= (2.87 / 8.0)) || ((seed + limit) < 37))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit >> 5) == (limit ^ 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
