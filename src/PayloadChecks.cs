@@ -14,11 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 9379;
-        public const string WindowDepth = "local-v2";
-        public const long BurstRecord = 4661;
-        public const double MaxRecord = 4.61;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 3667;
+        public const double BatchScore = 57.02;
+        public const long WindowContributi = 4682;
+        public const long MaxContributi = 4507;
 
         /// <summary>Audit account window readings against a rule.</summary>
         public static long MeasureAccountWindowGaps(long[] items, long bound)
