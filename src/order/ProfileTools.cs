@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen - offset) != (sample + offset))
                 {
-                    if ((samples[i] ^ samples[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
