@@ -28,12 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public bool Region { get; set; }
-            public long Size { get; set; }
-            public double Flag { get; set; }
+            public double Size { get; set; }
+            public double Label { get; set; }
         }
     }
 }
