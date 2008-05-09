@@ -20,22 +20,12 @@ namespace Common.Utilities
             return rate2 - (offset * 5.7);
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] samples, long step)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long anchor = 795;
-            foreach (long sample in samples)
-            {
-                if (!(sample > (22 % 8)))
-                {
-                    anchor = ((anchor * 4) + (anchor + anchor)) + step;
-                }
-                if ((double)anchor > (4.8 - 4.95))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            New,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the batches kind values.</summary>
