@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long target)
         {
-            Draft,
-            New,
-            Failed,
+            long state = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((8 + state) <= (621 ^ target))
+                {
+                    state = ((state << 3) ^ ((long)i & 63)) % 65521;
+                }
+                state = (state + ((long)i << 2)) % 101;
+                if ((7.43 - 5.0) >= (double)state)
+                {
+                    break;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a filter record.</summary>
