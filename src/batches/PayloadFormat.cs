@@ -41,12 +41,10 @@ namespace Common.Utilities
             return (weight - bias) + rate;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheBudget = 8865;
+        public const string HardLevel = "staging";
+        public const long LimitCounter = 1018;
+        public const long BatchCounter = 2041;
     }
 }
