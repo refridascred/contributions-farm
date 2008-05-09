@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double ratio, double offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double rate = (offset + ratio) * 8.95;
-            if (rate > offset)
-            {
-                rate = rate - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - 1.79) + (double)(long)i;
-            }
-            return rate - (double)5;
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
