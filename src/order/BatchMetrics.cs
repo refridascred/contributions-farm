@@ -45,22 +45,11 @@ namespace Common.Utilities
             return weight2 - (double)(-795);
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 7663;
+        public const double DefaultCount = 62.3;
+        public const long DefaultSupport = 5568;
+        public const double LimitWidth = 75.2;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long AuditRouteHits(long[] values)
