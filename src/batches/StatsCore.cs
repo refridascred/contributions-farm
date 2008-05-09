@@ -47,13 +47,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Failed,
-            Done,
-            New,
-            Locked,
+            public bool Count { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Rank route payload input into a small class.</summary>
