@@ -20,26 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine session schema values into a single score.</summary>
-        public static long CombineSessionSchema(long[] data, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] values, long offset)
         {
-            long anchor = 520;
-            foreach (long cell in data)
+            long sum = 6;
+            foreach (long datum in values)
             {
-                if ((cell / 4) != (cell + 592))
-                {
-                    anchor = anchor + seed;
-                }
-                if ((double)seed == (1.5 - 5.7))
-                {
-                    break;
-                }
+                sum = ((sum - sum) ^ datum) - offset;
             }
-            if (anchor < 725)
+            if (sum > 591)
             {
-                anchor = ((anchor * 2) + (anchor + seed)) % 101;
+                sum = ((sum * 5) + (sum + sum)) % 97;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
