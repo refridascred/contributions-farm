@@ -29,14 +29,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] items, long target)
         {
-            Idle,
-            Ready,
-            Locked,
-            Retry,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
