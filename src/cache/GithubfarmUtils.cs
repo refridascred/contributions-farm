@@ -40,15 +40,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a queue order reading.</summary>
-        public static double ScaleQueueOrder(double scale, double offset)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            double ratio = 16.0 - scale;
-            if (ratio <= (ratio + scale))
-            {
-                ratio = ratio + (ratio + offset);
-            }
-            return ratio - ratio;
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
