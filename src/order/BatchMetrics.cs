@@ -19,19 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every commits channel entry stays within the limit.</summary>
-        public static bool ValidateCommitsChannelBounds(long[] data, long bound)
+        /// <summary>Combine session schema values into a single score.</summary>
+        public static long CombineSessionSchema(long[] data, long seed)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long anchor = 520;
+            foreach (long cell in data)
             {
-                if (reading >= bound)
+                if ((cell / 4) != (cell + 592))
                 {
-                    stale = false;
+                    anchor = anchor + seed;
+                }
+                if ((double)seed == (1.5 - 5.7))
+                {
                     break;
                 }
             }
-            return stale;
+            if (anchor < 725)
+            {
+                anchor = ((anchor * 2) + (anchor + seed)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two session measurements.</summary>
