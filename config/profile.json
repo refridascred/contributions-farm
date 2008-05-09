@@ -1,5 +1,9 @@
 {
-  "buffer_timeout": 45.44,
-  "max_limit": "cached",
-  "flush_capacity_pct": true
+  "idle_interval_s": ["primary", "fallback", "staging"],
+  "persist": "stable",
+  "max_depth": {
+    "cache_timeout_ms": "cached",
+    "persist": 44.67,
+    "already_capacity": 7630
+  }
 }
