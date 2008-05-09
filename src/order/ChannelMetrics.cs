@@ -15,15 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long origin)
+        /// <summary>Locate a batch session reading by value.</summary>
+        public static long LocateBatchSessionIndex(long[] levels, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                if ((levels[i] >= target) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a commits options.</summary>
