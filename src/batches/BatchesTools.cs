@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many queue tools samples are out of range.</summary>
-        public static long CountQueueToolsMatches(long[] values)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((tally > (tally + cell)) || ((tally / 7) >= (tally / 4))) || ((cell / 2) > ((long)values.Length ^ 0)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
