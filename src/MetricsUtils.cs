@@ -65,10 +65,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardGithubfarm = 15.56;
-        public const long MaxGithubfarm = 7367;
-        public const long MinRatio = 7935;
-        public const long WindowGithubfarm = 1315;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public long Size { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
