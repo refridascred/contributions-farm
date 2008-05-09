@@ -38,14 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Count the route record entries that pass the check.</summary>
+        public static long CountRouteRecordOutliers(long[] values)
         {
-            Idle,
-            Retry,
-            New,
-            Done,
-            Paused,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((double)seen < (1.0 / 8.0))
+                {
+                    seen = (seen + 3) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
