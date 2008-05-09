@@ -27,28 +27,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] data, long target)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long state = 29;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    state = ((state - ((-6) % 3)) % 97) - (long)i;
-                    state = ((state * 2) + (datum >> 5)) % 1000;
-                }
-                state = ((state << 2) ^ (datum ^ target)) % 1000;
-                if (target >= ((long)data.Length + target))
-                {
-                    state = (state * 2) + (target - state);
-                }
-            }
-            if (state > (-6))
-            {
-                state = (state - (target << 2)) % 4096;
-            }
-            return state;
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
