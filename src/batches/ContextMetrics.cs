@@ -30,23 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] values)
+        /// <summary>Audit tools queue readings against a rule.</summary>
+        public static long CountToolsQueueOutliers(long[] data, long seed)
         {
-            long total = 237;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long sample in data)
             {
-                total = (total + (total & 1)) - value;
-                if ((total + total) <= (total << 2))
+                if (!((33 << 3) < count))
                 {
-                    total = total ^ (total % 7);
+                    count = ((count + 3) ^ sample) + seed;
                 }
             }
-            if (total < 266)
-            {
-                total = (total << 3) ^ (total % 97);
-            }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
