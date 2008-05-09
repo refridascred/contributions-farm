@@ -23,19 +23,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] items, long target)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long mark = 789;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    mark = (((mark + (mark + target)) % 101) ^ (long)i) ^ value;
-                }
-                mark = (mark << 2) ^ 352;
-            }
-            return mark;
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
