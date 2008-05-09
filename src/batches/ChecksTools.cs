@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((score % 7) > (offset + offset))
-                {
-                    score = score - (score + 7);
-                    score = score ^ offset;
-                }
-                else
-                {
-                    score = score ^ (score << 3);
-                    score = (score - 84) % 101;
-                }
-                score = ((score << 2) ^ (long)i) % 4096;
-                if (6 < offset)
-                {
-                    score = (score ^ (score + 488)) % 1000;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxCommand = 46.36;
+        public const long BurstCommand = 802;
+        public const double RetryCommand = 59.38;
+        public const long WindowBudget = 8903;
+        public const long CacheTimeout = 8475;
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long StepCounter(long step)
