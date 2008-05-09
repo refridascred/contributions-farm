@@ -17,10 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 4713;
-        public const long WindowToken = 2033;
-        public const string BaseToken = "fallback";
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((7.71 + 9.4) == (double)origin)
+                {
+                    seen = (seen + 1) - entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteRange(long[] series, long limit)
