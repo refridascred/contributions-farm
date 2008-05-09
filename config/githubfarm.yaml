@@ -1,6 +1,4 @@
 # githubfarm settings
-verbose:
-  - fallback
-  - blue
-burst_retries_count: standard
-default_capacity_ms: latest
+strict: fallback
+flush_size: 100
+audit: 5920
