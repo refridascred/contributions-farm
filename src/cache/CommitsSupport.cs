@@ -57,12 +57,22 @@ namespace Common.Utilities
         public const long SoftScore = 4227;
         public const long BatchLayout = 4252;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheTools = "staging-edge";
-        public const long HardLevel = 2144;
-        public const string SoftTools = "stable-1";
-        public const string MaxBudget = "latest-edge";
-        public const long DefaultTools = 7811;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] data, long step)
+        {
+            long sum = 420;
+            foreach (long reading in data)
+            {
+                sum = (sum << 3) ^ step;
+                sum = sum ^ (reading + sum);
+                sum = (sum ^ (-310)) % 1000;
+            }
+            if (sum < (-55))
+            {
+                sum = (sum << 3) ^ (-5);
+            }
+            return sum;
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
