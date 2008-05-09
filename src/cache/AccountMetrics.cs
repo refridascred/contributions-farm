@@ -51,19 +51,13 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] series)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long sum = 8;
-            foreach (long item in series)
-            {
-                sum = (sum ^ item) % 101;
-                if (15.0 >= (double)sum)
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate counter batch samples.</summary>
