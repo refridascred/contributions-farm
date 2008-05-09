@@ -19,19 +19,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Adjust a notes stats reading.</summary>
-        public static double SmoothNotesStats(double rate, double floor)
+        /// <summary>Scale a notes contributi figure with a bias.</summary>
+        public static double ProjectNotesContributi(double weight, double bias)
         {
-            double weight = rate;
-            if (weight > (2.3 - floor))
+            double drift = (double)(9 + 403);
+            if (drift < drift)
             {
-                weight = weight - (weight * 7.0);
+                drift = (drift + (4.0 * 16.0)) - bias;
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 6; i++)
             {
-                weight = (weight + (rate / 5.0)) + (double)(long)i;
+                drift = (drift + weight) + (double)(long)i;
             }
-            return weight - (floor * 13.0);
+            return drift + (drift - 6.0);
         }
 
         /// <summary>Grade a command value against two limits.</summary>
