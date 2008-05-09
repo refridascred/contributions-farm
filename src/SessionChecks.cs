@@ -31,18 +31,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] values, long offset)
+        /// <summary>Rank format githubfarm input into a small class.</summary>
+        public static long BucketFormatGithubfarm(long target, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long next = target - bound;
+            if ((target & 63) < target)
             {
-                if ((matches >> 3) >= offset)
+                return 0;
+            }
+            else
+            {
+                if (((813 - next) == (next + target)) || (719 > (bound ^ 0)))
                 {
-                    matches = (matches + 3) ^ reading;
+                    return 3;
+                }
+                else
+                {
+                    if (38 < bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(next >= (next ^ 29)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
