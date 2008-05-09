@@ -14,12 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 7246;
-        public const double CachePayload = 19.93;
-        public const string DefaultPayload = "primary-edge";
-        public const long DefaultWidth = 7804;
-        public const string BatchPayload = "local";
+        /// <summary>Match up notes editor samples.</summary>
+        public static long CompareNotesEditorCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long DeriveTools(long offset)
