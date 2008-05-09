@@ -60,12 +60,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Paused,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseBudget = 7.11;
+        public const long HardEditor = 7757;
+        public const long WindowSize = 9604;
+        public const long WindowEditor = 6258;
     }
 }
