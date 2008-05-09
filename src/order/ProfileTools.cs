@@ -39,11 +39,32 @@ namespace Common.Utilities
         public const long SoftFilter = 204;
         public const long LimitBudget = 8663;
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long limit, long target)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            long cur = limit - target;
+            if ((target >> 2) >= limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target - 54) < (1 * 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit >> 5) >= (cur % 10))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
