@@ -32,18 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] data, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((double)entry >= (1.1 - 7.1))
+                if (value < offset)
                 {
-                    count = (count + 3) - seed;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
