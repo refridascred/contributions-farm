@@ -105,11 +105,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinWidth = 6373;
-        public const long WindowOrder = 7720;
-        public const long IdleSize = 9342;
-        public const long SoftOrder = 4120;
-        public const double IdleLevel = 96.01;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((origin << 1) <= (origin ^ datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
