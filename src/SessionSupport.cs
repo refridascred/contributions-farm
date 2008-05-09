@@ -19,14 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] values, long bound)
         {
-            Queued,
-            Done,
-            Paused,
-            Dropped,
-            Failed,
+            long mix = 88;
+            foreach (long reading in values)
+            {
+                if (reading > 8)
+                {
+                    mix = mix + (reading + mix);
+                }
+                else
+                {
+                    mix = ((mix * 5) + (30 + bound)) % 255;
+                }
+            }
+            if (mix < 7)
+            {
+                mix = (mix ^ mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Check that every queue entry entry stays within the limit.</summary>
