@@ -68,17 +68,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] samples, long origin)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Paused,
+            Pending,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a farm record.</summary>
