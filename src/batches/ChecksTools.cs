@@ -44,21 +44,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = span;
+            if (scale < (double)1)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale + 7.5;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (9.2 * 3.0)) + (double)(long)i;
+            }
+            return scale - ratio;
         }
     }
 }
