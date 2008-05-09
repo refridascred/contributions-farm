@@ -1,6 +1,11 @@
-id,state,weight
-1,standard,50.66
-2,92.89,52.08
-3,995,32.79
-4,660,906
-5,latest,654
+id,owner,state,token
+1,cached,959,open
+2,83.39,967,403
+3,870,green,831
+4,205,68.29,edge
+5,11.16,78.49,strict
+6,strict,217,613
+7,3.69,stable,428
+8,strict,4.51,strict
+9,cached,21.61,642
+10,32.84,latest,98.49
