@@ -24,21 +24,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] readings)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((4.0 * 0.8) <= (double)reading)
                 {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
