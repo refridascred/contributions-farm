@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitStream = 7.22;
-        public const long MaxSpan = 9520;
-        public const long SoftStream = 5470;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long BucketTools(long origin, long origin2)
