@@ -56,19 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine tools command values into a single score.</summary>
-        public static long TallyToolsCommand(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] readings, long origin)
         {
-            long carry = 28;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in readings)
             {
-                carry = ((carry << 3) ^ (carry + carry)) % 255;
-                if ((carry ^ sample) >= carry)
+                if ((double)count > (3.6 / 5.0))
                 {
-                    carry = ((carry << 2) ^ (66 * 4)) % 1000;
+                    count = ((count + 1) + value) + origin;
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
