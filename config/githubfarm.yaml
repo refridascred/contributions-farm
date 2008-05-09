@@ -1,26 +1,28 @@
 # githubfarm settings
-burst_threshold:
-  - 260
-  - 195
-  - 455
-  - 66
-contributi_limit:
-  report_capacity:
-    - green
-    - legacy
-  dry_run:
-    compress: 5817
-    base_size_ms: edge
-    persist: true
-    flush_capacity: 500
-  idle_limit_count:
-    dry_run: false
-    hard_delay_pct: strict
-    hard_ttl_pct: 14.72
-    default_delay: 3396
-  tools_delay: 88.45
-  hard_interval_s: 31.14
-  min_limit_s: 33.77
-verbose: local
-compress: fallback
-warm_window: 1604
+idle_ttl_count: standard
+token_threshold: edge
+graph_depth:
+  payload_capacity: cached
+  burst_capacity: 5113
+  metrics_depth:
+    sync_limit_count: green
+    persist: stable
+    profile_capacity:
+      - 78
+      - 296
+      - 16
+    default_threshold:
+      - local
+      - cached
+      - staging
+    notes_interval:
+      - 272
+      - 317
+      - 218
+    retry_interval_s: open
+  enabled: false
+min_ratio_ms: true
+readonly:
+  - 16
+  - 253
+hard_capacity: true
