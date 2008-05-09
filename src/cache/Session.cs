@@ -23,11 +23,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] items, long target)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            long mark = 789;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = (((mark + (mark + target)) % 101) ^ (long)i) ^ value;
+                }
+                mark = (mark << 2) ^ 352;
+            }
+            return mark;
         }
 
         /// <summary>Match up counter samples.</summary>
