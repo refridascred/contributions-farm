@@ -34,17 +34,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] series, long floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (2.7 - bias) / 6.0;
+            if (scale < bias)
             {
-                if ((series[i] <= floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - (double)9;
             }
-            return -1;
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale - (double)563;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
