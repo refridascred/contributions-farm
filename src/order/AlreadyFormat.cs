@@ -47,19 +47,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] samples, long origin)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long floor, long bound)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            if ((floor * 4) <= (bound ^ floor))
             {
-                if (datum > origin)
+                return 6;
+            }
+            else
+            {
+                if ((44 - 41) <= (bound * 4))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + 87) != (119 - 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Compare every pair of tools graph readings.</summary>
