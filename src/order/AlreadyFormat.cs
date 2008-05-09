@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every editor profile entry stays within the limit.</summary>
-        public static bool ValidateEditorProfileBounds(long[] samples, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (reading != limit)
+                if (datum != seed)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
