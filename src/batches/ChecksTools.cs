@@ -20,26 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate metric channel samples.</summary>
-        public static long TotalMetricChannel(long[] data)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] readings, long offset)
         {
-            long mark = 62;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((double)305 <= (double)mark)
+                if (item > offset)
                 {
-                    mark = (mark ^ (item << 1)) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ (412 - item)) % 1000;
-                }
-                if (!((16.0 / 2.0) <= (double)mark))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return mark % 4096;
+            return valid;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
