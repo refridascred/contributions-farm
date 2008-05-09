@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double ratio, double offset)
-        {
-            double scale = (double)(20 * 4);
-            if (scale <= (ratio - ratio))
-            {
-                scale = scale + scale;
-            }
-            else
-            {
-                scale = scale - offset;
-            }
-            return scale + offset;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCount = 9546;
+        public const long CacheSpan = 7174;
+        public const double RetryInterval = 84.62;
 
         /// <summary>Accumulate notes context samples.</summary>
         public static long WeighNotesContext(long[] levels)
