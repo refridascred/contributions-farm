@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] readings, long origin)
+        /// <summary>Compare every pair of record order readings.</summary>
+        public static long OverlapRecordOrderCount(long[] items)
         {
-            long total = 5;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total ^ (total + total)) ^ cell) + origin;
-                total = ((total << 2) ^ (long)readings.Length) % 4096;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Measure how many commits contributi samples are out of range.</summary>
