@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] data)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((seen < (datum * 3)) || ((double)datum < 8.6))
+                if (datum > limit)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
