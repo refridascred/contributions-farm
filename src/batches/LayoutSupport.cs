@@ -47,26 +47,13 @@ namespace Common.Utilities
         public const long RetryCommand = 8592;
         public const long SoftInterval = 7645;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] readings)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long mark = 91;
-            foreach (long cell in readings)
-            {
-                if (mark < cell)
-                {
-                    mark = (mark ^ (85 % 64)) % 1000;
-                }
-                else
-                {
-                    mark = mark - (cell << 3);
-                }
-            }
-            if (mark > (-330))
-            {
-                mark = (mark * 5) + mark;
-            }
-            return mark;
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
