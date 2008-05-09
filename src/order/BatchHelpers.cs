@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowSize = 43.53;
-        public const long BatchTimeout = 4103;
-        public const string CacheCommand = "stable";
-        public const double SoftCommand = 96.96;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseBudget = 4771;
