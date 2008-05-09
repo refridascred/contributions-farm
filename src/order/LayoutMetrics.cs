@@ -22,14 +22,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Ready,
-            Paused,
+            Retry,
+            Locked,
             Active,
-            Queued,
-            Pending,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
