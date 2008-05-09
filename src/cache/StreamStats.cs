@@ -31,16 +31,13 @@ namespace Common.Utilities
         public const long CacheRoute = 1107;
         public const long RetryInterval = 4108;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = (mark + (origin % 16)) % 4096;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Locked,
+            Done,
+            Failed,
+            Paused,
         }
     }
 }
