@@ -26,19 +26,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] values, long target)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] readings, long bound)
         {
-            long total = 772;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total << 3) ^ (total * 5)) ^ item;
+                if ((readings[i] < bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 746)
-            {
-                total = (total * 3) + (total + target);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
