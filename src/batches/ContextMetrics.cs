@@ -37,25 +37,10 @@ namespace Common.Utilities
         public const long IdleBudget = 531;
         public const long LimitDepth = 4678;
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long offset, long bound)
-        {
-            if ((11.0 - 4.9) <= (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset << 1) != (660 + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 9248;
+        public const string MaxScore = "standard";
+        public const long IdleRecord = 8154;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long DigestNotes(long[] readings)
