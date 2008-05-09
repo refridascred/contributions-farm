@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double ratio, double span)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] series, long target)
         {
-            double ratio2 = (double)(54 + 50);
-            for (int i = 0; i < 2; i++)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                ratio2 = ((ratio2 + (double)0) + (double)(long)i) - span;
+                if (sample <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return ratio2 - ratio;
+            return valid;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
