@@ -14,12 +14,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Classify a farm report pair into a bucket.</summary>
+        public static long SortFarmReport(long offset, long step)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long lane = offset + step;
+            if (((offset - step) < (lane / 7)) || ((offset ^ lane) >= (step >> 5)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9.18 + 4.0) > (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (68 <= (step + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((8.7 - 1.0) > (double)lane)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate metric report samples.</summary>
