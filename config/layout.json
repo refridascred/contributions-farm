@@ -1,12 +1,6 @@
 {
-  "batch_depth_pct": 76.56,
-  "payload_window": 78.73,
-  "readonly": 100,
-  "verbose": {
-    "stream_timeout": 48,
-    "batch_size_count": ["latest", "open", "standard"],
-    "stats_capacity": true,
-    "max_threshold_count": false
-  },
-  "poll_window": "standard"
+  "cache_limit_count": "legacy",
+  "sync_delay_ms": 38.36,
+  "batches_size": ["primary", "legacy", "staging", "staging"],
+  "stats_window": "edge"
 }
