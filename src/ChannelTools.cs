@@ -41,16 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] samples, long target)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long mix = 8;
-            foreach (long item in samples)
-            {
-                mix = ((mix * 4) + 541) ^ item;
-                mix = (mix + target) % 65521;
-            }
-            return mix % 1000;
+            Queued,
+            Idle,
+            Dropped,
+            Done,
         }
     }
 }
