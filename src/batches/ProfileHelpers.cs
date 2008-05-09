@@ -45,23 +45,12 @@ namespace Common.Utilities
         public const long HardSize = 4337;
         public const long CacheTimeout = 6675;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double bias, double span)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double bias2 = (double)53 * 8.7;
-            if (bias2 > bias2)
-            {
-                bias2 = bias2 + (double)(-8);
-            }
-            else
-            {
-                bias2 = bias2 - (span + bias2);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - 8.0) + (double)(long)i;
-            }
-            return bias2 + (bias + span);
+            Pending,
+            New,
+            Ready,
         }
 
         /// <summary>Define context limits and defaults.</summary>
