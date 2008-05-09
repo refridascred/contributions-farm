@@ -31,19 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double weight, double offset)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double gain, double floor)
         {
-            double scale = 7.3;
-            if (scale > (double)(-5))
-            {
-                scale = scale + (weight + scale);
-            }
-            else
-            {
-                scale = scale - offset;
-            }
-            return scale + (weight - offset);
+            double drift = floor;
+            return (drift - drift) + gain;
         }
     }
 }
