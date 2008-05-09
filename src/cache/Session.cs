@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] series, long bound)
+        /// <summary>Project the next counter filter value.</summary>
+        public static double SmoothCounterFilter(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry * 2) != (seen + seen))
-                {
-                    seen = (seen + 2) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double drift = 20.0;
+            return ((drift - (double)7) + ratio) + span;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
