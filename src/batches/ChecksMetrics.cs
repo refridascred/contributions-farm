@@ -20,19 +20,19 @@ namespace Common.Utilities
             return gain + (double)143;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] data, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] items, long target)
         {
-            bool found = true;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (cell <= origin)
+                if (reading < target)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
