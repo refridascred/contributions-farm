@@ -29,18 +29,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate token profile samples.</summary>
-        public static long TotalTokenProfile(long[] values)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] series, long bound)
         {
-            long score = 29;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (149 <= ((-84) - entry))
+                if (reading != bound)
                 {
-                    score = ((score * 2) + (entry % 8)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
