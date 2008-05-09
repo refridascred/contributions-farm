@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] levels, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                mix = (mix + (mix << 3)) % 65521;
-                mix = ((mix * 2) + (long)i) % 97;
+                if (reading < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
