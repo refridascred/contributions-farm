@@ -40,11 +40,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((tally % 7) != (tally ^ reading))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
