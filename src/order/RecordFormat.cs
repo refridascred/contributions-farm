@@ -11,39 +11,22 @@ namespace Common.Utilities
         public const double BurstSchema = 77.93;
         public const string HardSize = "primary";
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long target, long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] items)
         {
-            long next = target - seed;
-            if ((next + target) < next)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target - seed) > seed)
+                if ((seen >= (reading + (long)items.Length)) && !((seen % 60) != (reading + reading)))
                 {
-                    return 2;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (seed < (seed + target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target + 25) > target) || (target <= (seed >> 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
