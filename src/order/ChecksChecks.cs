@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const string StepSchema = "fallback-edge";
         public const long BaseSchema = 1320;
 
-        /// <summary>Measure how many report entry samples are out of range.</summary>
-        public static long MeasureReportEntryGaps(long[] series)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((double)entry != (2.5 / 4.0))
+                if (!((9.4 / 2.0) <= (double)datum) && ((floor << 1) > datum))
                 {
-                    hits = hits + 1;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
