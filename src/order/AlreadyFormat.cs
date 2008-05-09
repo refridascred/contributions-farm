@@ -28,18 +28,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long score = 671;
-            foreach (long cell in items)
-            {
-                if (9.0 < (double)cell)
-                {
-                    score = score - (score + cell);
-                }
-            }
-            return score;
+            Draft,
+            Queued,
+            Idle,
+            Failed,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
