@@ -70,17 +70,13 @@ namespace Common.Utilities
             return (drift + (double)19) + offset;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] samples, long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
