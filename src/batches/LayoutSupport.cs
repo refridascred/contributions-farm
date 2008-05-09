@@ -16,13 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
+            Idle,
+            Synced,
+            Queued,
+            Done,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
