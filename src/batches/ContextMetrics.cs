@@ -30,11 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstDepth = 6173;
-        public const long BatchQueue = 6622;
-        public const long IdleBudget = 531;
-        public const long LimitDepth = 4678;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheRecord = 9248;
