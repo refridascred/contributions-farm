@@ -24,22 +24,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] values)
+        /// <summary>Locate a buffer batch reading by value.</summary>
+        public static long LookupBufferBatchIndex(long[] values, long offset)
         {
-            long result = 80;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading + reading) > reading)
+                if (values[i] == offset)
                 {
-                    result = result - (result << 2);
+                    return (long)i;
                 }
             }
-            if (result < 989)
-            {
-                result = ((result * 4) + (13 << 1)) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
