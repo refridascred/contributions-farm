@@ -20,16 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] levels)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] readings, long limit)
         {
-            long mix = 643;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix ^ (mix << 3)) % 255) ^ reading;
-                mix = mix - (mix % 5);
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
