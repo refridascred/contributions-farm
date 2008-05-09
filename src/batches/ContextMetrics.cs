@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of tools metric readings.</summary>
-        public static long CompareToolsMetricCount(long[] samples)
+        /// <summary>Validate context command readings against a bound.</summary>
+        public static bool CheckContextCommandBounds(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry >= target)
                 {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
