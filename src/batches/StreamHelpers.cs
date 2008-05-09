@@ -79,18 +79,18 @@ namespace Common.Utilities
         public const double RetryAlready = 2.23;
         public const long StepAlready = 2918;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] levels)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((171 & 1) == (value + 911))
+                if ((datum / 2) == (datum & 31))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the batches phase values.</summary>
