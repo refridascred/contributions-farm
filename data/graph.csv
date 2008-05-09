@@ -1,11 +1,6 @@
-id,state,score
-1,219,422
-2,8.96,354
-3,52.59,20.21
-4,edge,28.91
-5,879,51.47
-6,cached,39
-7,fallback,710
-8,primary,standard
-9,standard,8.36
-10,618,open
+id,score
+1,latest
+2,527
+3,open
+4,55.9
+5,446
