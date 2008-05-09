@@ -48,18 +48,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine batch filter values into a single score.</summary>
-        public static long CombineBatchFilter(long[] data, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] values)
         {
-            long result = 922;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((((long)data.Length + result) <= bound) || (bound > (result << 3)))
+                if (reading > count)
                 {
-                    result = ((result * 2) + sample) % 65521;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a entry stats.</summary>
