@@ -46,18 +46,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] data, long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((step & 63) == (value + 669))
+                if (datum < limit)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
