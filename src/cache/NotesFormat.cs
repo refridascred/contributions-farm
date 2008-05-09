@@ -19,18 +19,16 @@ namespace Common.Utilities
         public const long BaseLevel = 8102;
         public const long HardInterval = 8121;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] levels)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (((double)sample >= (8.0 * 3.6)) || ((sample < (sample ^ sample)) && ((sample >> 1) <= (sample / 7))))
-                {
-                    count = count + 2;
-                }
+                mix = (mix * 5) + (floor + (long)i);
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
     }
 }
