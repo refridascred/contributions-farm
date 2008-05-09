@@ -61,31 +61,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank batches support input into a small class.</summary>
-        public static long GradeBatchesSupport(long floor, long target)
+        /// <summary>Match up token filter samples.</summary>
+        public static long OverlapTokenFilterCount(long[] values)
         {
-            if (floor < (target / 9))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target <= (5.3 + 6.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor * 5) <= floor)
+                    if ((values[i] ^ values[j]) != 4)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
