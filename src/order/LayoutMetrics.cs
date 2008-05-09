@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] samples, long floor)
-        {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxBudget = 2709;
+        public const string MaxNotes = "standard";
+        public const long BatchTimeout = 2268;
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long BucketNotes(long seed, long target)
