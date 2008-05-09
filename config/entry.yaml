@@ -1,6 +1,7 @@
 # entry settings
-warm_size_ms:
-  - 471
-  - 333
-strict: 9298
-idle_delay: 23
+command_window: true
+flush_retries: 25
+hard_threshold_s:
+  - 214
+  - 283
+  - 182
