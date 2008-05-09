@@ -43,17 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a entry support sample.</summary>
-        public static long FindEntrySupportIndex(long[] values, long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 8;
+            foreach (long datum in data)
             {
-                if ((values[i] == step) && ((values[i] % 5) == 0))
+                if ((0.24 < (3.0 * 7.6)) || (10 >= (datum << 1)))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (datum + anchor)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor + anchor)) % 97;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
