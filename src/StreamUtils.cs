@@ -36,12 +36,22 @@ namespace Common.Utilities
         public const long IdleLevel = 1204;
         public const long StepLevel = 2609;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] readings)
         {
-            Locked,
-            Pending,
-            Retry,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!((721 % 24) >= (seen << 3)))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a counter options.</summary>
