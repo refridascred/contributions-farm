@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const double IdleDepth = 94.88;
         public const long LimitFactor = 9436;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] data)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!((tally - tally) != (sample ^ tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Active,
+            Dropped,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a stats entry.</summary>
