@@ -22,19 +22,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] data, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (reading != floor)
+                if ((double)tally >= 6.5)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Look up the position of a token session sample.</summary>
