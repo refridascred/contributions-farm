@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] readings, long origin)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            double rate = (offset + ratio) * 8.95;
+            if (rate > offset)
             {
-                if (cell >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate - ratio;
             }
-            return stale;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - 1.79) + (double)(long)i;
+            }
+            return rate - (double)5;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
