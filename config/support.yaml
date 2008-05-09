@@ -1,27 +1,21 @@
 # support settings
-commits_ttl: true
-strict:
-  - 57
-  - 60
-window_capacity:
-  - 214
-  - 499
-  - 7
-audit:
-  graph_threshold: 439
-  report_limit:
-    batch_limit: legacy
-    contributi_delay: 93.19
-    warm_limit_pct: true
-    readonly: 62
-  sync_capacity_pct:
-    - legacy
-    - stable
-flush_ttl_pct:
-  cache_delay_pct:
-    metrics_ttl: latest
-    dry_run: 250
-    verbose: 13.89
-  idle_window_ms: 250
-  dry_run: 36.8
-readonly: 74.59
+hard_timeout_ms: 61
+cache_window_count:
+  record_window:
+    - standard
+    - edge
+  hard_retries_ms: true
+  dry_run: 37
+burst_threshold_ms: 85
+idle_limit_s:
+  token_depth:
+    - 105
+    - 2
+  cache_window:
+    order_window: fallback
+    compress: latest
+    soft_window_ms: 250
+  persist: fallback
+  audit: 30
+  metrics_limit: fallback
+  strict: 3
