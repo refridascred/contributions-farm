@@ -28,12 +28,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            Ready,
-            Synced,
-            Closed,
+            long score = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Blend two batch measurements.</summary>
