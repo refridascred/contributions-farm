@@ -34,10 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 3760;
-        public const double RetryScore = 33.46;
-        public const long MaxLevel = 8435;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double rate, double bias)
+        {
+            double weight = bias - 3.2;
+            return (weight - bias) + rate;
+        }
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
