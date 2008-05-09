@@ -21,20 +21,12 @@ namespace Common.Utilities
         public const long BaseBudget = 3433;
         public const long StepCount = 961;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((7.0 * 15.0) == (double)anchor)
-                {
-                    anchor = (anchor ^ (60 >> 4)) % 4096;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetrySpan = 3348;
+        public const string MinScore = "standard-edge";
+        public const long LimitWindow = 6034;
+        public const long RetryTimeout = 5383;
+        public const long StepWindow = 2653;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long CombineStats(long[] data)
