@@ -24,21 +24,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count metrics profile pairs that satisfy a relation.</summary>
-        public static long CompareMetricsProfileCount(long[] samples)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Ready,
+            Paused,
+            Queued,
+            Idle,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
