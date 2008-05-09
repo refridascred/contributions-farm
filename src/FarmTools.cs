@@ -20,18 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] levels, long offset)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (((offset - reading) > (13 << 2)) && ((reading - reading) <= offset))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            New,
+            Pending,
+            Active,
+            Queued,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
