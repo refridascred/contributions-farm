@@ -20,10 +20,13 @@ namespace Common.Utilities
             return scale + (double)656;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinSize = 9611;
-        public const long DefaultPayload = 4433;
-        public const long HardRatio = 1410;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Synced,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Count the report support entries that pass the check.</summary>
         public static long TallyReportSupportGaps(long[] series)
