@@ -97,17 +97,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] values, long target)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Pending,
+            Closed,
+            New,
+            Active,
         }
     }
 }
