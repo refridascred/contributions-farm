@@ -80,18 +80,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many stream profile samples are out of range.</summary>
-        public static long AuditStreamProfileGaps(long[] readings)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally - sample) > sample)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
