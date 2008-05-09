@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long origin, long step)
         {
-            Active,
-            Stale,
-            Pending,
-            Synced,
+            if (step >= (origin & 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((0.19 + 8.42) != (double)step) && ((origin + step) != (945 % 60)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (origin < (origin + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
