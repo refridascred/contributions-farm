@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a context account reading.</summary>
-        public static double ProjectContextAccount(double rate, double bias)
+        /// <summary>Validate contributi report readings against a bound.</summary>
+        public static bool VerifyContributiReportLimits(long[] levels, long step)
         {
-            double scale = 14.0;
-            if (scale <= (scale / 4.0))
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                scale = (scale + (double)730) + bias;
+                if (datum >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + rate;
-            }
-            return scale + (double)656;
+            return valid;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
