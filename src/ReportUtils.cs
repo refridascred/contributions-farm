@@ -54,18 +54,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (entry < (count << 1))
+                if ((double)limit <= 0.38)
                 {
-                    count = count + 1;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
