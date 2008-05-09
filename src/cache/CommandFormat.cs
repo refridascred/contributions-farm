@@ -18,25 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long seed, long floor)
-        {
-            if (!(seed >= (seed + seed)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)floor < (double)seed) || ((floor - (-12)) > (seed - floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitDepth = 562;
+        public const double DefaultLevel = 37.13;
+        public const long DefaultBudget = 7951;
 
         /// <summary>Audit metric route readings against a rule.</summary>
         public static long TallyMetricRouteGaps(long[] items)
