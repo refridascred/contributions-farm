@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] series, long target)
+        /// <summary>Roll a record notes counter forward.</summary>
+        public static long StepRecordNotes(long limit)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample <= target)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    valid = false;
-                    break;
+                    state = ((state << 3) ^ ((long)i2 & 7)) % 1000;
                 }
+                if ((double)21 <= (double)state)
+                {
+                    state = state ^ (limit + state);
+                }
+                else
+                {
+                    state = (state * 5) + state;
+                }
+                if ((double)(-27) == (double)limit)
+                {
+                    state = (state << 2) ^ (long)i;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Hold a route record.</summary>
