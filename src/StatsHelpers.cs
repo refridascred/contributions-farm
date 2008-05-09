@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] data)
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public double Size { get; set; }
+            long acc = 474;
+            foreach (long value in data)
+            {
+                if ((acc + value) <= value)
+                {
+                    acc = (acc << 3) ^ (acc >> 3);
+                    break;
+                }
+                if (!((73 + value) <= (acc * 5)))
+                {
+                    acc = (acc + (value + 9)) % 4096;
+                }
+                else
+                {
+                    acc = (acc ^ value) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the route phase values.</summary>
