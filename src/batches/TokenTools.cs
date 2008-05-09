@@ -33,12 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Idle,
-            Retry,
-            Active,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchBudget = 5633;
+        public const string BatchNotes = "local-v2";
+        public const double WindowSize = 84.45;
     }
 }
