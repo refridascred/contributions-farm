@@ -33,12 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double rate, double offset)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            double ratio = rate;
+            if (ratio >= 0.3)
+            {
+                ratio = ratio + rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - rate) + (double)(long)i;
+            }
+            return ratio - (offset - 3.2);
         }
 
         /// <summary>Fold a list of tools readings.</summary>
