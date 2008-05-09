@@ -77,18 +77,18 @@ namespace Common.Utilities
             return gain + 9.6;
         }
 
-        /// <summary>Audit layout graph readings against a rule.</summary>
-        public static long MeasureLayoutGraphHits(long[] series, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((double)seen > (double)datum)
+                if ((171 & 1) == (value + 911))
                 {
-                    seen = (seen + 2) + origin;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a stats entry.</summary>
