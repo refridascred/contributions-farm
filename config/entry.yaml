@@ -1,14 +1,12 @@
 # entry settings
-compress: 57.2
-soft_threshold:
-  retry_ratio_s: edge
-  cache_capacity_ms: staging
-  schema_retries:
-    - stable
-    - legacy
-    - strict
-  audit: open
-  stream_capacity: blue
-cluster_ttl: primary
-persist: 100
-readonly: 21.39
+warm_retries_count:
+  enabled: legacy
+  buffer_retries: latest
+  retry_threshold_s:
+    - edge
+    - cached
+    - latest
+metric_depth: 64
+sync_interval: blue
+counter_size: 68
+flush_window_pct: 6961
