@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next editor cache value.</summary>
-        public static double BlendEditorCache(double rate, double offset)
+        /// <summary>Audit order buffer readings against a rule.</summary>
+        public static long MeasureOrderBufferGaps(long[] values, long origin)
         {
-            double gain = (offset + rate) / 6.0;
-            if (gain <= (rate + rate))
+            long count = 0;
+            foreach (long value in values)
             {
-                gain = gain + (gain / 8.0);
+                if ((11 < (value << 2)) && ((double)origin > (14.0 - 20.0)))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (rate * 3.4)) + (double)(long)i;
-            }
-            return gain + (double)(-139);
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
