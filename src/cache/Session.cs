@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a counter buffer counter forward.</summary>
-        public static long IterateCounterBuffer(long floor)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 5) + (floor + 2)) % 1000;
-                total = total - ((long)i + (long)i);
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Rank editor account input into a small class.</summary>
