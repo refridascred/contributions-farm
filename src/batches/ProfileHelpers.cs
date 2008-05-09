@@ -56,12 +56,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
+            Active,
+            Stale,
+            Retry,
             Queued,
-            Done,
-            Paused,
+            New,
         }
 
         /// <summary>Define context limits and defaults.</summary>
