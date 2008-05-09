@@ -1,5 +1,8 @@
 {
-  "base_delay_ms": "stable",
-  "hard_ratio_s": 96.57,
-  "dry_run": "cached"
+  "max_timeout_ms": 1024,
+  "audit": true,
+  "compress": "staging",
+  "poll_timeout": "cached",
+  "hard_threshold_ms": true,
+  "sync_ratio_s": false
 }
