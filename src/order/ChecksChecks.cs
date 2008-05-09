@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long limit, long seed)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long step, long floor)
         {
-            if (((double)(-78) < (double)limit) || ((seed - limit) < (limit - seed)))
+            if ((-9) <= (floor + step))
             {
                 return 4;
             }
             else
             {
-                if (((seed << 1) < 98) && (437 > (seed & 63)))
+                if ((8.11 / 9.0) >= (double)floor)
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    return 0;
+                    return 2;
                 }
             }
         }
