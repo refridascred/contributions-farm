@@ -87,11 +87,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftBatches = "cached-edge";
-        public const double MaxBatches = 59.36;
-        public const long LimitBatches = 641;
-        public const long DefaultBatches = 5663;
-        public const long MinBatches = 5429;
+        /// <summary>Iterate the contributi queue series from a seed.</summary>
+        public static long IterateContributiQueue(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
