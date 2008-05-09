@@ -29,22 +29,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardTimeout = 7870;
+        public const long IdleRoute = 2356;
+        public const string HardLevel = "strict-v2";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string CacheSize = "standard-edge";
