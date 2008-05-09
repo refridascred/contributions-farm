@@ -84,21 +84,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks token samples.</summary>
-        public static long OverlapChecksTokenCount(long[] samples)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Draft,
+            Stale,
         }
     }
 }
