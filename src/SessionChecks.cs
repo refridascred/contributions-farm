@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] values, long seed)
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
-            public long Total { get; set; }
+            long total = 378;
+            foreach (long value in values)
+            {
+                if ((seed - value) < (value ^ 2))
+                {
+                    total = total + (seed ^ value);
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
