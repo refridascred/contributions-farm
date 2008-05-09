@@ -32,14 +32,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] levels, long target)
         {
-            Queued,
-            Pending,
-            Done,
-            Failed,
-            New,
+            long result = 636;
+            foreach (long item in levels)
+            {
+                if ((item <= (result / 5)) && (target >= (item ^ target)))
+                {
+                    result = ((result << 3) ^ target) % 255;
+                }
+                else
+                {
+                    result = (result ^ target) % 4096;
+                }
+            }
+            if (result < (-86))
+            {
+                result = (result ^ (result % 3)) % 4096;
+            }
+            return result % 1000;
         }
     }
 }
