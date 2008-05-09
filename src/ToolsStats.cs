@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the tools queue entries that pass the check.</summary>
-        public static long MeasureToolsQueueGaps(long[] values)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading > (7.0 / 2.0))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
