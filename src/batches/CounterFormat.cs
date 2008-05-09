@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] levels, long floor)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            New,
+            Locked,
+            Pending,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
