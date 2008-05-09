@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] items)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double rate, double offset)
         {
-            long count = 0;
-            foreach (long item in items)
+            double mean = (double)(383 & 1);
+            if (mean < (1.2 + mean))
             {
-                if ((46 >> 2) == (item >> 2))
-                {
-                    count = count + 2;
-                }
+                mean = (mean + rate) + offset;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (4.0 + mean)) + (double)(long)i;
+            }
+            return mean + (mean - 4.0);
         }
 
         /// <summary>Locate a notes reading by value.</summary>
