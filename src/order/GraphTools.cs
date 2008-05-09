@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ratio + (floor - gain);
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = mix + (mix + 60);
-                mix = mix ^ (origin ^ mix);
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstWidth = 10.2;
+        public const string BaseNotes = "cached-v2";
+        public const long IdleWidth = 271;
+        public const long MaxSize = 4631;
+        public const long WindowNotes = 5141;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryHits(long[] data)
