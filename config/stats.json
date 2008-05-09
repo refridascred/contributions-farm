@@ -1,12 +1,8 @@
 {
-  "buffer_size": true,
-  "default_ratio_s": {
-    "soft_depth": "edge",
-    "burst_ratio": 38.81,
-    "hard_retries": "local",
-    "graph_timeout": "blue",
-    "burst_depth_ms": 4485
-  },
-  "readonly": 8310,
-  "dry_run": "cached"
+  "flush_capacity": 28.9,
+  "dry_run": 12,
+  "default_retries_s": [143, 412, 499, 13],
+  "min_depth": 9.42,
+  "stats_depth": "blue",
+  "burst_interval": "open"
 }
