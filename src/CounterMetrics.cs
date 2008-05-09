@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] items, long origin)
         {
-            long sum = 23;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                sum = sum - reading;
+                if (cell != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (sum > 42)
-            {
-                sum = ((sum << 3) ^ sum) % 4096;
-            }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the stream status values.</summary>
