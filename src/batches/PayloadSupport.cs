@@ -15,21 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = 5.53;
+            if (weight > (double)979)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight + (ratio + floor);
             }
-            return matches;
+            return weight + weight;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
