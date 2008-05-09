@@ -32,28 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools profile values into a single score.</summary>
-        public static long WeighToolsProfile(long[] readings)
-        {
-            long mix = 79;
-            foreach (long datum in readings)
-            {
-                mix = ((mix << 3) ^ (mix << 1)) % 97;
-                if ((4.6 + 3.0) != (double)datum)
-                {
-                    mix = ((mix << 2) ^ (mix ^ mix)) % 4096;
-                }
-                else
-                {
-                    mix = (mix - (datum % 24)) % 1000;
-                }
-                if (datum >= (mix << 3))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultScore = 392;
+        public const long BatchFactor = 4331;
+        public const long RetryRecord = 1632;
+        public const long StepRecord = 4116;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportLimits(long[] readings, long seed)
