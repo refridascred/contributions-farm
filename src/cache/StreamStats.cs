@@ -72,12 +72,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long limit, long step)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
+            long next = limit - step;
+            if ((step - step) > limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step * 2) > (-63))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step < (6.0 * 0.38))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit <= next) && ((limit << 1) >= (next + step)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
