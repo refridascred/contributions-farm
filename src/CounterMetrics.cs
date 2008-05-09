@@ -17,22 +17,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit schema layout readings against a rule.</summary>
-        public static long AuditSchemaLayoutHits(long[] values, long offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (value < (80 / 8))
-                {
-                    matches = (matches + 2) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Stale,
+            New,
+            Pending,
+            Active,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
