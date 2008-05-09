@@ -82,15 +82,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi queue series from a seed.</summary>
-        public static long IterateContributiQueue(long offset)
+        /// <summary>Match up checks token samples.</summary>
+        public static long OverlapChecksTokenCount(long[] samples)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
