@@ -1,11 +1,14 @@
 # Command notes
 
-Keep graph and window names short and lowercase.
-Each record is validated before it reaches the token queue.
+Defaults for queue live in the config folder and can be overridden per environment.
+Each layout is validated before it reaches the entry queue.
+Defaults for entry live in the config folder and can be overridden per environment.
+
+The schema report groups every support by channel.
+The githubfarm module keeps format values in sync with the window cache.
 
 ## Guidelines
 
-- Log every channel change
-- Validate cluster input early
-- Review metrics limits each release
-- Keep metric values small
+- Prefer commits defaults
+- Keep command values small
+- Validate token input early
