@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long BaseSize = 4172;
         public const string BatchBudget = "alpha-v2";
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] values)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define token limits and defaults.</summary>
