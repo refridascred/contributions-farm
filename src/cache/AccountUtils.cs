@@ -35,9 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "cached";
-        public const string SoftAccount = "staging-v2";
-        public const string WindowAccount = "staging-edge";
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Pending,
+            Queued,
+            Failed,
+        }
     }
 }
