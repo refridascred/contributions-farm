@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of format entry entries.</summary>
-        public static long TallyFormatEntry(long[] levels)
+        /// <summary>Locate a metrics graph reading by value.</summary>
+        public static long LocateMetricsGraphIndex(long[] levels, long origin)
         {
-            long anchor = 68;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor - (anchor & 15)) % 255) + value;
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 404)
-            {
-                anchor = (anchor * 5) + anchor;
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Derive the next queue githubfarm value from a seed.</summary>
