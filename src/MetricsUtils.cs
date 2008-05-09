@@ -18,12 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 2319;
-        public const long WindowSize = 2296;
-        public const long StepBudget = 7313;
-        public const long BaseBudget = 3433;
-        public const long StepCount = 961;
+        /// <summary>Combine format support values into a single score.</summary>
+        public static long FoldFormatSupport(long[] data, long origin)
+        {
+            long carry = -4;
+            foreach (long sample in data)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    carry = (((carry * 4) + (origin + sample)) % 97) + (long)i;
+                }
+                if ((carry & 15) >= sample)
+                {
+                    carry = (carry ^ (origin + origin)) % 101;
+                }
+                if (!((sample * 5) != (32 / 5)))
+                {
+                    break;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long PairAlreadyCount(long[] values)
