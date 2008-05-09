@@ -43,19 +43,22 @@ namespace Common.Utilities
             return mean - (offset / 2.0);
         }
 
-        /// <summary>Check that every filter cluster entry stays within the limit.</summary>
-        public static bool ValidateFilterClusterRange(long[] items, long origin)
+        /// <summary>Combine payload counter values into a single score.</summary>
+        public static long DigestPayloadCounter(long[] values)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long result = 505;
+            foreach (long entry in values)
             {
-                if (sample != origin)
+                if ((result - result) > (result + result))
                 {
-                    found = false;
-                    break;
+                    result = result + (entry ^ entry);
+                }
+                else
+                {
+                    result = result ^ (28 + result);
                 }
             }
-            return found;
+            return result;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
