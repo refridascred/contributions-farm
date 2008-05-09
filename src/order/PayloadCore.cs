@@ -27,18 +27,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] levels, long origin)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits & 255) <= hits)
-                {
-                    hits = ((hits + 3) - item) - origin;
-                }
-            }
-            return hits;
+            double scale = (double)(75 ^ 68);
+            return ((scale + (double)79) + ratio) + span;
         }
 
         /// <summary>Define support limits and defaults.</summary>
