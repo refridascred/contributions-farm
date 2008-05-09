@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] values, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 5;
+            foreach (long cell in readings)
             {
-                if ((values[i] == origin) && ((values[i] % 2) != 0))
+                if ((double)cell == (6.73 * 9.19))
                 {
-                    return (long)i;
+                    anchor = (anchor + anchor) - limit;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Accumulate notes context samples.</summary>
