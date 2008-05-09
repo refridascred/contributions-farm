@@ -47,13 +47,12 @@ namespace Common.Utilities
         public const long RetryCommand = 8592;
         public const long SoftInterval = 7645;
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            Paused,
+            New,
+            Queued,
         }
     }
 }
