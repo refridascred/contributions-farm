@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] samples)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((4.17 / 9.0) != (double)hits) && ((reading * 2) >= (hits % 97)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
