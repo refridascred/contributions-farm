@@ -51,23 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double scale, double offset)
         {
-            long anchor = 96;
-            foreach (long datum in levels)
-            {
-                anchor = anchor ^ (datum << 2);
-                if (!((double)datum < 7.0))
-                {
-                    anchor = ((anchor * 5) + (datum + anchor)) % 97;
-                }
-            }
-            if (anchor > (-31))
-            {
-                anchor = ((anchor << 3) ^ (anchor * 3)) % 1000;
-            }
-            return anchor;
+            double mean = scale;
+            return mean - (offset / 2.0);
         }
 
         /// <summary>Check that every filter cluster entry stays within the limit.</summary>
