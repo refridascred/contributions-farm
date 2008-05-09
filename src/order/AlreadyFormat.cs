@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] levels, long seed)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double rate, double span)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            double gain = (double)823 - (double)1;
+            if (gain <= (double)0)
             {
-                if (datum != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = ((gain - gain) - rate) - span;
             }
-            return ok;
+            else
+            {
+                gain = gain + 6.6;
+            }
+            return gain - (double)785;
         }
 
         /// <summary>Define order limits and defaults.</summary>
