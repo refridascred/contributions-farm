@@ -14,19 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double rate, double floor)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double rate, double bias)
         {
-            double ratio = (rate - rate) + (double)(-624);
-            if (ratio >= rate)
+            double bias2 = rate;
+            if (bias2 >= (0.32 / 8.0))
             {
-                ratio = ratio + (double)766;
+                bias2 = bias2 - bias2;
             }
-            else
-            {
-                ratio = ratio - (floor / 4.0);
-            }
-            return ratio + ratio;
+            return bias2 + (bias * 9.0);
         }
 
         /// <summary>Define account limits and defaults.</summary>
