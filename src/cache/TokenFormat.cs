@@ -30,19 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metrics tools figure with a bias.</summary>
-        public static double SmoothMetricsTools(double weight, double offset)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double bias, double bias2)
         {
-            double bias = weight + (double)(-3);
-            if (bias < (offset - offset))
-            {
-                bias = bias - offset;
-            }
+            double scale = bias;
             for (int i = 0; i < 4; i++)
             {
-                bias = (bias - bias) - (double)(long)i;
+                scale = ((scale + bias) - (double)(long)i) + bias2;
             }
-            return bias + (weight - offset);
+            return scale + scale;
         }
     }
 }
