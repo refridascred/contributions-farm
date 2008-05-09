@@ -44,19 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token stream readings against a rule.</summary>
-        public static long CountTokenStreamOutliers(long[] levels)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] levels)
         {
             long matches = 0;
             foreach (long item in levels)
             {
-                if ((item >> 3) >= (item * 5))
+                if ((7 - item) >= (matches >> 4))
                 {
                     matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
                 }
             }
             return matches;
