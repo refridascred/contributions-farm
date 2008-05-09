@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks cache readings.</summary>
-        public static long TallyChecksCache(long[] levels, long target)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long anchor = 486;
-            foreach (long reading in levels)
-            {
-                if ((reading + reading) <= (6 ^ anchor))
-                {
-                    anchor = anchor - (target % 10);
-                }
-            }
-            return anchor % 65521;
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Blend two token measurements.</summary>
