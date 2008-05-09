@@ -38,10 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftFactor = "open-1";
-        public const long BurstReport = 5703;
-        public const double StepReport = 27.76;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            New,
+            Locked,
+            Active,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long OverlapProfileCount(long[] readings)
