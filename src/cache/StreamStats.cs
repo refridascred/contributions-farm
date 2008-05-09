@@ -14,24 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long bound, long step)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            if (!((double)bound >= (double)step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound * 2) > (765 % 10))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
