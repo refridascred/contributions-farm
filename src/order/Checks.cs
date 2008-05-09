@@ -59,19 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every queue notes entry stays within the limit.</summary>
-        public static bool CheckQueueNotesBounds(long[] values, long target)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double scale, double span)
         {
-            bool flag = true;
-            foreach (long value in values)
+            double rate = scale;
+            if (rate <= rate)
             {
-                if (value <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate + (rate * 3.86);
             }
-            return flag;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + span) - (double)(long)i;
+            }
+            return rate - (3.6 - 9.0);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
