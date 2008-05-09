@@ -55,19 +55,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the commits token entries that pass the check.</summary>
-        public static long TallyCommitsTokenMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((item & 7) != (item - (-288)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultCount = "strict-edge";
+        public const long BurstTimeout = 325;
+        public const long BatchDepth = 8312;
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
