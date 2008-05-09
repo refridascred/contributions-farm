@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the checks graph entries that pass the check.</summary>
-        public static long TallyChecksGraphGaps(long[] samples)
+        /// <summary>Digest a series of format entry entries.</summary>
+        public static long TallyFormatEntry(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long anchor = 68;
+            foreach (long value in levels)
             {
-                if ((entry + entry) <= seen)
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((anchor - (anchor & 15)) % 255) + value;
             }
-            return seen;
+            if (anchor > 404)
+            {
+                anchor = (anchor * 5) + anchor;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every channel session entry stays within the limit.</summary>
