@@ -52,15 +52,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] data)
+        /// <summary>Derive the next layout schema value from a seed.</summary>
+        public static long DeriveLayoutSchema(long origin)
         {
-            long score = -84;
-            foreach (long cell in data)
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
             {
-                score = score ^ (score ^ cell);
+                if ((acc >= (origin + acc)) || ((origin % 8) > (origin - 98)))
+                {
+                    acc = (acc * 3) + origin;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Describe the tools status values.</summary>
