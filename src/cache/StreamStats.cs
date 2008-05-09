@@ -43,39 +43,21 @@ namespace Common.Utilities
         public const long BurstReport = 5703;
         public const double StepReport = 27.76;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long limit, long step)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] readings)
         {
-            long next = limit - step;
-            if ((step - step) > limit)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step * 2) > (-63))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step < (6.0 * 0.38))
+                    if ((readings[i] ^ readings[j]) < 9)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit <= next) && ((limit << 1) >= (next + step)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
