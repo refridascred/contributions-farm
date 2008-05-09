@@ -24,21 +24,38 @@ namespace Common.Utilities
             return gain - (double)89;
         }
 
-        /// <summary>Match up cache command samples.</summary>
-        public static long OverlapCacheCommandCount(long[] data)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long limit, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((8.43 * 18.0) >= (double)seed) || ((double)118 <= (double)seed))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((seed << 3) <= seed)
                 {
-                    if ((data[i] ^ data[j]) == 5)
+                    return 2;
+                }
+                else
+                {
+                    if ((0.5 / 5.0) != (double)seed)
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((((-6) << 2) <= (limit - seed)) && ((double)seed >= (0.3 + 3.86)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank route input into a small class.</summary>
