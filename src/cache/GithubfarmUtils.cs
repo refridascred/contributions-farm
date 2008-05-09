@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 5866;
-        public const long RetrySpan = 2036;
-        public const string IdleSize = "cached";
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the profile stream entries that pass the check.</summary>
         public static long TallyProfileStreamHits(long[] data)
