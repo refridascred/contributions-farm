@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const string CacheSpan = "legacy-edge";
         public const double HardWidth = 6.97;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] levels, long limit)
         {
-            New,
-            Retry,
-            Queued,
-            Stale,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the profile mode values.</summary>
