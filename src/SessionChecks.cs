@@ -32,21 +32,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up editor checks samples.</summary>
-        public static long CompareEditorChecksCount(long[] items)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long offset, long offset2)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((2.0 * 1.1) <= (double)offset) && ((offset + offset) >= offset2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((3.7 / 3.0) > (double)offset2)
                 {
-                    if ((items[i] - items[j]) == 12)
+                    return 3;
+                }
+                else
+                {
+                    if ((offset + offset2) < (offset2 & 255))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((6.5 + 8.3) == (double)offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
