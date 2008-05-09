@@ -1,33 +1,11 @@
 # support settings
-min_depth_pct:
-  - standard
-  - eu-west
-batch_limit_s:
-  sync_limit_s: blue
-  idle_capacity_s:
-    - 89
-    - 97
-  poll_delay_s:
-    strict: 6556
-    audit: 58.13
-    profile_ttl: staging
-    batch_depth: green
-    compress: 25
-    persist: false
-  audit:
-    token_ttl: 92
-    burst_retries: edge
-    audit:
-      - 164
-      - 336
-      - 423
-    route_timeout: 17
-    token_retries:
-      - 412
-      - 313
-    already_depth: 18
-  batch_threshold: false
-  enabled: 8389
-warm_retries: latest
-max_window: cached
-cache_ttl: 60
+persist: 9
+readonly: false
+enabled: local
+retry_timeout_count: true
+burst_ratio_s: 68.9
+batch_ratio_s:
+  - 462
+  - 480
+  - 292
+  - 142
