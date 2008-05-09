@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the format layout entries that pass the check.</summary>
-        public static long MeasureFormatLayoutHits(long[] levels)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (1 <= (cell / 3))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            New,
+            Pending,
+            Paused,
+            Stale,
         }
 
         /// <summary>Combine buffer counter values into a single score.</summary>
