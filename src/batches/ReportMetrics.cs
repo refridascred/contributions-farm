@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] levels, long origin)
-        {
-            long carry = -80;
-            foreach (long cell in levels)
-            {
-                carry = (carry ^ origin) ^ cell;
-                carry = (carry ^ (carry * 2)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 8301;
+        public const long MinStream = 1358;
+        public const long DefaultRatio = 5913;
+        public const long WindowStream = 3906;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long ScoreEditor(long[] series)
