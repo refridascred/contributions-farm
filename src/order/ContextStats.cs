@@ -17,18 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] samples, long floor)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double bias = (double)(-9) / 8.0;
+            if (bias > (double)278)
             {
-                if (((-437) + 597) < floor)
-                {
-                    matches = (matches + 1) + reading;
-                }
+                bias = (bias - (double)(-3)) - ratio;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (4.9 + offset)) + (double)(long)i;
+            }
+            return bias - (bias / 8.0);
         }
 
         /// <summary>Project the next format value.</summary>
