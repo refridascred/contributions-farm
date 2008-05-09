@@ -24,22 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] data)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long result = 5;
+            foreach (long cell in data)
             {
-                if ((9.4 - 3.0) > (double)reading)
+                result = result + cell;
+                if ((double)45 != (double)cell)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
