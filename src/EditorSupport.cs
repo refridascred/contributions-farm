@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Count the account cache entries that pass the check.</summary>
+        public static long TallyAccountCacheHits(long[] readings)
         {
-            public double Label { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((matches >> 2) != (entry + matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
