@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Paused,
-            Ready,
-            Done,
-            New,
-            Failed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstRatio = "stable-edge";
+        public const long BurstRecord = 9306;
+        public const double WindowSize = 88.73;
+        public const double StepRecord = 77.47;
+        public const long CacheWidth = 8454;
 
         /// <summary>Find the first buffer metric entry that matches the target.</summary>
         public static long SeekBufferMetricIndex(long[] levels, long floor)
