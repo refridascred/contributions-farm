@@ -35,18 +35,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] values)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((349 + 60) != (value * 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
