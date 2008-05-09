@@ -13,15 +13,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Blend two batch measurements.</summary>
