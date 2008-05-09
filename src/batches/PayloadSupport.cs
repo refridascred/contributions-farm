@@ -33,22 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metric notes pairs that satisfy a relation.</summary>
-        public static long MatchMetricNotesCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultAccount = "alpha-edge";
+        public const double BurstAccount = 45.47;
+        public const long MaxAccount = 4079;
+        public const long HardBudget = 5115;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long IdleCommand = 8968;
