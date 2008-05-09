@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Accumulate buffer metrics samples.</summary>
+        public static long FoldBufferMetrics(long[] series, long target)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public double Token { get; set; }
+            long state = 27;
+            foreach (long entry in series)
+            {
+                if (((entry / 3) >= state) || ((target << 1) >= (entry ^ entry)))
+                {
+                    state = (state ^ entry) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
