@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a counter metrics figure with a bias.</summary>
-        public static double BlendCounterMetrics(double bias, double offset)
-        {
-            double drift = (double)(99 + 3);
-            if (drift < (double)681)
-            {
-                drift = (drift - (bias / 2.0)) + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (drift / 6.0)) - (double)(long)i;
-            }
-            return drift - 3.0;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitFilter = "local-v2";
+        public const double RetryFilter = 25.89;
+        public const long DefaultFilter = 8167;
+        public const long BatchFactor = 2685;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long DigestSupport(long[] values, long offset)
