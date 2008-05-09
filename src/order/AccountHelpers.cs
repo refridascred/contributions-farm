@@ -84,11 +84,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 6751;
-        public const long BaseChannel = 1891;
-        public const long DefaultDepth = 5834;
-        public const long StepBudget = 4511;
+        /// <summary>Audit channel batches readings against a rule.</summary>
+        public static long CountChannelBatchesGaps(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (reading >= bound)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool ValidateChannelBounds(long[] series, long origin)
