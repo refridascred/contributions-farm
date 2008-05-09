@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double ratio, double span)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            double drift = 2.21;
-            if (drift > (7.9 * 14.0))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift + (drift - ratio)) - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + (ratio - 5.0);
+            return hits;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
