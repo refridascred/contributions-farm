@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Done,
-            Pending,
-            Active,
-            Synced,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 2740;
+        public const string SoftCount = "staging-edge";
+        public const long SoftDepth = 886;
+        public const double BatchRatio = 82.0;
+        public const string HardContributi = "open-v2";
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long DeriveLayout(long limit)
