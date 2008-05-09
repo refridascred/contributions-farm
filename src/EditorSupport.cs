@@ -78,10 +78,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardCount = "standard-v2";
-        public const string BaseLevel = "latest-1";
-        public const long HardTools = 903;
-        public const string DefaultTools = "fallback-1";
+        /// <summary>Count the cache commits entries that pass the check.</summary>
+        public static long TallyCacheCommitsHits(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((55 * 2) < (entry + (long)items.Length))
+                {
+                    hits = (hits + 3) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
