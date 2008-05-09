@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] data)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double scale, double span)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double ratio = 5.0 + (span / 2.0);
+            if (ratio > (double)1)
             {
-                if ((7.0 - 9.5) > (double)count)
-                {
-                    count = (count + 1) ^ entry;
-                }
+                ratio = (ratio + (2.85 * 18.0)) + scale;
             }
-            return count;
+            return ratio + (double)9;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
