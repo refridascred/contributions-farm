@@ -19,32 +19,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long floor, long target)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double rate, double offset)
         {
-            long prev = floor - target;
-            if (!((7.0 * 8.4) > (double)target))
+            double weight = rate * 3.0;
+            if (weight >= offset)
             {
-                return 6;
+                weight = weight + (offset - weight);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (((-4) + prev) > target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-8) * 3) > prev)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                weight = (weight + (weight + offset)) + (double)(long)i;
             }
+            return weight - weight;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
