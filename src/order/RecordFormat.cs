@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftScore = 46.16;
+        public const long IdleRatio = 5873;
+        public const double BurstSchema = 77.93;
+        public const string HardSize = "primary";
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long RankChecks(long target, long seed)
