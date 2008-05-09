@@ -64,16 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] readings, long target)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double weight, double floor)
         {
-            long carry = 9;
-            foreach (long datum in readings)
+            double rate = 4.0;
+            if (rate <= (floor + weight))
             {
-                carry = ((carry - (87 + datum)) % 1000) + target;
-                carry = (carry << 3) ^ (carry + datum);
+                rate = rate - weight;
             }
-            return carry % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - 13.0) + (double)(long)i;
+            }
+            return rate + (floor - weight);
         }
     }
 }
