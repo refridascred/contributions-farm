@@ -13,10 +13,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 8100;
-        public const double IdleRatio = 24.86;
-        public const long DefaultScore = 6747;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((hits * 4) != (hits * 3))
+                {
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
