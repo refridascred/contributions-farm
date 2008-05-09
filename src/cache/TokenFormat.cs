@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] items, long origin)
+        /// <summary>Validate counter layout readings against a bound.</summary>
+        public static bool VerifyCounterLayoutLimits(long[] values, long floor)
         {
-            long score = 350;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((16.0 / 3.0) > (double)score)
+                if (reading < floor)
                 {
-                    score = (((score * 4) + (origin / 5)) % 65521) ^ item;
-                }
-                else
-                {
-                    score = (score - (origin * 5)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (score < 98)
-            {
-                score = score + score;
-            }
-            return score;
+            return valid;
         }
 
         /// <summary>Hold a farm stats.</summary>
