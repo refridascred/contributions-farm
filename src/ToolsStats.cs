@@ -75,15 +75,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the already checks series from a seed.</summary>
-        public static long RollAlreadyChecks(long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] items)
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
+            long sum = 989;
+            foreach (long entry in items)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((sum % 5) > (sum + sum))
+                {
+                    sum = sum + entry;
+                }
+                else
+                {
+                    sum = sum ^ (32 & 31);
+                }
             }
-            return mark;
+            if (sum < 314)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum % 1000;
         }
     }
 }
