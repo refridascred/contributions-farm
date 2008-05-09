@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west open; do
+RECORD_LIMIT=16
+log "limit is ${RECORD_LIMIT}"
+
+for item in legacy eu-west; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
