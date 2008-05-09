@@ -37,13 +37,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long offset, long bound)
         {
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Score { get; set; }
-            public long Label { get; set; }
+            if ((11.0 - 4.9) <= (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset << 1) != (660 + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Grade a order report value against two limits.</summary>
