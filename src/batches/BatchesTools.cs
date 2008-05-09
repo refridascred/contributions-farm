@@ -26,25 +26,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long bound, long offset)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long next = bound ^ offset;
-            if ((95 - next) != (bound << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((bound ^ bound) <= 599) || ((bound - offset) >= (next + bound)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
