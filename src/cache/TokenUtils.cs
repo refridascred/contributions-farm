@@ -27,15 +27,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double bias, double bias2)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            double ratio = bias2;
-            if (ratio >= ratio)
+            long score = 5;
+            foreach (long item in levels)
             {
-                ratio = (ratio + 6.3) - bias;
+                score = score + (item / 9);
+                for (int i = 0; i < 4; i++)
+                {
+                    score = (((score << 3) ^ (item - score)) % 101) ^ (long)i;
+                }
+                score = score ^ item;
             }
-            return ratio + (2.0 * 7.0);
+            return score % 65521;
         }
     }
 }
