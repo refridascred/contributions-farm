@@ -24,11 +24,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheLevel = "staging-edge";
-        public const long DefaultSpan = 3944;
-        public const string HardBudget = "fallback-v2";
-        public const double DefaultEditor = 28.59;
-        public const double LimitEditor = 47.84;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Failed,
+            Idle,
+            Ready,
+            New,
+        }
     }
 }
