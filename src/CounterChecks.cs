@@ -50,39 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long step, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] readings)
         {
-            long diff = step ^ floor;
-            if (!(step <= (floor / 6)))
+            long mark = 25;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor - floor) >= step)
+                if (item > (mark & 127))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)diff <= (5.2 + 18.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((10.0 - 1.85) > (double)diff) || ((diff + step) < step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mark = ((mark << 2) ^ (mark + item)) % 4096;
                 }
             }
+            return mark;
         }
 
         /// <summary>Describe the session class values.</summary>
