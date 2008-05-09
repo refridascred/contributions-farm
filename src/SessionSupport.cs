@@ -30,11 +30,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
+            Retry,
+            Closed,
+            New,
         }
     }
 }
