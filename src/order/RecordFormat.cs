@@ -74,18 +74,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] items, long origin)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (count > (origin << 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) ^ item;
+                    if ((samples[i] - samples[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
