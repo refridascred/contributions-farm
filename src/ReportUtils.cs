@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] samples)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long state = -2;
-            foreach (long reading in samples)
-            {
-                state = ((state + 51) % 101) ^ reading;
-            }
-            if (state > 33)
-            {
-                state = ((state * 5) + (state + state)) % 4096;
-            }
-            return state;
+            Closed,
+            Active,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
