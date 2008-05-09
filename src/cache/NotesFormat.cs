@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] samples, long step)
         {
-            Queued,
-            Paused,
-            Idle,
-            New,
-            Done,
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a order reading.</summary>
