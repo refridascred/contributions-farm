@@ -22,12 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowWidth = 4934;
-        public const double StepFactor = 86.59;
-        public const double WindowEditor = 12.46;
-        public const double RetryEditor = 90.88;
-        public const double MaxEditor = 14.77;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] samples, long offset)
+        {
+            long carry = 233;
+            foreach (long datum in samples)
+            {
+                carry = ((carry - (datum + carry)) % 255) - offset;
+            }
+            if (carry < 2)
+            {
+                carry = (carry - (long)samples.Length) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
