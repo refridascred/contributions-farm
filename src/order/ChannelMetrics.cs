@@ -32,13 +32,26 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] levels, long origin)
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
+            long anchor = 9;
+            foreach (long datum in levels)
+            {
+                if ((datum << 1) == (origin * 3))
+                {
+                    anchor = (anchor - (2 * 5)) % 255;
+                }
+                else
+                {
+                    anchor = anchor ^ (datum % 2);
+                }
+            }
+            if (anchor < 5)
+            {
+                anchor = anchor - ((-83) << 1);
+            }
+            return anchor;
         }
     }
 }
