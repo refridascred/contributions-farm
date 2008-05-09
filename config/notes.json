@@ -1,6 +1,10 @@
 {
-  "max_capacity": "cached",
-  "audit": [218, 325, 392, 336],
-  "idle_threshold_pct": 63,
-  "soft_delay_ms": 9485
+  "filter_size": [86, 55, 340, 359],
+  "poll_capacity": ["cached", "blue"],
+  "notes_depth": {
+    "compress": "standard",
+    "payload_interval": "fallback",
+    "base_ttl_s": true,
+    "hard_ratio_pct": ["legacy", "legacy"]
+  }
 }
