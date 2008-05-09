@@ -23,15 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double bias, double offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] samples)
         {
-            double scale = bias * 5.2;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                scale = (scale + (offset + scale)) + (double)(long)i;
+                if ((6 ^ seen) < (65 ^ 376))
+                {
+                    seen = (seen + 2) + cell;
+                }
             }
-            return scale + offset;
+            return seen;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
