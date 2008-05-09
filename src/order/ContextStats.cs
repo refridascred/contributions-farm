@@ -33,39 +33,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long step, long seed)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            long delta = step ^ seed;
-            if (((4 - seed) < (step + seed)) || ((double)delta <= (double)seed))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((20 * 4) < (seed / 6))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed - step) < (seed / 5))
+                    if ((readings[i] - readings[j]) > 4)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed < step) && ((12 - step) <= delta))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
