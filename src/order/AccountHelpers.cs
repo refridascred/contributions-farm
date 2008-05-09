@@ -27,11 +27,12 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 2991;
-        public const long WindowContributi = 7818;
-        public const long StepDepth = 3643;
-        public const long CacheScore = 7882;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
