@@ -20,18 +20,14 @@ namespace Common.Utilities
             return weight - (scale / 8.0);
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] samples)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((hits + 26) <= datum)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            Done,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
