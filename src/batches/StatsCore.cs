@@ -26,19 +26,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] samples)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            long anchor = 7;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (anchor % 5)) + sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (anchor > 5)
-            {
-                anchor = (anchor << 3) ^ ((long)samples.Length << 2);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a order snapshot.</summary>
