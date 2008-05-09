@@ -39,11 +39,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinStream = 28.71;
-        public const long BaseStream = 3633;
-        public const long HardSize = 4337;
-        public const long CacheTimeout = 6675;
+        /// <summary>Check that every channel command entry stays within the limit.</summary>
+        public static bool VerifyChannelCommandBounds(long[] series, long floor)
+        {
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TotalFormat(long[] data, long target)
