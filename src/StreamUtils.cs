@@ -54,13 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
+            Closed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the payload mode values.</summary>
