@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Combine farm tools values into a single score.</summary>
+        public static long TallyFarmTools(long[] readings)
         {
-            long carry = 37;
-            foreach (long item in items)
+            long state = -15;
+            foreach (long sample in readings)
             {
-                if ((item % 5) != (0 % 2))
+                if ((state ^ sample) <= 9)
                 {
-                    carry = ((carry << 3) ^ ((long)items.Length * 4)) % 4096;
+                    state = (state - (sample / 4)) % 65521;
                 }
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
