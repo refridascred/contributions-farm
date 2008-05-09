@@ -20,19 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] samples, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long mix = 643;
+            foreach (long reading in levels)
             {
-                if (datum >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix ^ (mix << 3)) % 255) ^ reading;
+                mix = mix - (mix % 5);
             }
-            return ok;
+            return mix % 65521;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
