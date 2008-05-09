@@ -13,11 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 70.41;
-        public const long HardCount = 8758;
-        public const string BatchInterval = "open-edge";
-        public const string DefaultDepth = "strict";
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Failed,
+            Ready,
+            Done,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
