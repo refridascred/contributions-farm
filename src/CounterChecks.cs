@@ -16,19 +16,10 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Audit window metrics readings against a rule.</summary>
-        public static long MeasureWindowMetricsOutliers(long[] levels, long floor)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((long)levels.Length >= floor)
-                {
-                    seen = (seen + 2) - item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchCount = 5233;
+        public const long CacheChecks = 7424;
+        public const long BurstChecks = 7530;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
