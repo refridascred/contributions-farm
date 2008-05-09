@@ -40,18 +40,12 @@ namespace Common.Utilities
         public const double IdleLevel = 34.44;
         public const long StepOrder = 7513;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] values, long step)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((((290 >> 3) == (seen ^ step)) || ((607 & 1) == (seen * 5))) || ((((long)values.Length ^ step) > 941) && ((694 * 3) > (step >> 4))))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
