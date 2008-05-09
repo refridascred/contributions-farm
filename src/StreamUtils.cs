@@ -27,21 +27,12 @@ namespace Common.Utilities
         public const long IdleLevel = 1204;
         public const long StepLevel = 2609;
 
-        /// <summary>Compare every pair of route command readings.</summary>
-        public static long MatchRouteCommandCount(long[] series)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Pending,
+            Retry,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
