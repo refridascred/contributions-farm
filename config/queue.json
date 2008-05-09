@@ -1,6 +1,5 @@
 {
-  "audit": "blue",
-  "retry_threshold_pct": 54,
-  "sync_size": 30,
-  "cluster_depth": "strict"
+  "poll_threshold": "edge",
+  "graph_limit": "fallback",
+  "min_size_ms": "open"
 }
