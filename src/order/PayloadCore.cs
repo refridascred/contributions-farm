@@ -12,12 +12,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Done,
-            Paused,
-            Synced,
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
