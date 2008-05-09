@@ -1,11 +1,20 @@
 # entry settings
-retry_interval_count: false
-poll_timeout_pct:
-  - 99
-  - 446
-  - 402
-  - 162
-token_interval:
-  - edge
-  - edge
-filter_delay: edge
+max_interval:
+  - strict
+  - local
+  - staging
+  - stable
+schema_depth: 84.52
+report_window:
+  order_threshold:
+    retry_threshold_count: local
+    compress: false
+    poll_limit: false
+    default_ttl_pct: 45
+    retry_timeout: edge
+    hard_delay:
+      - 445
+      - 206
+      - 294
+  batch_timeout: 803
+  warm_depth_count: fallback
