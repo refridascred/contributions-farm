@@ -41,18 +41,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] samples, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long span = floor ^ offset;
+            if ((double)offset >= 0.06)
             {
-                if (item <= 27)
+                return 8;
+            }
+            else
+            {
+                if (floor >= (offset + span))
                 {
-                    hits = (hits + 2) - offset;
+                    return 6;
+                }
+                else
+                {
+                    if ((7.2 - 5.0) >= (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the counter level values.</summary>
