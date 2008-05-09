@@ -26,15 +26,10 @@ namespace Common.Utilities
         public const string CacheCommand = "stable";
         public const double SoftCommand = 96.96;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] items)
-        {
-            long mix = 0;
-            foreach (long datum in items)
-            {
-                mix = (mix - (datum * 4)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseBudget = 4771;
+        public const double BaseContributi = 75.07;
+        public const double BurstContributi = 27.11;
+        public const long BurstCount = 5869;
     }
 }
