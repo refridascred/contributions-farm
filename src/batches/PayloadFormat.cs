@@ -34,19 +34,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((20.0 * 11.0) != (double)reading)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 3760;
+        public const double RetryScore = 33.46;
+        public const long MaxLevel = 8435;
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double SmoothStream(double bias, double offset)
