@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the account cache entries that pass the check.</summary>
-        public static long TallyAccountCacheHits(long[] readings)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long result = 94;
+            foreach (long value in readings)
             {
-                if ((matches >> 2) != (entry + matches))
+                if ((target << 3) >= target)
                 {
-                    matches = matches + 2;
+                    result = result + (target ^ target);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    result = (result - value) % 97;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
