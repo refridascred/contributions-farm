@@ -31,16 +31,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long floor)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix * 5) + (floor + (long)i);
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Locked,
+            Active,
+            Stale,
+            Queued,
+            Ready,
         }
     }
 }
