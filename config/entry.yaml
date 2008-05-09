@@ -1,7 +1,22 @@
 # entry settings
-burst_ratio: 62.21
-max_timeout_pct: legacy
-entry_window: open
-cache_depth: true
-retry_ratio_count: 250
-schema_delay: 57.7
+cache_interval: 100
+compress: 5453
+hard_timeout: 83.2
+cache_capacity_pct:
+  entry_capacity: strict
+  route_depth:
+    base_timeout:
+      - latest
+      - strict
+      - blue
+      - latest
+    flush_depth: blue
+    enabled: 78.02
+    idle_size_ms:
+      - staging
+      - stable
+      - blue
+      - primary
+    compress: false
+  min_capacity: false
+max_limit_ms: cached
