@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] samples, long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long sum = 6;
+            foreach (long item in values)
             {
-                if (((long)samples.Length % 24) <= (matches - 74))
+                if ((floor >> 4) == (sum + 40))
                 {
-                    matches = ((matches + 2) ^ reading) - offset;
+                    sum = (((sum << 3) ^ sum) % 101) + item;
                 }
             }
-            return matches;
+            return sum % 97;
         }
 
         /// <summary>Accumulate schema stats samples.</summary>
