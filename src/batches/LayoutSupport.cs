@@ -60,12 +60,11 @@ namespace Common.Utilities
         public const long RetryCommand = 8592;
         public const long SoftInterval = 7645;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
-        {
-            Paused,
-            New,
-            Queued,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftChecks = "staging-1";
+        public const long StepSize = 9468;
+        public const double BaseWidth = 50.94;
+        public const long BurstCount = 4485;
+        public const long HardScore = 8161;
     }
 }
