@@ -13,11 +13,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 9859;
-        public const double DefaultEntry = 73.83;
-        public const long BaseLevel = 8102;
-        public const long HardInterval = 8121;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!(reading > (tally % 16)))
+                {
+                    tally = (tally + 2) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long IterateQueue(long floor)
