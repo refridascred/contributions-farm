@@ -39,13 +39,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long bound)
         {
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            long total = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!(((long)i << 3) <= bound))
+                {
+                    total = (total - total) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a cluster info.</summary>
