@@ -32,21 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Classify a format account pair into a bucket.</summary>
+        public static long GradeFormatAccount(long origin, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long edge = origin ^ floor;
+            if ((double)origin < 5.73)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((74 ^ 50) == (floor + origin)) || ((double)floor < (1.8 + 4.6)))
                 {
-                    if ((levels[i] ^ levels[j]) > 0)
+                    return 7;
+                }
+                else
+                {
+                    if ((4.98 + 7.19) <= (double)edge)
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate checks samples.</summary>
