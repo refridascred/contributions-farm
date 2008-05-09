@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first notes profile entry that matches the target.</summary>
-        public static long LookupNotesProfileIndex(long[] values, long limit)
+        /// <summary>Validate editor counter readings against a bound.</summary>
+        public static bool ValidateEditorCounterLimits(long[] values, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((values[i] < limit) && ((values[i] % 5) != 0))
+                if (value != target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Match up cache command samples.</summary>
