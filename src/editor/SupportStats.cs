@@ -26,13 +26,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double weight, double floor)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public double Level { get; set; }
-            public long Total { get; set; }
+            double gain = 8.5;
+            if (gain < gain)
+            {
+                gain = (gain - gain) + weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + floor) + (double)(long)i;
+            }
+            return gain + (floor - floor);
         }
     }
 }
