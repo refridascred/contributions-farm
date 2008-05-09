@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Accumulate session notes samples.</summary>
+        public static long TallySessionNotes(long[] series, long origin)
         {
-            Done,
-            Closed,
-            Queued,
+            long state = 15;
+            foreach (long reading in series)
+            {
+                if ((reading ^ state) != (state + reading))
+                {
+                    state = ((state * 4) + reading) + origin;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
