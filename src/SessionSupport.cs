@@ -34,16 +34,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = (anchor - (limit >> 1)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
