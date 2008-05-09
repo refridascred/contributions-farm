@@ -15,11 +15,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowDepth = 4416;
-        public const long LimitBudget = 9288;
-        public const string WindowTools = "alpha";
-        public const long SoftTools = 1428;
+        /// <summary>Accumulate notes context samples.</summary>
+        public static long WeighNotesContext(long[] levels)
+        {
+            long score = -51;
+            foreach (long cell in levels)
+            {
+                score = (score + cell) % 97;
+                score = ((score << 3) ^ (-547)) % 101;
+                if ((score % 3) <= (cell + score))
+                {
+                    break;
+                }
+            }
+            if (score > 79)
+            {
+                score = score - (score << 2);
+            }
+            return score % 97;
+        }
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long SeriesCounter(long bound)
