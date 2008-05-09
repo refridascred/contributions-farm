@@ -12,11 +12,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long floor)
         {
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum << 3) ^ (sum + 999);
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
