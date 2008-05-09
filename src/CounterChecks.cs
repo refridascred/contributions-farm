@@ -34,20 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 7327;
+        public const double SoftTimeout = 62.3;
+        public const long CacheSession = 7716;
+        public const double BurstSession = 26.97;
+        public const long BatchSize = 6128;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
