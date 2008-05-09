@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long floor, long bound)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] data)
         {
-            if ((bound - bound) <= bound)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor >= (11.0 + 7.71))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound * 2) < (bound - 8))
+                    if ((data[i] - data[j]) == 9)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate notes context samples.</summary>
