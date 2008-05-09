@@ -62,22 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric format entries.</summary>
-        public static long WeighMetricFormat(long[] values)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] readings)
         {
-            long sum = 69;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (!((sample - sum) >= (sample & 3)))
+                if ((seen + sample) <= sample)
                 {
-                    sum = ((sum * 2) + (sample - sum)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (sample - sum)) % 101;
+                    seen = seen + 3;
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
