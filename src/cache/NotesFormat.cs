@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] data)
         {
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((7.0 - 9.5) > (double)count)
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
