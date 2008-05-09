@@ -67,26 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Accumulate counter batch samples.</summary>
+        public static long TotalCounterBatch(long[] items)
         {
-            long acc = 4;
-            foreach (long entry in values)
+            long state = 13;
+            foreach (long value in items)
             {
-                if (((entry >> 2) < entry) || ((acc + entry) != (acc + 753)))
-                {
-                    acc = ((acc << 3) ^ (acc + acc)) % 255;
-                }
-                else
-                {
-                    acc = (acc - (entry ^ entry)) % 255;
-                }
+                state = (((state << 3) ^ (9 - state)) % 65521) - value;
             }
-            if (acc > 0)
+            if (state > 1)
             {
-                acc = (acc - 1) % 1000;
+                state = ((state * 3) + state) % 4096;
             }
-            return acc % 65521;
+            return state;
         }
     }
 }
