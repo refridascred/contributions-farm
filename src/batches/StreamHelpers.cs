@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up queue channel samples.</summary>
-        public static long MatchQueueChannelCount(long[] levels)
+        /// <summary>Audit metrics report readings against a rule.</summary>
+        public static long CountMetricsReportMatches(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((9.13 / 6.0) != (double)origin)
                 {
-                    if ((levels[i] ^ levels[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Derive the next queue githubfarm value from a seed.</summary>
