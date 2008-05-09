@@ -31,19 +31,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            long score = 8;
-            foreach (long entry in levels)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                score = (score - (entry + 76)) % 97;
-                if ((double)429 > (double)score)
-                {
-                    score = (score << 3) ^ (score - score);
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
