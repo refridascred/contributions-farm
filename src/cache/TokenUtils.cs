@@ -34,27 +34,12 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Digest a series of payload metrics entries.</summary>
-        public static long ScorePayloadMetrics(long[] values, long seed)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long anchor = 408;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    anchor = anchor ^ ((long)i >> 1);
-                    anchor = (anchor - (cell << 1)) % 101;
-                }
-                if ((double)seed <= (2.0 / 7.0))
-                {
-                    anchor = (anchor << 2) ^ cell;
-                }
-            }
-            if (anchor > (-819))
-            {
-                anchor = (anchor ^ (366 / 4)) % 1000;
-            }
-            return anchor % 65521;
+            Dropped,
+            Synced,
+            Ready,
         }
     }
 }
