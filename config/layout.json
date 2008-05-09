@@ -1,9 +1,17 @@
 {
-  "stream_timeout": "blue",
-  "persist": "stable",
-  "sync_delay_s": {
-    "persist": 67.47,
-    "schema_threshold": 8989,
-    "idle_capacity_pct": 65.41
-  }
+  "poll_limit_count": {
+    "enabled": 61,
+    "strict": true,
+    "flush_threshold": "cached",
+    "readonly": {
+      "enabled": false,
+      "strict": true,
+      "retry_delay_s": 29.63
+    },
+    "cache_limit_s": 1024
+  },
+  "default_delay_pct": 30,
+  "format_threshold": 7946,
+  "soft_retries_count": true,
+  "max_delay": 100
 }
