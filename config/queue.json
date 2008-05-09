@@ -1,11 +1,8 @@
 {
-  "batch_size": false,
-  "cache_retries": 4011,
-  "max_size_ms": 21.37,
-  "burst_timeout_ms": {
-    "metrics_capacity": [424, 255, 430],
-    "idle_capacity_ms": 76.72,
-    "cluster_window": ["edge", "standard", "blue", "blue"],
-    "default_limit_count": 37.49
-  }
+  "verbose": 26.29,
+  "sync_timeout": 250,
+  "sync_threshold": 1024,
+  "idle_limit": "eu-west",
+  "readonly": "legacy",
+  "retry_interval": 26
 }
