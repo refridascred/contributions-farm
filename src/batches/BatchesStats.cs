@@ -12,19 +12,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] values, long bound)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Label { get; set; }
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the window level values.</summary>
