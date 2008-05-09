@@ -1,17 +1,4 @@
 # entry settings
-flush_capacity:
-  cache_depth_count: false
-  batch_limit: 500
-  warm_window: eu-west
-  verbose: false
-  idle_depth_count: legacy
-  warm_window_pct: 91.68
-batches_limit:
-  - edge
-  - legacy
-batch_depth: false
-enabled:
-  - 140
-  - 391
-  - 378
-retry_depth_count: 45.59
+cache_ttl_s: 7150
+soft_ttl_s: staging
+retry_capacity_count: false
