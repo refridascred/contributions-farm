@@ -35,13 +35,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public bool Score { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
