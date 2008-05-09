@@ -63,22 +63,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell >> 1) >= (cell * 3))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheContext = "strict";
+        public const string DefaultContext = "stable-v2";
+        public const long BurstContext = 575;
     }
 }
