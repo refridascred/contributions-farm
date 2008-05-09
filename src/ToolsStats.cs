@@ -37,22 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] levels, long limit)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long total = 5;
-            foreach (long cell in levels)
-            {
-                if ((11.0 * 7.83) == (double)limit)
-                {
-                    total = (total ^ (cell + cell)) % 255;
-                }
-            }
-            if (total > 18)
-            {
-                total = (total - (limit + total)) % 101;
-            }
-            return total;
+            Paused,
+            Queued,
+            Ready,
+            Stale,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
