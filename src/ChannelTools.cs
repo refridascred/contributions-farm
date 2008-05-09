@@ -30,19 +30,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = ((acc << 3) ^ (acc + 21)) ^ (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return acc;
+            return anchor;
         }
     }
 }
