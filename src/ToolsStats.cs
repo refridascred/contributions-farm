@@ -69,13 +69,9 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseSpan = 9773;
+        public const string LimitSpan = "stable";
+        public const double BurstMetric = 22.79;
     }
 }
