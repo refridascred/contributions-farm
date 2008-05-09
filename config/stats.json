@@ -1,11 +1,8 @@
 {
-  "burst_threshold_pct": "strict",
-  "cache_delay": "edge",
-  "sync_retries": 9213,
-  "poll_delay_pct": {
-    "base_window_count": false,
-    "dry_run": "blue",
-    "hard_timeout_pct": 9524
-  },
-  "default_limit": [65, 73, 88, 98]
+  "channel_threshold": true,
+  "enabled": false,
+  "hard_threshold_s": "standard",
+  "verbose": "primary",
+  "base_delay_ms": false,
+  "readonly": ["local", "blue"]
 }
