@@ -49,12 +49,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 1794;
-        public const long BurstCount = 1391;
-        public const long IdleCount = 8790;
-        public const long BurstCache = 8679;
-        public const string CacheInterval = "standard-v2";
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] series)
+        {
+            long sum = 591;
+            foreach (long entry in series)
+            {
+                sum = ((sum ^ (34 >> 1)) % 65521) + entry;
+            }
+            if (sum > 76)
+            {
+                sum = ((sum << 3) ^ (sum - sum)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
