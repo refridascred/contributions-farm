@@ -47,11 +47,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 5348;
-        public const string DefaultBuffer = "local-v2";
-        public const long CacheDepth = 7677;
-        public const long StepCount = 6195;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] readings, long seed)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long SeriesCounter(long floor)
