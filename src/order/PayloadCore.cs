@@ -46,13 +46,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Fold a list of notes farm readings.</summary>
+        public static long TotalNotesFarm(long[] values)
         {
-            Active,
-            Dropped,
-            Retry,
-            Ready,
+            long acc = 853;
+            foreach (long item in values)
+            {
+                acc = acc + (item & 7);
+            }
+            return acc;
         }
     }
 }
