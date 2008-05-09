@@ -37,19 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] items, long seed)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Queued,
+            Failed,
+            Ready,
         }
     }
 }
