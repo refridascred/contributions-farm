@@ -47,19 +47,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] levels, long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the tools mode values.</summary>
