@@ -33,21 +33,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the context mode values.</summary>
