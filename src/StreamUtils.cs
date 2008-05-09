@@ -26,12 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 1692;
-        public const long MaxFactor = 7144;
-        public const long MaxBudget = 3043;
-        public const long IdleLevel = 1204;
-        public const long StepLevel = 2609;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (((value <= (count / 7)) || ((0 + count) >= (count % 64))) || ((710 + count) > (count + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterHits(long[] readings)
