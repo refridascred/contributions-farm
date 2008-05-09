@@ -63,38 +63,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank route payload input into a small class.</summary>
-        public static long GradeRoutePayload(long bound, long floor)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            if ((bound % 64) == (floor - floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor % 5) < floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-4) < (floor << 1)) && ((bound << 1) >= floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor ^ floor) <= (bound % 16))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Pending,
+            Closed,
+            Failed,
+            Synced,
         }
     }
 }
