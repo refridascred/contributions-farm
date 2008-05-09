@@ -10,34 +10,35 @@ namespace Common.Utilities
         public const double StepMetrics = 92.71;
         public const double RetryMetrics = 22.5;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long offset, long limit)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long offset, long floor)
         {
-            if ((limit & 1) < (12 / 7))
+            long prev = offset - floor;
+            if ((prev << 3) >= offset)
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if ((double)offset != (9.0 / 2.0))
+                if ((prev > (prev & 1)) && ((double)floor == (1.04 + 2.8)))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    if ((limit ^ offset) > limit)
+                    if ((8.0 * 9.22) >= (double)prev)
                     {
-                        return 0;
+                        return 4;
                     }
                     else
                     {
-                        if (!((double)offset < 2.0))
+                        if (!((double)prev != (double)19))
                         {
-                            return 6;
+                            return 3;
                         }
                         else
                         {
-                            return 8;
+                            return 2;
                         }
                     }
                 }
