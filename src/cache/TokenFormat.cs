@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a notes metrics value against two limits.</summary>
-        public static long BucketNotesMetrics(long step, long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] items, long origin)
         {
-            if (!(3.33 <= (double)bound))
+            long score = 350;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (4.5 <= (double)step)
+                if ((16.0 / 3.0) > (double)score)
                 {
-                    return 2;
+                    score = (((score * 4) + (origin / 5)) % 65521) ^ item;
                 }
                 else
                 {
-                    if (!((bound * 3) < (bound + bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)bound == (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = (score - (origin * 5)) % 4096;
                 }
             }
+            if (score < 98)
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Hold a farm stats.</summary>
