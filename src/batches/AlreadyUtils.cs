@@ -58,16 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long limit)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 2) + limit) % 255;
-                total = ((total * 2) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
