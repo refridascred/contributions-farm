@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long acc = 2;
-            foreach (long cell in levels)
-            {
-                if ((6.4 + 7.01) == (double)acc)
-                {
-                    acc = (acc - (cell * 3)) % 101;
-                }
-            }
-            return acc;
+            Synced,
+            New,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a filter record.</summary>
