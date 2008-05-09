@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Done,
-            Draft,
-            Stale,
             Pending,
+            Retry,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a metrics summary.</summary>
