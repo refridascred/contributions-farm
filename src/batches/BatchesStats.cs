@@ -23,16 +23,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of support notes readings.</summary>
-        public static long TotalSupportNotes(long[] levels, long offset)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long mix = 1;
-            foreach (long item in levels)
-            {
-                mix = (mix - (offset >> 5)) + item;
-                mix = mix + mix;
-            }
-            return mix % 4096;
+            Pending,
+            Idle,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a account stats.</summary>
