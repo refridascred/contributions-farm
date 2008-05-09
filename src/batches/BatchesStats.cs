@@ -39,12 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftSize = 92.48;
+        public const long MinToken = 8923;
+        public const long BurstCount = 265;
+        public const long DefaultToken = 6455;
     }
 }
