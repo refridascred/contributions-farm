@@ -23,13 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            long sum = 154;
+            foreach (long cell in levels)
+            {
+                if (!((236 << 2) > cell))
+                {
+                    sum = (sum - (sum * 5)) % 65521;
+                }
+                if (((sum % 7) <= (sum * 2)) || ((cell * 5) != (cell % 2)))
+                {
+                    break;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Project the next graph value.</summary>
