@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long origin, long floor)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] samples, long step)
         {
-            if (((double)origin >= 13.0) && ((origin - (-2)) != (floor + 937)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin > (14.0 * 9.5))
+                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin & 1) > origin) || ((floor + floor) > (537 & 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
