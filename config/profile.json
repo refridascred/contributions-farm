@@ -1,6 +1,13 @@
 {
-  "poll_window_count": "local",
-  "channel_window": "standard",
-  "hard_retries_ms": true,
-  "flush_ttl": "eu-west"
+  "verbose": {
+    "stream_threshold": 1024,
+    "soft_ttl": "legacy",
+    "audit": ["open", "fallback", "eu-west", "stable"],
+    "verbose": ["open", "cached", "legacy"],
+    "flush_retries_s": 52.69
+  },
+  "base_ratio_s": [170, 47, 32],
+  "min_window_ms": "open",
+  "warm_retries_pct": 250,
+  "idle_interval_pct": false
 }
