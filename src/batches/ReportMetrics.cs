@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 8301;
-        public const long MinStream = 1358;
-        public const long DefaultRatio = 5913;
-        public const long WindowStream = 3906;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long limit, long step)
+        {
+            if ((-22) > (step + 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit << 1) != (limit ^ 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step * 4) >= limit) || ((174 + 900) > (step + limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step ^ 413) <= step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double RetryWidth = 18.27;
