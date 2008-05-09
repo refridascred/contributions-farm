@@ -1,8 +1,6 @@
 {
-  "poll_ratio_count": 66,
-  "metric_ratio": "latest",
-  "poll_limit_s": [34, 256, 377, 343],
-  "retry_timeout_ms": ["latest", "blue", "open"],
-  "queue_ttl": false,
-  "cache_ratio": true
+  "max_ttl": ["open", "local"],
+  "retry_ratio_s": 8591,
+  "max_window": ["legacy", "legacy", "latest"],
+  "persist": false
 }
