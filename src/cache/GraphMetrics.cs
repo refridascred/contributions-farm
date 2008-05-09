@@ -58,22 +58,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] series)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long seed, long limit)
         {
-            long count = 0;
-            foreach (long value in series)
+            long offset = seed - limit;
+            if (offset >= (limit << 3))
             {
-                if (!((value - count) > value))
+                return 1;
+            }
+            else
+            {
+                if (offset < limit)
                 {
-                    count = count + 3;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (!((offset + limit) < (offset - seed)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
     }
 }
