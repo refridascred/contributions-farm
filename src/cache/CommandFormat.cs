@@ -23,22 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] series, long offset)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (offset > (long)series.Length)
-                {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine support profile values into a single score.</summary>
