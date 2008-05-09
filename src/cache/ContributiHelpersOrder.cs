@@ -38,18 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] data, long offset)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((offset >> 2) != (hits - sample)) || (((double)sample > (7.2 - 9.8)) && ((994 - hits) != ((-8) >> 4))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
