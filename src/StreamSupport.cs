@@ -20,38 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long origin, long seed)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long seed)
         {
-            if ((187 + origin) < seed)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed != (0.9 - 7.1))
+                if (levels[i] <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed == (3.7 * 10.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed - 817) < origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every counter session entry stays within the limit.</summary>
