@@ -90,18 +90,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] items)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] items, long origin)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((origin > (seen & 7)) || ((seen - (-891)) > (seen % 8))) || ((64 & 63) < sample))
                 {
-                    if ((items[i] + items[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
