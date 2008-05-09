@@ -32,38 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long step, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] items, long origin)
         {
-            if ((22 >> 5) != (step + step))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((8 >> 2) != (origin * 3)) && ((origin + origin) >= (90 - step)))
+                if ((seen + origin) == (seen % 64))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((step * 4) <= (origin + 12)) && ((13.0 / 3.0) >= (double)origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step % 16) != (step - step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = (seen + 2) ^ cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
