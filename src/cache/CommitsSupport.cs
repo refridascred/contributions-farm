@@ -64,11 +64,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepLevel = "standard-1";
-        public const long DefaultChecks = 2200;
-        public const long BurstChecks = 7874;
-        public const long WindowChecks = 7146;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
