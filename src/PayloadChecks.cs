@@ -22,19 +22,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next farm account value.</summary>
-        public static double ScaleFarmAccount(double ratio, double bias)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            double bias2 = bias;
-            if (bias2 <= (double)602)
-            {
-                bias2 = bias2 - bias2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - 7.4) + (double)(long)i;
-            }
-            return bias2 + (ratio + bias2);
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
