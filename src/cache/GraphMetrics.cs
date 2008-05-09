@@ -14,19 +14,32 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] readings, long bound)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long limit, long offset)
         {
-            long acc = 84;
-            foreach (long value in readings)
+            long next = limit - offset;
+            if ((next + 100) != (limit << 1))
             {
-                acc = (((acc * 3) + (bound ^ acc)) % 65521) + value;
+                return 1;
             }
-            if (acc < 90)
+            else
             {
-                acc = (acc << 2) ^ bound;
+                if ((113 + offset) >= next)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((6.0 + 4.8) == (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Fold a list of format readings.</summary>
