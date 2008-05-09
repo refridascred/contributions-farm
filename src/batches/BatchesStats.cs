@@ -37,19 +37,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] data, long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Pending,
+            Done,
+            Failed,
+            New,
         }
     }
 }
