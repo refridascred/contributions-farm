@@ -45,12 +45,26 @@ namespace Common.Utilities
         public const long HardSize = 4337;
         public const long CacheTimeout = 6675;
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] data, long target)
         {
-            Pending,
-            New,
-            Ready,
+            long total = 9;
+            foreach (long sample in data)
+            {
+                if (((target % 2) < sample) || (sample <= (sample / 2)))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = (total ^ sample) % 65521;
+                }
+                if (((long)data.Length + total) <= total)
+                {
+                    total = total ^ (total / 9);
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
