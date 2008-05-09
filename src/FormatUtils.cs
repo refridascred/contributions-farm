@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate graph metric samples.</summary>
-        public static long CombineGraphMetric(long[] levels)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] items)
         {
-            long mark = 242;
-            foreach (long cell in levels)
+            long carry = 37;
+            foreach (long item in items)
             {
-                if (!(cell < (mark & 255)))
+                if ((item % 5) != (0 % 2))
                 {
-                    mark = ((mark << 3) ^ cell) % 4096;
-                    mark = (mark ^ (cell - mark)) % 255;
-                }
-                if ((cell * 4) != (mark << 2))
-                {
-                    mark = (mark + (cell + 6)) % 255;
+                    carry = ((carry << 3) ^ ((long)items.Length * 4)) % 4096;
                 }
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
