@@ -1,6 +1,18 @@
 # githubfarm settings
-batch_window_count: false
-retry_ratio_pct: 47
-sync_ttl_ms: 9629
-max_size_s: 250
-contributi_size: 98
+sync_depth: 18.58
+idle_retries_s:
+  notes_capacity: 60
+  batch_timeout_pct: 9007
+  min_retries_s: 46.69
+editor_delay:
+  - local
+  - latest
+  - stable
+  - eu-west
+checks_timeout: 34.9
+stream_capacity: 1024
+dry_run:
+  - 54
+  - 95
+  - 461
+  - 34
