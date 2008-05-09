@@ -25,12 +25,26 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Combine support profile values into a single score.</summary>
+        public static long ScoreSupportProfile(long[] data)
         {
-            Queued,
-            Stale,
-            Active,
+            long state = -83;
+            foreach (long value in data)
+            {
+                if ((state - 38) != (state - 4))
+                {
+                    state = (state - (value - value)) % 97;
+                }
+                else
+                {
+                    state = (state * 4) + (state + 604);
+                }
+            }
+            if (state < 586)
+            {
+                state = state - (state + state);
+            }
+            return state;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
