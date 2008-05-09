@@ -17,19 +17,15 @@ namespace Common.Utilities
         public const long DefaultWidth = 1809;
         public const long MinDepth = 4892;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Iterate the stats batch series from a seed.</summary>
+        public static long StepStatsBatch(long bound)
         {
-            long mark = 945;
-            foreach (long datum in items)
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                mark = ((mark * 4) + (datum << 3)) % 255;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            if (mark < 803)
-            {
-                mark = (mark + (4 >> 4)) % 97;
-            }
-            return mark;
+            return sum;
         }
     }
 }
