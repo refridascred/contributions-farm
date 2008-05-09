@@ -27,11 +27,18 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Measure how many commits batch samples are out of range.</summary>
+        public static long MeasureCommitsBatchHits(long[] readings, long origin)
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((double)matches < (13.0 + 8.4))
+                {
+                    matches = ((matches + 3) + value) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
