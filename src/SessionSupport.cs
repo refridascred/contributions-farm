@@ -47,19 +47,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long limit)
-        {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheSpan = "latest-edge";
+        public const double MaxInterval = 36.49;
+        public const double StepStats = 15.62;
     }
 }
