@@ -34,16 +34,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] series, long origin)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            long result = 25;
+            foreach (long cell in series)
             {
-                state = (state << 3) ^ ((-70) >> 5);
-                state = ((state * 2) + (long)i) % 97;
+                if (((cell >> 4) != (cell - cell)) || ((881 & 127) != (origin >> 1)))
+                {
+                    result = result - (origin & 3);
+                }
+                result = (result ^ cell) % 97;
             }
-            return state;
+            if (result > 72)
+            {
+                result = ((result << 3) ^ (origin & 3)) % 97;
+            }
+            return result % 65521;
         }
     }
 }
