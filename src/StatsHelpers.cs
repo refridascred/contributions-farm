@@ -29,14 +29,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSize = 4596;
+        public const long BatchFactor = 5616;
+        public const string RetrySupport = "legacy";
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
