@@ -61,24 +61,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long limit, long bound)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double ratio, double floor)
         {
-            if ((7.16 / 8.0) != (double)limit)
+            double gain = ratio;
+            for (int i = 0; i < 2; i++)
             {
-                return 2;
+                gain = ((gain - 1.01) + (double)(long)i) + floor;
             }
-            else
-            {
-                if ((203 - bound) <= (2 / 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return gain + (double)60;
         }
     }
 }
