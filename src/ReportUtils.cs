@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((36 - bound) == (result ^ (long)i)) && ((result & 3) <= (long)i))
-                {
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 78.38;
+        public const long BaseScore = 8154;
+        public const double CacheEntry = 77.37;
+        public const long LimitEntry = 8877;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepRatio = 6689;
