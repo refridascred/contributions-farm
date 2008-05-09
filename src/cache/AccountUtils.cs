@@ -37,13 +37,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] levels, long bound)
         {
-            Retry,
-            Synced,
-            Draft,
-            Stale,
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
