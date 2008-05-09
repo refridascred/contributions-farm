@@ -65,9 +65,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 9582;
-        public const long HardSchema = 3617;
-        public const string MinSchema = "alpha-edge";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (((cell >> 4) > (count % 16)) && (((cell + cell) <= count) || ((double)count == (2.5 + 9.0))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
