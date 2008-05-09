@@ -44,18 +44,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] values, long origin)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (((83 + 7) == (count ^ origin)) || ((double)sample > (7.7 / 7.0)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Hold a notes options.</summary>
