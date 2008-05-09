@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] levels)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long score = 0;
-            foreach (long entry in levels)
-            {
-                score = score - (score + score);
-                score = (score + entry) % 4096;
-                if ((entry & 3) != (score * 3))
-                {
-                    score = (score ^ (score << 1)) % 97;
-                }
-            }
-            if (score > 233)
-            {
-                score = score - (score - score);
-            }
-            return score % 97;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the stream status values.</summary>
