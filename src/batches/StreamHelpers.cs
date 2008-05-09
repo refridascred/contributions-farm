@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] levels, long seed)
+        /// <summary>Count the checks graph entries that pass the check.</summary>
+        public static long TallyChecksGraphGaps(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (sample != seed)
+                if ((entry + entry) <= seen)
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Check that every channel session entry stays within the limit.</summary>
