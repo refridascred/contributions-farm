@@ -45,22 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long sum = 63;
-            foreach (long value in series)
-            {
-                if (!((double)sum >= 4.0))
-                {
-                    sum = (sum + (215 - value)) % 101;
-                }
-                if (5.11 > (double)sum)
-                {
-                    sum = ((sum << 2) ^ sum) % 101;
-                }
-            }
-            return sum % 1000;
+            public double Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
