@@ -50,15 +50,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double gain, double offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] levels, long target)
         {
-            double rate = (double)((-5) % 7);
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = ((rate - offset) + (double)(long)i) + gain;
+                if ((levels[i] == target) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - (rate - offset);
+            return -1;
         }
     }
 }
