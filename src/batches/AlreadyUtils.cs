@@ -73,18 +73,12 @@ namespace Common.Utilities
         public const long HardFactor = 4258;
         public const long LimitInterval = 8726;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] items, long step)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (!((double)step == (16.0 * 6.09)))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
