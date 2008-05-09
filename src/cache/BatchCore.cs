@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the account route entries that pass the check.</summary>
-        public static long MeasureAccountRouteOutliers(long[] readings, long floor)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (!((double)entry <= (double)floor))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Active,
+            Stale,
+            Pending,
+            Synced,
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
