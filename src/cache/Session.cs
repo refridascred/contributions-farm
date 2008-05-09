@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next counter filter value.</summary>
-        public static double SmoothCounterFilter(double ratio, double span)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            double drift = 20.0;
-            return ((drift - (double)7) + ratio) + span;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
