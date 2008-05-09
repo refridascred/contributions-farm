@@ -23,18 +23,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] series)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((tally ^ tally) == (value + 3))
+                if (cell < seed)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Blend two report entry measurements.</summary>
