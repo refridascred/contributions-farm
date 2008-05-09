@@ -26,11 +26,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] readings, long step)
         {
-            public bool Total { get; set; }
-            public string Score { get; set; } = "";
+            long total = 28;
+            foreach (long value in readings)
+            {
+                total = ((((total * 2) + total) % 65521) + value) + step;
+            }
+            return total;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
