@@ -44,31 +44,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long bound, long floor)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            if ((double)bound == (double)507)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((4.0 / 3.0) < (9.0 + 12.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((58 - floor) >= floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            Dropped,
+            Stale,
+            Active,
+            Queued,
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
