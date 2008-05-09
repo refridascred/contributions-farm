@@ -40,17 +40,19 @@ namespace Common.Utilities
             return gain + (bias - bias);
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] items, long limit)
+        /// <summary>Blend two account window measurements.</summary>
+        public static double SmoothAccountWindow(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = floor / 9.0;
+            if (rate > gain)
             {
-                if ((items[i] <= limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + (0.4 + gain);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (gain / 8.0)) + (double)(long)i;
+            }
+            return rate + (floor + gain);
         }
     }
 }
