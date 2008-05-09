@@ -23,21 +23,17 @@ namespace Common.Utilities
         public const long WindowStream = 5428;
         public const long IdleWidth = 6455;
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] series)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] >= origin)
                 {
-                    if ((series[i] ^ series[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many metrics route samples are out of range.</summary>
