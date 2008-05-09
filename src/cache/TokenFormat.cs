@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Count the editor cache entries that pass the check.</summary>
+        public static long CountEditorCacheGaps(long[] data)
         {
-            public long Offset { get; set; }
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (849 >= (entry + entry))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
