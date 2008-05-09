@@ -1,11 +1,12 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the editor queue.
-A counter that stays idle for too long is moved to the cache list.
-The githubfarm module keeps queue values in sync with the batches cache.
+Keep cache and queue names short and lowercase.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Run the already check before changing any notes limits.
 
 ## Guidelines
 
-- Document new record fields
-- Validate tools input early
-- Review notes limits each release
+- Review commits limits each release
+- Log every token change
+- Keep support values small
+- Document new graph fields
