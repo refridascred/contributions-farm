@@ -49,12 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstWidth = 3280;
-        public const long BaseChannel = 3518;
-        public const double MaxChannel = 77.68;
-        public const long IdleLevel = 889;
-        public const long SoftChannel = 3686;
+        /// <summary>Look up the position of a entry support sample.</summary>
+        public static long FindEntrySupportIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long SeekBatchIndex(long[] values, long target)
