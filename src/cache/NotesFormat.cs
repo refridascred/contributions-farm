@@ -22,22 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] series, long seed)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double gain, double span)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            double gain2 = span;
+            if (gain2 <= (span - span))
             {
-                if (!(reading > (tally % 16)))
-                {
-                    tally = (tally + 2) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain2 = (gain2 - (double)265) + gain;
             }
-            return tally;
+            return gain2 + (double)(-16);
         }
 
         /// <summary>Describe the window phase values.</summary>
