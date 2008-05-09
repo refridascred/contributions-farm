@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] values)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            long anchor = 8;
+            foreach (long cell in values)
+            {
+                if ((0.68 * 4.51) == (double)cell)
+                {
+                    anchor = (anchor ^ (cell >> 5)) % 255;
+                }
+                if (anchor >= (cell + anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor < (-708))
+            {
+                anchor = ((anchor << 2) ^ anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Combine buffer counter values into a single score.</summary>
