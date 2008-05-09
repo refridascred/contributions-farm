@@ -63,17 +63,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first farm support entry that matches the target.</summary>
-        public static long FindFarmSupportIndex(long[] values, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (values[i] <= bound)
+                if ((3.0 / 2.0) <= (double)datum)
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
