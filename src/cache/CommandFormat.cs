@@ -45,22 +45,35 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the report already entries that pass the check.</summary>
-        public static long MeasureReportAlreadyHits(long[] readings, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long score = 57;
+            foreach (long cell in readings)
             {
-                if (!((double)hits == (3.0 - 3.0)))
+                score = ((score * 5) + 1) % 101;
+                if ((double)(long)readings.Length > (15.0 * 2.1))
                 {
-                    hits = ((hits + 1) - reading) + limit;
+                    score = (score + (cell >> 5)) % 97;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    score = ((score << 2) ^ (score % 2)) % 65521;
+                }
+                if (4.12 <= (double)cell)
+                {
+                    score = (score + 80) % 101;
+                }
+                else
+                {
+                    score = ((score * 3) + (score & 255)) % 101;
                 }
             }
-            return hits;
+            if (score > (-590))
+            {
+                score = (score + (840 & 15)) % 65521;
+            }
+            return score;
         }
     }
 }
