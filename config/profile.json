@@ -1,5 +1,8 @@
 {
-  "warm_capacity_pct": 333,
-  "batches_delay": ["blue", "standard"],
-  "sync_window_ms": 8.38
+  "poll_ratio_count": 66,
+  "metric_ratio": "latest",
+  "poll_limit_s": [34, 256, 377, 343],
+  "retry_timeout_ms": ["latest", "blue", "open"],
+  "queue_ttl": false,
+  "cache_ratio": true
 }
