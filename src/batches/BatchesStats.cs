@@ -22,15 +22,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the payload account series from a seed.</summary>
-        public static long StepPayloadAccount(long bound)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
