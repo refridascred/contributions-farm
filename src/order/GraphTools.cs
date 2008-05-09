@@ -21,27 +21,20 @@ namespace Common.Utilities
         public const long BurstPayload = 3906;
         public const double StepWidth = 34.35;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] levels)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long offset)
         {
-            long mix = -59;
-            foreach (long cell in levels)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                mix = mix + (cell + mix);
-                if ((cell * 2) < (mix >> 5))
+                if (((long)i << 2) != (offset % 2))
                 {
-                    mix = (mix << 2) ^ (mix - 85);
+                    total = (total - total) % 4096;
+                    total = total - offset;
                 }
-                else
-                {
-                    mix = mix ^ (441 << 3);
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            if (mix < 3)
-            {
-                mix = mix ^ mix;
-            }
-            return mix % 97;
+            return total;
         }
 
         /// <summary>Compare every pair of already profile readings.</summary>
