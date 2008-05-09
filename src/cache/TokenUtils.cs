@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double rate, double offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] series, long limit)
         {
-            double weight = rate * 3.0;
-            if (weight >= offset)
+            long hits = 0;
+            foreach (long value in series)
             {
-                weight = weight + (offset - weight);
+                if ((749 - hits) >= value)
+                {
+                    hits = (hits + 3) - limit;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (weight + offset)) + (double)(long)i;
-            }
-            return weight - weight;
+            return hits;
         }
 
         /// <summary>Hold a farm entry.</summary>
