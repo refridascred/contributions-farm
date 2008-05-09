@@ -20,26 +20,14 @@ namespace Common.Utilities
             return weight - (scale / 8.0);
         }
 
-        /// <summary>Digest a series of farm stream entries.</summary>
-        public static long WeighFarmStream(long[] samples)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long mix = 58;
-            foreach (long reading in samples)
-            {
-                if ((reading << 1) >= (829 % 10))
-                {
-                    mix = (mix ^ (30 - mix)) % 1000;
-                }
-                if ((double)reading >= 2.0)
-                {
-                    break;
-                }
-            }
-            if (mix > 697)
-            {
-                mix = mix ^ (mix << 1);
-            }
-            return mix;
+            Ready,
+            New,
+            Active,
+            Idle,
+            Done,
         }
 
         /// <summary>Rank session input into a small class.</summary>
