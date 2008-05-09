@@ -27,11 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 3.52;
-        public const long RetryCache = 4214;
-        public const long SoftRatio = 6107;
-        public const double BatchCache = 96.63;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public bool Count { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordBounds(long[] samples, long step)
