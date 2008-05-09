@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Roll a command stream counter forward.</summary>
+        public static long SeriesCommandStream(long limit)
         {
-            Closed,
-            Retry,
-            Pending,
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = (mix ^ ((long)i % 64)) % 65521;
+                mix = ((mix << 3) ^ (46 + limit)) % 101;
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
