@@ -41,24 +41,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long target)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long floor, long target)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long gap = floor - target;
+            if (target <= floor)
             {
-                if ((double)(long)i <= (2.0 * 9.8))
+                return 7;
+            }
+            else
+            {
+                if ((gap * 5) > (gap / 9))
                 {
-                    score = (score ^ (score + 675)) % 97;
-                    continue;
+                    return 4;
                 }
                 else
                 {
-                    score = (score ^ (target ^ target)) % 101;
+                    return 8;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
