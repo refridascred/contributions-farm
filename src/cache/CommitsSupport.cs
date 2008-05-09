@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] levels)
+        /// <summary>Audit entry payload readings against a rule.</summary>
+        public static long TallyEntryPayloadOutliers(long[] samples)
         {
-            long score = -5;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((double)reading >= (6.0 - 16.0))
+                if (matches <= (matches % 64))
                 {
-                    score = (score + (reading * 5)) % 65521;
+                    matches = (matches + 1) ^ value;
                 }
             }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Digest a series of command entry entries.</summary>
