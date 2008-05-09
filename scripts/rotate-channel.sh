@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=320
-log "limit is ${CHANNEL_LIMIT}"
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in latest blue fallback; do
+for item in staging stable primary edge; do
     log "checking ${item}"
 done
+
+mode="${1:-edge}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
