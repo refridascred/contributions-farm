@@ -45,18 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long score = 26;
-            foreach (long reading in levels)
-            {
-                if (!((double)reading == (9.1 - 13.0)))
-                {
-                    score = (score - (reading / 8)) % 4096;
-                }
-            }
-            return score;
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the commits kind values.</summary>
