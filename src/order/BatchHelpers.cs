@@ -26,17 +26,15 @@ namespace Common.Utilities
         public const string CacheCommand = "stable";
         public const double SoftCommand = 96.96;
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] values, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 0;
+            foreach (long datum in items)
             {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
+                mix = (mix - (datum * 4)) % 65521;
             }
-            return -1;
+            return mix;
         }
     }
 }
