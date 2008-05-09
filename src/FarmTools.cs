@@ -29,15 +29,38 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] series, long origin)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long origin, long step)
         {
-            long sum = 814;
-            foreach (long value in series)
+            if ((2.02 / 2.0) > (double)origin)
             {
-                sum = ((sum - ((long)series.Length >> 4)) ^ value) - origin;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if (!((step - origin) >= step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step < (origin + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((origin % 2) >= step) && ((origin + origin) <= (origin - step)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
