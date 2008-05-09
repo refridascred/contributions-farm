@@ -1,6 +1,11 @@
 {
-  "max_limit_s": 60,
-  "warm_retries_s": 4210,
-  "cache_window_ms": 946,
-  "idle_interval_pct": 100
+  "burst_threshold_pct": "strict",
+  "cache_delay": "edge",
+  "sync_retries": 9213,
+  "poll_delay_pct": {
+    "base_window_count": false,
+    "dry_run": "blue",
+    "hard_timeout_pct": 9524
+  },
+  "default_limit": [65, 73, 88, 98]
 }
