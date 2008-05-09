@@ -74,21 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of tools graph readings.</summary>
-        public static long PairToolsGraphCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleFactor = 3559;
+        public const long CacheCounter = 7005;
+        public const double BaseLevel = 86.14;
+        public const string BatchScore = "open-edge";
+        public const long LimitCounter = 1820;
     }
 }
