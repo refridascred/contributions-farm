@@ -19,17 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = (sum << 3) ^ (sum + 999);
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 5277;
+        public const long MaxToken = 8121;
+        public const long SoftToken = 5397;
+        public const double SoftLevel = 89.3;
+        public const long LimitToken = 5936;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LocateChecksIndex(long[] items, long step)
