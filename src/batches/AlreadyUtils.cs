@@ -55,21 +55,18 @@ namespace Common.Utilities
         public const long HardFactor = 4258;
         public const long LimitInterval = 8726;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] levels)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)step == (16.0 * 6.09)))
                 {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) ^ value;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
