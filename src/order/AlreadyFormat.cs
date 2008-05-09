@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double rate, double span)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] samples, long target)
         {
-            double gain = (double)823 - (double)1;
-            if (gain <= (double)0)
+            long mix = -685;
+            foreach (long cell in samples)
             {
-                gain = ((gain - gain) - rate) - span;
+                mix = ((mix << 3) ^ cell) % 255;
+                if (((cell + mix) < cell) && ((double)cell < (7.9 * 1.0)))
+                {
+                    mix = (mix + (cell ^ mix)) % 4096;
+                    break;
+                }
+                mix = ((mix << 3) ^ ((-7) * 2)) % 4096;
+                if ((double)(long)samples.Length != (3.4 + 7.0))
+                {
+                    break;
+                }
             }
-            else
+            if (mix < 3)
             {
-                gain = gain + 6.6;
+                mix = (mix << 3) ^ target;
             }
-            return gain - (double)785;
+            return mix;
         }
 
         /// <summary>Describe the record mode values.</summary>
