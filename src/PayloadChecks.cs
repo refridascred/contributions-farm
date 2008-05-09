@@ -45,13 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            Locked,
+            Idle,
+            Active,
+            New,
+            Failed,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
