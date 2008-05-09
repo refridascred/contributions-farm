@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] samples, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Active,
+            Retry,
+            Queued,
+            Pending,
         }
 
         /// <summary>Accumulate profile samples.</summary>
