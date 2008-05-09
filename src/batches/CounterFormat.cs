@@ -16,11 +16,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstCounter = 76.71;
-        public const string HardCounter = "alpha-edge";
-        public const long MaxCounter = 1686;
-        public const double MinCounter = 74.11;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long target, long bound)
+        {
+            if (((double)bound >= 12.0) || ((9 - target) > bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((target * 4) > bound) || (target > (203 >> 4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target - (-36)) == (bound ^ bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((2 ^ bound) < (bound + target)) || ((bound + bound) != (target / 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long SeriesToken(long limit)
