@@ -38,11 +38,19 @@ namespace Common.Utilities
             return ratio - (double)(-27);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 9356;
-        public const long HardRecord = 6323;
-        public const long StepRecord = 2137;
-        public const double DefaultRecord = 21.5;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (0 < entry)
+                {
+                    hits = (hits + 2) + target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long RankChecks(long target, long origin)
