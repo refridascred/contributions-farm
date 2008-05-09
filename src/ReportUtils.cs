@@ -45,19 +45,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] items, long floor)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long offset)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell < floor)
+                carry = (carry ^ (offset + (long)i)) % 97;
+                carry = (carry ^ carry) % 65521;
+                if (carry >= (carry + carry))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry + (carry & 63)) % 101;
+                    carry = carry - offset;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Accumulate channel samples.</summary>
