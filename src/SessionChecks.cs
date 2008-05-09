@@ -66,24 +66,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long floor, long seed)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long bound)
         {
-            if (floor >= (409 & 31))
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 2;
+                anchor = ((anchor * 3) + (anchor + anchor)) % 101;
+                anchor = ((anchor << 3) ^ (bound % 16)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (!((seed - floor) <= (seed + seed)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return anchor;
         }
     }
 }
