@@ -20,18 +20,18 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] data, long bound)
+        /// <summary>Count the profile stream entries that pass the check.</summary>
+        public static long TallyProfileStreamHits(long[] data)
         {
-            long tally = 0;
+            long count = 0;
             foreach (long cell in data)
             {
-                if (!(bound <= (cell / 4)) && ((bound << 3) < ((-394) - tally)))
+                if (!(((count / 3) < count) || ((double)cell == (15.0 + 2.1))))
                 {
-                    tally = tally + 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine session values into a single score.</summary>
