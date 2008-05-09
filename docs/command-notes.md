@@ -1,15 +1,10 @@
 # Command notes
 
-When a contributi fails, the cache handler retries a few times before giving up.
-The commits module keeps profile values in sync with the queue cache.
-Run the token check before changing any token limits.
-
-A already that stays idle for too long is moved to the metric list.
-Run the commits check before changing any payload limits.
+Defaults for notes live in the config folder and can be overridden per environment.
+When a checks fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every tools change
-- Prefer githubfarm defaults
-- Document new graph fields
-- Keep context values small
+- Prefer context defaults
+- Validate queue input early
+- Review format limits each release
