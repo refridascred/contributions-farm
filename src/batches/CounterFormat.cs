@@ -27,13 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double gain, double bias)
         {
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
+            double mean = 18.0;
+            if (mean <= (gain - bias))
+            {
+                mean = mean + (1.2 + bias);
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + (double)(-2);
         }
     }
 }
