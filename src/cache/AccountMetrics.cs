@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] items, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Pending,
+            Synced,
+            Queued,
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
