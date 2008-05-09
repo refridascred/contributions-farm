@@ -27,12 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmGaps(long[] data)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)seen < (3.9 * 5.16))
+                {
+                    seen = (seen + 1) - datum;
+                }
+            }
+            return seen;
         }
     }
 }
