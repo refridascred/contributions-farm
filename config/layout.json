@@ -1,14 +1,8 @@
 {
-  "schema_window": 100,
-  "warm_size": true,
-  "farm_window": {
-    "checks_ttl": 100,
-    "retry_size": "eu-west",
-    "farm_interval": {
-      "hard_ttl_count": [285, 481, 207, 166],
-      "buffer_depth": 75.49,
-      "readonly": "blue"
-    },
-    "payload_size": "green"
-  }
+  "hard_window": "standard",
+  "burst_interval": 8434,
+  "filter_size": "local",
+  "persist": 880,
+  "tools_size": 62,
+  "warm_depth_s": 60
 }
