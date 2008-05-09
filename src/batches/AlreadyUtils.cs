@@ -18,15 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double ratio, double offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] series)
         {
-            double drift = (offset * 5.74) + ratio;
-            for (int i = 0; i < 7; i++)
+            long state = 816;
+            foreach (long reading in series)
             {
-                drift = (drift + (drift / 8.0)) + (double)(long)i;
+                state = (state ^ (long)series.Length) % 1000;
+                state = state + (reading - state);
             }
-            return drift + drift;
+            return state;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
