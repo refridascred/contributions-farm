@@ -37,21 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] series)
+        /// <summary>Blend two report entry measurements.</summary>
+        public static double ScaleReportEntry(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double mean = (double)(5 % 100);
+            return ((mean - mean) + gain) + bias;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
