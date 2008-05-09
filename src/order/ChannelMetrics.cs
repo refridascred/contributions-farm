@@ -24,18 +24,24 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] readings)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            if ((seed + origin) > (seed + 0))
             {
-                if ((4.0 * 0.8) <= (double)reading)
+                return 5;
+            }
+            else
+            {
+                if (((5.3 - 9.5) < (double)seed) && ((double)origin != (double)seed))
                 {
-                    tally = tally + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
     }
 }
