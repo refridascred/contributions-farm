@@ -32,17 +32,19 @@ namespace Common.Utilities
         public const long BatchContributi = 4353;
         public const long RetryScore = 9792;
 
-        /// <summary>Derive the next entry githubfarm value from a seed.</summary>
-        public static long IterateEntryGithubfarm(long origin)
+        /// <summary>Check that every notes report entry stays within the limit.</summary>
+        public static bool CheckNotesReportLimits(long[] readings, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                mark = (mark - (mark << 3)) % 97;
-                mark = mark ^ (origin + origin);
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (value > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
