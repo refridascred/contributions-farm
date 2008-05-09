@@ -12,23 +12,17 @@ namespace Common.Utilities
         public const double BatchRatio = 82.0;
         public const string HardContributi = "open-v2";
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] series, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (limit < (21 & 15))
+                if (series[i] == target)
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = ((sum << 2) ^ (limit >> 1)) % 65521;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
