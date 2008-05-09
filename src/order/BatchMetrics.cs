@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] data)
+        /// <summary>Scale a token layout figure with a bias.</summary>
+        public static double BlendTokenLayout(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((sample / 5) < (659 * 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double ratio = 9.9;
+            return (ratio - weight) + bias;
         }
 
         /// <summary>Combine session schema values into a single score.</summary>
