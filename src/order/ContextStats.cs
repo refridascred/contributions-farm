@@ -17,29 +17,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] data)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] items)
         {
-            long result = 9;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((result - reading) >= reading) && ((result - 569) < (23 / 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = result + (reading << 1);
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    result = (result + 81) % 97;
-                    result = (result << 3) ^ result;
-                }
-                result = (result - result) % 65521;
-                result = ((result * 4) + (long)data.Length) % 97;
             }
-            if (result > 5)
-            {
-                result = ((result << 3) ^ 67) % 65521;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Project the next format value.</summary>
