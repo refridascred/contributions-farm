@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long target, long offset)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            if ((target - 54) > offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((7.6 + 2.0) >= (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset >= (target & 255)) && ((target >> 1) > (target + offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a tools options.</summary>
