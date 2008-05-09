@@ -1,8 +1,17 @@
 {
-  "soft_interval": "latest",
-  "max_timeout_s": ["local", "fallback", "fallback"],
-  "idle_threshold_ms": true,
-  "poll_ratio": 25,
-  "hard_size_count": true,
-  "poll_timeout_count": 11.73
+  "max_interval": 78.51,
+  "default_capacity_s": {
+    "dry_run": 6,
+    "burst_ratio": 6300,
+    "flush_size": 98,
+    "command_ratio": {
+      "metric_capacity": 250,
+      "persist": true,
+      "schema_depth": 250,
+      "min_ttl_s": ["primary", "legacy", "stable"],
+      "strict": 1024
+    }
+  },
+  "batch_limit_pct": "eu-west",
+  "buffer_delay": 41
 }
