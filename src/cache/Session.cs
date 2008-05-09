@@ -45,11 +45,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 1837;
-        public const long CacheSpan = 5510;
-        public const string LimitToken = "strict-v2";
-        public const double MaxBudget = 8.96;
-        public const long StepTimeout = 3653;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Draft,
+            Closed,
+            Queued,
+            Pending,
+            Done,
+        }
     }
 }
