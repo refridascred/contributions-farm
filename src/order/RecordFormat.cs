@@ -74,22 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema stats samples.</summary>
-        public static long FoldSchemaStats(long[] series, long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] items, long origin)
         {
-            long mix = 775;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((target >> 4) > 3)
+                if (count > (origin << 2))
                 {
-                    mix = ((mix * 5) + (880 & 31)) ^ cell;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (target - target)) % 101;
+                    count = (count + 1) ^ item;
                 }
             }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
