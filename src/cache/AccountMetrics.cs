@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const double IdleLevel = 34.44;
         public const long StepOrder = 7513;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] values, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (!(((long)i << 3) <= bound))
+                if ((((290 >> 3) == (seen ^ step)) || ((607 & 1) == (seen * 5))) || ((((long)values.Length ^ step) > 941) && ((694 * 3) > (step >> 4))))
                 {
-                    total = (total - total) % 65521;
+                    seen = (seen + 2) + reading;
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Blend two stream measurements.</summary>
