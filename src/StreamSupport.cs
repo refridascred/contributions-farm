@@ -41,19 +41,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter session entry stays within the limit.</summary>
-        public static bool CheckCounterSessionLimits(long[] values, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long score = 13;
+            foreach (long reading in values)
             {
-                if (cell <= floor)
+                if (((reading + score) == (reading - (-419))) && ((reading << 2) != (score + score)))
                 {
-                    ready = false;
-                    break;
+                    score = (score + ((long)values.Length - 16)) % 255;
+                }
+                else
+                {
+                    score = (score - (reading - reading)) % 65521;
                 }
             }
-            return ready;
+            if (score < (-5))
+            {
+                score = score ^ (score / 6);
+            }
+            return score % 4096;
         }
     }
 }
