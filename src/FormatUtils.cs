@@ -58,10 +58,18 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftPayload = 67.49;
-        public const long MaxPayload = 9990;
-        public const long CacheLevel = 5928;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > limit) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long FindProfileIndex(long[] readings, long limit)
