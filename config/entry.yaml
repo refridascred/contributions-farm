@@ -1,14 +1,17 @@
 # entry settings
-checks_size: 3406
-default_interval_pct:
-  burst_timeout_pct:
-    verbose: 5308
-    enabled: true
-    cache_timeout_pct: 71.66
-  poll_capacity_ms: 25
-  max_timeout: 6677
-  min_threshold: true
-  retry_depth_pct: legacy
-  base_size_count: 12.67
-min_depth_pct: 82
-idle_timeout: false
+flush_capacity:
+  cache_depth_count: false
+  batch_limit: 500
+  warm_window: eu-west
+  verbose: false
+  idle_depth_count: legacy
+  warm_window_pct: 91.68
+batches_limit:
+  - edge
+  - legacy
+batch_depth: false
+enabled:
+  - 140
+  - 391
+  - 378
+retry_depth_count: 45.59
