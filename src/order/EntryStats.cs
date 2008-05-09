@@ -70,12 +70,12 @@ namespace Common.Utilities
             return (drift + (double)19) + offset;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] series, long limit)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] >= limit)
+                if ((values[i] >= offset) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
