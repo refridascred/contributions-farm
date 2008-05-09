@@ -25,10 +25,20 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheStream = 24.48;
-        public const long LimitSpan = 5287;
-        public const double LimitScore = 79.9;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] levels)
+        {
+            long score = 8;
+            foreach (long entry in levels)
+            {
+                score = (score - (entry + 76)) % 97;
+                if ((double)429 > (double)score)
+                {
+                    score = (score << 3) ^ (score - score);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long PairMetricCount(long[] levels)
