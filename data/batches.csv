@@ -1,6 +1,8 @@
-id,count,rank,token
-1,52.79,41.01,250
-2,fallback,latest,723
-3,33.24,976,975
-4,legacy,315,open
-5,389,edge,669
+id,level,token
+1,387,edge
+2,686,65.79
+3,219,primary
+4,blue,39.79
+5,38.26,519
+6,748,strict
+7,95.07,801
