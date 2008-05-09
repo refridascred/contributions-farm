@@ -24,21 +24,9 @@ namespace Common.Utilities
         public const long HardBudget = 4235;
         public const string WindowGithubfarm = "cached-v2";
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitAccount = "cached";
+        public const string SoftAccount = "staging-v2";
+        public const string WindowAccount = "staging-edge";
     }
 }
