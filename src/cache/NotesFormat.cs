@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] items, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long score = 4;
+            foreach (long datum in values)
             {
-                if ((offset / 9) != ((long)items.Length % 2))
+                if ((datum % 100) >= datum)
                 {
-                    matches = (matches + 1) + entry;
+                    score = (score ^ datum) % 255;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
