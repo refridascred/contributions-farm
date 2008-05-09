@@ -48,16 +48,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double weight, double offset)
-        {
-            double gain = offset;
-            if (gain >= offset)
-            {
-                gain = gain - (offset * 20.0);
-            }
-            return gain + (weight - gain);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 3389;
+        public const long BaseScore = 4983;
+        public const string BurstStats = "fallback";
+        public const string DefaultBudget = "cached-edge";
+        public const long BaseSize = 7773;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long ClassifyChannel(long offset, long bound)
