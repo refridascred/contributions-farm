@@ -19,39 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a farm report pair into a bucket.</summary>
-        public static long SortFarmReport(long offset, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] readings)
         {
-            long lane = offset + step;
-            if (((offset - step) < (lane / 7)) || ((offset ^ lane) >= (step >> 5)))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.18 + 4.0) > (double)step)
+                if (seen >= datum)
                 {
-                    return 3;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (68 <= (step + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((8.7 - 1.0) > (double)lane)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
