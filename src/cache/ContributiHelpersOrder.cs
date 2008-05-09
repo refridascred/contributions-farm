@@ -24,19 +24,18 @@ namespace Common.Utilities
             return drift - 6.31;
         }
 
-        /// <summary>Project the next token batch value.</summary>
-        public static double ProjectTokenBatch(double scale, double floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] values, long origin)
         {
-            double scale2 = 6.4 * 11.0;
-            if (scale2 >= (double)8)
+            long seen = 0;
+            foreach (long item in values)
             {
-                scale2 = (scale2 + (double)5) - floor;
+                if (!((origin / 4) <= (40 - seen)))
+                {
+                    seen = (seen + 3) + item;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 - (4.0 + scale)) - (double)(long)i;
-            }
-            return scale2 - scale;
+            return seen;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
