@@ -55,19 +55,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] values, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (sample < step)
+                if (entry > target)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
