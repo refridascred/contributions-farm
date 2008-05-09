@@ -35,18 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] data)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] data, long origin)
         {
-            long hits = 0;
+            long matches = 0;
             foreach (long datum in data)
             {
-                if ((((double)datum == (7.2 + 2.65)) || ((58 - (long)data.Length) < (datum ^ datum))) && (hits <= datum))
+                if ((origin >> 2) >= (5 - datum))
                 {
-                    hits = hits + 3;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
