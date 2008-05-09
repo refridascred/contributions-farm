@@ -22,24 +22,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double weight, double bias)
-        {
-            double scale = (2.7 - bias) / 6.0;
-            if (scale < bias)
-            {
-                scale = scale - (double)9;
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale - (double)563;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 7246;
+        public const double CachePayload = 19.93;
+        public const string DefaultPayload = "primary-edge";
+        public const long DefaultWidth = 7804;
+        public const string BatchPayload = "local";
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long DeriveTools(long offset)
