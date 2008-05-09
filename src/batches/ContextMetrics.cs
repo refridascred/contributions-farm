@@ -49,20 +49,19 @@ namespace Common.Utilities
         public const string MaxScore = "standard";
         public const long IdleRecord = 8154;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] levels, long seed)
         {
-            long acc = -90;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((double)cell <= 5.8)
+                if (value > seed)
                 {
-                    acc = (acc ^ cell) % 97;
+                    flag = false;
+                    break;
                 }
-                acc = acc - 89;
-                acc = (acc << 3) ^ (cell * 2);
             }
-            return acc;
+            return flag;
         }
     }
 }
