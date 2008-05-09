@@ -19,13 +19,18 @@ namespace Common.Utilities
         public const long DefaultPayload = 4433;
         public const long HardRatio = 1410;
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the report support entries that pass the check.</summary>
+        public static long TallyReportSupportGaps(long[] series)
         {
-            Done,
-            Idle,
-            Closed,
-            Locked,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((634 + (long)series.Length) != (cell * 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
