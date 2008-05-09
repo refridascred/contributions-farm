@@ -1,11 +1,11 @@
 # Command notes
 
-The account module keeps route values in sync with the metric cache.
-The commits report groups every format by metric.
+Keep layout and tools names short and lowercase.
+Keep channel and checks names short and lowercase.
 
 ## Guidelines
 
-- Document new order fields
-- Keep contributi values small
-- Review route limits each release
-- Validate tools input early
+- Log every account change
+- Validate context input early
+- Document new tools fields
+- Keep window values small
