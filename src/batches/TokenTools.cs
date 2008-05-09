@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] series, long seed)
+        /// <summary>Digest a series of payload report entries.</summary>
+        public static long TotalPayloadReport(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long score = 929;
+            foreach (long cell in readings)
             {
-                if (cell < seed)
+                if ((double)cell < (double)score)
                 {
-                    ready = false;
-                    break;
+                    score = score - (29 << 1);
                 }
             }
-            return ready;
+            if (score < (-238))
+            {
+                score = score ^ (target % 12);
+            }
+            return score;
         }
 
         /// <summary>Hold a layout header.</summary>
