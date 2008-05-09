@@ -38,10 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseBudget = 4771;
-        public const double BaseContributi = 75.07;
-        public const double BurstContributi = 27.11;
-        public const long BurstCount = 5869;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+        }
     }
 }
