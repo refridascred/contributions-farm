@@ -54,19 +54,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double rate, double offset)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] data, long seed)
         {
-            double gain = (double)(0 + 937);
-            if (gain <= rate)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - (double)478;
+                if ((data[i] <= seed) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - offset) + (double)(long)i;
-            }
-            return gain + (offset / 2.0);
+            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
