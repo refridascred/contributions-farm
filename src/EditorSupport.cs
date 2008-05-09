@@ -69,11 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a support githubfarm figure with a bias.</summary>
-        public static double ProjectSupportGithubfarm(double scale, double floor)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double rate = scale;
-            return (rate + (double)566) + floor;
+            Stale,
+            Synced,
+            Idle,
         }
     }
 }
