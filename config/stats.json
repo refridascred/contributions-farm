@@ -1,7 +1,13 @@
 {
-  "warm_interval_ms": 20.32,
-  "batch_ratio": 65.85,
-  "default_threshold_ms": 30,
-  "idle_interval": 1623,
-  "route_capacity": "edge"
+  "sync_retries_count": "green",
+  "persist": true,
+  "batch_window_ms": 250,
+  "audit": [403, 193],
+  "route_ttl": {
+    "readonly": 250,
+    "batch_window_count": "legacy",
+    "strict": "green",
+    "default_ttl": "stable"
+  },
+  "burst_interval_ms": false
 }
