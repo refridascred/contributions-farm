@@ -65,12 +65,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitScore = 68.78;
-        public const long IdleInterval = 1322;
-        public const long StepCount = 2674;
-        public const long RetryScore = 8318;
-        public const string IdleRecord = "alpha-1";
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Active,
+            Failed,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Project the next metrics value.</summary>
         public static double BlendMetrics(double weight, double span)
