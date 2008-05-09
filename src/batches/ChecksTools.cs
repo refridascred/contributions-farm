@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxCommand = 46.36;
-        public const long BurstCommand = 802;
-        public const double RetryCommand = 59.38;
-        public const long WindowBudget = 8903;
-        public const long CacheTimeout = 8475;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchFactor = 21.32;
+        public const string CacheSpan = "legacy-edge";
+        public const double HardWidth = 6.97;
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long StepCounter(long step)
