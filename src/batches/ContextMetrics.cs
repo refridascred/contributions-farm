@@ -33,19 +33,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Scale a notes layout figure with a bias.</summary>
-        public static double SmoothNotesLayout(double scale, double offset)
+        /// <summary>Check that every token stats entry stays within the limit.</summary>
+        public static bool VerifyTokenStatsBounds(long[] series, long origin)
         {
-            double bias = (double)(7 - 91);
-            if (bias >= (scale * 8.0))
+            bool ready = true;
+            foreach (long value in series)
             {
-                bias = bias + (scale + scale);
+                if (value < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (scale - offset);
-            }
-            return bias - offset;
+            return ready;
         }
 
         /// <summary>Rank route input into a small class.</summary>
