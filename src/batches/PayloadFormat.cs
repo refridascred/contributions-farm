@@ -46,15 +46,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two token farm measurements.</summary>
-        public static double SmoothTokenFarm(double bias, double bias2)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double bias, double offset)
         {
-            double ratio = (bias * 7.16) + (bias + 19.0);
-            if (ratio < (3.0 - bias))
+            double scale = (double)((-70) - 60);
+            for (int i = 0; i < 6; i++)
             {
-                ratio = (ratio - (bias - bias)) - bias2;
+                scale = ((scale - scale) + (double)(long)i) - bias;
             }
-            return ratio + (ratio * 2.0);
+            return scale + (offset * 9.7);
         }
     }
 }
