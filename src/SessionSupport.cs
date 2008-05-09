@@ -24,14 +24,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long step, long origin)
         {
-            New,
-            Ready,
-            Paused,
-            Queued,
-            Idle,
+            if ((8.3 + 0.7) < (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((15.0 / 2.0) >= (double)origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin <= ((-50) + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes record.</summary>
