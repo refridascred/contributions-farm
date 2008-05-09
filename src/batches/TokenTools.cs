@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] levels, long bound)
         {
-            Retry,
-            Failed,
-            Idle,
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
