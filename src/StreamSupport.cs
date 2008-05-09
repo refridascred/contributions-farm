@@ -34,24 +34,31 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Derive the next already githubfarm value from a seed.</summary>
-        public static long StepAlreadyGithubfarm(long origin)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long target, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            if (!((2.0 - 1.1) > (double)target))
             {
-                if ((double)mix != (double)origin)
-                {
-                    mix = (mix << 3) ^ (origin % 60);
-                    continue;
-                }
-                if ((origin + 261) > mix)
-                {
-                    mix = (mix << 3) ^ (origin ^ origin);
-                }
-                mix = ((mix * 5) + (long)i) % 101;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (!(limit < ((-6) - 96)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target + limit) == (6 - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
