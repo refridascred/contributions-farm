@@ -38,21 +38,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] readings)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 7;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (((carry * 4) + (-2)) % 255) ^ entry;
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
