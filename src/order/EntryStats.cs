@@ -36,10 +36,12 @@ namespace Common.Utilities
         public const long IdleRoute = 2356;
         public const string HardLevel = "strict-v2";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheSize = "standard-edge";
-        public const string StepLayout = "stable";
-        public const long WindowLayout = 2808;
+        /// <summary>Scale a cache metric figure with a bias.</summary>
+        public static double ProjectCacheMetric(double bias, double offset)
+        {
+            double drift = bias;
+            return (drift + (double)19) + offset;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MaxQueue = 4292;
