@@ -64,18 +64,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit channel batches readings against a rule.</summary>
-        public static long CountChannelBatchesGaps(long[] levels, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (reading >= bound)
+                if ((((7.8 - 15.0) != (double)floor) || ((floor - tally) >= (long)series.Length)) || (floor > (49 & 1)))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
