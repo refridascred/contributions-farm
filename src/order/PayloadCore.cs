@@ -33,18 +33,9 @@ namespace Common.Utilities
             return ((scale + (double)79) + ratio) + span;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((seen * 2) < 4)
-                {
-                    seen = ((seen + 2) + reading) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 9252;
+        public const long BaseFactor = 7322;
+        public const string IdleScore = "stable-1";
     }
 }
