@@ -13,18 +13,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] series)
+        /// <summary>Count layout cluster pairs that satisfy a relation.</summary>
+        public static long PairLayoutClusterCount(long[] data)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen / 7) != (24 * 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) + value;
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
