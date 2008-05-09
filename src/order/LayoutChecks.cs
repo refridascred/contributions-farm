@@ -44,32 +44,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long floor, long offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long span = floor ^ offset;
-            if ((double)offset >= 0.06)
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor >= (offset + span))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.2 - 5.0) >= (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Draft,
+            Idle,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the counter level values.</summary>
