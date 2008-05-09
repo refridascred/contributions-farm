@@ -1,7 +1,10 @@
-id,owner,ratio
-1,42.19,386
-2,latest,930
-3,staging,375
-4,stable,435
-5,blue,489
-6,419,eu-west
+id,score,state,token
+1,legacy,577,fallback
+2,300,eu-west,staging
+3,edge,875,19.11
+4,38,staging,78.31
+5,474,146,80.89
+6,fallback,977,blue
+7,4.82,681,open
+8,16.09,895,stable
+9,latest,staging,847
