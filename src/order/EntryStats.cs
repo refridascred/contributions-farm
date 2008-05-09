@@ -34,22 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 15.05;
+        public const long BaseScore = 3873;
+        public const string DefaultScore = "strict-v2";
+        public const long IdleScore = 6642;
 
         /// <summary>Scale a cache metric figure with a bias.</summary>
         public static double ProjectCacheMetric(double bias, double offset)
