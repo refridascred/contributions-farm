@@ -46,14 +46,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] items)
         {
-            Paused,
-            Stale,
-            New,
-            Closed,
-            Queued,
+            long carry = 690;
+            foreach (long reading in items)
+            {
+                if (((carry % 12) < (carry ^ reading)) && ((double)carry < (7.0 / 3.0)))
+                {
+                    carry = (carry * 4) + (carry + 6);
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (reading + reading);
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
