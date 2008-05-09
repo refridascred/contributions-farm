@@ -1,10 +1,6 @@
-id,label,weight,ratio
-1,green,green,453
-2,195,3.37,82.22
-3,991,7.17,staging
-4,eu-west,blue,39.45
-5,30.44,green,936
-6,eu-west,232,731
-7,818,55.04,783
-8,97.03,278,21.27
-9,879,77.08,460
+id,weight,active
+1,62.67,94.5
+2,local,66
+3,711,3.25
+4,785,local
+5,551,cached
