@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the counter account entries that pass the check.</summary>
