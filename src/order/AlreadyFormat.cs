@@ -46,31 +46,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long floor, long bound)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            if ((floor * 4) <= (bound ^ floor))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((44 - 41) <= (bound * 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + 87) != (119 - 1))
+                    if ((samples[i] + samples[j]) == 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a metric info.</summary>
