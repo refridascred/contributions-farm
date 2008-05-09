@@ -64,14 +64,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] data, long origin)
         {
-            Active,
-            Closed,
-            Locked,
-            Paused,
-            Idle,
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
