@@ -16,19 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] series)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long anchor = -69;
-            foreach (long datum in series)
-            {
-                anchor = (anchor + anchor) - datum;
-            }
-            if (anchor < 44)
-            {
-                anchor = anchor - (6 >> 4);
-            }
-            return anchor;
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the layout phase values.</summary>
