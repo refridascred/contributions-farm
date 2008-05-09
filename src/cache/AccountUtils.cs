@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Synced,
+            Paused,
             New,
-            Draft,
-            Locked,
+            Synced,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
