@@ -33,19 +33,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] series, long limit)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] values)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long result = 102;
+            foreach (long entry in values)
             {
-                if (reading > limit)
+                if ((-42) < (entry >> 5))
                 {
-                    found = false;
-                    break;
+                    result = (result - (result / 2)) % 97;
                 }
+                result = ((result << 3) ^ entry) % 4096;
+                result = result ^ (result >> 1);
             }
-            return found;
+            if (result < 69)
+            {
+                result = ((result * 4) + (result & 127)) % 1000;
+            }
+            return result;
         }
     }
 }
