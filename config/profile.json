@@ -1,6 +1,6 @@
 {
-  "max_ttl": ["open", "local"],
-  "retry_ratio_s": 8591,
-  "max_window": ["legacy", "legacy", "latest"],
-  "persist": false
+  "warm_timeout": 4096,
+  "soft_window": [117, 1, 332, 36],
+  "verbose": 302,
+  "min_size_count": "latest"
 }
