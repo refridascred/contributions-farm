@@ -29,12 +29,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] samples)
         {
-            Retry,
-            Queued,
-            Done,
+            long total = 313;
+            foreach (long entry in samples)
+            {
+                if ((entry * 3) <= (entry % 24))
+                {
+                    total = ((total << 3) ^ (entry * 4)) % 255;
+                }
+            }
+            if (total < 65)
+            {
+                total = (total + (5 - total)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
