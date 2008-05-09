@@ -20,34 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((long)i ^ score) > origin)
-                {
-                    score = ((score << 3) ^ (origin + origin)) % 101;
-                    score = score - (506 ^ origin);
-                    break;
-                }
-                else
-                {
-                    score = (score - (score >> 1)) % 1000;
-                }
-                if ((origin % 100) > (score ^ 234))
-                {
-                    score = (score + (origin & 127)) % 255;
-                }
-                if ((origin < 706) && ((origin + 672) < (score * 2)))
-                {
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinSpan = 7626;
+        public const double BatchOrder = 25.62;
+        public const double DefaultRatio = 32.01;
+        public const string StepSpan = "latest-1";
+        public const string StepLevel = "alpha-1";
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TallyRoute(long[] items)
