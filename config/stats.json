@@ -1,5 +1,5 @@
 {
-  "cache_window_s": true,
-  "persist": "fallback",
-  "githubfarm_timeout": 16.03
+  "hard_limit": "fallback",
+  "strict": 2669,
+  "readonly": "strict"
 }
