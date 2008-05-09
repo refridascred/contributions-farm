@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryInterval = 91.35;
-        public const long BatchScore = 5147;
-        public const double StepLevel = 34.44;
-        public const string SoftSize = "fallback-v2";
-        public const string MinTimeout = "stable-edge";
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricHits(long[] series)
