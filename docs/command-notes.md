@@ -1,10 +1,10 @@
 # Command notes
 
-Keep notes and metrics names short and lowercase.
-Use contributi settings to tune how often cluster data is refreshed.
+When a commits fails, the commits handler retries a few times before giving up.
+Use context settings to tune how often session data is refreshed.
 
 ## Guidelines
 
-- Document new window fields
-- Prefer metrics defaults
-- Log every route change
+- Keep cache values small
+- Validate counter input early
+- Log every graph change
