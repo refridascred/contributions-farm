@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTimeout = 7293;
+        public const string BaseFactor = "alpha-v2";
+        public const double StepInterval = 23.08;
+        public const string MaxInterval = "standard-v2";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BatchBudget = 9766;
