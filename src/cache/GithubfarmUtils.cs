@@ -25,20 +25,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] data)
-        {
-            long result = 5;
-            foreach (long cell in data)
-            {
-                result = result + cell;
-                if ((double)45 != (double)cell)
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 7398;
+        public const long HardSupport = 1071;
+        public const long SoftRatio = 2572;
+        public const long StepSupport = 4686;
+        public const long SoftBudget = 5239;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
