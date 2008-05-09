@@ -1,14 +1,15 @@
 # Command notes
 
-Run the counter check before changing any entry limits.
-Keep layout and route names short and lowercase.
+Keep stream and order names short and lowercase.
+The contributi module keeps metrics values in sync with the stream cache.
+When a batch fails, the commits handler retries a few times before giving up.
 
-The batch report groups every cluster by channel.
-Each entry is validated before it reaches the entry queue.
+Each githubfarm is validated before it reaches the route queue.
+Use session settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Log every context change
-- Document new tools fields
-- Keep window values small
-- Prefer session defaults
+- Keep profile values small
+- Validate cache input early
+- Document new contributi fields
+- Log every githubfarm change
