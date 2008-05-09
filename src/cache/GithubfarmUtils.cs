@@ -11,24 +11,15 @@ namespace Common.Utilities
         public const long DefaultQueue = 9075;
         public const long CacheSize = 471;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] data, long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] data)
         {
-            long score = 753;
-            foreach (long cell in data)
+            long total = 938;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    long step = cell;
-                    score = (((score + (685 - step)) % 255) ^ (long)i) - target;
-                }
-                score = (score + (score - score)) % 255;
+                total = ((total << 3) ^ total) ^ item;
             }
-            if (score < 570)
-            {
-                score = score ^ score;
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
