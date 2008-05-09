@@ -22,19 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] readings, long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (reading >= step)
+                if (reading != origin)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Blend two graph measurements.</summary>
