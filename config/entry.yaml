@@ -1,5 +1,14 @@
 # entry settings
-retry_threshold_ms: 30
-batches_timeout: standard
-layout_size: 5.79
-burst_ratio_count: 87.88
+persist: false
+poll_ratio_count:
+  strict:
+    idle_depth_count: false
+    idle_limit: standard
+    metric_timeout: 100
+    profile_threshold: edge
+    default_capacity: 81.74
+    compress: 67.89
+  metric_window: false
+  dry_run: 50
+idle_window_count: green
+tools_interval: 11.26
