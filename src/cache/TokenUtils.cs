@@ -24,11 +24,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double scale, double span)
-        {
-            double drift = span + (2.0 / 9.0);
-            return (drift + (span / 7.0)) + scale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheScore = 7829;
+        public const long SoftWidth = 9869;
+        public const string BurstChannel = "primary-edge";
+        public const long SoftChannel = 852;
     }
 }
