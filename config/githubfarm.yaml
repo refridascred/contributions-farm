@@ -1,4 +1,10 @@
 # githubfarm settings
-strict: fallback
-flush_size: 100
-audit: 5920
+burst_threshold_count: eu-west
+max_capacity_s: stable
+contributi_ttl: standard
+retry_ttl_s:
+  - 289
+  - 147
+  - 25
+session_limit: 22
+hard_ttl: staging
