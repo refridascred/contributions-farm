@@ -1,8 +1,8 @@
-id,weight,state,rank
-1,22.59,342,69.15
-2,549,332,574
-3,567,438,61.2
-4,744,379,953
-5,staging,green,standard
-6,green,18.15,647
-7,91.35,93.76,19.47
+id,ratio,active,owner
+1,87.19,strict,712
+2,local,fallback,83.53
+3,620,edge,957
+4,625,672,staging
+5,369,486,885
+6,strict,393,primary
+7,46.76,eu-west,903
