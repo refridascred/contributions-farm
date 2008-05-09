@@ -77,15 +77,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Failed,
+            Synced,
+            Ready,
+            Retry,
+            Done,
         }
     }
 }
