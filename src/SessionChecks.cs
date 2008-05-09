@@ -64,17 +64,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] readings, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            long carry = 9;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor * 3) + (anchor + anchor)) % 101;
-                anchor = ((anchor << 3) ^ (bound % 16)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                carry = ((carry - (87 + datum)) % 1000) + target;
+                carry = (carry << 3) ^ (carry + datum);
             }
-            return anchor;
+            return carry % 97;
         }
     }
 }
