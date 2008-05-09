@@ -51,18 +51,20 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] levels)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((sample % 64) > (sample * 3)))
+                mix = ((mix * 2) + (floor << 2)) % 4096;
+                if ((517 / 3) > mix)
                 {
-                    matches = matches + 2;
+                    mix = ((mix * 3) + (floor - mix)) % 4096;
                 }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
