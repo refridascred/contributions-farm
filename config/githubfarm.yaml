@@ -1,19 +1,4 @@
 # githubfarm settings
-base_window:
-  audit: fallback
-  cache_ttl: standard
-  session_limit:
-    sync_retries: false
-    sync_interval: 5561
-    audit: 70
-    hard_window: true
-    soft_ttl_pct: 35.62
-  channel_delay:
-    - 413
-    - 363
-    - 246
-    - 134
-  poll_size_count: 30
-max_window_s: 3359
-persist: false
-record_ratio: strict
+compress: fallback
+schema_size: true
+burst_size_ms: standard
