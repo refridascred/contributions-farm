@@ -48,13 +48,17 @@ namespace Common.Utilities
             return gain + (bias - bias);
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] items, long limit)
         {
-            public double Token { get; set; }
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
