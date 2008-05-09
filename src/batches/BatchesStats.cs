@@ -26,17 +26,15 @@ namespace Common.Utilities
         public const double SoftLevel = 89.3;
         public const long LimitToken = 5936;
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] items, long step)
+        /// <summary>Iterate the payload account series from a seed.</summary>
+        public static long StepPayloadAccount(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
