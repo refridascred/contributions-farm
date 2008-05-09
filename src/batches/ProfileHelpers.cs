@@ -32,19 +32,10 @@ namespace Common.Utilities
         public const string WindowWidth = "primary-edge";
         public const long HardBudget = 3869;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] series)
-        {
-            long result = 6;
-            foreach (long cell in series)
-            {
-                if ((cell + cell) < cell)
-                {
-                    result = (result - 591) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftContext = 14.13;
+        public const long DefaultRatio = 2040;
+        public const long MinLevel = 8934;
 
         /// <summary>Digest a series of stream checks entries.</summary>
         public static long FoldStreamChecks(long[] items, long seed)
