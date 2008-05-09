@@ -72,11 +72,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 4200;
-        public const long MinSpan = 3964;
-        public const string IdleAlready = "fallback-v2";
-        public const double CacheAlready = 53.17;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Pending,
+            Paused,
+            Done,
+            Queued,
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long ScoreAccount(long[] levels)
