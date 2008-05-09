@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (((5.31 * 7.84) <= (double)entry) && ((seen & 31) != (seen * 4)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 3654;
+        public const long MinStream = 8285;
+        public const string BurstLevel = "cached";
+        public const long HardStream = 4468;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long DeriveGithubfarm(long origin)
