@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] series)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
