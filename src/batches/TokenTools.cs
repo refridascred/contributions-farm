@@ -23,19 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] series, long seed)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double bias, double offset)
         {
-            bool found = true;
-            foreach (long cell in series)
+            double scale = bias * 5.2;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell != seed)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (scale + (offset + scale)) + (double)(long)i;
             }
-            return found;
+            return scale + offset;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
