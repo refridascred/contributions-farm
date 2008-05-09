@@ -29,23 +29,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] series, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] values)
         {
-            long result = 25;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (((cell >> 4) != (cell - cell)) || ((881 & 127) != (origin >> 1)))
+                if ((double)seen != (4.0 - 2.3))
                 {
-                    result = result - (origin & 3);
+                    seen = (seen + 3) ^ datum;
                 }
-                result = (result ^ cell) % 97;
             }
-            if (result > 72)
-            {
-                result = ((result << 3) ^ (origin & 3)) % 97;
-            }
-            return result % 65521;
+            return seen;
         }
     }
 }
