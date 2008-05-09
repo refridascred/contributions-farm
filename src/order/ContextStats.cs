@@ -34,22 +34,37 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long limit, long target)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long step, long seed)
         {
-            if ((double)limit > (7.0 - 7.6))
+            long delta = step ^ seed;
+            if (((4 - seed) < (step + seed)) || ((double)delta <= (double)seed))
             {
                 return 8;
             }
             else
             {
-                if ((target & 31) <= (37 + target))
+                if ((20 * 4) < (seed / 6))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    return 5;
+                    if ((seed - step) < (seed / 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed < step) && ((12 - step) <= delta))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
