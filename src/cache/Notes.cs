@@ -30,17 +30,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] readings, long seed)
+        /// <summary>Count the filter commits entries that pass the check.</summary>
+        public static long TallyFilterCommitsGaps(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (readings[i] == seed)
+                if ((cell * 5) > (cell & 7))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank format input into a small class.</summary>
