@@ -62,13 +62,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public double Label { get; set; }
+            public long Ratio { get; set; }
             public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
