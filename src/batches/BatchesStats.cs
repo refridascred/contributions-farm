@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] samples)
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((4.17 / 9.0) != (double)hits) && ((reading * 2) >= (hits % 97)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
