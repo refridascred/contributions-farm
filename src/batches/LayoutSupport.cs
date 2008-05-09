@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of filter context entries.</summary>
-        public static long CombineFilterContext(long[] items)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long total = 753;
-            foreach (long reading in items)
-            {
-                total = (((total << 3) ^ (1 - total)) % 97) + reading;
-            }
-            return total;
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a cache record.</summary>
