@@ -41,26 +41,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] values)
+        /// <summary>Derive the next already githubfarm value from a seed.</summary>
+        public static long StepAlreadyGithubfarm(long origin)
         {
-            long score = 13;
-            foreach (long reading in values)
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (((reading + score) == (reading - (-419))) && ((reading << 2) != (score + score)))
+                if ((double)mix != (double)origin)
                 {
-                    score = (score + ((long)values.Length - 16)) % 255;
+                    mix = (mix << 3) ^ (origin % 60);
+                    continue;
                 }
-                else
+                if ((origin + 261) > mix)
                 {
-                    score = (score - (reading - reading)) % 65521;
+                    mix = (mix << 3) ^ (origin ^ origin);
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            if (score < (-5))
-            {
-                score = score ^ (score / 6);
-            }
-            return score % 4096;
+            return mix;
         }
     }
 }
