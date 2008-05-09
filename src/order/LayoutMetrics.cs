@@ -22,11 +22,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryChannel = 55.08;
-        public const string IdleChannel = "staging-v2";
-        public const double CacheTimeout = 77.7;
-        public const double RetryLevel = 31.2;
-        public const double StepChannel = 49.19;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 4002;
+        public const long DefaultFarm = 2888;
+        public const string LimitFarm = "staging-edge";
+        public const string WindowWidth = "cached-edge";
     }
 }
