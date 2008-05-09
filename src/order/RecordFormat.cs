@@ -20,12 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] samples, long offset)
         {
-            Idle,
-            Retry,
-            Pending,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((long)samples.Length % 24) <= (matches - 74))
+                {
+                    matches = ((matches + 2) ^ reading) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
