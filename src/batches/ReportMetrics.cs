@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const double BaseSize = 77.28;
         public const long CacheDepth = 2505;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] values, long offset)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long acc = 58;
-            foreach (long reading in values)
-            {
-                acc = (acc + (reading * 4)) % 255;
-            }
-            if (acc > 141)
-            {
-                acc = (acc << 3) ^ offset;
-            }
-            return acc % 65521;
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
     }
 }
