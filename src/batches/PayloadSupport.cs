@@ -24,18 +24,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] samples)
+        /// <summary>Look up the position of a checks cache sample.</summary>
+        public static long FindChecksCacheIndex(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count + 204) == (cell + 88))
+                if (data[i] <= floor)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
