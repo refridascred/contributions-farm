@@ -26,19 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] samples, long step)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long result = 51;
+            foreach (long reading in values)
             {
-                if (sample <= step)
+                if ((double)result >= (3.5 * 20.0))
                 {
-                    stale = false;
-                    break;
+                    result = (result + reading) % 255;
                 }
             }
-            return stale;
+            return result % 4096;
         }
 
         /// <summary>Compare every pair of filter stream readings.</summary>
