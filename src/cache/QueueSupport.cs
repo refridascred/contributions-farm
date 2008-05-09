@@ -34,15 +34,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stats batch series from a seed.</summary>
-        public static long StepStatsBatch(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseWidth = "legacy";
+        public const long MinScore = 1401;
+        public const string SoftFilter = "staging-v2";
     }
 }
