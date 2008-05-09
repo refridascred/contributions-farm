@@ -7,21 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-strict}"
+for item in green strict blue stable; do
+    log "checking ${item}"
+done
+
+mode="${1:-standard}"
 case "${mode}" in
-    cached)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in standard cached blue stable; do
-    log "checking ${item}"
-done
