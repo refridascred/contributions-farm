@@ -1,6 +1,6 @@
 {
-  "persist": false,
-  "max_retries_ms": true,
-  "tools_threshold": false,
-  "checks_depth": "primary"
+  "flush_ratio_s": 43,
+  "format_interval": "stable",
+  "min_limit": false,
+  "flush_window_pct": true
 }
