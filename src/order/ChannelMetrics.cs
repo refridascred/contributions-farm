@@ -32,26 +32,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] levels, long origin)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] readings)
         {
-            long anchor = 9;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum << 1) == (origin * 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor - (2 * 5)) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ (datum % 2);
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor < 5)
-            {
-                anchor = anchor - ((-83) << 1);
-            }
-            return anchor;
+            return count;
         }
     }
 }
