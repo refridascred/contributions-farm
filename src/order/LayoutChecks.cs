@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstCount = 4554;
-        public const double SoftSupport = 47.26;
-        public const double BurstSupport = 68.4;
-        public const long LimitSupport = 9023;
-        public const double SoftSpan = 53.69;
+        /// <summary>Combine route window values into a single score.</summary>
+        public static long FoldRouteWindow(long[] readings, long seed)
+        {
+            long state = 71;
+            foreach (long entry in readings)
+            {
+                state = ((state ^ (seed & 3)) % 65521) + entry;
+            }
+            return state;
+        }
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
