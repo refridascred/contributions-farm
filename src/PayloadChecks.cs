@@ -19,23 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] values, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            long mix = 324;
+            foreach (long entry in values)
             {
-                if ((acc * 3) < bound)
-                {
-                    acc = acc + (bound >> 5);
-                }
-                if (!(((-260) + bound) != (acc & 7)))
-                {
-                    acc = (acc * 3) + (long)i;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                mix = (((mix << 2) ^ (offset - offset)) % 255) + entry;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Locate a checks stream reading by value.</summary>
