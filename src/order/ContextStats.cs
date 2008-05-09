@@ -31,11 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] series, long floor)
         {
-            public string Owner { get; set; } = "";
-            public double Ratio { get; set; }
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a support options.</summary>
