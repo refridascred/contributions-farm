@@ -30,11 +30,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstTimeout = 34.79;
-        public const long SoftMetrics = 7060;
-        public const long IdleMetrics = 799;
-        public const long SoftLevel = 8804;
-        public const double BatchCount = 69.73;
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double bias, double span)
+        {
+            double ratio = bias / 8.0;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + 9.0) + (double)(long)i;
+            }
+            return ratio - span;
+        }
     }
 }
