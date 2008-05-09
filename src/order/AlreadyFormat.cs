@@ -70,12 +70,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Digest a series of githubfarm format entries.</summary>
+        public static long FoldGithubfarmFormat(long[] items, long seed)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long state = -143;
+            foreach (long sample in items)
+            {
+                state = ((state ^ (seed * 3)) % 1000) ^ sample;
+            }
+            return state % 97;
         }
     }
 }
