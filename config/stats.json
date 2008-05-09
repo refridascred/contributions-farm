@@ -1,16 +1,8 @@
 {
-  "queue_delay": ["green", "latest", "local", "staging"],
-  "min_timeout_s": 4,
-  "default_size_count": "local",
-  "cache_threshold": {
-    "batch_ratio": 39.78,
-    "persist": 38,
-    "max_window_pct": 30,
-    "idle_retries": {
-      "retry_interval": [107, 107, 500, 301],
-      "batches_ttl": [11, 7],
-      "default_capacity_count": 5593
-    },
-    "editor_threshold": 55
-  }
+  "soft_interval": "latest",
+  "max_timeout_s": ["local", "fallback", "fallback"],
+  "idle_threshold_ms": true,
+  "poll_ratio": 25,
+  "hard_size_count": true,
+  "poll_timeout_count": 11.73
 }
