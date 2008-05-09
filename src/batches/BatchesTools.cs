@@ -32,14 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxFactor = "primary-v2";
+        public const string BatchSize = "legacy-1";
+        public const double IdleSpan = 81.18;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long CombineEditor(long[] levels, long bound)
