@@ -46,12 +46,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
+            Paused,
+            Stale,
+            New,
             Closed,
-            Synced,
-            Done,
+            Queued,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
