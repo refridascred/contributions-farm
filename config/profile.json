@@ -1,14 +1,7 @@
 {
-  "idle_ttl": {
-    "cache_threshold_pct": false,
-    "default_interval_s": 100,
-    "flush_delay_pct": "local",
-    "stream_threshold": 79,
-    "max_size_count": 28
-  },
-  "command_capacity": "staging",
-  "profile_threshold": "cached",
-  "default_delay": "stable",
-  "idle_delay": [476, 26, 208, 473],
-  "order_timeout": 16.93
+  "base_depth": 8691,
+  "max_window_s": 30,
+  "editor_interval": "stable",
+  "flush_limit_s": "staging",
+  "metric_delay": "standard"
 }
