@@ -35,12 +35,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] series, long target)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == target) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
