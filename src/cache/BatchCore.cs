@@ -43,18 +43,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics route samples are out of range.</summary>
-        public static long AuditMetricsRouteHits(long[] series, long origin)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item + matches) == (95 >> 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) + origin;
+                    if ((samples[i] ^ samples[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
