@@ -53,12 +53,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public double Label { get; set; }
-            public bool Limit { get; set; }
-            public long Size { get; set; }
+            Pending,
+            Active,
+            Retry,
+            Stale,
         }
     }
 }
