@@ -32,14 +32,31 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long target, long limit)
         {
-            Paused,
-            Dropped,
-            Queued,
-            Locked,
-            Done,
+            if ((target >> 1) >= limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target >> 1) > (target + limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((target + target) < (target % 16)) || ((limit - limit) < target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
