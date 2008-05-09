@@ -1,23 +1,19 @@
 # support settings
-min_threshold_count:
-  format_ttl: 64.34
-  poll_capacity:
-    enabled: 90.71
-    persist:
-      - 383
-      - 289
-      - 220
-    poll_size_s: standard
-    dry_run: eu-west
-    min_interval:
-      - 281
-      - 267
-      - 99
-      - 109
-    audit: 52
-  retry_ttl_ms: blue
-  base_threshold_s: true
-  poll_ttl_s: 1024
-hard_threshold_count: cached
-tools_limit: 449
-idle_size_pct: 80.7
+batch_delay_s: primary
+entry_size: 9.15
+min_ratio_s: 13
+compress:
+  retry_capacity: true
+  buffer_delay: blue
+  verbose: 32.28
+  enabled:
+    - stable
+    - primary
+  flush_delay_ms:
+    enabled: false
+    soft_ratio_ms: green
+    min_threshold_ms: false
+    strict: eu-west
+    poll_window_count: 62
+    already_ttl: 2417
+  metrics_delay: 30
