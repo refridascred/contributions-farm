@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] data, long target)
-        {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 6364;
+        public const long DefaultFactor = 637;
+        public const string StepBuffer = "standard-edge";
+        public const long BatchBudget = 6520;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double CacheContributi = 42.48;
