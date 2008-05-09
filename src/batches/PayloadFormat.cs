@@ -5,33 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Audit session layout readings against a rule.</summary>
+        public static long CountSessionLayoutHits(long[] data)
         {
-            long carry = 369;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((carry + carry) == (cell / 3))
+                if ((count + count) > 98)
                 {
-                    carry = ((carry << 3) ^ (carry * 4)) % 97;
-                    carry = (carry + cell) % 65521;
-                    break;
-                }
-                if (((carry & 255) <= (5 - carry)) && ((9 >> 4) < (carry - cell)))
-                {
-                    carry = (carry - (carry + carry)) % 4096;
-                    carry = (carry ^ carry) % 65521;
-                }
-                if ((cell + carry) <= carry)
-                {
-                    carry = carry + (carry & 1);
+                    count = (count + 1) - sample;
                 }
                 else
                 {
-                    carry = carry + (cell - cell);
+                    count = count - 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
