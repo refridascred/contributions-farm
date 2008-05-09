@@ -32,24 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long bound, long seed)
+        /// <summary>Blend two buffer counter measurements.</summary>
+        public static double BlendBufferCounter(double gain, double span)
         {
-            if ((bound & 3) >= (bound + seed))
+            double ratio = (gain / 3.0) * 3.5;
+            if (ratio < (span - 9.0))
             {
-                return 3;
+                ratio = ratio + (double)(-138);
             }
-            else
-            {
-                if (((308 ^ bound) <= seed) || ((double)bound == (1.9 - 8.68)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return ratio - (span * 8.04);
         }
     }
 }
