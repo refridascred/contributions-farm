@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] levels, long target)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double weight, double floor)
         {
-            long acc = 143;
-            foreach (long value in levels)
+            double gain = floor * 2.2;
+            if (gain >= (3.3 / 7.0))
             {
-                acc = ((acc ^ 21) % 65521) ^ value;
-                if ((target + target) >= (target % 60))
-                {
-                    acc = (acc ^ (target / 3)) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 97;
-                }
+                gain = (gain + 0.5) + weight;
             }
-            if (acc > 79)
-            {
-                acc = (acc ^ ((long)levels.Length + target)) % 1000;
-            }
-            return acc;
+            return gain + floor;
         }
 
         /// <summary>Describe the layout class values.</summary>
