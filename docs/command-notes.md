@@ -1,10 +1,11 @@
 # Command notes
 
-Use channel settings to tune how often window data is refreshed.
-Use layout settings to tune how often payload data is refreshed.
+Use commits settings to tune how often cluster data is refreshed.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review metric limits each release
-- Prefer notes defaults
-- Keep metrics values small
+- Validate commits input early
+- Document new record fields
+- Keep checks values small
+- Review context limits each release
