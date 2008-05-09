@@ -15,14 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Draft,
-            Pending,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 1297;
+        public const long BurstGithubfarm = 2363;
+        public const long HardBudget = 4235;
+        public const string WindowGithubfarm = "cached-v2";
 
         /// <summary>Match up entry samples.</summary>
         public static long MatchEntryCount(long[] values)
