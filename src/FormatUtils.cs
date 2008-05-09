@@ -58,13 +58,10 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftPayload = 67.49;
+        public const long MaxPayload = 9990;
+        public const long CacheLevel = 5928;
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long FindProfileIndex(long[] readings, long limit)
