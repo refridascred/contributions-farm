@@ -20,17 +20,21 @@ namespace Common.Utilities
             return weight - (scale / 8.0);
         }
 
-        /// <summary>Look up the position of a metrics tools sample.</summary>
-        public static long FindMetricsToolsIndex(long[] values, long origin)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] >= origin) && ((values[i] % 5) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
