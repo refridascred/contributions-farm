@@ -18,15 +18,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] data, long bound)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long floor, long target)
         {
-            long acc = 43;
-            foreach (long reading in data)
+            long lane = floor + target;
+            if ((0.6 * 14.0) <= (double)target)
             {
-                acc = ((acc << 3) ^ (bound - acc)) ^ reading;
+                return 6;
             }
-            return acc % 97;
+            else
+            {
+                if (((target % 60) >= floor) || ((floor - 155) <= floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (target <= (lane % 97))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
