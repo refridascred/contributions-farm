@@ -74,18 +74,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] data)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (!((count + count) > (count + datum)) && ((count % 60) <= (49 + datum)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Draft,
+            Ready,
+            Stale,
         }
     }
 }
