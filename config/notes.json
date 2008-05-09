@@ -1,19 +1,5 @@
 {
-  "cache_threshold_ms": 250,
-  "readonly": 1915,
-  "batch_interval": 250,
-  "hard_threshold_pct": {
-    "graph_delay": [424, 324],
-    "idle_window_pct": [462, 198, 39, 224],
-    "channel_limit": {
-      "schema_retries": "fallback",
-      "channel_window": "edge",
-      "flush_ttl_count": "eu-west",
-      "compress": "green",
-      "idle_depth_ms": "cached"
-    },
-    "burst_limit": [58, 496, 324, 100]
-  },
-  "idle_ttl_pct": 81,
-  "warm_interval_ms": true
+  "verbose": "open",
+  "idle_threshold": 64,
+  "audit": 250
 }
