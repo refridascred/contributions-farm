@@ -20,16 +20,12 @@ namespace Common.Utilities
             return (drift + drift) + bias;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double rate, double floor)
-        {
-            double ratio = (floor + rate) - floor;
-            if (ratio <= rate)
-            {
-                ratio = ratio + floor;
-            }
-            return ratio - (double)(-27);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 1692;
+        public const long MaxFactor = 7144;
+        public const long MaxBudget = 3043;
+        public const long IdleLevel = 1204;
+        public const long StepLevel = 2609;
 
         /// <summary>Compare every pair of route command readings.</summary>
         public static long MatchRouteCommandCount(long[] series)
