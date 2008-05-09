@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long bound)
         {
-            Closed,
-            Active,
-            Queued,
-            Ready,
+            long result = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((36 - bound) == (result ^ (long)i)) && ((result & 3) <= (long)i))
+                {
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
