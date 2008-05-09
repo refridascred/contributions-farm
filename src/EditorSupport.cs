@@ -56,19 +56,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate batches filter readings against a bound.</summary>
-        public static bool ValidateBatchesFilterRange(long[] levels, long seed)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Weight { get; set; }
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a window options.</summary>
