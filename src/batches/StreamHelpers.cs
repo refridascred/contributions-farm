@@ -91,13 +91,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
+            New,
+            Idle,
+            Retry,
+            Active,
         }
     }
 }
