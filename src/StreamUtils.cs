@@ -41,21 +41,38 @@ namespace Common.Utilities
         public const long StepRecord = 2137;
         public const double DefaultRecord = 21.5;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long target, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (target < (origin - 35))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((origin - target) < (origin % 12))
                 {
-                    if ((series[i] ^ series[j]) > 12)
+                    return 1;
+                }
+                else
+                {
+                    if (((0 - origin) > (target / 5)) || ((target * 3) >= target))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target < (21 / 2)) && ((321 * 5) > (origin ^ 66)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a report options.</summary>
