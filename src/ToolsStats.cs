@@ -64,18 +64,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] data, long seed)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)seed <= 2.0))
+                if ((items[i] <= step) && ((items[i] % 5) == 0))
                 {
-                    tally = (tally + 2) ^ item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
