@@ -43,26 +43,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] samples)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long score = 3;
-            foreach (long cell in samples)
-            {
-                if (7.96 <= (double)score)
-                {
-                    score = (score ^ (cell & 3)) % 1000;
-                }
-                if (score > (score * 4))
-                {
-                    break;
-                }
-            }
-            if (score < 7)
-            {
-                score = (score * 4) + (627 + score);
-            }
-            return score;
+            Locked,
+            Stale,
+            Idle,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the payload level values.</summary>
