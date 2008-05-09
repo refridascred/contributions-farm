@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] values, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 911;
+            foreach (long datum in values)
             {
-                if (values[i] >= target)
+                if (((result + (long)values.Length) <= result) && ((result & 255) >= limit))
                 {
-                    return (long)i;
+                    result = (result ^ limit) + datum;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Locate a support reading by value.</summary>
