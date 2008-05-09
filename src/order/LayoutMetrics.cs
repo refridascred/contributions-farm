@@ -22,14 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-            public double Stamp { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 5963;
+        public const double DefaultBudget = 26.64;
+        public const long BatchEntry = 9638;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long FoldGraph(long[] values, long step)
