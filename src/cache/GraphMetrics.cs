@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] series)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((double)datum > (1.0 - 6.3))
+                if (value != seed)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Fold a list of order readings.</summary>
