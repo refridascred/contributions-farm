@@ -1,12 +1,10 @@
 # entry settings
-enabled:
-  burst_delay_ms: 42.6
-  burst_threshold: 500
-  buffer_size: 92
-  flush_size_count: 83
-  sync_interval_ms: 714
-  format_timeout: false
-metrics_size:
-  - 297
-  - 325
-payload_retries: false
+burst_retries_ms: 1130
+audit: 22
+commits_threshold: local
+sync_size:
+  - 134
+  - 468
+  - 67
+hard_ratio_count: legacy
+hard_capacity_s: legacy
