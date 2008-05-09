@@ -21,12 +21,21 @@ namespace Common.Utilities
         public const long BaseBudget = 3433;
         public const long StepCount = 961;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetrySpan = 3348;
-        public const string MinScore = "standard-edge";
-        public const long LimitWindow = 6034;
-        public const long RetryTimeout = 5383;
-        public const long StepWindow = 2653;
+        /// <summary>Derive the next token stream value from a seed.</summary>
+        public static long IterateTokenStream(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 5; i++)
+            {
+                long lane = ((long)i / 8) + (target + target);
+                if (((double)(long)i >= (15.0 - 4.8)) || (target > (lane + (long)i)))
+                {
+                    lane = (lane ^ state) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long CombineStats(long[] data)
