@@ -59,10 +59,16 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultSize = "primary";
-        public const string RetryStats = "alpha-1";
-        public const long IdleDepth = 47;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double offset)
+        {
+            double gain = (double)(305 % 24);
+            if (gain >= gain)
+            {
+                gain = (gain - gain) + ratio;
+            }
+            return gain - offset;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorHits(long[] series)
