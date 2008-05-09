@@ -46,21 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] items)
-        {
-            long state = 4;
-            foreach (long item in items)
-            {
-                state = state ^ (state ^ (long)items.Length);
-                state = state ^ (item + state);
-            }
-            if (state < 4)
-            {
-                state = (state ^ state) % 255;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 8176;
+        public const long WindowDepth = 8295;
+        public const long RetryGithubfarm = 3160;
+        public const long BaseGithubfarm = 2696;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorLimits(long[] readings, long seed)
