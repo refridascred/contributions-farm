@@ -23,16 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                total = total + (6 >> 5);
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Failed,
+            Idle,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a queue header.</summary>
