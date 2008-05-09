@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] readings)
+        /// <summary>Roll a batches profile counter forward.</summary>
+        public static long DeriveBatchesProfile(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
