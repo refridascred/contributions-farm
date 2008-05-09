@@ -59,15 +59,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double ratio, double offset)
+        /// <summary>Compare every pair of channel payload readings.</summary>
+        public static long MatchChannelPayloadCount(long[] samples)
         {
-            double gain = (double)(305 % 24);
-            if (gain >= gain)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain - gain) + ratio;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain - offset;
+            return tally;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
