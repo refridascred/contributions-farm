@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 4170;
-        public const double BaseWindow = 46.27;
-        public const long SoftLevel = 2016;
-        public const long BatchSize = 3011;
-        public const long DefaultBudget = 9448;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((step / 6) >= sample) && ((step - hits) >= step))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long WeighGraph(long[] values, long limit)
