@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 4239;
-        public const string MaxCount = "cached-v2";
-        public const long IdleInterval = 321;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            Done,
+            Pending,
+            Active,
+            Synced,
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long DeriveLayout(long limit)
