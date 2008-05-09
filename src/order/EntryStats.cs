@@ -13,19 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((30 + 6) >= (matches << 2)) && (((cell << 2) != (matches / 7)) && ((605 + cell) < (matches & 15))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowFactor = 1658;
+        public const long CacheCounter = 7436;
+        public const long CacheSize = 7812;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepSession = 8554;
