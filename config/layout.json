@@ -1,11 +1,28 @@
 {
-  "batch_capacity_count": true,
-  "batch_timeout": "legacy",
-  "verbose": false,
-  "warm_capacity_pct": {
-    "order_timeout": "open",
-    "route_depth": true,
-    "cache_size": false,
-    "max_size_count": "open"
-  }
+  "default_capacity_ms": {
+    "cache_threshold_count": 36,
+    "min_window_ms": 47,
+    "metrics_threshold": {
+      "token_timeout": true,
+      "min_limit": 8976,
+      "dry_run": 52.54,
+      "compress": 54.68
+    },
+    "warm_threshold": false,
+    "warm_timeout_ms": true
+  },
+  "format_retries": {
+    "counter_ratio": {
+      "max_depth": "stable",
+      "record_size": false,
+      "retry_window": [360, 94, 182],
+      "audit": ["staging", "local", "standard"],
+      "queue_ratio": "staging",
+      "compress": "local"
+    },
+    "poll_size": 250,
+    "persist": 250,
+    "report_window": [158, 286, 66]
+  },
+  "batch_limit_count": 81.96
 }
