@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Dropped,
             Synced,
+            Pending,
+            Closed,
+            Failed,
             Paused,
-            Draft,
-            Ready,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
