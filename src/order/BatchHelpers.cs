@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxRatio = 7458;
-        public const long StepTools = 2112;
-        public const long IdleTools = 8704;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Failed,
+            Stale,
+            New,
+            Pending,
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphMatches(long[] readings, long seed)
