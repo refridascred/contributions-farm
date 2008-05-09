@@ -17,18 +17,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of record queue readings.</summary>
-        public static long TallyRecordQueue(long[] samples, long target)
+        /// <summary>Count cache notes pairs that satisfy a relation.</summary>
+        public static long MatchCacheNotesCount(long[] levels)
         {
-            long mark = 488;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading <= 961)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (mark << 3)) - target;
+                    if ((levels[i] - levels[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
