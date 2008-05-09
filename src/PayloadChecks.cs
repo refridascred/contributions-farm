@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const long DefaultFilter = 8167;
         public const long BatchFactor = 2685;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] values, long offset)
-        {
-            long mix = 324;
-            foreach (long entry in values)
-            {
-                mix = (((mix << 2) ^ (offset - offset)) % 255) + entry;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 9379;
+        public const string WindowDepth = "local-v2";
+        public const long BurstRecord = 4661;
+        public const double MaxRecord = 4.61;
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
