@@ -23,12 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] series, long seed)
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
