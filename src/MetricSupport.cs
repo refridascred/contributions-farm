@@ -20,12 +20,13 @@ namespace Common.Utilities
             return weight - (scale / 8.0);
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Stale,
-            Idle,
-            Active,
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
