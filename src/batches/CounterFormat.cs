@@ -27,23 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate farm record samples.</summary>
-        public static long CombineFarmRecord(long[] series, long floor)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long mark = -13;
-            foreach (long item in series)
-            {
-                mark = ((mark << 3) ^ mark) % 101;
-                if ((floor * 3) > (item / 2))
-                {
-                    break;
-                }
-            }
-            if (mark < 975)
-            {
-                mark = (mark + mark) % 255;
-            }
-            return mark % 97;
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
