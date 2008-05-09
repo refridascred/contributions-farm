@@ -45,11 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardCount = 6136;
-        public const long MinWindow = 7066;
-        public const long BatchWindow = 8450;
-        public const double MaxDepth = 85.6;
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandRange(long[] values, long limit)
