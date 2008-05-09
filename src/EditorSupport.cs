@@ -22,38 +22,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long step, long bound)
+        /// <summary>Validate batches filter readings against a bound.</summary>
+        public static bool ValidateBatchesFilterRange(long[] levels, long seed)
         {
-            if ((step % 12) > 72)
+            bool found = true;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step / 2) >= (step * 4)) && ((4 - bound) < bound))
+                if (item >= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + step) < bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((758 + 7) >= step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Combine order values into a single score.</summary>
