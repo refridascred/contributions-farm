@@ -26,13 +26,10 @@ namespace Common.Utilities
         public const double BaseSize = 77.28;
         public const long CacheDepth = 2505;
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitLevel = 3922;
+        public const long MaxSupport = 457;
+        public const long BurstBudget = 3334;
+        public const double HardSupport = 68.03;
     }
 }
