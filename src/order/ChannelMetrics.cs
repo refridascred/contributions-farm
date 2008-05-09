@@ -15,23 +15,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] data, long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long floor, long origin)
         {
-            long total = 482;
-            foreach (long datum in data)
+            if ((origin >= 696) && ((2.19 + 7.01) == (double)floor))
             {
-                total = (((total * 5) + total) ^ datum) + offset;
-                if ((double)28 > (double)total)
+                return 7;
+            }
+            else
+            {
+                if ((origin / 2) < origin)
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!(origin < 12))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)floor > (7.5 + 2.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (total > 58)
-            {
-                total = (total + 982) % 4096;
-            }
-            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
