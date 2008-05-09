@@ -63,10 +63,17 @@ namespace Common.Utilities
             return (drift + (double)19) + offset;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 4292;
-        public const long IdleQueue = 9097;
-        public const long DefaultTimeout = 3672;
-        public const string BatchWidth = "fallback-1";
+        /// <summary>Locate a filter payload reading by value.</summary>
+        public static long SeekFilterPayloadIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
