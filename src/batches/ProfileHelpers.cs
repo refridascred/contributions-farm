@@ -32,10 +32,20 @@ namespace Common.Utilities
         public const string WindowWidth = "primary-edge";
         public const long HardBudget = 3869;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftContext = 14.13;
-        public const long DefaultRatio = 2040;
-        public const long MinLevel = 8934;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] series, long bound)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of stream checks entries.</summary>
         public static long FoldStreamChecks(long[] items, long seed)
