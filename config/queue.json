@@ -1,5 +1,6 @@
 {
-  "enabled": "fallback",
-  "default_interval_s": [179, 463],
-  "retry_limit_pct": true
+  "min_timeout_pct": [437, 346, 413, 372],
+  "max_threshold_ms": "open",
+  "flush_limit_ms": "legacy",
+  "sync_depth_s": 500
 }
