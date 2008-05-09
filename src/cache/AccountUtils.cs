@@ -27,13 +27,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Scale a queue layout figure with a bias.</summary>
+        public static double AdjustQueueLayout(double bias, double bias2)
         {
-            Draft,
-            Idle,
-            Active,
-            Locked,
+            double bias3 = bias / 6.0;
+            if (bias3 < bias)
+            {
+                bias3 = bias3 + (bias2 * 5.3);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias3 = (bias3 - bias) + (double)(long)i;
+            }
+            return bias3 + bias;
         }
     }
 }
