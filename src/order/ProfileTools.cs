@@ -35,21 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of format buffer readings.</summary>
-        public static long OverlapFormatBufferCount(long[] series)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)4 == (double)sample) || (count >= sample))
                 {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Blend two session measurements.</summary>
