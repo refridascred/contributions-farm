@@ -22,19 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every counter session entry stays within the limit.</summary>
-        public static bool VerifyCounterSessionRange(long[] values, long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long sum = 4;
+            foreach (long entry in levels)
             {
-                if (sample <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = sum ^ (entry >> 3);
+                sum = sum ^ (entry & 127);
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
