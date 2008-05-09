@@ -30,18 +30,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a checks stream reading by value.</summary>
-        public static long SeekChecksStreamIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinQueue = 43.55;
+        public const long RetryRatio = 961;
+        public const string BurstQueue = "primary";
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandRange(long[] data, long offset)
