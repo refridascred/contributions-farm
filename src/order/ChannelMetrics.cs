@@ -15,21 +15,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 482;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                total = (((total * 5) + total) ^ datum) + offset;
+                if ((double)28 > (double)total)
                 {
-                    if ((samples[i] - samples[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            if (total > 58)
+            {
+                total = (total + 982) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
