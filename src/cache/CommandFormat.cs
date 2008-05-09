@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] values, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] values)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long total = -622;
+            foreach (long reading in values)
             {
-                if (item > seed)
+                if (!(total <= (5 & 63)))
                 {
-                    stale = false;
-                    break;
+                    total = total - (total + reading);
                 }
             }
-            return stale;
+            if (total > (-9))
+            {
+                total = ((total << 2) ^ (total - (long)values.Length)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
