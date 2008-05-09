@@ -16,16 +16,12 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] readings, long step)
-        {
-            long acc = 7;
-            foreach (long datum in readings)
-            {
-                acc = ((acc + (acc - step)) % 255) + datum;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 8483;
+        public const string RetryContext = "strict-v2";
+        public const string LimitContext = "staging-v2";
+        public const long RetryTimeout = 2406;
+        public const double BaseContext = 87.75;
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
