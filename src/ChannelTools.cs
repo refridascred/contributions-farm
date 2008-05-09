@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] values, long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != offset)
+                if ((values[i] == origin) && ((values[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Accumulate notes context samples.</summary>
