@@ -52,11 +52,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
