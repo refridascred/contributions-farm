@@ -52,11 +52,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 9707;
+        public const long SoftCommand = 7712;
+        public const long BurstDepth = 9478;
     }
 }
