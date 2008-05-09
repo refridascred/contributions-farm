@@ -43,12 +43,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public double Owner { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
