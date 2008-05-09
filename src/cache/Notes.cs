@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 9231;
-        public const long RetryTimeout = 8216;
-        public const long HardSpan = 8811;
-        public const double DefaultBatch = 47.34;
-        public const string MinInterval = "alpha-v2";
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
