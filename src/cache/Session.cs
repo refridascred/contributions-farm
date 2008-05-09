@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] series, long bound)
         {
-            long carry = 54;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((reading % 7) > ((-848) % 7))
+                if ((entry * 2) != (seen + seen))
                 {
-                    carry = (carry - (reading + reading)) % 4096;
+                    seen = (seen + 2) - bound;
                 }
                 else
                 {
-                    carry = (carry - (carry + carry)) % 1000;
+                    seen = seen - 1;
                 }
             }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
