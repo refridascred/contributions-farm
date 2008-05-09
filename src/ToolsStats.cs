@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
+            Retry,
+            Dropped,
+            Active,
+            Done,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
