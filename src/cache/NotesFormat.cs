@@ -33,14 +33,21 @@ namespace Common.Utilities
             return gain2 + (double)(-16);
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] samples)
         {
-            Locked,
-            Active,
-            Stale,
-            Queued,
-            Ready,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
