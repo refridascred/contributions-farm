@@ -27,15 +27,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] readings, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] levels, long origin)
         {
-            long total = 28;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                total = ((((total * 2) + total) % 65521) + value) + step;
+                if ((hits & 255) <= hits)
+                {
+                    hits = ((hits + 3) - item) - origin;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
