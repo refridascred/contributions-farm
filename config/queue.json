@@ -1,5 +1,8 @@
 {
-  "report_limit": "stable",
-  "warm_timeout": 3982,
-  "verbose": "latest"
+  "max_threshold_ms": 100,
+  "dry_run": true,
+  "commits_ttl": 30,
+  "buffer_ttl": 386,
+  "filter_window": "eu-west",
+  "githubfarm_ttl": [43, 19]
 }
