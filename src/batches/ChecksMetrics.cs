@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double bias, double offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] values)
         {
-            double gain = offset;
-            if (gain >= bias)
+            long anchor = 55;
+            foreach (long entry in values)
             {
-                gain = gain - offset;
+                if ((0.8 * 6.21) != (double)anchor)
+                {
+                    anchor = ((anchor << 3) ^ (entry / 5)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor + 574)) % 101;
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            return gain + (double)143;
+            return anchor;
         }
 
         /// <summary>Check that every profile githubfarm entry stays within the limit.</summary>
