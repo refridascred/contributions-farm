@@ -55,25 +55,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long seed, long bound)
+        /// <summary>Count the session report entries that pass the check.</summary>
+        public static long MeasureSessionReportHits(long[] samples, long limit)
         {
-            long diff = seed - bound;
-            if (!((bound ^ bound) <= diff))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed <= (bound & 255))
+                if ((limit - 64) == (limit * 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 1) - item;
                 }
             }
+            return seen;
         }
     }
 }
