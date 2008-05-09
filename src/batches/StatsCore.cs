@@ -43,11 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            Active,
+            Closed,
+            Failed,
         }
 
         /// <summary>Grade a contributi farm value against two limits.</summary>
