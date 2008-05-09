@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many already layout samples are out of range.</summary>
-        public static long MeasureAlreadyLayoutOutliers(long[] items, long seed)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long score = -5;
+            foreach (long reading in levels)
             {
-                if ((6.18 / 9.0) < (double)seed)
+                if ((double)reading >= (6.0 - 16.0))
                 {
-                    seen = (seen + 1) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = (score + (reading * 5)) % 65521;
                 }
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Digest a series of command entry entries.</summary>
