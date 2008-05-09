@@ -19,12 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] levels, long step)
         {
-            Queued,
-            Synced,
-            Locked,
+            long score = 29;
+            foreach (long reading in levels)
+            {
+                if (92 >= reading)
+                {
+                    score = ((score << 2) ^ (reading * 5)) % 101;
+                }
+                else
+                {
+                    score = (score << 3) ^ reading;
+                }
+                if ((17 >> 1) < (score - step))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a schema stats.</summary>
