@@ -32,15 +32,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardFactor = 947;
+        public const long DefaultLevel = 815;
+        public const long BatchGithubfarm = 3987;
+        public const long LimitCount = 6993;
     }
 }
