@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] data, long origin)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the stats kind values.</summary>
