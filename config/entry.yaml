@@ -1,26 +1,6 @@
 # entry settings
-retry_capacity: stable
-idle_retries_count:
-  min_delay: 6939
-  verbose: open
-  soft_depth_count: legacy
-  max_size:
-    session_retries: legacy
-    audit: 30
-    default_size_pct: staging
-    compress:
-      - stable
-      - stable
-      - cached
-  base_limit:
-    graph_size: blue
-    max_window_ms: 4987
-    enabled: 26.92
-    metric_interval:
-      - 123
-      - 1
-      - 398
-    retry_ratio_s: false
-    cache_timeout: 94.64
-  sync_ttl: standard
-githubfarm_window: 480
+warm_size_ms:
+  - 471
+  - 333
+strict: 9298
+idle_delay: 23
