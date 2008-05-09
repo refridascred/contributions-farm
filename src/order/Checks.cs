@@ -19,11 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstGithubfarm = 44.74;
-        public const double MaxGithubfarm = 1.48;
-        public const long WindowSize = 4943;
-        public const long SoftRatio = 1567;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitLevel = "alpha";
+        public const string SoftScore = "latest-1";
+        public const string SoftTimeout = "cached";
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long PairClusterCount(long[] items)
