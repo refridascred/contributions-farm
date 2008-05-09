@@ -1,9 +1,8 @@
-id,score,weight
-1,local,92.44
-2,193,1.49
-3,80.68,944
-4,43.75,64.01
-5,61.27,fallback
-6,strict,85.22
-7,23.71,343
-8,260,48
+id,active,label
+1,legacy,86.39
+2,94.25,581
+3,latest,4.18
+4,819,256
+5,71.07,329
+6,21.48,stable
+7,primary,edge
