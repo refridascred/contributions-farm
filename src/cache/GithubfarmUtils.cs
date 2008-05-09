@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile stream entries that pass the check.</summary>
-        public static long TallyProfileStreamHits(long[] data)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!(((count / 3) < count) || ((double)cell == (15.0 + 2.1))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
