@@ -20,10 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleRecord = "stable-edge";
-        public const long WindowScore = 2875;
-        public const long MinFactor = 1376;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long floor, long limit)
+        {
+            if ((8.4 / 8.0) <= (double)floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)floor != (4.8 - 16.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferHits(long[] series)
