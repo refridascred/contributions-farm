@@ -104,18 +104,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] samples, long origin)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double rate = (offset + scale) + offset;
+            if (rate > (4.6 / 5.0))
             {
-                if ((5.0 * 13.0) == (double)hits)
-                {
-                    hits = ((hits + 2) ^ cell) - origin;
-                }
+                rate = rate - (rate - scale);
             }
-            return hits;
+            else
+            {
+                rate = rate - (rate - offset);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + 3.44) + (double)(long)i;
+            }
+            return rate - (offset / 6.0);
         }
     }
 }
