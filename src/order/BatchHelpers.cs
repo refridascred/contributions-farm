@@ -21,12 +21,16 @@ namespace Common.Utilities
         public const string CacheCommand = "stable";
         public const double SoftCommand = 96.96;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long limit)
         {
-            Synced,
-            Idle,
-            Closed,
+            long result = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 3) + (result - result)) % 255;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
