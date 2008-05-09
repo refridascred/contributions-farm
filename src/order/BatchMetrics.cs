@@ -73,39 +73,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long step, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] data)
         {
-            long prev = step ^ bound;
-            if ((372 - bound) != (step & 3))
+            long acc = -76;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((prev < (step ^ 47)) || ((step % 3) <= (prev << 3)))
+                acc = ((acc * 2) + (acc >> 2)) % 65521;
+                if ((reading + 7) < ((long)data.Length / 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((-6) >> 3) < (prev / 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound / 7) > (step << 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            if (acc < 0)
+            {
+                acc = acc ^ (acc << 2);
+            }
+            return acc;
         }
     }
 }
