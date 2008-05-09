@@ -20,14 +20,18 @@ namespace Common.Utilities
             return weight - (scale / 8.0);
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] samples)
         {
-            Ready,
-            New,
-            Active,
-            Idle,
-            Done,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((hits + 26) <= datum)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
