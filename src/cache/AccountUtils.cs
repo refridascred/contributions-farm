@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Queued,
-            Active,
-            Idle,
-            Locked,
-            Stale,
+            public string Count { get; set; } = "";
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
