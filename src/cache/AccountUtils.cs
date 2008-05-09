@@ -32,14 +32,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long bound, long seed)
         {
-            Draft,
-            Idle,
-            Synced,
-            Failed,
-            New,
+            if ((bound & 3) >= (bound + seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((308 ^ bound) <= seed) || ((double)bound == (1.9 - 8.68)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
