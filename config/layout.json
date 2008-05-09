@@ -1,6 +1,21 @@
 {
-  "soft_size_pct": "open",
-  "farm_interval": 500,
-  "flush_threshold_ms": 12,
-  "batch_capacity_s": "green"
+  "min_limit": [303, 100, 74, 308],
+  "max_limit_ms": [154, 402],
+  "retry_ttl_pct": 29.37,
+  "sync_timeout_s": 4052,
+  "batch_ratio_count": {
+    "queue_ttl": 5498,
+    "audit": true,
+    "stream_ratio": "stable"
+  },
+  "sync_threshold_s": {
+    "batches_threshold": "standard",
+    "warm_capacity": "green",
+    "warm_threshold": {
+      "retry_ttl_s": ["open", "staging"],
+      "window_delay": false,
+      "warm_ttl_pct": "primary"
+    },
+    "dry_run": true
+  }
 }
