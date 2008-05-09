@@ -20,23 +20,29 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long limit, long seed)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long target, long step)
         {
-            long step = limit - seed;
-            if ((step & 3) < (-468))
+            if (((step + step) >= 1) || ((8.0 - 11.0) >= (3.63 * 9.51)))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((double)88 != (double)seed)
+                if (3.0 <= (double)step)
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    if (!(target < step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
