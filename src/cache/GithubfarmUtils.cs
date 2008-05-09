@@ -53,19 +53,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] values, long target)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= target)
+                if ((values[i] < offset) && ((values[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
