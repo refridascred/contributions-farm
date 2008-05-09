@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a cache batches pair into a bucket.</summary>
-        public static long BucketCacheBatches(long seed, long floor)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            if (73 < seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (421 >= (seed - 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (floor >= (floor + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((8.4 - 5.8) < (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
