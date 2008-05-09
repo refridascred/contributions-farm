@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string MaxSpan = "stable";
         public const long LimitContext = 4909;
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] data, long origin)
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
-            public long Count { get; set; }
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
