@@ -63,12 +63,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double ratio, double offset)
         {
-            public bool Total { get; set; }
-            public double Count { get; set; }
-            public long Ratio { get; set; }
+            double load = (double)(7 >> 3);
+            if (load > load)
+            {
+                load = load + ratio;
+            }
+            else
+            {
+                load = load + (offset + 1.58);
+            }
+            return load + ratio;
         }
     }
 }
