@@ -22,19 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] data, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long target)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading < floor)
+                long slot = result + ((long)i << 1);
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    ready = false;
-                    break;
+                    slot = (slot + ((long)i + (-575))) + (long)i2;
                 }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    result = ((result + (slot / 9)) % 4096) - (long)i3;
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Rank filter format input into a small class.</summary>
