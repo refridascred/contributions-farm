@@ -67,23 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((long)i * 3) != (99 - origin))
-                {
-                    sum = (sum + (origin + sum)) % 65521;
-                }
-                else
-                {
-                    sum = sum + (origin - sum);
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Accumulate counter batch samples.</summary>
