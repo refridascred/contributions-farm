@@ -34,23 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] samples, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] values, long step)
         {
-            long score = 94;
-            foreach (long sample in samples)
+            long result = 38;
+            foreach (long datum in values)
             {
-                score = ((score ^ (sample + 88)) % 65521) - seed;
-                if ((39 >> 2) > (sample << 3))
-                {
-                    score = (score ^ (-19)) % 97;
-                }
+                result = ((result ^ (step + (long)values.Length)) % 101) + datum;
+                result = (result * 3) + (result - step);
+                result = (result ^ (step / 3)) % 255;
             }
-            if (score < 591)
-            {
-                score = ((score * 2) + 89) % 97;
-            }
-            return score % 97;
+            return result;
         }
     }
 }
