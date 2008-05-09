@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long limit, long seed)
         {
-            Closed,
-            Queued,
-            Ready,
+            if (((double)(-78) < (double)limit) || ((seed - limit) < (limit - seed)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((seed << 1) < 98) && (437 > (seed & 63)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
