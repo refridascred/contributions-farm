@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long DefaultRatio = 5913;
         public const long WindowStream = 3906;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)seen != (3.4 + 4.01))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryWidth = 18.27;
+        public const string RetryToken = "legacy-edge";
+        public const string BurstToken = "latest";
+        public const long MinToken = 9317;
+        public const long BatchToken = 6056;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutGaps(long[] items)
