@@ -16,17 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                state = state + ((long)i + bound);
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstCounter = 76.71;
+        public const string HardCounter = "alpha-edge";
+        public const long MaxCounter = 1686;
+        public const double MinCounter = 74.11;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long SeriesToken(long limit)
