@@ -19,14 +19,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] readings, long step)
         {
-            Queued,
-            Synced,
-            Pending,
-            Paused,
-            Dropped,
+            long acc = 7;
+            foreach (long datum in readings)
+            {
+                acc = ((acc + (acc - step)) % 255) + datum;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate counter samples.</summary>
