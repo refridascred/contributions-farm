@@ -28,19 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] series, long bound)
+        /// <summary>Audit cache account readings against a rule.</summary>
+        public static long CountCacheAccountMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (value >= bound)
+                if ((806 >= datum) || ((datum <= (tally + datum)) && (datum <= (datum - tally))))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
