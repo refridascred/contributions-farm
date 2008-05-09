@@ -1,10 +1,7 @@
-id,score,count
-1,local,38.46
-2,standard,954
-3,856,3.42
-4,288,staging
-5,201,strict
-6,994,811
-7,eu-west,strict
-8,653,blue
-9,latest,local
+id,region,active
+1,261,381
+2,473,legacy
+3,cached,latest
+4,strict,cached
+5,65.72,709
+6,360,46
