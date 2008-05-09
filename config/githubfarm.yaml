@@ -1,15 +1,25 @@
 # githubfarm settings
-persist: false
-layout_interval: 26
-cache_size_count: false
-buffer_retries:
-  already_limit:
-    audit: false
-    cache_limit_pct: edge
-    idle_timeout_pct: fallback
-    flush_threshold_s: true
-    sync_capacity_pct: 60
-  filter_retries: 56
-  compress: fallback
-  session_limit: 658
-min_limit_ms: 500
+flush_window:
+  retry_interval: cached
+  retry_ttl_count: 500
+  default_window:
+    - primary
+    - eu-west
+  hard_timeout:
+    queue_timeout: false
+    max_threshold_pct: standard
+    format_limit: staging
+    metrics_limit: true
+    hard_retries_pct:
+      - stable
+      - stable
+      - legacy
+      - cached
+    hard_limit_count:
+      - stable
+      - legacy
+      - stable
+      - legacy
+  poll_ratio_count: standard
+poll_timeout_pct: true
+max_window_pct: 3354
