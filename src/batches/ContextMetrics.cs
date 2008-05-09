@@ -24,10 +24,20 @@ namespace Common.Utilities
             return bias + 1.0;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 9363;
-        public const double LimitRatio = 54.3;
-        public const string HardLevel = "staging-edge";
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double ratio, double offset)
+        {
+            double ratio2 = ratio;
+            if (ratio2 < (double)(-916))
+            {
+                ratio2 = (ratio2 - (double)983) + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - (ratio * 0.37)) + (double)(long)i;
+            }
+            return ratio2 - (double)(-74);
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long GradeRoute(long offset, long bound)
