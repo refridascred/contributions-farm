@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of buffer command entries.</summary>
-        public static long TotalBufferCommand(long[] series, long seed)
-        {
-            long state = -8;
-            foreach (long reading in series)
-            {
-                if (((reading - (-57)) <= (reading + 430)) || ((state - state) >= (seed ^ seed)))
-                {
-                    state = ((state << 3) ^ seed) % 4096;
-                }
-            }
-            if (state < 246)
-            {
-                state = (state + (state % 24)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 2494;
+        public const long WindowRatio = 2635;
+        public const long SoftFactor = 6741;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstContributi = 683;
