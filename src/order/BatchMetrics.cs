@@ -61,10 +61,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 5300;
-        public const double MaxBudget = 60.76;
-        public const long MinBuffer = 5221;
+        /// <summary>Rank batches support input into a small class.</summary>
+        public static long GradeBatchesSupport(long floor, long target)
+        {
+            if (floor < (target / 9))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target <= (5.3 + 6.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor * 5) <= floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long OverlapClusterCount(long[] readings)
