@@ -16,11 +16,19 @@ namespace Common.Utilities
             return ratio + (double)8;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryInterval = 1350;
-        public const double StepReport = 22.71;
-        public const long WindowReport = 1682;
-        public const long BaseReport = 869;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - hits) >= cell)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a metrics tools figure with a bias.</summary>
         public static double SmoothMetricsTools(double weight, double offset)
