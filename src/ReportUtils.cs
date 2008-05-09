@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] samples)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long state = -2;
+            foreach (long reading in samples)
+            {
+                state = ((state + 51) % 101) ^ reading;
+            }
+            if (state > 33)
+            {
+                state = ((state * 5) + (state + state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Locate a context batch reading by value.</summary>
