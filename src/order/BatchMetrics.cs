@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long seed, long bound)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long step = seed - bound;
-            if ((88 + seed) < step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed <= (seed % 60)) || ((bound + bound) > (seed << 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Queued,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
