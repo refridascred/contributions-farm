@@ -1,8 +1,6 @@
 {
-  "channel_threshold": true,
-  "enabled": false,
-  "hard_threshold_s": "standard",
-  "verbose": "primary",
-  "base_delay_ms": false,
-  "readonly": ["local", "blue"]
+  "soft_capacity": true,
+  "base_ratio_s": "staging",
+  "base_interval_pct": false,
+  "window_capacity": true
 }
