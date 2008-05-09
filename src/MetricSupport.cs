@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] series, long seed)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((matches >> 1) >= seed)
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
+            Queued,
+            Stale,
+            Pending,
         }
 
         /// <summary>Match up cluster samples.</summary>
