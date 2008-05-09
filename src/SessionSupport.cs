@@ -30,12 +30,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] items)
         {
-            Retry,
-            Closed,
-            New,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (hits > (hits % 24))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
