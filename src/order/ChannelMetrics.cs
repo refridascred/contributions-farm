@@ -24,12 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a order snapshot.</summary>
