@@ -20,19 +20,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] levels, long origin)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long origin, long seed)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            if ((187 + origin) < seed)
             {
-                if (reading != origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)seed != (0.9 - 7.1))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed == (3.7 * 10.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed - 817) < origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Grade a batches checks value against two limits.</summary>
