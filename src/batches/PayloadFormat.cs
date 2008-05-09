@@ -62,12 +62,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Validate editor order readings against a bound.</summary>
+        public static bool VerifyEditorOrderRange(long[] data, long floor)
         {
-            Stale,
-            Retry,
-            Draft,
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
