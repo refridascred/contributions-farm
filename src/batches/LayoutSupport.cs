@@ -22,10 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseChannel = "fallback-1";
-        public const long DefaultChannel = 6816;
-        public const long HardChannel = 8309;
+        /// <summary>Fold a list of payload notes readings.</summary>
+        public static long CombinePayloadNotes(long[] values, long floor)
+        {
+            long mix = 8;
+            foreach (long datum in values)
+            {
+                if ((double)floor > 6.0)
+                {
+                    mix = ((mix * 4) + (floor * 2)) + datum;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferHits(long[] series)
