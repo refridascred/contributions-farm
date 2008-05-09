@@ -25,11 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Combine already stream values into a single score.</summary>
+        public static long FoldAlreadyStream(long[] readings, long floor)
         {
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
+            long total = -871;
+            foreach (long datum in readings)
+            {
+                total = (((total * 5) + (total * 4)) % 97) + datum;
+                if ((total ^ total) >= (floor + floor))
+                {
+                    break;
+                }
+            }
+            if (total < 383)
+            {
+                total = ((total << 2) ^ (total % 24)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
