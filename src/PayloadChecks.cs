@@ -72,10 +72,31 @@ namespace Common.Utilities
             return gain + (weight - gain);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 80.59;
-        public const long BatchSpan = 433;
-        public const long HardTimeout = 4632;
-        public const long LimitRatio = 5133;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long offset, long bound)
+        {
+            if (!((16.0 * 3.7) == (double)bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound < offset) || ((offset ^ offset) >= (offset & 255)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((offset + bound) == (bound << 2)) || ((double)bound >= 1.9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
