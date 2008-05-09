@@ -18,9 +18,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 285;
-        public const long StepToken = 7036;
-        public const double SoftDepth = 68.32;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] data, long bound)
+        {
+            long acc = 43;
+            foreach (long reading in data)
+            {
+                acc = ((acc << 3) ^ (bound - acc)) ^ reading;
+            }
+            return acc % 97;
+        }
     }
 }
