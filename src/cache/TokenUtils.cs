@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate session notes samples.</summary>
-        public static long TallySessionNotes(long[] series, long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] values, long bound)
         {
-            long state = 15;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading ^ state) != (state + reading))
+                if (values[i] == bound)
                 {
-                    state = ((state * 4) + reading) + origin;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Project the next batches value.</summary>
