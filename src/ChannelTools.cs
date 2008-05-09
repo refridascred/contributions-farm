@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCount = 9546;
-        public const long CacheSpan = 7174;
-        public const double RetryInterval = 84.62;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate notes context samples.</summary>
         public static long WeighNotesContext(long[] levels)
