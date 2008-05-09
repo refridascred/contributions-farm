@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] items)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (item >= (5 & 7))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
