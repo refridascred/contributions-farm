@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long seed, long floor)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            if ((14.0 / 5.0) <= (double)floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor == (8.5 * 7.52))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((2.9 / 4.0) >= (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Pending,
+            Failed,
+            Queued,
         }
 
         /// <summary>Count cache notes pairs that satisfy a relation.</summary>
