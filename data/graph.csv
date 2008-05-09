@@ -1,6 +1,6 @@
-id,owner,count,level
-1,589,917,legacy
-2,edge,latest,14.13
-3,500,102,strict
-4,666,92.8,56.63
-5,green,open,23.61
+id,state,rank
+1,42.5,standard
+2,staging,65.26
+3,81.15,eu-west
+4,stable,663
+5,740,676
