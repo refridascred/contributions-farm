@@ -23,20 +23,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] data, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowDepth = 7719;
+        public const long RetryLayout = 3626;
+        public const double BaseFactor = 16.63;
 
         /// <summary>Match up counter samples.</summary>
         public static long CompareCounterCount(long[] samples)
