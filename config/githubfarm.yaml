@@ -1,7 +1,4 @@
 # githubfarm settings
-retry_delay_pct: 55
-base_retries_pct: true
-flush_threshold_s: 7526
-max_ttl: 1024
-stats_threshold: 18
-cache_depth_pct: false
+persist: 250
+default_window_pct: 49.09
+githubfarm_threshold: 250
