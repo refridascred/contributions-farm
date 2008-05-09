@@ -48,24 +48,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] readings)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long carry = 272;
-            foreach (long entry in readings)
-            {
-                carry = carry + carry;
-                carry = (carry + (entry - 3)) % 1000;
-                if ((5 + carry) < carry)
-                {
-                    carry = carry ^ (284 - 5);
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (entry & 255);
-                }
-            }
-            return carry % 4096;
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
