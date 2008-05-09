@@ -18,16 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long seed, long target)
         {
-            long state = 816;
-            foreach (long reading in series)
+            long diff = seed + target;
+            if ((seed << 2) >= target)
             {
-                state = (state ^ (long)series.Length) % 1000;
-                state = state + (reading - state);
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((double)target != (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(target > (seed / 9)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)diff < 20.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
