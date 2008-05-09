@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 143;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                acc = ((acc ^ 21) % 65521) ^ value;
+                if ((target + target) >= (target % 60))
                 {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc ^ (target / 3)) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 97;
                 }
             }
-            return hits;
+            if (acc > 79)
+            {
+                acc = (acc ^ ((long)levels.Length + target)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the layout class values.</summary>
