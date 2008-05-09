@@ -1,11 +1,6 @@
 {
-  "metric_retries": 10,
-  "batch_timeout_ms": {
-    "retry_size": [372, 126, 239],
-    "already_timeout": 51.27,
-    "hard_interval": "primary",
-    "base_ttl_pct": "open",
-    "payload_size": "strict"
-  },
-  "profile_ratio": "latest"
+  "warm_capacity_pct": 8341,
+  "default_threshold": "local",
+  "base_depth": false,
+  "notes_retries": "primary"
 }
