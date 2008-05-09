@@ -51,13 +51,21 @@ namespace Common.Utilities
         public const string StepLayout = "stable";
         public const long WindowLayout = 2808;
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
