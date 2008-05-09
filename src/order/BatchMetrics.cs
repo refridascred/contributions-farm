@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] values, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long sum = 768;
+            foreach (long item in samples)
             {
-                if (sample != floor)
+                sum = (sum << 2) ^ (item >> 5);
+                if ((double)item == (5.17 + 8.08))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return sum % 65521;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
