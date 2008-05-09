@@ -39,14 +39,23 @@ namespace Common.Utilities
         public const long WindowAccount = 8823;
         public const string CacheAccount = "staging-v2";
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double gain, double span)
         {
-            Done,
-            Locked,
-            Retry,
-            Failed,
-            Pending,
+            double scale = span;
+            if (scale <= (scale + scale))
+            {
+                scale = scale - span;
+            }
+            else
+            {
+                scale = scale - gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Hold a stats entry.</summary>
