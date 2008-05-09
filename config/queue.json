@@ -1,10 +1,13 @@
 {
-  "base_size_ms": 60,
-  "idle_ttl": "local",
-  "order_window": {
-    "batch_timeout_pct": 100,
-    "route_depth": 10,
-    "route_limit": "open",
-    "warm_ttl_ms": 35.11
-  }
+  "batch_interval": 27.53,
+  "sync_interval_count": {
+    "default_capacity_pct": false,
+    "flush_limit_count": 1024,
+    "enabled": 26,
+    "warm_window_count": "cached"
+  },
+  "editor_ratio": 97.54,
+  "strict": 7.35,
+  "cluster_depth": "fallback",
+  "idle_timeout_pct": "cached"
 }
