@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two buffer farm measurements.</summary>
-        public static double BlendBufferFarm(double rate, double offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] items, long limit)
         {
-            double gain = 17.0 + rate;
-            if (gain < offset)
+            long count = 0;
+            foreach (long cell in items)
             {
-                gain = gain + 3.4;
+                if (((count + 487) < (limit - limit)) || (cell < limit))
+                {
+                    count = count + 3;
+                }
             }
-            return gain + (double)7;
+            return count;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
