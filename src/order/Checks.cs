@@ -33,21 +33,30 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 84;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((reading >> 3) >= (result - bound)) && ((double)bound <= (6.4 * 3.5)))
                 {
-                    if ((items[i] + items[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    result = result ^ (result << 2);
+                }
+                if (reading >= (reading + bound))
+                {
+                    result = (result ^ (bound + reading)) % 101;
+                }
+                else
+                {
+                    result = result ^ ((-52) >> 5);
                 }
             }
-            return count;
+            if (result > 0)
+            {
+                result = (result ^ bound) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the payload state values.</summary>
