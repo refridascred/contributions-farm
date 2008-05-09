@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const long BaseSize = 4172;
         public const string BatchBudget = "alpha-v2";
 
-        /// <summary>Count the tools schema entries that pass the check.</summary>
-        public static long MeasureToolsSchemaMatches(long[] series)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits != (double)cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
