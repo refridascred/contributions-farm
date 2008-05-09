@@ -49,20 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 1794;
+        public const long BurstCount = 1391;
+        public const long IdleCount = 8790;
+        public const long BurstCache = 8679;
+        public const string CacheInterval = "standard-v2";
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
