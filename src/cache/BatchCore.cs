@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheRatio = 165;
-        public const long CacheSchema = 4273;
-        public const string DefaultSchema = "latest-edge";
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (((double)tally >= (4.7 - 4.9)) && (entry < (entry << 2)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string BurstStream = "primary-v2";
