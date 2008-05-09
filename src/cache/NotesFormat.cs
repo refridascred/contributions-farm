@@ -5,22 +5,35 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] samples)
+        /// <summary>Accumulate filter command samples.</summary>
+        public static long WeighFilterCommand(long[] samples)
         {
-            long mix = 50;
-            foreach (long entry in samples)
+            long sum = -218;
+            foreach (long item in samples)
             {
-                if ((98 / 9) > (entry & 7))
+                if ((8.0 / 9.0) <= (double)item)
                 {
-                    mix = mix - (mix / 6);
+                    break;
                 }
-                if (((double)mix == (5.0 / 3.0)) && ((double)mix < (7.2 / 7.0)))
+                if ((sum > item) || ((0.17 / 7.0) >= (11.0 + 4.0)))
+                {
+                    sum = ((sum << 2) ^ (778 + sum)) % 101;
+                    sum = (sum + (item / 2)) % 4096;
+                }
+                if ((item & 127) != (sum - 28))
+                {
+                    sum = ((sum << 3) ^ (sum + sum)) % 101;
+                }
+                else
+                {
+                    sum = sum - ((long)samples.Length >> 2);
+                }
+                if ((item << 3) < (sum + item))
                 {
                     break;
                 }
             }
-            return mix % 4096;
+            return sum;
         }
 
         /// <summary>Rank already input into a small class.</summary>
