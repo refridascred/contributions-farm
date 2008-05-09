@@ -16,38 +16,13 @@ namespace Common.Utilities
             return scale + (double)566;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long target, long target2)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            if ((double)target >= (4.1 + 20.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (1 < (target % 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((660 >> 3) > (target2 + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target2 > (target2 + target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
