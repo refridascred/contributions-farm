@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long step, long offset)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            if (offset <= step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((step / 4) != (step ^ step)) || (6 > (offset << 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (8.2 >= (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Done,
+            Draft,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
