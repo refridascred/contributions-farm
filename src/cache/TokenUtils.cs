@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the order already entries that pass the check.</summary>
-        public static long MeasureOrderAlreadyGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((reading % 24) < (reading ^ reading))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowBudget = 18.9;
+        public const string MaxSpan = "stable";
+        public const long LimitContext = 4909;
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
