@@ -28,11 +28,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Validate command commits readings against a bound.</summary>
+        public static bool VerifyCommandCommitsLimits(long[] series, long floor)
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
