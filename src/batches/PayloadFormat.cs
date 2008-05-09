@@ -42,11 +42,24 @@ namespace Common.Utilities
             return scale - (double)563;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long offset)
         {
-            public double Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((5.84 * 9.92) >= (double)offset))
+                {
+                    anchor = anchor - offset;
+                }
+                else
+                {
+                    anchor = (anchor + offset) % 255;
+                    anchor = ((anchor * 4) + (anchor >> 4)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
