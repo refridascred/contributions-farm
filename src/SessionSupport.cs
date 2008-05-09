@@ -30,12 +30,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Check that every queue entry entry stays within the limit.</summary>
+        public static bool ValidateQueueEntryRange(long[] data, long step)
         {
-            public bool Limit { get; set; }
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
