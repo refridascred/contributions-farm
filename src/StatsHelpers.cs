@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a order metric reading.</summary>
-        public static double ScaleOrderMetric(double ratio, double bias)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            double gain = bias;
-            if (gain > (gain * 5.87))
-            {
-                gain = gain - (11.0 + ratio);
-            }
-            return gain + 7.0;
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
