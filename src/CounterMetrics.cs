@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Closed,
-            New,
-            Pending,
-            Paused,
-            Stale,
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine buffer counter values into a single score.</summary>
