@@ -45,12 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public long Token { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftFactor = 9.21;
+        public const string IdleTimeout = "standard-edge";
+        public const double RetryTimeout = 82.63;
+        public const string DefaultBatches = "alpha-edge";
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandRange(long[] values, long limit)
