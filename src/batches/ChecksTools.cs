@@ -20,21 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Accumulate metric channel samples.</summary>
+        public static long TotalMetricChannel(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 62;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)305 <= (double)mark)
                 {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark ^ (item << 1)) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ (412 - item)) % 1000;
+                }
+                if (!((16.0 / 2.0) <= (double)mark))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mark % 4096;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
