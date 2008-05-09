@@ -1,12 +1,13 @@
 # entry settings
-warm_retries_count:
-  enabled: legacy
-  buffer_retries: latest
-  retry_threshold_s:
-    - edge
-    - cached
-    - latest
-metric_depth: 64
-sync_interval: blue
-counter_size: 68
-flush_window_pct: 6961
+verbose: cached
+cache_limit:
+  - 302
+  - 385
+  - 282
+burst_depth:
+  - 165
+  - 202
+  - 418
+  - 189
+window_depth: edge
+cluster_limit: standard
