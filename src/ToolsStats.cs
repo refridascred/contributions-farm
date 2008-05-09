@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of report account entries.</summary>
-        public static long ScoreReportAccount(long[] series)
+        /// <summary>Count the tools queue entries that pass the check.</summary>
+        public static long MeasureToolsQueueGaps(long[] values)
         {
-            long carry = 668;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((carry + carry) == ((-741) - sample))
+                if ((double)reading > (7.0 / 2.0))
                 {
-                    carry = (carry - sample) % 97;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
