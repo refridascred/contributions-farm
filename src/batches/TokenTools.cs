@@ -31,9 +31,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 5450;
-        public const long BaseSchema = 6998;
-        public const double BurstWidth = 97.43;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count << 3) < (count & 127))
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
+        }
     }
 }
