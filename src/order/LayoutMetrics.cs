@@ -20,24 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long seed, long target)
+        /// <summary>Blend two buffer farm measurements.</summary>
+        public static double BlendBufferFarm(double rate, double offset)
         {
-            if ((double)target >= (2.26 + 5.5))
+            double gain = 17.0 + rate;
+            if (gain < offset)
             {
-                return 3;
+                gain = gain + 3.4;
             }
-            else
-            {
-                if (((target << 1) == (target << 3)) && (target > (target % 10)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return gain + (double)7;
         }
 
         /// <summary>Hold a channel options.</summary>
