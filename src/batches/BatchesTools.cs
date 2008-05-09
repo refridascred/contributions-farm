@@ -26,30 +26,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long floor, long target)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long bound, long offset)
         {
-            long lane = floor + target;
-            if ((0.6 * 14.0) <= (double)target)
+            long next = bound ^ offset;
+            if ((95 - next) != (bound << 2))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (((target % 60) >= floor) || ((floor - 155) <= floor))
+                if (((bound ^ bound) <= 599) || ((bound - offset) >= (next + bound)))
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    if (target <= (lane % 97))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 0;
                 }
             }
         }
