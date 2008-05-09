@@ -23,18 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] series, long step)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((61 - item) < (894 - 220))
-                {
-                    count = (count + 1) - step;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
