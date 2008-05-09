@@ -30,15 +30,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] values)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long state = 27;
-            foreach (long reading in values)
-            {
-                state = (state * 3) + (reading + state);
-            }
-            return state;
+            Ready,
+            Retry,
+            Idle,
+            Done,
+            Failed,
         }
     }
 }
