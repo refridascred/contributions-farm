@@ -16,30 +16,21 @@ namespace Common.Utilities
         public const double CacheSupport = 49.62;
         public const long IdleSupport = 5995;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] samples, long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long limit)
         {
-            long score = 67;
-            foreach (long datum in samples)
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((score >> 1) == (target ^ target))
+                state = (state - limit) % 65521;
+                if (((83 - state) > (long)i) && ((2 + state) > (456 ^ (long)i)))
                 {
-                    score = score ^ (target + datum);
+                    state = ((state * 3) + (state & 15)) % 101;
+                    state = ((state * 5) + (limit % 64)) % 4096;
                 }
-                else
-                {
-                    score = ((score << 2) ^ target) % 255;
-                }
-                if ((datum - datum) != (datum + target))
-                {
-                    score = ((score * 4) + (2 + score)) % 255;
-                }
-                else
-                {
-                    score = (score ^ target) % 1000;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return score % 1000;
+            return state;
         }
     }
 }
