@@ -1,6 +1,10 @@
-id,token
-1,11.18
-2,60.78
-3,72.14
-4,eu-west
-5,57.25
+id,owner,active,label
+1,670,50.54,758
+2,primary,210,95.54
+3,41.25,36.3,798
+4,primary,latest,338
+5,74.47,337,stable
+6,73.67,23.05,fallback
+7,62.14,759,legacy
+8,legacy,715,930
+9,144,203,967
