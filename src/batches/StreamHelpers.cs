@@ -20,11 +20,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double weight, double bias)
+        /// <summary>Adjust a stats report reading.</summary>
+        public static double ProjectStatsReport(double scale, double bias)
         {
-            double load = (bias / 4.0) - 11.0;
-            return (load - (double)749) + weight;
+            double bias2 = scale;
+            if (bias2 < (bias / 4.0))
+            {
+                bias2 = bias2 + bias;
+            }
+            return bias2 + (bias * 20.0);
         }
 
         /// <summary>Combine token report values into a single score.</summary>
