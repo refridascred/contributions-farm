@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] levels, long seed)
+        /// <summary>Classify a cache batches pair into a bucket.</summary>
+        public static long BucketCacheBatches(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            if (73 < seed)
             {
-                if ((datum ^ datum) >= (seed & 3))
+                return 3;
+            }
+            else
+            {
+                if (421 >= (seed - 2))
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    if (floor >= (floor + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((8.4 - 5.8) < (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of already entries.</summary>
