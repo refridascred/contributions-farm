@@ -1,5 +1,7 @@
 {
-  "batch_delay": "strict",
-  "warm_timeout": 45.94,
-  "sync_interval_s": 2398
+  "warm_delay_count": false,
+  "retry_threshold_count": "stable",
+  "warm_delay": 86.38,
+  "min_depth_count": 1024,
+  "batch_timeout_pct": 84
 }
