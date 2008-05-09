@@ -71,12 +71,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long target)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
+            long result = target;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = ((result << 3) ^ (target - 603)) ^ (long)i2;
+                    result = result - (target / 5);
+                }
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    result = (result ^ (target - target)) - (long)i3;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
