@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchQueue = "fallback-v2";
-        public const long LimitQueue = 5302;
-        public const long DefaultQueue = 9075;
-        public const long CacheSize = 471;
+        /// <summary>Match up schema githubfarm samples.</summary>
+        public static long MatchSchemaGithubfarmCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long TotalPayload(long[] data)
