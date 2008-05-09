@@ -1,11 +1,7 @@
 # githubfarm settings
-token_window: 34.07
-audit: 9427
-enabled: 6123
-strict: stable
-base_limit:
-  - 224
-  - 119
-readonly:
-  - 183
-  - 474
+retry_delay_pct: 55
+base_retries_pct: true
+flush_threshold_s: 7526
+max_ttl: 1024
+stats_threshold: 18
+cache_depth_pct: false
