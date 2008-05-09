@@ -1,8 +1,12 @@
 {
-  "default_window_count": 500,
-  "route_capacity": "stable",
-  "base_depth_pct": false,
-  "token_size": true,
-  "base_limit_pct": 88.34,
-  "flush_limit": 9207
+  "buffer_size": true,
+  "default_ratio_s": {
+    "soft_depth": "edge",
+    "burst_ratio": 38.81,
+    "hard_retries": "local",
+    "graph_timeout": "blue",
+    "burst_depth_ms": 4485
+  },
+  "readonly": 8310,
+  "dry_run": "cached"
 }
