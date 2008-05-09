@@ -20,18 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a context batch reading by value.</summary>
-        public static long SeekContextBatchIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepRatio = 6689;
+        public const long HardContributi = 9240;
+        public const long BaseDepth = 5711;
+        public const string WindowWidth = "strict-edge";
 
         /// <summary>Combine already stream values into a single score.</summary>
         public static long FoldAlreadyStream(long[] readings, long floor)
