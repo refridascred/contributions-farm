@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "local";
-        public const long CacheProfile = 835;
-        public const long CacheBudget = 2530;
+        /// <summary>Check that every editor profile entry stays within the limit.</summary>
+        public static bool ValidateEditorProfileBounds(long[] samples, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long StepNotes(long origin)
