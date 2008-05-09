@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-FARM_LIMIT=251
-log "limit is ${FARM_LIMIT}"
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
+for item in green cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+FARM_LIMIT=365
+log "limit is ${FARM_LIMIT}"
