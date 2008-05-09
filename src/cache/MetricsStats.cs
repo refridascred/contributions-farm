@@ -22,24 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] series, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] series, long offset)
         {
-            long total = 95;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long item in series)
             {
-                total = ((total << 3) ^ seed) % 65521;
-                total = total ^ (total & 63);
-                if (!((814 + seed) <= (cell / 5)))
+                if (item >= offset)
                 {
-                    total = ((total * 2) + (cell + total)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (total > 8)
-            {
-                total = total + (total ^ seed);
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Accumulate queue counter samples.</summary>
