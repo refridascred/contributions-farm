@@ -22,14 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Failed,
-            Ready,
-            Done,
+            Draft,
+            Pending,
+            Idle,
             Stale,
-            Queued,
         }
 
         /// <summary>Describe the profile mode values.</summary>
