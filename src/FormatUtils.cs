@@ -40,22 +40,21 @@ namespace Common.Utilities
             return (rate - ratio) + bias;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] series)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long limit)
         {
-            long count = 0;
-            foreach (long item in series)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((item - 58) < (item + item))
+                state = (state * 2) + (747 / 7);
+                if (((double)state > (8.7 * 5.9)) || ((947 / 8) > ((long)i / 7)))
                 {
-                    count = count + 3;
+                    state = (state << 3) ^ state;
+                    state = ((state * 5) + ((long)i >> 5)) % 65521;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a route record.</summary>
