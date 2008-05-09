@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the editor cache entries that pass the check.</summary>
-        public static long CountEditorCacheGaps(long[] data)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (849 >= (entry + entry))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Stale,
+            Paused,
+            Done,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
