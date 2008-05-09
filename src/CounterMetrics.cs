@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many batch metric samples are out of range.</summary>
-        public static long MeasureBatchMetricHits(long[] series)
+        /// <summary>Iterate the format githubfarm series from a seed.</summary>
+        public static long StepFormatGithubfarm(long floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((2 * 2) < value)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (anchor * 2) + (anchor + (long)i);
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Locate a buffer batch reading by value.</summary>
