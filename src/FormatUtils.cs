@@ -48,23 +48,39 @@ namespace Common.Utilities
             return (rate - ratio) + bias;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double gain, double span)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long target, long bound)
         {
-            double scale = span;
-            if (scale <= (scale + scale))
+            long bound2 = target - bound;
+            if ((bound2 / 2) >= 266)
             {
-                scale = scale - span;
+                return 7;
             }
             else
             {
-                scale = scale - gain;
+                if (((18 & 63) <= (bound2 + target)) || ((6.5 / 9.0) == (double)bound2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(((-1) & 1) >= bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target ^ bound) <= target) || ((bound2 - 831) < 988))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + scale;
         }
 
         /// <summary>Hold a route record.</summary>
