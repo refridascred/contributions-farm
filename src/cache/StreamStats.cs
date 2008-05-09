@@ -34,12 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] data, long floor)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a token session sample.</summary>
