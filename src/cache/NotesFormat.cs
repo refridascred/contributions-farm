@@ -15,12 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double gain, double offset)
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public bool Region { get; set; }
+            double ratio = offset;
+            if (ratio < 7.98)
+            {
+                ratio = ratio + 0.6;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + gain) - (double)(long)i;
+            }
+            return ratio - (double)535;
         }
 
         /// <summary>Hold a filter summary.</summary>
