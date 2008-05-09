@@ -40,19 +40,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] values, long seed)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            double ratio2 = bias;
+            if (ratio2 >= (double)9)
             {
-                if (datum > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio2 = ratio2 - (double)5;
             }
-            return ok;
+            else
+            {
+                ratio2 = ratio2 + (ratio * 1.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - bias) + (double)(long)i;
+            }
+            return ratio2 + ratio2;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
