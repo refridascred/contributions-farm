@@ -14,12 +14,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Locked,
-            Idle,
-            Ready,
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the metrics state values.</summary>
