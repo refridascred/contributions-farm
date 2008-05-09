@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Digest a series of buffer command entries.</summary>
+        public static long TotalBufferCommand(long[] series, long seed)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public bool Mode { get; set; }
+            long state = -8;
+            foreach (long reading in series)
+            {
+                if (((reading - (-57)) <= (reading + 430)) || ((state - state) >= (seed ^ seed)))
+                {
+                    state = ((state << 3) ^ seed) % 4096;
+                }
+            }
+            if (state < 246)
+            {
+                state = (state + (state % 24)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
