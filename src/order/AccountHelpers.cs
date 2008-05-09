@@ -46,22 +46,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] levels)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double ratio, double span)
         {
-            long anchor = 1;
-            foreach (long cell in levels)
+            double rate = (1.93 - ratio) - (7.0 / 6.0);
+            for (int i = 0; i < 5; i++)
             {
-                if ((anchor << 2) != (cell * 3))
-                {
-                    anchor = ((anchor << 3) ^ (102 - anchor)) % 4096;
-                }
+                rate = rate + (double)(long)i;
             }
-            if (anchor < 131)
-            {
-                anchor = ((anchor * 4) + (anchor - 0)) % 97;
-            }
-            return anchor;
+            return rate + span;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
