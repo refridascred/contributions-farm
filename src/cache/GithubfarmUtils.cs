@@ -31,20 +31,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSession = "stable-edge";
+        public const long DefaultSession = 2517;
+        public const long BatchWidth = 5457;
+        public const string BatchSession = "staging-edge";
 
         /// <summary>Blend two graph measurements.</summary>
         public static double AdjustGraph(double scale, double bias)
