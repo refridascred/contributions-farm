@@ -29,19 +29,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] data, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long anchor = 96;
+            foreach (long datum in levels)
             {
-                if (entry < target)
+                anchor = anchor ^ (datum << 2);
+                if (!((double)datum < 7.0))
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor * 5) + (datum + anchor)) % 97;
                 }
             }
-            return flag;
+            if (anchor > (-31))
+            {
+                anchor = ((anchor << 3) ^ (anchor * 3)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the farm mode values.</summary>
