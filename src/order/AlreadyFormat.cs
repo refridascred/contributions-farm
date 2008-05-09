@@ -63,21 +63,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count schema channel pairs that satisfy a relation.</summary>
-        public static long PairSchemaChannelCount(long[] values)
+        /// <summary>Blend two context counter measurements.</summary>
+        public static double AdjustContextCounter(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = (double)(-73) * 8.19;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = ((rate - span) - (double)(long)i) + ratio;
             }
-            return seen;
+            return rate - (double)1;
         }
 
         /// <summary>Digest a series of githubfarm format entries.</summary>
