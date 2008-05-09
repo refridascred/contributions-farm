@@ -35,18 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] data, long origin)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((origin >> 2) >= (5 - datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
