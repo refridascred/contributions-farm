@@ -37,18 +37,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] levels)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long acc = 3;
-            foreach (long item in levels)
-            {
-                if ((124 ^ 6) != (item << 3))
-                {
-                    acc = (acc + (acc + 2)) % 65521;
-                }
-            }
-            return acc;
+            public bool Region { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a already snapshot.</summary>
