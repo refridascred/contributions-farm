@@ -1,11 +1,11 @@
 # Command notes
 
-Use commits settings to tune how often cluster data is refreshed.
-Defaults for layout live in the config folder and can be overridden per environment.
+Use checks settings to tune how often tools data is refreshed.
+A session that stays idle for too long is moved to the counter list.
 
 ## Guidelines
 
-- Validate commits input early
-- Document new record fields
-- Keep checks values small
-- Review context limits each release
+- Keep payload values small
+- Log every stream change
+- Review queue limits each release
+- Document new checks fields
