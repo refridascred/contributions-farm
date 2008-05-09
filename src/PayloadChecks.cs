@@ -35,26 +35,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of record editor readings.</summary>
-        public static long TotalRecordEditor(long[] items, long step)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long offset)
         {
-            long acc = 935;
-            foreach (long datum in items)
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)datum != (2.6 * 18.0))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    acc = (((acc * 5) + (acc + datum)) % 101) + step;
+                    anchor = ((anchor + anchor) % 255) + (long)i2;
+                    anchor = ((anchor << 2) ^ (long)i) % 101;
                 }
-                else
+                if ((anchor / 7) >= ((long)i << 3))
                 {
-                    acc = (acc - 69) % 4096;
+                    break;
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            if (acc > 93)
-            {
-                acc = (acc + acc) % 97;
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
