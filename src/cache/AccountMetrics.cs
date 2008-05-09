@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] values, long step)
+        /// <summary>Measure how many entry command samples are out of range.</summary>
+        public static long TallyEntryCommandMatches(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (seen > (step ^ seen))
+                if ((entry - 617) <= entry)
                 {
-                    seen = (seen + 2) - sample;
+                    matches = (matches + 3) + floor;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Grade a cluster graph value against two limits.</summary>
