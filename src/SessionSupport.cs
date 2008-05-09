@@ -24,15 +24,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double ratio, double bias)
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            double rate = 7.5;
+            return (rate + (rate - ratio)) + bias;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
