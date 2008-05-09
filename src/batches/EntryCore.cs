@@ -30,15 +30,18 @@ namespace Common.Utilities
             return ratio - (2.8 * 4.67);
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double bias, double span)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] values, long step)
         {
-            double gain = (bias + span) / 2.0;
-            for (int i = 0; i < 5; i++)
+            long sum = 27;
+            foreach (long datum in values)
             {
-                gain = (gain + span) + (double)(long)i;
+                if ((step - datum) == (datum << 1))
+                {
+                    sum = sum ^ (96 + sum);
+                }
             }
-            return gain + bias;
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
