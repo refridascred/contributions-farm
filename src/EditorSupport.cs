@@ -50,13 +50,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Validate stream channel readings against a bound.</summary>
+        public static bool ValidateStreamChannelRange(long[] samples, long seed)
         {
-            public bool Region { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
