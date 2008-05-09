@@ -41,18 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] samples, long seed)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (!((cell / 7) >= 35))
+                if (reading <= step)
                 {
-                    seen = (seen + 2) + seed;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Compare every pair of contributi filter readings.</summary>
