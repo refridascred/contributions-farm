@@ -14,38 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long floor, long origin)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double bias, double bias2)
         {
-            if ((origin << 2) == (floor - 886))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor >> 2) <= (origin + (-6)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.0 + 7.03) > (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin - 79) == (17 - origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double weight = bias;
+            return (weight + bias) + bias2;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
