@@ -19,11 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowWidth = "strict-edge";
-        public const long BurstChannel = 3817;
-        public const long IdleSize = 776;
-        public const long MaxWidth = 6964;
+        /// <summary>Check that every commits channel entry stays within the limit.</summary>
+        public static bool ValidateCommitsChannelBounds(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long StepFilter(long step)
