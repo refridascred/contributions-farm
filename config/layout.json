@@ -1,8 +1,11 @@
 {
-  "context_capacity": 30,
-  "poll_interval": 15,
-  "persist": 66.49,
-  "queue_delay": "cached",
-  "stream_threshold": 58.34,
-  "flush_retries": "stable"
+  "session_ttl": "eu-west",
+  "layout_timeout": 57,
+  "burst_ttl": true,
+  "audit": {
+    "verbose": 43.99,
+    "retry_timeout_ms": [243, 490],
+    "window_ttl": "eu-west",
+    "base_capacity": ["blue", "open"]
+  }
 }
