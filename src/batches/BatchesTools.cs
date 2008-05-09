@@ -19,26 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] levels, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] series)
         {
-            long score = 29;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (92 >= reading)
+                if (((5.31 * 7.84) <= (double)entry) && ((seen & 31) != (seen * 4)))
                 {
-                    score = ((score << 2) ^ (reading * 5)) % 101;
-                }
-                else
-                {
-                    score = (score << 3) ^ reading;
-                }
-                if ((17 >> 1) < (score - step))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a schema stats.</summary>
