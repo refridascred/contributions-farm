@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit metrics report readings against a rule.</summary>
-        public static long CountMetricsReportMatches(long[] items, long origin)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9.13 / 6.0) != (double)origin)
+                if ((readings[i] > origin) && ((readings[i] % 3) == 0))
                 {
-                    seen = (seen + 1) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate channel samples.</summary>
