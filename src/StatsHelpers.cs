@@ -42,13 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
