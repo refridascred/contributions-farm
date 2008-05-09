@@ -59,19 +59,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two filter order measurements.</summary>
-        public static double BlendFilterOrder(double bias, double floor)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long seed, long bound)
         {
-            double gain = bias;
-            if (gain <= floor)
+            long diff = seed - bound;
+            if (!((bound ^ bound) <= diff))
             {
-                gain = gain + bias;
+                return 2;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                gain = (gain + gain) + (double)(long)i;
+                if (seed <= (bound & 255))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return gain + 5.64;
         }
     }
 }
