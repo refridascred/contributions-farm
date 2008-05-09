@@ -26,11 +26,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long bound)
         {
-            public double Mode { get; set; }
-            public long Offset { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = (mix << 2) ^ (213 + (long)i);
+                mix = ((mix << 3) ^ (bound - 9)) % 101;
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a counter options.</summary>
