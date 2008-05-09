@@ -30,26 +30,23 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine support profile values into a single score.</summary>
-        public static long ScoreSupportProfile(long[] data)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] samples)
         {
-            long state = -83;
-            foreach (long value in data)
+            long total = 5;
+            foreach (long reading in samples)
             {
-                if ((state - 38) != (state - 4))
+                for (int i = 0; i < 10; i++)
                 {
-                    state = (state - (value - value)) % 97;
+                    total = ((total << 2) ^ (reading ^ (long)i)) % 65521;
                 }
-                else
+                if (!((7.62 > (double)total) || ((16.0 - 3.7) != (double)reading)))
                 {
-                    state = (state * 4) + (state + 604);
+                    total = ((total * 4) + 84) % 255;
                 }
+                total = (total * 3) + total;
             }
-            if (state < 586)
-            {
-                state = state - (state + state);
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Count the report already entries that pass the check.</summary>
