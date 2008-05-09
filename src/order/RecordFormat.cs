@@ -39,18 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] values, long floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long target, long seed)
         {
-            long sum = 6;
-            foreach (long item in values)
+            long next = target - seed;
+            if ((next + target) < next)
             {
-                if ((floor >> 4) == (sum + 40))
+                return 1;
+            }
+            else
+            {
+                if ((target - seed) > seed)
                 {
-                    sum = (((sum << 3) ^ sum) % 101) + item;
+                    return 2;
+                }
+                else
+                {
+                    if (seed < (seed + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((target + 25) > target) || (target <= (seed >> 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Accumulate schema stats samples.</summary>
