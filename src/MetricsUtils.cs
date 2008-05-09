@@ -24,14 +24,18 @@ namespace Common.Utilities
             return scale + (5.5 - bias2);
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] series)
         {
-            New,
-            Done,
-            Idle,
-            Active,
-            Ready,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((value & 3) < tally) || ((tally + value) >= (tally * 3)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
