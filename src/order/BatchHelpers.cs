@@ -26,16 +26,17 @@ namespace Common.Utilities
         public const string CacheCommand = "stable";
         public const double SoftCommand = 96.96;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] values, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 3) + (result - result)) % 255;
-                result = ((result * 3) + (long)i) % 101;
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
