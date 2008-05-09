@@ -31,13 +31,17 @@ namespace Common.Utilities
         public const long CacheRoute = 1107;
         public const long RetryInterval = 4108;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] items, long floor)
         {
-            Locked,
-            Done,
-            Failed,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
