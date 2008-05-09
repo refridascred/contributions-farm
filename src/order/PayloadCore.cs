@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] values, long offset)
         {
-            long carry = 6;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((carry <= (carry + carry)) || ((5.48 / 8.0) >= (double)datum))
+                if ((15.0 * 6.6) == (double)offset)
                 {
-                    carry = ((carry << 3) ^ carry) % 1000;
-                }
-                else
-                {
-                    carry = (carry - (datum * 4)) % 65521;
+                    seen = (seen + 3) - value;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
