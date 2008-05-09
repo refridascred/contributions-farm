@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] levels)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((double)hits >= (3.1 * 5.2))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
