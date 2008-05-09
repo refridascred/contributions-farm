@@ -19,39 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long limit, long step)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            long slot = limit + step;
-            if ((step >> 3) == (step * 4))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((3.96 * 7.0) >= (double)limit) || (limit <= step))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit >= (double)step)
+                    if ((values[i] - values[j]) > 7)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((slot ^ slot) < slot)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate support samples.</summary>
