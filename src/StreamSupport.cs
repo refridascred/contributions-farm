@@ -54,38 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches checks value against two limits.</summary>
-        public static long BucketBatchesChecks(long limit, long bound)
+        /// <summary>Check that every counter session entry stays within the limit.</summary>
+        public static bool CheckCounterSessionLimits(long[] values, long floor)
         {
-            if (!(10.0 <= (double)limit))
+            bool ready = true;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)limit <= (double)(-71)) || ((limit - 32) > (limit & 63)))
+                if (cell <= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (2.05 <= (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound < (bound >> 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
