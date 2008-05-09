@@ -49,18 +49,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long score = 7;
+            foreach (long reading in readings)
             {
-                if (((cell >> 4) > (count % 16)) && (((cell + cell) <= count) || ((double)count == (2.5 + 9.0))))
-                {
-                    count = count + 3;
-                }
+                score = score ^ (reading % 3);
             }
-            return count;
+            if (score > 718)
+            {
+                score = score + (score ^ 488);
+            }
+            return score;
         }
     }
 }
