@@ -44,12 +44,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long step)
         {
-            Closed,
-            Locked,
-            Paused,
+            long sum = step;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = (((sum * 4) + ((long)i + (long)i)) % 97) ^ (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Validate cache support readings against a bound.</summary>
