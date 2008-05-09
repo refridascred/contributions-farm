@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next cluster report value from a seed.</summary>
-        public static long IterateClusterReport(long floor)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double ratio, double span)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            double ratio2 = (double)(54 + 50);
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)(long)i == (5.76 / 5.0))
-                {
-                    mark = (mark * 5) + (95 << 2);
-                }
-                mark = (mark << 2) ^ (floor + 60);
-                mark = (mark * 5) + 476;
-                mark = ((mark * 4) + (long)i) % 101;
+                ratio2 = ((ratio2 + (double)0) + (double)(long)i) - span;
             }
-            return mark;
+            return ratio2 - ratio;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
