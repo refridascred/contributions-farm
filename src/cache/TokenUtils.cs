@@ -27,12 +27,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double bias, double bias2)
         {
-            Draft,
-            Done,
-            Paused,
+            double ratio = bias2;
+            if (ratio >= ratio)
+            {
+                ratio = (ratio + 6.3) - bias;
+            }
+            return ratio + (2.0 * 7.0);
         }
     }
 }
