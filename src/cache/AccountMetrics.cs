@@ -48,17 +48,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] data, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 8;
+            foreach (long item in series)
             {
-                if ((data[i] <= seed) && ((data[i] % 5) != 0))
+                sum = (sum ^ item) % 101;
+                if (15.0 >= (double)sum)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Accumulate counter batch samples.</summary>
