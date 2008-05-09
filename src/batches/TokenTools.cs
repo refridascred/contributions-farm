@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Project the next session route value.</summary>
+        public static double BlendSessionRoute(double bias, double floor)
         {
-            Idle,
-            Closed,
-            Failed,
-            Ready,
-            Stale,
+            double scale = (double)(5 + 293);
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (((scale + (scale * 5.95)) - (double)(long)i) - bias) - floor;
+            }
+            return scale + (double)566;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
