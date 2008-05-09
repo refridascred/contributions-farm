@@ -46,12 +46,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 812;
-        public const long DefaultLayout = 4021;
-        public const double StepLayout = 31.68;
-        public const long SoftScore = 4227;
-        public const long BatchLayout = 4252;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((seen < entry) || (((-8) & 15) >= (entry + 494))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
