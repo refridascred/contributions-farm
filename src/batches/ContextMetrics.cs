@@ -13,18 +13,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the farm command entries that pass the check.</summary>
-        public static long CountFarmCommandHits(long[] samples, long limit)
+        /// <summary>Compare every pair of tools metric readings.</summary>
+        public static long CompareToolsMetricCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9 ^ tally) >= (limit % 64))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) - datum;
+                    if ((samples[i] + samples[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a cluster record.</summary>
