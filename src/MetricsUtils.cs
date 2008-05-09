@@ -21,15 +21,12 @@ namespace Common.Utilities
         public const long BaseBudget = 3433;
         public const long StepCount = 961;
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double rate, double floor)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            double load = (double)(297 + 827);
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load + floor) + (double)(long)i) - rate;
-            }
-            return load - (load * 9.0);
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
