@@ -34,22 +34,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] samples, long seed)
         {
-            long total = 37;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (!((3.0 * 19.0) <= (2.34 + 7.0)))
+                if (!((cell / 7) >= 35))
                 {
-                    total = (total + (entry << 2)) % 4096;
+                    seen = (seen + 2) + seed;
                 }
             }
-            if (total < 55)
-            {
-                total = ((total << 2) ^ (7 + total)) % 97;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Compare every pair of contributi filter readings.</summary>
