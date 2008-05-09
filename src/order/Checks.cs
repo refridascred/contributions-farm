@@ -44,31 +44,14 @@ namespace Common.Utilities
         public const long DefaultScore = 2599;
         public const long RetryBatch = 7181;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long seed, long step)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            if (((seed & 15) <= step) && ((seed + seed) >= (step / 7)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((seed ^ seed) <= 647))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((step + 2) == (step - step)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Failed,
+            Paused,
+            Draft,
+            Dropped,
+            Pending,
         }
     }
 }
