@@ -38,12 +38,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 65;
-        public const long SoftGithubfarm = 5437;
-        public const double BurstBudget = 89.12;
-        public const long BurstGithubfarm = 2284;
-        public const string MinLevel = "open-v2";
+        /// <summary>Audit metric route readings against a rule.</summary>
+        public static long TallyMetricRouteGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((6.3 - 6.76) < (double)count)
+                {
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorBounds(long[] series, long limit)
