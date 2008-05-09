@@ -1,7 +1,10 @@
 {
-  "burst_size": "primary",
-  "cache_window_pct": 54,
-  "stream_interval": false,
-  "compress": "strict",
-  "hard_delay": "latest"
+  "max_retries_pct": true,
+  "base_interval_s": "fallback",
+  "max_capacity_pct": {
+    "githubfarm_retries": [155, 490, 430, 40],
+    "order_interval": 5776,
+    "cache_retries": ["cached", "open", "primary", "staging"]
+  },
+  "idle_delay_ms": false
 }
