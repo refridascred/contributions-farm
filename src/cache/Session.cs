@@ -56,18 +56,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] readings, long origin)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double rate, double bias)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double drift = (bias + rate) - (rate - bias);
+            if (drift < (5.0 / 7.0))
             {
-                if ((double)count > (3.6 / 5.0))
-                {
-                    count = ((count + 1) + value) + origin;
-                }
+                drift = drift + (bias + drift);
             }
-            return count;
+            return drift - drift;
         }
     }
 }
