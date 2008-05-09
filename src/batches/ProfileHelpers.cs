@@ -56,14 +56,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double bias, double span)
         {
-            Active,
-            Stale,
-            Retry,
-            Queued,
-            New,
+            double bias2 = (double)53 * 8.7;
+            if (bias2 > bias2)
+            {
+                bias2 = bias2 + (double)(-8);
+            }
+            else
+            {
+                bias2 = bias2 - (span + bias2);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - 8.0) + (double)(long)i;
+            }
+            return bias2 + (bias + span);
         }
 
         /// <summary>Define context limits and defaults.</summary>
