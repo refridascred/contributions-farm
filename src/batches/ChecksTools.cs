@@ -19,11 +19,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
+            Done,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the already kind values.</summary>
