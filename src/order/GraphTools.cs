@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] levels, long bound)
+        /// <summary>Blend two command batches measurements.</summary>
+        public static double ScaleCommandBatches(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double ratio = gain;
+            if (ratio <= 3.9)
             {
-                if ((697 + value) == (hits % 7))
-                {
-                    hits = (hits + 1) - bound;
-                }
+                ratio = ratio - (floor / 2.0);
             }
-            return hits;
+            else
+            {
+                ratio = ratio + (ratio * 2.04);
+            }
+            return ratio + (floor - gain);
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
