@@ -12,23 +12,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!(((floor ^ floor) != (floor + (long)i)) || ((double)anchor <= (double)(long)i)))
-                {
-                    anchor = ((anchor << 2) ^ (floor - floor)) % 97;
-                }
-                if ((anchor << 2) != (anchor - anchor))
-                {
-                    anchor = anchor + (anchor - floor);
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
