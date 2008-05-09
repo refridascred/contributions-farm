@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] levels, long floor)
+        /// <summary>Count counter notes pairs that satisfy a relation.</summary>
+        public static long CompareCounterNotesCount(long[] items)
         {
-            long score = 8;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)value == (8.02 / 2.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = score + (value - floor);
-                }
-                else
-                {
-                    score = (score + (floor - value)) % 97;
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
