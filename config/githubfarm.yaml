@@ -1,25 +1,32 @@
 # githubfarm settings
-cache_window_pct: standard
-account_limit: 9.82
-retry_interval_pct: local
-persist:
-  base_ttl_ms: false
-  persist: stable
-  batch_depth_pct:
-    cache_timeout: latest
-    schema_retries: open
-    profile_retries: 14.26
-    enabled:
-      - cached
-      - fallback
-      - open
-    cache_ttl_s:
-      - strict
-      - green
-      - eu-west
-      - staging
-    sync_window_count: edge
-  retry_delay_count: standard
-  strict: 3706
-route_depth: standard
-poll_limit: 3772
+default_capacity_ms:
+  - 191
+  - 458
+  - 388
+layout_capacity:
+  hard_ratio_count: 83.18
+  cluster_ttl:
+    channel_delay: 69.08
+    channel_capacity: 3384
+    verbose: local
+    soft_depth: 4.07
+    default_size:
+      - 417
+      - 57
+      - 291
+    soft_capacity_s: open
+  min_window_s:
+    batches_timeout: false
+    soft_interval: true
+    batches_depth: false
+    compress: 91
+    payload_timeout: 56
+    enabled: 14.27
+editor_retries: false
+idle_retries_ms: 100
+enabled:
+  max_depth_ms: false
+  metrics_window: primary
+  retry_depth_count: 71.4
+  flush_capacity_pct: 74
+  idle_window_pct: 4371
