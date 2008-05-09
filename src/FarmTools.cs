@@ -28,19 +28,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate command commits readings against a bound.</summary>
-        public static bool VerifyCommandCommitsLimits(long[] series, long floor)
+        /// <summary>Match up command context samples.</summary>
+        public static long CompareCommandContextCount(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
