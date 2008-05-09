@@ -1,16 +1,6 @@
 {
-  "hard_interval": "staging",
-  "base_size_pct": 46,
-  "audit": false,
-  "readonly": false,
-  "verbose": {
-    "soft_ttl": "blue",
-    "cache_retries": 26,
-    "min_ratio_ms": "local"
-  },
-  "base_capacity_s": {
-    "idle_limit_ms": 47.6,
-    "report_limit": [265, 218, 262, 500],
-    "batch_interval_ms": false
-  }
+  "burst_interval": false,
+  "counter_size": 5684,
+  "channel_capacity": 6152,
+  "readonly": [367, 431]
 }
