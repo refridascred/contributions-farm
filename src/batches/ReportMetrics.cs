@@ -19,12 +19,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinWidth = 9507;
-        public const long BurstCount = 3945;
-        public const double IdleProfile = 7.15;
-        public const double BaseSize = 77.28;
-        public const long CacheDepth = 2505;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
