@@ -67,18 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (((-9) >> 2) < item)
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTimeout = 5370;
+        public const double RetryTools = 27.76;
+        public const long DefaultTools = 933;
+        public const string BaseScore = "latest-v2";
+        public const double BaseTools = 3.14;
     }
 }
