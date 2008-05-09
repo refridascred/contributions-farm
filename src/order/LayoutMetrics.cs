@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxEntry = 68.34;
-        public const double BaseEntry = 53.52;
-        public const long LimitInterval = 9083;
-        public const long BatchRatio = 7316;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepCount = 595;
+        public const long MinRatio = 3151;
+        public const double WindowBatch = 79.81;
+        public const string SoftWidth = "open";
+        public const double HardTimeout = 93.33;
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
