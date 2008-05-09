@@ -15,19 +15,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] levels, long origin)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long target, long target2)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            if ((double)target >= (4.1 + 20.0))
             {
-                if (reading <= origin)
+                return 6;
+            }
+            else
+            {
+                if (1 < (target % 8))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((660 >> 3) > (target2 + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target2 > (target2 + target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
