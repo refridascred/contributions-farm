@@ -29,11 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 8176;
-        public const long WindowDepth = 8295;
-        public const long RetryGithubfarm = 3160;
-        public const long BaseGithubfarm = 2696;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public double Token { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorLimits(long[] readings, long seed)
