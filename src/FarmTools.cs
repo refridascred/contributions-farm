@@ -36,19 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] levels, long origin)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long anchor = -220;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor - (sample >> 3)) % 101;
-                if ((sample + origin) >= (origin % 10))
-                {
-                    anchor = (anchor ^ (630 + origin)) % 65521;
-                }
-            }
-            return anchor % 65521;
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
