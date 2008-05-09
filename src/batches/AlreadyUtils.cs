@@ -62,18 +62,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] levels, long limit)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long score = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (!(641 > seen))
+                if (3.0 >= (double)(long)i)
                 {
-                    seen = ((seen + 2) ^ item) + limit;
+                    score = (score * 3) + origin;
                 }
+                if ((origin % 8) <= (52 * 3))
+                {
+                    score = score ^ (origin + score);
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
     }
 }
