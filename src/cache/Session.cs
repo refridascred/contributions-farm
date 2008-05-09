@@ -38,11 +38,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowBudget = 4083;
-        public const long BurstCluster = 4418;
-        public const long BatchSize = 3725;
-        public const long SoftCluster = 8224;
-        public const long LimitCluster = 239;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long seed, long limit)
+        {
+            if ((seed << 3) <= 74)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((2.41 - 8.0) <= (20.0 - 4.1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
