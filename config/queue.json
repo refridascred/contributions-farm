@@ -1,6 +1,5 @@
 {
-  "dry_run": true,
-  "route_timeout": 100,
-  "burst_ratio_pct": "standard",
-  "command_capacity": 30
+  "report_limit": "stable",
+  "warm_timeout": 3982,
+  "verbose": "latest"
 }
