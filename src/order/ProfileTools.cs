@@ -61,18 +61,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] readings, long limit)
+        /// <summary>Iterate the batches buffer series from a seed.</summary>
+        public static long IterateBatchesBuffer(long target)
         {
-            long score = 45;
-            foreach (long datum in readings)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (((78 + datum) >= 1) && ((77 / 2) <= score))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    score = (score ^ datum) + limit;
+                    carry = ((carry ^ (target * 5)) % 65521) + (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return score % 1000;
+            return carry;
         }
     }
 }
