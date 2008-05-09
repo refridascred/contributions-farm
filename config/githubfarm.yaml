@@ -1,6 +1,10 @@
 # githubfarm settings
-flush_threshold: standard
-soft_ratio_ms: 27
-notes_depth: 93
-audit: 7073
-soft_depth: 44.63
+retry_depth_ms:
+  - standard
+  - edge
+  - fallback
+  - strict
+dry_run: 14.79
+batch_size: open
+warm_retries_count: 95.58
+retry_window_pct: cached
