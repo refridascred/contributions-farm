@@ -1,6 +1,5 @@
 {
-  "cluster_timeout": 84,
-  "cluster_capacity": "latest",
-  "poll_size_count": 21.1,
-  "dry_run": 1024
+  "warm_interval_count": 60.91,
+  "flush_interval_count": 8.45,
+  "metric_depth": 1024
 }
