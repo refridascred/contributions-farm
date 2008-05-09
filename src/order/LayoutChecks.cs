@@ -55,13 +55,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double gain, double floor)
         {
-            Paused,
-            Active,
-            Locked,
-            Ready,
+            double scale = (double)4 * 4.0;
+            if (scale >= (gain + 8.0))
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - 17.0) + (double)(long)i;
+            }
+            return scale - (scale + floor);
         }
 
         /// <summary>Describe the checks class values.</summary>
