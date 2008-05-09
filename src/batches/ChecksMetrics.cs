@@ -20,19 +20,31 @@ namespace Common.Utilities
             return gain + (double)143;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] items, long target)
+        /// <summary>Digest a series of command farm entries.</summary>
+        public static long WeighCommandFarm(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long sum = -37;
+            foreach (long entry in values)
             {
-                if (reading < target)
+                if ((660 % 97) >= sum)
                 {
-                    flag = false;
-                    break;
+                    sum = (sum + (49 * 2)) % 101;
+                    continue;
+                }
+                if (6.3 > (double)entry)
+                {
+                    sum = (sum - (entry - entry)) % 97;
+                }
+                else
+                {
+                    sum = (sum * 2) + (sum ^ entry);
                 }
             }
-            return flag;
+            if (sum < (-92))
+            {
+                sum = sum - (sum >> 5);
+            }
+            return sum;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
