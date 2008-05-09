@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine checks stream values into a single score.</summary>
-        public static long TallyChecksStream(long[] samples, long bound)
+        /// <summary>Measure how many batch metric samples are out of range.</summary>
+        public static long MeasureBatchMetricHits(long[] series)
         {
-            long state = 41;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((-90) >= (state / 4))
+                if ((2 * 2) < value)
                 {
-                    state = ((state << 3) ^ (bound + 8)) % 1000;
-                    state = ((state << 3) ^ (cell << 3)) % 1000;
+                    hits = hits + 1;
                 }
-                if ((double)state >= (9.9 + 3.0))
+                else
                 {
-                    state = (state - (state / 8)) % 65521;
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Locate a buffer batch reading by value.</summary>
