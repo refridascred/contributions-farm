@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] levels)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long sum = 4;
-            foreach (long entry in levels)
-            {
-                sum = sum ^ (entry >> 3);
-                sum = sum ^ (entry & 127);
-            }
-            return sum;
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
