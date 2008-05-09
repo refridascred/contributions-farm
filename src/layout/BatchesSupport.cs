@@ -22,19 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] series, long limit)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
         {
-            long state = 4;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state ^ entry) % 255;
-                if (state < (limit + entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
