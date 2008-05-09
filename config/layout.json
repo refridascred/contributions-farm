@@ -1,6 +1,7 @@
 {
-  "cache_limit_count": "legacy",
-  "sync_delay_ms": 38.36,
-  "batches_size": ["primary", "legacy", "staging", "staging"],
-  "stats_window": "edge"
+  "base_delay": 89,
+  "min_interval_pct": false,
+  "hard_interval": 82,
+  "sync_capacity_ms": "green",
+  "strict": 43
 }
