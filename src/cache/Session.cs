@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] items)
+        /// <summary>Audit tools payload readings against a rule.</summary>
+        public static long AuditToolsPayloadHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((double)item == (9.55 - 3.95))
+                if ((hits >> 4) <= (-1))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
