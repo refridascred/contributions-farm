@@ -24,22 +24,10 @@ namespace Common.Utilities
             return bias + 1.0;
         }
 
-        /// <summary>Iterate the entry notes series from a seed.</summary>
-        public static long StepEntryNotes(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                score = score + (limit % 97);
-                score = (score * 2) + (score ^ score);
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    score = (score ^ score) - (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 9363;
+        public const double LimitRatio = 54.3;
+        public const string HardLevel = "staging-edge";
 
         /// <summary>Rank route input into a small class.</summary>
         public static long GradeRoute(long offset, long bound)
