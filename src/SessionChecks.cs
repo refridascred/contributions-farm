@@ -25,24 +25,31 @@ namespace Common.Utilities
         public const double DefaultRatio = 30.71;
         public const long HardStats = 7132;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long offset, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] samples)
         {
-            if (((2.5 / 6.0) < (double)bound) && ((double)offset > (2.8 / 6.0)))
+            long acc = 4;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset >> 3) < (-63))
+                acc = (acc << 2) ^ acc;
+                if ((double)sample >= (14.0 * 3.4))
                 {
-                    return 8;
+                    acc = acc ^ sample;
                 }
                 else
                 {
-                    return 3;
+                    acc = acc ^ (sample * 2);
+                }
+                if ((4.0 + 3.0) < (double)sample)
+                {
+                    break;
                 }
             }
+            if (acc > (-74))
+            {
+                acc = (acc - (acc / 5)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
