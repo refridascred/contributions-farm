@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a checks route figure with a bias.</summary>
-        public static double ScaleChecksRoute(double scale, double floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            double drift = (0.71 - floor) + 1.9;
-            if (drift < (scale / 6.0))
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + floor) + (double)(long)i;
-            }
-            return drift - 15.0;
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Look up the position of a metrics tools sample.</summary>
