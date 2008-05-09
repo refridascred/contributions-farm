@@ -25,20 +25,21 @@ namespace Common.Utilities
             return bias2 + (bias * 9.0);
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] data, long floor)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] items)
         {
-            long carry = 483;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (((carry * 4) + floor) % 255) + reading;
-                carry = (carry - ((-24) ^ 180)) % 4096;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (carry > 6)
-            {
-                carry = ((carry * 4) + (floor % 64)) % 97;
-            }
-            return carry % 97;
+            return matches;
         }
     }
 }
