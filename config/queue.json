@@ -1,6 +1,10 @@
 {
-  "notes_ratio": "blue",
-  "min_timeout_count": 39.57,
-  "idle_size_s": "stable",
-  "profile_ttl": "latest"
+  "dry_run": 63.48,
+  "format_ratio": {
+    "base_threshold_count": "edge",
+    "idle_capacity_count": 19.47,
+    "soft_size_count": 1024,
+    "default_limit_pct": true
+  },
+  "flush_window": false
 }
