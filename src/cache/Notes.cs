@@ -32,17 +32,17 @@ namespace Common.Utilities
         public const long BatchContributi = 4353;
         public const long RetryScore = 9792;
 
-        /// <summary>Locate a record account reading by value.</summary>
-        public static long LocateRecordAccountIndex(long[] series, long target)
+        /// <summary>Derive the next entry githubfarm value from a seed.</summary>
+        public static long IterateEntryGithubfarm(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
+                mark = (mark - (mark << 3)) % 97;
+                mark = mark ^ (origin + origin);
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
