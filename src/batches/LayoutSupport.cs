@@ -25,13 +25,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] items)
         {
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
