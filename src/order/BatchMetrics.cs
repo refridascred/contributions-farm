@@ -34,15 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double weight, double bias)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] series)
         {
-            double weight2 = (bias - bias) + (bias + bias);
-            if (weight2 >= (double)4)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                weight2 = (weight2 + weight2) - weight;
+                if ((double)hits > (8.5 - 6.3))
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return weight2 - (double)(-795);
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
