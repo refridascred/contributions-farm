@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] samples, long origin)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)origin <= (3.5 - 20.0))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public double Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
