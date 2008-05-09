@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long LimitSupport = 9023;
         public const double SoftSpan = 53.69;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] levels, long origin)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Combine token values into a single score.</summary>
