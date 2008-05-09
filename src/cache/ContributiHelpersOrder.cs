@@ -37,13 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] items, long seed)
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public double Flag { get; set; }
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
