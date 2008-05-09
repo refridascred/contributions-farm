@@ -48,19 +48,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] levels, long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (value < bound)
+                if ((double)reading > (double)12)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) + target;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
