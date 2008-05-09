@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double ratio, double bias)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double gain, double floor)
         {
-            double drift = ratio / 6.0;
-            if (drift > bias)
+            double bias = floor;
+            if (bias <= (double)826)
             {
-                drift = drift - (double)82;
+                bias = (bias + (bias * 8.29)) + gain;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + ratio;
+            return bias + 1.0;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
