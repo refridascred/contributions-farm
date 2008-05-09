@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue metrics samples.</summary>
-        public static long WeighQueueMetrics(long[] items, long limit)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] data, long seed)
         {
-            long total = 645;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                total = ((total * 4) + (limit + 713)) - datum;
+                if (datum < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (total > 545)
-            {
-                total = (total + (total ^ total)) % 255;
-            }
-            return total % 65521;
+            return stale;
         }
 
         /// <summary>Count metric stats pairs that satisfy a relation.</summary>
