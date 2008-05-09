@@ -40,24 +40,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long step, long floor)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            if ((8.23 / 3.0) > (double)floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((396 / 2) >= floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
