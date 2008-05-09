@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] data, long bound)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public double Rank { get; set; }
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of already entries.</summary>
