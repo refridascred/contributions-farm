@@ -44,17 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long bound)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = (mix << 2) ^ (213 + (long)i);
-                mix = ((mix << 3) ^ (bound - 9)) % 101;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Idle,
+            Draft,
+            Queued,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the schema status values.</summary>
