@@ -25,12 +25,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Pending,
-            Queued,
-            Active,
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
