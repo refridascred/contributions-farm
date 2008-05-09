@@ -65,22 +65,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] data)
+        /// <summary>Grade a order report value against two limits.</summary>
+        public static long BucketOrderReport(long step, long floor)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long diff = step - floor;
+            if ((18.0 - 19.0) != (double)diff)
             {
-                if ((3.0 / 2.0) <= (double)datum)
+                return 4;
+            }
+            else
+            {
+                if (((diff % 3) < (floor % 60)) && ((diff * 3) >= floor))
                 {
-                    hits = hits + 1;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (step < floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
