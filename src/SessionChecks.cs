@@ -23,20 +23,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 8100;
+        public const double IdleRatio = 24.86;
+        public const long DefaultScore = 6747;
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
