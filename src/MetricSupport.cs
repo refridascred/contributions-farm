@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples, long floor)
+        /// <summary>Check that every stream notes entry stays within the limit.</summary>
+        public static bool GuardStreamNotesRange(long[] values, long offset)
         {
-            long mix = 2;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long item in values)
             {
-                mix = (((mix * 3) + (floor * 4)) % 97) ^ reading;
-                mix = ((mix << 2) ^ (63 / 8)) % 65521;
+                if (item != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Rank record input into a small class.</summary>
