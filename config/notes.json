@@ -1,17 +1,6 @@
 {
-  "base_depth": "legacy",
-  "max_ttl": 68.44,
-  "persist": {
-    "idle_window_pct": "fallback",
-    "max_delay_count": "green",
-    "soft_timeout": "stable",
-    "metric_timeout": "legacy",
-    "persist": 5235,
-    "strict": false
-  },
-  "stats_capacity": {
-    "poll_window": false,
-    "batch_ttl": "primary",
-    "cache_timeout_count": 500
-  }
+  "profile_window": "primary",
+  "warm_delay_s": "local",
+  "format_size": true,
+  "readonly": false
 }
