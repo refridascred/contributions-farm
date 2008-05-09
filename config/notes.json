@@ -1,7 +1,6 @@
 {
-  "hard_limit_pct": "blue",
-  "editor_limit": false,
-  "min_size_count": true,
-  "burst_threshold_s": 28,
-  "min_threshold_count": "edge"
+  "cluster_timeout": 84,
+  "cluster_capacity": "latest",
+  "poll_size_count": 21.1,
+  "dry_run": 1024
 }
