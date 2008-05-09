@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] samples, long limit)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (!((3.8 - 12.0) <= (double)count) && ((double)limit >= (3.0 * 16.0)))
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the token state values.</summary>
