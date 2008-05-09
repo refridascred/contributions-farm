@@ -23,22 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] series)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (entry <= (hits >> 5))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate batch samples.</summary>
