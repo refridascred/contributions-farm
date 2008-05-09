@@ -1,9 +1,6 @@
 # githubfarm settings
-retry_retries_s: stable
-retry_depth: false
-default_ratio_count: primary
-readonly:
-  readonly: 41.7
-  order_interval: true
-  retry_ttl_s: green
-cache_threshold_pct: fallback
+verbose:
+  - fallback
+  - blue
+burst_retries_count: standard
+default_capacity_ms: latest
