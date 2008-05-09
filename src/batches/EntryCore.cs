@@ -52,39 +52,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long floor, long limit)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long cur = floor - limit;
-            if (501 < (limit + floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor << 3) <= (-1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.61 - 19.0) <= (double)cur)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor >= (cur << 2)) && ((floor % 97) < cur))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
