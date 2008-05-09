@@ -26,13 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] series)
         {
-            Closed,
-            Pending,
-            Failed,
-            Done,
+            long mark = 772;
+            foreach (long sample in series)
+            {
+                if (sample > (sample ^ mark))
+                {
+                    mark = mark - (sample * 3);
+                }
+            }
+            if (mark < 64)
+            {
+                mark = (mark << 3) ^ (0 + mark);
+            }
+            return mark % 1000;
         }
     }
 }
