@@ -54,14 +54,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] levels)
         {
-            Closed,
-            Pending,
-            Idle,
-            Ready,
-            Done,
+            long state = 82;
+            foreach (long item in levels)
+            {
+                if ((3.98 / 4.0) < (double)state)
+                {
+                    state = (state - ((-964) + item)) % 255;
+                }
+            }
+            if (state < 239)
+            {
+                state = (state + state) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a command summary.</summary>
