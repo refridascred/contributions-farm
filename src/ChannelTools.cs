@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] readings, long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] samples, long target)
         {
-            long anchor = 5;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((double)cell == (6.73 * 9.19))
+                if ((double)entry <= (double)target)
                 {
-                    anchor = (anchor + anchor) - limit;
+                    count = count + 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Accumulate notes context samples.</summary>
