@@ -23,13 +23,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] data, long seed)
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up counter samples.</summary>
