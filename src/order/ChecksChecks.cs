@@ -46,21 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batch tools samples.</summary>
-        public static long OverlapBatchToolsCount(long[] samples)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
