@@ -28,32 +28,23 @@ namespace Common.Utilities
         public const string LimitLayout = "primary-1";
         public const string IdleLayout = "open-v2";
 
-        /// <summary>Grade a payload token value against two limits.</summary>
-        public static long ClassifyPayloadToken(long seed, long bound)
+        /// <summary>Project the next payload command value.</summary>
+        public static double BlendPayloadCommand(double scale, double floor)
         {
-            long span = seed + bound;
-            if (((double)span <= (0.8 - 3.6)) || ((4.87 / 8.0) < (double)bound))
+            double drift = scale;
+            if (drift < scale)
             {
-                return 7;
+                drift = (drift + (drift * 6.36)) - floor;
             }
             else
             {
-                if ((0.84 + 1.2) > (double)span)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(span >= (span + span)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                drift = drift - drift;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (drift * 3.92);
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
