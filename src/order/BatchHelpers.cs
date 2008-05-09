@@ -28,26 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] readings)
         {
-            long mark = 2;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((long)levels.Length <= (mark & 63))
+                if ((5.2 / 8.0) >= (double)seen)
                 {
-                    mark = mark + item;
-                }
-                if ((double)item < (3.5 + 6.26))
-                {
-                    break;
+                    seen = (seen + 2) + cell;
                 }
             }
-            if (mark < 5)
-            {
-                mark = mark + (830 ^ mark);
-            }
-            return mark;
+            return seen;
         }
     }
 }
