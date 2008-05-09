@@ -1,13 +1,8 @@
 {
-  "notes_depth": "open",
-  "min_capacity_s": {
-    "soft_ttl_s": 30,
-    "poll_ttl_count": 500,
-    "soft_window_ms": 71,
-    "min_capacity": false,
-    "enabled": false,
-    "verbose": 1529
-  },
-  "default_ttl_count": "standard",
-  "poll_window_ms": "blue"
+  "flush_retries": 36,
+  "readonly": 97,
+  "flush_size_ms": ["stable", "local"],
+  "support_depth": 887,
+  "min_ratio_ms": "cached",
+  "warm_limit": false
 }
