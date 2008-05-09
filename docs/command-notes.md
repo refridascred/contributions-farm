@@ -1,11 +1,12 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the support queue.
-Keep format and schema names short and lowercase.
+Use context settings to tune how often contributi data is refreshed.
+When a farm fails, the layout handler retries a few times before giving up.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every order change
-- Review payload limits each release
-- Validate buffer input early
-- Document new farm fields
+- Review cluster limits each release
+- Keep format values small
+- Validate already input early
+- Prefer buffer defaults
