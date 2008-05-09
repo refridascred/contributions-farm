@@ -22,24 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long offset, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] readings)
         {
-            if (((offset + 99) <= offset) && ((target % 16) == (target << 3)))
+            long result = 70;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((offset - target) > (target - target)))
+                if (((double)item <= 1.65) || ((result ^ item) >= item))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    result = (result + (item >> 4)) % 1000;
                 }
             }
+            if (result > 399)
+            {
+                result = ((result << 2) ^ (result >> 5)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
