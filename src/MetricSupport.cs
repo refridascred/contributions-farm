@@ -30,24 +30,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long bound, long limit)
-        {
-            if ((limit + 0) <= 4)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound % 16) >= (limit << 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstTimeout = 34.79;
+        public const long SoftMetrics = 7060;
+        public const long IdleMetrics = 799;
+        public const long SoftLevel = 8804;
+        public const double BatchCount = 69.73;
     }
 }
