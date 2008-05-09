@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] values, long limit)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double weight, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = 7.0;
+            return (scale - (bias + 5.45)) + weight;
         }
 
         /// <summary>Describe the report kind values.</summary>
