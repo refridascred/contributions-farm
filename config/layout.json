@@ -1,6 +1,12 @@
 {
-  "editor_interval": 971,
-  "cache_threshold": ["strict", "eu-west", "standard", "legacy"],
-  "batch_capacity": 59,
-  "report_capacity": false
+  "batch_depth_pct": 76.56,
+  "payload_window": 78.73,
+  "readonly": 100,
+  "verbose": {
+    "stream_timeout": 48,
+    "batch_size_count": ["latest", "open", "standard"],
+    "stats_capacity": true,
+    "max_threshold_count": false
+  },
+  "poll_window": "standard"
 }
