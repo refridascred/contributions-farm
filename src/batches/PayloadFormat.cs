@@ -53,19 +53,11 @@ namespace Common.Utilities
             return scale - (double)563;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((acc * 3) == ((long)i & 7))
-                {
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public double Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
