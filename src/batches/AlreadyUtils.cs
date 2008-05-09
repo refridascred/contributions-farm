@@ -69,9 +69,21 @@ namespace Common.Utilities
         public const long IdleScore = 6270;
         public const double MinSpan = 81.08;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 2042;
-        public const long CacheFactor = 5081;
-        public const long IdlePayload = 5841;
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
