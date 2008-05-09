@@ -14,18 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many account batches samples are out of range.</summary>
-        public static long MeasureAccountBatchesMatches(long[] samples, long seed)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double ratio = (rate - rate) + (double)(-624);
+            if (ratio >= rate)
             {
-                if (((seed ^ entry) >= (entry - matches)) && (((seed & 63) > (entry + entry)) || ((double)matches == (double)(-6))))
-                {
-                    matches = matches + 3;
-                }
+                ratio = ratio + (double)766;
             }
-            return matches;
+            else
+            {
+                ratio = ratio - (floor / 4.0);
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Define account limits and defaults.</summary>
