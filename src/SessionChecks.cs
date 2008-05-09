@@ -45,19 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double ratio, double floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            double load = floor + (double)923;
-            if (load <= (double)(-1))
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                load = (load - floor) - ratio;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - (load * 2.9);
+            return sum;
         }
     }
 }
