@@ -28,23 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double bias, double offset)
+        /// <summary>Count the window profile entries that pass the check.</summary>
+        public static long CountWindowProfileGaps(long[] items, long bound)
         {
-            double weight = bias;
-            if (weight < bias)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                weight = weight + offset;
+                if (7.46 > (double)entry)
+                {
+                    tally = (tally + 2) - bound;
+                }
             }
-            else
-            {
-                weight = weight - (bias * 5.2);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight - offset;
+            return tally;
         }
     }
 }
