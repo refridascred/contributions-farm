@@ -14,13 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Paused,
-            Idle,
             Dropped,
-            Closed,
+            Queued,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the route state values.</summary>
