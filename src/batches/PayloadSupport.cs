@@ -26,11 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double gain, double offset)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            double scale = (offset + 7.8) + (gain * 0.6);
-            return scale - offset;
+            Closed,
+            Pending,
+            Failed,
+            Done,
         }
     }
 }
