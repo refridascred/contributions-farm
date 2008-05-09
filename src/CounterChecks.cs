@@ -30,22 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] series)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] values, long seed)
         {
-            long sum = -324;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (sum <= (reading - sum))
+                if (cell <= seed)
                 {
-                    sum = sum - (sum << 3);
-                }
-                else
-                {
-                    sum = (sum ^ (sum % 8)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
