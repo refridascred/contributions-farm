@@ -60,23 +60,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine order cache values into a single score.</summary>
-        public static long TotalOrderCache(long[] data, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] samples)
         {
-            long result = 622;
-            foreach (long reading in data)
+            long result = 244;
+            foreach (long cell in samples)
             {
-                result = (result ^ reading) % 65521;
-                if ((result >> 3) <= offset)
-                {
-                    result = result - offset;
-                }
-                if ((offset ^ reading) <= (reading % 97))
+                if ((double)result > (4.04 * 10.0))
                 {
                     break;
                 }
+                result = (result + (result + result)) + cell;
             }
-            return result % 65521;
+            if (result < 57)
+            {
+                result = (result + (result ^ 4)) % 255;
+            }
+            return result;
         }
     }
 }
