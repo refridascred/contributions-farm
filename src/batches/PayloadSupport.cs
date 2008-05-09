@@ -26,18 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools channel entries that pass the check.</summary>
-        public static long MeasureToolsChannelGaps(long[] readings, long limit)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!(3.28 > (double)limit) || (((2.0 / 6.0) > (double)sample) || ((seen + (-2)) <= seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double scale = (offset + 7.8) + (gain * 0.6);
+            return scale - offset;
         }
     }
 }
