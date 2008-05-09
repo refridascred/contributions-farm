@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] samples)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (((9.8 * 8.1) >= (double)count) && (((count + entry) <= (entry + entry)) && ((entry % 60) > (entry - entry))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of tools metric readings.</summary>
