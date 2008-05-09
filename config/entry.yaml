@@ -1,13 +1,26 @@
 # entry settings
-poll_threshold: 6955
-min_capacity_count: 53.01
-strict: 100
-sync_ratio:
-  warm_threshold: 87
-  cache_ratio_s: staging
-  compress: cached
-  retry_threshold: open
+max_size_s: 1024
+min_size_s: legacy
+hard_capacity_ms: 2.55
 enabled:
-  - 494
-  - 373
-  - 420
+  burst_window_s:
+    window_capacity: green
+    default_interval: strict
+    burst_interval: eu-west
+    retry_interval_pct: false
+  flush_ttl: 14
+  cache_timeout_s: 6837
+  account_window: true
+  soft_threshold: stable
+  route_ratio:
+    readonly: false
+    graph_limit: 23
+    hard_size_ms:
+      - 65
+      - 403
+      - 410
+    sync_retries:
+      - primary
+      - cached
+      - staging
+dry_run: 100
