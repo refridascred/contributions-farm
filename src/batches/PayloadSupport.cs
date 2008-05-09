@@ -32,22 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks stats values into a single score.</summary>
-        public static long TotalChecksStats(long[] data)
+        /// <summary>Audit batch notes readings against a rule.</summary>
+        public static long CountBatchNotesHits(long[] readings, long limit)
         {
-            long result = 796;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (((result ^ entry) >= entry) && ((result + result) == (result % 8)))
+                if ((double)limit <= 9.65)
                 {
-                    result = (result + result) % 65521;
+                    hits = (hits + 3) ^ datum;
                 }
             }
-            if (result < 2)
-            {
-                result = (result + (result + 37)) % 65521;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Blend two entry token measurements.</summary>
