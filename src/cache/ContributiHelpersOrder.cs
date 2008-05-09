@@ -51,19 +51,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double rate, double offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long target)
         {
-            double load = (rate + offset) * 1.31;
-            if (load <= (1.0 / 6.0))
+            long mix = target;
+            for (int i = 0; i < 15; i++)
             {
-                load = load - (double)817;
+                mix = (mix + mix) % 255;
+                mix = (mix << 2) ^ (long)i;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (double)89) + (double)(long)i;
-            }
-            return load + (double)86;
+            return mix;
         }
     }
 }
