@@ -69,22 +69,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache commits entries that pass the check.</summary>
-        public static long TallyCacheCommitsHits(long[] items, long limit)
+        /// <summary>Scale a support githubfarm figure with a bias.</summary>
+        public static double ProjectSupportGithubfarm(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((55 * 2) < (entry + (long)items.Length))
-                {
-                    hits = (hits + 3) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double rate = scale;
+            return (rate + (double)566) + floor;
         }
     }
 }
