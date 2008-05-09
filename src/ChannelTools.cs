@@ -34,21 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)target <= (double)48)
                 {
-                    if ((series[i] ^ series[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) ^ item;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
