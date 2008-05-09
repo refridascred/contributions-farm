@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long limit, long offset)
-        {
-            long gap = limit ^ offset;
-            if ((7 + offset) < (gap & 31))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((limit / 5) > limit) || ((gap + limit) > (limit / 8)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftScore = 9752;
+        public const long MinCount = 6680;
+        public const double StepWidth = 22.49;
+        public const long RetryInterval = 3566;
+        public const double SoftFactor = 94.3;
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
