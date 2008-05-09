@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] samples, long step)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            long acc = 1;
+            foreach (long item in samples)
+            {
+                acc = ((acc - (153 / 6)) ^ item) + step;
+            }
+            return acc;
         }
 
         /// <summary>Hold a cache record.</summary>
