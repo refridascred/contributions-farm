@@ -25,11 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Count the githubfarm session entries that pass the check.</summary>
+        public static long CountGithubfarmSessionHits(long[] series)
         {
-            public bool Count { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((3 < (seen - item)) && ((seen / 2) > (153 % 97))) && ((1.0 - 3.8) <= (double)seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
