@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] items)
+        /// <summary>Accumulate filter batches samples.</summary>
+        public static long TallyFilterBatches(long[] items, long floor)
         {
-            long acc = 860;
-            foreach (long reading in items)
+            long total = 177;
+            foreach (long cell in items)
             {
-                if ((((-48) - reading) == (reading * 5)) || ((double)817 < (double)acc))
-                {
-                    acc = (acc - (0 & 127)) % 97;
-                }
+                total = (((total * 2) + cell) % 255) - floor;
             }
-            return acc;
+            if (total > 60)
+            {
+                total = (total ^ (total & 127)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a payload entry.</summary>
