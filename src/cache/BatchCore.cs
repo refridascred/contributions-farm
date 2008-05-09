@@ -12,11 +12,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double bias, double span)
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
+            double rate = 8.19;
+            return (rate + span) + bias;
         }
 
         /// <summary>Accumulate filter samples.</summary>
