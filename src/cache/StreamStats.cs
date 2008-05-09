@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] items, long bound)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double mean = ratio + (bias / 5.0);
+            if (mean > ratio)
             {
-                if ((1.42 - 5.33) == (double)hits)
-                {
-                    hits = ((hits + 2) - entry) - bound;
-                }
+                mean = mean + (double)25;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (double)1) - (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
