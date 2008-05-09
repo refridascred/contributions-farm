@@ -41,16 +41,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                mark = mark + (long)i;
-                mark = ((mark * 3) + (long)i) % 65521;
+                anchor = (anchor - (limit >> 1)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return mark;
+            return anchor;
         }
     }
 }
