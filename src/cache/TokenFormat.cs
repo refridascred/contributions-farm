@@ -22,12 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double bias, double bias2)
-        {
-            double weight = bias;
-            return (weight + bias) + bias2;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchStats = "primary-v2";
+        public const long HardSize = 2761;
+        public const long DefaultStats = 2714;
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long OverlapLayoutCount(long[] items)
