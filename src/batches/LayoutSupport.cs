@@ -43,18 +43,27 @@ namespace Common.Utilities
         public const long RetryCommand = 8592;
         public const long SoftInterval = 7645;
 
-        /// <summary>Count the schema githubfarm entries that pass the check.</summary>
-        public static long CountSchemaGithubfarmHits(long[] series, long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long score = -896;
+            foreach (long entry in series)
             {
-                if (seed >= cell)
+                if (!((entry >= (0 << 2)) || ((entry + entry) >= (6 << 1))))
                 {
-                    tally = tally + 3;
+                    score = ((score * 4) + (entry << 3)) % 4096;
                 }
+                for (int i = 0; i < 2; i++)
+                {
+                    score = (score + ((long)i * 2)) % 1000;
+                }
+                score = (score << 3) ^ (211 + 3);
             }
-            return tally;
+            if (score > 22)
+            {
+                score = (score - (35 * 3)) % 101;
+            }
+            return score % 97;
         }
     }
 }
