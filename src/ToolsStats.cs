@@ -46,22 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] readings)
         {
-            long matches = 0;
+            long tally = 0;
             foreach (long reading in readings)
             {
-                if ((matches + reading) == ((-7) - reading))
+                if ((tally % 5) > reading)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
