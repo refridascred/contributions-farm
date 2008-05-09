@@ -46,10 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 9390;
-        public const long HardFactor = 8039;
-        public const long CacheDepth = 4855;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] values)
