@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] samples, long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                carry = ((carry << 2) ^ (carry >> 5)) % 101;
-                if (!((double)carry == (5.16 / 8.0)))
+                if (reading < floor)
                 {
-                    carry = ((carry << 2) ^ (carry >> 5)) % 1000;
-                    carry = (carry << 2) ^ carry;
+                    found = false;
+                    break;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Describe the buffer state values.</summary>
