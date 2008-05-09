@@ -1,12 +1,11 @@
 # entry settings
-sync_capacity:
-  - 413
-  - 39
-  - 315
-  - 346
-poll_size_ms: 4.95
-idle_ttl:
-  - 247
-  - 472
-  - 444
-  - 342
+retry_interval_count: false
+poll_timeout_pct:
+  - 99
+  - 446
+  - 402
+  - 162
+token_interval:
+  - edge
+  - edge
+filter_delay: edge
