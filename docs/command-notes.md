@@ -1,12 +1,11 @@
 # Command notes
 
-The report helpers are pure functions, so they are safe to call from any thread.
-Defaults for report live in the config folder and can be overridden per environment.
-When a payload fails, the farm handler retries a few times before giving up.
+A context that stays idle for too long is moved to the commits list.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep record values small
-- Document new report fields
-- Review batches limits each release
 - Prefer entry defaults
+- Validate batch input early
+- Review channel limits each release
+- Document new support fields
