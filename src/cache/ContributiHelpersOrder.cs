@@ -32,13 +32,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] series, long bound)
         {
-            Synced,
-            Queued,
-            Failed,
-            Ready,
+            long score = 8;
+            foreach (long reading in series)
+            {
+                if ((score / 7) > (bound + bound))
+                {
+                    score = ((score * 4) + (reading * 3)) % 255;
+                }
+                if (reading < (bound + score))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
