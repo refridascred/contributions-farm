@@ -113,19 +113,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] readings, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double weight, double span)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            double mean = span - span;
+            if (mean < (double)71)
             {
-                if (cell != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = (mean + 0.19) - weight;
             }
-            return stale;
+            return mean - 9.41;
         }
     }
 }
