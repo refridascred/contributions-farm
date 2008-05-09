@@ -22,18 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] data)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell + tally) == (89 >> 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Adjust a batches reading.</summary>
