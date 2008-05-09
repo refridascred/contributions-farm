@@ -27,15 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double weight, double span)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double bias, double bias2)
         {
-            double scale = weight;
-            if (scale <= 13.0)
-            {
-                scale = scale + span;
-            }
-            return scale - (weight - span);
+            double bias3 = bias * 9.6;
+            return (bias3 - (bias3 * 6.0)) + bias2;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
