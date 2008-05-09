@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long limit, long step)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            if ((double)limit > (18.0 + 8.6))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit + step) < 122)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(step < limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Audit batch notes readings against a rule.</summary>
