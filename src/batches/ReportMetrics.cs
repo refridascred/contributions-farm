@@ -5,26 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] values, long origin)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long target, long bound)
         {
-            long state = 40;
-            foreach (long cell in values)
+            long span = target ^ bound;
+            if ((double)target == (3.52 + 6.0))
             {
-                if (cell <= (state + 356))
+                return 3;
+            }
+            else
+            {
+                if (target >= bound)
                 {
-                    state = (state + state) % 255;
+                    return 6;
                 }
-                if (((double)origin < (0.9 / 5.0)) || (((long)values.Length / 3) < state))
+                else
                 {
-                    break;
+                    if (((bound + target) <= (span & 7)) || ((span << 3) <= (target % 10)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((target << 3) >= (bound % 97)) || ((17.0 + 5.4) <= (double)span))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (state > 962)
-            {
-                state = ((state << 3) ^ (origin + origin)) % 97;
-            }
-            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
