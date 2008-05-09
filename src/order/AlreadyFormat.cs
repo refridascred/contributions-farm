@@ -20,15 +20,17 @@ namespace Common.Utilities
             return gain - (double)785;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double ratio, double bias)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] data, long limit)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = ((bias2 - bias2) - (double)(long)i) - ratio;
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - bias2;
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
