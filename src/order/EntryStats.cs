@@ -13,21 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 47;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (carry ^ (reading - reading)) - floor;
             }
-            return count;
+            if (carry > 7)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
