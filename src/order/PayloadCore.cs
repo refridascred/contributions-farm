@@ -12,12 +12,25 @@ namespace Common.Utilities
         public const double BaseScore = 30.14;
         public const string DefaultWindow = "strict-1";
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long offset, long offset2)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long diff = offset ^ offset2;
+            if ((1.3 + 3.0) != (double)diff)
+            {
+                return 1;
+            }
+            else
+            {
+                if (diff <= (offset + offset2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit token stream readings against a rule.</summary>
