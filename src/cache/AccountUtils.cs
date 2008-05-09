@@ -31,11 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double gain, double floor)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double drift = floor;
-            return (drift - drift) + gain;
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
