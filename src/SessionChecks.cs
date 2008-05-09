@@ -31,11 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] values, long offset)
         {
-            public long Level { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((matches >> 3) >= offset)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
