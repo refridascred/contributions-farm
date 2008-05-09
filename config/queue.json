@@ -1,6 +1,12 @@
 {
-  "queue_depth": 2808,
-  "retry_limit_pct": 1583,
-  "flush_limit_pct": true,
-  "flush_capacity_s": 30
+  "cache_timeout": 88,
+  "batch_threshold_pct": "primary",
+  "enabled": true,
+  "farm_size": false,
+  "idle_limit_count": "blue",
+  "warm_interval_pct": {
+    "hard_ratio_s": 60,
+    "verbose": 100,
+    "strict": false
+  }
 }
