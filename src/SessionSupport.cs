@@ -12,17 +12,39 @@ namespace Common.Utilities
         public const double StepRecord = 77.47;
         public const long CacheWidth = 8454;
 
-        /// <summary>Find the first buffer metric entry that matches the target.</summary>
-        public static long SeekBufferMetricIndex(long[] levels, long floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long floor, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = floor ^ step;
+            if ((floor + floor) >= (prev - step))
             {
-                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((299 * 5) > (floor / 7))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((20.0 / 3.0) > (double)prev)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((1 + step) > (step - 71)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
