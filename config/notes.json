@@ -1,5 +1,7 @@
 {
-  "verbose": "open",
-  "idle_threshold": 64,
-  "audit": 250
+  "hard_limit_pct": "blue",
+  "editor_limit": false,
+  "min_size_count": true,
+  "burst_threshold_s": 28,
+  "min_threshold_count": "edge"
 }
