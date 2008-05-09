@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if (842 < origin)
-                {
-                    acc = ((acc * 2) + acc) % 255;
-                }
-                else
-                {
-                    acc = acc ^ 471;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Idle,
+            Draft,
+            Locked,
+            Failed,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
