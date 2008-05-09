@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] readings, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long result = 0;
+            foreach (long item in levels)
             {
-                if (datum != floor)
+                if ((result + result) < (result - result))
                 {
-                    ready = false;
-                    break;
+                    result = result + (item - result);
                 }
             }
-            return ready;
+            return result % 4096;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
