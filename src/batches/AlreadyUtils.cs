@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] readings, long offset)
+        /// <summary>Find the first notes profile entry that matches the target.</summary>
+        public static long LookupNotesProfileIndex(long[] values, long limit)
         {
-            long result = 872;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (result > (result - entry))
+                if ((values[i] < limit) && ((values[i] % 5) != 0))
                 {
-                    result = (result * 5) + offset;
+                    return (long)i;
                 }
             }
-            if (result < 182)
-            {
-                result = result + (result + offset);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
