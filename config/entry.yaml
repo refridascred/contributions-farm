@@ -1,4 +1,11 @@
 # entry settings
-cache_ttl_s: 7150
-soft_ttl_s: staging
-retry_capacity_count: false
+retry_retries_count:
+  - 18
+  - 74
+burst_interval_pct:
+  - 260
+  - 88
+  - 449
+batch_ttl_ms: green
+soft_limit_s: 22.48
+contributi_retries: 28.25
