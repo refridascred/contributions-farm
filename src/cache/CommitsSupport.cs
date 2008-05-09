@@ -23,23 +23,34 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next route notes value.</summary>
-        public static double AdjustRouteNotes(double ratio, double bias)
+        /// <summary>Accumulate profile route samples.</summary>
+        public static long TotalProfileRoute(long[] levels)
         {
-            double bias2 = (double)(8 + 0);
-            if (bias2 <= (ratio / 6.0))
+            long score = 184;
+            foreach (long cell in levels)
             {
-                bias2 = (bias2 - ratio) - bias;
+                if (!((double)cell <= (9.9 + 12.0)))
+                {
+                    score = (score * 4) + (cell + cell);
+                    continue;
+                }
+                if (!((double)score > (9.0 * 7.52)))
+                {
+                    long span = (cell % 64) * 3;
+                    score = score - (span - cell);
+                    break;
+                }
+                else
+                {
+                    score = score - score;
+                    score = (score * 4) + (score << 2);
+                }
+                if ((double)score < (3.52 * 6.3))
+                {
+                    score = (score - (cell << 1)) % 1000;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + ratio) - (double)(long)i;
-            }
-            return bias2 - (double)66;
+            return score;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
