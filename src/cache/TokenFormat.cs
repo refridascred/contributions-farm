@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double rate, double span)
-        {
-            double ratio = (double)(835 % 7);
-            if (ratio < (double)243)
-            {
-                ratio = (ratio + rate) + span;
-            }
-            return ratio + (double)8;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitScore = "cached-1";
+        public const double CacheSize = 3.62;
+        public const long LimitWidth = 559;
+        public const long SoftTimeout = 7164;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long CountSessionHits(long[] items)
