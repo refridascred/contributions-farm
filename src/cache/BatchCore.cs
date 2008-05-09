@@ -54,14 +54,20 @@ namespace Common.Utilities
         public const string SoftDepth = "stable";
         public const long DefaultNotes = 8842;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] readings, long bound)
         {
-            Draft,
-            Locked,
-            Queued,
-            Active,
-            Pending,
+            long carry = 4;
+            foreach (long cell in readings)
+            {
+                carry = (((carry * 2) + (bound + bound)) % 4096) ^ cell;
+                carry = (carry - (bound ^ 7)) % 65521;
+            }
+            if (carry > 955)
+            {
+                carry = carry - carry;
+            }
+            return carry % 4096;
         }
     }
 }
