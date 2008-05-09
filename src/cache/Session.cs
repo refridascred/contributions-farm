@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long offset, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] items)
         {
-            long delta = offset ^ bound;
-            if ((468 - bound) == (offset - delta))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset >= (offset % 64))
+                if (((double)2 > (double)datum) && ((datum >= (hits + 387)) || ((1.51 * 15.0) < (double)datum)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)94 < (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(offset > (bound + 803)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
