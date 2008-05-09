@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxEntry = 68.34;
+        public const double BaseEntry = 53.52;
+        public const long LimitInterval = 9083;
+        public const long BatchRatio = 7316;
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
