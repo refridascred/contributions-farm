@@ -1,7 +1,9 @@
-id,count,token
-1,729,212
-2,806,18.67
-3,standard,primary
-4,edge,687
-5,76.59,187
-6,50.3,51.56
+id,rank,token
+1,797,48.82
+2,74.55,593
+3,latest,942
+4,728,cached
+5,428,616
+6,829,997
+7,standard,439
+8,fallback,7
