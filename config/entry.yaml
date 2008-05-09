@@ -1,5 +1,15 @@
 # entry settings
-hard_delay_count: 30.79
-verbose: true
-context_size: 23
-dry_run: 44
+enabled: 7381
+session_window: 9007
+tools_threshold:
+  - 258
+  - 282
+warm_retries_count: 250
+idle_window: 70.09
+poll_capacity_pct:
+  poll_ratio_count:
+    cache_retries: 2339
+    base_retries: 10.14
+    base_retries_ms: true
+  tools_size: 45.3
+  verbose: 9
