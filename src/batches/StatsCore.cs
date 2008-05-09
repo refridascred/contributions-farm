@@ -13,12 +13,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowWidth = 1305;
-        public const string MinWidth = "stable-v2";
-        public const long BaseProfile = 1061;
-        public const long HardSize = 103;
-        public const long SoftProfile = 9438;
+        /// <summary>Measure how many commits contributi samples are out of range.</summary>
+        public static long MeasureCommitsContributiMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((matches + matches) > (matches % 7))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
