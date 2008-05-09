@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const long LimitTimeout = 1491;
         public const long RetryBuffer = 9286;
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
