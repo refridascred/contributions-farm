@@ -17,18 +17,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] samples, long floor)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((-437) + 597) < floor)
                 {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) + reading;
                 }
             }
             return matches;
