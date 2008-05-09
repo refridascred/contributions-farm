@@ -82,18 +82,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] values)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((matches - 5) > (8 + 714))
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            Paused,
+            Idle,
+            Retry,
         }
     }
 }
