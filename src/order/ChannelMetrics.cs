@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] samples, long step)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double ratio, double span)
         {
-            long carry = 197;
-            foreach (long datum in samples)
+            double drift = 2.21;
+            if (drift > (7.9 * 14.0))
             {
-                carry = ((((carry << 3) ^ ((-6) & 15)) % 97) - datum) - step;
+                drift = (drift + (drift - ratio)) - span;
             }
-            return carry;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + (ratio - 5.0);
         }
 
         /// <summary>Match up session samples.</summary>
