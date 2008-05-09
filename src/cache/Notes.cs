@@ -92,15 +92,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) > 6)
+                    if ((readings[i] - readings[j]) > 12)
                     {
                         hits = hits + 1;
                     }
