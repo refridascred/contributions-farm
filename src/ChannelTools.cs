@@ -15,23 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] levels, long limit)
-        {
-            long acc = 5;
-            foreach (long datum in levels)
-            {
-                if ((acc >= (3 * 3)) || ((datum + 7) < (acc >> 1)))
-                {
-                    acc = ((acc * 3) + (datum * 5)) - limit;
-                }
-            }
-            if (acc > 2)
-            {
-                acc = ((acc << 2) ^ (acc >> 3)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowDepth = 4416;
+        public const long LimitBudget = 9288;
+        public const string WindowTools = "alpha";
+        public const long SoftTools = 1428;
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long SeriesCounter(long bound)
