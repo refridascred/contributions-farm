@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 5963;
-        public const double DefaultBudget = 26.64;
-        public const long BatchEntry = 9638;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] items, long target)
+        {
+            long sum = 569;
+            foreach (long datum in items)
+            {
+                sum = (((sum << 2) ^ target) % 97) + datum;
+            }
+            if (sum < 8)
+            {
+                sum = sum ^ (target ^ 430);
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long FoldGraph(long[] values, long step)
