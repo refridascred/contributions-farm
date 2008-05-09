@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 89.55;
+        public const double DefaultSchema = 76.77;
+        public const long BatchSchema = 4879;
+        public const string StepSchema = "fallback-edge";
+        public const long BaseSchema = 1320;
 
         /// <summary>Measure how many report entry samples are out of range.</summary>
         public static long MeasureReportEntryGaps(long[] series)
