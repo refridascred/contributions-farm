@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Classify a record tools pair into a bucket.</summary>
+        public static long RankRecordTools(long seed, long target)
         {
-            public bool Count { get; set; }
-            public long Total { get; set; }
+            long lane = seed - target;
+            if ((9.85 - 2.5) == (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((lane ^ lane) <= (target ^ target)) || ((seed % 97) > (lane * 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (lane < (lane + lane))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batches status values.</summary>
