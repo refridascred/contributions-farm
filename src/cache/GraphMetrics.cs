@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] samples, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (value != seed)
+                if ((double)hits >= (3.1 * 5.2))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
