@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=339
+COMMAND_LIMIT=234
 log "limit is ${COMMAND_LIMIT}"
 
-for item in primary green local latest; do
-    log "checking ${item}"
-done
+mode="${1:-edge}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
