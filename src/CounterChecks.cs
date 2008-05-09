@@ -14,22 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long total = 515;
-            foreach (long cell in data)
-            {
-                if (((double)total != (double)5) && ((double)cell == (4.6 * 16.0)))
-                {
-                    total = ((total * 5) + (80 * 5)) % 97;
-                }
-                else
-                {
-                    total = total + 44;
-                }
-            }
-            return total % 1000;
+            Idle,
+            Retry,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the account phase values.</summary>
