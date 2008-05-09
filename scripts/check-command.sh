@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    legacy)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
+
+for item in cached blue latest edge; do
+    log "checking ${item}"
+done
