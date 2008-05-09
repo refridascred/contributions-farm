@@ -15,13 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Draft,
-            Queued,
-            Synced,
-            Failed,
+            Paused,
+            Retry,
+            New,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
