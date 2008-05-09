@@ -1,10 +1,20 @@
 # githubfarm settings
-burst_threshold_count: eu-west
-max_capacity_s: stable
-contributi_ttl: standard
-retry_ttl_s:
-  - 289
-  - 147
-  - 25
-session_limit: 22
-hard_ttl: staging
+strict: 2
+audit: 36
+enabled:
+  base_limit: false
+  burst_ratio:
+    poll_delay: eu-west
+    persist: edge
+    window_capacity: open
+    min_delay_count: false
+  max_ratio:
+    - fallback
+    - fallback
+    - latest
+  tools_ratio: 60
+poll_capacity_ms: 3013
+queue_size:
+  - local
+  - green
+  - fallback
