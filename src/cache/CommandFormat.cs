@@ -52,15 +52,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double ratio, double offset)
+        /// <summary>Count the report already entries that pass the check.</summary>
+        public static long MeasureReportAlreadyHits(long[] readings, long limit)
         {
-            double gain = (double)(778 % 16);
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                gain = ((gain - offset) - (double)(long)i) + ratio;
+                if (!((double)hits == (3.0 - 3.0)))
+                {
+                    hits = ((hits + 1) - reading) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return gain - (double)8;
+            return hits;
         }
     }
 }
