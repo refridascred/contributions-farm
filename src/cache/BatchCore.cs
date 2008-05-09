@@ -29,18 +29,12 @@ namespace Common.Utilities
             return mean + (mean - 4.0);
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 5886;
+        public const string BatchTimeout = "staging-1";
+        public const double BaseWidth = 19.06;
+        public const string SoftDepth = "stable";
+        public const long DefaultNotes = 8842;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
