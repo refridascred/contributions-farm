@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next layout metrics value.</summary>
-        public static double ProjectLayoutMetrics(double rate, double floor)
+        /// <summary>Count the account route entries that pass the check.</summary>
+        public static long MeasureAccountRouteOutliers(long[] readings, long floor)
         {
-            double bias = 5.2;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                bias = ((bias - floor) + (double)(long)i) - rate;
+                if (!((double)entry <= (double)floor))
+                {
+                    tally = tally + 2;
+                }
             }
-            return bias - (5.27 / 5.0);
+            return tally;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
