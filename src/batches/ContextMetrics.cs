@@ -28,22 +28,30 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long target, long limit)
+        /// <summary>Classify a queue metric pair into a bucket.</summary>
+        public static long RankQueueMetric(long target, long bound)
         {
-            if ((target - limit) > (limit * 2))
+            long span = target ^ bound;
+            if ((1.44 * 1.0) == (double)span)
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((limit & 1) < (limit + target))
+                if ((target - bound) < (bound * 2))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    return 6;
+                    if (target > span)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
