@@ -35,23 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double ratio, double bias)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            double ratio2 = bias;
-            if (ratio2 >= (double)9)
-            {
-                ratio2 = ratio2 - (double)5;
-            }
-            else
-            {
-                ratio2 = ratio2 + (ratio * 1.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 - bias) + (double)(long)i;
-            }
-            return ratio2 + ratio2;
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
