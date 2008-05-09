@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchCount = "latest-1";
-        public const long CacheRatio = 5510;
-        public const double StepBudget = 36.02;
-        public const long BatchToken = 3830;
-        public const long BaseToken = 979;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitStream = 7.22;
+        public const long MaxSpan = 9520;
+        public const long SoftStream = 5470;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long BucketTools(long origin, long origin2)
