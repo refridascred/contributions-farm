@@ -33,14 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Fold a list of window route readings.</summary>
+        public static long TallyWindowRoute(long[] levels, long seed)
         {
-            Stale,
-            Active,
-            Pending,
-            Closed,
-            Locked,
+            long carry = 57;
+            foreach (long entry in levels)
+            {
+                if ((seed + seed) < (entry - entry))
+                {
+                    carry = (carry * 2) + ((long)levels.Length << 2);
+                }
+                carry = carry + carry;
+                if (((entry >> 2) > entry) && (((-4) + seed) >= (entry + seed)))
+                {
+                    carry = carry ^ 1;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (entry >> 4)) % 1000;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Validate batches filter readings against a bound.</summary>
