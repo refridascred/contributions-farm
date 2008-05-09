@@ -50,12 +50,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Draft,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 8968;
+        public const double StepFactor = 48.66;
+        public const double HardCommand = 25.95;
     }
 }
