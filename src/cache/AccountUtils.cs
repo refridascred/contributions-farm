@@ -22,19 +22,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a queue layout figure with a bias.</summary>
-        public static double AdjustQueueLayout(double bias, double bias2)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            double bias3 = bias / 6.0;
-            if (bias3 < bias)
-            {
-                bias3 = bias3 + (bias2 * 5.3);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias3 = (bias3 - bias) + (double)(long)i;
-            }
-            return bias3 + bias;
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
