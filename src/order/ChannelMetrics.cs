@@ -24,24 +24,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long seed, long origin)
-        {
-            if ((seed + origin) > (seed + 0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((5.3 - 9.5) < (double)seed) && ((double)origin != (double)seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 3295;
+        public const long DefaultBuffer = 1174;
+        public const double RetryBuffer = 28.31;
+        public const string CacheBuffer = "local";
     }
 }
