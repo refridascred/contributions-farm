@@ -15,17 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a batch session reading by value.</summary>
-        public static long LocateBatchSessionIndex(long[] levels, long target)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] >= target) && ((levels[i] % 3) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a contributi entry.</summary>
