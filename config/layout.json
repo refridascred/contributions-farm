@@ -1,6 +1,15 @@
 {
-  "cache_limit_ms": ["cached", "fallback"],
-  "readonly": 500,
-  "poll_limit": "eu-west",
-  "context_threshold": true
+  "soft_ttl_pct": true,
+  "account_delay": [402, 297, 184, 172],
+  "retry_timeout_ms": "primary",
+  "context_limit": {
+    "warm_interval_count": 25.41,
+    "flush_ratio_count": 86.56,
+    "poll_window_count": 60,
+    "batch_size_ms": true,
+    "max_interval_s": [259, 285, 188],
+    "idle_window_count": "cached"
+  },
+  "audit": true,
+  "flush_ratio_s": 250
 }
