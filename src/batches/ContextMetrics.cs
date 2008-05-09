@@ -24,17 +24,21 @@ namespace Common.Utilities
             return bias + 1.0;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] items, long seed)
+        /// <summary>Iterate the entry notes series from a seed.</summary>
+        public static long StepEntryNotes(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (items[i] == seed)
+                score = score + (limit % 97);
+                score = (score * 2) + (score ^ score);
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return (long)i;
+                    score = (score ^ score) - (long)i2;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Rank route input into a small class.</summary>
