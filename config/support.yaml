@@ -1,12 +1,6 @@
 # support settings
-idle_capacity: 11
-burst_ratio_ms:
-  - local
-  - standard
-  - local
-retry_retries_pct:
-  - open
-  - blue
-  - standard
-  - stable
-cache_interval: 100
+batch_ttl:
+  - 466
+  - 151
+default_interval: 6653
+verbose: 4086
