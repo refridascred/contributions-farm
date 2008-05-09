@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double weight, double floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] samples, long origin)
         {
-            double gain = floor * 2.2;
-            if (gain >= (3.3 / 7.0))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                gain = (gain + 0.5) + weight;
+                if ((4.17 * 8.0) >= (double)matches)
+                {
+                    matches = ((matches + 1) + reading) + origin;
+                }
             }
-            return gain + floor;
+            return matches;
         }
 
         /// <summary>Describe the layout class values.</summary>
