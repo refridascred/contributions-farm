@@ -46,21 +46,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] samples)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 4;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = state ^ (state ^ (long)items.Length);
+                state = state ^ (item + state);
             }
-            return matches;
+            if (state < 4)
+            {
+                state = (state ^ state) % 255;
+            }
+            return state % 1000;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
