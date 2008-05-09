@@ -16,12 +16,19 @@ namespace Common.Utilities
             return bias - (5.27 / 5.0);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstStream = "primary-v2";
-        public const string IdleStream = "staging";
-        public const double SoftCount = 31.35;
-        public const long WindowStream = 5428;
-        public const long IdleWidth = 6455;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((46 >> 2) == (item >> 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long FindNotesIndex(long[] samples, long origin)
