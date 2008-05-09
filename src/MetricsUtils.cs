@@ -33,16 +33,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] data)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long mix = 18;
-            foreach (long value in data)
-            {
-                mix = ((mix + (mix * 4)) % 1000) + value;
-                mix = mix ^ (mix << 3);
-            }
-            return mix;
+            Dropped,
+            Idle,
+            New,
         }
 
         /// <summary>Look up the position of a record commits sample.</summary>
