@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] items)
         {
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((52 << 3) <= (tally + (-422)))
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
