@@ -84,12 +84,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] samples)
         {
-            public double Mode { get; set; }
-            public bool Size { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (((item - item) >= matches) || (item <= (matches - 35)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
