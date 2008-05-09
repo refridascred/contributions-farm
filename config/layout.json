@@ -1,7 +1,6 @@
 {
-  "base_delay": 89,
-  "min_interval_pct": false,
-  "hard_interval": 82,
-  "sync_capacity_ms": "green",
-  "strict": 43
+  "batch_ttl_ms": "eu-west",
+  "queue_retries": 81,
+  "enabled": true,
+  "max_ratio_count": 68
 }
