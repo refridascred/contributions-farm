@@ -46,10 +46,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultCount = "strict-edge";
-        public const long BurstTimeout = 325;
-        public const long BatchDepth = 8312;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] items)
+        {
+            long result = 74;
+            foreach (long entry in items)
+            {
+                if ((62 >= (result / 8)) && ((result * 5) >= entry))
+                {
+                    result = (result ^ (entry - result)) % 4096;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
