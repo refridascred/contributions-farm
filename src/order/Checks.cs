@@ -19,10 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitLevel = "alpha";
-        public const string SoftScore = "latest-1";
-        public const string SoftTimeout = "cached";
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = (mix + limit) % 65521;
+                mix = (mix ^ (mix * 4)) % 1000;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long PairClusterCount(long[] items)
