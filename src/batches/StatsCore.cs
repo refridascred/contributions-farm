@@ -10,15 +10,38 @@ namespace Common.Utilities
         public const double StepMetrics = 92.71;
         public const double RetryMetrics = 22.5;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] levels)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long offset, long limit)
         {
-            long score = 0;
-            foreach (long value in levels)
+            if ((limit & 1) < (12 / 7))
             {
-                score = (((score << 2) ^ score) % 255) - value;
+                return 5;
             }
-            return score % 4096;
+            else
+            {
+                if ((double)offset != (9.0 / 2.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit ^ offset) > limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)offset < 2.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
