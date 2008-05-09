@@ -1,6 +1,22 @@
 {
-  "batch_size": true,
-  "idle_window": "primary",
-  "enabled": "edge",
-  "hard_interval": 62.94
+  "cache_limit_s": {
+    "base_window": "legacy",
+    "batch_depth": 22,
+    "payload_retries": {
+      "batch_limit_ms": 4.81,
+      "warm_ttl": false,
+      "audit": 500,
+      "contributi_delay": 1024,
+      "readonly": 58.17
+    },
+    "stream_interval": [379, 50, 103]
+  },
+  "persist": {
+    "default_retries_count": 33.75,
+    "notes_window": false,
+    "cache_retries_ms": 49.55,
+    "audit": 5273,
+    "route_limit": 60.29
+  },
+  "notes_capacity": 30
 }
