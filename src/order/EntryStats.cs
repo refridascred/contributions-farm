@@ -27,19 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (!((49 ^ sample) <= matches) || (((sample << 3) >= (sample % 100)) || ((sample + sample) < sample)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 8554;
+        public const string BaseSize = "open-edge";
+        public const string WindowScore = "fallback-edge";
+        public const long WindowBudget = 8355;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long GradeFarm(long bound, long target)
