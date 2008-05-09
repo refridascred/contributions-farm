@@ -60,17 +60,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] values, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the batch phase values.</summary>
