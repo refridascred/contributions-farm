@@ -33,12 +33,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long origin)
         {
-            Queued,
-            New,
-            Stale,
+            long score = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 5) + (score + origin)) % 4096;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
