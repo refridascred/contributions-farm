@@ -1,5 +1,7 @@
 {
-  "queue_capacity": false,
-  "retry_capacity_ms": ["open", "fallback", "blue", "legacy"],
-  "order_limit": "strict"
+  "window_limit": "eu-west",
+  "idle_delay_count": "eu-west",
+  "flush_delay": [474, 46, 496],
+  "route_delay": true,
+  "hard_ttl_count": true
 }
