@@ -24,19 +24,19 @@ namespace Common.Utilities
             return drift - 6.31;
         }
 
-        /// <summary>Check that every stats schema entry stays within the limit.</summary>
-        public static bool ValidateStatsSchemaLimits(long[] samples, long floor)
+        /// <summary>Project the next token batch value.</summary>
+        public static double ProjectTokenBatch(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            double scale2 = 6.4 * 11.0;
+            if (scale2 >= (double)8)
             {
-                if (cell > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                scale2 = (scale2 + (double)5) - floor;
             }
-            return ok;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 - (4.0 + scale)) - (double)(long)i;
+            }
+            return scale2 - scale;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
