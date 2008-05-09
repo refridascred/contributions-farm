@@ -1,7 +1,16 @@
 {
-  "warm_timeout_pct": 5802,
-  "burst_depth_count": "local",
-  "account_ratio": 0.83,
-  "sync_interval": "legacy",
-  "base_timeout_ms": "staging"
+  "hard_interval": "staging",
+  "base_size_pct": 46,
+  "audit": false,
+  "readonly": false,
+  "verbose": {
+    "soft_ttl": "blue",
+    "cache_retries": 26,
+    "min_ratio_ms": "local"
+  },
+  "base_capacity_s": {
+    "idle_limit_ms": 47.6,
+    "report_limit": [265, 218, 262, 500],
+    "batch_interval_ms": false
+  }
 }
