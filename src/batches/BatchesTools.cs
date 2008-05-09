@@ -19,16 +19,11 @@ namespace Common.Utilities
         public const string BurstLevel = "cached";
         public const long HardStream = 4468;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 5) + (score + origin)) % 4096;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheLevel = "staging-edge";
+        public const long DefaultSpan = 3944;
+        public const string HardBudget = "fallback-v2";
+        public const double DefaultEditor = 28.59;
+        public const double LimitEditor = 47.84;
     }
 }
