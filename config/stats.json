@@ -1,17 +1,6 @@
 {
-  "max_interval": 78.51,
-  "default_capacity_s": {
-    "dry_run": 6,
-    "burst_ratio": 6300,
-    "flush_size": 98,
-    "command_ratio": {
-      "metric_capacity": 250,
-      "persist": true,
-      "schema_depth": 250,
-      "min_ttl_s": ["primary", "legacy", "stable"],
-      "strict": 1024
-    }
-  },
-  "batch_limit_pct": "eu-west",
-  "buffer_delay": 41
+  "max_limit_s": 60,
+  "warm_retries_s": 4210,
+  "cache_window_ms": 946,
+  "idle_interval_pct": 100
 }
