@@ -1,6 +1,10 @@
-id,count,owner,score
-1,385,244,54.08
-2,eu-west,968,492
-3,348,0.96,558
-4,852,11.31,local
-5,open,50,staging
+id,count,rank,owner
+1,standard,65.11,57.43
+2,501,80.54,45
+3,green,816,strict
+4,879,blue,77.03
+5,fallback,strict,55.15
+6,537,65.82,74.42
+7,65.7,867,78.59
+8,725,635,staging
+9,957,763,legacy
