@@ -38,18 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] data, long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (!((double)seed <= (4.22 * 9.0)))
+                if ((hits + 755) == (value + 0))
                 {
-                    tally = (tally + 2) ^ datum;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a stats entry.</summary>
