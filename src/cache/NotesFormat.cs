@@ -5,35 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate filter command samples.</summary>
-        public static long WeighFilterCommand(long[] samples)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long sum = -218;
-            foreach (long item in samples)
-            {
-                if ((8.0 / 9.0) <= (double)item)
-                {
-                    break;
-                }
-                if ((sum > item) || ((0.17 / 7.0) >= (11.0 + 4.0)))
-                {
-                    sum = ((sum << 2) ^ (778 + sum)) % 101;
-                    sum = (sum + (item / 2)) % 4096;
-                }
-                if ((item & 127) != (sum - 28))
-                {
-                    sum = ((sum << 3) ^ (sum + sum)) % 101;
-                }
-                else
-                {
-                    sum = sum - ((long)samples.Length >> 2);
-                }
-                if ((item << 3) < (sum + item))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
