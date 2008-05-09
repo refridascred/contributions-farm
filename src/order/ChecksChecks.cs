@@ -30,15 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long floor)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Locked,
+            Idle,
+            Closed,
         }
     }
 }
