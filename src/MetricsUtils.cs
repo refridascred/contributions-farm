@@ -51,22 +51,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] values, long origin)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading <= (1.0 * 4.3))
+                if (series[i] <= offset)
                 {
-                    tally = (tally + 3) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
