@@ -47,18 +47,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] levels)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)4 == (double)sample) || (count >= sample))
+                if (readings[i] == origin)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Blend two session measurements.</summary>
