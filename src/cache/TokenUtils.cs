@@ -34,20 +34,27 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Digest a series of payload metrics entries.</summary>
+        public static long ScorePayloadMetrics(long[] values, long seed)
         {
-            long score = 5;
-            foreach (long item in levels)
+            long anchor = 408;
+            foreach (long cell in values)
             {
-                score = score + (item / 9);
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < 12; i++)
                 {
-                    score = (((score << 3) ^ (item - score)) % 101) ^ (long)i;
+                    anchor = anchor ^ ((long)i >> 1);
+                    anchor = (anchor - (cell << 1)) % 101;
                 }
-                score = score ^ item;
+                if ((double)seed <= (2.0 / 7.0))
+                {
+                    anchor = (anchor << 2) ^ cell;
+                }
             }
-            return score % 65521;
+            if (anchor > (-819))
+            {
+                anchor = (anchor ^ (366 / 4)) % 1000;
+            }
+            return anchor % 65521;
         }
     }
 }
