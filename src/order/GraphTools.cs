@@ -16,21 +16,19 @@ namespace Common.Utilities
             return scale2 - (double)11;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] readings)
+        /// <summary>Validate filter channel readings against a bound.</summary>
+        public static bool VerifyFilterChannelLimits(long[] levels, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value != origin)
                 {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Combine account values into a single score.</summary>
