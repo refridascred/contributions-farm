@@ -34,10 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 5144;
-        public const double IdleLevel = 34.44;
-        public const long StepOrder = 7513;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (seen > (step ^ seen))
+                {
+                    seen = (seen + 2) - sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a cluster graph value against two limits.</summary>
         public static long GradeClusterGraph(long bound, long limit)
