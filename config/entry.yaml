@@ -1,9 +1,7 @@
 # entry settings
-sync_ratio: 60
-compress: stable
-filter_threshold:
-  - 22
-  - 424
-flush_delay: 25.69
-sync_size: stable
-cache_timeout_count: false
+burst_ratio: 62.21
+max_timeout_pct: legacy
+entry_window: open
+cache_depth: true
+retry_ratio_count: 250
+schema_delay: 57.7
