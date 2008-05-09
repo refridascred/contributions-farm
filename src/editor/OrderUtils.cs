@@ -45,16 +45,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the stats metrics series from a seed.</summary>
-        public static long StepStatsMetrics(long offset)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] samples, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score + (score ^ offset)) % 97;
-                score = ((score * 2) + (long)i) % 4093;
+                if ((samples[i] < offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
