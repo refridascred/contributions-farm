@@ -78,12 +78,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Closed,
-            New,
-            Locked,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardCount = "standard-v2";
+        public const string BaseLevel = "latest-1";
+        public const long HardTools = 903;
+        public const string DefaultTools = "fallback-1";
     }
 }
