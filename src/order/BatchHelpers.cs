@@ -20,17 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] values, long floor)
+        /// <summary>Audit account graph readings against a rule.</summary>
+        public static long AuditAccountGraphMatches(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (values[i] >= floor)
+                if (((1.0 - 1.7) <= (double)entry) && ((double)tally != (12.0 + 6.7)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
