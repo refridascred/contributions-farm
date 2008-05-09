@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Dropped,
-            Pending,
-            Synced,
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
