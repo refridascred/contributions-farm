@@ -104,23 +104,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double scale, double offset)
-        {
-            double rate = (offset + scale) + offset;
-            if (rate > (4.6 / 5.0))
-            {
-                rate = rate - (rate - scale);
-            }
-            else
-            {
-                rate = rate - (rate - offset);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + 3.44) + (double)(long)i;
-            }
-            return rate - (offset / 6.0);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftBatches = "cached-edge";
+        public const double MaxBatches = 59.36;
+        public const long LimitBatches = 641;
+        public const long DefaultBatches = 5663;
+        public const long MinBatches = 5429;
     }
 }
