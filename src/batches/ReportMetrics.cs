@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] levels, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            long carry = -80;
+            foreach (long cell in levels)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                carry = (carry ^ origin) ^ cell;
+                carry = (carry ^ (carry * 2)) % 4096;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Accumulate editor samples.</summary>
