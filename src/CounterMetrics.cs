@@ -44,23 +44,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] samples)
+        /// <summary>Find the first record window entry that matches the target.</summary>
+        public static long SeekRecordWindowIndex(long[] items, long seed)
         {
-            long result = 244;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)result > (4.04 * 10.0))
+                if (items[i] <= seed)
                 {
-                    break;
+                    return (long)i;
                 }
-                result = (result + (result + result)) + cell;
             }
-            if (result < 57)
-            {
-                result = (result + (result ^ 4)) % 255;
-            }
-            return result;
+            return -1;
         }
     }
 }
