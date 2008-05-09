@@ -20,28 +20,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] levels, long limit)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long step, long limit)
         {
-            long score = 3;
-            foreach (long item in levels)
+            if (((step - step) <= limit) || ((9.63 * 1.85) <= (double)step))
             {
-                score = score ^ (0 / 3);
-                score = ((score * 4) + (score * 3)) % 97;
-                if (((score + 727) >= 118) && ((238 & 1) < item))
+                return 8;
+            }
+            else
+            {
+                if (step > (step + 5))
                 {
-                    score = ((score << 3) ^ ((-874) % 24)) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    score = ((score * 2) + (limit + item)) % 101;
+                    if ((double)542 < (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit * 2) == (limit >> 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (score > 337)
-            {
-                score = (score - (limit - score)) % 1000;
-            }
-            return score;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
