@@ -27,24 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stream filter input into a small class.</summary>
-        public static long BucketStreamFilter(long limit, long origin)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            if ((limit % 12) < (origin - origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit / 8) != (origin - limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Locate a batch token reading by value.</summary>
