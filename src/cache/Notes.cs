@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 9231;
+        public const long RetryTimeout = 8216;
+        public const long HardSpan = 8811;
+        public const double DefaultBatch = 47.34;
+        public const string MinInterval = "alpha-v2";
 
         /// <summary>Grade a tools editor value against two limits.</summary>
         public static long RankToolsEditor(long seed, long offset)
