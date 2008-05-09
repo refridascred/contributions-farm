@@ -1,14 +1,10 @@
 # Command notes
 
-Use githubfarm settings to tune how often githubfarm data is refreshed.
-Run the account check before changing any queue limits.
-The cache module keeps schema values in sync with the counter cache.
-
-Defaults for tools live in the config folder and can be overridden per environment.
-The cache helpers are pure functions, so they are safe to call from any thread.
+Run the payload check before changing any editor limits.
+The report module keeps context values in sync with the session cache.
 
 ## Guidelines
 
-- Document new schema fields
-- Prefer payload defaults
-- Log every metrics change
+- Document new stats fields
+- Review context limits each release
+- Prefer channel defaults
