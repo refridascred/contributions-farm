@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepCount = 595;
-        public const long MinRatio = 3151;
-        public const double WindowBatch = 79.81;
-        public const string SoftWidth = "open";
-        public const double HardTimeout = 93.33;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry << 2) ^ (carry >> 5)) % 101;
+                if (!((double)carry == (5.16 / 8.0)))
+                {
+                    carry = ((carry << 2) ^ (carry >> 5)) % 1000;
+                    carry = (carry << 2) ^ carry;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
