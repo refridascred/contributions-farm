@@ -39,22 +39,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseScore = 14.7;
+        public const long WindowAccount = 8823;
+        public const string CacheAccount = "staging-v2";
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
