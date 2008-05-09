@@ -22,14 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] values, long limit)
         {
-            Pending,
-            New,
-            Idle,
-            Dropped,
-            Done,
+            long sum = 13;
+            foreach (long item in values)
+            {
+                sum = ((sum + limit) % 97) - item;
+            }
+            return sum % 97;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
