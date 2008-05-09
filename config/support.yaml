@@ -1,6 +1,24 @@
 # support settings
-soft_size_s: 92
-route_threshold: true
-graph_ttl: standard
-batch_limit_count: 62.52
-persist: 16.38
+soft_ratio: local
+cache_timeout_count: strict
+buffer_limit:
+  batches_ttl: primary
+  enabled: 47.71
+  batch_window_count: 60
+  burst_size:
+    hard_capacity_count:
+      - 255
+      - 228
+      - 443
+    max_interval: 3838
+    window_delay: 87
+    default_delay_count: 6285
+    hard_ttl: edge
+  verbose:
+    - edge
+    - blue
+    - strict
+    - open
+session_ratio: 30
+soft_size_ms: 250
+verbose: legacy
