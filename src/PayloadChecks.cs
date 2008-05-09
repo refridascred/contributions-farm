@@ -66,16 +66,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the editor channel series from a seed.</summary>
-        public static long IterateEditorChannel(long floor)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                total = (total ^ (floor - 140)) % 101;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Paused,
+            Retry,
+            Stale,
         }
     }
 }
