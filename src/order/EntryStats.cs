@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long step)
         {
-            Idle,
-            Queued,
-            Paused,
-            Stale,
-            Pending,
+            long carry = step;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry << 3) ^ (carry >> 2)) % 4096;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of record queue readings.</summary>
