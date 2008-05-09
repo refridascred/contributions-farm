@@ -33,12 +33,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long target, long offset)
         {
-            Idle,
-            Draft,
-            Failed,
+            long lane = target - offset;
+            if ((double)lane != (7.5 / 4.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (4 > (offset + lane))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
