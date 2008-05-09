@@ -26,17 +26,19 @@ namespace Common.Utilities
         public const long BaseDepth = 5711;
         public const string WindowWidth = "strict-edge";
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] readings, long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 17;
+            foreach (long value in values)
             {
-                if ((readings[i] == floor) && ((readings[i] % 5) != 0))
+                if ((3.0 - 16.0) == (double)sum)
                 {
-                    return (long)i;
+                    sum = sum + (sum >> 3);
                 }
+                sum = ((sum * 4) + (value / 3)) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Validate format order readings against a bound.</summary>
