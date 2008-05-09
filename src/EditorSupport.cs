@@ -67,13 +67,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Measure how many route support samples are out of range.</summary>
+        public static long AuditRouteSupportGaps(long[] items, long floor)
         {
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((seen / 3) >= ((long)items.Length + seen))
+                {
+                    seen = ((seen + 2) + datum) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a graph header.</summary>
