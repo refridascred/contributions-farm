@@ -39,26 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] values, long offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] levels)
         {
-            long mix = 9;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((180 ^ offset) >= entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix << 3) ^ (entry - entry);
-                }
-                if (!((4.0 - 4.65) == (double)entry))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix < 300)
-            {
-                mix = (mix ^ (mix + offset)) % 255;
-            }
-            return mix;
+            return seen;
         }
     }
 }
