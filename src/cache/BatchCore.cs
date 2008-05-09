@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long origin, long step)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            if (step >= (origin & 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((0.19 + 8.42) != (double)step) && ((origin + step) != (945 % 60)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin < (origin + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
