@@ -1,13 +1,13 @@
 # entry settings
-verbose: cached
-cache_limit:
-  - 302
-  - 385
-  - 282
-burst_depth:
-  - 165
-  - 202
-  - 418
-  - 189
-window_depth: edge
-cluster_limit: standard
+poll_threshold: 6955
+min_capacity_count: 53.01
+strict: 100
+sync_ratio:
+  warm_threshold: 87
+  cache_ratio_s: staging
+  compress: cached
+  retry_threshold: open
+enabled:
+  - 494
+  - 373
+  - 420
