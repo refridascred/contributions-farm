@@ -46,21 +46,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of checks metrics readings.</summary>
-        public static long MatchChecksMetricsCount(long[] items)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = 19.0;
+            if (weight >= scale)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + (double)2;
             }
-            return tally;
+            return weight + bias;
         }
     }
 }
