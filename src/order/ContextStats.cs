@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double scale, double floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] data, long limit)
         {
-            double drift = 0.41;
-            return ((drift - (double)7) + scale) + floor;
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((datum << 1) < matches)
+                {
+                    matches = (matches + 1) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
