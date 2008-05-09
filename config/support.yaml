@@ -1,6 +1,11 @@
 # support settings
-session_interval: 8098
-format_timeout: true
-batches_threshold: 60
-enabled: 500
-base_ttl_count: edge
+persist: 70.11
+hard_retries:
+  max_size_count: 60
+  batch_window_count: true
+  strict: true
+  poll_retries_count: 60
+  soft_depth_ms: 250
+  layout_timeout: 60
+enabled: 250
+verbose: 3492
