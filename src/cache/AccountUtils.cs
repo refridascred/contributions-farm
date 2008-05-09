@@ -28,13 +28,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] values)
         {
-            public bool Weight { get; set; }
-            public string Level { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
