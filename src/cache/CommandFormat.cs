@@ -50,13 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            Locked,
+            Draft,
+            Closed,
         }
     }
 }
