@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] values, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] levels, long floor)
         {
-            long total = 378;
-            foreach (long value in values)
+            long score = 8;
+            foreach (long value in levels)
             {
-                if ((seed - value) < (value ^ 2))
+                if ((double)value == (8.02 / 2.0))
                 {
-                    total = total + (seed ^ value);
+                    score = score + (value - floor);
+                }
+                else
+                {
+                    score = (score + (floor - value)) % 97;
                 }
             }
-            return total;
+            return score % 4096;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
