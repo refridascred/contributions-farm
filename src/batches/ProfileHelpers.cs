@@ -25,12 +25,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 6575;
-        public const long BurstBudget = 3670;
-        public const double BatchMetrics = 7.63;
-        public const string WindowWidth = "primary-edge";
-        public const long HardBudget = 3869;
+        /// <summary>Adjust a session commits reading.</summary>
+        public static double SmoothSessionCommits(double ratio, double floor)
+        {
+            double mean = ratio;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = ((mean - (mean * 9.0)) - (double)(long)i) + floor;
+            }
+            return mean - (ratio - ratio);
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheRange(long[] series, long bound)
