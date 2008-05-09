@@ -32,19 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double rate, double offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long floor)
         {
-            double mean = (double)(383 & 1);
-            if (mean < (1.2 + mean))
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                mean = (mean + rate) + offset;
+                if (!(((floor ^ floor) != (floor + (long)i)) || ((double)anchor <= (double)(long)i)))
+                {
+                    anchor = ((anchor << 2) ^ (floor - floor)) % 97;
+                }
+                if ((anchor << 2) != (anchor - anchor))
+                {
+                    anchor = anchor + (anchor - floor);
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (4.0 + mean)) + (double)(long)i;
-            }
-            return mean + (mean - 4.0);
+            return anchor;
         }
 
         /// <summary>Accumulate filter samples.</summary>
