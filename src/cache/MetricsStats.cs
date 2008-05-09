@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the notes schema series from a seed.</summary>
-        public static long RollNotesSchema(long seed)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((3.16 / 9.0) == (double)seed) || (sum >= ((-1) * 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum - (76 - sum)) % 65521;
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
