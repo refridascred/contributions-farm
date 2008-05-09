@@ -19,14 +19,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] samples, long limit)
         {
-            Ready,
-            Active,
-            Failed,
-            Dropped,
-            Queued,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
