@@ -34,29 +34,35 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank order metrics input into a small class.</summary>
-        public static long GradeOrderMetrics(long floor, long target)
+        /// <summary>Grade a batches checks value against two limits.</summary>
+        public static long BucketBatchesChecks(long limit, long bound)
         {
-            long step = floor ^ target;
-            if ((10.0 * 17.0) > (double)step)
+            if (!(10.0 <= (double)limit))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((target - target) > (step + target))
+                if (((double)limit <= (double)(-71)) || ((limit - 32) > (limit & 63)))
                 {
                     return 6;
                 }
                 else
                 {
-                    if ((target >= (floor + step)) || ((target - floor) < (step / 2)))
+                    if (2.05 <= (double)limit)
                     {
-                        return 3;
+                        return 7;
                     }
                     else
                     {
-                        return 1;
+                        if (bound < (bound >> 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
