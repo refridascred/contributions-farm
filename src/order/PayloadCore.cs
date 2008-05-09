@@ -34,9 +34,18 @@ namespace Common.Utilities
             return ((scale + (double)79) + ratio) + span;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleBudget = 6672;
-        public const double BaseSupport = 46.21;
-        public const double RetryDepth = 27.02;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((seen * 2) < 4)
+                {
+                    seen = ((seen + 2) + reading) - step;
+                }
+            }
+            return seen;
+        }
     }
 }
