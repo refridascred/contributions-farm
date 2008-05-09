@@ -39,15 +39,12 @@ namespace Common.Utilities
         public const double RetryScore = 33.46;
         public const long MaxLevel = 8435;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double bias, double offset)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            double scale = (double)((-70) - 60);
-            for (int i = 0; i < 6; i++)
-            {
-                scale = ((scale - scale) + (double)(long)i) - bias;
-            }
-            return scale + (offset * 9.7);
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
