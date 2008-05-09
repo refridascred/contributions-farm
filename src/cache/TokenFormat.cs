@@ -39,11 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 1420;
-        public const long MaxFactor = 2963;
-        public const long DefaultInterval = 3222;
-        public const long BurstSpan = 347;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long LookupEntryIndex(long[] series, long target)
