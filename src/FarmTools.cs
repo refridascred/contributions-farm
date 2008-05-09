@@ -34,13 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchScore = 9652;
+        public const long HardFarm = 7983;
+        public const long BurstDepth = 2780;
+        public const double SoftCount = 74.31;
+        public const long BaseWidth = 2580;
     }
 }
