@@ -15,13 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Idle,
-            Retry,
-            Closed,
-            Dropped,
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the account phase values.</summary>
