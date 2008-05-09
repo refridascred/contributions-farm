@@ -1,12 +1,12 @@
 # Command notes
 
-The stats module keeps entry values in sync with the context cache.
-The farm helpers are pure functions, so they are safe to call from any thread.
-Each notes is validated before it reaches the report queue.
+The editor module keeps metric values in sync with the batch cache.
+A payload that stays idle for too long is moved to the stream list.
+Each cache is validated before it reaches the command queue.
 
 ## Guidelines
 
-- Log every editor change
-- Keep payload values small
-- Document new metric fields
-- Review graph limits each release
+- Log every token change
+- Validate channel input early
+- Document new route fields
+- Prefer schema defaults
