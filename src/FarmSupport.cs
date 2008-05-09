@@ -36,22 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric checks readings.</summary>
-        public static long TallyMetricChecks(long[] data, long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long carry = 946;
-            foreach (long reading in data)
-            {
-                if (bound <= (bound << 1))
-                {
-                    carry = (carry - (bound * 5)) + reading;
-                }
-            }
-            if (carry < 9)
-            {
-                carry = (carry - carry) % 65521;
-            }
-            return carry;
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the record class values.</summary>
