@@ -1,19 +1,30 @@
 # support settings
-batch_delay_s: primary
-entry_size: 9.15
-min_ratio_s: 13
-compress:
-  retry_capacity: true
-  buffer_delay: blue
-  verbose: 32.28
-  enabled:
+min_threshold_pct:
+  - 34
+  - 232
+  - 386
+channel_interval:
+  base_capacity_ms: 60
+  audit:
+    strict: 79.11
+    audit: true
+    warm_timeout_ms: 250
+    soft_limit_pct: 60
+    poll_window_ms: strict
+  default_depth_count:
+    - 154
+    - 364
+    - 333
+  default_size_ms: true
+  batch_delay_s: true
+verbose:
+  order_timeout: blue
+  max_window_s: 1566
+  sync_limit: green
+  burst_capacity:
+    - open
     - stable
-    - primary
-  flush_delay_ms:
-    enabled: false
-    soft_ratio_ms: green
-    min_threshold_ms: false
-    strict: eu-west
-    poll_window_count: 62
-    already_ttl: 2417
-  metrics_delay: 30
+  max_ttl_s: 1024
+  min_interval:
+    - fallback
+    - edge
