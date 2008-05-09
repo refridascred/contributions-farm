@@ -75,19 +75,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] data, long origin)
+        /// <summary>Find the first contributi route entry that matches the target.</summary>
+        public static long FindContributiRouteIndex(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < origin)
+                if ((data[i] < seed) && ((data[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
