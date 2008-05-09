@@ -35,38 +35,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long target, long origin)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            if (target < (origin - 35))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin - target) < (origin % 12))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((0 - origin) > (target / 5)) || ((target * 3) >= target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target < (21 / 2)) && ((321 * 5) > (origin ^ 66)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the payload mode values.</summary>
