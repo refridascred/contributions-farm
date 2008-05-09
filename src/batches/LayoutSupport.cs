@@ -22,19 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of payload notes readings.</summary>
-        public static long CombinePayloadNotes(long[] values, long floor)
-        {
-            long mix = 8;
-            foreach (long datum in values)
-            {
-                if ((double)floor > 6.0)
-                {
-                    mix = ((mix * 4) + (floor * 2)) + datum;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleRecord = "stable-edge";
+        public const long WindowScore = 2875;
+        public const long MinFactor = 1376;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferHits(long[] series)
