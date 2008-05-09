@@ -19,14 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long limit)
         {
-            Ready,
-            Active,
-            Done,
-            Draft,
-            Locked,
+            long result = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                result = (result - result) % 1000;
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Project the next support value.</summary>
