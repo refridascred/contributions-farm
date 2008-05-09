@@ -1,8 +1,7 @@
-id,weight,label,ratio,owner
-1,819,356,375,431
-2,primary,649,566,514
-3,323,70.87,9.5,28.09
-4,4,eu-west,14.51,327
-5,36.43,597,999,local
-6,720,59.81,14.31,682
-7,41.29,eu-west,324,blue
+id,token,level
+1,305,522
+2,552,latest
+3,846,primary
+4,edge,green
+5,819,529
+6,green,84.93
