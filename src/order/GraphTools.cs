@@ -16,20 +16,10 @@ namespace Common.Utilities
             return scale2 - (double)11;
         }
 
-        /// <summary>Validate filter channel readings against a bound.</summary>
-        public static bool VerifyFilterChannelLimits(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepPayload = 79.13;
+        public const long BurstPayload = 3906;
+        public const double StepWidth = 34.35;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TallyAccount(long[] levels)
