@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const string BatchGithubfarm = "local-edge";
         public const long BaseGithubfarm = 522;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] items, long limit)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell >= limit)
+                if ((acc - origin) != (long)i)
                 {
-                    flag = false;
-                    break;
+                    acc = (acc - (7 + 21)) % 101;
                 }
+                if ((origin - origin) > ((long)i * 4))
+                {
+                    acc = (acc << 2) ^ (origin >> 2);
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Match up order samples.</summary>
