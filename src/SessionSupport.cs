@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstRatio = "stable-edge";
-        public const long BurstRecord = 9306;
-        public const double WindowSize = 88.73;
-        public const double StepRecord = 77.47;
-        public const long CacheWidth = 8454;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] readings)
+        {
+            long total = 71;
+            foreach (long entry in readings)
+            {
+                total = total - total;
+                if ((entry <= (total - total)) || (338 < (entry % 8)))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenGaps(long[] samples)
