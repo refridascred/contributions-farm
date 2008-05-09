@@ -31,22 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit metric route readings against a rule.</summary>
-        public static long TallyMetricRouteGaps(long[] items)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((6.3 - 6.76) < (double)count)
-                {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Stale,
+            Active,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
