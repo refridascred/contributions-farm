@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] data, long floor)
-        {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 1793;
+        public const long MinTimeout = 4875;
+        public const double MaxTimeout = 83.67;
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
