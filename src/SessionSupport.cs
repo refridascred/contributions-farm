@@ -46,19 +46,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every queue entry entry stays within the limit.</summary>
-        public static bool ValidateQueueEntryRange(long[] data, long step)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double ratio, double bias)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            double scale = (ratio * 0.8) + ratio;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = (scale + bias) + (double)(long)i;
             }
-            return ready;
+            return scale + (double)127;
         }
     }
 }
