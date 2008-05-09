@@ -20,19 +20,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] items, long origin)
+        /// <summary>Match up checks token samples.</summary>
+        public static long PairChecksTokenCount(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry <= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
