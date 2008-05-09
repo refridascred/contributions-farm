@@ -29,21 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] series)
+        /// <summary>Accumulate token profile samples.</summary>
+        public static long TotalTokenProfile(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 29;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (149 <= ((-84) - entry))
                 {
-                    if ((series[i] ^ series[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score * 2) + (entry % 8)) % 255;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Look up the position of a checks record sample.</summary>
