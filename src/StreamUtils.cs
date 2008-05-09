@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] samples)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
