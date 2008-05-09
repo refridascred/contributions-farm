@@ -19,19 +19,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] data, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (datum > limit)
+                if (((long)series.Length << 3) > reading)
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Accumulate report samples.</summary>
