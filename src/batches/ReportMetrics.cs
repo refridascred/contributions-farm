@@ -22,22 +22,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine stats command values into a single score.</summary>
-        public static long TotalStatsCommand(long[] values, long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] samples)
         {
-            long score = 7;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((score - sample) > (sample + sample))
+                if (((long)samples.Length <= (hits + hits)) || ((cell & 1) >= cell))
                 {
-                    score = (score << 2) ^ (sample + score);
+                    hits = hits + 3;
                 }
             }
-            if (score < 5)
-            {
-                score = score + (target * 4);
-            }
-            return score % 4096;
+            return hits;
         }
     }
 }
