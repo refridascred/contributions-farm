@@ -20,20 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheContributi = 42.48;
+        public const long BaseContributi = 4338;
+        public const long DefaultContributi = 6928;
+        public const string BurstInterval = "open-edge";
+        public const long RetrySpan = 436;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
