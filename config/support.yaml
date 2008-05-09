@@ -1,21 +1,23 @@
 # support settings
-hard_timeout_ms: 61
-cache_window_count:
-  record_window:
-    - standard
-    - edge
-  hard_retries_ms: true
-  dry_run: 37
-burst_threshold_ms: 85
-idle_limit_s:
-  token_depth:
-    - 105
-    - 2
-  cache_window:
-    order_window: fallback
-    compress: latest
-    soft_window_ms: 250
-  persist: fallback
-  audit: 30
-  metrics_limit: fallback
-  strict: 3
+min_threshold_count:
+  format_ttl: 64.34
+  poll_capacity:
+    enabled: 90.71
+    persist:
+      - 383
+      - 289
+      - 220
+    poll_size_s: standard
+    dry_run: eu-west
+    min_interval:
+      - 281
+      - 267
+      - 99
+      - 109
+    audit: 52
+  retry_ttl_ms: blue
+  base_threshold_s: true
+  poll_ttl_s: 1024
+hard_threshold_count: cached
+tools_limit: 449
+idle_size_pct: 80.7
