@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((long)i <= seed))
-                {
-                    score = (score * 3) + score;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
