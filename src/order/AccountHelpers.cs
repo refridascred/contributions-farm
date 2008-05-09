@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (seen < (seen >> 5))
                 {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 2) + item) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
