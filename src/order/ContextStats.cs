@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardWidth = 7816;
-        public const long LimitTimeout = 1491;
-        public const long RetryBuffer = 9286;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 2) + acc) % 4096;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long RollAccount(long bound)
