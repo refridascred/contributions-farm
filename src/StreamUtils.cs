@@ -52,19 +52,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long origin, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
+            long offset = origin + seed;
+            if ((seed + seed) != (offset >> 1))
             {
-                if ((896 - acc) >= (acc ^ floor))
-                {
-                    acc = ((acc * 3) + (floor << 3)) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if (seed <= 145)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + origin) != (seed ^ offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric options.</summary>
