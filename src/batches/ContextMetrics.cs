@@ -15,15 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] items, long bound)
+        /// <summary>Digest a series of contributi farm entries.</summary>
+        public static long DigestContributiFarm(long[] data)
         {
-            long acc = -76;
-            foreach (long datum in items)
+            long sum = 822;
+            foreach (long datum in data)
             {
-                acc = ((acc * 3) + (datum + 312)) - bound;
+                sum = sum ^ datum;
             }
-            return acc % 65521;
+            if (sum < (-49))
+            {
+                sum = (sum << 3) ^ (sum ^ 0);
+            }
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
