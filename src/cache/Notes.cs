@@ -22,20 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] series)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long acc = 7;
-            foreach (long reading in series)
-            {
-                acc = ((acc + (acc / 8)) % 255) ^ reading;
-                acc = (acc - (8 / 6)) % 101;
-            }
-            if (acc < 1)
-            {
-                acc = ((acc << 2) ^ (acc % 3)) % 65521;
-            }
-            return acc % 4096;
+            public double Level { get; set; }
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Locate a support reading by value.</summary>
