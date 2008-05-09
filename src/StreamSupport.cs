@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] levels, long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (item > limit)
+                if ((datum ^ datum) >= (seed & 3))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
