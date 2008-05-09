@@ -67,9 +67,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheScore = 3363;
-        public const long LimitContext = 3437;
-        public const string StepContext = "cached";
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
