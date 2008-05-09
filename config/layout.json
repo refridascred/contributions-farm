@@ -1,17 +1,7 @@
 {
-  "poll_limit_count": {
-    "enabled": 61,
-    "strict": true,
-    "flush_threshold": "cached",
-    "readonly": {
-      "enabled": false,
-      "strict": true,
-      "retry_delay_s": 29.63
-    },
-    "cache_limit_s": 1024
-  },
-  "default_delay_pct": 30,
-  "format_threshold": 7946,
-  "soft_retries_count": true,
-  "max_delay": 100
+  "max_size_s": [479, 42],
+  "stream_window": 59,
+  "max_window": [313, 224, 114],
+  "dry_run": 30,
+  "burst_depth_pct": "open"
 }
