@@ -52,19 +52,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double ratio, double span)
+        /// <summary>Match up support command samples.</summary>
+        public static long CompareSupportCommandCount(long[] levels)
         {
-            double gain = span;
-            if (gain > gain)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain + 5.84;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (ratio * 2.04)) + (double)(long)i;
-            }
-            return gain + span;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
