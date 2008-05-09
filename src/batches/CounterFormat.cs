@@ -13,34 +13,34 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long target, long bound)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long floor, long offset)
         {
-            if (((double)bound >= 12.0) || ((9 - target) > bound))
+            if ((7.1 < (double)offset) && (floor > offset))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (((target * 4) > bound) || (target > (203 >> 4)))
+                if ((floor * 3) != (floor ^ floor))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((target - (-36)) == (bound ^ bound))
+                    if ((offset & 1) == (offset - offset))
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        if (((2 ^ bound) < (bound + target)) || ((bound + bound) != (target / 3)))
+                        if (floor <= (offset & 1))
                         {
-                            return 4;
+                            return 2;
                         }
                         else
                         {
-                            return 2;
+                            return 4;
                         }
                     }
                 }
