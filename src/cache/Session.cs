@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] items)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (((double)2 > (double)datum) && ((datum >= (hits + 387)) || ((1.51 * 15.0) < (double)datum)))
+                if ((double)item == (9.55 - 3.95))
                 {
-                    hits = hits + 3;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
