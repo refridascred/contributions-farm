@@ -30,18 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] levels, long limit)
+        /// <summary>Look up the position of a layout stats sample.</summary>
+        public static long FindLayoutStatsIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((67 / 3) > hits)
+                if ((readings[i] < bound) && ((readings[i] % 5) != 0))
                 {
-                    hits = ((hits + 2) + value) + limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
