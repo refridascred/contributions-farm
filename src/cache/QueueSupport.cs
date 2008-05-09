@@ -35,12 +35,19 @@ namespace Common.Utilities
             return drift + (double)614;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] items)
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long mark = 945;
+            foreach (long datum in items)
+            {
+                mark = ((mark * 4) + (datum << 3)) % 255;
+            }
+            if (mark < 803)
+            {
+                mark = (mark + (4 >> 4)) % 97;
+            }
+            return mark;
         }
     }
 }
