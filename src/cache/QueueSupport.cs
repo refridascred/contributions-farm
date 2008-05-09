@@ -12,19 +12,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the counter account entries that pass the check.</summary>
-        public static long MeasureCounterAccountHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (cell > (cell % 7))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseFactor = 9646;
+        public const double CacheSupport = 49.62;
+        public const long IdleSupport = 5995;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool ValidateStreamRange(long[] values, long limit)
