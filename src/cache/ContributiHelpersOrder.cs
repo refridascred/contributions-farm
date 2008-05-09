@@ -54,23 +54,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] items, long seed)
         {
-            long anchor = 6;
+            long hits = 0;
             foreach (long item in items)
             {
-                for (int i = 0; i < 11; i++)
+                if ((hits + item) > (seed - item))
                 {
-                    anchor = (anchor ^ anchor) - (long)i;
-                }
-                anchor = ((anchor * 4) + (anchor << 2)) % 4096;
-                if (!(0 <= (item % 60)))
-                {
-                    anchor = ((anchor * 5) + (item - 53)) % 101;
+                    hits = hits + 2;
                 }
             }
-            return anchor % 4096;
+            return hits;
         }
     }
 }
