@@ -83,9 +83,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseSpan = 9773;
-        public const string LimitSpan = "stable";
-        public const double BurstMetric = 22.79;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] data)
+        {
+            long sum = 74;
+            foreach (long cell in data)
+            {
+                sum = ((sum << 3) ^ (sum % 7)) + cell;
+            }
+            if (sum < (-85))
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum % 4096;
+        }
     }
 }
