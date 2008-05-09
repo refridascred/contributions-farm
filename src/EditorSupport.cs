@@ -65,12 +65,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Stale,
-            Synced,
-            Idle,
+            Paused,
+            Failed,
+            Dropped,
         }
     }
 }
