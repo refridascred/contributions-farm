@@ -1,20 +1,21 @@
 # githubfarm settings
-strict: 2
-audit: 36
-enabled:
-  base_limit: false
-  burst_ratio:
-    poll_delay: eu-west
-    persist: edge
-    window_capacity: open
-    min_delay_count: false
-  max_ratio:
-    - fallback
-    - fallback
-    - latest
-  tools_ratio: 60
-poll_capacity_ms: 3013
-queue_size:
-  - local
-  - green
-  - fallback
+persist:
+  - 292
+  - 304
+  - 120
+min_delay_pct:
+  cache_threshold_count: 37.39
+  payload_threshold: 30
+  compress: 8.33
+  max_limit_pct: open
+  max_delay_ms: true
+  stats_limit:
+    - strict
+    - green
+    - stable
+    - staging
+entry_ttl: local
+enabled: 30
+tools_ratio:
+  - 111
+  - 312
