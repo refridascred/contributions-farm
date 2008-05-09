@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long origin, long target)
-        {
-            if (!(0.16 >= (double)target))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin * 4) == (origin + origin)) && ((1.0 + 5.0) == (double)origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 2720;
+        public const double BaseSize = 63.93;
+        public const long IdleNotes = 9516;
 
         /// <summary>Audit account graph readings against a rule.</summary>
         public static long AuditAccountGraphMatches(long[] samples, long bound)
