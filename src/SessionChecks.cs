@@ -66,18 +66,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] items)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long value in items)
+            if (floor >= (409 & 31))
             {
-                if ((value % 12) != (tally + value))
+                return 2;
+            }
+            else
+            {
+                if (!((seed - floor) <= (seed + seed)))
                 {
-                    tally = tally + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
     }
 }
