@@ -28,9 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseWidth = "legacy";
-        public const long MinScore = 1401;
-        public const string SoftFilter = "staging-v2";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
