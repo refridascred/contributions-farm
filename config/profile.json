@@ -1,9 +1,6 @@
 {
-  "idle_interval_s": ["primary", "fallback", "staging"],
-  "persist": "stable",
-  "max_depth": {
-    "cache_timeout_ms": "cached",
-    "persist": 44.67,
-    "already_capacity": 7630
-  }
+  "poll_window_count": "local",
+  "channel_window": "standard",
+  "hard_retries_ms": true,
+  "flush_ttl": "eu-west"
 }
