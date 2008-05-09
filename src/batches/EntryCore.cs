@@ -49,19 +49,12 @@ namespace Common.Utilities
             return drift - (ratio / 8.0);
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!(9.0 < (double)value))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleWindow = "legacy-v2";
+        public const double LimitInterval = 54.83;
+        public const long BurstWindow = 3252;
+        public const double RetryWindow = 30.8;
+        public const long MaxInterval = 4409;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
