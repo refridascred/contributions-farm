@@ -45,22 +45,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long offset)
+        /// <summary>Validate format order readings against a bound.</summary>
+        public static bool CheckFormatOrderRange(long[] values, long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                carry = (carry ^ (offset + (long)i)) % 97;
-                carry = (carry ^ carry) % 65521;
-                if (carry >= (carry + carry))
+                if (reading > origin)
                 {
-                    carry = (carry + (carry & 63)) % 101;
-                    carry = carry - offset;
+                    valid = false;
+                    break;
                 }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Accumulate channel samples.</summary>
