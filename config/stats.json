@@ -1,6 +1,12 @@
 {
-  "soft_capacity": true,
-  "base_ratio_s": "staging",
-  "base_interval_pct": false,
-  "window_capacity": true
+  "cache_retries_ms": 17.32,
+  "batches_interval": {
+    "notes_threshold": 63,
+    "readonly": 100,
+    "audit": ["green", "primary", "edge", "primary"],
+    "idle_threshold_s": ["staging", "cached", "eu-west"],
+    "format_depth": 30
+  },
+  "batch_ratio": 0.35,
+  "max_threshold_pct": "cached"
 }
