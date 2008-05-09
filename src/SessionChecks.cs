@@ -21,12 +21,24 @@ namespace Common.Utilities
         public const double DefaultRatio = 30.71;
         public const long HardStats = 7132;
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long offset, long bound)
         {
-            Closed,
-            Pending,
-            Idle,
+            if (((2.5 / 6.0) < (double)bound) && ((double)offset > (2.8 / 6.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset >> 3) < (-63))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the schema kind values.</summary>
