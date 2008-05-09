@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit tools payload readings against a rule.</summary>
-        public static long AuditToolsPayloadHits(long[] levels)
+        /// <summary>Roll a counter buffer counter forward.</summary>
+        public static long IterateCounterBuffer(long floor)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long total = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((hits >> 4) <= (-1))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
+                total = ((total * 5) + (floor + 2)) % 1000;
+                total = total - ((long)i + (long)i);
+                total = ((total * 3) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Rank editor account input into a small class.</summary>
