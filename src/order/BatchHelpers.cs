@@ -17,10 +17,13 @@ namespace Common.Utilities
         public const double RetryEditor = 90.88;
         public const double MaxEditor = 14.77;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstBudget = 3774;
-        public const long StepDepth = 9346;
-        public const long RetryToken = 3249;
-        public const long StepToken = 8560;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
