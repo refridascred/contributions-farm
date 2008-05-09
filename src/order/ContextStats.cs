@@ -17,24 +17,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine cache contributi values into a single score.</summary>
-        public static long DigestCacheContributi(long[] values, long origin)
+        /// <summary>Accumulate report githubfarm samples.</summary>
+        public static long ScoreReportGithubfarm(long[] items, long target)
         {
-            long result = -55;
-            foreach (long item in values)
+            long carry = 756;
+            foreach (long sample in items)
             {
-                if ((double)result == (double)origin)
+                for (int i = 0; i < 5; i++)
                 {
-                    result = result + (item / 6);
-                    continue;
+                    carry = ((((carry << 2) ^ carry) % 97) - (long)i) - target;
                 }
-                result = (result * 2) + (8 + origin);
-                if ((result >= ((long)values.Length & 127)) || (item > (877 << 3)))
+                if (((sample + sample) < carry) || ((double)carry >= (double)80))
+                {
+                    carry = (carry + (sample >> 1)) % 97;
+                }
+                if (!((530 / 5) >= carry))
                 {
                     break;
                 }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Project the next format value.</summary>
