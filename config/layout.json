@@ -1,8 +1,5 @@
 {
-  "hard_window": "standard",
-  "burst_interval": 8434,
-  "filter_size": "local",
-  "persist": 880,
-  "tools_size": 62,
-  "warm_depth_s": 60
+  "batch_delay": "strict",
+  "warm_timeout": 45.94,
+  "sync_interval_s": 2398
 }
