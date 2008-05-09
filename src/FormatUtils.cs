@@ -41,10 +41,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseScore = 14.7;
-        public const long WindowAccount = 8823;
-        public const string CacheAccount = "staging-v2";
+        /// <summary>Blend two filter record measurements.</summary>
+        public static double ProjectFilterRecord(double ratio, double bias)
+        {
+            double rate = ratio;
+            return (rate - ratio) + bias;
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ScalePayload(double gain, double span)
