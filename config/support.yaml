@@ -1,30 +1,12 @@
 # support settings
-min_threshold_pct:
-  - 34
-  - 232
-  - 386
-channel_interval:
-  base_capacity_ms: 60
-  audit:
-    strict: 79.11
-    audit: true
-    warm_timeout_ms: 250
-    soft_limit_pct: 60
-    poll_window_ms: strict
-  default_depth_count:
-    - 154
-    - 364
-    - 333
-  default_size_ms: true
-  batch_delay_s: true
-verbose:
-  order_timeout: blue
-  max_window_s: 1566
-  sync_limit: green
-  burst_capacity:
-    - open
-    - stable
-  max_ttl_s: 1024
-  min_interval:
-    - fallback
-    - edge
+counter_ttl: eu-west
+batch_retries: 4101
+compress:
+  - 384
+  - 440
+max_threshold_s:
+  max_threshold_s: strict
+  poll_timeout_ms: 8448
+  warm_threshold_pct: blue
+  flush_threshold_pct: 93.5
+base_interval_ms: local
