@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const long WindowStream = 5428;
         public const long IdleWidth = 6455;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] series, long offset)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] > offset)
+                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
