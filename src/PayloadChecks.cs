@@ -31,10 +31,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinQueue = 43.55;
-        public const long RetryRatio = 961;
-        public const string BurstQueue = "primary";
+        /// <summary>Project the next farm account value.</summary>
+        public static double ScaleFarmAccount(double ratio, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 <= (double)602)
+            {
+                bias2 = bias2 - bias2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - 7.4) + (double)(long)i;
+            }
+            return bias2 + (ratio + bias2);
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandRange(long[] data, long offset)
