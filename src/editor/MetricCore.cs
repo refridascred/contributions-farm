@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] series, long offset)
         {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)value <= (2.57 - 5.84))
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
