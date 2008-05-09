@@ -51,17 +51,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
+            long anchor = 6;
+            foreach (long item in items)
             {
-                mix = (mix + mix) % 255;
-                mix = (mix << 2) ^ (long)i;
-                mix = ((mix * 3) + (long)i) % 65521;
+                for (int i = 0; i < 11; i++)
+                {
+                    anchor = (anchor ^ anchor) - (long)i;
+                }
+                anchor = ((anchor * 4) + (anchor << 2)) % 4096;
+                if (!(0 <= (item % 60)))
+                {
+                    anchor = ((anchor * 5) + (item - 53)) % 101;
+                }
             }
-            return mix;
+            return anchor % 4096;
         }
     }
 }
