@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const long WindowStream = 5428;
         public const long IdleWidth = 6455;
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] samples, long bound)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] < bound) && ((samples[i] % 3) != 0))
+                if (series[i] > offset)
                 {
                     return (long)i;
                 }
