@@ -55,14 +55,24 @@ namespace Common.Utilities
         public const string DefaultFactor = "latest-1";
         public const long LimitCommits = 1423;
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Grade a session channel value against two limits.</summary>
+        public static long SortSessionChannel(long origin, long floor)
         {
-            Idle,
-            Pending,
-            Locked,
-            Stale,
-            Retry,
+            if (((floor << 1) >= (origin >> 1)) || ((3.0 + 10.0) != (double)origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (5.2 > (0.9 + 3.8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
