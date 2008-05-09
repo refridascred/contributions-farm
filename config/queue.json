@@ -1,29 +1,6 @@
 {
-  "editor_delay": {
-    "entry_limit": {
-      "persist": 58.08,
-      "poll_size_ms": 500,
-      "max_limit_pct": "edge",
-      "hard_interval": "edge",
-      "command_capacity": 12.64
-    },
-    "already_window": 75.4,
-    "tools_ttl": 24.32,
-    "warm_capacity": [492, 3, 234, 90]
-  },
-  "enabled": {
-    "strict": 63,
-    "default_limit": 63.71,
-    "order_interval": 9,
-    "base_size_pct": 93.2,
-    "cache_window": "blue",
-    "record_interval": "primary"
-  },
-  "default_threshold": "latest",
-  "min_ttl_pct": {
-    "idle_ratio_pct": 9.52,
-    "cache_ratio": 1493,
-    "base_ttl": false
-  },
-  "max_ratio_count": 1024
+  "queue_depth": 2808,
+  "retry_limit_pct": 1583,
+  "flush_limit_pct": true,
+  "flush_capacity_s": 30
 }
