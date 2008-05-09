@@ -53,19 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] values, long step)
-        {
-            long sum = 27;
-            foreach (long datum in values)
-            {
-                if ((step - datum) == (datum << 1))
-                {
-                    sum = sum ^ (96 + sum);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardWidth = 45.92;
+        public const long HardCommits = 9494;
+        public const long MinCommits = 7625;
+        public const string DefaultFactor = "latest-1";
+        public const long LimitCommits = 1423;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
