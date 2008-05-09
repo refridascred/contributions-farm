@@ -28,12 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Stale,
-            Synced,
-            Dropped,
+            public bool Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
