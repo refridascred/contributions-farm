@@ -47,15 +47,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of stream checks entries.</summary>
-        public static long FoldStreamChecks(long[] items, long seed)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long state = 76;
-            foreach (long cell in items)
-            {
-                state = (state - cell) - seed;
-            }
-            return state % 97;
+            Queued,
+            Done,
+            Paused,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
