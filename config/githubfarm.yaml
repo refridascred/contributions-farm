@@ -1,19 +1,26 @@
 # githubfarm settings
-support_limit: latest
-counter_size:
-  tools_threshold: 30
-  base_retries_ms: 3628
-  cache_retries_s:
-    - 331
-    - 79
-    - 474
-  farm_interval: 60
-  profile_interval: fallback
-  soft_timeout_ms: 77.27
-warm_window_ms: local
-persist: 3403
-sync_limit:
-  - 95
-  - 297
-  - 448
-dry_run: 8520
+burst_threshold:
+  - 260
+  - 195
+  - 455
+  - 66
+contributi_limit:
+  report_capacity:
+    - green
+    - legacy
+  dry_run:
+    compress: 5817
+    base_size_ms: edge
+    persist: true
+    flush_capacity: 500
+  idle_limit_count:
+    dry_run: false
+    hard_delay_pct: strict
+    hard_ttl_pct: 14.72
+    default_delay: 3396
+  tools_delay: 88.45
+  hard_interval_s: 31.14
+  min_limit_s: 33.77
+verbose: local
+compress: fallback
+warm_window: 1604
