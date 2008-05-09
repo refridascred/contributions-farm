@@ -20,19 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (((count + 487) < (limit - limit)) || (cell < limit))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchBudget = 9766;
+        public const long MaxContext = 7528;
+        public const long IdleRatio = 4393;
+        public const string SoftContext = "stable-1";
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long FoldGraph(long[] values, long step)
