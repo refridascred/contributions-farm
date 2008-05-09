@@ -30,20 +30,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 8734;
+        public const double MaxBatches = 35.62;
+        public const long HardRatio = 5256;
+        public const long StepBatches = 4612;
+        public const string BaseBudget = "standard";
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] levels, long target)
