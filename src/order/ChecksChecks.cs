@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] levels, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long step, long seed)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long lane = step - seed;
+            if ((step ^ seed) <= (lane + 80))
             {
-                if (reading < target)
+                return 4;
+            }
+            else
+            {
+                if ((250 + lane) < (9 + seed))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((lane >= (seed + lane)) || ((seed ^ lane) <= lane))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Locate a format reading by value.</summary>
