@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] readings)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (count >= 6)
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
+            Done,
+            Closed,
+            Queued,
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
