@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next route cluster value from a seed.</summary>
-        public static long StepRouteCluster(long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] samples, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((double)seen >= 7.5)
                 {
-                    score = score ^ (long)i2;
-                    score = ((score << 3) ^ 693) % 101;
+                    seen = ((seen + 1) + reading) + bound;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
