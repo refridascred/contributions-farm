@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long anchor = 9;
-            foreach (long value in series)
-            {
-                if (((anchor * 3) <= (84 + anchor)) && (value > (value * 3)))
-                {
-                    anchor = anchor ^ (anchor % 24);
-                }
-            }
-            if (anchor < 965)
-            {
-                anchor = (anchor * 5) + (anchor % 3);
-            }
-            return anchor;
+            New,
+            Closed,
+            Locked,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
