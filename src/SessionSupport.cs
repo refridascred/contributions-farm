@@ -12,39 +12,18 @@ namespace Common.Utilities
         public const double StepRecord = 77.47;
         public const long CacheWidth = 8454;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long floor, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] samples)
         {
-            long prev = floor ^ step;
-            if ((floor + floor) >= (prev - step))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((299 * 5) > (floor / 7))
+                if (((seen ^ 726) > (datum - seen)) || !(datum >= (seen % 5)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((20.0 / 3.0) > (double)prev)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((1 + step) > (step - 71)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
