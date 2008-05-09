@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowScore = 2473;
-        public const double DefaultTimeout = 77.66;
-        public const string LimitReport = "latest-1";
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Project the next editor cache value.</summary>
         public static double BlendEditorCache(double rate, double offset)
