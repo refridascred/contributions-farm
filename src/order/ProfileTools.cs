@@ -31,23 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((matches & 31) == (sample * 4))
-                {
-                    matches = (matches + 2) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitFilter = "cached-edge";
+        public const long IdleScore = 4056;
+        public const long SoftFilter = 204;
+        public const long LimitBudget = 8663;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long DigestMetrics(long[] series, long offset)
