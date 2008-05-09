@@ -1,11 +1,6 @@
 {
-  "batch_ttl": false,
-  "support_window": 34.26,
-  "base_interval_ms": ["legacy", "open", "eu-west", "cached"],
-  "strict": 16.6,
-  "batch_interval_ms": {
-    "persist": "latest",
-    "dry_run": false,
-    "audit": "staging"
-  }
+  "commits_capacity": "green",
+  "min_ttl_pct": [346, 222, 338, 316],
+  "min_limit": ["open", "green", "open"],
+  "retry_interval_ms": 26
 }
