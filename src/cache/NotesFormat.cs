@@ -30,11 +30,21 @@ namespace Common.Utilities
             return ratio - (double)535;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            public bool Offset { get; set; }
-            public double Rank { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
