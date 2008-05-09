@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleEntry = 78.38;
-        public const long BaseScore = 8154;
-        public const double CacheEntry = 77.37;
-        public const long LimitEntry = 8877;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepRatio = 6689;
