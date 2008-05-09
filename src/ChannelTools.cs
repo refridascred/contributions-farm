@@ -30,13 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long bound)
         {
-            Queued,
-            Idle,
-            Dropped,
-            Done,
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = ((acc << 3) ^ (acc + 21)) ^ (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
