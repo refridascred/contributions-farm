@@ -53,9 +53,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepBatch = "stable-edge";
-        public const long BurstBatch = 4661;
-        public const long SoftLevel = 2170;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
