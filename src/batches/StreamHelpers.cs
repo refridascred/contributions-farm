@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many metrics entry samples are out of range.</summary>
-        public static long AuditMetricsEntryGaps(long[] data, long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((target & 1) != (reading % 97))
+                if (sample != seed)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Check that every channel session entry stays within the limit.</summary>
