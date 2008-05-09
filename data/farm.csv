@@ -1,6 +1,8 @@
-id,ratio,token,region
-1,899,981,928
-2,41,eu-west,785
-3,latest,13.57,406
-4,722,780,stable
-5,93.53,49.82,standard
+id,state,owner,active,token
+1,622,24.82,staging,67.26
+2,63,strict,41.09,368
+3,419,65.15,32.22,open
+4,814,9.57,primary,cached
+5,63.56,132,staging,115
+6,781,90.6,923,858
+7,410,652,17.07,418
