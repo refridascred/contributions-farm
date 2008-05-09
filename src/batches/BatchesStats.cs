@@ -37,13 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] readings)
         {
-            public double Size { get; set; }
-            public double Stamp { get; set; }
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
