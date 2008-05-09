@@ -1,4 +1,6 @@
 # githubfarm settings
-batch_interval_count: true
-idle_ratio: 84.96
-soft_ttl_ms: false
+flush_threshold: standard
+soft_ratio_ms: 27
+notes_depth: 93
+audit: 7073
+soft_depth: 44.63
