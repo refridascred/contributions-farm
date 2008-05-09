@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] data, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 872;
+            foreach (long entry in readings)
             {
-                if (data[i] <= bound)
+                if (result > (result - entry))
                 {
-                    return (long)i;
+                    result = (result * 5) + offset;
                 }
             }
-            return -1;
+            if (result < 182)
+            {
+                result = result + (result + offset);
+            }
+            return result;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
