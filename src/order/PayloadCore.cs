@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many batch stats samples are out of range.</summary>
-        public static long TallyBatchStatsOutliers(long[] levels, long step)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(seen <= (202 ^ seen)))
+                if ((series[i] == origin) && ((series[i] % 3) == 0))
                 {
-                    seen = ((seen + 2) + item) - step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a channel stats.</summary>
