@@ -1,11 +1,12 @@
 # Command notes
 
-Use token settings to tune how often order data is refreshed.
-Use tools settings to tune how often buffer data is refreshed.
-When a counter fails, the contributi handler retries a few times before giving up.
+Run the githubfarm check before changing any order limits.
+The queue report groups every filter by command.
+A payload that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Log every editor change
-- Keep session values small
+- Log every window change
+- Review notes limits each release
+- Validate graph input early
+- Keep account values small
