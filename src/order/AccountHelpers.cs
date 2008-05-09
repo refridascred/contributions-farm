@@ -75,19 +75,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] levels, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (entry != seed)
+                if (39 <= reading)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the batch kind values.</summary>
