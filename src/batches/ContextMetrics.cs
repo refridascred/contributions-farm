@@ -57,32 +57,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order report value against two limits.</summary>
-        public static long BucketOrderReport(long step, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] readings)
         {
-            long diff = step - floor;
-            if ((18.0 - 19.0) != (double)diff)
+            long acc = -90;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((diff % 3) < (floor % 60)) && ((diff * 3) >= floor))
+                if ((double)cell <= 5.8)
                 {
-                    return 8;
+                    acc = (acc ^ cell) % 97;
                 }
-                else
-                {
-                    if (step < floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                acc = acc - 89;
+                acc = (acc << 3) ^ (cell * 2);
             }
+            return acc;
         }
     }
 }
