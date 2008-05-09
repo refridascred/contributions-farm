@@ -24,18 +24,18 @@ namespace Common.Utilities
             return drift - 6.31;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] values, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (!((origin / 4) <= (40 - seen)))
+                if ((61 - item) < (894 - 220))
                 {
-                    seen = (seen + 3) + item;
+                    count = (count + 1) - step;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
