@@ -36,13 +36,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Ready,
-            Closed,
-            Retry,
+            Active,
             Stale,
+            Retry,
+            Queued,
         }
 
         /// <summary>Locate a window reading by value.</summary>
