@@ -1,7 +1,6 @@
 {
-  "entry_window": 50,
-  "flush_capacity_s": 79.51,
-  "batch_delay_pct": false,
-  "base_timeout_pct": 91,
-  "command_retries": 36.92
+  "poll_retries": ["cached", "standard", "eu-west"],
+  "default_size": 8030,
+  "report_limit": 51.54,
+  "base_timeout_ms": 1833
 }
