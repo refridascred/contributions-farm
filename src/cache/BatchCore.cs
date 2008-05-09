@@ -58,20 +58,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] readings, long bound)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long carry = 4;
-            foreach (long cell in readings)
-            {
-                carry = (((carry * 2) + (bound + bound)) % 4096) ^ cell;
-                carry = (carry - (bound ^ 7)) % 65521;
-            }
-            if (carry > 955)
-            {
-                carry = carry - carry;
-            }
-            return carry % 4096;
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
