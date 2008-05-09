@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double rate, double bias)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double mean = rate;
-            if (mean < (double)24)
-            {
-                mean = mean + (double)4;
-            }
-            return mean + bias;
+            Pending,
+            Retry,
+            Closed,
+            Paused,
         }
 
         /// <summary>Accumulate notes context samples.</summary>
