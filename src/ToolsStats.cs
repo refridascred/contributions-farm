@@ -45,32 +45,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank entry notes input into a small class.</summary>
-        public static long SortEntryNotes(long seed, long seed2)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] readings)
         {
-            long step = seed + seed2;
-            if (!((8 & 3) < (seed ^ seed2)))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step > (1.0 + 18.0))
+                if ((matches + reading) == ((-7) - reading))
                 {
-                    return 6;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((4 ^ seed2) >= (seed + step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
