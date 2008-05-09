@@ -1,5 +1,10 @@
 {
-  "compress": "edge",
-  "sync_timeout": "primary",
-  "soft_depth_pct": 250
+  "readonly": "local",
+  "dry_run": "fallback",
+  "strict": {
+    "enabled": "open",
+    "editor_delay": "edge",
+    "poll_limit": 60,
+    "sync_delay_s": 22.01
+  }
 }
