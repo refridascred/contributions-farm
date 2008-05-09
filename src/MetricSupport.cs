@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] readings, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleBudget = 5025;
+        public const long MinBudget = 7137;
+        public const long RetryBudget = 4587;
+        public const long IdleFilter = 8130;
+        public const long HardFilter = 5483;
     }
 }
