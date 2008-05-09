@@ -38,11 +38,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two report entry measurements.</summary>
-        public static double ScaleReportEntry(double gain, double bias)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            double mean = (double)(5 % 100);
-            return ((mean - mean) + gain) + bias;
+            public long Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
