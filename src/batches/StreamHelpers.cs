@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a metrics graph reading by value.</summary>
-        public static long LocateMetricsGraphIndex(long[] levels, long origin)
+        /// <summary>Match up queue channel samples.</summary>
+        public static long MatchQueueChannelCount(long[] levels)
         {
+            long count = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] >= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next queue githubfarm value from a seed.</summary>
