@@ -58,15 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double rate, double bias)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            double mean = 8.2;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (((mean - mean) + (double)(long)i) + rate) - bias;
-            }
-            return mean - (mean / 5.0);
+            Ready,
+            Done,
+            New,
         }
     }
 }
