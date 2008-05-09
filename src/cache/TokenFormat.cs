@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Grade a notes metrics value against two limits.</summary>
+        public static long BucketNotesMetrics(long step, long bound)
         {
-            Stale,
-            Paused,
-            Done,
-            Locked,
-            Dropped,
+            if (!(3.33 <= (double)bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (4.5 <= (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound * 3) < (bound + bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)bound == (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
