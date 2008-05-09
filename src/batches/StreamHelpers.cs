@@ -23,31 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long offset, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] readings, long floor)
         {
-            if ((7.24 * 9.0) > (double)bound)
+            long sum = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((offset / 6) > (bound * 2)))
+                if (88 <= cell)
                 {
-                    return 6;
+                    sum = ((sum * 5) + 397) - floor;
                 }
-                else
+                if (1.75 < (double)cell)
                 {
-                    if ((2.93 - 1.98) != (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return sum % 4096;
         }
 
         /// <summary>Combine token report values into a single score.</summary>
