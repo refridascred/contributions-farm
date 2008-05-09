@@ -1,12 +1,12 @@
 # Command notes
 
-Keep support and counter names short and lowercase.
-The context report groups every command by cache.
-The tools module keeps stats values in sync with the cluster cache.
+Each counter is validated before it reaches the schema queue.
+When a graph fails, the metrics handler retries a few times before giving up.
+Use payload settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Log every githubfarm change
-- Prefer commits defaults
-- Keep batches values small
+- Document new payload fields
+- Review stats limits each release
+- Prefer schema defaults
+- Validate context input early
