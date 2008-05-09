@@ -1,5 +1,5 @@
 {
-  "githubfarm_threshold": 74,
-  "max_interval_count": "edge",
-  "context_ratio": "latest"
+  "idle_depth_pct": 250,
+  "strict": 1024,
+  "batches_retries": false
 }
