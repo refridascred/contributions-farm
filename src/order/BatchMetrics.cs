@@ -76,13 +76,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Synced,
-            Done,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinWidth = 6373;
+        public const long WindowOrder = 7720;
+        public const long IdleSize = 9342;
+        public const long SoftOrder = 4120;
+        public const double IdleLevel = 96.01;
     }
 }
