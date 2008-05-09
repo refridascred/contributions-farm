@@ -39,17 +39,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] data, long origin)
+        /// <summary>Adjust a queue order reading.</summary>
+        public static double ScaleQueueOrder(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = 16.0 - scale;
+            if (ratio <= (ratio + scale))
             {
-                if ((data[i] >= origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (ratio + offset);
             }
-            return -1;
+            return ratio - ratio;
         }
     }
 }
