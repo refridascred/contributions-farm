@@ -53,9 +53,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheContext = "strict";
-        public const string DefaultContext = "stable-v2";
-        public const long BurstContext = 575;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepBatch = "stable-edge";
+        public const long BurstBatch = 4661;
+        public const long SoftLevel = 2170;
     }
 }
