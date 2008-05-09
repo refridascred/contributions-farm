@@ -67,22 +67,11 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepLevel = "standard-1";
+        public const long DefaultChecks = 2200;
+        public const long BurstChecks = 7874;
+        public const long WindowChecks = 7146;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
