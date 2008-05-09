@@ -42,12 +42,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long bound, long limit)
         {
-            Dropped,
-            Paused,
-            Retry,
+            if ((limit + 0) <= 4)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound % 16) >= (limit << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
