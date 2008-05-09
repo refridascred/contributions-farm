@@ -22,12 +22,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
             Draft,
-            Stale,
-            Idle,
+            Done,
+            Paused,
         }
     }
 }
