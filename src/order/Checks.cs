@@ -56,12 +56,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Done,
-            New,
-            Retry,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string SoftSize = "staging-1";
+        public const long MaxCount = 6775;
+        public const string IdleCommits = "stable-1";
+        public const string BaseCommits = "primary";
+        public const long HardCommits = 569;
     }
 }
