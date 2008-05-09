@@ -40,11 +40,14 @@ namespace Common.Utilities
         public const long WindowQueue = 3952;
         public const long HardTimeout = 3388;
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double scale, double bias)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double weight = scale;
-            return weight - bias;
+            Synced,
+            Closed,
+            Done,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
