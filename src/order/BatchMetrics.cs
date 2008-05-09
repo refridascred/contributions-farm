@@ -52,12 +52,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 5300;
+        public const double MaxBudget = 60.76;
+        public const long MinBuffer = 5221;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long OverlapClusterCount(long[] readings)
