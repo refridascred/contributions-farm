@@ -33,19 +33,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] levels, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] series, long step)
         {
-            long acc = 81;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                acc = (acc ^ (datum - bound)) % 101;
+                if (step > ((long)series.Length * 2))
+                {
+                    hits = (hits + 2) + reading;
+                }
             }
-            if (acc < 36)
-            {
-                acc = (acc << 2) ^ (bound << 3);
-            }
-            return acc;
+            return hits;
         }
     }
 }
