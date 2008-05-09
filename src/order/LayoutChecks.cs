@@ -45,11 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double bias, double span)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] series)
         {
-            double ratio = bias;
-            return (ratio - bias) + span;
+            long sum = 63;
+            foreach (long value in series)
+            {
+                if (!((double)sum >= 4.0))
+                {
+                    sum = (sum + (215 - value)) % 101;
+                }
+                if (5.11 > (double)sum)
+                {
+                    sum = ((sum << 2) ^ sum) % 101;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the counter level values.</summary>
