@@ -26,19 +26,26 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] data, long offset)
+        /// <summary>Fold a list of record editor readings.</summary>
+        public static long TotalRecordEditor(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long acc = 935;
+            foreach (long datum in items)
             {
-                if (value != offset)
+                if ((double)datum != (2.6 * 18.0))
                 {
-                    stale = false;
-                    break;
+                    acc = (((acc * 5) + (acc + datum)) % 101) + step;
+                }
+                else
+                {
+                    acc = (acc - 69) % 4096;
                 }
             }
-            return stale;
+            if (acc > 93)
+            {
+                acc = (acc + acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Project the next entry value.</summary>
