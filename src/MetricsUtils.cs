@@ -27,22 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
-            {
-                long count = (target + sum) - (target << 3);
-                if ((double)count <= 3.88)
-                {
-                    sum = (sum ^ (sum * 3)) % 65521;
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 3.52;
+        public const long RetryCache = 4214;
+        public const long SoftRatio = 6107;
+        public const double BatchCache = 96.63;
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
