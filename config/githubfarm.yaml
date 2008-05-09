@@ -1,25 +1,11 @@
 # githubfarm settings
-flush_window:
-  retry_interval: cached
-  retry_ttl_count: 500
-  default_window:
-    - primary
-    - eu-west
-  hard_timeout:
-    queue_timeout: false
-    max_threshold_pct: standard
-    format_limit: staging
-    metrics_limit: true
-    hard_retries_pct:
-      - stable
-      - stable
-      - legacy
-      - cached
-    hard_limit_count:
-      - stable
-      - legacy
-      - stable
-      - legacy
-  poll_ratio_count: standard
-poll_timeout_pct: true
-max_window_pct: 3354
+token_window: 34.07
+audit: 9427
+enabled: 6123
+strict: stable
+base_limit:
+  - 224
+  - 119
+readonly:
+  - 183
+  - 474
