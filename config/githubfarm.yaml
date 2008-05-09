@@ -1,20 +1,10 @@
 # githubfarm settings
-enabled:
-  persist: 96
-  soft_threshold: 76.38
-  soft_ttl_pct: 1163
-  hard_threshold_pct: 100
-  audit: 4368
-  min_limit: cached
-verbose: true
-retry_capacity: eu-west
-hard_interval_s:
-  - 415
-  - 424
-  - 128
-strict:
-  - 315
-  - 117
-  - 337
-  - 364
-warm_size_ms: true
+batch_size: false
+idle_size_pct: green
+compress: 15.32
+batch_retries: 85
+stats_interval:
+  - 408
+  - 304
+  - 301
+batch_delay: 38.28
