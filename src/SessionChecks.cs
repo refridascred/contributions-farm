@@ -55,14 +55,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] items)
         {
-            Draft,
-            Idle,
-            Synced,
-            Pending,
-            Queued,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((value % 12) != (tally + value))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
