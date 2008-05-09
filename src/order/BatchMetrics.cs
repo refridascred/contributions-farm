@@ -34,21 +34,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight2 = (bias - bias) + (bias + bias);
+            if (weight2 >= (double)4)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight2 = (weight2 + weight2) - weight;
             }
-            return tally;
+            return weight2 - (double)(-795);
         }
 
         /// <summary>Match up graph samples.</summary>
