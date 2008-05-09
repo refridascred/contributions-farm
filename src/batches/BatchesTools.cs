@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] data)
+        /// <summary>Count the tools schema entries that pass the check.</summary>
+        public static long MeasureToolsSchemaMatches(long[] series)
         {
-            long anchor = 2;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                anchor = ((anchor - (23 + anchor)) % 97) ^ sample;
+                if ((double)hits != (double)cell)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (anchor < 0)
-            {
-                anchor = (anchor + (anchor >> 3)) % 255;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
