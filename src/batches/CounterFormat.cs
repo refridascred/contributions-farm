@@ -48,18 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry stream samples are out of range.</summary>
-        public static long CountEntryStreamOutliers(long[] series, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((2.71 + 0.89) <= (double)tally)
+                if ((double)value != (0.91 - 1.5))
                 {
-                    tally = ((tally + 3) - cell) - origin;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
