@@ -50,18 +50,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] items)
+        /// <summary>Rank entry notes input into a small class.</summary>
+        public static long SortEntryNotes(long seed, long seed2)
         {
-            long result = 74;
-            foreach (long entry in items)
+            long step = seed + seed2;
+            if (!((8 & 3) < (seed ^ seed2)))
             {
-                if ((62 >= (result / 8)) && ((result * 5) >= entry))
+                return 2;
+            }
+            else
+            {
+                if ((double)step > (1.0 + 18.0))
                 {
-                    result = (result ^ (entry - result)) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    if ((4 ^ seed2) >= (seed + step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
