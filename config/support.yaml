@@ -1,12 +1,17 @@
 # support settings
-counter_ttl: eu-west
-batch_retries: 4101
-compress:
-  - 384
-  - 440
-max_threshold_s:
-  max_threshold_s: strict
-  poll_timeout_ms: 8448
-  warm_threshold_pct: blue
-  flush_threshold_pct: 93.5
-base_interval_ms: local
+command_size:
+  - green
+  - green
+  - open
+buffer_ttl:
+  - 424
+  - 387
+  - 334
+hard_interval: 68
+retry_interval_count:
+  - open
+  - staging
+  - primary
+  - cached
+idle_retries_count: 100
+hard_window: 52
