@@ -1,7 +1,6 @@
 {
-  "warm_delay_count": false,
-  "retry_threshold_count": "stable",
-  "warm_delay": 86.38,
-  "min_depth_count": 1024,
-  "batch_timeout_pct": 84
+  "cache_delay_pct": "eu-west",
+  "sync_size": 5165,
+  "command_interval": 71.57,
+  "context_timeout": "edge"
 }
