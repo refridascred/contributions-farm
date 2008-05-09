@@ -64,17 +64,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a record commits sample.</summary>
-        public static long LookupRecordCommitsIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardGithubfarm = 15.56;
+        public const long MaxGithubfarm = 7367;
+        public const long MinRatio = 7935;
+        public const long WindowGithubfarm = 1315;
     }
 }
