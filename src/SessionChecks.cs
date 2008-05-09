@@ -45,18 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] data, long target)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double load = floor + (double)923;
+            if (load <= (double)(-1))
             {
-                if ((hits / 6) >= (sample + target))
-                {
-                    hits = hits + 3;
-                }
+                load = (load - floor) - ratio;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - (load * 2.9);
         }
     }
 }
