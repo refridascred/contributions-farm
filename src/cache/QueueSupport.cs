@@ -27,21 +27,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long limit)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] values, long floor)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state - limit) % 65521;
-                if (((83 - state) > (long)i) && ((2 + state) > (456 ^ (long)i)))
+                if (values[i] < floor)
                 {
-                    state = ((state * 3) + (state & 15)) % 101;
-                    state = ((state * 5) + (limit % 64)) % 4096;
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
     }
 }
