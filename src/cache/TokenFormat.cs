@@ -14,10 +14,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchStats = "primary-v2";
-        public const long HardSize = 2761;
-        public const long DefaultStats = 2714;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] readings, long limit)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits & 127) < (hits + 2))
+                {
+                    hits = ((hits + 3) + item) - limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next commits value.</summary>
         public static double ProjectCommits(double bias, double offset)
