@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
+            Paused,
+            Done,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Project the next payload value.</summary>
