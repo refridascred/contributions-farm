@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long seed, long step)
         {
-            Retry,
-            Dropped,
-            Active,
-            Done,
+            long step2 = seed + step;
+            if ((step & 63) == (step2 + seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step >= (4.15 / 4.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
