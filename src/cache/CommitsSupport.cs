@@ -64,14 +64,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Idle,
-            Failed,
-            Ready,
-            Dropped,
-            Locked,
+            public bool Total { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
