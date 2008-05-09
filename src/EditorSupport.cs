@@ -72,12 +72,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            Closed,
+            New,
+            Locked,
         }
     }
 }
