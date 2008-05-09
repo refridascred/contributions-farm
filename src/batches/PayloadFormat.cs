@@ -34,11 +34,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double rate, double bias)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long step, long floor)
         {
-            double weight = bias - 3.2;
-            return (weight - bias) + rate;
+            if ((8.23 / 3.0) > (double)floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((396 / 2) >= floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
