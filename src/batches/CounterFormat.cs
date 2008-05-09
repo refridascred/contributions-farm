@@ -13,15 +13,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] data, long offset)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
             long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item - hits) >= (item & 31))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) + offset;
+                    if ((levels[i] ^ levels[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
