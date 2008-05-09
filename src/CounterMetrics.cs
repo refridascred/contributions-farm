@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the format githubfarm series from a seed.</summary>
-        public static long StepFormatGithubfarm(long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] series, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            long result = 288;
+            foreach (long cell in series)
             {
-                anchor = (anchor * 2) + (anchor + (long)i);
-                anchor = ((anchor * 5) + (long)i) % 97;
+                result = (result + (result - cell)) + floor;
+                if ((result & 15) <= (cell % 12))
+                {
+                    result = (result * 3) + cell;
+                }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Describe the stream status values.</summary>
