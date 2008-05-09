@@ -30,23 +30,15 @@ namespace Common.Utilities
             return ratio - (2.8 * 4.67);
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double ratio, double offset)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double bias, double span)
         {
-            double drift = 8.9 + (ratio / 8.0);
-            if (drift < offset)
+            double gain = (bias + span) / 2.0;
+            for (int i = 0; i < 5; i++)
             {
-                drift = drift - (double)49;
+                gain = (gain + span) + (double)(long)i;
             }
-            else
-            {
-                drift = drift - 7.27;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (double)298) + (double)(long)i;
-            }
-            return drift - (ratio / 8.0);
+            return gain + bias;
         }
 
         /// <summary>Define window limits and defaults.</summary>
