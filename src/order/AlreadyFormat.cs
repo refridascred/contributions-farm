@@ -63,15 +63,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two context counter measurements.</summary>
-        public static double AdjustContextCounter(double ratio, double span)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] data, long origin)
         {
-            double rate = (double)(-73) * 8.19;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = ((rate - span) - (double)(long)i) + ratio;
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return rate - (double)1;
+            return -1;
         }
 
         /// <summary>Digest a series of githubfarm format entries.</summary>
