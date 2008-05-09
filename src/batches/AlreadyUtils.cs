@@ -37,11 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public double Mode { get; set; }
-            public string Label { get; set; } = "";
+            Stale,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
