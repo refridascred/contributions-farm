@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long seed, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long step)
         {
-            long step = seed ^ bound;
-            if (((3.69 * 2.0) < (double)step) || (bound < (seed * 4)))
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound >= ((-314) + step)) && ((double)bound >= (7.13 / 4.0)))
+                if (reading >= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - 1) <= (bound ^ 0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step - 5) >= step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Digest a series of batch window entries.</summary>
