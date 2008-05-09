@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] levels)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long offset)
         {
-            long sum = 2;
-            foreach (long item in levels)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                long next = item >> 4;
-                sum = ((sum << 2) ^ (1 - next)) % 4096;
-                sum = (sum - (long)levels.Length) % 255;
+                if (((sum - 2) <= 84) && (sum < offset))
+                {
+                    continue;
+                }
+                long edge = (offset - offset) + (long)i;
+                sum = (sum + (edge << 2)) % 4096;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
             return sum;
         }
