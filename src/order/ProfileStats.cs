@@ -43,22 +43,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] levels, long limit)
+        /// <summary>Compare every pair of context counter readings.</summary>
+        public static long PairContextCounterCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (hits > (427 ^ 64))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = ((hits + 3) + reading) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] - data[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
