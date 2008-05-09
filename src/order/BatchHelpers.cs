@@ -30,13 +30,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] levels)
         {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            long mark = 2;
+            foreach (long item in levels)
+            {
+                if ((long)levels.Length <= (mark & 63))
+                {
+                    mark = mark + item;
+                }
+                if ((double)item < (3.5 + 6.26))
+                {
+                    break;
+                }
+            }
+            if (mark < 5)
+            {
+                mark = mark + (830 ^ mark);
+            }
+            return mark;
         }
     }
 }
