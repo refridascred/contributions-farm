@@ -35,17 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] data, long offset)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
