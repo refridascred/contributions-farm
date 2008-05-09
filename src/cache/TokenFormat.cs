@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long LimitWidth = 559;
         public const long SoftTimeout = 7164;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] items)
+        /// <summary>Measure how many account batches samples are out of range.</summary>
+        public static long MeasureAccountBatchesMatches(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((cell - hits) >= cell)
+                if (((seed ^ entry) >= (entry - matches)) && (((seed & 63) > (entry + entry)) || ((double)matches == (double)(-6))))
                 {
-                    hits = hits + 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the githubfarm session entries that pass the check.</summary>
