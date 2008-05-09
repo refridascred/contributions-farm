@@ -1,22 +1,26 @@
 # entry settings
-cache_interval: 100
-compress: 5453
-hard_timeout: 83.2
-cache_capacity_pct:
-  entry_capacity: strict
-  route_depth:
-    base_timeout:
-      - latest
-      - strict
-      - blue
-      - latest
-    flush_depth: blue
-    enabled: 78.02
-    idle_size_ms:
-      - staging
-      - stable
-      - blue
-      - primary
-    compress: false
-  min_capacity: false
-max_limit_ms: cached
+readonly: 66.76
+min_size: blue
+poll_ratio:
+  - blue
+  - local
+persist: 1024
+hard_delay:
+  githubfarm_threshold: 1024
+  warm_timeout_ms: 250
+  batch_ratio: 1753
+  stream_capacity:
+    sync_interval: staging
+    support_delay: blue
+    soft_size_count: 78
+    already_window: local
+    audit: true
+    commits_retries: 5952
+  burst_timeout: local
+  min_capacity_pct: open
+burst_capacity_s:
+  max_limit_count: strict
+  audit: 1066
+  base_delay_ms: cached
+  counter_size: false
+  dry_run: 500
