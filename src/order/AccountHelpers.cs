@@ -58,23 +58,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] series, long floor)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((((7.8 - 15.0) != (double)floor) || ((floor - tally) >= (long)series.Length)) || (floor > (49 & 1)))
-                {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultSize = "primary";
+        public const string RetryStats = "alpha-1";
+        public const long IdleDepth = 47;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorHits(long[] series)
