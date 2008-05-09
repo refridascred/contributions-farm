@@ -48,11 +48,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] values, long target)
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
