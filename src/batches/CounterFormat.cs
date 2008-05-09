@@ -27,38 +27,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a metrics stream value against two limits.</summary>
-        public static long RankMetricsStream(long limit, long seed)
+        /// <summary>Accumulate farm record samples.</summary>
+        public static long CombineFarmRecord(long[] series, long floor)
         {
-            if ((8.62 - 8.2) == (double)seed)
+            long mark = -13;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit < (76 + limit))
+                mark = ((mark << 3) ^ mark) % 101;
+                if ((floor * 3) > (item / 2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)seed >= (2.87 / 8.0)) || ((seed + limit) < 37))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit >> 5) == (limit ^ 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mark < 975)
+            {
+                mark = (mark + mark) % 255;
+            }
+            return mark % 97;
         }
     }
 }
