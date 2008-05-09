@@ -23,19 +23,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] items, long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long offset)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long total = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry <= step)
-                {
-                    found = false;
-                    break;
-                }
+                total = total + (6 >> 5);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Project the next buffer value.</summary>
