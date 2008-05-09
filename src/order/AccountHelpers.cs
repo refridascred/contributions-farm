@@ -20,13 +20,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Scale a notes batch figure with a bias.</summary>
+        public static double ProjectNotesBatch(double scale, double bias)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
+            double rate = bias - bias;
+            return rate - scale;
         }
 
         /// <summary>Hold a profile stats.</summary>
