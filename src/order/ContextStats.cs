@@ -29,19 +29,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] samples, long limit)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Owner { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a support options.</summary>
