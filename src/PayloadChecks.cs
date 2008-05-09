@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long floor)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                score = score ^ (score >> 2);
-                score = (score ^ (floor - (long)i)) % 101;
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Done,
+            Queued,
+            Ready,
+            Locked,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
