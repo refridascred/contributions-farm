@@ -46,15 +46,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double bias, double floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long target, long bound)
         {
-            double drift = (double)(59 / 7);
-            if (drift >= floor)
+            if ((target + bound) >= target)
             {
-                drift = (drift + drift) - bias;
+                return 3;
             }
-            return drift - drift;
+            else
+            {
+                if ((target / 8) >= target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
