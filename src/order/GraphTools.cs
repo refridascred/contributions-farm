@@ -20,22 +20,17 @@ namespace Common.Utilities
             return ratio + (floor - gain);
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] readings, long target)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(((seen * 5) > target) || ((double)cell == (6.16 - 6.7))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = mix + (mix + 60);
+                mix = mix ^ (origin ^ mix);
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
