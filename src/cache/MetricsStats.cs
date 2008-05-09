@@ -35,12 +35,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftTimeout = 4930;
-        public const long MaxScore = 4434;
-        public const long LimitContributi = 2908;
-        public const long DefaultContributi = 3503;
-        public const long MinScore = 6403;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
