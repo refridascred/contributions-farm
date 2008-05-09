@@ -50,12 +50,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] values, long offset)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] < offset) && ((values[i] % 2) != 0))
+                if ((data[i] >= origin) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
