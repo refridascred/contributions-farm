@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] levels)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (hits > datum)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
