@@ -37,13 +37,11 @@ namespace Common.Utilities
             return (bias3 - (bias3 * 6.0)) + bias2;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Queued,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheCount = 8734;
+        public const string CacheTimeout = "latest";
+        public const long StepCount = 2586;
+        public const long RetryReport = 2607;
 
         /// <summary>Project the next farm value.</summary>
         public static double ProjectFarm(double scale, double span)
