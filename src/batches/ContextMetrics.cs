@@ -56,19 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double rate, double bias)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            double drift = bias;
-            if (drift <= drift)
-            {
-                drift = drift + (double)93;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (bias / 4.0)) + (double)(long)i;
-            }
-            return drift - rate;
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first farm support entry that matches the target.</summary>
