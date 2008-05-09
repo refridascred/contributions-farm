@@ -27,15 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two entry token measurements.</summary>
-        public static double ProjectEntryToken(double scale, double offset)
+        /// <summary>Count the tools channel entries that pass the check.</summary>
+        public static long MeasureToolsChannelGaps(long[] readings, long limit)
         {
-            double mean = 19.0;
-            if (mean > mean)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                mean = (mean + mean) + scale;
+                if (!(3.28 > (double)limit) || (((2.0 / 6.0) > (double)sample) || ((seen + (-2)) <= seen)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mean + offset;
+            return seen;
         }
     }
 }
