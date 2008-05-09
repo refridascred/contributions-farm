@@ -43,15 +43,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double rate, double floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] levels)
         {
-            double gain = (floor * 5.11) * 8.18;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain - (rate + gain)) + (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain + (floor - floor);
+            return seen;
         }
 
         /// <summary>Project the next cache value.</summary>
