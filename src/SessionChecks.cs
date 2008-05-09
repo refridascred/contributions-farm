@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
