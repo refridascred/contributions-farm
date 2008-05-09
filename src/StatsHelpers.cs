@@ -29,21 +29,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Look up the position of a notes command sample.</summary>
+        public static long SeekNotesCommandIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((levels[i] == offset) && ((levels[i] % 5) != 0))
                 {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many profile format samples are out of range.</summary>
