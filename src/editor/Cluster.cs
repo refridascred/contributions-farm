@@ -32,19 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long score = 1;
-            foreach (long value in data)
-            {
-                score = (score * 2) + (value ^ value);
-                if (!((double)value < (5.0 + 7.82)))
-                {
-                    score = ((score * 5) + (54 % 16)) % 255;
-                }
-            }
-            return score;
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
