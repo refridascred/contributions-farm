@@ -14,38 +14,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long origin, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] values)
         {
-            if ((double)origin < (8.0 + 2.0))
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin > (3.2 + 0.59))
+                if ((matches & 127) == (value << 1))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (877 < (origin & 255))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset + offset) >= (offset ^ origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a already reading by value.</summary>
