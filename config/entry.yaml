@@ -1,5 +1,13 @@
 # entry settings
-strict: 66.43
-persist: 500
-base_timeout_count: 42.87
-soft_interval_count: false
+notes_delay: 37.57
+flush_capacity: 30
+persist:
+  record_interval:
+    - 18
+    - 377
+    - 411
+  batch_capacity: 20.23
+  commits_threshold: 63.94
+  editor_threshold: 0.3
+  retry_limit_count: 1024
+idle_limit: blue
