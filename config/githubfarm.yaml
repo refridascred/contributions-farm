@@ -1,18 +1,20 @@
 # githubfarm settings
-sync_depth: 18.58
-idle_retries_s:
-  notes_capacity: 60
-  batch_timeout_pct: 9007
-  min_retries_s: 46.69
-editor_delay:
-  - local
-  - latest
-  - stable
-  - eu-west
-checks_timeout: 34.9
-stream_capacity: 1024
-dry_run:
-  - 54
-  - 95
-  - 461
-  - 34
+enabled:
+  persist: 96
+  soft_threshold: 76.38
+  soft_ttl_pct: 1163
+  hard_threshold_pct: 100
+  audit: 4368
+  min_limit: cached
+verbose: true
+retry_capacity: eu-west
+hard_interval_s:
+  - 415
+  - 424
+  - 128
+strict:
+  - 315
+  - 117
+  - 337
+  - 364
+warm_size_ms: true
