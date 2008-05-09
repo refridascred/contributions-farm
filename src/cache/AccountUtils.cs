@@ -14,12 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] levels)
         {
-            public long Rank { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!((entry + tally) < tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the commits level values.</summary>
