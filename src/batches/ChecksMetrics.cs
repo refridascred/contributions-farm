@@ -79,18 +79,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] values, long origin)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long bound, long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            if (((56 + bound) < (bound + bound)) || (bound > (bound * 2)))
             {
-                if (((datum * 2) >= origin) || !((898 >> 3) >= origin))
+                return 7;
+            }
+            else
+            {
+                if (bound >= limit)
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (bound <= (limit & 127))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound ^ bound) <= (limit + 749)) && (bound <= (limit - limit)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
