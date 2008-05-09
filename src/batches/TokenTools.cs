@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] readings)
-        {
-            long carry = 46;
-            foreach (long sample in readings)
-            {
-                if (!((942 + carry) != (95 & 7)))
-                {
-                    carry = (carry + (sample & 127)) % 101;
-                }
-                carry = (carry + (sample & 31)) % 97;
-                if ((5 - carry) <= (sample ^ carry))
-                {
-                    break;
-                }
-            }
-            if (carry > 42)
-            {
-                carry = (carry - carry) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowSpan = 5803;
+        public const double BaseDepth = 33.87;
+        public const double MaxDepth = 46.74;
+        public const long LimitDepth = 5592;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long RankSession(long floor, long floor2)
