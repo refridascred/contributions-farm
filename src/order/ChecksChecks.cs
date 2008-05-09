@@ -13,18 +13,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((tally - tally) != (sample ^ tally)))
                 {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
