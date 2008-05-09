@@ -37,12 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryChannel = "cached-edge";
-        public const long DefaultSpan = 9290;
-        public const double BurstChannel = 8.88;
-        public const string WindowInterval = "staging";
-        public const string LimitChannel = "standard-v2";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 9402;
+        public const string StepCount = "fallback-1";
+        public const long RetryCommand = 8592;
+        public const long SoftInterval = 7645;
 
         /// <summary>Count the schema githubfarm entries that pass the check.</summary>
         public static long CountSchemaGithubfarmHits(long[] series, long seed)
