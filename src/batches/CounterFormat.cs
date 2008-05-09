@@ -48,18 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] levels, long seed)
+        /// <summary>Project the next notes route value.</summary>
+        public static double BlendNotesRoute(double weight, double offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            double drift = offset;
+            if (drift > weight)
             {
-                if ((entry & 15) < (entry - 637))
-                {
-                    count = (count + 1) - seed;
-                }
+                drift = drift - 7.0;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - offset) - (double)(long)i;
+            }
+            return drift + (weight / 9.0);
         }
     }
 }
