@@ -34,12 +34,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
+            Pending,
+            Paused,
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
