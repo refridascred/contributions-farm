@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const string CacheDepth = "staging";
         public const double BurstBatches = 98.62;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheContributi = "staging-edge";
-        public const long BatchSize = 7739;
-        public const string MaxSpan = "staging-1";
-        public const long BatchContributi = 5377;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] levels, long origin)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TallyToken(long[] values, long target)
