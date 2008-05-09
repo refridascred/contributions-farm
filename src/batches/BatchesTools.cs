@@ -28,18 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] series, long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (step > ((long)series.Length * 2))
+                if (value >= bound)
                 {
-                    hits = (hits + 2) + reading;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
