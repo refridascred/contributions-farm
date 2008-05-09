@@ -29,38 +29,12 @@ namespace Common.Utilities
         public const double DefaultBatch = 47.34;
         public const string MinInterval = "alpha-v2";
 
-        /// <summary>Grade a tools editor value against two limits.</summary>
-        public static long RankToolsEditor(long seed, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            if ((seed > (23 - seed)) || ((offset / 6) <= (offset + offset)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset <= (seed / 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((seed / 9) <= (offset + seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((offset & 7) > (offset >> 4)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
