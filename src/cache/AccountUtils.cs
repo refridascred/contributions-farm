@@ -22,13 +22,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            Draft,
+            Idle,
+            Synced,
+            Failed,
+            New,
         }
     }
 }
