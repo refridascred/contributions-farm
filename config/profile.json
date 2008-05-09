@@ -1,8 +1,15 @@
 {
-  "max_ttl_ms": "eu-west",
-  "cache_depth": 2.69,
-  "min_ratio_ms": 48.54,
-  "payload_size": [222, 469, 91, 315],
-  "retry_threshold_pct": "cached",
-  "soft_limit_ms": 32.71
+  "schema_limit": "eu-west",
+  "retry_capacity": ["latest", "stable"],
+  "cache_depth": {
+    "cache_depth": false,
+    "batch_threshold": "cached",
+    "default_ttl": 56
+  },
+  "metric_timeout": [69, 288],
+  "retry_delay": {
+    "editor_ttl": 30,
+    "enabled": [75, 152, 293, 222],
+    "flush_interval": "primary"
+  }
 }
