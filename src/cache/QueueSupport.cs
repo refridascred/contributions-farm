@@ -15,19 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
+            long total = -285;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                total = (total + 49) % 255;
+                if ((total < (long)samples.Length) && ((value % 8) <= (total + value)))
                 {
-                    mark = mark ^ ((long)i2 + bound);
+                    total = total + value;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Rank tools schema input into a small class.</summary>
