@@ -34,11 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
+            Active,
+            Idle,
+            Closed,
+            Draft,
         }
     }
 }
