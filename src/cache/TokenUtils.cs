@@ -27,18 +27,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] data)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seen < (3.9 * 5.16))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) - datum;
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
