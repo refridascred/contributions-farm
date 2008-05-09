@@ -12,11 +12,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double bias, double span)
+        /// <summary>Measure how many session payload samples are out of range.</summary>
+        public static long AuditSessionPayloadOutliers(long[] samples, long offset)
         {
-            double rate = 8.19;
-            return (rate + span) + bias;
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((3.82 >= (double)item) || ((12.0 / 3.0) == (double)matches))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate filter samples.</summary>
