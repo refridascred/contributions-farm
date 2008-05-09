@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
+            Dropped,
+            New,
             Draft,
-            Synced,
-            Locked,
             Idle,
+            Synced,
         }
 
         /// <summary>Describe the queue phase values.</summary>
