@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] data, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if (datum < seed)
+                if (cell < floor)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Count metric stats pairs that satisfy a relation.</summary>
