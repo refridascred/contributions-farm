@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate context command readings against a bound.</summary>
-        public static bool CheckContextCommandBounds(long[] series, long target)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            double drift = ratio / 6.0;
+            if (drift > bias)
             {
-                if (entry >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift - (double)82;
             }
-            return valid;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + ratio;
         }
 
         /// <summary>Classify a queue metric pair into a bucket.</summary>
