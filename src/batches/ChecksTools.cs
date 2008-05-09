@@ -26,22 +26,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of token context readings.</summary>
-        public static long ScoreTokenContext(long[] data, long bound)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long mix = -10;
-            foreach (long datum in data)
-            {
-                if (((datum & 63) >= mix) || ((double)datum < (5.79 * 1.4)))
-                {
-                    mix = (mix - (datum + bound)) % 101;
-                }
-            }
-            if (mix > 39)
-            {
-                mix = ((mix * 5) + (bound % 97)) % 101;
-            }
-            return mix;
+            Closed,
+            Retry,
+            Active,
+            Draft,
         }
     }
 }
