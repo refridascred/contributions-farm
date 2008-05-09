@@ -66,12 +66,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Paused,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 80.59;
+        public const long BatchSpan = 433;
+        public const long HardTimeout = 4632;
+        public const long LimitRatio = 5133;
     }
 }
