@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-Each layout is validated before it reaches the entry queue.
-Defaults for entry live in the config folder and can be overridden per environment.
-
-The schema report groups every support by channel.
-The githubfarm module keeps format values in sync with the window cache.
+Use token settings to tune how often order data is refreshed.
+Use tools settings to tune how often buffer data is refreshed.
+When a counter fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Keep command values small
-- Validate token input early
+- Prefer farm defaults
+- Log every editor change
+- Keep session values small
