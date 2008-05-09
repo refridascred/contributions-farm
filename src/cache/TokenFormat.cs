@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Done,
-            Dropped,
-            Idle,
-            Locked,
-            Draft,
+            Pending,
+            Failed,
+            Active,
+            Ready,
         }
 
         /// <summary>Project the next checks value.</summary>
