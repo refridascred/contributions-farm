@@ -29,12 +29,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Paused,
-            Queued,
-            Retry,
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
