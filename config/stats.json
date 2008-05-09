@@ -1,11 +1,7 @@
 {
-  "max_delay": 73,
-  "dry_run": {
-    "idle_ratio_s": "standard",
-    "githubfarm_window": false,
-    "verbose": "edge",
-    "compress": 6505,
-    "base_ttl_count": 81
-  },
-  "metric_delay": "open"
+  "hard_threshold_count": 92.86,
+  "base_retries_ms": 3,
+  "default_interval_s": false,
+  "max_depth_pct": 72,
+  "max_ttl": true
 }
