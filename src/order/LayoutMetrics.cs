@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 83.66;
-        public const double SoftDepth = 88.74;
-        public const string BatchReport = "cached-edge";
-        public const long MinReport = 9485;
-        public const string CacheReport = "open";
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] samples, long origin)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)origin <= (3.5 - 20.0))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+            }
+            return hits;
+        }
     }
 }
