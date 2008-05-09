@@ -74,11 +74,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 5685;
-        public const long BatchCommits = 3994;
-        public const long MaxCommits = 9668;
-        public const string HardWidth = "latest";
-        public const long StepCommits = 1241;
+        /// <summary>Find the first route format entry that matches the target.</summary>
+        public static long SeekRouteFormatIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
