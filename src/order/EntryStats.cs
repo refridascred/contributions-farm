@@ -49,11 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double ratio, double offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] data)
         {
-            double drift = ratio - (ratio / 3.0);
-            return (drift - 0.7) + offset;
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (!((49 ^ sample) <= matches) || (((sample << 3) >= (sample % 100)) || ((sample + sample) < sample)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a cache metric figure with a bias.</summary>
