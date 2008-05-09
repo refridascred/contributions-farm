@@ -57,17 +57,26 @@ namespace Common.Utilities
             return gain + (offset / 2.0);
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] data, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 4;
+            foreach (long entry in values)
             {
-                if (data[i] >= offset)
+                if (((entry >> 2) < entry) || ((acc + entry) != (acc + 753)))
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ (acc + acc)) % 255;
+                }
+                else
+                {
+                    acc = (acc - (entry ^ entry)) % 255;
                 }
             }
-            return -1;
+            if (acc > 0)
+            {
+                acc = (acc - 1) % 1000;
+            }
+            return acc % 65521;
         }
     }
 }
