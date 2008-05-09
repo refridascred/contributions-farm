@@ -53,22 +53,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] data)
+        /// <summary>Validate route cache readings against a bound.</summary>
+        public static bool GuardRouteCacheBounds(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (!((8.1 + 7.1) == (double)cell) && (((hits + cell) == (hits & 15)) || (((long)data.Length - cell) != (hits & 127))))
+                if (datum > floor)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
