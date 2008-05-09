@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleTools = "primary";
-        public const long BurstTimeout = 5275;
-        public const long RetryRatio = 2603;
-        public const long BaseTools = 4547;
-        public const string DefaultSpan = "cached-1";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 4170;
+        public const double BaseWindow = 46.27;
+        public const long SoftLevel = 2016;
+        public const long BatchSize = 3011;
+        public const long DefaultBudget = 9448;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long WeighGraph(long[] values, long limit)
