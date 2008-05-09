@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long target, long bound)
+        /// <summary>Digest a series of layout graph entries.</summary>
+        public static long ScoreLayoutGraph(long[] samples)
         {
-            long span = target ^ bound;
-            if ((double)target == (3.52 + 6.0))
+            long carry = 450;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (target >= bound)
+                if (!((carry - 4) <= (value + value)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound + target) <= (span & 7)) || ((span << 3) <= (target % 10)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((target << 3) >= (bound % 97)) || ((17.0 + 5.4) <= (double)span))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    carry = ((carry << 2) ^ carry) % 101;
                 }
             }
+            return carry % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
