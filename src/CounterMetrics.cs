@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] series, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] items)
         {
-            long result = 288;
-            foreach (long cell in series)
+            long sum = 23;
+            foreach (long reading in items)
             {
-                result = (result + (result - cell)) + floor;
-                if ((result & 15) <= (cell % 12))
-                {
-                    result = (result * 3) + cell;
-                }
+                sum = sum - reading;
             }
-            return result;
+            if (sum > 42)
+            {
+                sum = ((sum << 3) ^ sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the stream status values.</summary>
