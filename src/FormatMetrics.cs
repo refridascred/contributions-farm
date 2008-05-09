@@ -54,16 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] levels)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] values)
         {
-            long result = 56;
-            foreach (long reading in levels)
+            long state = 87;
+            foreach (long cell in values)
             {
-                result = ((result - (921 + result)) % 97) - reading;
-                result = result ^ result;
+                state = state - (cell + state);
             }
-            return result % 4096;
+            return state;
         }
 
         /// <summary>Describe the format mode values.</summary>
