@@ -25,18 +25,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm session entries that pass the check.</summary>
-        public static long CountGithubfarmSessionHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((3 < (seen - item)) && ((seen / 2) > (153 % 97))) && ((1.0 - 3.8) <= (double)seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 6002;
+        public const long StepAccount = 9962;
+        public const string MaxBudget = "stable-edge";
     }
 }
