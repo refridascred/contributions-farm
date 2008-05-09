@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Locate a command cluster reading by value.</summary>
+        public static long SeekCommandClusterIndex(long[] samples, long target)
         {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
