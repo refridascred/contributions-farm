@@ -1,5 +1,6 @@
 {
-  "persist": 11.58,
-  "poll_ttl_s": [90, 440],
-  "dry_run": "stable"
+  "soft_size_pct": "open",
+  "farm_interval": 500,
+  "flush_threshold_ms": 12,
+  "batch_capacity_s": "green"
 }
