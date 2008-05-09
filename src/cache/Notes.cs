@@ -34,19 +34,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] levels, long bound)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long offset, long step)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long edge = offset - step;
+            if ((edge + 874) < (offset + edge))
             {
-                if (value >= bound)
+                return 6;
+            }
+            else
+            {
+                if ((edge % 5) == (edge & 1))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
