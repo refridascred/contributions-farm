@@ -77,16 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics stream counter forward.</summary>
-        public static long StepMetricsStream(long limit)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double rate, double span)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            double scale = 4.33;
+            if (scale > span)
             {
-                carry = carry + (limit ^ (long)i);
-                carry = ((carry * 2) + (long)i) % 101;
+                scale = (scale - (double)965) - rate;
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (span - scale)) + (double)(long)i;
+            }
+            return scale - (scale - span);
         }
     }
 }
