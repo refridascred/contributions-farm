@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a stream graph figure with a bias.</summary>
-        public static double ProjectStreamGraph(double gain, double floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] samples, long step)
         {
-            double ratio = (floor - gain) / 2.0;
-            for (int i = 0; i < 3; i++)
+            long state = 3;
+            foreach (long cell in samples)
             {
-                ratio = (ratio + (4.0 * 2.6)) + (double)(long)i;
+                state = (state + (state / 3)) % 65521;
+                if ((double)(long)samples.Length == (double)step)
+                {
+                    state = state - (cell & 3);
+                }
+                else
+                {
+                    state = (state ^ (step + 5)) % 101;
+                }
+                if (((state / 8) < (cell << 1)) || (((-345) - 79) > (cell + step)))
+                {
+                    break;
+                }
             }
-            return ratio + gain;
+            if (state < 68)
+            {
+                state = (state + (state % 64)) % 255;
+            }
+            return state % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
