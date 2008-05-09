@@ -22,16 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long offset, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            if (((offset + 99) <= offset) && ((target % 16) == (target << 3)))
             {
-                mix = (mix * 4) + (mix >> 1);
-                mix = ((mix * 5) + (long)i) % 1000;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if (!((offset - target) > (target - target)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
