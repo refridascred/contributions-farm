@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] readings)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count & 3) < (cell + cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Ready,
+            Done,
+            New,
+            Failed,
         }
 
         /// <summary>Find the first buffer metric entry that matches the target.</summary>
