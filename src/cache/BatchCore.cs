@@ -23,17 +23,21 @@ namespace Common.Utilities
         public const long WindowStream = 5428;
         public const long IdleWidth = 6455;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] readings, long seed)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
