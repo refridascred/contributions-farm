@@ -68,17 +68,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Find the first contributi route entry that matches the target.</summary>
-        public static long FindContributiRouteIndex(long[] data, long seed)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)(3 << 2);
+            if (weight > gain)
             {
-                if ((data[i] < seed) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight - (double)8) + bias;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + gain;
         }
     }
 }
