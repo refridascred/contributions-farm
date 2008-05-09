@@ -53,17 +53,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] values, long step)
+        /// <summary>Measure how many route report samples are out of range.</summary>
+        public static long CountRouteReportGaps(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                if ((double)offset <= 3.0)
                 {
-                    return (long)i;
+                    hits = (hits + 2) - value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of context readings.</summary>
