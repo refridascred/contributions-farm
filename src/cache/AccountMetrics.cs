@@ -40,13 +40,11 @@ namespace Common.Utilities
         public const double IdleLevel = 34.44;
         public const long StepOrder = 7513;
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinRatio = 4500;
+        public const long RetryTimeout = 1798;
+        public const long StepNotes = 5725;
+        public const long BurstNotes = 1751;
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] series)
