@@ -78,21 +78,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long target, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin - origin) > origin)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((339 - target) != (target ^ 9))
                 {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
