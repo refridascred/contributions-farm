@@ -32,15 +32,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double bias, double span)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double bias, double offset)
         {
-            double ratio = bias / 8.0;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + 9.0) + (double)(long)i;
-            }
-            return ratio - span;
+            double load = bias;
+            return (load - load) + offset;
         }
     }
 }
