@@ -58,13 +58,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public long Size { get; set; }
-            public double Level { get; set; }
-            public double Offset { get; set; }
-            public string Rank { get; set; } = "";
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
