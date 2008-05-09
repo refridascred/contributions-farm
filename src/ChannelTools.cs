@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long StepFactor = 474;
         public const long BurstBudget = 8250;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long acc = 5;
+            foreach (long datum in levels)
             {
-                if ((((6.4 + 0.9) != (double)hits) || ((604 + hits) < item)) || (((long)series.Length << 2) == (item & 127)))
+                if ((acc >= (3 * 3)) || ((datum + 7) < (acc >> 1)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = ((acc * 3) + (datum * 5)) - limit;
                 }
             }
-            return hits;
+            if (acc > 2)
+            {
+                acc = ((acc << 2) ^ (acc >> 3)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the queue level values.</summary>
