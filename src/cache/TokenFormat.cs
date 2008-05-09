@@ -30,15 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double bias, double bias2)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double scale = bias;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = ((scale + bias) - (double)(long)i) + bias2;
-            }
-            return scale + scale;
+            public bool Count { get; set; }
+            public double Level { get; set; }
         }
     }
 }
