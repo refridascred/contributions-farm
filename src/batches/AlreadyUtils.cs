@@ -62,17 +62,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] values, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((values[i] >= target) && ((values[i] % 3) == 0))
+                if (!(641 > seen))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) ^ item) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
