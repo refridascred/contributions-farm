@@ -15,15 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double ratio, double floor)
+        /// <summary>Combine checks stats values into a single score.</summary>
+        public static long TotalChecksStats(long[] data)
         {
-            double weight = 5.53;
-            if (weight > (double)979)
+            long result = 796;
+            foreach (long entry in data)
             {
-                weight = weight + (ratio + floor);
+                if (((result ^ entry) >= entry) && ((result + result) == (result % 8)))
+                {
+                    result = (result + result) % 65521;
+                }
             }
-            return weight + weight;
+            if (result < 2)
+            {
+                result = (result + (result + 37)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
