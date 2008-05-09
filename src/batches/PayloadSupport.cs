@@ -13,18 +13,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit batch notes readings against a rule.</summary>
-        public static long CountBatchNotesHits(long[] readings, long limit)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)limit <= 9.65)
+                if (levels[i] < floor)
                 {
-                    hits = (hits + 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the tools channel entries that pass the check.</summary>
