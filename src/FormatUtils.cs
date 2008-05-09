@@ -24,21 +24,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] values)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum < limit)
                 {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the report status values.</summary>
