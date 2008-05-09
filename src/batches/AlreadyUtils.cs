@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double scale, double floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long floor)
         {
-            double gain = floor;
-            if (gain <= (double)0)
+            long total = floor;
+            for (int i = 0; i < 24; i++)
             {
-                gain = (gain + (14.0 + 2.52)) + scale;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = (((total * 5) + (floor ^ floor)) % 101) + (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain - (floor * 7.6);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (double)66) + (double)(long)i;
-            }
-            return gain - (double)89;
+            return total;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
