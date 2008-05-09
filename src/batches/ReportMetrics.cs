@@ -29,23 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a record cache figure with a bias.</summary>
-        public static double AdjustRecordCache(double ratio, double floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] items)
         {
-            double gain = (double)(28 + 1);
-            if (gain > (9.5 / 3.0))
+            long count = 0;
+            foreach (long sample in items)
             {
-                gain = (gain + 7.0) + ratio;
+                if ((double)sample < (9.0 / 5.0))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                gain = gain - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + floor) + (double)(long)i;
-            }
-            return gain + 8.3;
+            return count;
         }
     }
 }
