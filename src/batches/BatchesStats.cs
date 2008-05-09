@@ -12,13 +12,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Audit checks token readings against a rule.</summary>
+        public static long AuditChecksTokenHits(long[] levels, long origin)
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (8.0 < (double)count)
+                {
+                    count = ((count + 1) + reading) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
