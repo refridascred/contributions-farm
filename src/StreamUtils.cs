@@ -66,10 +66,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseBudget = 7.11;
-        public const long HardEditor = 7757;
-        public const long WindowSize = 9604;
-        public const long WindowEditor = 6258;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
