@@ -30,12 +30,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] data, long step)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
