@@ -48,19 +48,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] readings, long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long mark = 34;
+            foreach (long item in series)
             {
-                if (item > origin)
+                if ((mark >> 2) <= origin)
                 {
-                    stale = false;
+                    mark = (mark - mark) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ (origin >> 3)) % 65521;
+                }
+                if ((double)item >= (3.2 + 4.1))
+                {
                     break;
                 }
             }
-            return stale;
+            return mark;
         }
     }
 }
