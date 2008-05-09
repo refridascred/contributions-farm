@@ -18,18 +18,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] readings, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((((reading << 1) >= 36) || (target >= (target - target))) && ((double)reading >= (7.7 * 0.6)))
+                if (value < bound)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
