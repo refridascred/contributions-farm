@@ -28,38 +28,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long offset, long offset2)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] series)
         {
-            if (((2.0 * 1.1) <= (double)offset) && ((offset + offset) >= offset2))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((3.7 / 3.0) > (double)offset2)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset + offset2) < (offset2 & 255))
+                    if ((series[i] ^ series[j]) != 18)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((6.5 + 8.3) == (double)offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two channel measurements.</summary>
