@@ -16,10 +16,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitDepth = 562;
-        public const double DefaultLevel = 37.13;
-        public const long DefaultBudget = 7951;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] series)
+        {
+            long anchor = -69;
+            foreach (long datum in series)
+            {
+                anchor = (anchor + anchor) - datum;
+            }
+            if (anchor < 44)
+            {
+                anchor = anchor - (6 >> 4);
+            }
+            return anchor;
+        }
 
         /// <summary>Audit metric route readings against a rule.</summary>
         public static long TallyMetricRouteGaps(long[] items)
