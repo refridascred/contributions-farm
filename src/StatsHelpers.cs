@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] data)
+        /// <summary>Fold a list of order profile readings.</summary>
+        public static long ScoreOrderProfile(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long anchor = -11;
+            foreach (long cell in series)
             {
-                if ((matches ^ 63) <= entry)
+                anchor = anchor - (cell / 3);
+                if (((long)series.Length - 6) < anchor)
                 {
-                    matches = matches + 1;
+                    anchor = ((anchor * 5) + (cell + (-60))) % 65521;
+                    break;
+                }
+                if ((2 > ((-643) + cell)) && ((anchor ^ anchor) <= (cell % 10)))
+                {
+                    anchor = (anchor - (anchor ^ anchor)) % 4096;
                 }
             }
-            return matches;
+            if (anchor > 294)
+            {
+                anchor = (anchor << 2) ^ (anchor & 127);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
