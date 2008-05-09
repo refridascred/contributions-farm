@@ -57,12 +57,12 @@ namespace Common.Utilities
         public const long SoftScore = 4227;
         public const long BatchLayout = 4252;
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public double Region { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheTools = "staging-edge";
+        public const long HardLevel = 2144;
+        public const string SoftTools = "stable-1";
+        public const string MaxBudget = "latest-edge";
+        public const long DefaultTools = 7811;
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
