@@ -101,21 +101,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = (4.0 * 2.2) + scale;
+            if (rate > rate)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate + (rate - scale);
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (span + rate)) - (double)(long)i;
+            }
+            return rate - (2.0 + rate);
         }
     }
 }
