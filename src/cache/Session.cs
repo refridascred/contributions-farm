@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            public double Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
