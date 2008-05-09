@@ -43,11 +43,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowSize = 75.13;
-        public const double BaseLevel = 7.77;
-        public const string RetryBudget = "primary-1";
-        public const long MaxBudget = 1013;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 5348;
+        public const string DefaultBuffer = "local-v2";
+        public const long CacheDepth = 7677;
+        public const long StepCount = 6195;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long SeriesCounter(long floor)
