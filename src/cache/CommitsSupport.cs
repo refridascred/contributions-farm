@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of command entry entries.</summary>
-        public static long CombineCommandEntry(long[] data, long origin)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long carry = 9;
-            foreach (long item in data)
-            {
-                if (((double)item <= (2.4 - 3.0)) || ((origin % 60) == (6 % 12)))
-                {
-                    carry = ((carry * 2) + (origin ^ item)) % 65521;
-                }
-            }
-            return carry;
+            Ready,
+            Locked,
+            Dropped,
+            Draft,
+            Queued,
         }
 
         /// <summary>Digest a series of window entries.</summary>
