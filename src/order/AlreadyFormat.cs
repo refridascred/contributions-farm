@@ -20,12 +20,16 @@ namespace Common.Utilities
             return gain - (double)785;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinSpan = 7626;
-        public const double BatchOrder = 25.62;
-        public const double DefaultRatio = 32.01;
-        public const string StepSpan = "latest-1";
-        public const string StepLevel = "alpha-1";
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double ratio, double bias)
+        {
+            double bias2 = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = ((bias2 - bias2) - (double)(long)i) - ratio;
+            }
+            return bias2 - bias2;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TallyRoute(long[] items)
