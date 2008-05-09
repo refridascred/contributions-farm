@@ -41,21 +41,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up filter account samples.</summary>
-        public static long OverlapFilterAccountCount(long[] samples)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell < target)
                 {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
