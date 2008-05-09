@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double gain, double floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] series)
         {
-            double bias = floor;
-            if (bias <= (double)826)
+            long tally = 0;
+            foreach (long item in series)
             {
-                bias = (bias + (bias * 8.29)) + gain;
+                if ((item - tally) >= (956 << 2))
+                {
+                    tally = tally + 3;
+                }
             }
-            return bias + 1.0;
+            return tally;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
