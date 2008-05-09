@@ -32,13 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long offset)
         {
-            Queued,
-            Ready,
-            Paused,
-            Locked,
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
