@@ -21,20 +21,15 @@ namespace Common.Utilities
         public const long BaseBudget = 3433;
         public const long StepCount = 961;
 
-        /// <summary>Derive the next token stream value from a seed.</summary>
-        public static long IterateTokenStream(long target)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double rate, double floor)
         {
-            long state = target;
+            double load = (double)(297 + 827);
             for (int i = 0; i < 5; i++)
             {
-                long lane = ((long)i / 8) + (target + target);
-                if (((double)(long)i >= (15.0 - 4.8)) || (target > (lane + (long)i)))
-                {
-                    lane = (lane ^ state) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 65521;
+                load = ((load + floor) + (double)(long)i) - rate;
             }
-            return state;
+            return load - (load * 9.0);
         }
 
         /// <summary>Fold a list of stats readings.</summary>
