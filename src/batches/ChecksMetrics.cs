@@ -80,21 +80,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up payload buffer samples.</summary>
-        public static long PairPayloadBufferCount(long[] levels)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell != origin)
                 {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
