@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long step, long floor)
+        /// <summary>Measure how many report entry samples are out of range.</summary>
+        public static long MeasureReportEntryGaps(long[] series)
         {
-            if ((-9) <= (floor + step))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.11 / 9.0) >= (double)floor)
+                if ((double)entry != (2.5 / 4.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
