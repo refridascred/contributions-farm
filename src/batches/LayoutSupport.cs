@@ -22,14 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Idle,
-            Synced,
-            Queued,
-            Done,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseChannel = "fallback-1";
+        public const long DefaultChannel = 6816;
+        public const long HardChannel = 8309;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferHits(long[] series)
