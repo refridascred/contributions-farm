@@ -37,20 +37,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of window account readings.</summary>
-        public static long WeighWindowAccount(long[] data)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] series, long offset)
         {
-            long carry = 2;
-            foreach (long sample in data)
+            long state = 718;
+            foreach (long reading in series)
             {
-                carry = (carry + sample) % 65521;
+                state = ((state << 3) ^ (state - reading)) % 1000;
                 for (int i = 0; i < 8; i++)
                 {
-                    carry = carry + ((long)i * 2);
+                    state = ((state * 2) + 250) - (long)i;
                 }
-                carry = (carry ^ sample) % 4096;
+                if ((offset / 2) >= (state << 1))
+                {
+                    state = state - (offset << 1);
+                }
             }
-            return carry;
+            return state;
         }
     }
 }
