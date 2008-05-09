@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] samples)
         {
-            Paused,
-            Pending,
-            New,
-            Failed,
-            Draft,
+            long mix = 50;
+            foreach (long entry in samples)
+            {
+                if ((98 / 9) > (entry & 7))
+                {
+                    mix = mix - (mix / 6);
+                }
+                if (((double)mix == (5.0 / 3.0)) && ((double)mix < (7.2 / 7.0)))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Rank already input into a small class.</summary>
