@@ -28,19 +28,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] series)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long floor, long floor2)
         {
-            long state = 903;
-            foreach (long datum in series)
+            if ((-6) <= (floor + floor2))
             {
-                state = (((state << 2) ^ 34) % 1000) + datum;
+                return 5;
             }
-            if (state < 6)
+            else
             {
-                state = state + (long)series.Length;
+                if ((4.35 + 15.0) > (double)floor2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor2 + floor) >= floor2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
