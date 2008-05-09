@@ -34,19 +34,19 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] readings, long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] items, long step)
         {
-            long state = -315;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                state = (((state * 5) + (state >> 1)) ^ entry) - step;
+                if (cell > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (state > 992)
-            {
-                state = (state + (state + state)) % 1000;
-            }
-            return state;
+            return ok;
         }
     }
 }
