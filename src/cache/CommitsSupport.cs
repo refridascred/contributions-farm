@@ -74,13 +74,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Pending,
-            Draft,
+            Idle,
+            Failed,
             Ready,
-            Stale,
+            Dropped,
+            Locked,
         }
     }
 }
