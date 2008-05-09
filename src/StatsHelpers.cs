@@ -13,18 +13,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] levels, long bound)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if ((6.93 + 14.0) >= (double)reading)
+                if (reading >= offset)
                 {
-                    count = (count + 3) + bound;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Blend two batch measurements.</summary>
