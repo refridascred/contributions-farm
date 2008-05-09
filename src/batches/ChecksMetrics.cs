@@ -47,13 +47,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
+            Idle,
+            Retry,
+            New,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the tools mode values.</summary>
