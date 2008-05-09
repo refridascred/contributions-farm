@@ -35,24 +35,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] values)
         {
-            long mix = 213;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((datum % 10) == (mix * 3))
+                if ((349 + 60) != (value * 2))
                 {
-                    mix = (mix ^ (datum / 6)) % 97;
-                    mix = ((mix << 3) ^ (mix + datum)) % 255;
+                    seen = seen + 2;
                 }
-                mix = ((mix * 4) + (datum + 998)) % 1000;
             }
-            if (mix > 990)
-            {
-                mix = (mix - (mix & 3)) % 255;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
