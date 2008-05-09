@@ -43,12 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Active,
-            Closed,
             Failed,
+            Done,
+            New,
+            Locked,
         }
 
         /// <summary>Grade a contributi farm value against two limits.</summary>
