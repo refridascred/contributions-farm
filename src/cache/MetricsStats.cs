@@ -59,11 +59,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleCluster = 32.71;
+        public const long LimitLevel = 3119;
+        public const long BatchScore = 4902;
+        public const long MinCluster = 2847;
+        public const long BurstCluster = 5519;
     }
 }
