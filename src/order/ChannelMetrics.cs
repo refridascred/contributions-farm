@@ -24,10 +24,9 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 3295;
-        public const long DefaultBuffer = 1174;
-        public const double RetryBuffer = 28.31;
-        public const string CacheBuffer = "local";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitGraph = 18.07;
+        public const long MaxInterval = 6082;
+        public const long MinTimeout = 4599;
     }
 }
