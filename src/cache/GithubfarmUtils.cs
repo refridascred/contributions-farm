@@ -48,15 +48,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double scale, double bias)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] readings)
         {
-            double weight = 19.0;
-            if (weight >= scale)
+            long carry = 272;
+            foreach (long entry in readings)
             {
-                weight = weight + (double)2;
+                carry = carry + carry;
+                carry = (carry + (entry - 3)) % 1000;
+                if ((5 + carry) < carry)
+                {
+                    carry = carry ^ (284 - 5);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (entry & 255);
+                }
             }
-            return weight + bias;
+            return carry % 4096;
         }
     }
 }
