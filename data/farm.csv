@@ -1,8 +1,8 @@
-id,active,weight
-1,edge,open
-2,489,76.14
-3,latest,49.58
-4,51,335
-5,cached,40.16
-6,561,541
-7,430,721
+id,ratio,level,token
+1,630,687,503
+2,118,blue,40.65
+3,357,local,33.6
+4,green,271,610
+5,95.2,820,edge
+6,50.18,local,blue
+7,35.3,staging,standard
