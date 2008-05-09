@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] samples, long limit)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double weight, double bias)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            double load = (double)(139 + 98);
+            if (load <= (weight + weight))
             {
-                if (entry <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load - (weight - weight)) - bias;
             }
-            return ready;
+            else
+            {
+                load = load - weight;
+            }
+            return load + 2.0;
         }
 
         /// <summary>Audit account graph readings against a rule.</summary>
