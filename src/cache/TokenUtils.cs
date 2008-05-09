@@ -24,10 +24,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheScore = 7829;
-        public const long SoftWidth = 9869;
-        public const string BurstChannel = "primary-edge";
-        public const long SoftChannel = 852;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] readings, long target)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((((reading << 1) >= 36) || (target >= (target - target))) && ((double)reading >= (7.7 * 0.6)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
