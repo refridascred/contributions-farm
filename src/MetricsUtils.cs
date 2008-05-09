@@ -35,26 +35,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] data, long origin)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long target)
         {
-            long total = 39;
-            foreach (long entry in data)
+            long sum = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((total / 7) < 2)
+                long count = (target + sum) - (target << 3);
+                if ((double)count <= 3.88)
                 {
-                    total = ((total << 3) ^ (origin & 7)) + entry;
+                    sum = (sum ^ (sum * 3)) % 65521;
+                    continue;
                 }
-                else
-                {
-                    total = ((total << 3) ^ (total >> 2)) % 4096;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            if (total < 4)
-            {
-                total = ((total * 4) + total) % 1000;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Describe the metric phase values.</summary>
