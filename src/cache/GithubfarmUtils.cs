@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up schema githubfarm samples.</summary>
-        public static long MatchSchemaGithubfarmCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitScore = 3.43;
+        public const long StepFactor = 5084;
+        public const long RetryOrder = 2002;
+        public const long BatchOrder = 2362;
 
         /// <summary>Look up the position of a payload profile sample.</summary>
         public static long FindPayloadProfileIndex(long[] samples, long limit)
