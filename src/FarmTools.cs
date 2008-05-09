@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] series)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long acc = 399;
-            foreach (long cell in series)
-            {
-                if (((cell - acc) >= cell) || ((cell ^ cell) < 30))
-                {
-                    acc = (acc << 2) ^ (593 << 1);
-                }
-            }
-            return acc;
+            Ready,
+            Paused,
+            Queued,
+            Stale,
         }
 
         /// <summary>Fold a list of context readings.</summary>
