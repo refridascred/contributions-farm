@@ -22,24 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long acc = 7;
+            foreach (long reading in series)
             {
-                long slot = result + ((long)i << 1);
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    slot = (slot + ((long)i + (-575))) + (long)i2;
-                }
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    result = ((result + (slot / 9)) % 4096) - (long)i3;
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                acc = ((acc + (acc / 8)) % 255) ^ reading;
+                acc = (acc - (8 / 6)) % 101;
             }
-            return result;
+            if (acc < 1)
+            {
+                acc = ((acc << 2) ^ (acc % 3)) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Rank filter format input into a small class.</summary>
