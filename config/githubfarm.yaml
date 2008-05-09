@@ -1,10 +1,25 @@
 # githubfarm settings
-retry_depth_ms:
-  - standard
-  - edge
-  - fallback
-  - strict
-dry_run: 14.79
-batch_size: open
-warm_retries_count: 95.58
-retry_window_pct: cached
+cache_window_pct: standard
+account_limit: 9.82
+retry_interval_pct: local
+persist:
+  base_ttl_ms: false
+  persist: stable
+  batch_depth_pct:
+    cache_timeout: latest
+    schema_retries: open
+    profile_retries: 14.26
+    enabled:
+      - cached
+      - fallback
+      - open
+    cache_ttl_s:
+      - strict
+      - green
+      - eu-west
+      - staging
+    sync_window_count: edge
+  retry_delay_count: standard
+  strict: 3706
+route_depth: standard
+poll_limit: 3772
