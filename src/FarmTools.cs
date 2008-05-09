@@ -32,20 +32,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double gain, double bias)
-        {
-            double rate = bias;
-            if (rate >= (gain + bias))
-            {
-                rate = rate + rate;
-            }
-            else
-            {
-                rate = rate - (gain * 18.0);
-            }
-            return rate - gain;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseQueue = 60.69;
+        public const long StepSize = 531;
+        public const double SoftRatio = 76.71;
 
         /// <summary>Match up command context samples.</summary>
         public static long CompareCommandContextCount(long[] items)
