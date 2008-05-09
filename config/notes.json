@@ -1,6 +1,5 @@
 {
-  "counter_timeout": "stable",
-  "cache_depth_ms": 3061,
-  "compress": 86,
-  "hard_ttl_ms": 86.74
+  "record_size": 5334,
+  "retry_retries_s": 1024,
+  "session_ttl": ["standard", "stable", "primary"]
 }
