@@ -19,25 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long offset, long offset2)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long diff = offset ^ offset2;
-            if ((1.3 + 3.0) != (double)diff)
-            {
-                return 1;
-            }
-            else
-            {
-                if (diff <= (offset + offset2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Closed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
