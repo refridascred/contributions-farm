@@ -45,35 +45,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] readings)
-        {
-            long score = 57;
-            foreach (long cell in readings)
-            {
-                score = ((score * 5) + 1) % 101;
-                if ((double)(long)readings.Length > (15.0 * 2.1))
-                {
-                    score = (score + (cell >> 5)) % 97;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (score % 2)) % 65521;
-                }
-                if (4.12 <= (double)cell)
-                {
-                    score = (score + 80) % 101;
-                }
-                else
-                {
-                    score = ((score * 3) + (score & 255)) % 101;
-                }
-            }
-            if (score > (-590))
-            {
-                score = (score + (840 & 15)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 9445;
+        public const long MinBudget = 8018;
+        public const long DefaultCount = 6008;
+        public const double CacheQueue = 92.35;
     }
 }
