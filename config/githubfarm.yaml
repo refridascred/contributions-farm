@@ -1,10 +1,15 @@
 # githubfarm settings
-batch_size: false
-idle_size_pct: green
-compress: 15.32
-batch_retries: 85
-stats_interval:
-  - 408
-  - 304
-  - 301
-batch_delay: 38.28
+persist: false
+layout_interval: 26
+cache_size_count: false
+buffer_retries:
+  already_limit:
+    audit: false
+    cache_limit_pct: edge
+    idle_timeout_pct: fallback
+    flush_threshold_s: true
+    sync_capacity_pct: 60
+  filter_retries: 56
+  compress: fallback
+  session_limit: 658
+min_limit_ms: 500
