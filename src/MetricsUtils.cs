@@ -33,12 +33,19 @@ namespace Common.Utilities
         public const long SoftRatio = 6107;
         public const double BatchCache = 96.63;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] samples, long step)
         {
-            Dropped,
-            Idle,
-            New,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define command limits and defaults.</summary>
