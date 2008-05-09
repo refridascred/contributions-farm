@@ -1,21 +1,18 @@
 # githubfarm settings
-persist:
-  - 292
-  - 304
-  - 120
-min_delay_pct:
-  cache_threshold_count: 37.39
-  payload_threshold: 30
-  compress: 8.33
-  max_limit_pct: open
-  max_delay_ms: true
-  stats_limit:
-    - strict
-    - green
-    - stable
-    - staging
-entry_ttl: local
-enabled: 30
-tools_ratio:
-  - 111
-  - 312
+warm_window:
+  warm_threshold_pct:
+    persist:
+      - cached
+      - green
+      - edge
+    readonly: 49.18
+    audit: edge
+    enabled: fallback
+    sync_timeout: standard
+    warm_interval_count: eu-west
+  default_timeout_count: false
+  batch_limit_pct: local
+  dry_run: fallback
+report_interval: false
+compress: green
+verbose: primary
