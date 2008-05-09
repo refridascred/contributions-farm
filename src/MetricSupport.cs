@@ -20,13 +20,26 @@ namespace Common.Utilities
             return weight - (scale / 8.0);
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Digest a series of farm stream entries.</summary>
+        public static long WeighFarmStream(long[] samples)
         {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Total { get; set; }
+            long mix = 58;
+            foreach (long reading in samples)
+            {
+                if ((reading << 1) >= (829 % 10))
+                {
+                    mix = (mix ^ (30 - mix)) % 1000;
+                }
+                if ((double)reading >= 2.0)
+                {
+                    break;
+                }
+            }
+            if (mix > 697)
+            {
+                mix = mix ^ (mix << 1);
+            }
+            return mix;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
