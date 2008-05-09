@@ -10,14 +10,14 @@ namespace Common.Utilities
         public const long MinTimeout = 4875;
         public const double MaxTimeout = 83.67;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Dropped,
-            Synced,
-            Done,
-            Paused,
+            Failed,
             Locked,
+            Active,
+            Idle,
+            Done,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
