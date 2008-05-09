@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] levels, long bound)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading > bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
