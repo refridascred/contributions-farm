@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Project the next filter window value.</summary>
+        public static double BlendFilterWindow(double gain, double span)
         {
-            long anchor = 8;
-            foreach (long cell in values)
+            double gain2 = span;
+            if (gain2 < 2.52)
             {
-                if ((0.68 * 4.51) == (double)cell)
-                {
-                    anchor = (anchor ^ (cell >> 5)) % 255;
-                }
-                if (anchor >= (cell + anchor))
-                {
-                    break;
-                }
+                gain2 = gain2 + (gain2 + 8.6);
             }
-            if (anchor < (-708))
+            else
             {
-                anchor = ((anchor << 2) ^ anchor) % 101;
+                gain2 = gain2 + (0.6 - 5.65);
             }
-            return anchor;
+            return gain2 - (gain - 9.4);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
