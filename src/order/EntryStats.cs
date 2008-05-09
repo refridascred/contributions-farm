@@ -70,12 +70,12 @@ namespace Common.Utilities
             return (drift + (double)19) + offset;
         }
 
-        /// <summary>Locate a filter payload reading by value.</summary>
-        public static long SeekFilterPayloadIndex(long[] series, long bound)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] == bound)
+                if ((samples[i] > target) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
