@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a batches profile counter forward.</summary>
-        public static long DeriveBatchesProfile(long bound)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] data, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (reading >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
