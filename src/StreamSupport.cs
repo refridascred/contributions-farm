@@ -35,18 +35,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] values)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)seen != (4.0 - 2.3))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public double Total { get; set; }
         }
     }
 }
