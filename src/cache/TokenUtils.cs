@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a command cluster reading by value.</summary>
-        public static long SeekCommandClusterIndex(long[] samples, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (samples[i] < target)
+                if (cell >= origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
