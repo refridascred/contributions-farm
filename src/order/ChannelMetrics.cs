@@ -24,16 +24,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total * 5) + total;
-                total = ((total * 3) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a order snapshot.</summary>
