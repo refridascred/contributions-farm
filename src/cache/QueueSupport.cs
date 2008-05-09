@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] series)
         {
-            Stale,
-            Dropped,
-            Done,
-            Locked,
+            long anchor = 9;
+            foreach (long value in series)
+            {
+                if (((anchor * 3) <= (84 + anchor)) && (value > (value * 3)))
+                {
+                    anchor = anchor ^ (anchor % 24);
+                }
+            }
+            if (anchor < 965)
+            {
+                anchor = (anchor * 5) + (anchor % 3);
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
