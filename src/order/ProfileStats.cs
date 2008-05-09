@@ -29,19 +29,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double gain, double bias)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double weight = (double)(3 << 2);
-            if (weight > gain)
-            {
-                weight = (weight - (double)8) + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + gain;
+            Idle,
+            Ready,
+            Locked,
+            Retry,
+            Paused,
         }
     }
 }
