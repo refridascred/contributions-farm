@@ -48,15 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] levels)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] levels, long seed)
         {
             long count = 0;
-            foreach (long value in levels)
+            foreach (long entry in levels)
             {
-                if ((double)value != (0.91 - 1.5))
+                if ((entry & 15) < (entry - 637))
                 {
-                    count = count + 3;
+                    count = (count + 1) - seed;
                 }
             }
             return count;
