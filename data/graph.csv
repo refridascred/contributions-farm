@@ -1,9 +1,6 @@
-id,rank,score
-1,359,618
-2,50.46,4.79
-3,legacy,425
-4,362,open
-5,primary,19.23
-6,292,88.5
-7,777,3.9
-8,639,open
+id,owner,count,level
+1,589,917,legacy
+2,edge,latest,14.13
+3,500,102,strict
+4,666,92.8,56.63
+5,green,open,23.61
