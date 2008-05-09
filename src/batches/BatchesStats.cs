@@ -39,10 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftSize = 92.48;
-        public const long MinToken = 8923;
-        public const long BurstCount = 265;
-        public const long DefaultToken = 6455;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] data, long step)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
