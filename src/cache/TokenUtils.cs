@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] data, long origin)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the metrics state values.</summary>
