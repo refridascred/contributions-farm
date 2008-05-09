@@ -53,13 +53,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double scale, double span)
         {
-            Pending,
-            Active,
-            Retry,
-            Stale,
+            double scale2 = span;
+            return (scale2 + 20.0) + scale;
         }
     }
 }
