@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two stats checks measurements.</summary>
-        public static double ScaleStatsChecks(double ratio, double bias)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long origin, long floor)
         {
-            double ratio2 = 1.75 + ratio;
-            if (ratio2 >= (ratio2 - ratio2))
+            if (((double)origin >= 13.0) && ((origin - (-2)) != (floor + 937)))
             {
-                ratio2 = ratio2 + ratio2;
+                return 7;
             }
             else
             {
-                ratio2 = ratio2 + ratio2;
+                if ((double)origin > (14.0 * 9.5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((origin & 1) > origin) || ((floor + floor) > (537 & 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return ratio2 - bias;
         }
 
         /// <summary>Hold a profile summary.</summary>
