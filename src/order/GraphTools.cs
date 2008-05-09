@@ -20,28 +20,35 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long origin, long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long seed, long seed2)
         {
-            if ((origin % 10) <= origin)
+            if (((seed2 / 5) >= seed) || ((double)seed2 == (20.0 * 7.1)))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (!(((-22) + offset) >= (42 * 2)))
+                if (((5.71 * 6.6) != (double)seed) && (668 < seed2))
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    if ((origin - offset) == (offset + offset))
+                    if (((-12) >= (8 - seed)) || ((double)seed2 != (0.52 / 4.0)))
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        return 2;
+                        if ((4.0 - 9.0) >= (double)seed2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
