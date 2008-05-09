@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] data, long step)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample < step)
+                if ((data[i] > offset) && ((data[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Blend two cache measurements.</summary>
