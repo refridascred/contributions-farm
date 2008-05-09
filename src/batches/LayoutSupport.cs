@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a cache record.</summary>
