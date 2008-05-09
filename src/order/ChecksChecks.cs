@@ -30,14 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] levels, long limit)
         {
-            Ready,
-            Retry,
-            Idle,
-            Done,
-            Failed,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((67 / 3) > hits)
+                {
+                    hits = ((hits + 2) + value) + limit;
+                }
+            }
+            return hits;
         }
     }
 }
