@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 253;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (anchor - (585 & 31)) + entry;
             }
-            return matches;
+            if (anchor > 467)
+            {
+                anchor = anchor - (18 >> 4);
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
