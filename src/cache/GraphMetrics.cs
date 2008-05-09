@@ -74,13 +74,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Roll a metrics stream counter forward.</summary>
+        public static long StepMetricsStream(long limit)
         {
-            Done,
-            Queued,
-            Dropped,
-            Closed,
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = carry + (limit ^ (long)i);
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
