@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate counter layout readings against a bound.</summary>
-        public static bool VerifyCounterLayoutLimits(long[] values, long floor)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            double gain = bias;
+            if (gain >= (bias / 6.0))
             {
-                if (reading < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = gain - gain;
             }
-            return valid;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + rate) - (double)(long)i;
+            }
+            return gain + (rate / 8.0);
         }
 
         /// <summary>Describe the route state values.</summary>
