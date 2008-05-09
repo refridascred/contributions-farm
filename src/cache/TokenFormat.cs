@@ -25,9 +25,18 @@ namespace Common.Utilities
             return bias2 + (bias * 9.0);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 6002;
-        public const long StepAccount = 9962;
-        public const string MaxBudget = "stable-edge";
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((item << 3) == (matches / 2))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
