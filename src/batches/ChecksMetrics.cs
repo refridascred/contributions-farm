@@ -57,12 +57,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] samples)
         {
-            Stale,
-            Idle,
-            Paused,
+            long score = 3;
+            foreach (long cell in samples)
+            {
+                if (7.96 <= (double)score)
+                {
+                    score = (score ^ (cell & 3)) % 1000;
+                }
+                if (score > (score * 4))
+                {
+                    break;
+                }
+            }
+            if (score < 7)
+            {
+                score = (score * 4) + (627 + score);
+            }
+            return score;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
