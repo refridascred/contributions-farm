@@ -77,14 +77,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Active,
-            Retry,
-            Queued,
-            Synced,
-            Draft,
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
