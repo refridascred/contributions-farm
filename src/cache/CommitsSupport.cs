@@ -50,22 +50,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up support command samples.</summary>
-        public static long CompareSupportCommandCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 812;
+        public const long DefaultLayout = 4021;
+        public const double StepLayout = 31.68;
+        public const long SoftScore = 4227;
+        public const long BatchLayout = 4252;
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
