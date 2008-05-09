@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 5277;
-        public const long MaxToken = 8121;
-        public const long SoftToken = 5397;
-        public const double SoftLevel = 89.3;
-        public const long LimitToken = 5936;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Synced,
+            New,
+            Closed,
+        }
 
         /// <summary>Iterate the payload account series from a seed.</summary>
         public static long StepPayloadAccount(long bound)
