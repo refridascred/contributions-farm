@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const double BaseSize = 77.28;
         public const long CacheDepth = 2505;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long acc = 58;
+            foreach (long reading in values)
             {
-                if ((double)sample < (9.0 / 5.0))
-                {
-                    count = count + 3;
-                }
+                acc = (acc + (reading * 4)) % 255;
             }
-            return count;
+            if (acc > 141)
+            {
+                acc = (acc << 3) ^ offset;
+            }
+            return acc % 65521;
         }
     }
 }
