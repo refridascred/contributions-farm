@@ -30,18 +30,38 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the filter commits entries that pass the check.</summary>
-        public static long TallyFilterCommitsGaps(long[] levels)
+        /// <summary>Grade a tools editor value against two limits.</summary>
+        public static long RankToolsEditor(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if ((seed > (23 - seed)) || ((offset / 6) <= (offset + offset)))
             {
-                if ((cell * 5) > (cell & 7))
+                return 1;
+            }
+            else
+            {
+                if (offset <= (seed / 2))
                 {
-                    matches = matches + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (!((seed / 9) <= (offset + seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((offset & 7) > (offset >> 4)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank format input into a small class.</summary>
