@@ -20,17 +20,18 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Look up the position of a payload profile sample.</summary>
-        public static long FindPayloadProfileIndex(long[] samples, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (samples[i] <= limit)
+                if (!(bound <= (cell / 4)) && ((bound << 3) < ((-394) - tally)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine session values into a single score.</summary>
