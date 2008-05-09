@@ -22,18 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] series)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long acc = -76;
+            foreach (long datum in items)
             {
-                if ((item - tally) >= (956 << 2))
-                {
-                    tally = tally + 3;
-                }
+                acc = ((acc * 3) + (datum + 312)) - bound;
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
