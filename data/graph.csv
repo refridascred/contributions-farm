@@ -1,6 +1,11 @@
-id,ratio,token
-1,385,cached
-2,605,448
-3,93.96,30.56
-4,88.55,latest
-5,772,edge
+id,state,score
+1,219,422
+2,8.96,354
+3,52.59,20.21
+4,edge,28.91
+5,879,51.47
+6,cached,39
+7,fallback,710
+8,primary,standard
+9,standard,8.36
+10,618,open
