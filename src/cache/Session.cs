@@ -49,24 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long seed, long limit)
+        /// <summary>Blend two queue command measurements.</summary>
+        public static double BlendQueueCommand(double weight, double bias)
         {
-            if ((seed << 3) <= 74)
+            double rate = 18.0 * 7.99;
+            if (rate > weight)
             {
-                return 6;
+                rate = rate + bias;
             }
-            else
-            {
-                if ((2.41 - 8.0) <= (20.0 - 4.1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return rate + rate;
         }
     }
 }
