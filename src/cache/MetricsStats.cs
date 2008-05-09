@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Adjust a context account reading.</summary>
+        public static double ProjectContextAccount(double rate, double bias)
         {
-            Active,
-            Failed,
-            Locked,
-            Queued,
+            double scale = 14.0;
+            if (scale <= (scale / 4.0))
+            {
+                scale = (scale + (double)730) + bias;
+            }
+            else
+            {
+                scale = scale + rate;
+            }
+            return scale + (double)656;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
