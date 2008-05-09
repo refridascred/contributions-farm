@@ -1,7 +1,7 @@
 # support settings
-sync_retries_ms: 62.03
-base_limit_ms: 2695
-soft_limit_s: open
-max_capacity_s: cached
-min_interval_count: legacy
-hard_retries_count: false
+readonly: 818
+already_interval: staging
+checks_limit:
+  - 371
+  - 354
+farm_capacity: 99
