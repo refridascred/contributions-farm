@@ -33,17 +33,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] values, long step)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long result = 38;
-            foreach (long datum in values)
-            {
-                result = ((result ^ (step + (long)values.Length)) % 101) + datum;
-                result = (result * 3) + (result - step);
-                result = (result ^ (step / 3)) % 255;
-            }
-            return result;
+            Idle,
+            Draft,
+            Failed,
         }
     }
 }
