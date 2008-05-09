@@ -1,7 +1,6 @@
 # githubfarm settings
-verbose: 76.38
-flush_timeout:
-  - 288
-  - 21
-  - 129
-hard_depth_pct: 64.19
+batch_window_count: false
+retry_ratio_pct: 47
+sync_ttl_ms: 9629
+max_size_s: 250
+contributi_size: 98
