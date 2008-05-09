@@ -64,22 +64,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] levels)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] data, long seed)
         {
-            long state = 82;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((3.98 / 4.0) < (double)state)
+                if (!((double)seed <= 2.0))
                 {
-                    state = (state - ((-964) + item)) % 255;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            if (state < 239)
-            {
-                state = (state + state) % 1000;
-            }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
