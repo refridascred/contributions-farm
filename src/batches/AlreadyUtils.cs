@@ -69,12 +69,9 @@ namespace Common.Utilities
         public const long IdleScore = 6270;
         public const double MinSpan = 81.08;
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public double Rank { get; set; }
-            public bool Flag { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 2042;
+        public const long CacheFactor = 5081;
+        public const long IdlePayload = 5841;
     }
 }
