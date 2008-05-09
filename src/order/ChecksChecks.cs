@@ -26,19 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] series, long offset)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long floor)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (value < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return valid;
+            return mix;
         }
     }
 }
