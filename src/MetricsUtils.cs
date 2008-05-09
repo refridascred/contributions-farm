@@ -24,12 +24,14 @@ namespace Common.Utilities
             return scale + (5.5 - bias2);
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
+            New,
+            Done,
+            Idle,
+            Active,
+            Ready,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
