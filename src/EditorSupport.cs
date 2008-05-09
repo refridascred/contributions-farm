@@ -23,18 +23,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] readings, long limit)
+        /// <summary>Derive the next filter layout value from a seed.</summary>
+        public static long StepFilterLayout(long bound)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((limit - tally) >= ((long)readings.Length - (long)readings.Length))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a record record.</summary>
