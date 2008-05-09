@@ -50,19 +50,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double scale, double span)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            double rate = (4.0 * 2.2) + scale;
-            if (rate > rate)
-            {
-                rate = rate + (rate - scale);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (span + rate)) - (double)(long)i;
-            }
-            return rate - (2.0 + rate);
+            Locked,
+            Retry,
+            Done,
+            Ready,
         }
     }
 }
