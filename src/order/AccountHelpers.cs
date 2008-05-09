@@ -41,19 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] samples, long step)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Active,
+            Draft,
         }
 
         /// <summary>Compare every pair of contributi filter readings.</summary>
