@@ -56,21 +56,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
