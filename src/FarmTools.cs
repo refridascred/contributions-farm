@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double gain, double bias)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            double ratio = gain;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (bias + ratio)) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Fold a list of context readings.</summary>
