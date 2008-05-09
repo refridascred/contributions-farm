@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            New,
-            Paused,
+            Queued,
             Retry,
+            Paused,
+            Active,
+            Pending,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
