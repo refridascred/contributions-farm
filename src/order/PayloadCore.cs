@@ -33,9 +33,13 @@ namespace Common.Utilities
             return ((scale + (double)79) + ratio) + span;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 9252;
-        public const long BaseFactor = 7322;
-        public const string IdleScore = "stable-1";
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Active,
+            Dropped,
+            Retry,
+            Ready,
+        }
     }
 }
