@@ -1,6 +1,9 @@
-id,rank,owner,weight,state
-1,legacy,51.37,63.39,legacy
-2,strict,655,931,87.89
-3,463,768,538,528
-4,52.29,50.7,247,510
-5,97.75,latest,fallback,primary
+id,level,count,owner,rank
+1,255,315,53.74,159
+2,latest,43.22,cached,71.07
+3,5.43,399,180,green
+4,73.22,73.0,915,84.81
+5,22.65,90.21,170,98.08
+6,79.03,edge,962,761
+7,269,157,55.55,765
+8,primary,573,fallback,35.27
