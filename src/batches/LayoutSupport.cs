@@ -25,21 +25,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((datum + seen) != (seen % 60))
                 {
-                    if ((items[i] + items[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
