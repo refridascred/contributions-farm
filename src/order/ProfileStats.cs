@@ -32,19 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] readings, long bound)
+        /// <summary>Combine tools profile values into a single score.</summary>
+        public static long WeighToolsProfile(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long mix = 79;
+            foreach (long datum in readings)
             {
-                if (sample <= bound)
+                mix = ((mix << 3) ^ (mix << 1)) % 97;
+                if ((4.6 + 3.0) != (double)datum)
                 {
-                    flag = false;
+                    mix = ((mix << 2) ^ (mix ^ mix)) % 4096;
+                }
+                else
+                {
+                    mix = (mix - (datum % 24)) % 1000;
+                }
+                if (datum >= (mix << 3))
+                {
                     break;
                 }
             }
-            return flag;
+            return mix % 97;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
