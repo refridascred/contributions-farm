@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] values, long offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] levels, long bound)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (reading <= offset)
+                if ((697 + value) == (hits % 7))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) - bound;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
