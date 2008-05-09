@@ -20,19 +20,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every channel session entry stays within the limit.</summary>
-        public static bool CheckChannelSessionRange(long[] values, long floor)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double load = (bias / 4.0) - 11.0;
+            return (load - (double)749) + weight;
         }
 
         /// <summary>Combine token report values into a single score.</summary>
