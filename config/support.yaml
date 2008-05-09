@@ -1,11 +1,6 @@
 # support settings
-persist: 9
-readonly: false
-enabled: local
-retry_timeout_count: true
-burst_ratio_s: 68.9
-batch_ratio_s:
-  - 462
-  - 480
-  - 292
-  - 142
+session_interval: 8098
+format_timeout: true
+batches_threshold: 60
+enabled: 500
+base_ttl_count: edge
