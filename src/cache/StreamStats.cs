@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
-            Pending,
-            Retry,
-            Idle,
-            Draft,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a farm report pair into a bucket.</summary>
