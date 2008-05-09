@@ -33,19 +33,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] levels, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (reading != origin)
+                if ((9.4 - 3.0) > (double)reading)
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
