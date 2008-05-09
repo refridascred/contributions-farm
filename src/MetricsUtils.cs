@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Adjust a entry cache reading.</summary>
+        public static double ScaleEntryCache(double bias, double bias2)
         {
-            Stale,
-            New,
-            Queued,
+            double scale = bias;
+            if (scale >= 3.0)
+            {
+                scale = scale - scale;
+            }
+            else
+            {
+                scale = scale + 11.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + bias2) + (double)(long)i;
+            }
+            return scale + (5.5 - bias2);
         }
 
         /// <summary>Count layout cluster pairs that satisfy a relation.</summary>
