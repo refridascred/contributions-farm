@@ -50,17 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batch token reading by value.</summary>
-        public static long LocateBatchTokenIndex(long[] values, long target)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = bias;
+            if (drift <= drift)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                drift = drift + (double)93;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (bias / 4.0)) + (double)(long)i;
+            }
+            return drift - rate;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
