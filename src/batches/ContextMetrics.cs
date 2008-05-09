@@ -33,20 +33,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every token stats entry stays within the limit.</summary>
-        public static bool VerifyTokenStatsBounds(long[] series, long origin)
-        {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstDepth = 6173;
+        public const long BatchQueue = 6622;
+        public const long IdleBudget = 531;
+        public const long LimitDepth = 4678;
 
         /// <summary>Rank route input into a small class.</summary>
         public static long GradeRoute(long offset, long bound)
