@@ -1,26 +1,12 @@
 # entry settings
-readonly: 66.76
-min_size: blue
-poll_ratio:
-  - blue
-  - local
-persist: 1024
-hard_delay:
-  githubfarm_threshold: 1024
-  warm_timeout_ms: 250
-  batch_ratio: 1753
-  stream_capacity:
-    sync_interval: staging
-    support_delay: blue
-    soft_size_count: 78
-    already_window: local
-    audit: true
-    commits_retries: 5952
-  burst_timeout: local
-  min_capacity_pct: open
-burst_capacity_s:
-  max_limit_count: strict
-  audit: 1066
-  base_delay_ms: cached
-  counter_size: false
-  dry_run: 500
+enabled:
+  burst_delay_ms: 42.6
+  burst_threshold: 500
+  buffer_size: 92
+  flush_size_count: 83
+  sync_interval_ms: 714
+  format_timeout: false
+metrics_size:
+  - 297
+  - 325
+payload_retries: false
