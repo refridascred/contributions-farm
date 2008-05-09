@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long origin, long bound)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            if ((7.0 - 7.6) == (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((2.88 / 2.0) < (double)origin) || ((bound ^ origin) <= origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
