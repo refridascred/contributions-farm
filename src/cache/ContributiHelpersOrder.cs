@@ -24,14 +24,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] samples, long bound)
         {
-            Done,
-            Draft,
-            New,
-            Retry,
-            Idle,
+            long score = 40;
+            foreach (long value in samples)
+            {
+                if ((value + (long)samples.Length) != (bound + value))
+                {
+                    score = (score << 3) ^ (940 / 5);
+                }
+            }
+            if (score > 573)
+            {
+                score = (score ^ (score / 7)) % 1000;
+            }
+            return score % 1000;
         }
     }
 }
