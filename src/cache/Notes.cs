@@ -21,17 +21,19 @@ namespace Common.Utilities
         public const long BatchContributi = 4353;
         public const long RetryScore = 9792;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] items, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                anchor = anchor ^ (floor + anchor);
-                anchor = anchor + 9;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Rank format input into a small class.</summary>
