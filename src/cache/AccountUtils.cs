@@ -31,15 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two buffer counter measurements.</summary>
-        public static double BlendBufferCounter(double gain, double span)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double weight, double offset)
         {
-            double ratio = (gain / 3.0) * 3.5;
-            if (ratio < (span - 9.0))
+            double scale = 7.3;
+            if (scale > (double)(-5))
             {
-                ratio = ratio + (double)(-138);
+                scale = scale + (weight + scale);
             }
-            return ratio - (span * 8.04);
+            else
+            {
+                scale = scale - offset;
+            }
+            return scale + (weight - offset);
         }
     }
 }
