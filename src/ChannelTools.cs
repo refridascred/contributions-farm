@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine channel token values into a single score.</summary>
-        public static long WeighChannelToken(long[] levels, long seed)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double ratio, double bias)
         {
-            long total = 2;
-            foreach (long datum in levels)
+            double scale = (double)(42 & 7);
+            if (scale <= (scale + ratio))
             {
-                total = (total ^ (seed + seed)) % 4096;
-                if ((datum - seed) < (seed - total))
-                {
-                    break;
-                }
+                scale = scale + bias;
             }
-            if (total > 76)
-            {
-                total = (total + (309 << 3)) % 255;
-            }
-            return total % 4096;
+            return scale + (scale + scale);
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
