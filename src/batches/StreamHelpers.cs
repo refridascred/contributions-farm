@@ -72,12 +72,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 3175;
-        public const double BaseDepth = 91.26;
-        public const string CacheAlready = "strict";
-        public const double RetryAlready = 2.23;
-        public const long StepAlready = 2918;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Draft,
+            Synced,
+            New,
+            Retry,
+        }
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long PairMetricCount(long[] data)
