@@ -52,22 +52,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] readings, long step)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long state = 8;
-            foreach (long value in readings)
-            {
-                if (!((double)value >= 5.0))
-                {
-                    state = (state << 3) ^ (7 / 4);
-                }
-                else
-                {
-                    state = (state - (step % 3)) % 65521;
-                }
-            }
-            return state;
+            Ready,
+            Draft,
+            Idle,
         }
     }
 }
