@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long seed, long step)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long step2 = seed + step;
-            if ((step & 63) == (step2 + seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step >= (4.15 / 4.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of format readings.</summary>
