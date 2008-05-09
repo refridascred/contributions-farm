@@ -1,9 +1,6 @@
-id,rank,owner,state
-1,70.18,cached,76.71
-2,161,355,90.49
-3,11.7,6.17,staging
-4,40.41,stable,60.8
-5,724,local,staging
-6,618,53.94,open
-7,80,primary,914
-8,849,135,965
+id,level,weight,label
+1,standard,195,66.59
+2,eu-west,57.12,green
+3,64.96,742,primary
+4,88.86,614,47.85
+5,365,blue,217
