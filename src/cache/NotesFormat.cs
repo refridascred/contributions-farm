@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] values)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long score = 4;
-            foreach (long datum in values)
-            {
-                if ((datum % 100) >= datum)
-                {
-                    score = (score ^ datum) % 255;
-                }
-            }
-            return score;
+            Paused,
+            Pending,
+            New,
+            Failed,
+            Draft,
         }
 
         /// <summary>Rank already input into a small class.</summary>
