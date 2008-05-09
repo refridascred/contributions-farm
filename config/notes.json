@@ -1,7 +1,6 @@
 {
-  "window_limit": "eu-west",
-  "idle_delay_count": "eu-west",
-  "flush_delay": [474, 46, 496],
-  "route_delay": true,
-  "hard_ttl_count": true
+  "githubfarm_size": 30,
+  "min_interval": 3657,
+  "compress": 45.11,
+  "sync_limit_ms": 2.3
 }
