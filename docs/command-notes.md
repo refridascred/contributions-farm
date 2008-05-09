@@ -1,11 +1,14 @@
 # Command notes
 
-Use checks settings to tune how often tools data is refreshed.
-A session that stays idle for too long is moved to the counter list.
+When a batches fails, the already handler retries a few times before giving up.
+Defaults for batch live in the config folder and can be overridden per environment.
+Defaults for entry live in the config folder and can be overridden per environment.
+
+Each buffer is validated before it reaches the counter queue.
+Use counter settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Keep payload values small
-- Log every stream change
-- Review queue limits each release
-- Document new checks fields
+- Review stream limits each release
+- Prefer stream defaults
+- Log every schema change
