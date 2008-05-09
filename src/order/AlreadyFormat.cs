@@ -28,13 +28,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Draft,
-            Queued,
-            Idle,
-            Failed,
+            public long Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Grade a order value against two limits.</summary>
