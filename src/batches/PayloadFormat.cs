@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 4837;
-        public const long RetrySchema = 7237;
-        public const double WindowTimeout = 59.8;
-        public const double BurstBudget = 19.81;
+        /// <summary>Measure how many record support samples are out of range.</summary>
+        public static long MeasureRecordSupportOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!((item + 1) < item))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TotalEntry(long[] readings)
