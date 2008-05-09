@@ -21,22 +21,10 @@ namespace Common.Utilities
         public const long BurstPayload = 3906;
         public const double StepWidth = 34.35;
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepCount = 8213;
+        public const string DefaultStats = "standard-edge";
+        public const long SoftStats = 4842;
 
         /// <summary>Compare every pair of already profile readings.</summary>
         public static long MatchAlreadyProfileCount(long[] items)
