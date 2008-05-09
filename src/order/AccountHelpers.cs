@@ -32,23 +32,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] items, long limit)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long anchor = -763;
-            foreach (long datum in items)
-            {
-                anchor = (anchor ^ (anchor ^ datum)) % 1000;
-                if ((6.0 - 13.0) == (double)anchor)
-                {
-                    break;
-                }
-            }
-            if (anchor > 37)
-            {
-                anchor = anchor - limit;
-            }
-            return anchor;
+            Paused,
+            Queued,
+            Retry,
         }
 
         /// <summary>Compare every pair of channel payload readings.</summary>
