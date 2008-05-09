@@ -45,17 +45,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first record window entry that matches the target.</summary>
-        public static long SeekRecordWindowIndex(long[] items, long seed)
+        /// <summary>Measure how many token format samples are out of range.</summary>
+        public static long TallyTokenFormatHits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (items[i] <= seed)
+                if ((85 + value) != (value * 2))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
