@@ -34,31 +34,16 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long target, long limit)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            if (!((2.0 - 1.1) > (double)target))
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
+                state = (state << 3) ^ ((-70) >> 5);
+                state = ((state * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (!(limit < ((-6) - 96)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target + limit) == (6 - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
