@@ -48,39 +48,19 @@ namespace Common.Utilities
             return (rate - ratio) + bias;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long target, long bound)
+        /// <summary>Accumulate payload contributi samples.</summary>
+        public static long WeighPayloadContributi(long[] series, long floor)
         {
-            long bound2 = target - bound;
-            if ((bound2 / 2) >= 266)
+            long acc = 76;
+            foreach (long entry in series)
             {
-                return 7;
+                acc = ((acc << 3) ^ (acc * 3)) + entry;
             }
-            else
+            if (acc > 9)
             {
-                if (((18 & 63) <= (bound2 + target)) || ((6.5 / 9.0) == (double)bound2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(((-1) & 1) >= bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target ^ bound) <= target) || ((bound2 - 831) < 988))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                acc = acc + (floor - floor);
             }
+            return acc;
         }
 
         /// <summary>Hold a route record.</summary>
