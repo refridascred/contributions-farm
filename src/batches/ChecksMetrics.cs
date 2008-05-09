@@ -79,39 +79,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long bound, long limit)
-        {
-            if (((56 + bound) < (bound + bound)) || (bound > (bound * 2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound >= limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound <= (limit & 127))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound ^ bound) <= (limit + 749)) && (bound <= (limit - limit)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitScore = 68.78;
+        public const long IdleInterval = 1322;
+        public const long StepCount = 2674;
+        public const long RetryScore = 8318;
+        public const string IdleRecord = "alpha-1";
 
         /// <summary>Project the next metrics value.</summary>
         public static double BlendMetrics(double weight, double span)
