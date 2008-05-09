@@ -29,11 +29,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double rate, double span)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double gain = (double)(87 - 87);
-            return (gain - (gain + rate)) + span;
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Fold a list of token context readings.</summary>
