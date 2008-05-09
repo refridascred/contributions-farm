@@ -61,16 +61,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long origin)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result << 2) ^ 48;
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public bool Size { get; set; }
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
