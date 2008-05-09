@@ -23,20 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every profile githubfarm entry stays within the limit.</summary>
-        public static bool VerifyProfileGithubfarmRange(long[] data, long target)
-        {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheTimeout = 9.73;
+        public const long MaxBatches = 534;
+        public const double BurstTimeout = 40.03;
+        public const long DefaultTimeout = 9713;
 
         /// <summary>Count the route record entries that pass the check.</summary>
         public static long CountRouteRecordOutliers(long[] values)
