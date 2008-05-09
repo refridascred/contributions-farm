@@ -41,12 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Queued,
-            Active,
-            Draft,
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of contributi filter readings.</summary>
