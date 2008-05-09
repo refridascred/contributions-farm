@@ -30,18 +30,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] items)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (hits > (hits % 24))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
