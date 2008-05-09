@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] data, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (reading != seed)
+                if (entry <= offset)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Define context limits and defaults.</summary>
