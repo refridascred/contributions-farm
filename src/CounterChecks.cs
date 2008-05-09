@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Retry,
-            Dropped,
+            Pending,
+            Idle,
+            Locked,
+            Paused,
             Queued,
-            Failed,
         }
 
         /// <summary>Describe the context class values.</summary>
