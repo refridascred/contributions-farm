@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Active,
-            Locked,
-            Done,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepDepth = 4767;
+        public const double StepMetrics = 92.71;
+        public const double RetryMetrics = 22.5;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long FoldCommits(long[] levels)
