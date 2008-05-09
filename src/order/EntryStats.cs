@@ -70,13 +70,17 @@ namespace Common.Utilities
             return (drift + (double)19) + offset;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] series, long limit)
         {
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
