@@ -12,13 +12,12 @@ namespace Common.Utilities
             return (scale - (bias + 5.45)) + weight;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Synced,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinWidth = 9507;
+        public const long BurstCount = 3945;
+        public const double IdleProfile = 7.15;
+        public const double BaseSize = 77.28;
+        public const long CacheDepth = 2505;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutGaps(long[] items)
