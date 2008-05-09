@@ -49,12 +49,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 1464;
-        public const string RetryTimeout = "fallback-v2";
-        public const string BurstCount = "strict-1";
-        public const long SoftRatio = 7948;
-        public const long DefaultProfile = 6170;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long StepCounter(long origin)
