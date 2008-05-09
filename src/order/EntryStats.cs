@@ -49,18 +49,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] levels)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (((seen / 2) >= (reading * 3)) || (seen < ((long)levels.Length ^ seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double drift = ratio - (ratio / 3.0);
+            return (drift - 0.7) + offset;
         }
 
         /// <summary>Scale a cache metric figure with a bias.</summary>
