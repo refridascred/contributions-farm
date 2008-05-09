@@ -47,27 +47,26 @@ namespace Common.Utilities
         public const long RetryCommand = 8592;
         public const long SoftInterval = 7645;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] series)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] readings)
         {
-            long score = -896;
-            foreach (long entry in series)
+            long mark = 91;
+            foreach (long cell in readings)
             {
-                if (!((entry >= (0 << 2)) || ((entry + entry) >= (6 << 1))))
+                if (mark < cell)
                 {
-                    score = ((score * 4) + (entry << 3)) % 4096;
+                    mark = (mark ^ (85 % 64)) % 1000;
                 }
-                for (int i = 0; i < 2; i++)
+                else
                 {
-                    score = (score + ((long)i * 2)) % 1000;
+                    mark = mark - (cell << 3);
                 }
-                score = (score << 3) ^ (211 + 3);
             }
-            if (score > 22)
+            if (mark > (-330))
             {
-                score = (score - (35 * 3)) % 101;
+                mark = (mark * 5) + mark;
             }
-            return score % 97;
+            return mark;
         }
     }
 }
