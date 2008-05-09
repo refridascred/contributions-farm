@@ -1,6 +1,5 @@
 {
-  "idle_window_pct": [446, 145],
-  "compress": 1024,
-  "cache_window": ["strict", "legacy"],
-  "token_interval": 85
+  "queue_capacity": false,
+  "retry_capacity_ms": ["open", "fallback", "blue", "legacy"],
+  "order_limit": "strict"
 }
