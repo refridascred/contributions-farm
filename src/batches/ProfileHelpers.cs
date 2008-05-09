@@ -43,17 +43,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a checks record sample.</summary>
-        public static long FindChecksRecordIndex(long[] samples, long step)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (floor * 5.11) * 8.18;
+            for (int i = 0; i < 3; i++)
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                gain = (gain - (rate + gain)) + (double)(long)i;
             }
-            return -1;
+            return gain + (floor - floor);
         }
 
         /// <summary>Project the next cache value.</summary>
