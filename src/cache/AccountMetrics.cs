@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit order buffer readings against a rule.</summary>
-        public static long MeasureOrderBufferGaps(long[] values, long origin)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((11 < (value << 2)) && ((double)origin > (14.0 - 20.0)))
+                if ((series[i] > limit) && ((series[i] % 5) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
