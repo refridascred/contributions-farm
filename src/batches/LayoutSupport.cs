@@ -34,23 +34,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)matches >= (double)value)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryChannel = "cached-edge";
+        public const long DefaultSpan = 9290;
+        public const double BurstChannel = 8.88;
+        public const string WindowInterval = "staging";
+        public const string LimitChannel = "standard-v2";
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsGaps(long[] values)
