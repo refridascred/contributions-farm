@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 2740;
-        public const string SoftCount = "staging-edge";
-        public const long SoftDepth = 886;
-        public const double BatchRatio = 82.0;
-        public const string HardContributi = "open-v2";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowScore = 2473;
+        public const double DefaultTimeout = 77.66;
+        public const string LimitReport = "latest-1";
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long SeekRecordIndex(long[] series, long target)
