@@ -13,23 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!((entry + tally) < tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 70.41;
+        public const long HardCount = 8758;
+        public const string BatchInterval = "open-edge";
+        public const string DefaultDepth = "strict";
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
