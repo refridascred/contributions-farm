@@ -57,18 +57,13 @@ namespace Common.Utilities
             return (gain - (gain + rate)) + span;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] items)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((tally % 97) <= tally)
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            Paused,
+            Locked,
+            Dropped,
+            Queued,
         }
     }
 }
