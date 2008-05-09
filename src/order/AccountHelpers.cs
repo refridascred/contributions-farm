@@ -36,21 +36,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of channel payload readings.</summary>
-        public static long MatchChannelPayloadCount(long[] samples)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 37;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((3.0 * 19.0) <= (2.34 + 7.0)))
                 {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + (entry << 2)) % 4096;
                 }
             }
-            return tally;
+            if (total < 55)
+            {
+                total = ((total << 2) ^ (7 + total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of contributi filter readings.</summary>
