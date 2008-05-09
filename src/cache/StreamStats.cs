@@ -39,18 +39,12 @@ namespace Common.Utilities
         public const double BatchCommits = 91.85;
         public const long BatchTimeout = 161;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] items)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (seen <= ((-3) >> 2))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Look up the position of a token session sample.</summary>
