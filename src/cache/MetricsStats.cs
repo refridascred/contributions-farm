@@ -50,18 +50,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] series, long origin)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double bias2 = rate;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(((origin - cell) <= (origin % 97)) && ((449 - hits) == (20 / 2))))
-                {
-                    hits = hits + 3;
-                }
+                bias2 = (bias2 - (2.0 * 6.62)) + (double)(long)i;
             }
-            return hits;
+            return bias2 + bias;
         }
     }
 }
