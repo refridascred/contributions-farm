@@ -26,10 +26,12 @@ namespace Common.Utilities
         public const double BaseSize = 77.28;
         public const long CacheDepth = 2505;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitLevel = 3922;
-        public const long MaxSupport = 457;
-        public const long BurstBudget = 3334;
-        public const double HardSupport = 68.03;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Synced,
+            Active,
+            Done,
+        }
     }
 }
