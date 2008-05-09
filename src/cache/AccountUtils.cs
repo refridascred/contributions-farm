@@ -19,12 +19,13 @@ namespace Common.Utilities
         public const string BatchInterval = "open-edge";
         public const string DefaultDepth = "strict";
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Retry,
+            Synced,
+            Draft,
+            Stale,
         }
     }
 }
