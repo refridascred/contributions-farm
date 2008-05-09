@@ -20,38 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long seed, long seed2)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] readings, long target)
         {
-            if (((seed2 / 5) >= seed) || ((double)seed2 == (20.0 * 7.1)))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((5.71 * 6.6) != (double)seed) && (668 < seed2))
+                if (!(((seen * 5) > target) || ((double)cell == (6.16 - 6.7))))
                 {
-                    return 7;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (((-12) >= (8 - seed)) || ((double)seed2 != (0.52 / 4.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((4.0 - 9.0) >= (double)seed2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
