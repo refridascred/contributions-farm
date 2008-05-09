@@ -13,11 +13,23 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 3654;
-        public const long MinStream = 8285;
-        public const string BurstLevel = "cached";
-        public const long HardStream = 4468;
+        /// <summary>Count the schema filter entries that pass the check.</summary>
+        public static long AuditSchemaFilterMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((8 <= (seen + seen)) || !(item <= (item + 66)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string CacheLevel = "staging-edge";
