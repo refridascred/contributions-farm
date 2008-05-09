@@ -53,18 +53,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] levels)
+        /// <summary>Count schema channel pairs that satisfy a relation.</summary>
+        public static long PairSchemaChannelCount(long[] values)
         {
-            long sum = 785;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)(long)levels.Length < (5.0 + 6.57))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum << 2) ^ value;
+                    if ((values[i] + values[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
