@@ -1,20 +1,14 @@
 # entry settings
-max_interval:
-  - strict
-  - local
-  - staging
-  - stable
-schema_depth: 84.52
-report_window:
-  order_threshold:
-    retry_threshold_count: local
-    compress: false
-    poll_limit: false
-    default_ttl_pct: 45
-    retry_timeout: edge
-    hard_delay:
-      - 445
-      - 206
-      - 294
-  batch_timeout: 803
-  warm_depth_count: fallback
+batch_window_count:
+  - 497
+  - 81
+  - 295
+  - 419
+verbose: false
+profile_limit: 61
+retry_capacity_count:
+  - green
+  - eu-west
+  - latest
+idle_capacity: fallback
+idle_size: false
