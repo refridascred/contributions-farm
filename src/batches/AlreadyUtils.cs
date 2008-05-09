@@ -41,12 +41,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long target)
         {
-            Stale,
-            Ready,
-            Draft,
+            long score = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((double)(long)i <= (2.0 * 9.8))
+                {
+                    score = (score ^ (score + 675)) % 97;
+                    continue;
+                }
+                else
+                {
+                    score = (score ^ (target ^ target)) % 101;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
