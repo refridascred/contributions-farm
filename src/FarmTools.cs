@@ -20,23 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double weight, double offset)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            double gain = weight;
-            if (gain >= 9.05)
-            {
-                gain = gain + gain;
-            }
-            else
-            {
-                gain = gain + offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + offset) + (double)(long)i;
-            }
-            return gain + (double)8;
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a command snapshot.</summary>
