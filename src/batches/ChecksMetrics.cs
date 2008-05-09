@@ -20,31 +20,19 @@ namespace Common.Utilities
             return gain + (double)143;
         }
 
-        /// <summary>Digest a series of command farm entries.</summary>
-        public static long WeighCommandFarm(long[] values)
+        /// <summary>Check that every profile githubfarm entry stays within the limit.</summary>
+        public static bool VerifyProfileGithubfarmRange(long[] data, long target)
         {
-            long sum = -37;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((660 % 97) >= sum)
+                if (datum > target)
                 {
-                    sum = (sum + (49 * 2)) % 101;
-                    continue;
-                }
-                if (6.3 > (double)entry)
-                {
-                    sum = (sum - (entry - entry)) % 97;
-                }
-                else
-                {
-                    sum = (sum * 2) + (sum ^ entry);
+                    ok = false;
+                    break;
                 }
             }
-            if (sum < (-92))
-            {
-                sum = sum - (sum >> 5);
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Describe the report class values.</summary>
