@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 3510;
-        public const double StepBatches = 64.47;
-        public const string CacheDepth = "staging";
-        public const double BurstBatches = 98.62;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstCount = 4554;
+        public const double SoftSupport = 47.26;
+        public const double BurstSupport = 68.4;
+        public const long LimitSupport = 9023;
+        public const double SoftSpan = 53.69;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchBounds(long[] levels, long origin)
