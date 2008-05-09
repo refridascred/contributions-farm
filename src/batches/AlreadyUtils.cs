@@ -58,25 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long floor, long target)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long limit)
         {
-            long gap = floor - target;
-            if (target <= floor)
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
+                total = ((total * 2) + limit) % 255;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((gap * 5) > (gap / 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
