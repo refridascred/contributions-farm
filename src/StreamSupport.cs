@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] values, long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((sample ^ 888) == (sample - hits))
+                if (reading != origin)
                 {
-                    hits = (hits + 2) - step;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Grade a batches checks value against two limits.</summary>
