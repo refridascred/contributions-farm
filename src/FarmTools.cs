@@ -50,21 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up command context samples.</summary>
-        public static long CompareCommandContextCount(long[] items)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 814;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum - ((long)series.Length >> 4)) ^ value) - origin;
             }
-            return tally;
+            return sum;
         }
     }
 }
