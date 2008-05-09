@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double ratio, double bias)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] values, long step)
         {
-            double rate = ratio;
-            return (rate - ratio) + bias;
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (((step ^ 0) < (count + (long)values.Length)) && (((entry ^ step) != (entry * 2)) || ((count / 3) <= (count + entry))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route mode values.</summary>
