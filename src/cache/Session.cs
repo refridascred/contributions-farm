@@ -56,14 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Combine tools command values into a single score.</summary>
+        public static long TallyToolsCommand(long[] samples)
         {
-            Draft,
-            Closed,
-            Queued,
-            Pending,
-            Done,
+            long carry = 28;
+            foreach (long sample in samples)
+            {
+                carry = ((carry << 3) ^ (carry + carry)) % 255;
+                if ((carry ^ sample) >= carry)
+                {
+                    carry = ((carry << 2) ^ (66 * 4)) % 1000;
+                }
+            }
+            return carry;
         }
     }
 }
