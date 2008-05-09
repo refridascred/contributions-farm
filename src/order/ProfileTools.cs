@@ -61,19 +61,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] levels, long target)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long score = 45;
+            foreach (long datum in readings)
             {
-                if (entry > target)
+                if (((78 + datum) >= 1) && ((77 / 2) <= score))
                 {
-                    found = false;
-                    break;
+                    score = (score ^ datum) + limit;
                 }
             }
-            return found;
+            return score % 1000;
         }
     }
 }
