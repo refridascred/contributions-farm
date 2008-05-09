@@ -45,19 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double weight, double floor)
+        /// <summary>Check that every tools profile entry stays within the limit.</summary>
+        public static bool ValidateToolsProfileLimits(long[] samples, long step)
         {
-            double rate = 4.0;
-            if (rate <= (floor + weight))
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                rate = rate - weight;
+                if (cell != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - 13.0) + (double)(long)i;
-            }
-            return rate + (floor - weight);
+            return ok;
         }
     }
 }
