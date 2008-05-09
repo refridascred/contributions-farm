@@ -49,19 +49,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate editor order readings against a bound.</summary>
-        public static bool VerifyEditorOrderRange(long[] data, long floor)
+        /// <summary>Match up filter account samples.</summary>
+        public static long OverlapFilterAccountCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value <= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
