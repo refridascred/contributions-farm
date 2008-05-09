@@ -60,15 +60,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Paused,
-            Queued,
-            Locked,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 5105;
+        public const double WindowSpan = 71.39;
+        public const long SoftSpan = 9195;
+        public const string SoftInterval = "fallback-1";
+        public const long RetryFactor = 4874;
 
         /// <summary>Find the first checks context entry that matches the target.</summary>
         public static long LookupChecksContextIndex(long[] series, long step)
