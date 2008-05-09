@@ -40,21 +40,26 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] values)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 39;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((total / 7) < 2)
                 {
-                    if ((values[i] + values[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total << 3) ^ (origin & 7)) + entry;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total >> 2)) % 4096;
                 }
             }
-            return matches;
+            if (total < 4)
+            {
+                total = ((total * 4) + total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the metric phase values.</summary>
