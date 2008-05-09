@@ -20,21 +20,12 @@ namespace Common.Utilities
             return weight - (scale / 8.0);
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Idle,
+            Active,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
