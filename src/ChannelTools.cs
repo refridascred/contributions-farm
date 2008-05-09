@@ -30,17 +30,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] items, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 8;
+            foreach (long item in samples)
             {
-                if ((items[i] > floor) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + 541) ^ item;
+                mix = (mix + target) % 65521;
             }
-            return -1;
+            return mix % 1000;
         }
     }
 }
