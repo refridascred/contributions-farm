@@ -13,22 +13,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] series)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (((long)series.Length << 3) > reading)
+                if (sample <= step)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the route mode values.</summary>
