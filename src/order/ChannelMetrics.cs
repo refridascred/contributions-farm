@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Count the cluster cache entries that pass the check.</summary>
+        public static long CountClusterCacheMatches(long[] levels)
         {
-            Paused,
-            Queued,
-            New,
-            Locked,
-            Active,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((4.3 + 0.3) != (double)item)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
