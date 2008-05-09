@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "fallback";
-        public const string SoftRatio = "local";
-        public const string HardAlready = "standard";
-        public const long MaxAlready = 9028;
-        public const string IdleAlready = "latest-edge";
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] series, long bound)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long CompareLayoutCount(long[] series)
