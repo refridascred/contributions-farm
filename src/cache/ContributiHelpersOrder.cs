@@ -33,22 +33,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] samples, long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] readings)
         {
-            long score = 40;
-            foreach (long value in samples)
+            long state = 1;
+            foreach (long entry in readings)
             {
-                if ((value + (long)samples.Length) != (bound + value))
+                if ((7.25 / 2.0) != (double)entry)
                 {
-                    score = (score << 3) ^ (940 / 5);
+                    state = ((state << 2) ^ (state - entry)) % 1000;
                 }
             }
-            if (score > 573)
+            if (state > 46)
             {
-                score = (score ^ (score / 7)) % 1000;
+                state = (state * 2) + (state - state);
             }
-            return score % 1000;
+            return state % 97;
         }
     }
 }
