@@ -1,25 +1,4 @@
 # githubfarm settings
-profile_window:
-  verbose: true
-  dry_run: false
-  queue_interval:
-    audit: true
-    context_window: 60
-    idle_retries:
-      - 138
-      - 220
-    batch_window_s:
-      - 352
-      - 403
-      - 313
-      - 453
-  poll_interval_ms: false
-  stats_timeout: true
-  editor_capacity: 44.82
-batch_depth_count:
-  - 232
-  - 20
-  - 365
-  - 64
-soft_capacity_pct: 7687
-batch_retries_pct: edge
+batch_interval_count: true
+idle_ratio: 84.96
+soft_ttl_ms: false
