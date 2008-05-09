@@ -38,11 +38,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double bias, double bias2)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            double bias3 = (double)(53 - 18);
-            return ((bias3 - (double)(-559)) + bias) + bias2;
+            New,
+            Queued,
+            Done,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
