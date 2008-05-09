@@ -17,18 +17,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a buffer batch reading by value.</summary>
-        public static long LookupBufferBatchIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 4713;
+        public const long WindowToken = 2033;
+        public const string BaseToken = "fallback";
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteRange(long[] series, long limit)
