@@ -19,18 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
-        public static long TallyGithubfarmChecksMatches(long[] items, long step)
+        /// <summary>Combine cache contributi values into a single score.</summary>
+        public static long DigestCacheContributi(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long result = -55;
+            foreach (long item in values)
             {
-                if ((seen & 1) != (seen - entry))
+                if ((double)result == (double)origin)
                 {
-                    seen = (seen + 2) + step;
+                    result = result + (item / 6);
+                    continue;
+                }
+                result = (result * 2) + (8 + origin);
+                if ((result >= ((long)values.Length & 127)) || (item > (877 << 3)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
