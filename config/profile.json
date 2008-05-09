@@ -1,11 +1,13 @@
 {
-  "batch_retries": 37,
-  "strict": 250,
-  "batch_interval": {
-    "idle_capacity_count": "stable",
-    "warm_capacity_pct": "strict",
-    "hard_window_pct": true
+  "notes_depth": "open",
+  "min_capacity_s": {
+    "soft_ttl_s": 30,
+    "poll_ttl_count": 500,
+    "soft_window_ms": 71,
+    "min_capacity": false,
+    "enabled": false,
+    "verbose": 1529
   },
-  "poll_timeout_ms": false,
-  "min_timeout_pct": 60
+  "default_ttl_count": "standard",
+  "poll_window_ms": "blue"
 }
