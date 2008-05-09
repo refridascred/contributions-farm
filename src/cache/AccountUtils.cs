@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long bound, long seed)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long floor, long target)
         {
-            if ((bound > (seed * 5)) && ((bound & 7) <= (697 << 1)))
+            if ((target / 7) <= floor)
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((double)bound > (double)seed)
+                if ((3.4 + 6.43) >= (double)floor)
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    return 1;
+                    if (((target & 7) > target) || ((floor << 1) > (target & 127)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
