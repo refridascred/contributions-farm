@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] values, long limit)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long result = 911;
-            foreach (long datum in values)
-            {
-                if (((result + (long)values.Length) <= result) && ((result & 255) >= limit))
-                {
-                    result = (result ^ limit) + datum;
-                }
-            }
-            return result;
+            Failed,
+            Ready,
+            Queued,
+            Closed,
         }
 
         /// <summary>Locate a support reading by value.</summary>
