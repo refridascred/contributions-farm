@@ -1,12 +1,11 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    level INTEGER,
     count INTEGER NOT NULL DEFAULT 0,
-    region TEXT,
-    owner TEXT NOT NULL
+    active INTEGER NOT NULL DEFAULT 1,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_count ON layout_items (count);
+CREATE INDEX IF NOT EXISTS idx_layout_items_active ON layout_items (active);
 
-INSERT INTO layout_items (level, count, region, owner) VALUES (5, 63, 'staging', 'latest');
+INSERT INTO layout_items (count, active) VALUES (65, 31);
