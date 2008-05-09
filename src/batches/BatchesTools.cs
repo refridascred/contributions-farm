@@ -28,18 +28,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache account readings against a rule.</summary>
-        public static long CountCacheAccountMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((806 >= datum) || ((datum <= (tally + datum)) && (datum <= (datum - tally))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultCount = 8751;
+        public const long BurstWidth = 6613;
+        public const long BaseScore = 5791;
     }
 }
