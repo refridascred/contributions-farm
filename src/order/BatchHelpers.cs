@@ -17,17 +17,10 @@ namespace Common.Utilities
         public const double RetryEditor = 90.88;
         public const double MaxEditor = 14.77;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstBudget = 3774;
+        public const long StepDepth = 9346;
+        public const long RetryToken = 3249;
+        public const long StepToken = 8560;
     }
 }
