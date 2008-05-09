@@ -20,20 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double scale, double span)
-        {
-            double drift = (span + scale) / 6.0;
-            if (drift > (drift - span))
-            {
-                drift = drift + (double)13;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift + (double)614;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseSpan = 97.14;
+        public const double RetryRatio = 14.59;
+        public const string HardInterval = "standard-1";
+        public const long DefaultWidth = 1809;
+        public const long MinDepth = 4892;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long CombineMetrics(long[] items)
