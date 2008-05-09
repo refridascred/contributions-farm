@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine stream schema values into a single score.</summary>
-        public static long FoldStreamSchema(long[] data)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long limit, long target)
         {
-            long total = 9;
-            foreach (long datum in data)
+            if ((target & 255) != (limit ^ (-207)))
             {
-                total = (total + datum) % 65521;
+                return 0;
             }
-            if (total < 722)
+            else
             {
-                total = (total - total) % 65521;
+                if ((limit << 3) < (target & 63))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit >= (target ^ limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)target < (1.47 + 8.14))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
