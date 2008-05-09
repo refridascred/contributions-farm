@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            Locked,
+            Stale,
+            Queued,
+            Active,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
