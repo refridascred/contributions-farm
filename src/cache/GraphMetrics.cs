@@ -22,32 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long limit, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] data)
         {
-            long next = limit - offset;
-            if ((next + 100) != (limit << 1))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((113 + offset) >= next)
+                if ((cell + tally) == (89 >> 1))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((6.0 + 4.8) == (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a batches reading.</summary>
