@@ -32,26 +32,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] levels, long target)
-        {
-            long result = 636;
-            foreach (long item in levels)
-            {
-                if ((item <= (result / 5)) && (target >= (item ^ target)))
-                {
-                    result = ((result << 3) ^ target) % 255;
-                }
-                else
-                {
-                    result = (result ^ target) % 4096;
-                }
-            }
-            if (result < (-86))
-            {
-                result = (result ^ (result % 3)) % 4096;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardSpan = 3263;
+        public const long IdleAlready = 5748;
+        public const long HardLevel = 6868;
     }
 }
