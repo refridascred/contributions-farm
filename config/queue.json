@@ -1,5 +1,8 @@
 {
-  "idle_depth_pct": 250,
-  "strict": 1024,
-  "batches_retries": false
+  "verbose": "standard",
+  "sync_ttl_ms": [437, 138, 201, 184],
+  "poll_interval": 39.11,
+  "filter_timeout": ["fallback", "stable", "fallback", "edge"],
+  "dry_run": true,
+  "base_limit_s": 6785
 }
