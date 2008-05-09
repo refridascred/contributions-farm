@@ -54,13 +54,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long origin)
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((long)i * 3) != (99 - origin))
+                {
+                    sum = (sum + (origin + sum)) % 65521;
+                }
+                else
+                {
+                    sum = sum + (origin - sum);
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate counter batch samples.</summary>
