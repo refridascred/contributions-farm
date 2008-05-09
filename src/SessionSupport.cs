@@ -20,18 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] samples)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((seen ^ 726) > (datum - seen)) || !(datum >= (seen % 5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Queued,
+            Done,
+            Paused,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
