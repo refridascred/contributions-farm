@@ -33,14 +33,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] series, long seed)
         {
-            Idle,
-            Failed,
-            Retry,
-            Closed,
-            Pending,
+            long mix = -62;
+            foreach (long sample in series)
+            {
+                mix = ((mix ^ (seed >> 5)) % 1000) + sample;
+                mix = (mix * 2) + seed;
+                mix = ((mix * 2) + (mix << 2)) % 255;
+            }
+            if (mix > 71)
+            {
+                mix = (mix + (mix ^ 38)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Match up support command samples.</summary>
