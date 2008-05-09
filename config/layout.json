@@ -1,7 +1,25 @@
 {
-  "max_size_s": [479, 42],
-  "stream_window": 59,
-  "max_window": [313, 224, 114],
-  "dry_run": 30,
-  "burst_depth_pct": "open"
+  "cache_ratio": true,
+  "poll_size": ["fallback", "legacy", "local"],
+  "compress": "open",
+  "burst_ttl_ms": {
+    "max_retries_pct": false,
+    "persist": 500,
+    "poll_capacity_pct": false,
+    "max_depth": 60,
+    "context_retries": 46,
+    "schema_ttl": 4739
+  },
+  "strict": {
+    "account_ttl": 1024,
+    "stream_retries": {
+      "profile_capacity": "primary",
+      "layout_ratio": 30,
+      "route_ttl": 45,
+      "cache_timeout": "standard"
+    },
+    "burst_retries_s": "strict",
+    "queue_retries": 1,
+    "commits_delay": "open"
+  }
 }
