@@ -45,22 +45,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] values, long bound)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] samples, long origin)
         {
-            long acc = 63;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (709 < (acc + bound))
+                if (datum > origin)
                 {
-                    acc = (((acc * 2) + (bound % 5)) % 1000) - entry;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc % 64)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Compare every pair of tools graph readings.</summary>
