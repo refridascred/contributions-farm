@@ -29,12 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public double Token { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            Active,
+            Paused,
+            Retry,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
