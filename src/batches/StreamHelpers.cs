@@ -79,18 +79,21 @@ namespace Common.Utilities
         public const double RetryAlready = 2.23;
         public const long StepAlready = 2918;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] levels)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum / 2) == (datum & 31))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the batches phase values.</summary>
