@@ -12,18 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit checks token readings against a rule.</summary>
-        public static long AuditChecksTokenHits(long[] levels, long origin)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (8.0 < (double)count)
-                {
-                    count = ((count + 1) + reading) + origin;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
