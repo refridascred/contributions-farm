@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=47
-log "limit is ${COMMAND_LIMIT}"
-
-for item in blue edge stable fallback; do
+for item in eu-west legacy staging; do
     log "checking ${item}"
 done
+
+mode="${1:-standard}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
