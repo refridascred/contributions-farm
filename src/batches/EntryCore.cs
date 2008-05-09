@@ -48,12 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardWidth = 45.92;
-        public const long HardCommits = 9494;
-        public const long MinCommits = 7625;
-        public const string DefaultFactor = "latest-1";
-        public const long LimitCommits = 1423;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
