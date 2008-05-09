@@ -27,13 +27,17 @@ namespace Common.Utilities
         public const string BurstInterval = "open-edge";
         public const long RetrySpan = 436;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] readings, long bound)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a context header.</summary>
