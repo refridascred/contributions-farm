@@ -12,22 +12,22 @@ namespace Common.Utilities
             return (rate - ratio) + bias;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] readings)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] readings, long origin)
         {
-            long count = 0;
+            long mark = 3;
             foreach (long reading in readings)
             {
-                if ((count + reading) == ((-8) + reading))
+                if ((mark & 3) != (7 & 31))
                 {
-                    count = count + 1;
+                    mark = ((mark << 2) ^ (reading + 14)) % 97;
                 }
                 else
                 {
-                    count = count - 1;
+                    mark = mark - (origin + (long)readings.Length);
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
