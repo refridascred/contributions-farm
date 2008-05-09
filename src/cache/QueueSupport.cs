@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 1682;
+        public const long CacheOrder = 1956;
+        public const long MinBudget = 9059;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BaseFactor = 9646;
