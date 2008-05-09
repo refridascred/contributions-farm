@@ -24,26 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] values, long bound)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long mix = 88;
-            foreach (long reading in values)
-            {
-                if (reading > 8)
-                {
-                    mix = mix + (reading + mix);
-                }
-                else
-                {
-                    mix = ((mix * 5) + (30 + bound)) % 255;
-                }
-            }
-            if (mix < 7)
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix;
+            public double Limit { get; set; }
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Adjust a format reading.</summary>
