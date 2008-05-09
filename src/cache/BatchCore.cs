@@ -40,19 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] levels, long offset)
+        /// <summary>Measure how many metrics route samples are out of range.</summary>
+        public static long AuditMetricsRouteHits(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (sample <= offset)
+                if ((item + matches) == (95 >> 5))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) + origin;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
