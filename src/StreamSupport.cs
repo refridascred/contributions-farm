@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] values, long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long acc = 10;
+            foreach (long reading in values)
             {
-                if (sample >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (((acc + 85) % 4096) ^ reading) - origin;
             }
-            return flag;
+            if (acc > 777)
+            {
+                acc = (acc ^ (acc / 7)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Derive the next already githubfarm value from a seed.</summary>
