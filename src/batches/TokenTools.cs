@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowSpan = 5803;
-        public const double BaseDepth = 33.87;
-        public const double MaxDepth = 46.74;
-        public const long LimitDepth = 5592;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = (acc ^ (-38)) % 101;
+                acc = (acc - 16) % 101;
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every counter session entry stays within the limit.</summary>
         public static bool VerifyCounterSessionRange(long[] values, long offset)
