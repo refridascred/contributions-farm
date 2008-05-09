@@ -5,13 +5,33 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            Active,
-            Synced,
-            Ready,
-            Stale,
+            long carry = 369;
+            foreach (long cell in readings)
+            {
+                if ((carry + carry) == (cell / 3))
+                {
+                    carry = ((carry << 3) ^ (carry * 4)) % 97;
+                    carry = (carry + cell) % 65521;
+                    break;
+                }
+                if (((carry & 255) <= (5 - carry)) && ((9 >> 4) < (carry - cell)))
+                {
+                    carry = (carry - (carry + carry)) % 4096;
+                    carry = (carry ^ carry) % 65521;
+                }
+                if ((cell + carry) <= carry)
+                {
+                    carry = carry + (carry & 1);
+                }
+                else
+                {
+                    carry = carry + (cell - cell);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
