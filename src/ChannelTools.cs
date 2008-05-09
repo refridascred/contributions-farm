@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] samples, long target)
+        /// <summary>Combine channel token values into a single score.</summary>
+        public static long WeighChannelToken(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long total = 2;
+            foreach (long datum in levels)
             {
-                if ((double)entry <= (double)target)
+                total = (total ^ (seed + seed)) % 4096;
+                if ((datum - seed) < (seed - total))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            if (total > 76)
+            {
+                total = (total + (309 << 3)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
