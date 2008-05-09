@@ -76,22 +76,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] series)
+        /// <summary>Compare every pair of contributi filter readings.</summary>
+        public static long MatchContributiFilterCount(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (39 <= reading)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] + series[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
