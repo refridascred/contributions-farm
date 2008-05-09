@@ -61,17 +61,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] data, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (data[i] > target)
+                if ((double)reading <= (1.0 * 4.3))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
