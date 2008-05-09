@@ -10,17 +10,31 @@ namespace Common.Utilities
         public const string CacheSpan = "legacy-edge";
         public const double HardWidth = 6.97;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] levels, long limit)
+        /// <summary>Digest a series of graph session entries.</summary>
+        public static long FoldGraphSession(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 9;
+            foreach (long cell in samples)
             {
-                if (levels[i] >= limit)
+                anchor = (anchor ^ anchor) % 255;
+                if (cell > (205 ^ 6))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ origin) % 101;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (cell % 2);
+                }
+                if (!((2 - cell) >= (origin / 5)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor < 5)
+            {
+                anchor = anchor + (anchor ^ origin);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Iterate the queue graph series from a seed.</summary>
