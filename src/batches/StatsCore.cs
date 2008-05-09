@@ -22,18 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits contributi samples are out of range.</summary>
-        public static long MeasureCommitsContributiMatches(long[] readings)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long limit, long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long offset = limit ^ step;
+            if ((limit - (-882)) == (step + 3))
             {
-                if ((matches + matches) > (matches % 7))
+                return 0;
+            }
+            else
+            {
+                if (((step + limit) < (limit / 4)) || ((20.0 / 9.0) < (double)offset))
                 {
-                    matches = (matches + 3) ^ sample;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step < (0.4 - 3.8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset % 8) > (limit - offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a stream options.</summary>
