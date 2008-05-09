@@ -20,24 +20,17 @@ namespace Common.Utilities
             return drift - 15.0;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long offset, long bound)
+        /// <summary>Look up the position of a metrics tools sample.</summary>
+        public static long FindMetricsToolsIndex(long[] values, long origin)
         {
-            if (!((1.1 * 9.4) != (double)bound))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound ^ bound) != (offset + offset))
+                if ((values[i] >= origin) && ((values[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
