@@ -67,11 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public bool Offset { get; set; }
-            public double Ratio { get; set; }
+            Paused,
+            Ready,
+            Active,
         }
 
         /// <summary>Accumulate counter batch samples.</summary>
