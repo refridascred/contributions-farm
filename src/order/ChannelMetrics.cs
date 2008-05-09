@@ -20,21 +20,12 @@ namespace Common.Utilities
             return drift + (ratio - 5.0);
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] levels)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the checks kind values.</summary>
