@@ -19,15 +19,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double gain, double span)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long limit, long bound)
         {
-            double gain2 = span;
-            if (gain2 <= (span - span))
+            long offset = limit + bound;
+            if ((limit / 2) == (bound << 3))
             {
-                gain2 = (gain2 - (double)265) + gain;
+                return 5;
             }
-            return gain2 + (double)(-16);
+            else
+            {
+                if ((limit & 15) <= (offset - limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((19.0 - 3.07) > (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((limit >> 2) <= offset) && ((3.8 * 5.15) < (double)offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
