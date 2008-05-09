@@ -72,15 +72,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Active,
-            Idle,
-            Dropped,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 4200;
+        public const long MinSpan = 3964;
+        public const string IdleAlready = "fallback-v2";
+        public const double CacheAlready = 53.17;
 
         /// <summary>Accumulate account samples.</summary>
         public static long ScoreAccount(long[] levels)
