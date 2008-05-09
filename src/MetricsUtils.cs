@@ -36,12 +36,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] data)
         {
-            Paused,
-            Stale,
-            Closed,
+            long mix = 18;
+            foreach (long value in data)
+            {
+                mix = ((mix + (mix * 4)) % 1000) + value;
+                mix = mix ^ (mix << 3);
+            }
+            return mix;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
