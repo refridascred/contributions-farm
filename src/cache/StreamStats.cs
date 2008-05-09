@@ -67,17 +67,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a token session sample.</summary>
-        public static long SeekTokenSessionIndex(long[] items, long bound)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
