@@ -32,32 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a format account pair into a bucket.</summary>
-        public static long GradeFormatAccount(long origin, long floor)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long edge = origin ^ floor;
-            if ((double)origin < 5.73)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((74 ^ 50) == (floor + origin)) || ((double)floor < (1.8 + 4.6)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((4.98 + 7.19) <= (double)edge)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a stats options.</summary>
