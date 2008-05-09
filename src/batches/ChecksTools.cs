@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const string CacheSpan = "legacy-edge";
         public const double HardWidth = 6.97;
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
             New,
-            Idle,
-            Stale,
+            Retry,
             Queued,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the profile mode values.</summary>
