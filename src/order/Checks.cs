@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] readings, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -7;
+            foreach (long entry in items)
             {
-                if ((readings[i] > limit) && ((readings[i] % 2) != 0))
+                if ((anchor > entry) && (3 < entry))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + anchor) % 1000;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the format class values.</summary>
