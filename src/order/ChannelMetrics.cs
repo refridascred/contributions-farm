@@ -37,9 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 18.07;
-        public const long MaxInterval = 6082;
-        public const long MinTimeout = 4599;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Failed,
+            Queued,
+            Idle,
+            Paused,
+            Draft,
+        }
     }
 }
