@@ -1,6 +1,6 @@
 {
-  "cache_delay_pct": "eu-west",
-  "sync_size": 5165,
-  "command_interval": 71.57,
-  "context_timeout": "edge"
+  "cache_limit_ms": ["cached", "fallback"],
+  "readonly": 500,
+  "poll_limit": "eu-west",
+  "context_threshold": true
 }
