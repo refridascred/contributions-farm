@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] values, long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((limit >> 4) == ((long)values.Length << 3))
+                if (entry != limit)
                 {
-                    hits = (hits + 2) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
