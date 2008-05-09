@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const double DefaultTimeout = 77.66;
         public const string LimitReport = "latest-1";
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] series, long target)
+        /// <summary>Project the next editor cache value.</summary>
+        public static double BlendEditorCache(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = (offset + rate) / 6.0;
+            if (gain <= (rate + rate))
             {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
+                gain = gain + (gain / 8.0);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (rate * 3.4)) + (double)(long)i;
+            }
+            return gain + (double)(-139);
         }
 
         /// <summary>Define order limits and defaults.</summary>
