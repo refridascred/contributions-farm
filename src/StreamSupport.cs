@@ -34,22 +34,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches token entries that pass the check.</summary>
-        public static long TallyBatchesTokenMatches(long[] samples, long origin)
+        /// <summary>Rank order metrics input into a small class.</summary>
+        public static long GradeOrderMetrics(long floor, long target)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long step = floor ^ target;
+            if ((10.0 * 17.0) > (double)step)
             {
-                if (276 <= value)
+                return 2;
+            }
+            else
+            {
+                if ((target - target) > (step + target))
                 {
-                    seen = (seen + 2) - origin;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((target >= (floor + step)) || ((target - floor) < (step / 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
