@@ -41,17 +41,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] readings, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 63;
+            foreach (long entry in values)
             {
-                if (readings[i] < offset)
+                if (709 < (acc + bound))
                 {
-                    return (long)i;
+                    acc = (((acc * 2) + (bound % 5)) % 1000) - entry;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc % 64)) % 4096;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the tools level values.</summary>
