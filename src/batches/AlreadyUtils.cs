@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double rate, double bias)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] data, long bound)
         {
-            double scale = bias + (6.0 / 4.0);
-            if (scale < bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale - 5.1) - rate;
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (scale * 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (2.9 * 8.0)) + (double)(long)i;
-            }
-            return scale - (scale * 3.1);
+            return -1;
         }
 
         /// <summary>Project the next notes value.</summary>
