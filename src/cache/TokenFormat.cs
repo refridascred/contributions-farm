@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Locked,
-            Queued,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinCounter = "legacy";
+        public const double LimitScore = 22.13;
+        public const long CacheScore = 4230;
+        public const long RetryCounter = 2548;
+        public const long WindowBudget = 3810;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double SmoothLayout(double rate, double bias)
