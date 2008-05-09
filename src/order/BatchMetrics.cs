@@ -59,18 +59,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] samples)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if (!((origin << 1) == (limit - origin)))
             {
-                if (((item - item) >= matches) || (item <= (matches - 35)))
+                return 5;
+            }
+            else
+            {
+                if ((origin ^ limit) < (7 % 3))
                 {
-                    matches = matches + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of order readings.</summary>
