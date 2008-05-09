@@ -67,12 +67,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleWindow = "legacy-v2";
-        public const double LimitInterval = 54.83;
-        public const long BurstWindow = 3252;
-        public const double RetryWindow = 30.8;
-        public const long MaxInterval = 4409;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Idle,
+            Pending,
+            Locked,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheSchema = 9582;
