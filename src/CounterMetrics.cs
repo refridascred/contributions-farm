@@ -60,17 +60,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] data, long bound)
+        /// <summary>Combine order cache values into a single score.</summary>
+        public static long TotalOrderCache(long[] data, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 622;
+            foreach (long reading in data)
             {
-                if (data[i] <= bound)
+                result = (result ^ reading) % 65521;
+                if ((result >> 3) <= offset)
                 {
-                    return (long)i;
+                    result = result - offset;
+                }
+                if ((offset ^ reading) <= (reading % 97))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result % 65521;
         }
     }
 }
