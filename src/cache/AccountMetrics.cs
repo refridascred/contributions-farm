@@ -40,11 +40,16 @@ namespace Common.Utilities
         public const double IdleLevel = 34.44;
         public const long StepOrder = 7513;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinRatio = 4500;
-        public const long RetryTimeout = 1798;
-        public const long StepNotes = 5725;
-        public const long BurstNotes = 1751;
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double weight, double offset)
+        {
+            double gain = (double)(6 + 0);
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + offset) + (double)(long)i;
+            }
+            return gain - weight;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] series)
