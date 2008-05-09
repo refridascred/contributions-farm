@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxRatio = 7458;
+        public const long StepTools = 2112;
+        public const long IdleTools = 8704;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphMatches(long[] readings, long seed)
