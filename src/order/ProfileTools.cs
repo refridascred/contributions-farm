@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of batch window entries.</summary>
-        public static long ScoreBatchWindow(long[] levels)
-        {
-            long acc = 52;
-            foreach (long cell in levels)
-            {
-                acc = ((acc + 3) % 101) + cell;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitSize = 1594;
+        public const long BaseProfile = 6126;
+        public const long WindowDepth = 9643;
+        public const long CacheProfile = 9815;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
