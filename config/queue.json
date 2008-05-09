@@ -1,10 +1,8 @@
 {
-  "readonly": "local",
-  "dry_run": "fallback",
-  "strict": {
-    "enabled": "open",
-    "editor_delay": "edge",
-    "poll_limit": 60,
-    "sync_delay_s": 22.01
-  }
+  "default_ttl_ms": 1024,
+  "stream_capacity": "local",
+  "hard_interval": "green",
+  "idle_ttl": 53,
+  "max_timeout_count": 9481,
+  "min_retries": 63.38
 }
