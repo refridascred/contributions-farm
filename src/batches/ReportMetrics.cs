@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryWidth = 18.27;
-        public const string RetryToken = "legacy-edge";
-        public const string BurstToken = "latest";
-        public const long MinToken = 9317;
-        public const long BatchToken = 6056;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            Synced,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutGaps(long[] items)
