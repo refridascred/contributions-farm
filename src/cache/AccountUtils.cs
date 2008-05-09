@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            long acc = 2;
+            foreach (long cell in levels)
             {
-                if ((8 + state) <= (621 ^ target))
+                if ((6.4 + 7.01) == (double)acc)
                 {
-                    state = ((state << 3) ^ ((long)i & 63)) % 65521;
+                    acc = (acc - (cell * 3)) % 101;
                 }
-                state = (state + ((long)i << 2)) % 101;
-                if ((7.43 - 5.0) >= (double)state)
-                {
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Hold a filter record.</summary>
