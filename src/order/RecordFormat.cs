@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long limit, long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long step)
         {
-            if ((target & 255) != (limit ^ (-207)))
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 0;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((limit << 3) < (target & 63))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (limit >= (target ^ limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target < (1.47 + 8.14))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
