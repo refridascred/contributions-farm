@@ -1,8 +1,20 @@
 {
-  "verbose": 26.29,
-  "sync_timeout": 250,
-  "sync_threshold": 1024,
-  "idle_limit": "eu-west",
-  "readonly": "legacy",
-  "retry_interval": 26
+  "dry_run": 0.15,
+  "persist": {
+    "burst_retries_ms": false,
+    "channel_delay": ["strict", "fallback", "open"],
+    "batch_ratio_ms": "cached",
+    "notes_threshold": "green",
+    "profile_capacity": {
+      "warm_interval": "green",
+      "dry_run": 2037,
+      "verbose": "strict"
+    }
+  },
+  "stats_ttl": {
+    "retry_interval_count": "eu-west",
+    "max_size_pct": ["local", "fallback", "primary"],
+    "account_ratio": 27,
+    "cache_limit_count": 5495
+  }
 }
