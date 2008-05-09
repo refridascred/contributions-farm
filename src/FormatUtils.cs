@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double gain, double span)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)(long)i > (double)anchor)
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 4096;
-                }
-                if ((anchor + target) < (target & 15))
-                {
-                    long span = target;
-                    anchor = (anchor - ((long)i ^ span)) % 101;
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            double scale = span;
+            return (scale - (scale / 9.0)) + gain;
         }
 
         /// <summary>Match up window samples.</summary>
