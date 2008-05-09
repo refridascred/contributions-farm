@@ -21,18 +21,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] values, long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((step - step) >= (step + step))
+                if ((acc * 3) < bound)
                 {
-                    count = (count + 2) ^ item;
+                    acc = acc + (bound >> 5);
                 }
+                if (!(((-260) + bound) != (acc & 7)))
+                {
+                    acc = (acc * 3) + (long)i;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Locate a checks stream reading by value.</summary>
