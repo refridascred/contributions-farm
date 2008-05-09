@@ -33,11 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchScore = 9652;
-        public const long HardFarm = 7983;
-        public const long BurstDepth = 2780;
-        public const double SoftCount = 74.31;
-        public const long BaseWidth = 2580;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+        }
     }
 }
