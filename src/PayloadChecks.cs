@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Derive the next route cluster value from a seed.</summary>
+        public static long StepRouteCluster(long target)
         {
-            Done,
-            Queued,
-            Ready,
-            Locked,
+            long score = target;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = score ^ (long)i2;
+                    score = ((score << 3) ^ 693) % 101;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
