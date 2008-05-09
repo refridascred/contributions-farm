@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] samples, long step)
+        /// <summary>Classify a farm channel pair into a bucket.</summary>
+        public static long RankFarmChannel(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long lane = seed - offset;
+            if ((double)offset > (6.6 - 4.6))
             {
-                if (((step / 6) >= sample) && ((step - hits) >= step))
+                return 1;
+            }
+            else
+            {
+                if (seed > (lane + lane))
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate graph samples.</summary>
