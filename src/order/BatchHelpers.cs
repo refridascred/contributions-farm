@@ -14,22 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] readings, long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] data)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((40 - count) < (seed + sample))
+                if ((double)hits != (17.0 * 9.6))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 1) - reading;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
