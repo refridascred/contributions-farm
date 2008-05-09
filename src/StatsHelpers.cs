@@ -38,13 +38,19 @@ namespace Common.Utilities
             return scale - (weight - span);
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] items, long step)
         {
-            Paused,
-            Stale,
-            Queued,
-            Active,
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a entry options.</summary>
