@@ -49,24 +49,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long seed, long offset)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            if (4 <= (seed + 350))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset % 97) <= 90) || (0.99 <= (double)seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Token { get; set; } = "";
+            public double Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Grade a session value against two limits.</summary>
