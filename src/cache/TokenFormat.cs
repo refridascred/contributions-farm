@@ -19,21 +19,23 @@ namespace Common.Utilities
         public const long HardSize = 2761;
         public const long DefaultStats = 2714;
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] items)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = bias;
+            if (weight < bias)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight + offset;
             }
-            return matches;
+            else
+            {
+                weight = weight - (bias * 5.2);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight - offset;
         }
     }
 }
