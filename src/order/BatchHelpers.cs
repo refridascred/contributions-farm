@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] samples, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] readings, long seed)
         {
-            long carry = 233;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                carry = ((carry - (datum + carry)) % 255) - offset;
+                if ((40 - count) < (seed + sample))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (carry < 2)
-            {
-                carry = (carry - (long)samples.Length) % 4096;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a schema header.</summary>
