@@ -38,19 +38,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] samples)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] series)
         {
             long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally % 7) != (tally ^ reading))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
