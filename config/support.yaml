@@ -1,7 +1,15 @@
 # support settings
-verbose: 49.09
-retry_limit_count: true
-enabled: 64.82
-profile_threshold: blue
-order_limit: stable
-soft_depth: 1024
+sync_interval_s:
+  idle_ratio_ms: true
+  tools_limit: false
+  poll_timeout: true
+  command_interval:
+    - 348
+    - 235
+  default_ratio: green
+  entry_window: 5625
+hard_delay_s: 500
+max_interval_s: blue
+order_retries: primary
+layout_timeout: 250
+default_capacity_s: 10.64
