@@ -1,8 +1,5 @@
 # entry settings
-persist: cached
-idle_delay_pct: 6590
-flush_ttl:
-  - 421
-  - 479
-compress: false
-batch_retries_count: false
+hard_delay_count: 30.79
+verbose: true
+context_size: 23
+dry_run: 44
