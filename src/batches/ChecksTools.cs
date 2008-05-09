@@ -10,19 +10,25 @@ namespace Common.Utilities
         public const string CacheSpan = "legacy-edge";
         public const double HardWidth = 6.97;
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double weight, double floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long floor, long offset)
         {
-            double mean = weight;
-            if (mean >= mean)
+            long edge = floor ^ offset;
+            if ((double)offset >= (19.0 - 6.2))
             {
-                mean = mean - (double)45;
+                return 8;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                mean = (mean - (double)290) - (double)(long)i;
+                if ((edge + floor) >= (floor - 684))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return mean - floor;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
