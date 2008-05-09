@@ -71,12 +71,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] data)
         {
-            Pending,
-            Failed,
-            Dropped,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (!((count + count) > (count + datum)) && ((count % 60) <= (49 + datum)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
