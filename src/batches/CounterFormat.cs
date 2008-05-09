@@ -13,38 +13,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long floor, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] data, long offset)
         {
-            if ((7.1 < (double)offset) && (floor > offset))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor * 3) != (floor ^ floor))
+                if ((item - hits) >= (item & 31))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset & 1) == (offset - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (floor <= (offset & 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = (hits + 1) + offset;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a metrics stream value against two limits.</summary>
