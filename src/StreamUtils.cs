@@ -34,22 +34,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] readings)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long carry = 3;
+            foreach (long value in items)
             {
-                if (!((721 % 24) >= (seen << 3)))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = carry ^ (bound & 3);
+                carry = carry + (0 - value);
             }
-            return seen;
+            if (carry > 89)
+            {
+                carry = (carry * 2) + (carry * 4);
+            }
+            return carry;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
