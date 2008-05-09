@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double weight, double bias)
-        {
-            double load = (double)(139 + 98);
-            if (load <= (weight + weight))
-            {
-                load = (load - (weight - weight)) - bias;
-            }
-            else
-            {
-                load = load - weight;
-            }
-            return load + 2.0;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheBudget = 5581;
+        public const double StepAccount = 94.2;
+        public const double DefaultTimeout = 9.77;
 
         /// <summary>Audit account graph readings against a rule.</summary>
         public static long AuditAccountGraphMatches(long[] samples, long bound)
