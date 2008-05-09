@@ -1,18 +1,14 @@
 {
-  "dry_run": true,
-  "audit": true,
-  "batches_capacity": {
-    "order_threshold": "staging",
-    "warm_size_s": "primary",
-    "persist": {
-      "burst_depth": "open",
-      "max_depth_pct": 500,
-      "record_interval": 60,
-      "warm_size": 500,
-      "max_ratio_ms": 62.25,
-      "cluster_interval": false
-    }
+  "min_delay_s": 4366,
+  "soft_size": {
+    "max_window": 2678,
+    "default_threshold_ms": 9218,
+    "audit": ["staging", "blue", "blue"],
+    "hard_delay": true,
+    "soft_capacity": "stable"
   },
-  "strict": "staging",
-  "default_window": 21
+  "burst_depth": 5448,
+  "strict": "local",
+  "poll_ttl_pct": "eu-west",
+  "flush_ratio_count": true
 }
