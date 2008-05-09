@@ -59,13 +59,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Draft,
-            Queued,
-            Failed,
-            Stale,
+            Paused,
+            Active,
+            Locked,
             Ready,
         }
 
