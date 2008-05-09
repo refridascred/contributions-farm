@@ -24,21 +24,12 @@ namespace Common.Utilities
             return scale + (5.5 - bias2);
         }
 
-        /// <summary>Count layout cluster pairs that satisfy a relation.</summary>
-        public static long PairLayoutClusterCount(long[] data)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
