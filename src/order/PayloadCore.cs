@@ -29,18 +29,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] levels)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((7 - item) >= (matches >> 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of notes farm readings.</summary>
