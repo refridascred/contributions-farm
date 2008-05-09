@@ -17,16 +17,29 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] data)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            long result = 9;
+            foreach (long reading in data)
             {
-                acc = acc ^ (floor + floor);
-                acc = ((acc * 5) + (long)i) % 101;
+                if (((result - reading) >= reading) && ((result - 569) < (23 / 5)))
+                {
+                    result = result + (reading << 1);
+                }
+                else
+                {
+                    result = (result + 81) % 97;
+                    result = (result << 3) ^ result;
+                }
+                result = (result - result) % 65521;
+                result = ((result * 4) + (long)data.Length) % 97;
             }
-            return acc;
+            if (result > 5)
+            {
+                result = ((result << 3) ^ 67) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Project the next format value.</summary>
