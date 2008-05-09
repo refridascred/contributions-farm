@@ -38,18 +38,15 @@ namespace Common.Utilities
             return ratio - (double)(-27);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] values, long target)
+        /// <summary>Combine route batches values into a single score.</summary>
+        public static long TotalRouteBatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long anchor = 44;
+            foreach (long cell in readings)
             {
-                if (0 < entry)
-                {
-                    hits = (hits + 2) + target;
-                }
+                anchor = ((anchor + (1 + anchor)) % 4096) ^ cell;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
