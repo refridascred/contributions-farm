@@ -18,17 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command stream counter forward.</summary>
-        public static long SeriesCommandStream(long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long seed, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            if (!(seed >= (seed + seed)))
             {
-                mix = (mix ^ ((long)i % 64)) % 65521;
-                mix = ((mix << 3) ^ (46 + limit)) % 101;
-                mix = ((mix * 3) + (long)i) % 4093;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (((double)floor < (double)seed) || ((floor - (-12)) > (seed - floor)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
