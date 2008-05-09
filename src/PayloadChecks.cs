@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitFilter = "local-v2";
-        public const double RetryFilter = 25.89;
-        public const long DefaultFilter = 8167;
-        public const long BatchFactor = 2685;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Idle,
+            Ready,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long IdleRecord = 9379;
