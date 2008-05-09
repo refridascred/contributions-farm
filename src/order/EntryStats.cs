@@ -13,21 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count cache notes pairs that satisfy a relation.</summary>
-        public static long MatchCacheNotesCount(long[] levels)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((30 + 6) >= (matches << 2)) && (((cell << 2) != (matches / 7)) && ((605 + cell) < (matches & 15))))
                 {
-                    if ((levels[i] - levels[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
