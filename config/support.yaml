@@ -1,8 +1,7 @@
 # support settings
-poll_interval: 31.88
-idle_retries_pct: strict
-farm_threshold: 92
-idle_ratio_ms: 69
-default_retries_count:
-  - stable
-  - edge
+verbose: 49.09
+retry_limit_count: true
+enabled: 64.82
+profile_threshold: blue
+order_limit: stable
+soft_depth: 1024
