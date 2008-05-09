@@ -23,26 +23,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] series)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long sum = 104;
-            foreach (long item in series)
-            {
-                if ((double)sum > (9.65 + 6.2))
-                {
-                    sum = (sum << 3) ^ (item - 25);
-                }
-                else
-                {
-                    sum = (sum + (item / 5)) % 101;
-                }
-            }
-            if (sum < 66)
-            {
-                sum = (sum - sum) % 65521;
-            }
-            return sum;
+            Queued,
+            Ready,
+            Paused,
+            Locked,
         }
     }
 }
