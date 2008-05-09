@@ -20,17 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long limit, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step = limit - seed;
+            if ((step & 3) < (-468))
             {
-                if (levels[i] <= seed)
+                return 6;
+            }
+            else
+            {
+                if ((double)88 != (double)seed)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every counter session entry stays within the limit.</summary>
