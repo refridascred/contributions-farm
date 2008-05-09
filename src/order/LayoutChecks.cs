@@ -16,12 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public bool Flag { get; set; }
+            Pending,
+            New,
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Combine token values into a single score.</summary>
