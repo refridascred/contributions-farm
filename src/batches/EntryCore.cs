@@ -74,12 +74,9 @@ namespace Common.Utilities
         public const double RetryWindow = 30.8;
         public const long MaxInterval = 4409;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 9582;
+        public const long HardSchema = 3617;
+        public const string MinSchema = "alpha-edge";
     }
 }
