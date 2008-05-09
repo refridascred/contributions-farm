@@ -24,17 +24,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a checks cache sample.</summary>
-        public static long FindChecksCacheIndex(long[] data, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 104;
+            foreach (long item in series)
             {
-                if (data[i] <= floor)
+                if ((double)sum > (9.65 + 6.2))
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (item - 25);
+                }
+                else
+                {
+                    sum = (sum + (item / 5)) % 101;
                 }
             }
-            return -1;
+            if (sum < 66)
+            {
+                sum = (sum - sum) % 65521;
+            }
+            return sum;
         }
     }
 }
