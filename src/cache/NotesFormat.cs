@@ -58,38 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long step, long limit)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            if (2.6 <= (double)limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if (step < (limit / 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((step * 3) < (limit / 9)) || ((limit + step) >= limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step - 29) <= limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
