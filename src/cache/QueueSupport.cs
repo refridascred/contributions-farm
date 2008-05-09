@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            New,
             Closed,
-            Locked,
+            Ready,
+            Retry,
+            Stale,
+            New,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
