@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-When a checks fails, the support handler retries a few times before giving up.
+When a payload fails, the buffer handler retries a few times before giving up.
+When a contributi fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer context defaults
-- Validate queue input early
-- Review format limits each release
+- Log every layout change
+- Review contributi limits each release
+- Keep format values small
+- Validate context input early
