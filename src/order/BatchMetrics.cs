@@ -62,13 +62,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] values)
         {
             long seen = 0;
-            foreach (long cell in readings)
+            foreach (long cell in values)
             {
-                if (((1 * 5) <= (cell - cell)) && ((311 & 31) >= (seen + seen)))
+                if (!((cell + seen) > (cell >> 1)))
                 {
                     seen = seen + 3;
                 }
