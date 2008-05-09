@@ -33,19 +33,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double ratio, double offset)
+        /// <summary>Scale a notes layout figure with a bias.</summary>
+        public static double SmoothNotesLayout(double scale, double offset)
         {
-            double ratio2 = ratio;
-            if (ratio2 < (double)(-916))
+            double bias = (double)(7 - 91);
+            if (bias >= (scale * 8.0))
             {
-                ratio2 = (ratio2 - (double)983) + offset;
+                bias = bias + (scale + scale);
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                ratio2 = (ratio2 - (ratio * 0.37)) + (double)(long)i;
+                bias = bias - (scale - offset);
             }
-            return ratio2 - (double)(-74);
+            return bias - offset;
         }
 
         /// <summary>Rank route input into a small class.</summary>
