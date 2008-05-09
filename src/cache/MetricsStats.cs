@@ -40,12 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
+            Active,
+            Paused,
+            Done,
+            Ready,
+            Stale,
         }
 
         /// <summary>Blend two account measurements.</summary>
