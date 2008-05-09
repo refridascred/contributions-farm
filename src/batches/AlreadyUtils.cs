@@ -75,19 +75,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] series, long target)
+        /// <summary>Look up the position of a window farm sample.</summary>
+        public static long LocateWindowFarmIndex(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= target)
+                if ((data[i] > offset) && ((data[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
