@@ -53,21 +53,14 @@ namespace Common.Utilities
         public const long SoftScore = 4227;
         public const long BatchLayout = 4252;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] data, long step)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long sum = 420;
-            foreach (long reading in data)
-            {
-                sum = (sum << 3) ^ step;
-                sum = sum ^ (reading + sum);
-                sum = (sum ^ (-310)) % 1000;
-            }
-            if (sum < (-55))
-            {
-                sum = (sum << 3) ^ (-5);
-            }
-            return sum;
+            Paused,
+            Queued,
+            Locked,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a window info.</summary>
