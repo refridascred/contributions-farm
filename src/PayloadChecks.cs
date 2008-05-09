@@ -45,14 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Locked,
-            Idle,
-            Active,
-            New,
-            Failed,
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
