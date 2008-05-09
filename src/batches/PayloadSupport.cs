@@ -33,11 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultAccount = "alpha-edge";
-        public const double BurstAccount = 45.47;
-        public const long MaxAccount = 4079;
-        public const long HardBudget = 5115;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Draft,
+            Queued,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteMatches(long[] samples)
