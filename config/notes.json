@@ -1,7 +1,14 @@
 {
-  "batches_limit": 3.83,
-  "idle_threshold": [452, 72],
-  "default_retries_s": "strict",
-  "metrics_timeout": true,
-  "dry_run": 1024
+  "persist": 100,
+  "burst_threshold": [272, 500],
+  "graph_window": {
+    "stream_size": true,
+    "queue_depth": 91,
+    "poll_limit_count": 73.21,
+    "burst_timeout": [337, 29, 198, 228],
+    "flush_limit_s": ["green", "open"]
+  },
+  "batch_window_pct": "cached",
+  "default_ratio_pct": "stable",
+  "verbose": "cached"
 }
