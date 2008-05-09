@@ -47,24 +47,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] values)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double ratio, double offset)
         {
-            long result = 102;
-            foreach (long entry in values)
+            double gain = (double)(778 % 16);
+            for (int i = 0; i < 6; i++)
             {
-                if ((-42) < (entry >> 5))
-                {
-                    result = (result - (result / 2)) % 97;
-                }
-                result = ((result << 3) ^ entry) % 4096;
-                result = result ^ (result >> 1);
+                gain = ((gain - offset) - (double)(long)i) + ratio;
             }
-            if (result < 69)
-            {
-                result = ((result * 4) + (result & 127)) % 1000;
-            }
-            return result;
+            return gain - (double)8;
         }
     }
 }
