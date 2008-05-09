@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] values, long step)
+        /// <summary>Check that every metrics farm entry stays within the limit.</summary>
+        public static bool GuardMetricsFarmBounds(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (((step ^ 0) < (count + (long)values.Length)) && (((entry ^ step) != (entry * 2)) || ((count / 3) <= (count + entry))))
+                if (reading >= origin)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the route mode values.</summary>
