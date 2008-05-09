@@ -23,16 +23,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long seed)
+        /// <summary>Fold a list of support notes readings.</summary>
+        public static long TotalSupportNotes(long[] levels, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            long mix = 1;
+            foreach (long item in levels)
             {
-                carry = carry ^ (seed + carry);
-                carry = ((carry * 3) + (long)i) % 65521;
+                mix = (mix - (offset >> 5)) + item;
+                mix = mix + mix;
             }
-            return carry;
+            return mix % 4096;
         }
 
         /// <summary>Hold a account stats.</summary>
