@@ -56,15 +56,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double rate, double bias)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] items, long step)
         {
-            double drift = (bias + rate) - (rate - bias);
-            if (drift < (5.0 / 7.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift + (bias + drift);
+                if ((items[i] <= step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - drift;
+            return -1;
         }
     }
 }
