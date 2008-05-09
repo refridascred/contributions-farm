@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] series, long limit)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Rank window input into a small class.</summary>
