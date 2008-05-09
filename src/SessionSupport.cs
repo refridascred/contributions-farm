@@ -24,15 +24,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double gain, double offset)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long step)
         {
-            double weight = offset - (double)407;
-            for (int i = 0; i < 7; i++)
+            long carry = step;
+            for (int i = 0; i < 23; i++)
             {
-                weight = ((weight - weight) - (double)(long)i) - gain;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return weight - (offset / 7.0);
+            return carry;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
