@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Active,
-            Dropped,
-            Locked,
+            Closed,
             Queued,
+            Ready,
         }
 
         /// <summary>Hold a stats entry.</summary>
