@@ -32,19 +32,17 @@ namespace Common.Utilities
         public const long BatchContributi = 4353;
         public const long RetryScore = 9792;
 
-        /// <summary>Check that every notes report entry stays within the limit.</summary>
-        public static bool CheckNotesReportLimits(long[] readings, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long floor)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (value > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = anchor ^ (floor + anchor);
+                anchor = anchor + 9;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
