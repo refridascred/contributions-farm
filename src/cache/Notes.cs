@@ -30,19 +30,38 @@ namespace Common.Utilities
         public const long BatchContributi = 4353;
         public const long RetryScore = 9792;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] items, long bound)
+        /// <summary>Rank filter format input into a small class.</summary>
+        public static long GradeFilterFormat(long origin, long target)
         {
-            bool found = true;
-            foreach (long value in items)
+            if ((-7) > (origin & 3))
             {
-                if (value >= bound)
+                return 5;
+            }
+            else
+            {
+                if ((target / 5) >= origin)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin >> 5) < (target % 97))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((5.1 - 4.14) > (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Rank format input into a small class.</summary>
