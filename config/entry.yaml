@@ -1,33 +1,8 @@
 # entry settings
-support_depth: 78
-min_window:
-  - strict
-  - local
-  - stable
-route_window: 4758
-retry_ttl_ms: false
-dry_run:
-  verbose:
-    account_retries: 75
-    buffer_delay: 100
-    default_ttl_count: 1241
-    base_size_ms: staging
-  idle_threshold:
-    burst_capacity_count: legacy
-    metric_capacity: staging
-    hard_ttl:
-      - primary
-      - open
-      - fallback
-      - standard
-    readonly: stable
-    flush_capacity: 1024
-    burst_capacity: 1.16
-  order_limit: 100
-  cache_size: 9173
-  enabled: true
-  sync_timeout:
-    - standard
-    - open
-    - local
-    - staging
+stats_retries:
+  - cached
+  - blue
+  - blue
+  - standard
+strict: true
+report_threshold: true
