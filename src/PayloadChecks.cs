@@ -18,12 +18,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] values, long step)
         {
-            Draft,
-            Failed,
-            Pending,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((step - step) >= (step + step))
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a checks stream reading by value.</summary>
