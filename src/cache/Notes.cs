@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long origin, long bound)
         {
-            Closed,
-            Retry,
-            Stale,
-            Dropped,
+            if ((7.0 - 7.6) == (double)origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((2.88 / 2.0) < (double)origin) || ((bound ^ origin) <= origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
