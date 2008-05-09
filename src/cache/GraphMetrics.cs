@@ -33,11 +33,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double scale, double offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double gain, double offset)
         {
-            double mean = scale;
-            return mean - (offset / 2.0);
+            double drift = (4.73 * 1.0) + gain;
+            if (drift >= (double)78)
+            {
+                drift = (drift - (double)979) - offset;
+            }
+            else
+            {
+                drift = drift + 10.0;
+            }
+            return drift + gain;
         }
 
         /// <summary>Combine payload counter values into a single score.</summary>
