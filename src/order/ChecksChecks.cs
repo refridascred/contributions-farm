@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a token metric reading.</summary>
-        public static double ProjectTokenMetric(double ratio, double floor)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long offset)
         {
-            double load = (3.06 + ratio) / 8.0;
-            for (int i = 0; i < 5; i++)
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
             {
-                load = ((load + (double)479) + (double)(long)i) + floor;
+                mix = (mix + (mix << 3)) % 65521;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return load + ratio;
+            return mix;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
