@@ -33,21 +33,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] readings)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
