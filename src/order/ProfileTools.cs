@@ -40,11 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Digest a series of batch window entries.</summary>
+        public static long ScoreBatchWindow(long[] levels)
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
+            long acc = 52;
+            foreach (long cell in levels)
+            {
+                acc = ((acc + 3) % 101) + cell;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
