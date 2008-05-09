@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Draft,
-            Active,
+            Paused,
+            Failed,
             Retry,
-            Queued,
-            Pending,
         }
 
         /// <summary>Digest a series of contributi farm entries.</summary>
