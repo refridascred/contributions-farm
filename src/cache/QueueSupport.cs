@@ -37,25 +37,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank tools schema input into a small class.</summary>
-        public static long ClassifyToolsSchema(long offset, long bound)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long next = offset + bound;
-            if ((bound * 5) >= (next - next))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)next <= (1.3 + 8.41))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
