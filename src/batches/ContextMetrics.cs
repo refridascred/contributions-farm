@@ -28,32 +28,17 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Classify a queue metric pair into a bucket.</summary>
-        public static long RankQueueMetric(long target, long bound)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] items, long seed)
         {
-            long span = target ^ bound;
-            if ((1.44 * 1.0) == (double)span)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target - bound) < (bound * 2))
+                if (items[i] == seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target > span)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a format snapshot.</summary>
