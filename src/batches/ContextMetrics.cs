@@ -30,11 +30,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] values)
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            long total = 237;
+            foreach (long value in values)
+            {
+                total = (total + (total & 1)) - value;
+                if ((total + total) <= (total << 2))
+                {
+                    total = total ^ (total % 7);
+                }
+            }
+            if (total < 266)
+            {
+                total = (total << 3) ^ (total % 97);
+            }
+            return total % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
