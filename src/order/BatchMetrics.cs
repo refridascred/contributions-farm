@@ -34,22 +34,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] series)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long sum = 31;
+            foreach (long entry in readings)
             {
-                if ((double)hits > (8.5 - 6.3))
+                for (int i = 0; i < 5; i++)
                 {
-                    hits = (hits + 1) + datum;
+                    sum = ((((sum * 2) + (floor + floor)) % 97) + (long)i) - entry;
+                }
+                if (sum >= (floor << 2))
+                {
+                    sum = (sum - sum) % 4096;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    sum = sum - (sum + floor);
                 }
             }
-            return hits;
+            if (sum < 91)
+            {
+                sum = ((sum * 4) + (sum / 7)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
