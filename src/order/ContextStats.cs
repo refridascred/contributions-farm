@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const long LimitTimeout = 1491;
         public const long RetryBuffer = 9286;
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long bound)
         {
-            public bool Level { get; set; }
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
+            long total = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    total = (((total << 3) ^ bound) % 255) ^ (long)i2;
+                }
+                if (58 > (bound / 2))
+                {
+                    total = total - 0;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
