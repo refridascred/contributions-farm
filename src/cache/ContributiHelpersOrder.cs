@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Project the next report route value.</summary>
+        public static double ProjectReportRoute(double rate, double bias)
         {
-            Dropped,
-            New,
-            Draft,
-            Idle,
-            Synced,
+            double drift = rate;
+            if (drift >= rate)
+            {
+                drift = drift + (rate * 0.5);
+            }
+            else
+            {
+                drift = drift + (drift - bias);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (drift / 3.0)) + (double)(long)i;
+            }
+            return drift - 6.31;
         }
 
         /// <summary>Describe the queue phase values.</summary>
