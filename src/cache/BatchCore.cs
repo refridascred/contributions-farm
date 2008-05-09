@@ -47,12 +47,16 @@ namespace Common.Utilities
             return mean + (mean - 4.0);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 5886;
-        public const string BatchTimeout = "staging-1";
-        public const double BaseWidth = 19.06;
-        public const string SoftDepth = "stable";
-        public const long DefaultNotes = 8842;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] items)
+        {
+            long anchor = 181;
+            foreach (long sample in items)
+            {
+                anchor = anchor + (sample + anchor);
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long TallyChannel(long[] readings, long bound)
