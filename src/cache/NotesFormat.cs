@@ -58,10 +58,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 8705;
-        public const double MaxRoute = 67.02;
-        public const long StepSpan = 8132;
-        public const double WindowSize = 23.67;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long step, long limit)
+        {
+            if (2.6 <= (double)limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (step < (limit / 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((step * 3) < (limit / 9)) || ((limit + step) >= limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step - 29) <= limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
