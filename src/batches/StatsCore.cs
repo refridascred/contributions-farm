@@ -90,34 +90,34 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a contributi farm value against two limits.</summary>
-        public static long BucketContributiFarm(long floor, long seed)
+        /// <summary>Rank route payload input into a small class.</summary>
+        public static long GradeRoutePayload(long bound, long floor)
         {
-            if (((seed - floor) <= (seed + 47)) && ((1.53 + 0.3) != (double)floor))
+            if ((bound % 64) == (floor - floor))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (!((seed - seed) < seed))
+                if ((floor % 5) < floor)
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if ((seed + floor) >= (seed - seed))
+                    if (((-4) < (floor << 1)) && ((bound << 1) >= floor))
                     {
-                        return 7;
+                        return 5;
                     }
                     else
                     {
-                        if ((floor + 462) > floor)
+                        if ((floor ^ floor) <= (bound % 16))
                         {
-                            return 6;
+                            return 0;
                         }
                         else
                         {
-                            return 1;
+                            return 3;
                         }
                     }
                 }
