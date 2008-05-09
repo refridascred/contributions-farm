@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] values)
-        {
-            long total = -622;
-            foreach (long reading in values)
-            {
-                if (!(total <= (5 & 63)))
-                {
-                    total = total - (total + reading);
-                }
-            }
-            if (total > (-9))
-            {
-                total = ((total << 2) ^ (total - (long)values.Length)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftSize = 6668;
+        public const long DefaultDepth = 5651;
+        public const long CacheBatches = 7008;
+        public const string StepTimeout = "strict";
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long MatchStatsCount(long[] levels)
