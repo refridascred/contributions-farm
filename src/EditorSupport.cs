@@ -98,11 +98,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
