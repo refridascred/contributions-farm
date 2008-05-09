@@ -27,18 +27,27 @@ namespace Common.Utilities
         public const long MaxSize = 4631;
         public const long WindowNotes = 5141;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] data)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long mix = -59;
+            foreach (long cell in levels)
             {
-                if ((hits + 755) == (value + 0))
+                mix = mix + (cell + mix);
+                if ((cell * 2) < (mix >> 5))
                 {
-                    hits = hits + 2;
+                    mix = (mix << 2) ^ (mix - 85);
+                }
+                else
+                {
+                    mix = mix ^ (441 << 3);
                 }
             }
-            return hits;
+            if (mix < 3)
+            {
+                mix = mix ^ mix;
+            }
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of already profile readings.</summary>
