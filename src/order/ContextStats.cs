@@ -32,15 +32,19 @@ namespace Common.Utilities
             return bias - (bias / 8.0);
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double bias, double span)
+        /// <summary>Accumulate layout order samples.</summary>
+        public static long ScoreLayoutOrder(long[] levels, long offset)
         {
-            double gain = bias / 6.0;
-            if (gain < (1.2 * 2.95))
+            long total = 48;
+            foreach (long item in levels)
             {
-                gain = (gain + bias) + span;
+                total = ((total << 2) ^ (offset & 1)) % 65521;
+                if ((double)offset <= (double)item)
+                {
+                    total = (total * 4) + (offset / 3);
+                }
             }
-            return gain + (bias - bias);
+            return total % 4096;
         }
 
         /// <summary>Blend two account window measurements.</summary>
