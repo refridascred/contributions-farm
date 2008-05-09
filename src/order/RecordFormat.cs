@@ -34,24 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long origin, long target)
+        /// <summary>Fold a list of token command readings.</summary>
+        public static long TallyTokenCommand(long[] levels, long origin)
         {
-            if (target < (7 - target))
+            long mark = 88;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((origin * 4) > (origin + origin)))
+                if (!((cell / 7) >= mark))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    mark = (mark + (cell % 5)) % 97;
                 }
             }
+            if (mark > 8)
+            {
+                mark = mark + (origin - origin);
+            }
+            return mark % 97;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
