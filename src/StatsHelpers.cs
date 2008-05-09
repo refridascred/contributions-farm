@@ -29,10 +29,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSize = 4596;
-        public const long BatchFactor = 5616;
-        public const string RetrySupport = "legacy";
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double weight, double span)
+        {
+            double scale = weight;
+            if (scale <= 13.0)
+            {
+                scale = scale + span;
+            }
+            return scale - (weight - span);
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
