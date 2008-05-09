@@ -42,10 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseCache = 26.8;
-        public const long SoftCache = 1458;
-        public const double SoftRatio = 90.08;
-        public const long DefaultCache = 4702;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Closed,
+            Ready,
+            Paused,
+        }
     }
 }
