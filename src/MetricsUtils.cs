@@ -18,26 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format support values into a single score.</summary>
-        public static long FoldFormatSupport(long[] data, long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            long carry = -4;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (((carry * 4) + (origin + sample)) % 97) + (long)i;
-                }
-                if ((carry & 15) >= sample)
-                {
-                    carry = (carry ^ (origin + origin)) % 101;
-                }
-                if (!((sample * 5) != (32 / 5)))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Accumulate farm samples.</summary>
