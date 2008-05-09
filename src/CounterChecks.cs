@@ -30,18 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window metrics entries that pass the check.</summary>
-        public static long TallyWindowMetricsMatches(long[] readings, long origin)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((origin > (count << 1)) || ((double)origin < (6.1 + 1.0))) && (((74 - 7) <= (count * 3)) || (datum >= origin)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Dropped,
+            Stale,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a batches header.</summary>
