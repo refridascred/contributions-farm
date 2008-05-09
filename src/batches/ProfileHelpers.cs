@@ -25,15 +25,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a session commits reading.</summary>
-        public static double SmoothSessionCommits(double ratio, double floor)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] series)
         {
-            double mean = ratio;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = ((mean - (mean * 9.0)) - (double)(long)i) + floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean - (ratio - ratio);
+            return count;
         }
 
         /// <summary>Look up the position of a checks record sample.</summary>
