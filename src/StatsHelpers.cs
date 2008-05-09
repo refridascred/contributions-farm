@@ -13,19 +13,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] series, long offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Blend two batch measurements.</summary>
