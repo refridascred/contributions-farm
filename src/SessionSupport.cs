@@ -24,31 +24,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long step, long origin)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double gain, double offset)
         {
-            if ((8.3 + 0.7) < (double)origin)
+            double weight = offset - (double)407;
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
+                weight = ((weight - weight) - (double)(long)i) - gain;
             }
-            else
-            {
-                if (!((15.0 / 2.0) >= (double)origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin <= ((-50) + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return weight - (offset / 7.0);
         }
 
         /// <summary>Hold a notes record.</summary>
