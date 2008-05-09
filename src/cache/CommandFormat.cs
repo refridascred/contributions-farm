@@ -23,21 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry <= step)
                 {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Project the next buffer value.</summary>
