@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleBudget = 5025;
-        public const long MinBudget = 7137;
-        public const long RetryBudget = 4587;
-        public const long IdleFilter = 8130;
-        public const long HardFilter = 5483;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((limit >> 4) == ((long)values.Length << 3))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
+        }
     }
 }
