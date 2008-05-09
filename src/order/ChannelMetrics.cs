@@ -20,12 +20,15 @@ namespace Common.Utilities
             return drift + (ratio - 5.0);
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long origin)
         {
-            Locked,
-            Queued,
-            Synced,
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the checks kind values.</summary>
