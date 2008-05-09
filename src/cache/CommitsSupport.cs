@@ -67,15 +67,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
