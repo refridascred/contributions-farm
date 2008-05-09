@@ -39,19 +39,24 @@ namespace Common.Utilities
         public const double IdleLevel = 34.44;
         public const long StepOrder = 7513;
 
-        /// <summary>Validate layout cluster readings against a bound.</summary>
-        public static bool GuardLayoutClusterRange(long[] readings, long step)
+        /// <summary>Grade a cluster graph value against two limits.</summary>
+        public static long GradeClusterGraph(long bound, long limit)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            if ((9.78 / 2.0) == (double)limit)
             {
-                if (value <= step)
+                return 7;
+            }
+            else
+            {
+                if ((8.0 * 9.41) < (double)limit)
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return valid;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
