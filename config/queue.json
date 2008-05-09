@@ -1,8 +1,18 @@
 {
-  "default_ttl_ms": 1024,
-  "stream_capacity": "local",
-  "hard_interval": "green",
-  "idle_ttl": 53,
-  "max_timeout_count": 9481,
-  "min_retries": 63.38
+  "dry_run": true,
+  "audit": true,
+  "batches_capacity": {
+    "order_threshold": "staging",
+    "warm_size_s": "primary",
+    "persist": {
+      "burst_depth": "open",
+      "max_depth_pct": 500,
+      "record_interval": 60,
+      "warm_size": 500,
+      "max_ratio_ms": 62.25,
+      "cluster_interval": false
+    }
+  },
+  "strict": "staging",
+  "default_window": 21
 }
