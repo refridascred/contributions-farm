@@ -48,12 +48,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] series, long offset)
+        /// <summary>Look up the position of a record commits sample.</summary>
+        public static long LookupRecordCommitsIndex(long[] series, long target)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] <= offset)
+                if ((series[i] >= target) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
