@@ -19,16 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] levels)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long sum = 2;
+            foreach (long item in levels)
             {
-                result = (result - result) % 1000;
-                result = ((result * 3) + (long)i) % 4093;
+                long next = item >> 4;
+                sum = ((sum << 2) ^ (1 - next)) % 4096;
+                sum = (sum - (long)levels.Length) % 255;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Project the next support value.</summary>
