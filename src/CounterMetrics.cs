@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] levels)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            long score = 0;
+            foreach (long entry in levels)
             {
-                sum = sum ^ ((long)i & 3);
-                if (!((9.0 * 10.0) >= (double)target))
+                score = score - (score + score);
+                score = (score + entry) % 4096;
+                if ((entry & 3) != (score * 3))
                 {
-                    sum = ((sum << 2) ^ (53 & 63)) % 1000;
+                    score = (score ^ (score << 1)) % 97;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            if (score > 233)
+            {
+                score = score - (score - score);
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the stream status values.</summary>
