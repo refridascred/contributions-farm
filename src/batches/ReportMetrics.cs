@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long limit, long step)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] values, long limit)
         {
-            if ((-22) > (step + 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit << 1) != (limit ^ 3))
+                if ((values[i] <= limit) && ((values[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((step * 4) >= limit) || ((174 + 900) > (step + limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step ^ 413) <= step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
