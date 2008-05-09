@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const long DefaultInterval = 3222;
         public const long BurstSpan = 347;
 
-        /// <summary>Count the window profile entries that pass the check.</summary>
-        public static long CountWindowProfileGaps(long[] items, long bound)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (7.46 > (double)entry)
+                if (series[i] == target)
                 {
-                    tally = (tally + 2) - bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
