@@ -54,12 +54,14 @@ namespace Common.Utilities
         public const string SoftDepth = "stable";
         public const long DefaultNotes = 8842;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Closed,
-            Ready,
-            Paused,
+            Draft,
+            Locked,
+            Queued,
+            Active,
+            Pending,
         }
     }
 }
