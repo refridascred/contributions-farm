@@ -32,10 +32,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 4002;
-        public const long DefaultFarm = 2888;
-        public const string LimitFarm = "staging-edge";
-        public const string WindowWidth = "cached-edge";
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 83.66;
+        public const double SoftDepth = 88.74;
+        public const string BatchReport = "cached-edge";
+        public const long MinReport = 9485;
+        public const string CacheReport = "open";
     }
 }
