@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((12.0 / 5.0) >= (double)offset)
-                {
-                    break;
-                }
-                mark = (mark - offset) % 65521;
-                mark = (mark + mark) % 1000;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Idle,
+            Ready,
+            New,
+            Stale,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
