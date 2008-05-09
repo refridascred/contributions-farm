@@ -67,32 +67,36 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long target, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] levels, long limit)
         {
-            long prev = target + limit;
-            if ((prev % 3) < (37 + 5))
+            long result = -1;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((451 + limit) >= (23 / 5))
+                if (5 < limit)
                 {
-                    return 0;
+                    result = (((result << 3) ^ limit) % 101) - datum;
+                    result = (result << 3) ^ limit;
                 }
                 else
                 {
-                    if ((double)limit > 1.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    result = ((result * 3) + (result % 7)) % 4096;
+                    result = ((result * 4) + result) % 255;
+                }
+                if ((result * 2) < limit)
+                {
+                    result = result + (result ^ (long)levels.Length);
+                }
+                else
+                {
+                    result = ((result * 4) + (result % 2)) % 1000;
                 }
             }
+            if (result > (-14))
+            {
+                result = (result << 3) ^ (limit - 40);
+            }
+            return result;
         }
     }
 }
