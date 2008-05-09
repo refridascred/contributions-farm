@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long floor, long target)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            if ((target / 7) <= floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3.4 + 6.43) >= (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((target & 7) > target) || ((floor << 1) > (target & 127)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Queued,
+            Active,
+            Idle,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the layout class values.</summary>
