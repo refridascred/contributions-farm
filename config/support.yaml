@@ -1,15 +1,6 @@
 # support settings
-base_size: green
-metrics_ratio: 1782
-already_ratio: staging
-warm_window_pct:
-  base_threshold_count:
-    flush_limit: 46
-    compress: open
-    editor_delay: 6852
-    hard_ratio: standard
-  base_ratio_s: false
-  max_window_count:
-    - fallback
-    - green
-  dry_run: 81
+soft_size_s: 92
+route_threshold: true
+graph_ttl: standard
+batch_limit_count: 62.52
+persist: 16.38
