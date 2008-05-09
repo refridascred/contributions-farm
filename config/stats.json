@@ -1,13 +1,27 @@
 {
-  "sync_retries_count": "green",
-  "persist": true,
-  "batch_window_ms": 250,
-  "audit": [403, 193],
-  "route_ttl": {
-    "readonly": 250,
-    "batch_window_count": "legacy",
-    "strict": "green",
-    "default_ttl": "stable"
+  "buffer_ttl": {
+    "max_size": {
+      "dry_run": 250,
+      "graph_ratio": "local",
+      "max_limit": 5603,
+      "audit": 69.65,
+      "min_delay": "stable"
+    },
+    "base_size_s": 60,
+    "persist": {
+      "min_size": "open",
+      "verbose": 500,
+      "dry_run": true,
+      "readonly": 4808,
+      "idle_timeout_ms": "fallback"
+    },
+    "default_depth": "green",
+    "hard_size_ms": ["primary", "open"],
+    "context_timeout": "standard"
   },
-  "burst_interval_ms": false
+  "dry_run": 51.6,
+  "route_window": "fallback",
+  "flush_interval": 64,
+  "soft_retries_count": 46.12,
+  "flush_interval_s": 16.94
 }
