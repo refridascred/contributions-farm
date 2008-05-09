@@ -45,32 +45,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long limit, long target)
+        /// <summary>Compare every pair of format buffer readings.</summary>
+        public static long OverlapFormatBufferCount(long[] series)
         {
-            long cur = limit - target;
-            if ((target >> 2) >= limit)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target - 54) < (1 * 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit >> 5) >= (cur % 10))
+                    if ((series[i] - series[j]) == 19)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two session measurements.</summary>
