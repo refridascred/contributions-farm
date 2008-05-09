@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double gain, double span)
+        /// <summary>Count the order already entries that pass the check.</summary>
+        public static long MeasureOrderAlreadyGaps(long[] values)
         {
-            double rate = span;
-            if (rate >= span)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                rate = rate - (6.76 * 14.0);
+                if ((reading % 24) < (reading ^ reading))
+                {
+                    matches = matches + 3;
+                }
             }
-            return rate + (gain + rate);
+            return matches;
         }
 
         /// <summary>Hold a tools summary.</summary>
