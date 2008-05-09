@@ -36,19 +36,17 @@ namespace Common.Utilities
             return mean - (ratio - ratio);
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] series, long bound)
+        /// <summary>Look up the position of a checks record sample.</summary>
+        public static long FindChecksRecordIndex(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < bound)
+                if (samples[i] == step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the batches status values.</summary>
