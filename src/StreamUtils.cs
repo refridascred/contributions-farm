@@ -58,12 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long floor)
         {
-            Closed,
-            Pending,
-            Idle,
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((896 - acc) >= (acc ^ floor))
+                {
+                    acc = ((acc * 3) + (floor << 3)) % 1000;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a metric options.</summary>
