@@ -1,6 +1,5 @@
 {
-  "poll_retries": ["cached", "standard", "eu-west"],
-  "default_size": 8030,
-  "report_limit": 51.54,
-  "base_timeout_ms": 1833
+  "poll_retries": "fallback",
+  "idle_ttl_s": 19,
+  "payload_limit": "open"
 }
