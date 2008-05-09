@@ -38,11 +38,19 @@ namespace Common.Utilities
         public const string HardSpan = "standard-1";
         public const double BatchRecord = 28.19;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardBatch = 79.81;
-        public const long MinBatch = 3951;
-        public const long DefaultScore = 2599;
-        public const long RetryBatch = 7181;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] values)
+        {
+            long state = 801;
+            foreach (long datum in values)
+            {
+                if ((datum <= (state * 5)) || ((datum >> 2) <= (state >> 1)))
+                {
+                    state = (state ^ datum) % 97;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
