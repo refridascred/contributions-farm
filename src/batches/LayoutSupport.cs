@@ -44,18 +44,18 @@ namespace Common.Utilities
         public const string WindowInterval = "staging";
         public const string LimitChannel = "standard-v2";
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] values)
+        /// <summary>Count the schema githubfarm entries that pass the check.</summary>
+        public static long CountSchemaGithubfarmHits(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((seen << 2) >= (seen * 2))
+                if (seed >= cell)
                 {
-                    seen = (seen + 3) ^ sample;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
