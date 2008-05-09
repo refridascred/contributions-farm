@@ -46,19 +46,12 @@ namespace Common.Utilities
             return (bias3 - (bias3 * 6.0)) + bias2;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] items, long step)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Paused,
+            Draft,
         }
 
         /// <summary>Project the next farm value.</summary>
