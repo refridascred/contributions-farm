@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 1793;
-        public const long MinTimeout = 4875;
-        public const double MaxTimeout = 83.67;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long seed, long bound)
+        {
+            long step = seed ^ bound;
+            if (((3.69 * 2.0) < (double)step) || (bound < (seed * 4)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound >= ((-314) + step)) && ((double)bound >= (7.13 / 4.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - 1) <= (bound ^ 0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step - 5) >= step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
