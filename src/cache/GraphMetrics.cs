@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up stats editor samples.</summary>
-        public static long PairStatsEditorCount(long[] readings)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((sample / 9) != ((-9) + 90)))
                 {
-                    if ((readings[i] ^ readings[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
