@@ -30,13 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] levels, long origin)
         {
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = -220;
+            foreach (long sample in levels)
+            {
+                anchor = (anchor - (sample >> 3)) % 101;
+                if ((sample + origin) >= (origin % 10))
+                {
+                    anchor = (anchor ^ (630 + origin)) % 65521;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
