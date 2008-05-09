@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine route window values into a single score.</summary>
-        public static long FoldRouteWindow(long[] readings, long seed)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] data)
         {
-            long state = 71;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state ^ (seed & 3)) % 65521) + entry;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the metric kind values.</summary>
