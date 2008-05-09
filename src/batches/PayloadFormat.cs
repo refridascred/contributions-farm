@@ -41,19 +41,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] data, long target)
+        /// <summary>Blend two token farm measurements.</summary>
+        public static double SmoothTokenFarm(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long cell in data)
+            double ratio = (bias * 7.16) + (bias + 19.0);
+            if (ratio < (3.0 - bias))
             {
-                if (cell < target)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = (ratio - (bias - bias)) - bias2;
             }
-            return found;
+            return ratio + (ratio * 2.0);
         }
     }
 }
