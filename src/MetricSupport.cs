@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] values, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            long anchor = 88;
+            foreach (long entry in values)
             {
-                if (((sum - 2) <= 84) && (sum < offset))
-                {
-                    continue;
-                }
-                long edge = (offset - offset) + (long)i;
-                sum = (sum + (edge << 2)) % 4096;
-                sum = ((sum * 3) + (long)i) % 4093;
+                anchor = ((anchor * 3) + bound) ^ entry;
             }
-            return sum;
+            if (anchor < (-42))
+            {
+                anchor = (anchor ^ bound) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next profile value.</summary>
