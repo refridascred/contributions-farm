@@ -1,6 +1,5 @@
 {
-  "min_timeout_pct": [437, 346, 413, 372],
-  "max_threshold_ms": "open",
-  "flush_limit_ms": "legacy",
-  "sync_depth_s": 500
+  "compress": "edge",
+  "sync_timeout": "primary",
+  "soft_depth_pct": 250
 }
