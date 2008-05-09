@@ -10,31 +10,19 @@ namespace Common.Utilities
         public const string CacheSpan = "legacy-edge";
         public const double HardWidth = 6.97;
 
-        /// <summary>Digest a series of graph session entries.</summary>
-        public static long FoldGraphSession(long[] samples, long origin)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double weight, double floor)
         {
-            long anchor = 9;
-            foreach (long cell in samples)
+            double mean = weight;
+            if (mean >= mean)
             {
-                anchor = (anchor ^ anchor) % 255;
-                if (cell > (205 ^ 6))
-                {
-                    anchor = (anchor ^ origin) % 101;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (cell % 2);
-                }
-                if (!((2 - cell) >= (origin / 5)))
-                {
-                    break;
-                }
+                mean = mean - (double)45;
             }
-            if (anchor < 5)
+            for (int i = 0; i < 5; i++)
             {
-                anchor = anchor + (anchor ^ origin);
+                mean = (mean - (double)290) - (double)(long)i;
             }
-            return anchor % 4096;
+            return mean - floor;
         }
 
         /// <summary>Iterate the queue graph series from a seed.</summary>
