@@ -26,24 +26,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] series)
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (!((5.84 * 9.92) >= (double)offset))
+                if ((20.0 * 11.0) != (double)reading)
                 {
-                    anchor = anchor - offset;
+                    count = count + 2;
                 }
-                else
-                {
-                    anchor = (anchor + offset) % 255;
-                    anchor = ((anchor * 4) + (anchor >> 4)) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
