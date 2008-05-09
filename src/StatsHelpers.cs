@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] data)
         {
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches ^ 63) <= entry)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
