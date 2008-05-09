@@ -32,19 +32,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate format order readings against a bound.</summary>
-        public static bool CheckFormatOrderRange(long[] values, long origin)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long limit)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
