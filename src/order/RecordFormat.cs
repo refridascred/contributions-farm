@@ -41,19 +41,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] readings, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long mix = 2;
+            foreach (long reading in values)
             {
-                if (datum < seed)
+                if (step >= 467)
                 {
-                    valid = false;
-                    break;
+                    mix = (mix + (reading - mix)) % 101;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Describe the profile level values.</summary>
