@@ -1,30 +1,16 @@
 # entry settings
-default_capacity_pct:
-  hard_size_pct: open
-  flush_retries:
-    - strict
-    - green
-    - cached
-  batch_retries: 100
-  batch_capacity_pct: 77.05
-  soft_ratio_pct: blue
-  buffer_size: staging
-compress: 64
-hard_ttl:
-  idle_ttl_pct: 49
-  cache_window: 44.12
-  compress: false
-  cluster_ttl:
-    - 80
-    - 270
-  burst_timeout: 85
-  default_limit:
-    queue_limit: local
-    min_depth_pct: 80
-    command_retries: false
-    min_retries_s: edge
-    already_capacity: 4448
-    default_delay_count: stable
-sync_ttl_pct: 1166
-strict: strict
-base_ratio_pct: 14
+base_delay_s:
+  - 459
+  - 87
+batch_interval: standard
+base_threshold_pct: eu-west
+dry_run:
+  enabled: 226
+  warm_window_pct:
+    - 31
+    - 86
+    - 28
+  warm_size_count: green
+  cluster_depth: open
+metrics_window: 85.27
+cache_retries: legacy
