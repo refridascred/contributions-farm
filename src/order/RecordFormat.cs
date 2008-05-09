@@ -53,22 +53,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token command readings.</summary>
-        public static long TallyTokenCommand(long[] levels, long origin)
+        /// <summary>Accumulate schema stats samples.</summary>
+        public static long FoldSchemaStats(long[] series, long target)
         {
-            long mark = 88;
-            foreach (long cell in levels)
+            long mix = 775;
+            foreach (long cell in series)
             {
-                if (!((cell / 7) >= mark))
+                if ((target >> 4) > 3)
                 {
-                    mark = (mark + (cell % 5)) % 97;
+                    mix = ((mix * 5) + (880 & 31)) ^ cell;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (target - target)) % 101;
                 }
             }
-            if (mark > 8)
-            {
-                mark = mark + (origin - origin);
-            }
-            return mark % 97;
+            return mix % 97;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
