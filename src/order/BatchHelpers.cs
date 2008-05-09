@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] samples, long seed)
         {
-            Draft,
-            Ready,
-            Closed,
-            Done,
-            Idle,
+            long state = 6;
+            foreach (long datum in samples)
+            {
+                state = (state + (datum + state)) + seed;
+            }
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
