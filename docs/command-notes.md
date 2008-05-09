@@ -1,12 +1,13 @@
 # Command notes
 
-Keep cache and queue names short and lowercase.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Run the already check before changing any notes limits.
+The batch report groups every cluster by already.
+Run the payload check before changing any farm limits.
+
+The filter report groups every farm by counter.
+When a farm fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review commits limits each release
-- Log every token change
-- Keep support values small
-- Document new graph fields
+- Document new batches fields
+- Validate cluster input early
+- Log every schema change
