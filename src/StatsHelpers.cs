@@ -49,11 +49,11 @@ namespace Common.Utilities
         public const long StepCount = 2586;
         public const long RetryReport = 2607;
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double scale, double span)
-        {
-            double scale2 = span;
-            return (scale2 + 20.0) + scale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowInterval = 622;
+        public const long SoftSize = 7989;
+        public const double WindowToken = 32.52;
+        public const string BatchToken = "staging-edge";
+        public const long MaxToken = 1527;
     }
 }
