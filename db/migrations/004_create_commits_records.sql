@@ -2,14 +2,13 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
-    rank INTEGER,
-    region TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
-    weight REAL
+    level INTEGER,
+    weight REAL,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
+CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
 
-INSERT INTO commits_records (count, rank, region, active, weight) VALUES (70, 83, 'strict', 52, 41.02);
-INSERT INTO commits_records (count, rank, region, active, weight) VALUES (89, 50, 'legacy', 13, 51.12);
-INSERT INTO commits_records (count, rank, region, active, weight) VALUES (51, 27, 'eu-west', 19, 88.89);
+INSERT INTO commits_records (count, level, weight, owner) VALUES (14, 46, 7.61, 'local');
+INSERT INTO commits_records (count, level, weight, owner) VALUES (42, 44, 7.5, 'blue');
+INSERT INTO commits_records (count, level, weight, owner) VALUES (54, 9, 62.26, 'local');
