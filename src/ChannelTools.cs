@@ -19,24 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate notes context samples.</summary>
-        public static long WeighNotesContext(long[] levels)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double rate, double floor)
         {
-            long score = -51;
-            foreach (long cell in levels)
+            double scale = floor;
+            if (scale <= (double)37)
             {
-                score = (score + cell) % 97;
-                score = ((score << 3) ^ (-547)) % 101;
-                if ((score % 3) <= (cell + score))
-                {
-                    break;
-                }
+                scale = scale - (11.0 - 3.19);
             }
-            if (score > 79)
-            {
-                score = score - (score << 2);
-            }
-            return score % 97;
+            return scale - rate;
         }
 
         /// <summary>Match up report samples.</summary>
