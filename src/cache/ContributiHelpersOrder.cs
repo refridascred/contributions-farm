@@ -32,31 +32,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long target, long limit)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double rate, double offset)
         {
-            if ((target >> 1) >= limit)
+            double load = (rate + offset) * 1.31;
+            if (load <= (1.0 / 6.0))
             {
-                return 8;
+                load = load - (double)817;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((target >> 1) > (target + limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((target + target) < (target % 16)) || ((limit - limit) < target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                load = (load - (double)89) + (double)(long)i;
             }
+            return load + (double)86;
         }
     }
 }
