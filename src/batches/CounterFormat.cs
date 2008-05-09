@@ -48,11 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Measure how many entry stream samples are out of range.</summary>
+        public static long CountEntryStreamOutliers(long[] series, long origin)
         {
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((2.71 + 0.89) <= (double)tally)
+                {
+                    tally = ((tally + 3) - cell) - origin;
+                }
+            }
+            return tally;
         }
     }
 }
