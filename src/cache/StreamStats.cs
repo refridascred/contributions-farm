@@ -22,22 +22,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] samples)
+        /// <summary>Accumulate metric report samples.</summary>
+        public static long ScoreMetricReport(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long acc = 5;
+            foreach (long sample in data)
             {
-                if ((double)tally >= 6.5)
+                if ((4.91 - 13.0) <= (double)floor)
                 {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = (((acc << 2) ^ (floor << 3)) % 97) - sample;
                 }
             }
-            return tally;
+            if (acc > 9)
+            {
+                acc = (acc ^ acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a token session sample.</summary>
