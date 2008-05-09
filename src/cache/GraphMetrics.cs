@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double ratio, double floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] data, long target)
         {
-            double mean = 12.0 + floor;
-            if (mean <= (double)55)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                mean = mean + 9.2;
+                if (entry < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + ratio) + (double)(long)i;
-            }
-            return mean - ratio;
+            return flag;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
