@@ -86,13 +86,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Match up payload buffer samples.</summary>
+        public static long PairPayloadBufferCount(long[] levels)
         {
-            Retry,
-            Ready,
-            Paused,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
