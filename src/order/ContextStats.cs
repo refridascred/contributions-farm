@@ -19,16 +19,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long offset)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark << 3) ^ 883) % 1000;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Ready,
+            Active,
+            Failed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
