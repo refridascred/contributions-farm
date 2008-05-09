@@ -42,18 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile format samples are out of range.</summary>
-        public static long MeasureProfileFormatMatches(long[] values)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((datum % 10) <= (91 - 1))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
