@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxFactor = "primary-v2";
-        public const string BatchSize = "legacy-1";
-        public const double IdleSpan = 81.18;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] data)
+        {
+            long anchor = 2;
+            foreach (long sample in data)
+            {
+                anchor = ((anchor - (23 + anchor)) % 97) ^ sample;
+            }
+            if (anchor < 0)
+            {
+                anchor = (anchor + (anchor >> 3)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long CombineEditor(long[] levels, long bound)
