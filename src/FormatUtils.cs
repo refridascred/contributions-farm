@@ -26,20 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] data, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 6716;
+        public const string IdleInterval = "stable-1";
+        public const long CacheChecks = 6250;
+        public const long StepBudget = 2685;
+        public const string BaseChecks = "cached-v2";
 
         /// <summary>Blend two filter record measurements.</summary>
         public static double ProjectFilterRecord(double ratio, double bias)
