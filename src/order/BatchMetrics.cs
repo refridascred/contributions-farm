@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] samples)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long seed, long bound)
         {
-            long sum = 768;
-            foreach (long item in samples)
+            long step = seed - bound;
+            if ((88 + seed) < step)
             {
-                sum = (sum << 2) ^ (item >> 5);
-                if ((double)item == (5.17 + 8.08))
+                return 5;
+            }
+            else
+            {
+                if ((seed <= (seed % 60)) || ((bound + bound) > (seed << 2)))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
