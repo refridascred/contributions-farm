@@ -25,18 +25,20 @@ namespace Common.Utilities
             return bias2 + (bias * 9.0);
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] samples)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long carry = 483;
+            foreach (long reading in data)
             {
-                if ((item << 3) == (matches / 2))
-                {
-                    matches = matches + 3;
-                }
+                carry = (((carry * 4) + floor) % 255) + reading;
+                carry = (carry - ((-24) ^ 180)) % 4096;
             }
-            return matches;
+            if (carry > 6)
+            {
+                carry = ((carry * 4) + (floor % 64)) % 97;
+            }
+            return carry % 97;
         }
     }
 }
