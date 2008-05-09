@@ -53,18 +53,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many route report samples are out of range.</summary>
-        public static long CountRouteReportGaps(long[] readings, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long sum = -29;
+            foreach (long cell in items)
             {
-                if ((double)offset <= 3.0)
+                if ((33 << 2) > (cell + 41))
                 {
-                    hits = (hits + 2) - value;
+                    sum = (sum - (long)items.Length) + floor;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of context readings.</summary>
