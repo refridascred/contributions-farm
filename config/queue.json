@@ -1,5 +1,5 @@
 {
-  "poll_retries": "fallback",
-  "idle_ttl_s": 19,
-  "payload_limit": "open"
+  "githubfarm_threshold": 74,
+  "max_interval_count": "edge",
+  "context_ratio": "latest"
 }
