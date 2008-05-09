@@ -22,18 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] items, long origin)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long step, long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            if (floor < (step >> 2))
             {
-                if ((seen + origin) == (seen % 64))
+                return 1;
+            }
+            else
+            {
+                if (!(step <= (step - floor)))
                 {
-                    seen = (seen + 2) ^ cell;
+                    return 2;
+                }
+                else
+                {
+                    if ((step - floor) > (step * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor > (78 << 3)) || ((double)step >= (8.0 * 0.87)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate batch samples.</summary>
