@@ -1,11 +1,10 @@
 # Command notes
 
-A context that stays idle for too long is moved to the commits list.
-The token helpers are pure functions, so they are safe to call from any thread.
+Keep notes and metrics names short and lowercase.
+Use contributi settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Validate batch input early
-- Review channel limits each release
-- Document new support fields
+- Document new window fields
+- Prefer metrics defaults
+- Log every route change
