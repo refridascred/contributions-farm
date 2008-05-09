@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] readings)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!((9.7 + 9.4) <= (double)datum) && !((6.0 / 9.0) <= (double)matches))
+                if ((1.42 - 5.33) == (double)hits)
                 {
-                    matches = matches + 2;
+                    hits = ((hits + 2) - entry) - bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Classify a farm report pair into a bucket.</summary>
