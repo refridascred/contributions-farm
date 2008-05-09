@@ -16,19 +16,18 @@ namespace Common.Utilities
             return gain + 7.0;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] items, long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (cell < floor)
+                if ((6.93 + 14.0) >= (double)reading)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) + bound;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
