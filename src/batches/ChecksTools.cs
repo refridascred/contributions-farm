@@ -25,26 +25,10 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Iterate the queue graph series from a seed.</summary>
-        public static long RollQueueGraph(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = (mark ^ (mark & 15)) - (long)i2;
-                }
-                if (!((long)i >= (mark + seed)))
-                {
-                    long step = mark;
-                    mark = (mark * 5) + step;
-                    break;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheStream = 24.48;
+        public const long LimitSpan = 5287;
+        public const double LimitScore = 79.9;
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long PairMetricCount(long[] levels)
