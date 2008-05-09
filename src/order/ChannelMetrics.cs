@@ -36,17 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a order format sample.</summary>
-        public static long FindOrderFormatIndex(long[] items, long step)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
