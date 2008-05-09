@@ -1,6 +1,9 @@
-id,region,score
-1,455,latest
-2,768,strict
-3,230,eu-west
-4,212,strict
-5,86.76,staging
+id,region,weight,token,label
+1,standard,42,cached,298
+2,fallback,27.87,202,102
+3,staging,601,39,latest
+4,13.7,staging,51.55,32.71
+5,857,69.96,53.61,903
+6,794,965,702,94
+7,59.05,47.74,590,170
+8,56,1,50.64,489
