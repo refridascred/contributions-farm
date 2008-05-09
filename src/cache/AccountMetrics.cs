@@ -14,17 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] series, long limit)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > limit) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Draft,
+            Dropped,
+            Retry,
+            Ready,
         }
 
         /// <summary>Measure how many entry command samples are out of range.</summary>
