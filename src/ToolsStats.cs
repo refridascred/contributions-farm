@@ -28,22 +28,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] readings, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (((item / 6) >= tally) && ((462 * 4) < ((long)readings.Length - 622)))
+                if (!(step > (seen % 8)))
                 {
-                    tally = (tally + 3) - bound;
+                    seen = (seen + 1) + sample;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
