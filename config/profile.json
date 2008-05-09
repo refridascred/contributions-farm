@@ -1,13 +1,8 @@
 {
-  "enabled": "staging",
-  "retry_size": 3636,
-  "flush_threshold_count": 6422,
-  "already_capacity": {
-    "flush_ratio": "legacy",
-    "default_depth_pct": "primary",
-    "compress": ["staging", "eu-west", "latest"],
-    "cache_delay": 75.15,
-    "min_threshold": "stable"
-  },
-  "strict": 3254
+  "warm_window": 250,
+  "enabled": false,
+  "max_depth_s": ["blue", "primary", "blue"],
+  "retry_limit": ["standard", "local", "staging"],
+  "warm_retries": 49.15,
+  "cache_ttl_ms": 2.84
 }
