@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next session route value.</summary>
-        public static double BlendSessionRoute(double bias, double floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            double scale = (double)(5 + 293);
-            for (int i = 0; i < 3; i++)
+            long carry = 46;
+            foreach (long sample in readings)
             {
-                scale = (((scale + (scale * 5.95)) - (double)(long)i) - bias) - floor;
+                if (!((942 + carry) != (95 & 7)))
+                {
+                    carry = (carry + (sample & 127)) % 101;
+                }
+                carry = (carry + (sample & 31)) % 97;
+                if ((5 - carry) <= (sample ^ carry))
+                {
+                    break;
+                }
             }
-            return scale + (double)566;
+            if (carry > 42)
+            {
+                carry = (carry - carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
