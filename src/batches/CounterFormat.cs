@@ -13,18 +13,28 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] samples)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long score = 3;
+            foreach (long item in levels)
             {
-                if (hits < 15)
+                score = score ^ (0 / 3);
+                score = ((score * 4) + (score * 3)) % 97;
+                if (((score + 727) >= 118) && ((238 & 1) < item))
                 {
-                    hits = (hits + 3) + datum;
+                    score = ((score << 3) ^ ((-874) % 24)) % 1000;
+                }
+                else
+                {
+                    score = ((score * 2) + (limit + item)) % 101;
                 }
             }
-            return hits;
+            if (score > 337)
+            {
+                score = (score - (limit - score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
