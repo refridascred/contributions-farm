@@ -22,11 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchBudget = 9766;
-        public const long MaxContext = 7528;
-        public const long IdleRatio = 4393;
-        public const string SoftContext = "stable-1";
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public double Stamp { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long FoldGraph(long[] values, long step)
