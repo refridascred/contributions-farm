@@ -20,19 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double scale, double span)
         {
-            long total = -285;
-            foreach (long value in samples)
+            double drift = (span + scale) / 6.0;
+            if (drift > (drift - span))
             {
-                total = (total + 49) % 255;
-                if ((total < (long)samples.Length) && ((value % 8) <= (total + value)))
-                {
-                    total = total + value;
-                }
+                drift = drift + (double)13;
             }
-            return total;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift + (double)614;
         }
 
         /// <summary>Hold a schema header.</summary>
