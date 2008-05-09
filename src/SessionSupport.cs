@@ -24,15 +24,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] readings)
+        /// <summary>Count metrics profile pairs that satisfy a relation.</summary>
+        public static long CompareMetricsProfileCount(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) == 6)
+                    if ((samples[i] ^ samples[j]) > 3)
                     {
                         hits = hits + 1;
                     }
