@@ -1,8 +1,5 @@
 # entry settings
-report_threshold: 1024
-commits_ratio: true
-persist:
-  hard_ratio_s: 30
-  already_threshold: false
-  batch_interval: 7468
-hard_retries_s: 79.96
+strict: 66.43
+persist: 500
+base_timeout_count: 42.87
+soft_interval_count: false
