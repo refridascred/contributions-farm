@@ -44,19 +44,12 @@ namespace Common.Utilities
         public const long DefaultContributi = 3503;
         public const long MinScore = 6403;
 
-        /// <summary>Validate route cache readings against a bound.</summary>
-        public static bool GuardRouteCacheBounds(long[] data, long floor)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
