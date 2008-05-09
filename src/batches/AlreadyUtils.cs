@@ -44,23 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] data)
-        {
-            long anchor = 8;
-            foreach (long datum in data)
-            {
-                if ((0.24 < (3.0 * 7.6)) || (10 >= (datum << 1)))
-                {
-                    anchor = ((anchor << 3) ^ (datum + anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor + anchor)) % 97;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 1464;
+        public const string RetryTimeout = "fallback-v2";
+        public const string BurstCount = "strict-1";
+        public const long SoftRatio = 7948;
+        public const long DefaultProfile = 6170;
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long StepCounter(long origin)
