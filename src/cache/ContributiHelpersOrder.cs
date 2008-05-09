@@ -38,22 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] readings)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] data, long offset)
         {
-            long state = 1;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((7.25 / 2.0) != (double)entry)
+                if (((offset >> 2) != (hits - sample)) || (((double)sample > (7.2 - 9.8)) && ((994 - hits) != ((-8) >> 4))))
                 {
-                    state = ((state << 2) ^ (state - entry)) % 1000;
+                    hits = hits + 2;
                 }
             }
-            if (state > 46)
-            {
-                state = (state * 2) + (state - state);
-            }
-            return state % 97;
+            return hits;
         }
     }
 }
