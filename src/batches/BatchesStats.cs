@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Active,
-            Closed,
-            Failed,
-            Draft,
-            Paused,
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
