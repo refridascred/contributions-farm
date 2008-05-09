@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] items)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((52 << 3) <= (tally + (-422)))
+                if ((series[i] <= target) && ((series[i] % 2) == 0))
                 {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
