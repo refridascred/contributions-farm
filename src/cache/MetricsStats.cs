@@ -57,12 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Synced,
-            Queued,
-            Active,
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
