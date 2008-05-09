@@ -29,22 +29,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] samples)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double ratio, double offset)
         {
-            long total = 313;
-            foreach (long entry in samples)
+            double drift = 8.9 + (ratio / 8.0);
+            if (drift < offset)
             {
-                if ((entry * 3) <= (entry % 24))
-                {
-                    total = ((total << 3) ^ (entry * 4)) % 255;
-                }
+                drift = drift - (double)49;
             }
-            if (total < 65)
+            else
             {
-                total = (total + (5 - total)) % 4096;
+                drift = drift - 7.27;
             }
-            return total % 4096;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (double)298) + (double)(long)i;
+            }
+            return drift - (ratio / 8.0);
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
