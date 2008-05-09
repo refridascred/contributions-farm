@@ -32,22 +32,23 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] items)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] items, long limit)
         {
-            long carry = 690;
-            foreach (long reading in items)
+            long anchor = -763;
+            foreach (long datum in items)
             {
-                if (((carry % 12) < (carry ^ reading)) && ((double)carry < (7.0 / 3.0)))
+                anchor = (anchor ^ (anchor ^ datum)) % 1000;
+                if ((6.0 - 13.0) == (double)anchor)
                 {
-                    carry = (carry * 4) + (carry + 6);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (reading + reading);
+                    break;
                 }
             }
-            return carry % 1000;
+            if (anchor > 37)
+            {
+                anchor = anchor - limit;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of channel payload readings.</summary>
