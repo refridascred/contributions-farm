@@ -20,22 +20,22 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long anchor = 795;
+            foreach (long sample in samples)
             {
-                if (seen >= datum)
+                if (!(sample > (22 % 8)))
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor * 4) + (anchor + anchor)) + step;
                 }
-                else
+                if ((double)anchor > (4.8 - 4.95))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the batches kind values.</summary>
