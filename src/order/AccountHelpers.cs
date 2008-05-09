@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] series, long floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] items)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long acc = 860;
+            foreach (long reading in items)
             {
-                if (seen < (seen >> 5))
+                if ((((-48) - reading) == (reading * 5)) || ((double)817 < (double)acc))
                 {
-                    seen = ((seen + 2) + item) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    acc = (acc - (0 & 127)) % 97;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a payload entry.</summary>
