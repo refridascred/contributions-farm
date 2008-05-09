@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double rate, double floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] samples)
         {
-            double scale = floor;
-            if (scale <= (double)37)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                scale = scale - (11.0 - 3.19);
+                if ((157 + datum) == (datum / 4))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return scale - rate;
+            return hits;
         }
 
         /// <summary>Match up report samples.</summary>
