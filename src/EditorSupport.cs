@@ -80,22 +80,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many route support samples are out of range.</summary>
-        public static long AuditRouteSupportGaps(long[] items, long floor)
+        /// <summary>Combine batch filter values into a single score.</summary>
+        public static long CombineBatchFilter(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long result = 922;
+            foreach (long sample in data)
             {
-                if ((seen / 3) >= ((long)items.Length + seen))
+                if ((((long)data.Length + result) <= bound) || (bound > (result << 3)))
                 {
-                    seen = ((seen + 2) + datum) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    result = ((result * 2) + sample) % 65521;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Hold a stats entry.</summary>
