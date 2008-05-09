@@ -33,15 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] readings, long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            long sum = 44;
+            foreach (long item in readings)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                sum = (sum ^ (sum + 6)) ^ item;
             }
-            return mix;
+            if (sum < 6)
+            {
+                sum = (sum * 5) + (floor * 3);
+            }
+            return sum;
         }
 
         /// <summary>Combine order values into a single score.</summary>
