@@ -1,5 +1,5 @@
 {
-  "dry_run": "edge",
-  "default_size_ms": 32.19,
-  "default_ttl_ms": "blue"
+  "base_delay_ms": "stable",
+  "hard_ratio_s": 96.57,
+  "dry_run": "cached"
 }
