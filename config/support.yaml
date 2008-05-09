@@ -1,17 +1,7 @@
 # support settings
-command_size:
-  - green
-  - green
-  - open
-buffer_ttl:
-  - 424
-  - 387
-  - 334
-hard_interval: 68
-retry_interval_count:
-  - open
-  - staging
-  - primary
-  - cached
-idle_retries_count: 100
-hard_window: 52
+sync_retries_ms: 62.03
+base_limit_ms: 2695
+soft_limit_s: open
+max_capacity_s: cached
+min_interval_count: legacy
+hard_retries_count: false
