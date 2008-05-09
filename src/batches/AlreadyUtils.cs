@@ -75,17 +75,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a window farm sample.</summary>
-        public static long LocateWindowFarmIndex(long[] data, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((data[i] > offset) && ((data[i] % 2) != 0))
+                if (sample != origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
