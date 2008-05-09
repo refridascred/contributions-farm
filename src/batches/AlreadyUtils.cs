@@ -56,12 +56,12 @@ namespace Common.Utilities
         public const long IdleScore = 6270;
         public const double MinSpan = 81.08;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
