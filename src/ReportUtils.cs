@@ -26,23 +26,17 @@ namespace Common.Utilities
         public const long BaseDepth = 5711;
         public const string WindowWidth = "strict-edge";
 
-        /// <summary>Combine already stream values into a single score.</summary>
-        public static long FoldAlreadyStream(long[] readings, long floor)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] readings, long floor)
         {
-            long total = -871;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (((total * 5) + (total * 4)) % 97) + datum;
-                if ((total ^ total) >= (floor + floor))
+                if ((readings[i] == floor) && ((readings[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < 383)
-            {
-                total = ((total << 2) ^ (total % 24)) % 97;
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Validate format order readings against a bound.</summary>
