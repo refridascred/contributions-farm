@@ -1,20 +1,14 @@
 {
-  "dry_run": 0.15,
-  "persist": {
-    "burst_retries_ms": false,
-    "channel_delay": ["strict", "fallback", "open"],
-    "batch_ratio_ms": "cached",
-    "notes_threshold": "green",
-    "profile_capacity": {
-      "warm_interval": "green",
-      "dry_run": 2037,
-      "verbose": "strict"
-    }
+  "default_threshold": 85.92,
+  "payload_retries": {
+    "flush_ttl_count": 2956,
+    "hard_capacity_count": [457, 82],
+    "retry_size_count": false,
+    "enabled": 4807,
+    "persist": 16.06
   },
-  "stats_ttl": {
-    "retry_interval_count": "eu-west",
-    "max_size_pct": ["local", "fallback", "primary"],
-    "account_ratio": 27,
-    "cache_limit_count": 5495
-  }
+  "dry_run": [113, 132, 219, 393],
+  "sync_retries": false,
+  "warm_limit_pct": ["legacy", "standard", "edge", "standard"],
+  "hard_threshold_count": "standard"
 }
