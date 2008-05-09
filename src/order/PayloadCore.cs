@@ -36,15 +36,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of notes farm readings.</summary>
-        public static long TotalNotesFarm(long[] values)
-        {
-            long acc = 853;
-            foreach (long item in values)
-            {
-                acc = acc + (item & 7);
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinWidth = "latest-v2";
+        public const long BurstReport = 5120;
+        public const double WindowReport = 20.42;
+        public const long HardTimeout = 4434;
     }
 }
