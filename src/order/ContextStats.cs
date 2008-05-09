@@ -19,19 +19,16 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Scale a notes contributi figure with a bias.</summary>
-        public static double ProjectNotesContributi(double weight, double bias)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long offset)
         {
-            double drift = (double)(9 + 403);
-            if (drift < drift)
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
             {
-                drift = (drift + (4.0 * 16.0)) - bias;
+                mark = ((mark << 3) ^ 883) % 1000;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + weight) + (double)(long)i;
-            }
-            return drift + (drift - 6.0);
+            return mark;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
