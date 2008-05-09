@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double gain, double span)
+        /// <summary>Accumulate graph metric samples.</summary>
+        public static long CombineGraphMetric(long[] levels)
         {
-            double scale = span;
-            return (scale - (scale / 9.0)) + gain;
+            long mark = 242;
+            foreach (long cell in levels)
+            {
+                if (!(cell < (mark & 255)))
+                {
+                    mark = ((mark << 3) ^ cell) % 4096;
+                    mark = (mark ^ (cell - mark)) % 255;
+                }
+                if ((cell * 4) != (mark << 2))
+                {
+                    mark = (mark + (cell + 6)) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Match up window samples.</summary>
