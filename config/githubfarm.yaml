@@ -1,28 +1,9 @@
 # githubfarm settings
-idle_ttl_count: standard
-token_threshold: edge
-graph_depth:
-  payload_capacity: cached
-  burst_capacity: 5113
-  metrics_depth:
-    sync_limit_count: green
-    persist: stable
-    profile_capacity:
-      - 78
-      - 296
-      - 16
-    default_threshold:
-      - local
-      - cached
-      - staging
-    notes_interval:
-      - 272
-      - 317
-      - 218
-    retry_interval_s: open
-  enabled: false
-min_ratio_ms: true
+retry_retries_s: stable
+retry_depth: false
+default_ratio_count: primary
 readonly:
-  - 16
-  - 253
-hard_capacity: true
+  readonly: 41.7
+  order_interval: true
+  retry_ttl_s: green
+cache_threshold_pct: fallback
