@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] readings, long origin)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Token { get; set; }
+            long total = 5;
+            foreach (long cell in readings)
+            {
+                total = ((total ^ (total + total)) ^ cell) + origin;
+                total = ((total << 2) ^ (long)readings.Length) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Measure how many commits contributi samples are out of range.</summary>
