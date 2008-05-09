@@ -31,20 +31,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long floor)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 2) + (floor << 2)) % 4096;
-                if ((517 / 3) > mix)
-                {
-                    mix = ((mix * 3) + (floor - mix)) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Look up the position of a already sample.</summary>
