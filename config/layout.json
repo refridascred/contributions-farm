@@ -1,22 +1,6 @@
 {
-  "verbose": [474, 211, 222, 426],
-  "min_threshold_ms": {
-    "burst_depth_ms": 68.79,
-    "cache_timeout": {
-      "soft_size": 7021,
-      "token_limit": 39.86,
-      "soft_ttl_count": 72,
-      "flush_window_s": "fallback",
-      "format_size": 500,
-      "sync_retries": "latest"
-    },
-    "flush_window_pct": 2,
-    "max_interval_pct": 790,
-    "compress": false,
-    "max_threshold": false
-  },
-  "base_delay_s": 50.54,
-  "filter_delay": 250,
-  "audit": ["cached", "legacy", "open"],
-  "default_delay_count": 4380
+  "editor_interval": 971,
+  "cache_threshold": ["strict", "eu-west", "standard", "legacy"],
+  "batch_capacity": 59,
+  "report_capacity": false
 }
