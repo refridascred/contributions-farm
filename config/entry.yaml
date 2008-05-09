@@ -1,15 +1,12 @@
 # entry settings
-enabled: 7381
-session_window: 9007
-tools_threshold:
-  - 258
-  - 282
-warm_retries_count: 250
-idle_window: 70.09
-poll_capacity_pct:
-  poll_ratio_count:
-    cache_retries: 2339
-    base_retries: 10.14
-    base_retries_ms: true
-  tools_size: 45.3
-  verbose: 9
+sync_capacity:
+  - 413
+  - 39
+  - 315
+  - 346
+poll_size_ms: 4.95
+idle_ttl:
+  - 247
+  - 472
+  - 444
+  - 342
