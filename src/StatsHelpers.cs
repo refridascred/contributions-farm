@@ -46,11 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double bias, double bias2)
+        /// <summary>Measure how many profile format samples are out of range.</summary>
+        public static long MeasureProfileFormatMatches(long[] values)
         {
-            double bias3 = bias * 9.6;
-            return (bias3 - (bias3 * 6.0)) + bias2;
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((datum % 10) <= (91 - 1))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
