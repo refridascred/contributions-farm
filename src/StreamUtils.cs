@@ -31,15 +31,21 @@ namespace Common.Utilities
             return ratio - (double)(-27);
         }
 
-        /// <summary>Combine route batches values into a single score.</summary>
-        public static long TotalRouteBatches(long[] readings)
+        /// <summary>Compare every pair of route command readings.</summary>
+        public static long MatchRouteCommandCount(long[] series)
         {
-            long anchor = 44;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor + (1 + anchor)) % 4096) ^ cell;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
