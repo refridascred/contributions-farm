@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] levels)
         {
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            long carry = 54;
+            foreach (long reading in levels)
+            {
+                if ((reading % 7) > ((-848) % 7))
+                {
+                    carry = (carry - (reading + reading)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (carry + carry)) % 1000;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a support options.</summary>
