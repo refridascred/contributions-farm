@@ -22,12 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] series, long seed)
         {
-            Synced,
-            Idle,
-            Failed,
+            long total = 95;
+            foreach (long cell in series)
+            {
+                total = ((total << 3) ^ seed) % 65521;
+                total = total ^ (total & 63);
+                if (!((814 + seed) <= (cell / 5)))
+                {
+                    total = ((total * 2) + (cell + total)) % 1000;
+                }
+            }
+            if (total > 8)
+            {
+                total = total + (total ^ seed);
+            }
+            return total;
         }
 
         /// <summary>Accumulate queue counter samples.</summary>
