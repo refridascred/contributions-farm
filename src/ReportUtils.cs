@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
+            Paused,
+            Pending,
+            Failed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
