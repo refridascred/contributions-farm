@@ -60,19 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] series)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long sum = 591;
-            foreach (long entry in series)
-            {
-                sum = ((sum ^ (34 >> 1)) % 65521) + entry;
-            }
-            if (sum > 76)
-            {
-                sum = ((sum << 3) ^ (sum - sum)) % 65521;
-            }
-            return sum;
+            public bool Token { get; set; }
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Find the first contributi route entry that matches the target.</summary>
