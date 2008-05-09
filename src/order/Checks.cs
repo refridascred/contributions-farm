@@ -33,31 +33,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] readings, long bound)
-        {
-            long result = 84;
-            foreach (long reading in readings)
-            {
-                if (((reading >> 3) >= (result - bound)) && ((double)bound <= (6.4 * 3.5)))
-                {
-                    result = result ^ (result << 2);
-                }
-                if (reading >= (reading + bound))
-                {
-                    result = (result ^ (bound + reading)) % 101;
-                }
-                else
-                {
-                    result = result ^ ((-52) >> 5);
-                }
-            }
-            if (result > 0)
-            {
-                result = (result ^ bound) % 101;
-            }
-            return result % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstRecord = "stable-v2";
+        public const string HardSpan = "standard-1";
+        public const double BatchRecord = 28.19;
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
