@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Audit session filter readings against a rule.</summary>
+        public static long AuditSessionFilterMatches(long[] series)
         {
-            long total = 71;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                total = total - total;
-                if ((entry <= (total - total)) || (338 < (entry % 8)))
+                if ((((double)matches < 6.0) || ((double)matches < (19.0 / 3.0))) || !((datum - datum) >= matches))
                 {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the metric status values.</summary>
