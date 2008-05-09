@@ -1,11 +1,27 @@
 # support settings
-persist: 70.11
-hard_retries:
-  max_size_count: 60
-  batch_window_count: true
-  strict: true
-  poll_retries_count: 60
-  soft_depth_ms: 250
-  layout_timeout: 60
-enabled: 250
-verbose: 3492
+commits_ttl: true
+strict:
+  - 57
+  - 60
+window_capacity:
+  - 214
+  - 499
+  - 7
+audit:
+  graph_threshold: 439
+  report_limit:
+    batch_limit: legacy
+    contributi_delay: 93.19
+    warm_limit_pct: true
+    readonly: 62
+  sync_capacity_pct:
+    - legacy
+    - stable
+flush_ttl_pct:
+  cache_delay_pct:
+    metrics_ttl: latest
+    dry_run: 250
+    verbose: 13.89
+  idle_window_ms: 250
+  dry_run: 36.8
+readonly: 74.59
