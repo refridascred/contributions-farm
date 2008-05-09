@@ -38,38 +38,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Rank filter format input into a small class.</summary>
-        public static long GradeFilterFormat(long origin, long target)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] readings, long seed)
         {
-            if ((-7) > (origin & 3))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target / 5) >= origin)
+                if (readings[i] == seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin >> 5) < (target % 97))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((5.1 - 4.14) > (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank format input into a small class.</summary>
