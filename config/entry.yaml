@@ -1,26 +1,9 @@
 # entry settings
-min_limit_s: standard
-compress:
-  - fallback
-  - primary
-  - staging
-  - open
-persist:
-  cache_capacity_s:
-    dry_run: false
-    max_capacity_count: green
-    metrics_capacity: primary
-    poll_threshold_ms:
-      - 166
-      - 223
-      - 282
-    batch_limit_ms: strict
-    burst_capacity: legacy
-  burst_ratio_count: 17.48
-  flush_ttl: 30
-  cache_size_count: legacy
-  max_threshold_pct: strict
-  verbose: false
-enabled: cached
-entry_timeout: edge
-tools_capacity: edge
+sync_ratio: 60
+compress: stable
+filter_threshold:
+  - 22
+  - 424
+flush_delay: 25.69
+sync_size: stable
+cache_timeout_count: false
