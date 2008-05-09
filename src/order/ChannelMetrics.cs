@@ -32,11 +32,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public double Size { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSpan = 8954;
+        public const long RetryFactor = 5303;
+        public const string IdleBudget = "alpha-1";
     }
 }
