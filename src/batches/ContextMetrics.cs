@@ -30,12 +30,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long target, long limit)
         {
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Mode { get; set; }
+            if ((target - limit) > (limit * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit & 1) < (limit + target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Locate a batch token reading by value.</summary>
