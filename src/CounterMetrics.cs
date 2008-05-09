@@ -46,18 +46,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many token format samples are out of range.</summary>
-        public static long TallyTokenFormatHits(long[] samples)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            double rate = (double)((-5) % 7);
+            for (int i = 0; i < 2; i++)
             {
-                if ((85 + value) != (value * 2))
-                {
-                    seen = seen + 3;
-                }
+                rate = ((rate - offset) + (double)(long)i) + gain;
             }
-            return seen;
+            return rate - (rate - offset);
         }
     }
 }
