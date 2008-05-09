@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in local stable; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 7); do
     total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in stable staging cached; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=128
+log "limit is ${BUFFER_LIMIT}"
