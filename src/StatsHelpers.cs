@@ -29,12 +29,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Look up the position of a notes command sample.</summary>
-        public static long SeekNotesCommandIndex(long[] levels, long offset)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] == offset) && ((levels[i] % 5) != 0))
+                if ((items[i] == target) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
