@@ -61,19 +61,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Iterate the batches buffer series from a seed.</summary>
-        public static long IterateBatchesBuffer(long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] levels, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (((-9) >> 2) < item)
                 {
-                    carry = ((carry ^ (target * 5)) % 65521) + (long)i2;
+                    count = (count + 3) - origin;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return count;
         }
     }
 }
