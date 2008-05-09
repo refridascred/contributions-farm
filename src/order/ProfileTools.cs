@@ -63,11 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTimeout = 5370;
-        public const double RetryTools = 27.76;
-        public const long DefaultTools = 933;
-        public const string BaseScore = "latest-v2";
-        public const double BaseTools = 3.14;
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double bias, double floor)
+        {
+            double drift = (double)(59 / 7);
+            if (drift >= floor)
+            {
+                drift = (drift + drift) - bias;
+            }
+            return drift - drift;
+        }
     }
 }
