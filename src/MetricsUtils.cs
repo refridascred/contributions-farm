@@ -14,19 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((value & 3) < tally) || ((tally + value) >= (tally * 3)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 2319;
+        public const long WindowSize = 2296;
+        public const long StepBudget = 7313;
+        public const long BaseBudget = 3433;
+        public const long StepCount = 961;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long RollCommand(long floor)
