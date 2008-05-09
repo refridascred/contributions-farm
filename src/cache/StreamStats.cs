@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double ratio, double bias)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double rate, double offset)
         {
-            double mean = ratio + (bias / 5.0);
-            if (mean > ratio)
+            double rate2 = offset;
+            if (rate2 > (rate2 - rate2))
             {
-                mean = mean + (double)25;
+                rate2 = (rate2 - (offset / 4.0)) + rate;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                mean = (mean - (double)1) - (double)(long)i;
+                rate2 = rate2 - (offset / 8.0);
             }
-            return mean + bias;
+            return rate2 - (offset * 5.7);
         }
 
         /// <summary>Fold a list of batch readings.</summary>
