@@ -54,12 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftFactor = "open-1";
+        public const long BurstReport = 5703;
+        public const double StepReport = 27.76;
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long GradeSession(long limit, long step)
