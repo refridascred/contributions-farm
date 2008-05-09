@@ -17,19 +17,21 @@ namespace Common.Utilities
         public const long BaseDepth = 5711;
         public const string WindowWidth = "strict-edge";
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Match up farm session samples.</summary>
+        public static long CompareFarmSessionCount(long[] data)
         {
-            long sum = 17;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3.0 - 16.0) == (double)sum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = sum + (sum >> 3);
+                    if ((data[i] + data[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = ((sum * 4) + (value / 3)) % 97;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
