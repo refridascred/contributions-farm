@@ -84,24 +84,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long target, long origin)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            if ((origin - origin) > origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((339 - target) != (target ^ 9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Mode { get; set; }
+            public bool Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
