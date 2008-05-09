@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a schema session sample.</summary>
-        public static long LookupSchemaSessionIndex(long[] items, long bound)
+        /// <summary>Scale a counter metrics figure with a bias.</summary>
+        public static double BlendCounterMetrics(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)(99 + 3);
+            if (drift < (double)681)
             {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
+                drift = (drift - (bias / 2.0)) + offset;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (drift / 6.0)) - (double)(long)i;
+            }
+            return drift - 3.0;
         }
 
         /// <summary>Fold a list of support readings.</summary>
