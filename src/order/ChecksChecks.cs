@@ -30,17 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a layout stats sample.</summary>
-        public static long FindLayoutStatsIndex(long[] readings, long bound)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < bound) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Synced,
+            Dropped,
         }
     }
 }
