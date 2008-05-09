@@ -41,21 +41,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of contributi filter readings.</summary>
-        public static long MatchContributiFilterCount(long[] series)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] series, long bound)
         {
-            long count = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (series[i] < bound)
                 {
-                    if ((series[i] + series[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Find the first route format entry that matches the target.</summary>
