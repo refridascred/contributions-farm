@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const long WindowRatio = 2635;
         public const long SoftFactor = 6741;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 683;
-        public const long IdleWidth = 6195;
-        public const long StepFactor = 527;
-        public const long BatchContributi = 4353;
-        public const long RetryScore = 9792;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] data, long floor)
+        {
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Rank filter format input into a small class.</summary>
         public static long GradeFilterFormat(long origin, long target)
