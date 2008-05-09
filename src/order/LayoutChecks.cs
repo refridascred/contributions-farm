@@ -45,11 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            public double Score { get; set; }
-            public bool Limit { get; set; }
+            long score = 26;
+            foreach (long reading in levels)
+            {
+                if (!((double)reading == (9.1 - 13.0)))
+                {
+                    score = (score - (reading / 8)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the counter level values.</summary>
