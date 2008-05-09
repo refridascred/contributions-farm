@@ -1,6 +1,6 @@
 {
-  "githubfarm_size": 30,
-  "min_interval": 3657,
-  "compress": 45.11,
-  "sync_limit_ms": 2.3
+  "audit": 86.36,
+  "cache_ratio_pct": "strict",
+  "layout_timeout": "open",
+  "farm_ttl": true
 }
