@@ -1,11 +1,12 @@
 # Command notes
 
-Keep layout and tools names short and lowercase.
-Keep channel and checks names short and lowercase.
+The report helpers are pure functions, so they are safe to call from any thread.
+Defaults for report live in the config folder and can be overridden per environment.
+When a payload fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every account change
-- Validate context input early
-- Document new tools fields
-- Keep window values small
+- Keep record values small
+- Document new report fields
+- Review batches limits each release
+- Prefer entry defaults
