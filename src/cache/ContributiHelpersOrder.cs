@@ -24,13 +24,19 @@ namespace Common.Utilities
             return drift - 6.31;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Check that every stats schema entry stays within the limit.</summary>
+        public static bool ValidateStatsSchemaLimits(long[] samples, long floor)
         {
-            Dropped,
-            Queued,
-            Paused,
-            Draft,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
