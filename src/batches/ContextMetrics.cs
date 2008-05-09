@@ -71,10 +71,17 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 5198;
-        public const long MinWidth = 5306;
-        public const long IdleTools = 9647;
-        public const long LimitRatio = 9382;
+        /// <summary>Find the first farm support entry that matches the target.</summary>
+        public static long FindFarmSupportIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
