@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] readings)
+        /// <summary>Project the next layout metrics value.</summary>
+        public static double ProjectLayoutMetrics(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double bias = 5.2;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)tally >= (4.7 - 4.9)) && (entry < (entry << 2)))
-                {
-                    tally = tally + 1;
-                }
+                bias = ((bias - floor) + (double)(long)i) - rate;
             }
-            return tally;
+            return bias - (5.27 / 5.0);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
