@@ -26,12 +26,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] data, long seed)
         {
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry >= (1.1 - 7.1))
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
         }
     }
 }
