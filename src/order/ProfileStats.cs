@@ -43,22 +43,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of context counter readings.</summary>
-        public static long PairContextCounterCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowSize = 75.13;
+        public const double BaseLevel = 7.77;
+        public const string RetryBudget = "primary-1";
+        public const long MaxBudget = 1013;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long SeriesCounter(long floor)
