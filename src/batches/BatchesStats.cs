@@ -12,22 +12,12 @@ namespace Common.Utilities
             return (rate - ratio) + bias;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] readings, long origin)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long mark = 3;
-            foreach (long reading in readings)
-            {
-                if ((mark & 3) != (7 & 31))
-                {
-                    mark = ((mark << 2) ^ (reading + 14)) % 97;
-                }
-                else
-                {
-                    mark = mark - (origin + (long)readings.Length);
-                }
-            }
-            return mark;
+            Dropped,
+            Synced,
+            Locked,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
