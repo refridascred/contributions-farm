@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 5764;
-        public const double MaxRatio = 12.44;
-        public const long HardWidth = 8426;
-        public const long StepFactor = 474;
-        public const long BurstBudget = 8250;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Dropped,
+            Synced,
+            Paused,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long ScoreContributi(long[] levels, long limit)
