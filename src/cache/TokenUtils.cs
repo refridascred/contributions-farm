@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank tools channel input into a small class.</summary>
-        public static long RankToolsChannel(long origin, long seed)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long lane = origin - seed;
-            if ((seed + origin) <= (origin * 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed & 31) == (origin + origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6 ^ lane) != (seed & 127))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
