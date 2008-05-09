@@ -1,16 +1,14 @@
 # entry settings
-base_delay_s:
-  - 459
-  - 87
-batch_interval: standard
-base_threshold_pct: eu-west
-dry_run:
-  enabled: 226
-  warm_window_pct:
-    - 31
-    - 86
-    - 28
-  warm_size_count: green
-  cluster_depth: open
-metrics_window: 85.27
-cache_retries: legacy
+checks_size: 3406
+default_interval_pct:
+  burst_timeout_pct:
+    verbose: 5308
+    enabled: true
+    cache_timeout_pct: 71.66
+  poll_capacity_ms: 25
+  max_timeout: 6677
+  min_threshold: true
+  retry_depth_pct: legacy
+  base_size_count: 12.67
+min_depth_pct: 82
+idle_timeout: false
