@@ -29,11 +29,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "primary-v2";
-        public const long BurstSpan = 6338;
-        public const double IdleTools = 79.51;
-        public const long RetryTools = 5745;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Queued,
+            Done,
+            Draft,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long CompareEditorCount(long[] levels)
