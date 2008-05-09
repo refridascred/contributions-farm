@@ -20,12 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSize = 7370;
-        public const long SoftFactor = 119;
-        public const string CacheSpan = "latest-edge";
-        public const long WindowSpan = 107;
-        public const long BaseLevel = 4598;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long origin, long offset)
+        {
+            if ((origin % 10) <= origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(((-22) + offset) >= (42 * 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - offset) == (offset + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaMatches(long[] data, long seed)
