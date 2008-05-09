@@ -41,13 +41,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Compare every pair of filter stream readings.</summary>
+        public static long PairFilterStreamCount(long[] data)
         {
-            Paused,
-            Queued,
-            Ready,
-            Stale,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank entry notes input into a small class.</summary>
