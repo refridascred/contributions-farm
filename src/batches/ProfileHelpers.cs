@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const string BatchGithubfarm = "local-edge";
         public const long BaseGithubfarm = 522;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] levels, long origin)
+        /// <summary>Compare every pair of record command readings.</summary>
+        public static long CompareRecordCommandCount(long[] data)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] - data[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Match up order samples.</summary>
