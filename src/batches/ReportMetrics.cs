@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of layout graph entries.</summary>
-        public static long ScoreLayoutGraph(long[] samples)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long carry = 450;
-            foreach (long value in samples)
-            {
-                if (!((carry - 4) <= (value + value)))
-                {
-                    carry = ((carry << 2) ^ carry) % 101;
-                }
-            }
-            return carry % 1000;
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
