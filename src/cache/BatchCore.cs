@@ -42,21 +42,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up session stream samples.</summary>
-        public static long PairSessionStreamCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseCache = 26.8;
+        public const long SoftCache = 1458;
+        public const double SoftRatio = 90.08;
+        public const long DefaultCache = 4702;
     }
 }
