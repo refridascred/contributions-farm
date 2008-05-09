@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] levels)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
