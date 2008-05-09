@@ -33,22 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] data, long seed)
+        /// <summary>Match up batch tools samples.</summary>
+        public static long OverlapBatchToolsCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)4 < (double)tally)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = ((tally + 2) + datum) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] + samples[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
