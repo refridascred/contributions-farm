@@ -50,19 +50,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] items, long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
