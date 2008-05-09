@@ -39,19 +39,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a already cluster counter forward.</summary>
-        public static long DeriveAlreadyCluster(long limit)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!(score > ((long)i / 4)))
-                {
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public double Size { get; set; }
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
