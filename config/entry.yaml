@@ -1,8 +1,8 @@
 # entry settings
-stats_retries:
-  - cached
-  - blue
-  - blue
-  - standard
-strict: true
-report_threshold: true
+report_threshold: 1024
+commits_ratio: true
+persist:
+  hard_ratio_s: 30
+  already_threshold: false
+  batch_interval: 7468
+hard_retries_s: 79.96
