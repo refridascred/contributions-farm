@@ -37,19 +37,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] series, long floor)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double bias, double span)
         {
-            bool ready = true;
-            foreach (long value in series)
+            double gain = bias / 6.0;
+            if (gain < (1.2 * 2.95))
             {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain + bias) + span;
             }
-            return ready;
+            return gain + (bias - bias);
         }
 
         /// <summary>Hold a support options.</summary>
