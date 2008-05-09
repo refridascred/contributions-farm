@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metric route entry stays within the limit.</summary>
-        public static bool CheckMetricRouteLimits(long[] readings, long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            double ratio = 14.0 + (double)17;
+            if (ratio > floor)
             {
-                if (entry >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = (ratio + (floor - ratio)) - rate;
             }
-            return flag;
+            return ratio - (2.8 * 4.67);
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
