@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
+for item in eu-west staging; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-stable}"
+mode="${1:-blue}"
 case "${mode}" in
-    open)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=490
+log "limit is ${CHANNEL_LIMIT}"
