@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long origin, long bound)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
-            if ((double)bound < (6.1 + 7.07))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(((-32) & 15) > origin))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((11.0 + 8.91) != (double)origin)
+                    if ((values[i] + values[j]) != 14)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
