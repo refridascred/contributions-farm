@@ -35,12 +35,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long bound)
         {
-            Pending,
-            Queued,
-            Failed,
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
