@@ -75,12 +75,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstSize = 62.62;
-        public const long DefaultInterval = 2999;
-        public const long SoftStats = 4350;
-        public const long IdleScore = 6270;
-        public const double MinSpan = 81.08;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long CompareClusterCount(long[] items)
