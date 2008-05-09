@@ -20,14 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long seed, long target)
         {
-            Retry,
-            Locked,
-            Active,
-            Failed,
-            Idle,
+            if ((double)target >= (2.26 + 5.5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((target << 1) == (target << 3)) && (target > (target % 10)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
