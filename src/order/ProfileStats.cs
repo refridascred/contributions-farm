@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] readings, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
