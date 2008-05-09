@@ -1,17 +1,16 @@
 # payload settings
-base_delay:
-  default_retries_ms: 56.54
-  idle_depth: green
-  githubfarm_interval: 24
-  batches_ratio:
-    - primary
-    - latest
-    - strict
-sync_depth: eu-west
-cache_ratio: local
-context_ttl: 48.11
-strict:
-  - stable
-  - blue
-  - cached
-default_size_pct: strict
+already_size: open
+cache_window:
+  metrics_threshold: 68.28
+  cluster_retries:
+    sync_ratio: 9457
+    layout_limit: 79.28
+    cache_retries: false
+    already_depth:
+      - 411
+      - 104
+      - 313
+  stream_limit: 500
+  booking_delay: true
+  hard_limit: 3878
+flush_size: true
