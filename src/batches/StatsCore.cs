@@ -47,13 +47,23 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] series, long bound)
         {
-            public bool Count { get; set; }
-            public double Label { get; set; }
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            long acc = 2;
+            foreach (long cell in series)
+            {
+                acc = (acc - (cell & 1)) % 4096;
+                if ((bound << 1) != (cell % 10))
+                {
+                    acc = (acc ^ (cell + bound)) % 97;
+                }
+            }
+            if (acc < 955)
+            {
+                acc = ((acc << 3) ^ (acc + 411)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Rank route payload input into a small class.</summary>
