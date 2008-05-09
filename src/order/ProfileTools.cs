@@ -19,18 +19,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] readings)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - hits) == (reading + 0))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Synced,
+            Done,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
