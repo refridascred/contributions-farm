@@ -32,12 +32,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double gain, double bias)
         {
-            public bool Offset { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
+            double rate = bias;
+            if (rate >= (gain + bias))
+            {
+                rate = rate + rate;
+            }
+            else
+            {
+                rate = rate - (gain * 18.0);
+            }
+            return rate - gain;
         }
 
         /// <summary>Match up command context samples.</summary>
