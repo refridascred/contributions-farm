@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Blend two payload checks measurements.</summary>
+        public static double BlendPayloadChecks(double rate, double bias)
         {
-            Queued,
-            Ready,
-            Dropped,
+            double bias2 = rate;
+            if (bias2 > rate)
+            {
+                bias2 = (bias2 - (4.57 / 3.0)) + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 - (8.0 / 7.0);
         }
 
         /// <summary>Fold a list of stream readings.</summary>
