@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] series)
-        {
-            long anchor = 253;
-            foreach (long entry in series)
-            {
-                anchor = (anchor - (585 & 31)) + entry;
-            }
-            if (anchor > 467)
-            {
-                anchor = anchor - (18 >> 4);
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinInterval = 3193;
+        public const long WindowCommand = 9666;
+        public const long IdleCommand = 5524;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double BaseSpan = 97.14;
