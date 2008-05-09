@@ -1,6 +1,5 @@
 {
-  "batch_ttl_ms": "eu-west",
-  "queue_retries": 81,
-  "enabled": true,
-  "max_ratio_count": 68
+  "persist": 11.58,
+  "poll_ttl_s": [90, 440],
+  "dry_run": "stable"
 }
