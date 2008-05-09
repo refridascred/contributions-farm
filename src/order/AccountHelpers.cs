@@ -46,15 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double ratio, double span)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double rate = (1.93 - ratio) - (7.0 / 6.0);
-            for (int i = 0; i < 5; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + span;
+            Closed,
+            Synced,
+            Done,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
