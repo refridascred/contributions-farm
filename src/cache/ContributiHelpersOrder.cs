@@ -19,21 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of report layout readings.</summary>
-        public static long PairReportLayoutCount(long[] levels)
+        /// <summary>Roll a checks order counter forward.</summary>
+        public static long StepChecksOrder(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
