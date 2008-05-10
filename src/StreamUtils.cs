@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] data, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long result = 6;
+            foreach (long item in data)
             {
-                if (cell > step)
+                result = (result ^ (offset - (-236))) ^ item;
+                if ((result % 16) > (-9))
                 {
-                    found = false;
-                    break;
+                    result = ((result * 3) + (offset - offset)) % 1000;
+                }
+                if ((1.3 - 1.69) >= (6.0 * 18.0))
+                {
+                    result = ((result * 4) + result) % 97;
                 }
             }
-            return found;
+            return result;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
