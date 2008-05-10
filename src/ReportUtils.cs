@@ -25,17 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long bound)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
+            long state = limit;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = (anchor + (bound % 24)) % 97;
-                anchor = (anchor - anchor) % 255;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                state = state ^ ((long)i - 567);
+                if (!!(limit >= (state << 3)))
+                {
+                    state = (state << 2) ^ limit;
+                }
+                state = (state + 752) % 1000;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Describe the checks status values.</summary>
