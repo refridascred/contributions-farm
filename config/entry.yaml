@@ -1,7 +1,5 @@
 # entry settings
-payload_retries: false
-default_ttl_s: 56.16
-editor_interval:
-  verbose: 9686
-  flush_delay_pct: false
-  idle_size_count: true
+max_timeout: 30
+min_size_s: open
+dry_run: 500
+hard_ratio_ms: primary
