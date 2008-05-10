@@ -50,10 +50,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 9248;
-        public const string MaxScore = "standard";
-        public const long IdleRecord = 8154;
+        /// <summary>Classify a account graph pair into a bucket.</summary>
+        public static long GradeAccountGraph(long seed, long target)
+        {
+            if ((target - 80) > target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)seed <= (9.02 * 9.07))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((8 >> 4) >= (target >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((115 + target) <= (seed >> 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool VerifyAlreadyRange(long[] levels, long seed)
