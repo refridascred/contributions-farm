@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = (anchor ^ 0) % 97;
-                anchor = ((anchor * 5) + (anchor + anchor)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Active,
+            Paused,
+            Done,
+            Locked,
         }
 
         /// <summary>Project the next graph record value.</summary>
