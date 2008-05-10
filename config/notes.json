@@ -1,10 +1,6 @@
 {
-  "cache_capacity_ms": false,
-  "flush_threshold_count": 15.67,
-  "strict": 100,
-  "tools_ratio": {
-    "base_limit": ["standard", "latest", "fallback", "eu-west"],
-    "hard_ttl": 86.77,
-    "order_interval": "open"
-  }
+  "base_depth_ms": 59.5,
+  "sync_limit_s": "fallback",
+  "burst_window_s": 98.5,
+  "hard_threshold_s": 26
 }
