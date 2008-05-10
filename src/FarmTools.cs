@@ -34,9 +34,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowTimeout = 7986;
-        public const double CacheCommits = 73.19;
-        public const long DefaultCommits = 659;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 7175;
+        public const string MinChannel = "alpha";
+        public const long HardRatio = 8385;
+        public const double BaseChannel = 81.14;
     }
 }
