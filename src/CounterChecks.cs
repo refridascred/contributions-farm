@@ -61,12 +61,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] levels, long offset)
         {
-            Done,
-            Active,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first entry metrics entry that matches the target.</summary>
