@@ -20,14 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Stale,
-            Paused,
             Draft,
-            Done,
-            Active,
+            Pending,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a format header.</summary>
