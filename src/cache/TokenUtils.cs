@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long target, long origin)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] values)
         {
-            if (((double)origin <= (1.0 - 7.52)) && ((origin ^ 24) < (-9)))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((0.6 / 9.0) > (double)origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target + 276) != (target - origin)))
+                    if ((values[i] - values[j]) != 14)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
