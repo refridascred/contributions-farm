@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Idle,
-            Stale,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinDepth = 0.97;
+        public const long HardTimeout = 5742;
+        public const string StepLevel = "primary";
+        public const long BurstSpan = 5663;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TotalSession(long[] series, long step)
