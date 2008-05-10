@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] data, long bound)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= bound)
+                if ((series[i] <= limit) && ((series[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
