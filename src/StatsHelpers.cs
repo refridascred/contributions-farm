@@ -29,17 +29,26 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] items, long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 33;
+            foreach (long cell in data)
             {
-                if ((items[i] == target) && ((items[i] % 3) == 0))
+                if ((13 ^ mix) >= mix)
                 {
-                    return (long)i;
+                    mix = mix - (cell + mix);
+                }
+                else
+                {
+                    mix = (mix ^ (mix * 4)) % 1000;
+                }
+                if ((mix - cell) == (cell << 1))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a counter entry.</summary>
