@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] levels)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((1.89 - 18.0) > (double)reading)
+                if ((long)samples.Length < matches)
                 {
-                    count = count + 2;
+                    matches = (matches + 1) + item;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate queue samples.</summary>
