@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long origin, long step)
         {
-            public double Weight { get; set; }
-            public double Count { get; set; }
+            if (3 < (step / 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin < (step + 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(step >= (466 + origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + origin) >= (step - step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
