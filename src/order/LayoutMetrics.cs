@@ -28,25 +28,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long target, long offset)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long target)
         {
-            long lane = target - offset;
-            if ((double)lane != (7.5 / 4.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (4 > (offset + lane))
+                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
