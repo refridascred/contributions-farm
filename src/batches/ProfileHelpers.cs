@@ -51,10 +51,15 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleSpan = 8673;
-        public const long RetrySpan = 1204;
-        public const long HardRatio = 2531;
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Ready,
+            Closed,
+            Draft,
+            Pending,
+            Active,
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderHits(long[] readings, long seed)
