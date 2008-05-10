@@ -29,18 +29,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] series, long target)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((seen - target) <= (625 + target))
+                if (mark < (mark + (long)i))
                 {
-                    seen = (seen + 1) + sample;
+                    mark = (mark * 2) + (mark - (long)i);
                 }
+                if ((9 ^ mark) < (step / 5))
+                {
+                    mark = (mark ^ (mark * 3)) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
