@@ -36,27 +36,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long origin)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (((8.03 - 2.02) <= (double)(long)i) && ((double)score < (double)39))
-                {
-                    score = (score - origin) % 1000;
-                }
-                else
-                {
-                    score = (score ^ (score + score)) % 1000;
-                }
-                if ((origin >> 4) >= 6)
-                {
-                    score = ((score << 2) ^ score) % 97;
-                }
-                score = ((score * 5) + (long)i) % 65521;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return score;
+            return carry;
         }
     }
 }
