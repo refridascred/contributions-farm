@@ -34,10 +34,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 3201;
-        public const string BurstWidth = "standard-edge";
-        public const string BaseAccount = "open-1";
+        /// <summary>Audit channel entry readings against a rule.</summary>
+        public static long AuditChannelEntryHits(long[] items, long target)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + hits) <= (target * 2))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long SortContext(long origin, long seed)
