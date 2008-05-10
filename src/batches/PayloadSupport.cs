@@ -24,15 +24,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double bias, double span)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            double weight = (span * 3.2) / 2.0;
-            if (weight >= (bias + 12.0))
-            {
-                weight = weight + (double)4;
-            }
-            return weight - (bias + bias);
+            public string Label { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Audit context order readings against a rule.</summary>
