@@ -1,14 +1,14 @@
 # Command notes
 
-A already that stays idle for too long is moved to the schema list.
-Defaults for channel live in the config folder and can be overridden per environment.
+The route report groups every context by command.
+Use cluster settings to tune how often entry data is refreshed.
 
-A commits that stays idle for too long is moved to the tools list.
-Each command is validated before it reaches the metrics queue.
-When a tools fails, the context handler retries a few times before giving up.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Defaults for account live in the config folder and can be overridden per environment.
+Use metric settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Review token limits each release
-- Document new cache fields
-- Validate batch input early
+- Review filter limits each release
+- Keep context values small
+- Validate token input early
