@@ -1,12 +1,14 @@
 # Command notes
 
-A buffer that stays idle for too long is moved to the notes list.
-A payload that stays idle for too long is moved to the contributi list.
-Defaults for account live in the config folder and can be overridden per environment.
+The layout helpers are pure functions, so they are safe to call from any thread.
+The commits helpers are pure functions, so they are safe to call from any thread.
+The queue helpers are pure functions, so they are safe to call from any thread.
+
+When a queue fails, the command handler retries a few times before giving up.
+The account module keeps buffer values in sync with the buffer cache.
 
 ## Guidelines
 
-- Keep editor values small
-- Prefer githubfarm defaults
-- Review layout limits each release
-- Validate notes input early
+- Prefer queue defaults
+- Review githubfarm limits each release
+- Document new batch fields
