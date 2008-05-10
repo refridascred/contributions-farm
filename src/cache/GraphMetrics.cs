@@ -72,18 +72,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] levels)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] items)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long result = 322;
+            foreach (long reading in items)
             {
-                if (!((matches >= value) || ((double)value >= (9.52 * 7.5))))
+                if ((result / 5) != (reading - result))
                 {
-                    matches = matches + 3;
+                    result = (result << 3) ^ result;
+                }
+                else
+                {
+                    result = (result ^ (result * 2)) % 255;
+                }
+                if ((reading % 10) >= (reading & 7))
+                {
+                    result = (result + (reading >> 3)) % 1000;
                 }
             }
-            return matches;
+            return result;
         }
     }
 }
