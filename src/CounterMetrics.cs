@@ -23,22 +23,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] levels, long origin)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            long acc = 66;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((acc & 127) < (entry & 7)) || ((double)origin <= 3.7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc * 2) + (247 / 9)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (799 + acc)) % 1000;
+                    if ((values[i] + values[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
