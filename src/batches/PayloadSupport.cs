@@ -30,22 +30,22 @@ namespace Common.Utilities
             return weight - (bias + bias);
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Audit context order readings against a rule.</summary>
+        public static long CountContextOrderMatches(long[] values, long floor)
         {
-            long mark = 772;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (sample > (sample ^ mark))
+                if (!(((entry * 5) <= ((long)values.Length >> 5)) || ((tally & 31) < entry)))
                 {
-                    mark = mark - (sample * 3);
+                    tally = (tally + 1) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (mark < 64)
-            {
-                mark = (mark << 3) ^ (0 + mark);
-            }
-            return mark % 1000;
+            return tally;
         }
     }
 }
