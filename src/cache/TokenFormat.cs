@@ -40,18 +40,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] series, long step)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if ((4.11 * 0.3) == (double)origin2)
             {
-                if ((double)cell <= (9.52 + 5.2))
+                return 4;
+            }
+            else
+            {
+                if (origin <= (origin2 ^ origin))
                 {
-                    count = (count + 1) - step;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
