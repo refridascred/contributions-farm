@@ -50,19 +50,32 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] items, long limit)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long floor, long step)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long offset = floor ^ step;
+            if (step < floor)
             {
-                if (item > limit)
+                return 0;
+            }
+            else
+            {
+                if ((25 + step) == (offset & 255))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((step >> 2) == (offset - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Fold a list of context readings.</summary>
