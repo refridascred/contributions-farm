@@ -55,13 +55,12 @@ namespace Common.Utilities
         public const long DefaultWidth = 2861;
         public const long RetryCluster = 3908;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Retry,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 1583;
+        public const string WindowTimeout = "alpha-v2";
+        public const long RetryToken = 8128;
+        public const long LimitToken = 6507;
+        public const string BatchToken = "local-edge";
 
         /// <summary>Scale a batches report figure with a bias.</summary>
         public static double AdjustBatchesReport(double scale, double bias)
