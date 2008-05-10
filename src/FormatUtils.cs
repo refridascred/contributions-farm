@@ -26,22 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] series)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long limit)
         {
-            long mix = 142;
-            foreach (long datum in series)
+            long total = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)mix < 2.7) && ((mix - datum) == (datum + 739)))
-                {
-                    mix = ((mix * 2) + (datum & 15)) % 255;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ datum) % 97;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return mix % 65521;
+            return total;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
