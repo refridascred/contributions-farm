@@ -83,31 +83,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long offset, long bound)
+        /// <summary>Measure how many token context samples are out of range.</summary>
+        public static long AuditTokenContextGaps(long[] samples, long bound)
         {
-            if (!((16.0 * 3.7) == (double)bound))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound < offset) || ((offset ^ offset) >= (offset & 255)))
+                if ((1.17 + 18.0) <= (double)bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset + bound) == (bound << 2)) || ((double)bound >= 1.9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = (count + 3) + entry;
                 }
             }
+            return count;
         }
     }
 }
