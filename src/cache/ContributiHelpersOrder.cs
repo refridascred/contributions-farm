@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Done,
-            Active,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 4963;
+        public const double BatchAlready = 13.84;
+        public const long IdleAlready = 3663;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool VerifyAlreadyRange(long[] levels, long limit)
