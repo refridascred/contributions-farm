@@ -13,17 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] levels, long floor)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] < floor)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return (long)i;
+                    result = result ^ ((long)i2 * 3);
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Accumulate checks samples.</summary>
