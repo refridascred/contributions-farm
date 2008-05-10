@@ -21,11 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
+            Stale,
+            Pending,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define record limits and defaults.</summary>
