@@ -1,8 +1,5 @@
 {
-  "already_retries": 71.55,
-  "graph_window": ["staging", "blue"],
-  "poll_threshold": ["legacy", "staging"],
-  "persist": "green",
-  "entry_ratio": true,
-  "base_depth_s": "legacy"
+  "context_timeout": 40.14,
+  "verbose": 23.63,
+  "burst_delay_pct": "strict"
 }
