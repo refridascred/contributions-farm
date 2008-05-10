@@ -1,14 +1,11 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-The commits helpers are pure functions, so they are safe to call from any thread.
-The queue helpers are pure functions, so they are safe to call from any thread.
-
-When a queue fails, the command handler retries a few times before giving up.
-The account module keeps buffer values in sync with the buffer cache.
+Defaults for format live in the config folder and can be overridden per environment.
+The channel module keeps editor values in sync with the route cache.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Review githubfarm limits each release
-- Document new batch fields
+- Prefer report defaults
+- Validate metric input early
+- Review report limits each release
+- Keep counter values small
