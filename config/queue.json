@@ -1,6 +1,8 @@
 {
-  "burst_interval": false,
-  "counter_size": 5684,
-  "channel_capacity": 6152,
-  "readonly": [367, 431]
+  "retry_ttl_count": "strict",
+  "hard_ttl_s": "eu-west",
+  "warm_timeout_s": "stable",
+  "route_threshold": "primary",
+  "tools_limit": true,
+  "sync_delay_ms": ["edge", "blue", "latest", "strict"]
 }
