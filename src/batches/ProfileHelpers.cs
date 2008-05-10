@@ -84,12 +84,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Audit checks metric readings against a rule.</summary>
+        public static long CountChecksMetricGaps(long[] readings)
         {
-            Draft,
-            Ready,
-            Failed,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((value + seen) != (value + value))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
