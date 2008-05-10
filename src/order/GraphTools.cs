@@ -26,17 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph channel reading by value.</summary>
-        public static long LocateGraphChannelIndex(long[] values, long offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Dropped,
+            Draft,
+            Retry,
         }
 
         /// <summary>Find the first commits buffer entry that matches the target.</summary>
