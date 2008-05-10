@@ -48,19 +48,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double weight, double floor)
+        /// <summary>Count the profile batches entries that pass the check.</summary>
+        public static long TallyProfileBatchesHits(long[] levels)
         {
-            double rate = (10.0 * 9.34) / 9.0;
-            if (rate >= (floor / 2.0))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                rate = (rate + (19.0 - 1.0)) + weight;
+                if ((8.9 + 13.0) >= (1.0 + 14.0))
+                {
+                    tally = (tally + 3) + sample;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate + rate;
+            return tally;
         }
     }
 }
