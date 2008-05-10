@@ -51,18 +51,17 @@ namespace Common.Utilities
         public const long CacheSpan = 1080;
         public const long BaseCommits = 3104;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] items, long offset)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry % 100) >= offset)
+                if (values[i] == step)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
