@@ -44,19 +44,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a stream queue figure with a bias.</summary>
-        public static double AdjustStreamQueue(double ratio, double span)
+        /// <summary>Find the first account editor entry that matches the target.</summary>
+        public static long LookupAccountEditorIndex(long[] values, long seed)
         {
-            double mean = span;
-            if (mean < mean)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean - mean) + ratio;
+                if ((values[i] < seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean + 7.0;
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
