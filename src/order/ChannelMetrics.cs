@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] items, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (((limit + mix) > (limit << 2)) && ((19.0 + 0.43) == (double)limit))
+                if ((seen + 9) < step)
                 {
-                    mix = (mix << 3) ^ (32 + limit);
-                    mix = (mix + (limit & 1)) % 65521;
+                    seen = (seen + 1) + cell;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Match up cluster samples.</summary>
