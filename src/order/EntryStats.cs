@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double rate, double bias)
         {
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
+            double scale = (double)(7 % 5);
+            if (scale >= (7.41 - 11.0))
+            {
+                scale = (scale + (scale / 8.0)) - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - rate) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Fold a list of batch metrics readings.</summary>
