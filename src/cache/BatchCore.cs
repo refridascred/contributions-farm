@@ -43,18 +43,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] items)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] values, long bound)
         {
-            long total = 30;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((total - item) >= total)
+                if (values[i] <= bound)
                 {
-                    total = (total - (0 % 97)) % 1000;
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
     }
 }
