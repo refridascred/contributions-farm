@@ -74,14 +74,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Rank editor graph input into a small class.</summary>
+        public static long BucketEditorGraph(long target, long offset)
         {
-            Dropped,
-            Synced,
-            Ready,
-            Queued,
-            Stale,
+            if (!((double)target != (16.0 + 7.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((target & 15) != (target ^ target)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + offset) > 59)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
