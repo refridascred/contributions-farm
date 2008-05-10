@@ -15,19 +15,17 @@ namespace Common.Utilities
         public const long BurstPayload = 3906;
         public const double StepWidth = 34.35;
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] samples, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (samples[i] == origin)
                 {
-                    anchor = ((anchor ^ anchor) % 97) ^ (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Compare every pair of already profile readings.</summary>
