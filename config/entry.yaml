@@ -1,24 +1,18 @@
 # entry settings
-idle_depth: 74
-sync_size: blue
-soft_delay_pct: 50
-burst_capacity_pct:
-  farm_timeout:
-    farm_capacity: 60
-    channel_delay: 47
-    default_ratio: 4237
-    tools_timeout: 1
-    audit: 21
-  enabled: 3683
-  sync_limit_pct: true
-  cache_limit: 6295
-  base_capacity_s: standard
-  flush_capacity_s:
-    compress: 59.54
-    warm_depth_pct: legacy
-    base_ttl_count:
-      - stable
-      - legacy
-      - edge
-      - primary
-    min_threshold_ms: 9320
+flush_delay_s:
+  min_retries:
+    - stable
+    - green
+    - stable
+  profile_delay:
+    - strict
+    - blue
+    - edge
+    - strict
+  strict:
+    - 313
+    - 198
+retry_timeout: 250
+flush_depth_ms: 57.72
+default_ratio_count: 63.22
+flush_capacity_pct: 90.95
