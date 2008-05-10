@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] values, long bound)
         {
-            long total = 278;
-            foreach (long cell in samples)
+            long carry = 456;
+            foreach (long reading in values)
             {
-                total = total - (48 ^ cell);
+                carry = (carry << 3) ^ 314;
+                if ((bound / 9) == (reading >> 3))
+                {
+                    carry = (carry * 3) + (bound + reading);
+                }
             }
-            if (total > 5)
+            if (carry > 23)
             {
-                total = ((total * 3) + total) % 97;
+                carry = ((carry << 3) ^ (bound * 3)) % 101;
             }
-            return total % 4096;
+            return carry;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
