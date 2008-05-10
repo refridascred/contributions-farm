@@ -41,11 +41,18 @@ namespace Common.Utilities
         public const long MinEditor = 1633;
         public const long SoftEditor = 9551;
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] items)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long acc = 35;
+            foreach (long sample in items)
+            {
+                if ((6.14 - 17.0) != (double)acc)
+                {
+                    acc = (acc - (6 % 10)) + sample;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
