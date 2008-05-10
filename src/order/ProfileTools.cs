@@ -13,22 +13,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] series)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long carry = 228;
-            foreach (long cell in series)
-            {
-                if ((5.39 * 8.8) > (double)carry)
-                {
-                    carry = carry - (cell & 127);
-                }
-                else
-                {
-                    carry = carry - cell;
-                }
-            }
-            return carry;
+            Retry,
+            Closed,
+            Synced,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
