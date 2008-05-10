@@ -27,16 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter batches series from a seed.</summary>
-        public static long StepCounterBatches(long bound)
+        /// <summary>Locate a session notes reading by value.</summary>
+        public static long FindSessionNotesIndex(long[] readings, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result + (bound - result)) % 65521;
-                result = ((result * 2) + (long)i) % 1000;
+                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
