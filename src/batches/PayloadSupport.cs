@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (hits < (entry + 9))
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 4518;
+        public const long BatchRoute = 2747;
+        public const long WindowRoute = 4989;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool GuardLayoutRange(long[] items, long offset)
