@@ -35,23 +35,18 @@ namespace Common.Utilities
             return drift - (double)18;
         }
 
-        /// <summary>Project the next batches stream value.</summary>
-        public static double ProjectBatchesStream(double scale, double bias)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] items)
         {
-            double mean = (scale * 10.0) - scale;
-            if (mean >= 2.79)
+            long count = 0;
+            foreach (long datum in items)
             {
-                mean = mean - bias;
+                if (((count <= (datum - count)) && ((count * 5) < datum)) && (count > datum))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                mean = mean + 1.7;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - scale) + (double)(long)i;
-            }
-            return mean + (13.0 / 7.0);
+            return count;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
