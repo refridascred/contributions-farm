@@ -27,13 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] levels)
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample <= (double)hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit notes record readings against a rule.</summary>
