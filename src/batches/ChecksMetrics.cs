@@ -84,18 +84,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] series)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((count - reading) > (count * 5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Draft,
+            Retry,
         }
     }
 }
