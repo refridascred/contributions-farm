@@ -45,19 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter metric entry stays within the limit.</summary>
-        public static bool GuardFilterMetricRange(long[] items, long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] items, long offset)
         {
-            bool ok = true;
+            bool flag = true;
             foreach (long reading in items)
             {
-                if (reading > floor)
+                if (reading <= offset)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
