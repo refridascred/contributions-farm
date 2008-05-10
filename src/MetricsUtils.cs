@@ -21,18 +21,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] levels)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long anchor = -663;
+            foreach (long datum in series)
             {
-                if ((double)seen >= (double)entry)
+                if (((215 % 5) <= (anchor & 1)) || ((double)anchor < (double)step))
                 {
-                    seen = seen + 3;
+                    anchor = (anchor + ((long)series.Length - datum)) % 65521;
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the commits status values.</summary>
