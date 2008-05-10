@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
+            Draft,
+            Closed,
+            Failed,
+            Active,
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
