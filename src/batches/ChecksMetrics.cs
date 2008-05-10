@@ -22,17 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] series, long origin)
+        /// <summary>Accumulate stats buffer samples.</summary>
+        public static long CombineStatsBuffer(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = -50;
+            foreach (long sample in samples)
             {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
+                total = ((total << 2) ^ total) ^ sample;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
