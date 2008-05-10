@@ -55,22 +55,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] readings, long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seed > (seen + seen))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] - readings[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
