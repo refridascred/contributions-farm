@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] samples, long bound)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!(((466 + bound) > 978) && ((8 + bound) != (datum << 3))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a filter header.</summary>
