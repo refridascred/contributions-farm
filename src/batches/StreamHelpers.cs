@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two payload checks measurements.</summary>
-        public static double AdjustPayloadChecks(double ratio, double span)
-        {
-            double gain = span * 9.45;
-            if (gain <= 14.0)
-            {
-                gain = (gain - (span / 5.0)) + ratio;
-            }
-            return gain - (gain - 3.22);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 575;
+        public const string BaseDepth = "open";
+        public const string HardCounter = "fallback-edge";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long WindowBudget = 5650;
