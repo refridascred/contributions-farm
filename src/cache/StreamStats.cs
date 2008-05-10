@@ -15,22 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit editor cache readings against a rule.</summary>
-        public static long MeasureEditorCacheOutliers(long[] levels)
+        /// <summary>Derive the next route cache value from a seed.</summary>
+        public static long SeriesRouteCache(long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (seen > (seen / 4))
-                {
-                    seen = (seen + 2) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Validate farm queue readings against a bound.</summary>
