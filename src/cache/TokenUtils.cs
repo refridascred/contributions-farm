@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] levels, long bound)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long target)
         {
-            long result = 47;
-            foreach (long cell in levels)
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((bound < (result - bound)) || ((bound / 2) >= 506))
-                {
-                    result = (result - (result % 10)) - cell;
-                }
-                else
-                {
-                    result = result ^ (result + bound);
-                }
-                if (0.4 > (9.75 / 8.0))
-                {
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            if (result > 935)
-            {
-                result = (result * 5) + (bound - bound);
-            }
-            return result % 97;
+            return anchor;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
