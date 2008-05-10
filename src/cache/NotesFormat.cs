@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] levels, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long anchor = 9;
+            foreach (long reading in data)
             {
-                if (value != step)
+                if (!((double)reading <= (6.52 / 5.0)))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor - (-61)) % 4096;
                 }
             }
-            return ready;
+            if (anchor < 756)
+            {
+                anchor = ((anchor * 5) + target) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
