@@ -31,11 +31,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 2017;
-        public const string BurstBatches = "fallback";
-        public const long BaseBatches = 4587;
-        public const long MinBatches = 6890;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Done,
+            Active,
+            Locked,
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long step)
