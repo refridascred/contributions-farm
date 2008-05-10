@@ -46,20 +46,10 @@ namespace Common.Utilities
         public const long StepStream = 9588;
         public const long IdleStream = 5683;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] items, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 6418;
+        public const long CacheSpan = 1080;
+        public const long BaseCommits = 3104;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long CountContributiGaps(long[] items, long offset)
