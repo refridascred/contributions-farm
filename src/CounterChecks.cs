@@ -49,12 +49,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
-            public double Label { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
