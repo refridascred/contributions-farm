@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=378
-log "limit is ${COMMAND_LIMIT}"
-
-for item in fallback legacy edge; do
+for item in cached latest blue; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
