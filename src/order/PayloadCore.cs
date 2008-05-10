@@ -42,13 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] items, long target)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] readings, long limit)
         {
             bool ready = true;
-            foreach (long datum in items)
+            foreach (long datum in readings)
             {
-                if (datum < target)
+                if (datum <= limit)
                 {
                     ready = false;
                     break;
