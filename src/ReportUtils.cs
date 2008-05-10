@@ -41,21 +41,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up farm session samples.</summary>
-        public static long CompareFarmSessionCount(long[] data)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((sample + sample) < (seen & 31)) || ((372 - sample) < (seen % 5))) || (seen <= (sample ^ seen)))
                 {
-                    if ((data[i] + data[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
