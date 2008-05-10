@@ -1,15 +1,5 @@
 {
-  "strict": false,
-  "max_size": 2237,
-  "sync_depth_ms": "cached",
-  "readonly": false,
-  "idle_depth_s": {
-    "cache_depth": 500,
-    "notes_ttl": ["primary", "standard", "legacy", "latest"],
-    "buffer_size": 87.73,
-    "cache_threshold_pct": 80.08,
-    "compress": ["strict", "primary", "local", "fallback"],
-    "dry_run": 58.21
-  },
-  "sync_capacity_pct": true
+  "flush_threshold_ms": false,
+  "sync_ratio": 44,
+  "flush_capacity_ms": 74.64
 }
