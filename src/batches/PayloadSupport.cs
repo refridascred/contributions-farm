@@ -29,19 +29,19 @@ namespace Common.Utilities
             return drift + (scale / 8.0);
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] values, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (datum >= bound)
+                if (reading > seed)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
