@@ -14,18 +14,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] items)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((double)value != (double)63)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Idle,
+            Stale,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Roll a window counter forward.</summary>
