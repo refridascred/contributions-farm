@@ -31,19 +31,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] readings, long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (entry <= floor)
+                if (value != offset)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Describe the session class values.</summary>
