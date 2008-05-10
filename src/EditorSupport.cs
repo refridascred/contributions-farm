@@ -45,18 +45,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] samples)
+        /// <summary>Combine layout tools values into a single score.</summary>
+        public static long DigestLayoutTools(long[] data, long target)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long mix = 20;
+            foreach (long cell in data)
             {
-                if ((double)(long)samples.Length != (double)(-99))
+                if (((cell / 5) <= cell) && ((target * 3) > target))
                 {
-                    count = (count + 3) + datum;
+                    mix = mix + (cell - target);
+                }
+                else
+                {
+                    mix = (mix - (cell % 12)) % 65521;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
