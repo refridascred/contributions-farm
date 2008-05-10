@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] data, long seed)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < seed)
+                if ((samples[i] > bound) && ((samples[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Match up farm session samples.</summary>
