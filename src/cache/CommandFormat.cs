@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Closed,
-            Ready,
             Idle,
             Dropped,
+            Done,
+            Closed,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
