@@ -27,24 +27,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long offset, long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            if (((9.8 - 2.6) < (double)offset) || (3.3 >= (double)offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset / 4) < 104) || ((double)seed <= 4.9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
