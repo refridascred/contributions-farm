@@ -86,16 +86,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = (anchor + (bound / 2)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
