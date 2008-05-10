@@ -48,24 +48,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank cluster command input into a small class.</summary>
-        public static long BucketClusterCommand(long origin, long step)
-        {
-            if (origin < step)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step >> 2) >= (origin / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleSpan = 9683;
+        public const double BaseFilter = 72.06;
+        public const long DefaultFilter = 2590;
+        public const long HardFilter = 821;
+        public const string CacheRatio = "legacy-edge";
     }
 }
