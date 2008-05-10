@@ -1,14 +1,5 @@
 {
-  "soft_interval_s": true,
-  "enabled": "standard",
-  "retry_limit_ms": 1024,
-  "default_interval_pct": {
-    "batch_capacity_s": 59,
-    "flush_limit": 1024,
-    "strict": true,
-    "editor_window": true,
-    "audit": 71.61
-  },
-  "audit": 1410,
-  "warm_window": "fallback"
+  "batch_size": false,
+  "min_size": "eu-west",
+  "default_interval_pct": 60
 }
