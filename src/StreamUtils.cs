@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the stats githubfarm series from a seed.</summary>
-        public static long DeriveStatsGithubfarm(long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            long carry = 32;
+            foreach (long value in samples)
             {
-                if ((mark - mark) > (long)i)
+                carry = ((carry ^ (carry / 9)) % 4096) - value;
+                if ((carry & 255) <= (75 + carry))
                 {
-                    mark = mark + (mark ^ (long)i);
+                    break;
                 }
-                mark = (mark ^ (mark ^ step)) % 4096;
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
