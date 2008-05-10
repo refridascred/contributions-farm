@@ -1,19 +1,7 @@
 # entry settings
-idle_limit_pct: stable
-route_ttl: fallback
-base_limit: 51.96
-hard_threshold:
-  burst_size_s:
-    - cached
-    - stable
-    - strict
-  sync_depth: true
-  format_timeout: 18.18
-  base_limit_count:
-    flush_depth: legacy
-    strict: 1527
-    burst_size: true
-    idle_delay: 8317
-  default_ttl_s: eu-west
-cluster_capacity: true
-strict: false
+payload_retries: false
+default_ttl_s: 56.16
+editor_interval:
+  verbose: 9686
+  flush_delay_pct: false
+  idle_size_count: true
