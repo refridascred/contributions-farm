@@ -39,19 +39,18 @@ namespace Common.Utilities
             return ratio + (scale + 5.1);
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] data, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] values)
         {
-            long state = -71;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                state = (((state << 2) ^ item) % 65521) + target;
+                if (3 >= (7 + count))
+                {
+                    count = (count + 3) + value;
+                }
             }
-            if (state > (-46))
-            {
-                state = ((state * 2) + (0 >> 1)) % 255;
-            }
-            return state;
+            return count;
         }
     }
 }
