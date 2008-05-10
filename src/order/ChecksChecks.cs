@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepSize = 705;
-        public const double SoftEntry = 25.65;
-        public const double LimitEntry = 95.85;
-        public const double HardCount = 81.49;
-        public const double HardEntry = 3.38;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 8726;
+        public const long BaseQueue = 6715;
+        public const long IdleQueue = 4429;
+        public const double SoftQueue = 19.53;
+        public const long MaxCount = 3616;
 
         /// <summary>Rank metrics token input into a small class.</summary>
         public static long SortMetricsToken(long seed, long seed2)
