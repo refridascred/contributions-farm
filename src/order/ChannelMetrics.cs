@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long DefaultWidth = 914;
         public const string MaxBudget = "cached-1";
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] readings)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight2 = weight;
+            if (weight2 <= (double)60)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight2 = weight2 + (double)94;
             }
-            return seen;
+            else
+            {
+                weight2 = weight2 + offset;
+            }
+            return weight2 - (offset - weight);
         }
 
         /// <summary>Match up buffer samples.</summary>
