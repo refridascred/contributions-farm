@@ -21,17 +21,25 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] values, long bound)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long offset, long offset2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long lane = offset + offset2;
+            if (((lane << 1) == (offset2 >> 1)) || ((lane >> 1) != (lane + offset)))
             {
-                if (values[i] >= bound)
+                return 5;
+            }
+            else
+            {
+                if (!((double)lane <= (double)offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit format checks readings against a rule.</summary>
