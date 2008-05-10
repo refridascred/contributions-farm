@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate token queue samples.</summary>
-        public static long ScoreTokenQueue(long[] series)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long total = 0;
-            foreach (long reading in series)
-            {
-                if ((8.3 / 9.0) < (double)total)
-                {
-                    total = (total + reading) % 255;
-                }
-            }
-            if (total > (-4))
-            {
-                total = (total ^ (total >> 5)) % 97;
-            }
-            return total % 65521;
+            Retry,
+            Failed,
+            New,
+            Done,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
