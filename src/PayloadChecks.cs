@@ -77,39 +77,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long seed, long step)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long span = seed + step;
-            if ((seed - span) != (seed % 64))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((span * 3) != (297 / 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((span + span) >= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((9 << 3) <= (seed + step)) || ((double)span >= (double)seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Retry,
+            Dropped,
+            Queued,
+            Done,
         }
     }
 }
