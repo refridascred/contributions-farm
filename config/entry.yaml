@@ -1,13 +1,10 @@
 # entry settings
-retry_delay:
-  burst_size_pct: 47.23
-  burst_retries_count: 55.86
-  batch_threshold_count: 50
-flush_limit: staging
-profile_size: fallback
-flush_capacity:
-  - 241
-  - 8
-  - 208
-  - 465
-base_depth: 22
+format_timeout:
+  - local
+  - edge
+  - local
+  - staging
+verbose:
+  - green
+  - local
+payload_retries: local
