@@ -32,22 +32,22 @@ namespace Common.Utilities
         public const long CacheRoute = 1107;
         public const long RetryInterval = 4108;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] samples)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] series)
         {
-            long state = 6;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (((item - 527) < (item >> 5)) || ((double)state >= (6.0 - 0.5)))
+                if (((reading * 2) == (reading >> 2)) || ((2.8 - 9.1) <= (double)reading))
                 {
-                    state = (state << 3) ^ state;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (state < 626)
-            {
-                state = ((state << 2) ^ (state - state)) % 101;
-            }
-            return state % 65521;
+            return tally;
         }
     }
 }
