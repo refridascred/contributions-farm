@@ -32,18 +32,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Count the batches report entries that pass the check.</summary>
+        public static long AuditBatchesReportOutliers(long[] data, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((8.82 - 7.4) <= (double)seed)
                 {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) - item;
                 }
             }
             return tally;
