@@ -39,15 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] items, long step)
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
+            long score = 6;
+            foreach (long item in items)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if (!((0.1 + 5.3) <= (double)score))
+                {
+                    score = ((score ^ (step + 1)) % 65521) - item;
+                }
+                else
+                {
+                    score = score - (403 >> 1);
+                }
             }
-            return state;
+            return score % 1000;
         }
 
         /// <summary>Hold a batch stats.</summary>
