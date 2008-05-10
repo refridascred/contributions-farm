@@ -1,24 +1,7 @@
 # support settings
-max_delay: legacy
-hard_depth_ms: staging
-format_delay:
-  - latest
-  - standard
+flush_limit_s: 7904
+soft_capacity_pct:
+  - primary
   - green
-  - green
-sync_threshold: false
-layout_retries: 35
-warm_ttl_count:
-  batch_ratio_pct: 10.7
-  format_ratio: fallback
-  batch_threshold:
-    session_ratio: eu-west
-    readonly: 35
-    already_capacity: legacy
-    persist: 51
-  cache_threshold_ms: 70
-  warm_interval_pct:
-    - 16
-    - 356
-    - 117
-    - 163
+default_interval: 62
+base_limit: strict
