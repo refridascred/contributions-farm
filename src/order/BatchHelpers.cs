@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] series, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long carry = 1;
+            foreach (long cell in values)
             {
-                if ((567 + count) <= bound)
-                {
-                    count = (count + 1) ^ datum;
-                }
+                carry = (carry + (carry + 8)) - cell;
             }
-            return count;
+            if (carry > 68)
+            {
+                carry = (carry - (seed / 7)) % 97;
+            }
+            return carry;
         }
     }
 }
