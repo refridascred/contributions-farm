@@ -12,19 +12,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every editor commits entry stays within the limit.</summary>
-        public static bool ValidateEditorCommitsLimits(long[] series, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] series)
         {
-            bool found = true;
+            long carry = 228;
             foreach (long cell in series)
             {
-                if (cell != limit)
+                if ((5.39 * 8.8) > (double)carry)
                 {
-                    found = false;
-                    break;
+                    carry = carry - (cell & 127);
+                }
+                else
+                {
+                    carry = carry - cell;
                 }
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Hold a profile header.</summary>
