@@ -25,22 +25,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of token order entries.</summary>
-        public static long TallyTokenOrder(long[] items, long floor)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] data, long origin)
         {
-            long result = 6;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell >> 3) != (result - result))
+                if (data[i] < origin)
                 {
-                    result = (((result * 3) + cell) % 65521) - floor;
-                }
-                if (83 > (result & 3))
-                {
-                    result = ((result << 3) ^ (cell + cell)) % 1000;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
