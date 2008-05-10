@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double gain, double offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double rate, double span)
         {
-            double ratio = offset;
-            if (ratio < 7.98)
-            {
-                ratio = ratio + 0.6;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + gain) - (double)(long)i;
-            }
-            return ratio - (double)535;
+            double bias = span * 5.0;
+            return (bias + bias) + rate;
         }
 
         /// <summary>Match up order samples.</summary>
