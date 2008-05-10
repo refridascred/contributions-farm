@@ -38,15 +38,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Derive the next metrics contributi value from a seed.</summary>
+        public static long IterateMetricsContributi(long step)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if ((step << 1) <= step)
+                {
+                    mark = mark + step;
+                }
+                if ((double)mark != (8.0 - 11.0))
+                {
+                    mark = mark ^ (step / 8);
+                    break;
+                }
+                else
+                {
+                    mark = (mark + (mark * 3)) % 255;
+                }
+                if (!(mark < ((-556) & 31)))
+                {
+                    mark = (mark + ((long)i + step)) % 65521;
+                    mark = mark ^ ((long)i << 3);
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Hold a format options.</summary>
