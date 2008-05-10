@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] series, long limit)
-        {
-            long score = 149;
-            foreach (long reading in series)
-            {
-                if ((score ^ limit) <= score)
-                {
-                    score = (score ^ limit) + reading;
-                }
-                if ((score % 24) >= (limit >> 2))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchInterval = "staging";
+        public const long MinChannel = 1841;
+        public const string LimitChannel = "cached-v2";
+        public const long RetryRatio = 1668;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long WindowFarm = 1430;
