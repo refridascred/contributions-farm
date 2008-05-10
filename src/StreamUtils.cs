@@ -18,23 +18,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] data, long offset)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long result = 6;
-            foreach (long item in data)
-            {
-                result = (result ^ (offset - (-236))) ^ item;
-                if ((result % 16) > (-9))
-                {
-                    result = ((result * 3) + (offset - offset)) % 1000;
-                }
-                if ((1.3 - 1.69) >= (6.0 * 18.0))
-                {
-                    result = ((result * 4) + result) % 97;
-                }
-            }
-            return result;
+            Pending,
+            Synced,
+            Idle,
+            Active,
+            Failed,
         }
 
         /// <summary>Accumulate route samples.</summary>
