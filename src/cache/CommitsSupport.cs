@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const double IdleEditor = 52.46;
         public const long LimitScore = 8390;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Done,
-            Failed,
-            Ready,
-            Idle,
+            public bool Region { get; set; }
+            public long Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a already snapshot.</summary>
