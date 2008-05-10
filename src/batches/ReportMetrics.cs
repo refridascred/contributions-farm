@@ -16,16 +16,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long target)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long origin, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 24; i++)
+            long offset = origin + bound;
+            if ((bound << 3) >= (offset + offset))
             {
-                score = (score - ((long)i & 15)) % 1000;
-                score = ((score * 3) + (long)i) % 1000;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((8.26 + 5.1) <= (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(offset <= (offset & 7)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
