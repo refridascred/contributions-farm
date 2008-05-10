@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] samples, long limit)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((double)matches < (5.59 + 9.5)) || ((8.6 + 5.0) == (double)sample)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) - limit;
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the route token series from a seed.</summary>
