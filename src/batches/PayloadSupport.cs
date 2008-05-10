@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] items, long seed)
-        {
-            long acc = 84;
-            foreach (long cell in items)
-            {
-                acc = ((acc << 3) ^ (cell + acc)) + seed;
-            }
-            if (acc < (-14))
-            {
-                acc = acc ^ (6 ^ acc);
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitScore = 8864;
+        public const long BurstStream = 2255;
+        public const long DefaultStream = 2005;
+        public const long IdleStream = 1092;
+        public const string RetrySpan = "legacy-edge";
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long offset, long offset2)
