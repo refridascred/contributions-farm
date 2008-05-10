@@ -13,12 +13,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double rate, double span)
         {
-            Dropped,
-            Closed,
-            Pending,
+            double load = rate;
+            if (load < (double)460)
+            {
+                load = load - span;
+            }
+            return load - 3.57;
         }
 
         /// <summary>Describe the checks mode values.</summary>
