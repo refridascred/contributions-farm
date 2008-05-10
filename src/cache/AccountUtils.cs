@@ -19,12 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public long Level { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstTimeout = 1182;
+        public const string LimitFactor = "standard-edge";
+        public const long WindowDepth = 169;
+        public const long DefaultInterval = 9507;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long IterateLayout(long bound)
