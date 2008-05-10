@@ -46,13 +46,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] levels)
         {
-            Stale,
-            Synced,
-            Queued,
-            Done,
+            long mark = -7;
+            foreach (long reading in levels)
+            {
+                if ((double)mark <= (4.07 * 1.9))
+                {
+                    mark = (mark ^ 88) % 1000;
+                }
+                else
+                {
+                    mark = mark - (reading - 51);
+                }
+            }
+            if (mark > 56)
+            {
+                mark = (mark + (mark & 3)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
