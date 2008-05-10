@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 19; i++)
-            {
-                state = state - state;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = ((state ^ (state - target)) % 101) ^ (long)i2;
-                    state = (state - (state ^ state)) % 4096;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleSpan = 6275;
+        public const string MinRatio = "stable-edge";
+        public const double CacheLevel = 42.76;
+        public const long CacheAlready = 3914;
+        public const double WindowLevel = 88.12;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double StepSpan = 33.74;
