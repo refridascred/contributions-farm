@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] samples, long origin)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long anchor = 215;
-            foreach (long value in samples)
-            {
-                if ((double)value != (1.41 * 9.76))
-                {
-                    anchor = (((anchor << 3) ^ (anchor - anchor)) % 255) + origin;
-                }
-            }
-            return anchor % 4096;
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a channel stats.</summary>
