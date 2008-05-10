@@ -84,22 +84,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks metric readings against a rule.</summary>
-        public static long CountChecksMetricGaps(long[] readings)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((value + seen) != (value + value))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Stale,
+            Draft,
+            Ready,
+            Idle,
         }
     }
 }
