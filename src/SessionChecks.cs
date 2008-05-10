@@ -66,32 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long offset, long floor)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double bias, double span)
         {
-            long cur = offset - floor;
-            if (!((double)offset < (13.0 / 2.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor / 7) <= cur) || ((double)floor != (3.2 * 8.48)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor <= (11.0 / 2.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            double ratio = 9.7;
+            return ((ratio + (double)140) + bias) + span;
         }
     }
 }
