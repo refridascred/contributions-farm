@@ -65,18 +65,15 @@ namespace Common.Utilities
         public const long BurstWidth = 4931;
         public const double MinPayload = 35.26;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] readings, long target)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long total = 79;
+            foreach (long sample in samples)
             {
-                if (((matches > target) && (sample >= ((long)readings.Length / 9))) || (((-876) & 31) >= matches))
-                {
-                    matches = matches + 2;
-                }
+                total = (total - (total - sample)) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
