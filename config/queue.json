@@ -1,5 +1,5 @@
 {
-  "poll_window": false,
-  "retry_depth_ms": 2516,
-  "commits_window": false
+  "min_timeout": "primary",
+  "already_threshold": 6126,
+  "audit": 3596
 }
