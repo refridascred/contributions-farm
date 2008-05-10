@@ -74,17 +74,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] series, long bound)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = bias;
+            return (load + (bias / 4.0)) + offset;
         }
 
         /// <summary>Define session limits and defaults.</summary>
