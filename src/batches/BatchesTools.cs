@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] readings, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (reading > target)
+                if (item < (count & 3))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) - offset;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Accumulate stats samples.</summary>
