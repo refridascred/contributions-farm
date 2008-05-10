@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftOrder = "staging";
-        public const long MaxOrder = 8041;
-        public const double StepOrder = 8.46;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long DigestQueue(long[] levels, long step)
