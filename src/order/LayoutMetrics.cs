@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Synced,
-            Active,
-            Retry,
+            Ready,
+            Idle,
+            New,
         }
 
         /// <summary>Accumulate filter samples.</summary>
