@@ -39,15 +39,10 @@ namespace Common.Utilities
         public const double BatchContext = 66.72;
         public const string MaxRatio = "strict";
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 5562;
+        public const string BaseDepth = "strict-v2";
+        public const long MinChecks = 7650;
+        public const long RetryChecks = 3021;
     }
 }
