@@ -14,15 +14,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            public double Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count checks editor pairs that satisfy a relation.</summary>
