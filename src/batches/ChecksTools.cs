@@ -46,19 +46,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((0.72 / 9.0) > (double)origin)
-                {
-                    mark = (mark - origin) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Stale,
+            Pending,
+            Queued,
+            Paused,
         }
     }
 }
