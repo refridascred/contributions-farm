@@ -12,12 +12,15 @@ namespace Common.Utilities
             return (scale - (scale / 3.0)) + span;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] data, long target)
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
+            long sum = 39;
+            foreach (long entry in data)
+            {
+                sum = ((sum ^ (242 % 7)) ^ entry) - target;
+            }
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
