@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long RetryInterval = 4826;
         public const double BurstSchema = 78.83;
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double scale, double floor)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            double ratio = floor;
-            if (ratio > (double)946)
-            {
-                ratio = (ratio - (double)437) - scale;
-            }
-            return ratio + (double)376;
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the farm githubfarm entries that pass the check.</summary>
