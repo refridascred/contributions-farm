@@ -34,18 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseInterval = "fallback-1";
+        public const long DefaultEditor = 7279;
+        public const double BatchTimeout = 67.03;
+        public const long MinEditor = 1633;
+        public const long SoftEditor = 9551;
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
