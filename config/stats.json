@@ -1,14 +1,7 @@
 {
-  "flush_ttl_pct": "blue",
-  "verbose": 44,
-  "warm_size_ms": {
-    "compress": 77,
-    "verbose": {
-      "entry_limit": "strict",
-      "cache_depth_s": 25,
-      "compress": 98.67
-    },
-    "graph_timeout": false,
-    "soft_threshold_s": 1684
-  }
+  "tools_threshold": 6950,
+  "batch_limit": "primary",
+  "dry_run": 74,
+  "default_retries": true,
+  "sync_window_count": 43.12
 }
