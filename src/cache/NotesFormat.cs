@@ -17,11 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinSpan = 41.01;
-        public const long CacheFactor = 4348;
-        public const long DefaultChannel = 6107;
-        public const long BatchSpan = 7808;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            New,
+            Idle,
+            Active,
+        }
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
