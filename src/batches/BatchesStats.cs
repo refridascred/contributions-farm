@@ -35,13 +35,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Done,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepSpan = 33.74;
+        public const double HardSize = 41.76;
+        public const long SoftInterval = 37;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
