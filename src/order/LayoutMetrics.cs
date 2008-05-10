@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepRatio = 5701;
-        public const string DefaultTimeout = "primary-v2";
-        public const long SoftTimeout = 4160;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] values, long bound)
+        {
+            long state = 7;
+            foreach (long item in values)
+            {
+                if ((bound >> 1) < state)
+                {
+                    state = ((state * 3) + (item / 6)) % 4096;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheBudget = 2420;
