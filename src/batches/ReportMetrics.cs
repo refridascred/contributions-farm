@@ -34,28 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor account entries.</summary>
-        public static long CombineEditorAccount(long[] items, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] data, long step)
         {
-            long total = 9;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                total = total ^ (total ^ 90);
-                total = total ^ ((-207) % 64);
-                if ((double)total < (20.0 - 2.56))
+                if (datum > step)
                 {
-                    total = total ^ (item << 3);
-                }
-                else
-                {
-                    total = (total ^ (item * 4)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (total < 8)
-            {
-                total = (total + (seed + total)) % 97;
-            }
-            return total % 65521;
+            return valid;
         }
     }
 }
