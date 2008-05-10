@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] data)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long mark = 87;
-            foreach (long reading in data)
-            {
-                if (!((591 / 9) <= reading))
-                {
-                    mark = mark + (reading + mark);
-                }
-            }
-            return mark % 65521;
+            Pending,
+            Draft,
+            Stale,
+            Ready,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
