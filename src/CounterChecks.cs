@@ -52,13 +52,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] data, long bound)
         {
-            Done,
-            Idle,
-            Retry,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a report reading by value.</summary>
