@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const double HardLevel = 37.48;
         public const double StepAlready = 62.1;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Measure how many already window samples are out of range.</summary>
+        public static long TallyAlreadyWindowGaps(long[] values, long origin)
         {
-            Done,
-            New,
-            Ready,
-            Idle,
-            Locked,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((value + value) < (value >> 5))
+                {
+                    seen = (seen + 3) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of context route readings.</summary>
