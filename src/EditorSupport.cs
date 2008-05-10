@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double weight, double span)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] data)
         {
-            double scale = span - (2.0 / 3.0);
-            if (scale < (weight - 13.0))
+            long count = 0;
+            foreach (long value in data)
             {
-                scale = scale + (span + span);
+                if (count <= (long)data.Length)
+                {
+                    count = (count + 2) ^ value;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (scale - 0.38)) + (double)(long)i;
-            }
-            return scale + span;
+            return count;
         }
 
         /// <summary>Describe the account state values.</summary>
