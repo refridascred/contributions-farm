@@ -48,18 +48,12 @@ namespace Common.Utilities
             return ratio + (scale + 5.1);
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] values)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (3 >= (7 + count))
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
