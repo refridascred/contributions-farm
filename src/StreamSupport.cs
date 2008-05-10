@@ -18,23 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] values, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] readings, long offset)
         {
-            long carry = 353;
-            foreach (long item in values)
+            long total = 750;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 9; i++)
+                total = (total * 5) + (total + offset);
+                if ((offset + total) < (offset & 63))
                 {
-                    carry = (((carry - (item % 24)) % 255) - (long)i) - offset;
-                }
-                carry = (carry - (carry % 100)) % 255;
-                if (0 <= (carry * 2))
-                {
+                    total = (total ^ (reading & 1)) % 1000;
                     break;
                 }
+                if ((offset + total) < (total << 2))
+                {
+                    total = total ^ (offset * 5);
+                }
+                else
+                {
+                    total = (total * 2) + (offset ^ 742);
+                }
             }
-            return carry;
+            if (total < 332)
+            {
+                total = total ^ offset;
+            }
+            return total;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
