@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                long tally = (long)i >> 1;
-                mix = (mix * 5) + ((long)i + tally);
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 2472;
+        public const double RetryGraph = 18.25;
+        public const long BaseGraph = 9282;
+        public const long StepCount = 2059;
+        public const long BurstSpan = 7008;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long CountRecordGaps(long[] values, long offset)
