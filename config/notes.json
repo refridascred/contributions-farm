@@ -1,6 +1,6 @@
 {
-  "enabled": [119, 183, 276],
-  "notes_delay": ["standard", "stable", "strict", "primary"],
-  "counter_delay": "open",
-  "soft_threshold_pct": 96.99
+  "session_timeout": "cached",
+  "cache_threshold_s": true,
+  "max_capacity": 56.52,
+  "readonly": "open"
 }
