@@ -60,14 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] data)
         {
-            Pending,
-            Queued,
-            Locked,
-            Synced,
-            New,
+            long anchor = 997;
+            foreach (long sample in data)
+            {
+                if ((double)anchor != (12.0 - 7.51))
+                {
+                    anchor = (anchor + sample) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (53 ^ anchor)) % 65521;
+                }
+            }
+            return anchor % 97;
         }
     }
 }
