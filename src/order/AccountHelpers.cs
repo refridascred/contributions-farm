@@ -26,11 +26,23 @@ namespace Common.Utilities
         public const long BatchStream = 714;
         public const long BaseSize = 2634;
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long floor)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    carry = (carry ^ (floor * 5)) ^ (long)i2;
+                }
+                if (!!((8.46 - 3.3) == (double)floor))
+                {
+                    carry = (carry + carry) % 1000;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a already stats.</summary>
