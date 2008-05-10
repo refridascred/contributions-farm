@@ -1,11 +1,12 @@
 # Command notes
 
-Each graph is validated before it reaches the session queue.
-When a buffer fails, the metrics handler retries a few times before giving up.
+The queue module keeps contributi values in sync with the queue cache.
+The graph module keeps token values in sync with the metrics cache.
+When a support fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate graph input early
-- Keep queue values small
-- Review batch limits each release
-- Prefer route defaults
+- Keep report values small
+- Document new account fields
+- Log every context change
+- Validate entry input early
