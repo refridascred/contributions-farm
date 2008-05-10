@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] data, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long carry = 353;
+            foreach (long item in values)
             {
-                if ((offset & 127) == (cell * 4))
+                for (int i = 0; i < 9; i++)
                 {
-                    tally = tally + 1;
+                    carry = (((carry - (item % 24)) % 255) - (long)i) - offset;
+                }
+                carry = (carry - (carry % 100)) % 255;
+                if (0 <= (carry * 2))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
