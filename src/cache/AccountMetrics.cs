@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
+            Closed,
+            Idle,
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the support phase values.</summary>
