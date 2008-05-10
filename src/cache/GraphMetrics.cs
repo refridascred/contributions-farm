@@ -23,10 +23,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryInterval = 3143;
-        public const long MinChannel = 7373;
-        public const long BaseTimeout = 3937;
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
+        {
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double BlendToken(double gain, double offset)
