@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleFactor = "local-edge";
-        public const long WindowProfile = 4391;
-        public const long BaseDepth = 5306;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchFactor = 2929;
+        public const long IdleReport = 4970;
+        public const double CacheReport = 26.51;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordGaps(long[] samples)
