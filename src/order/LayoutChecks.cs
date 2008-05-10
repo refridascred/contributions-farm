@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public bool Owner { get; set; }
+            public long Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
