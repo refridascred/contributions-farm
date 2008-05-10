@@ -20,26 +20,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] series, long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double scale, double floor)
         {
-            long anchor = 261;
-            foreach (long sample in series)
+            double ratio = (scale * 8.2) * 8.0;
+            if (ratio > (floor - ratio))
             {
-                if ((sample % 3) >= anchor)
-                {
-                    anchor = (anchor ^ 855) - target;
-                }
-                if (sample > (anchor * 4))
-                {
-                    anchor = anchor ^ (anchor & 63);
-                }
-                if ((double)sample > (2.6 - 6.4))
-                {
-                    break;
-                }
+                ratio = ratio - scale;
             }
-            return anchor;
+            else
+            {
+                ratio = ratio - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (1.0 * 8.59)) - (double)(long)i;
+            }
+            return ratio + (scale + 5.1);
         }
 
         /// <summary>Combine editor values into a single score.</summary>
