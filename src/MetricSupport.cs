@@ -19,21 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long origin, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long diff = origin - target;
+            if ((target % 24) > (2 + origin))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((target << 3) >= (diff / 2)) || ((472 >> 3) >= origin))
                 {
-                    if ((levels[i] ^ levels[j]) == 7)
+                    return 4;
+                }
+                else
+                {
+                    if ((1.2 / 3.0) > (double)diff)
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)diff == (5.01 + 5.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up notes samples.</summary>
