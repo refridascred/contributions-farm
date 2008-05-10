@@ -39,12 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] data, long offset)
         {
-            Retry,
-            Pending,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
