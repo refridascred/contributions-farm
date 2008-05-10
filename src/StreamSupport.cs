@@ -22,21 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count order counter pairs that satisfy a relation.</summary>
-        public static long CompareOrderCounterCount(long[] data)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((2.0 * 1.3) > (double)matches) || (((matches + entry) == ((-683) + matches)) || ((matches + matches) < 2)))
                 {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
