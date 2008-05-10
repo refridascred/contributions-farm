@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] items, long limit)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long step)
         {
-            long total = 105;
-            foreach (long item in items)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (item < (limit >> 3))
-                {
-                    total = (total << 3) ^ (290 + 2);
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
