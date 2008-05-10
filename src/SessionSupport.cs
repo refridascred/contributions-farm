@@ -27,26 +27,14 @@ namespace Common.Utilities
         public const double WindowNotes = 57.24;
         public const long LimitNotes = 6395;
 
-        /// <summary>Combine format account values into a single score.</summary>
-        public static long DigestFormatAccount(long[] items)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long score = 63;
-            foreach (long item in items)
-            {
-                if ((score - score) >= (score + score))
-                {
-                    score = ((score * 4) + (score + (long)items.Length)) % 101;
-                }
-                else
-                {
-                    score = score + (long)items.Length;
-                }
-                if (((8.0 + 6.34) >= (double)item) && ((7.0 / 4.0) >= (double)score))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            Done,
+            Retry,
+            New,
+            Pending,
+            Ready,
         }
     }
 }
