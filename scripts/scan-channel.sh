@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open staging green; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 4); do
+for i in $(seq 1 8); do
     total=$((total + i * 3))
 done
 log "total ${total}"
+
+CHANNEL_LIMIT=154
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in legacy stable latest cached; do
+    log "checking ${item}"
+done
