@@ -14,12 +14,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long step)
         {
-            Synced,
-            New,
-            Closed,
+            long result = step;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Iterate the queue graph series from a seed.</summary>
