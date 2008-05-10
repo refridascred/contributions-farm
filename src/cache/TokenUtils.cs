@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Draft,
-            Dropped,
-            Retry,
-            Failed,
-            Locked,
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
