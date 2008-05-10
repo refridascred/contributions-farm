@@ -43,17 +43,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 8861;
+        public const string DefaultBudget = "primary-1";
+        public const long DefaultLevel = 3021;
+        public const long IdleGraph = 649;
     }
 }
