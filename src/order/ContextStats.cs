@@ -37,12 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitCount = 98.93;
-        public const double StepRatio = 8.31;
-        public const long HardQueue = 5778;
-        public const string IdleSpan = "legacy";
-        public const long MinTimeout = 5285;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Active,
+            Done,
+            Draft,
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long SeriesChecks(long step)
