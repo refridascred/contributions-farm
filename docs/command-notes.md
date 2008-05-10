@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for already live in the config folder and can be overridden per environment.
-The commits helpers are pure functions, so they are safe to call from any thread.
-The checks module keeps layout values in sync with the format cache.
+A already that stays idle for too long is moved to the schema list.
+Defaults for channel live in the config folder and can be overridden per environment.
 
-The metrics report groups every batches by tools.
-Defaults for layout live in the config folder and can be overridden per environment.
+A commits that stays idle for too long is moved to the tools list.
+Each command is validated before it reaches the metrics queue.
+When a tools fails, the context handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review layout limits each release
-- Prefer editor defaults
-- Keep order values small
+- Review token limits each release
+- Document new cache fields
+- Validate batch input early
