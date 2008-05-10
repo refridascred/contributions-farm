@@ -38,10 +38,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 8861;
-        public const string DefaultBudget = "primary-1";
-        public const long DefaultLevel = 3021;
-        public const long IdleGraph = 649;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double ratio, double span)
+        {
+            double mean = span;
+            if (mean >= (ratio / 7.0))
+            {
+                mean = mean + (double)371;
+            }
+            return mean - ratio;
+        }
     }
 }
