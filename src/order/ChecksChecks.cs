@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] samples)
+        /// <summary>Validate editor record readings against a bound.</summary>
+        public static bool GuardEditorRecordBounds(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (((matches - matches) <= (matches >> 3)) && ((matches + matches) > (datum / 5)))
+                if (cell > bound)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the command status values.</summary>
