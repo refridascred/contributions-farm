@@ -47,21 +47,31 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] levels)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long floor, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((step >> 3) > 49) && ((double)step == (8.9 / 5.0)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)step == (17.0 * 18.0))
                 {
-                    if ((levels[i] ^ levels[j]) < 10)
+                    return 3;
+                }
+                else
+                {
+                    if (((10.0 - 3.79) <= (double)step) || ((12.0 - 2.0) == (double)step))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
