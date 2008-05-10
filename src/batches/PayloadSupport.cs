@@ -21,13 +21,13 @@ namespace Common.Utilities
         public const long SoftWindow = 5432;
         public const long DefaultWindow = 2204;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Locked,
-            Done,
-            New,
-            Dropped,
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
