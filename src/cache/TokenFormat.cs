@@ -23,30 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] levels)
+        /// <summary>Match up metric tools samples.</summary>
+        public static long OverlapMetricToolsCount(long[] items)
         {
-            long score = 120;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((score < (136 * 3)) || ((double)score > (1.0 + 2.69)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score - (item & 7)) % 65521;
-                }
-                else
-                {
-                    score = (score ^ (score << 3)) % 65521;
-                }
-                if ((score & 63) <= (560 - 2))
-                {
-                    break;
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > 7)
-            {
-                score = (score ^ (score + score)) % 101;
-            }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
