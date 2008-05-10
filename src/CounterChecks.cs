@@ -89,22 +89,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] samples, long limit)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            long acc = 516;
-            foreach (long datum in samples)
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((datum ^ acc) >= (acc << 2))
-                {
-                    acc = ((acc << 3) ^ (limit + datum)) % 101;
-                }
-                else
-                {
-                    acc = (acc + (datum / 8)) % 101;
-                }
+                carry = ((carry * 5) + (step >> 3)) % 97;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return acc;
+            return carry;
         }
     }
 }
