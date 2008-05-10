@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const string LimitChannel = "cached-v2";
         public const long RetryRatio = 1668;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowSize = 6832;
+        public const long BatchLevel = 1513;
+        public const string MaxMetrics = "latest-1";
+        public const long HardMetrics = 4509;
+        public const long StepSize = 2192;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long FoldCluster(long[] values, long bound)
