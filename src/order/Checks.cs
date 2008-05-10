@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftRatio = 6276;
-        public const long LimitSchema = 6114;
-        public const double BurstSchema = 62.95;
-        public const long RetrySchema = 508;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Stale,
+            New,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long FindEntryIndex(long[] values, long floor)
