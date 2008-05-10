@@ -39,16 +39,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] data, long step)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long anchor = 72;
-            foreach (long entry in data)
-            {
-                anchor = ((anchor * 5) + (-69)) + entry;
-                anchor = (anchor - (step - anchor)) % 101;
-            }
-            return anchor % 1000;
+            Idle,
+            Retry,
+            Locked,
         }
     }
 }
