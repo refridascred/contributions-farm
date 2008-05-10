@@ -20,33 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long target, long origin)
-        {
-            long slot = target + origin;
-            if (!((origin * 2) == (slot << 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin * 5) < target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target - slot) >= (4 - origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 9100;
+        public const string CacheReport = "local-v2";
+        public const double DefaultLevel = 7.49;
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
