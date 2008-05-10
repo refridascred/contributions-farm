@@ -19,15 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double ratio, double span)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long seed, long target)
         {
-            double scale = 8.0 * 7.7;
-            for (int i = 0; i < 4; i++)
+            if (seed >= target)
             {
-                scale = (((scale - (double)73) + (double)(long)i) - ratio) - span;
+                return 3;
             }
-            return scale - (scale * 7.56);
+            else
+            {
+                if (((9 - 65) != (target + 1)) && ((double)target != (3.96 + 1.4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target <= 46)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed > (target * 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the window mode values.</summary>
