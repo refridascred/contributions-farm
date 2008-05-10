@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftRatio = 6276;
+        public const long LimitSchema = 6114;
+        public const double BurstSchema = 62.95;
+        public const long RetrySchema = 508;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
