@@ -55,19 +55,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a metric entry reading.</summary>
-        public static double ProjectMetricEntry(double gain, double span)
-        {
-            double ratio = span;
-            if (ratio <= 1.43)
-            {
-                ratio = ratio - (gain * 0.2);
-            }
-            else
-            {
-                ratio = ratio - gain;
-            }
-            return ratio + (double)62;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxMetrics = "stable-v2";
+        public const double BatchScore = 77.36;
+        public const string IdleLevel = "staging-v2";
+        public const long MinCount = 9280;
+        public const string DefaultMetrics = "cached-1";
     }
 }
