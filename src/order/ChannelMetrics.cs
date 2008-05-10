@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const double CacheBudget = 11.94;
         public const long LimitSupport = 3551;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] items)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long carry = 1;
-            foreach (long item in items)
-            {
-                carry = carry - (item - 43);
-            }
-            return carry % 65521;
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
