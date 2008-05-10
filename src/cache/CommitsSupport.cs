@@ -19,21 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 35;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sample - sample) >= (941 + total))
                 {
-                    if ((readings[i] + readings[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total << 3) ^ total) % 4096;
+                }
+                else
+                {
+                    total = ((total * 5) + (total * 4)) % 97;
                 }
             }
-            return seen;
+            if (total > 17)
+            {
+                total = ((total * 4) + total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a already snapshot.</summary>
