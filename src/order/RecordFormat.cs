@@ -43,21 +43,24 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Match up batches farm samples.</summary>
-        public static long MatchBatchesFarmCount(long[] levels)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc + (step / 3)) - (long)i2;
                 }
+                if ((4.6 > (double)acc) || (92 < (step >> 2)))
+                {
+                    acc = ((acc << 3) ^ (step * 4)) % 4096;
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
     }
 }
