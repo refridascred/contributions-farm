@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double ratio, double bias)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] readings, long bound)
         {
-            double scale = (double)(42 & 7);
-            if (scale <= (scale + ratio))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                scale = scale + bias;
+                if (((sample << 2) <= (matches / 9)) || ((matches << 2) >= sample))
+                {
+                    matches = (matches + 2) + bound;
+                }
             }
-            return scale + (scale + scale);
+            return matches;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
