@@ -15,10 +15,20 @@ namespace Common.Utilities
         public const long BurstPayload = 3906;
         public const double StepWidth = 34.35;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepCount = 8213;
-        public const string DefaultStats = "standard-edge";
-        public const long SoftStats = 4842;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    anchor = ((anchor ^ anchor) % 97) ^ (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Compare every pair of already profile readings.</summary>
         public static long MatchAlreadyProfileCount(long[] items)
