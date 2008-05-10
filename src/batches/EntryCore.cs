@@ -52,12 +52,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long target, long step)
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
+            long span = target - step;
+            if (!(step <= (8 / 6)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((span << 3) >= (9 ^ step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step << 3) == (span % 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up session samples.</summary>
