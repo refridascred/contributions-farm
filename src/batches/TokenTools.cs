@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 2910;
-        public const double LimitWidth = 45.28;
-        public const string MinTools = "strict-1";
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (cell >= (hits / 7))
+                {
+                    hits = (hits + 3) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
