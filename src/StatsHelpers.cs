@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitLevel = 73.36;
-        public const long StepCount = 8637;
-        public const long SoftProfile = 1359;
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double scale, double bias)
+        {
+            double drift = bias / 7.0;
+            if (drift >= (drift * 5.37))
+            {
+                drift = (drift + (drift * 19.0)) + scale;
+            }
+            else
+            {
+                drift = drift - (1.3 + bias);
+            }
+            return drift + bias;
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long CompareWindowCount(long[] readings)
