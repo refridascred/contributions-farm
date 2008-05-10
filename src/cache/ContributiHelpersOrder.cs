@@ -25,22 +25,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] data, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (((origin % 12) >= tally) && (((tally * 2) == (value - tally)) || ((tally / 4) > (origin - (-34)))))
+                if (((sample << 1) < (46 + sample)) && (target > (seen >> 3)))
                 {
-                    tally = tally + 1;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
