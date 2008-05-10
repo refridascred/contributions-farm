@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] values)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((hits ^ cell) > hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a support channel reading by value.</summary>
