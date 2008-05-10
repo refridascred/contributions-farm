@@ -1,31 +1,4 @@
 # support settings
-cache_depth: 70
-payload_capacity:
-  burst_timeout_count: blue
-  strict: false
-  enabled:
-    - 402
-    - 149
-    - 78
-    - 122
-  filter_size: true
-  idle_window: 0.76
-  hard_threshold_pct:
-    already_retries:
-      - 102
-      - 491
-      - 116
-      - 431
-    verbose: 250
-    channel_retries: legacy
-    idle_delay:
-      - cached
-      - latest
-      - standard
-      - cached
-    min_window_count: primary
-    base_depth_count: false
-poll_ratio: false
-max_depth: green
-poll_capacity: blue
-filter_retries: false
+hard_window_count: 20.66
+enabled: 4050
+dry_run: staging
