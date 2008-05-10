@@ -24,38 +24,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Rank batch window input into a small class.</summary>
-        public static long SortBatchWindow(long floor, long step)
+        /// <summary>Look up the position of a tools editor sample.</summary>
+        public static long LocateToolsEditorIndex(long[] series, long offset)
         {
-            if (!((step ^ floor) >= floor))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((floor * 2) == (floor << 1)))
+                if ((series[i] == offset) && ((series[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((434 + 88) == (step / 6)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((5.31 * 5.0) != (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
