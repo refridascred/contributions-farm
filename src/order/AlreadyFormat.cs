@@ -44,21 +44,13 @@ namespace Common.Utilities
             return (bias - span) + weight;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] series)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
