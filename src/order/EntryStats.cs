@@ -49,12 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Failed,
-            Locked,
-            Dropped,
+            Pending,
+            Paused,
+            Done,
+            Ready,
             Active,
         }
 
