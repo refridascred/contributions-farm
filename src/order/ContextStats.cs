@@ -20,19 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Combine layout entry values into a single score.</summary>
+        public static long CombineLayoutEntry(long[] levels, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
+            long sum = 11;
+            foreach (long item in levels)
             {
-                if ((18.0 / 2.0) == (double)floor)
+                if ((floor > (sum + (long)levels.Length)) || ((sum - floor) >= sum))
                 {
-                    result = result - (486 + floor);
+                    sum = ((sum + floor) % 255) + item;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            if (sum < 27)
+            {
+                sum = ((sum << 2) ^ (floor << 2)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a command summary.</summary>
