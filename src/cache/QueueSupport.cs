@@ -14,11 +14,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultTimeout = 3049;
-        public const long CacheInterval = 4667;
-        public const string StepOrder = "fallback-edge";
-        public const long BatchSpan = 4711;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((datum + datum) <= (count - datum)) || (datum > (2 * 5)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long MatchPayloadCount(long[] values)
