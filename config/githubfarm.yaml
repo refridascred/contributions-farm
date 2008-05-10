@@ -1,10 +1,18 @@
 # githubfarm settings
-entry_interval:
-  max_depth_count: 100
-  flush_limit_ms: 5178
-  flush_threshold_count: strict
-  audit: 30
-tools_timeout: 10.85
-dry_run: 64.23
-flush_interval: 89.39
-idle_depth_s: stable
+min_capacity_ms:
+  batches_depth: 8073
+  soft_interval: cached
+  session_timeout: open
+  audit: 22
+default_delay_ms: 67.06
+stats_retries: 80.7
+warm_limit_pct:
+  - 287
+  - 250
+  - 62
+  - 367
+batch_size_pct:
+  - fallback
+  - blue
+  - eu-west
+soft_delay: 91.7
