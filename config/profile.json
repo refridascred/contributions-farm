@@ -1,7 +1,11 @@
 {
-  "graph_depth": false,
-  "sync_ttl_ms": "local",
-  "buffer_capacity": "green",
-  "base_depth_pct": true,
-  "readonly": "open"
+  "poll_capacity_s": "standard",
+  "audit": {
+    "batch_retries_pct": ["edge", "stable"],
+    "idle_retries_pct": ["latest", "latest", "blue", "primary"],
+    "sync_capacity_count": "staging"
+  },
+  "entry_capacity": true,
+  "cache_limit": 1024,
+  "soft_retries_s": false
 }
