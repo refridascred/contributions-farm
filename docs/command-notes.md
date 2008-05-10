@@ -1,14 +1,11 @@
 # Command notes
 
-The batch report groups every payload by cache.
-A command that stays idle for too long is moved to the channel list.
-
-A order that stays idle for too long is moved to the cluster list.
-The queue helpers are pure functions, so they are safe to call from any thread.
-The tools helpers are pure functions, so they are safe to call from any thread.
+The profile report groups every counter by tools.
+A report that stays idle for too long is moved to the command list.
+The token report groups every window by editor.
 
 ## Guidelines
 
-- Validate batch input early
-- Prefer cache defaults
-- Document new stream fields
+- Log every payload change
+- Keep window values small
+- Review queue limits each release
