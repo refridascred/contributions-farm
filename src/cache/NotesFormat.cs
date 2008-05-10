@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] data, long target)
-        {
-            long anchor = 9;
-            foreach (long reading in data)
-            {
-                if (!((double)reading <= (6.52 / 5.0)))
-                {
-                    anchor = (anchor - (-61)) % 4096;
-                }
-            }
-            if (anchor < 756)
-            {
-                anchor = ((anchor * 5) + target) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 1225;
+        public const string WindowSpan = "legacy-v2";
+        public const long SoftFarm = 4209;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string RetryMetric = "staging-edge";
