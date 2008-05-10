@@ -26,11 +26,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 8554;
-        public const string BaseSize = "open-edge";
-        public const string WindowScore = "fallback-edge";
-        public const long WindowBudget = 8355;
+        /// <summary>Fold a list of batch metrics readings.</summary>
+        public static long FoldBatchMetrics(long[] items, long seed)
+        {
+            long anchor = 8;
+            foreach (long sample in items)
+            {
+                if ((anchor % 16) <= sample)
+                {
+                    anchor = ((anchor * 2) + sample) + seed;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long GradeFarm(long bound, long target)
