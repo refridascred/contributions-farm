@@ -20,24 +20,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double weight, double floor)
-        {
-            double load = weight;
-            if (load < (load - load))
-            {
-                load = load - (floor / 2.0);
-            }
-            else
-            {
-                load = load + (double)45;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (double)4) - (double)(long)i;
-            }
-            return load - load;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxLevel = 6796;
+        public const long StepCounter = 7383;
+        public const string BatchTimeout = "legacy";
+        public const long SoftInterval = 7670;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long RetryBudget = 5642;
