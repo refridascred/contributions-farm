@@ -23,31 +23,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Classify a record command pair into a bucket.</summary>
-        public static long GradeRecordCommand(long floor, long seed)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] values, long bound)
         {
-            if ((seed << 2) != (floor + floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed >= floor)
+                if (values[i] >= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((15.0 * 10.0) >= (double)floor) || ((seed * 4) >= (seed ^ 60)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
