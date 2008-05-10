@@ -39,12 +39,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Failed,
-            Dropped,
-            Active,
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
