@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((seen << 2) > seen)
+                if (!((hits & 127) >= hits))
                 {
-                    seen = (seen + 2) ^ cell;
+                    hits = ((hits + 3) - value) - seed;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
