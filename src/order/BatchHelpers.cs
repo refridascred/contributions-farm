@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long seed, long seed2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = seed ^ seed2;
+            if ((double)delta >= (17.0 / 3.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((36 % 7) > seed2)
                 {
-                    if ((samples[i] - samples[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
