@@ -34,23 +34,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Combine support notes values into a single score.</summary>
+        public static long TallySupportNotes(long[] samples, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            long state = -518;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((seed * 5) != (state / 8))
                 {
-                    carry = (carry ^ (floor * 5)) ^ (long)i2;
+                    state = (state << 2) ^ (state * 4);
                 }
-                if (!!((8.46 - 3.3) == (double)floor))
+                else
                 {
-                    carry = (carry + carry) % 1000;
+                    state = (state + seed) % 255;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
+                if ((seed * 4) != (entry * 5))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (state < 62)
+            {
+                state = (state + (seed + state)) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a already stats.</summary>
