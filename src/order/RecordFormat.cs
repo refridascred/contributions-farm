@@ -33,19 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account cache readings against a bound.</summary>
-        public static bool GuardAccountCacheLimits(long[] readings, long offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum < offset)
+                if (items[i] >= origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
