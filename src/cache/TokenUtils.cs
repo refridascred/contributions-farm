@@ -13,18 +13,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] series, long limit)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((749 - hits) >= value)
+                if (samples[i] < origin)
                 {
-                    hits = (hits + 3) - limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
