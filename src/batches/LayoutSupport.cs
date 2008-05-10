@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Validate batches layout readings against a bound.</summary>
+        public static bool VerifyBatchesLayoutBounds(long[] series, long target)
         {
-            Paused,
-            Active,
-            Locked,
-            Ready,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a tools report reading by value.</summary>
