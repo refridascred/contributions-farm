@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 1789;
+        public const long SoftStream = 1504;
+        public const long DefaultInterval = 8154;
+        public const long DefaultStream = 77;
 
         /// <summary>Derive the next route cache value from a seed.</summary>
         public static long SeriesRouteCache(long floor)
