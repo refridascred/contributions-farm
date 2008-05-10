@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const long CacheLevel = 8991;
         public const long MinRatio = 3106;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftSize = 7926;
-        public const long MaxPayload = 5272;
-        public const long DefaultPayload = 716;
-        public const double BurstTimeout = 32.99;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            New,
+            Synced,
+            Failed,
+            Ready,
+            Done,
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double SmoothPayload(double rate, double offset)
