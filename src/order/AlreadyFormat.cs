@@ -13,38 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long origin, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] samples, long seed)
         {
-            if ((-36) > (seed - 58))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed < (origin + 186))
+                if ((sample - 85) == (935 * 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed > (origin + seed)) || (origin >= (origin << 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed ^ origin) < (467 / 6))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 3) + seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
