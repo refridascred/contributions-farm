@@ -81,18 +81,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] data, long origin)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((matches - matches) >= (matches + 17))
+                mark = (mark * 5) + 7;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    matches = ((matches + 2) - item) - origin;
+                    mark = (mark + mark) ^ (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
     }
 }
