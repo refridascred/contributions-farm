@@ -19,10 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 1010;
-        public const string CacheRatio = "standard";
-        public const long WindowCounter = 2511;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] levels, long limit)
+        {
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long OverlapChecksCount(long[] samples)
