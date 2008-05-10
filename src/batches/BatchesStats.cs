@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] data, long target)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Queued,
+            Active,
         }
 
         /// <summary>Define already limits and defaults.</summary>
