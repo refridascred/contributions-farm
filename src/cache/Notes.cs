@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Ready,
-            Draft,
-            Closed,
-            Synced,
+            public double Size { get; set; }
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
