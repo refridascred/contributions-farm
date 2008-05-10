@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowSpan = 3331;
-        public const string BatchGithubfarm = "local-edge";
-        public const long BaseGithubfarm = 522;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Stale,
+            Retry,
+            Done,
+        }
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
