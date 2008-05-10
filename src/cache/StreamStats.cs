@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long target, long limit)
+        /// <summary>Grade a commits account value against two limits.</summary>
+        public static long SortCommitsAccount(long target, long step)
         {
-            long next = target - limit;
-            if ((3.0 - 7.01) >= (double)limit)
+            if ((step >= target) && ((step + step) >= (step + target)))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if (target < (2 >> 2))
+                if ((step + target) >= step)
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if (!((18.0 * 7.66) > (double)limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target + next) > target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
