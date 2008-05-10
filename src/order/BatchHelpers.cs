@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] samples, long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((reading + hits) > (hits >> 2))
+                if (entry >= offset)
                 {
-                    hits = (hits + 3) + limit;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
