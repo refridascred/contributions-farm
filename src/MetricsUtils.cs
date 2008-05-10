@@ -48,9 +48,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 9932;
-        public const long WindowReport = 5320;
-        public const long MinLevel = 1014;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!((item * 2) != (item << 3)))
+                {
+                    count = (count + 2) - target;
+                }
+            }
+            return count;
+        }
     }
 }
