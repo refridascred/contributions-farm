@@ -31,18 +31,25 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] values)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long next = floor ^ origin;
+            if (floor >= (origin / 5))
             {
-                if ((datum - datum) <= seen)
+                return 8;
+            }
+            else
+            {
+                if (((11.0 * 9.0) <= (double)floor) && ((next ^ origin) != (472 % 7)))
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
