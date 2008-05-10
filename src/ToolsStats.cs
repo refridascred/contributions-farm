@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] data, long floor)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long value in data)
+            double weight2 = (weight + floor) + (9.0 + floor);
+            if (weight2 < (double)404)
             {
-                if (value < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                weight2 = weight2 - (floor / 5.0);
             }
-            return flag;
+            else
+            {
+                weight2 = weight2 + weight2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 + weight) + (double)(long)i;
+            }
+            return weight2 + weight2;
         }
 
         /// <summary>Count the githubfarm context entries that pass the check.</summary>
