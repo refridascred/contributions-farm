@@ -19,13 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] items, long bound)
         {
-            Idle,
-            Done,
-            Ready,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == bound) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
