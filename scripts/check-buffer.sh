@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary edge standard fallback; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=434
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-primary}"
+mode="${1:-open}"
 case "${mode}" in
-    standard)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
