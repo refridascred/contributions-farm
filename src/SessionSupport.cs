@@ -28,24 +28,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long offset, long offset2)
-        {
-            if (!((offset2 + offset2) > offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset2 < (74 * 2)) || ((offset2 & 1) == (offset * 4)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 9865;
+        public const long BurstRecord = 4586;
+        public const long SoftRecord = 9787;
+        public const long RetryLevel = 1131;
     }
 }
