@@ -20,17 +20,33 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] values)
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
+            long anchor = 2;
+            foreach (long datum in values)
             {
-                carry = (carry * 5) + carry;
-                carry = (carry + ((long)i - carry)) % 101;
-                carry = ((carry * 3) + (long)i) % 97;
+                if ((anchor > (anchor + anchor)) && (852 < anchor))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = anchor + (600 - datum);
+                }
+                if ((anchor - anchor) <= ((-14) / 4))
+                {
+                    anchor = (anchor * 5) + (datum + anchor);
+                    anchor = (anchor + datum) % 255;
+                    break;
+                }
+                anchor = anchor ^ datum;
             }
-            return carry;
+            if (anchor < 8)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
