@@ -1,8 +1,24 @@
 # support settings
-hard_delay: edge
-compress:
-  compress: 27
-  burst_interval_ms: latest
-  counter_size: 38.8
-idle_threshold: 84.35
-metric_timeout: legacy
+max_delay: legacy
+hard_depth_ms: staging
+format_delay:
+  - latest
+  - standard
+  - green
+  - green
+sync_threshold: false
+layout_retries: 35
+warm_ttl_count:
+  batch_ratio_pct: 10.7
+  format_ratio: fallback
+  batch_threshold:
+    session_ratio: eu-west
+    readonly: 35
+    already_capacity: legacy
+    persist: 51
+  cache_threshold_ms: 70
+  warm_interval_pct:
+    - 16
+    - 356
+    - 117
+    - 163
