@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] levels, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                carry = ((carry << 3) ^ carry) % 1000;
-                carry = ((carry * 4) + (long)i) % 97;
+                if (sample <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Rank window checks input into a small class.</summary>
