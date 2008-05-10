@@ -36,24 +36,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a cluster graph value against two limits.</summary>
-        public static long GradeClusterGraph(long bound, long limit)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] series)
         {
-            if ((9.78 / 2.0) == (double)limit)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((8.0 * 9.41) < (double)limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    if ((series[i] ^ series[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the payload level values.</summary>
