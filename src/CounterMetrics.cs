@@ -26,20 +26,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] levels, long step)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 8541;
+        public const long RetryGraph = 8889;
+        public const double DefaultCount = 86.35;
 
         /// <summary>Check that every profile buffer entry stays within the limit.</summary>
         public static bool ValidateProfileBufferBounds(long[] levels, long origin)
