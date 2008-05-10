@@ -62,21 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Fold a list of graph batches readings.</summary>
+        public static long DigestGraphBatches(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 285;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((offset ^ sample) <= sample))
                 {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc ^ (461 >> 1)) % 255;
                 }
             }
-            return matches;
+            return acc % 4096;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
