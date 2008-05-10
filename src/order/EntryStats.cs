@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine notes session values into a single score.</summary>
-        public static long ScoreNotesSession(long[] values, long origin)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] readings)
         {
-            long score = 31;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(entry >= (score << 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score + score) % 4096;
-                }
-                if ((origin % 97) == (origin % 3))
-                {
-                    score = ((score * 4) + (origin & 1)) % 1000;
-                }
-                else
-                {
-                    score = score + (entry - origin);
+                    if ((readings[i] - readings[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 55)
-            {
-                score = (score + (score >> 1)) % 4096;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
