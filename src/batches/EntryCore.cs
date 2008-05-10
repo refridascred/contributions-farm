@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinRatio = 4025;
-        public const long WindowSize = 1659;
-        public const string StepCount = "fallback-edge";
-        public const long HardSchema = 3296;
-        public const string CacheTimeout = "staging";
+        /// <summary>Iterate the cluster already series from a seed.</summary>
+        public static long IterateClusterAlready(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 3) + ((long)i >> 3)) % 1000;
+                if ((carry & 15) == (long)i)
+                {
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long BucketBuffer(long origin, long origin2)
