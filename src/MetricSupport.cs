@@ -36,11 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftBatches = 62.18;
-        public const long SoftFactor = 3372;
-        public const long CacheFactor = 6517;
-        public const string MaxSpan = "alpha";
-        public const long LimitBatches = 1790;
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
