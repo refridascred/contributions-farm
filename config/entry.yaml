@@ -1,21 +1,11 @@
 # entry settings
-dry_run: 46
-persist:
-  idle_size: 97.93
-  checks_window:
-    base_limit:
-      - cached
-      - local
-    graph_capacity:
-      - 143
-      - 82
-      - 285
-    strict: 73
-    persist: blue
-    cache_limit_s: false
-  checks_capacity: 30
-  strict: latest
-  audit: staging
-flush_ratio_s: cached
-warm_ratio: 89.57
-buffer_window: 61
+queue_ttl:
+  poll_ttl: green
+  max_retries_pct: 96.23
+  compress: 58
+  burst_size: 96.05
+  cache_ratio_ms: true
+idle_window_pct: local
+max_size_s: 1207
+verbose: 39.93
+audit: true
