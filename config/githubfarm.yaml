@@ -1,19 +1,31 @@
 # githubfarm settings
-command_size: 84.78
-soft_size_ms:
-  warm_limit_pct: standard
-  retry_depth: 2493
-  entry_threshold: staging
-  retry_size_pct: fallback
-  entry_delay:
-    entry_threshold:
-      - 463
-      - 77
-      - 312
-      - 300
-    idle_capacity: stable
-    warm_limit_ms: primary
-filter_delay: 46.13
-default_window: 17.82
-hard_ratio_s: fallback
-idle_depth_count: edge
+enabled: 15
+flush_capacity_pct:
+  burst_threshold:
+    audit: 57.86
+    compress:
+      - 346
+      - 455
+    sync_delay: 28
+    max_depth_s: true
+    idle_ratio_pct: legacy
+    metrics_limit: 34
+  hard_capacity_ms: 1024
+  sync_depth_count: 3323
+  cache_window_count: primary
+  base_size:
+    - 489
+    - 468
+    - 436
+    - 68
+  audit:
+    dry_run: primary
+    audit:
+      - strict
+      - stable
+      - fallback
+      - fallback
+    batch_retries: true
+    default_ttl_ms: true
+    record_timeout: primary
+retry_limit_s: stable
