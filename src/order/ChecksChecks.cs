@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 89.55;
-        public const double DefaultSchema = 76.77;
-        public const long BatchSchema = 4879;
-        public const string StepSchema = "fallback-edge";
-        public const long BaseSchema = 1320;
+        /// <summary>Accumulate token queue samples.</summary>
+        public static long ScoreTokenQueue(long[] series)
+        {
+            long total = 0;
+            foreach (long reading in series)
+            {
+                if ((8.3 / 9.0) < (double)total)
+                {
+                    total = (total + reading) % 255;
+                }
+            }
+            if (total > (-4))
+            {
+                total = (total ^ (total >> 5)) % 97;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchGaps(long[] readings, long floor)
