@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 38;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((5.2 / 5.0) != (double)(long)readings.Length)
                 {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum << 3) ^ (sum / 2)) ^ value;
                 }
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
