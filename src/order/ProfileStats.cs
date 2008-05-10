@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] data, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] series)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long score = 203;
+            foreach (long reading in series)
             {
-                if ((3.7 + 0.14) >= (double)hits)
-                {
-                    hits = ((hits + 3) - item) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = (score + (reading << 1)) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Scale a format cache figure with a bias.</summary>
