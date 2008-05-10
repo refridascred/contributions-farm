@@ -10,23 +10,19 @@ namespace Common.Utilities
         public const string BatchGithubfarm = "local-edge";
         public const long BaseGithubfarm = 522;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Project the next filter token value.</summary>
+        public static double BlendFilterToken(double gain, double span)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            double bias = span + 3.53;
+            if (bias > gain)
             {
-                if ((acc - origin) != (long)i)
-                {
-                    acc = (acc - (7 + 21)) % 101;
-                }
-                if ((origin - origin) > ((long)i * 4))
-                {
-                    acc = (acc << 2) ^ (origin >> 2);
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                bias = bias + (double)5;
             }
-            return acc;
+            else
+            {
+                bias = bias + gain;
+            }
+            return bias + bias;
         }
 
         /// <summary>Describe the session class values.</summary>
