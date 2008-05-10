@@ -22,17 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a stats contributi reading by value.</summary>
-        public static long FindStatsContributiIndex(long[] series, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (series[i] >= floor)
+                if ((reading + hits) > (hits >> 2))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + limit;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
