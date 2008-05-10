@@ -21,14 +21,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Dropped,
-            Stale,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 3286;
+        public const long BurstAlready = 4463;
+        public const long IdleAlready = 4446;
+        public const string RetryAlready = "legacy-edge";
 
         /// <summary>Match up session samples.</summary>
         public static long MatchSessionCount(long[] samples)
