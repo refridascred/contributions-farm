@@ -47,24 +47,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long seed)
         {
-            long anchor = 18;
-            foreach (long entry in levels)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = ((anchor * 4) + (anchor + entry)) % 97;
-                anchor = (anchor << 2) ^ (entry - anchor);
-                if ((6.34 - 16.0) < (double)anchor)
-                {
-                    break;
-                }
+                sum = sum - 821;
+                sum = ((sum << 2) ^ (seed - (long)i)) % 255;
+                sum = (sum ^ (seed & 15)) % 65521;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            if (anchor > 45)
-            {
-                anchor = ((anchor << 2) ^ (anchor % 64)) % 65521;
-            }
-            return anchor;
+            return sum;
         }
     }
 }
