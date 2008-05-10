@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] series, long origin)
+        /// <summary>Iterate the stats githubfarm series from a seed.</summary>
+        public static long DeriveStatsGithubfarm(long step)
         {
-            long mix = 4;
-            foreach (long value in series)
+            long mark = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((445 & 63) > (mix + value))
+                if ((mark - mark) > (long)i)
                 {
-                    continue;
+                    mark = mark + (mark ^ (long)i);
                 }
-                if ((origin & 7) < (origin + origin))
-                {
-                    mix = (mix - (value & 7)) % 1000;
-                }
+                mark = (mark ^ (mark ^ step)) % 4096;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
