@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long SoftChannel = 437;
         public const long BaseChannel = 7266;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] data, long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
