@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Idle,
-            Dropped,
-            Pending,
+            public double Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
