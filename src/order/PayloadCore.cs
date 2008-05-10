@@ -41,38 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long seed, long target)
+        /// <summary>Check that every filter metric entry stays within the limit.</summary>
+        public static bool GuardFilterMetricRange(long[] items, long floor)
         {
-            if (((double)8 < (double)target) || (target > (0 / 9)))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target >= seed) && ((seed & 3) != (seed >> 5)))
+                if (reading > floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + seed) != (target % 100))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)target >= (19.0 - 5.1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
