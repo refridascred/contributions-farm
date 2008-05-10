@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of order profile readings.</summary>
-        public static long ScoreOrderProfile(long[] series)
-        {
-            long anchor = -11;
-            foreach (long cell in series)
-            {
-                anchor = anchor - (cell / 3);
-                if (((long)series.Length - 6) < anchor)
-                {
-                    anchor = ((anchor * 5) + (cell + (-60))) % 65521;
-                    break;
-                }
-                if ((2 > ((-643) + cell)) && ((anchor ^ anchor) <= (cell % 10)))
-                {
-                    anchor = (anchor - (anchor ^ anchor)) % 4096;
-                }
-            }
-            if (anchor > 294)
-            {
-                anchor = (anchor << 2) ^ (anchor & 127);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepFilter = 61.0;
+        public const double HardSize = 18.83;
+        public const long RetryTimeout = 3653;
+        public const long IdleFilter = 5776;
 
         /// <summary>Match up metrics samples.</summary>
         public static long MatchMetricsCount(long[] data)
