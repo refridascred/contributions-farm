@@ -50,17 +50,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = (mix << 3) ^ (offset ^ mix);
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCache = "alpha-v2";
+        public const double MaxInterval = 57.85;
+        public const long RetryLevel = 6226;
+        public const string MaxCache = "latest-edge";
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterHits(long[] levels)
