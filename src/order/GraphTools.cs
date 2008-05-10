@@ -39,16 +39,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Find the first commits buffer entry that matches the target.</summary>
+        public static long SeekCommitsBufferIndex(long[] data, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor - (anchor - limit)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
