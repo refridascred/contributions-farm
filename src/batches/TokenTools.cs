@@ -14,21 +14,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Count checks editor pairs that satisfy a relation.</summary>
