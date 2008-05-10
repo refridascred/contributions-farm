@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long origin, long step)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long diff = origin - step;
-            if ((double)diff > (double)(-388))
-            {
-                return 1;
-            }
-            else
-            {
-                if (593 > (step + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + diff) < (diff ^ step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            Retry,
+            New,
+            Active,
+            Failed,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
