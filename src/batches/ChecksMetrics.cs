@@ -18,21 +18,15 @@ namespace Common.Utilities
         public const double BurstTimeout = 40.03;
         public const long DefaultTimeout = 9713;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the channel status values.</summary>
