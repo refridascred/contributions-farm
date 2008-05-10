@@ -90,12 +90,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 9495;
+        public const long RetrySize = 9401;
+        public const double IdleAlready = 4.25;
+        public const long HardRatio = 5350;
     }
 }
