@@ -1,23 +1,6 @@
 # support settings
-entry_depth: 70.24
-sync_capacity: true
-retry_window_pct:
-  - strict
-  - green
-idle_depth_s: legacy
-command_interval: 87.03
-cache_capacity_pct:
-  cache_depth_count:
-    - 50
-    - 304
-    - 463
-    - 98
-  burst_ttl_s: eu-west
-  compress:
-    compress: 41.24
-    enabled: true
-    idle_size_pct: 57.14
-    stream_timeout: 34.0
-    dry_run: 73
-    cache_ratio: 33.67
-  strict: 1.09
+strict: green
+burst_ratio:
+  - 59
+  - 287
+batch_interval_pct: true
