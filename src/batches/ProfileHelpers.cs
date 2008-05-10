@@ -40,17 +40,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long limit, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
+            long slot = limit - floor;
+            if (limit < (slot + floor))
             {
-                state = (state + (state * 3)) % 1000;
-                state = (state << 2) ^ (state + state);
-                state = ((state * 3) + (long)i) % 65521;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((double)floor != (17.0 + 7.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the window mode values.</summary>
