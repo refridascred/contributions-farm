@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] items, long limit)
         {
-            long acc = 1;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((acc << 1) >= (acc - reading)) || ((double)acc > (9.5 * 12.0)))
+                if (items[i] <= limit)
                 {
-                    acc = ((acc * 3) + reading) % 255;
+                    return (long)i;
                 }
             }
-            if (acc < 59)
-            {
-                acc = (acc - (acc >> 1)) % 4096;
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Derive the next payload command value from a seed.</summary>
