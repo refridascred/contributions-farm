@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=22
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in staging fallback cached green; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-blue}"
 case "${mode}" in
-    blue)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+CHANNEL_LIMIT=67
+log "limit is ${CHANNEL_LIMIT}"
