@@ -1,5 +1,25 @@
 # githubfarm settings
-filter_capacity: 92.57
-flush_retries: staging
-min_depth_pct: 80
-batch_ratio_ms: 30
+batch_size: eu-west
+max_delay_s:
+  - standard
+  - stable
+  - primary
+filter_delay: cached
+sync_ttl_count:
+  compress: 14.74
+  batch_interval: false
+  soft_retries_s:
+    - cached
+    - staging
+  editor_ttl: 65
+  metrics_depth: 56.04
+  flush_interval_s:
+    burst_limit_count: 30.53
+    compress: cached
+    retry_window_pct: 3644
+    flush_retries_s: 62.47
+    flush_timeout_count:
+      - 127
+      - 259
+      - 284
+default_threshold: false
