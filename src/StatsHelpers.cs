@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many format payload samples are out of range.</summary>
-        public static long AuditFormatPayloadOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((38 << 2) <= (reading + (-221)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitLevel = 73.36;
+        public const long StepCount = 8637;
+        public const long SoftProfile = 1359;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long CompareWindowCount(long[] readings)
