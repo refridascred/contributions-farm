@@ -14,14 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] samples)
         {
-            Done,
-            New,
-            Stale,
-            Active,
-            Pending,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((1 ^ count) >= ((-9) + count))
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a session reading.</summary>
