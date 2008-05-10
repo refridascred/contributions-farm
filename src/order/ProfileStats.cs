@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Draft,
-            Retry,
-            New,
-            Active,
             Failed,
+            Done,
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
