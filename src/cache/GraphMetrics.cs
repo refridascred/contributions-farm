@@ -25,19 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] items, long target)
+        /// <summary>Roll a route batches counter forward.</summary>
+        public static long RollRouteBatches(long step)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = anchor - step;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
