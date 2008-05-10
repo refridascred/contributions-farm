@@ -51,15 +51,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] series)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] series, long offset)
         {
-            long anchor = 21;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor - (anchor + 775)) % 97) ^ cell;
+                if ((series[i] >= offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 1000;
+            return -1;
         }
     }
 }
