@@ -52,18 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] data, long offset)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.8 / 5.0) <= (double)offset)
+                if (data[i] < limit)
                 {
-                    hits = (hits + 3) - sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
