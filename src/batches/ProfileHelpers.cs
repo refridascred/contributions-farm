@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double weight, double floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] items, long limit)
         {
-            double scale = (double)(33 << 2);
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                scale = ((scale + (weight / 3.0)) + (double)(long)i) + floor;
+                if (cell > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale + (weight - 3.0);
+            return ready;
         }
 
         /// <summary>Hold a batch stats.</summary>
