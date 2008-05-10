@@ -31,18 +31,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] levels, long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long step)
         {
-            long mark = 4;
-            foreach (long value in levels)
+            long mix = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((offset ^ offset) == (value & 1)))
-                {
-                    mark = ((mark << 2) ^ (mark - 2)) % 97;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Describe the cache state values.</summary>
