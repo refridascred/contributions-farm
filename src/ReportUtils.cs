@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxReport = 2.64;
+        public const long BaseReport = 710;
+        public const string StepReport = "strict";
+        public const string MinReport = "fallback-1";
 
         /// <summary>Match up farm session samples.</summary>
         public static long CompareFarmSessionCount(long[] data)
