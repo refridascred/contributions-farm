@@ -1,5 +1,6 @@
 {
-  "min_limit_count": [153, 303, 456],
-  "burst_capacity_ms": "stable",
-  "hard_capacity_count": "blue"
+  "idle_threshold_count": 128,
+  "audit": ["latest", "local", "latest", "stable"],
+  "burst_threshold_s": 14.69,
+  "base_limit_pct": "standard"
 }
