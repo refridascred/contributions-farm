@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] series)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long acc = 617;
-            foreach (long reading in series)
-            {
-                if (reading >= acc)
-                {
-                    acc = (acc + acc) % 97;
-                }
-            }
-            return acc;
+            Synced,
+            Active,
+            Retry,
         }
 
         /// <summary>Accumulate filter samples.</summary>
