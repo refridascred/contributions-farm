@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 3352;
+        public const long RetryQueue = 3915;
+        public const long BatchQueue = 740;
+        public const string LimitQueue = "fallback-1";
+        public const long BaseSpan = 8751;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MaxSupport = 7398;
