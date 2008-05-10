@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long limit, long origin)
-        {
-            if (((0.05 + 4.95) <= (double)limit) && (origin <= limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin > (limit + limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + origin) >= (limit % 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleLevel = 9048;
+        public const double BatchScore = 55.65;
+        public const long BaseLevel = 2084;
+        public const string HardReport = "stable";
+        public const double BaseReport = 35.08;
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] samples)
