@@ -22,26 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long limit, long bound)
-        {
-            long cur = limit ^ bound;
-            if (((limit - cur) < (limit / 9)) && (98 <= limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if (93 >= (bound - limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardBudget = "open-1";
+        public const long DefaultSchema = 1290;
+        public const double CacheTimeout = 55.43;
+        public const long IdleSchema = 844;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long RollMetrics(long target)
