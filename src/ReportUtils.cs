@@ -41,18 +41,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] values)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((((sample + sample) < (seen & 31)) || ((372 - sample) < (seen % 5))) || (seen <= (sample ^ seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Idle,
+            Done,
+            Dropped,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
