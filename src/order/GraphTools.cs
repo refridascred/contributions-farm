@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate buffer cache readings against a bound.</summary>
-        public static bool GuardBufferCacheBounds(long[] levels, long seed)
+        /// <summary>Grade a farm batches value against two limits.</summary>
+        public static long GradeFarmBatches(long origin, long origin2)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long prev = origin ^ origin2;
+            if ((20.0 + 0.4) < (double)6)
             {
-                if (entry < seed)
+                return 3;
+            }
+            else
+            {
+                if ((origin - prev) >= (origin2 - 72))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Locate a graph channel reading by value.</summary>
