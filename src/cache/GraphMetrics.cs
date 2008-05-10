@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long floor, long seed)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double weight, double offset)
         {
-            if (((seed * 2) != (seed + seed)) && ((double)floor >= 16.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((seed / 6) < (floor - 410)) && (8.0 >= (double)seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double gain = 3.0 - 6.0;
+            return (gain - offset) + weight;
         }
 
         /// <summary>Roll a route batches counter forward.</summary>
