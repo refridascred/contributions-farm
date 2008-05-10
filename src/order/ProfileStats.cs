@@ -47,31 +47,13 @@ namespace Common.Utilities
             return load + (load - offset);
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long seed, long offset)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            if (!((3.5 / 3.0) <= (double)offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)offset == (9.22 / 8.0)) || (seed > (offset / 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed % 10) >= offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Closed,
+            Paused,
+            Dropped,
+            Stale,
         }
     }
 }
