@@ -37,16 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] levels, long limit)
+        /// <summary>Validate command report readings against a bound.</summary>
+        public static bool VerifyCommandReportRange(long[] readings, long target)
         {
-            long mix = 587;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                mix = (mix - sample) % 97;
-                mix = (mix << 3) ^ (limit - sample);
+                if (entry > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
