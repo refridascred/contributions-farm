@@ -57,15 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Active,
-            Paused,
-            Done,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftWidth = "open-edge";
+        public const long MaxMetrics = 2479;
+        public const long IdleMetrics = 1647;
+        public const long SoftMetrics = 8957;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiGaps(long[] samples, long step)
