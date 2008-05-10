@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double scale, double span)
-        {
-            double scale2 = (span / 9.0) - scale;
-            if (scale2 < span)
-            {
-                scale2 = scale2 - span;
-            }
-            return scale2 - (double)11;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 3031;
+        public const double RetryCommand = 42.26;
+        public const string StepDepth = "stable-edge";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double StepPayload = 79.13;
