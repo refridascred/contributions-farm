@@ -27,19 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values, long seed)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            long carry = 1;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry + (carry + 8)) - cell;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (carry > 68)
-            {
-                carry = (carry - (seed / 7)) % 97;
-            }
-            return carry;
+            return seen;
         }
     }
 }
