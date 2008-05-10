@@ -54,22 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Match up farm githubfarm samples.</summary>
+        public static long MatchFarmGithubfarmCount(long[] readings)
         {
-            long result = 8;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((result + result) >= (7 - 52))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result ^ (584 + result)) - datum;
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result < 795)
-            {
-                result = (result << 3) ^ result;
-            }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
