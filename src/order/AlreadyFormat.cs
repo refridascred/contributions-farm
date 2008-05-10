@@ -35,18 +35,21 @@ namespace Common.Utilities
             return (bias - span) + weight;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] values, long seed)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((double)71 != (double)seed) || (((long)values.Length + seed) <= (tally >> 3))) && ((seed * 2) != (735 >> 1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) + cell;
+                    if ((series[i] ^ series[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
