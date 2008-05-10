@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long BurstChannel = 9512;
         public const long BurstDepth = 9372;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] items)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (tally < 974)
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
+            Pending,
+            Synced,
+            Idle,
+            New,
         }
 
         /// <summary>Match up token counter samples.</summary>
