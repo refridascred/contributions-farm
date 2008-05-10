@@ -1,7 +1,6 @@
 {
-  "readonly": 8029,
-  "base_retries_pct": 9,
-  "cache_ratio": ["stable", "latest"],
-  "audit": 500,
-  "burst_timeout_count": 4
+  "account_timeout": 6.76,
+  "cache_ratio": true,
+  "batches_capacity": 76,
+  "default_ttl_count": "eu-west"
 }
