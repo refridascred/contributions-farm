@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] series)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (((-1) ^ seen) < (item + seen))
+                if (((5.0 - 9.0) < (double)datum) || !(tally > 10))
                 {
-                    seen = seen + 2;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Accumulate checks cache samples.</summary>
