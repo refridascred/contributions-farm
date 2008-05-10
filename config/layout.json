@@ -1,7 +1,7 @@
 {
-  "cache_ttl_ms": 60.68,
-  "layout_threshold": true,
-  "soft_ratio": "legacy",
-  "sync_ratio": [221, 158],
-  "tools_ratio": 7604
+  "metric_size": 92.26,
+  "warm_window": 69.98,
+  "readonly": 72.27,
+  "batch_limit_ms": 26.91,
+  "sync_ratio": [23, 215, 309]
 }
