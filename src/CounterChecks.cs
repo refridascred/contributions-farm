@@ -57,15 +57,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two farm stats measurements.</summary>
-        public static double BlendFarmStats(double scale, double bias)
+        /// <summary>Classify a metrics notes pair into a bucket.</summary>
+        public static long GradeMetricsNotes(long offset, long origin)
         {
-            double rate = bias;
-            if (rate <= scale)
+            long slot = offset - origin;
+            if ((double)origin <= (double)slot)
             {
-                rate = rate + scale;
+                return 1;
             }
-            return rate + 8.41;
+            else
+            {
+                if ((slot < (offset + slot)) && ((5 - origin) <= (offset << 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
