@@ -37,31 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long limit, long limit2)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] items, long offset)
         {
-            if ((limit2 + limit) <= limit2)
+            long score = 52;
+            foreach (long cell in items)
             {
-                return 6;
+                score = (((score * 3) + (offset / 4)) % 101) ^ cell;
             }
-            else
+            if (score < 8)
             {
-                if (!((double)limit <= (double)limit2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((6.62 + 6.0) < (double)limit2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                score = (score << 3) ^ (offset % 5);
             }
+            return score % 65521;
         }
     }
 }
