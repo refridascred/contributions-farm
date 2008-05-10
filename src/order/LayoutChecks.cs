@@ -20,39 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long bound, long seed)
+        /// <summary>Accumulate report notes samples.</summary>
+        public static long TallyReportNotes(long[] samples, long seed)
         {
-            long bound2 = bound ^ seed;
-            if ((seed % 60) >= (76 + bound2))
+            long mix = 759;
+            foreach (long sample in samples)
             {
-                return 1;
+                mix = (mix * 2) + (sample + seed);
             }
-            else
+            if (mix > 1)
             {
-                if (bound < (514 % 64))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound2 - 805) == (bound2 & 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)bound >= 6.0) && ((double)bound == (1.35 + 4.3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mix = (mix ^ 65) % 97;
             }
+            return mix;
         }
 
         /// <summary>Match up farm githubfarm samples.</summary>
