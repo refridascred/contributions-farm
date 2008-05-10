@@ -32,19 +32,18 @@ namespace Common.Utilities
             return bias - (bias / 8.0);
         }
 
-        /// <summary>Accumulate layout order samples.</summary>
-        public static long ScoreLayoutOrder(long[] levels, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] data, long seed)
         {
-            long total = 48;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long reading in data)
             {
-                total = ((total << 2) ^ (offset & 1)) % 65521;
-                if ((double)offset <= (double)item)
+                if ((double)reading == (6.94 * 7.7))
                 {
-                    total = (total * 4) + (offset / 3);
+                    count = (count + 3) - seed;
                 }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Blend two account window measurements.</summary>
