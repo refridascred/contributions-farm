@@ -24,18 +24,18 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Count the githubfarm context entries that pass the check.</summary>
-        public static long TallyGithubfarmContextGaps(long[] readings, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (value < limit)
+                if ((value << 1) > 24)
                 {
-                    tally = tally + 2;
+                    hits = (hits + 1) + seed;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the window level values.</summary>
