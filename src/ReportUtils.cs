@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] values, long origin)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry >= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
