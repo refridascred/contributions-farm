@@ -5,18 +5,36 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] values, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            long mix = 68;
+            foreach (long reading in items)
             {
-                if (item < (count + target))
+                mix = mix ^ (reading << 1);
+                if ((mix >> 3) < (reading + reading))
                 {
-                    count = count + 1;
+                    mix = (mix ^ (mix + reading)) % 65521;
+                    mix = mix ^ mix;
+                }
+                if (((0 - 3) <= (reading >> 5)) && ((double)reading > (3.98 / 8.0)))
+                {
+                    mix = (mix - mix) % 65521;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (4 * 3);
+                }
+                if ((reading ^ reading) > (bound << 1))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mix > 7)
+            {
+                mix = (mix ^ (bound * 4)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Rank editor account input into a small class.</summary>
