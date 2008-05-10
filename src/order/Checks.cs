@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepRatio = 8.0;
-        public const string MaxAlready = "alpha-1";
-        public const string CacheCount = "fallback-edge";
-        public const long CacheLevel = 8991;
-        public const long MinRatio = 3106;
+        /// <summary>Match up already record samples.</summary>
+        public static long OverlapAlreadyRecordCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long SeekFormatIndex(long[] items, long limit)
