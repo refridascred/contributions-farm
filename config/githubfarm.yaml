@@ -1,28 +1,11 @@
 # githubfarm settings
-schema_interval: legacy
-session_ttl:
-  - 193
-  - 49
-  - 487
-  - 311
-min_retries:
-  min_interval:
-    - legacy
-    - standard
-    - legacy
-  poll_window:
-    soft_ttl: strict
-    burst_window_pct: 6373
-    hard_window_pct: 100
-    burst_limit_count: false
-  persist: open
-  base_ratio_s:
-    poll_size_s:
-      - standard
-      - eu-west
-    notes_delay: false
-    base_threshold_ms: 68.94
-    base_delay: legacy
-    githubfarm_threshold: true
-  githubfarm_retries: edge
-  retry_depth: false
+idle_ttl_count: green
+warm_ratio_ms: 7390
+hard_delay_ms: false
+batch_window_pct:
+  - 383
+  - 107
+  - 318
+  - 105
+default_depth_ms: true
+counter_capacity: fallback
