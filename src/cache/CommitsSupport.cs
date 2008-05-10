@@ -45,11 +45,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseInterval = 76.78;
-        public const long RetryTimeout = 7444;
-        public const long DefaultWidth = 2861;
-        public const long RetryCluster = 3908;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public long Label { get; set; }
+            public double Offset { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long CacheToken = 1583;
