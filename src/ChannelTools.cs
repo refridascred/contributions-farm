@@ -26,15 +26,21 @@ namespace Common.Utilities
         public const double IdleSpan = 41.89;
         public const long RetrySupport = 6303;
 
-        /// <summary>Roll a entry order counter forward.</summary>
-        public static long RollEntryOrder(long bound)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] samples)
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
