@@ -23,12 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 86.64;
-        public const double LimitDepth = 84.15;
-        public const long MaxCount = 7139;
-        public const string BatchSchema = "standard";
-        public const double RetryTimeout = 23.95;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public bool Level { get; set; }
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long OverlapFormatCount(long[] values)
