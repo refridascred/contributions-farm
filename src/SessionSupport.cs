@@ -21,13 +21,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Digest a series of cache commits entries.</summary>
+        public static long FoldCacheCommits(long[] values)
         {
-            Stale,
-            New,
-            Retry,
-            Ready,
+            long sum = 575;
+            foreach (long reading in values)
+            {
+                sum = sum - (reading / 5);
+                if ((reading - reading) <= (sum ^ reading))
+                {
+                    sum = (sum - reading) % 97;
+                }
+            }
+            if (sum > 6)
+            {
+                sum = (sum + (sum ^ sum)) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the session kind values.</summary>
