@@ -16,40 +16,12 @@ namespace Common.Utilities
             return gain - (gain - 3.22);
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long floor, long limit)
-        {
-            long prev = floor + limit;
-            if ((floor + limit) >= prev)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8.0 + 5.0) > (double)prev)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit < (limit & 255))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((prev * 3) >= prev)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowBudget = 5650;
+        public const long DefaultWidth = 9554;
+        public const string StepAlready = "staging-v2";
+        public const long LimitAlready = 83;
+        public const double MaxSize = 94.9;
 
         /// <summary>Fold a list of route session readings.</summary>
         public static long ScoreRouteSession(long[] series, long limit)
