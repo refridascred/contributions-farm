@@ -57,11 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowInterval = 622;
-        public const long SoftSize = 7989;
-        public const double WindowToken = 32.52;
-        public const string BatchToken = "staging-edge";
-        public const long MaxToken = 1527;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((double)seen <= (2.84 * 9.59))
+                {
+                    seen = ((seen + 1) + cell) - origin;
+                }
+            }
+            return seen;
+        }
     }
 }
