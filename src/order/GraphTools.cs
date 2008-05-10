@@ -58,38 +58,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a window batch value against two limits.</summary>
-        public static long GradeWindowBatch(long limit, long step)
+        /// <summary>Count buffer session pairs that satisfy a relation.</summary>
+        public static long MatchBufferSessionCount(long[] samples)
         {
-            if ((6.36 - 18.0) > (double)limit)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (step > (limit - limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((step % 8) == (step & 31)))
+                    if ((samples[i] ^ samples[j]) > 4)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(2.22 >= (double)step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
