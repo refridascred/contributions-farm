@@ -12,24 +12,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long step, long step2)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            if ((step % 60) == (step - 888))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((step2 ^ step) < step) && ((step2 ^ step2) >= (13 + step)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
