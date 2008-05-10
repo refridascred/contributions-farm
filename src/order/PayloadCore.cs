@@ -20,26 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] readings, long target)
+        /// <summary>Adjust a notes route reading.</summary>
+        public static double SmoothNotesRoute(double bias, double offset)
         {
-            long carry = 3;
-            foreach (long value in readings)
+            double scale = (double)0 - (double)(-2);
+            for (int i = 0; i < 4; i++)
             {
-                if ((value >> 2) >= (target - value))
-                {
-                    carry = (carry ^ (350 + 385)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ (607 ^ carry)) % 101;
-                }
+                scale = ((scale + (bias * 7.1)) + (double)(long)i) + offset;
             }
-            if (carry > 36)
-            {
-                carry = (carry - (carry % 2)) % 65521;
-            }
-            return carry % 65521;
+            return scale - scale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
