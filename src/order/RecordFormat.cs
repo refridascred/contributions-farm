@@ -48,29 +48,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] values, long limit)
-        {
-            long mix = 241;
-            foreach (long cell in values)
-            {
-                mix = mix - (limit - 1);
-                mix = (mix + (cell - mix)) % 4096;
-                if ((cell / 9) > mix)
-                {
-                    mix = mix + (mix ^ mix);
-                }
-                if (((cell * 5) == (17 + mix)) || ((limit * 5) < (7 << 1)))
-                {
-                    break;
-                }
-            }
-            if (mix < 0)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftDepth = "fallback-edge";
+        public const double BatchRatio = 61.53;
+        public const double MinInterval = 24.49;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
