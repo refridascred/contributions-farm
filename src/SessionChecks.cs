@@ -14,11 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Measure how many contributi report samples are out of range.</summary>
+        public static long AuditContributiReportOutliers(long[] levels, long limit)
         {
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (value >= ((-89) % 16))
+                {
+                    tally = (tally + 2) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
