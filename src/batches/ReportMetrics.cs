@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double scale, double bias)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double mean = bias * 0.98;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = ((mean - bias) + (double)(long)i) + scale;
-            }
-            return mean + 9.0;
+            public bool Level { get; set; }
+            public long Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
