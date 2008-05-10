@@ -30,18 +30,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] data, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((6 - item) >= 0)
-                {
-                    tally = (tally + 3) - seed;
-                }
-            }
-            return tally;
+            Retry,
+            Done,
+            Paused,
+            Active,
+            Pending,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
