@@ -36,19 +36,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] levels, long offset)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Locate a window reading by value.</summary>
