@@ -50,18 +50,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes record readings against a rule.</summary>
-        public static long AuditNotesRecordMatches(long[] readings, long origin)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (!(5.5 >= (double)sample))
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
+            Draft,
+            Locked,
+            Done,
+            New,
+            Synced,
         }
     }
 }
