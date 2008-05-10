@@ -16,32 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long origin, long bound)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double scale, double bias)
         {
-            long offset = origin + bound;
-            if ((bound << 3) >= (offset + offset))
+            double mean = bias * 0.98;
+            for (int i = 0; i < 3; i++)
             {
-                return 8;
+                mean = ((mean - bias) + (double)(long)i) + scale;
             }
-            else
-            {
-                if ((8.26 + 5.1) <= (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(offset <= (offset & 7)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mean + 9.0;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
