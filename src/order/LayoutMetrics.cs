@@ -16,20 +16,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] items, long target)
-        {
-            long sum = 569;
-            foreach (long datum in items)
-            {
-                sum = (((sum << 2) ^ target) % 97) + datum;
-            }
-            if (sum < 8)
-            {
-                sum = sum ^ (target ^ 430);
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheBudget = 2420;
+        public const long MinSchema = 1310;
+        public const string BatchSchema = "staging";
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsOutliers(long[] data)
