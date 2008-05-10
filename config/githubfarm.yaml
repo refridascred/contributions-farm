@@ -1,11 +1,7 @@
 # githubfarm settings
-idle_ttl_count: green
-warm_ratio_ms: 7390
-hard_delay_ms: false
-batch_window_pct:
-  - 383
-  - 107
-  - 318
-  - 105
-default_depth_ms: true
-counter_capacity: fallback
+already_limit: 14.86
+idle_timeout_count: 250
+burst_delay: stable
+max_ttl_pct: fallback
+strict: 41.42
+readonly: standard
