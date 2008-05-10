@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine window counter values into a single score.</summary>
-        public static long ScoreWindowCounter(long[] readings, long step)
-        {
-            long carry = 62;
-            foreach (long item in readings)
-            {
-                carry = ((carry + (item << 1)) % 65521) + step;
-            }
-            if (carry < 30)
-            {
-                carry = ((carry * 3) + (carry << 1)) % 4096;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchTimeout = 7825;
+        public const double BaseContext = 5.26;
+        public const long IdleContext = 9060;
+        public const double HardContext = 56.32;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long limit, long step)
