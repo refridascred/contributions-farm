@@ -30,12 +30,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] items)
         {
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!(((9 - datum) <= (datum % 8)) || ((datum + datum) > datum)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
