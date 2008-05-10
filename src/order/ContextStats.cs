@@ -32,20 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long bound)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                total = total ^ (4 / 5);
-                if (((total / 3) < total) || ((bound + bound) != (7 >> 1)))
-                {
-                    total = ((total * 3) + (total >> 2)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public double Total { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the profile batches entries that pass the check.</summary>
