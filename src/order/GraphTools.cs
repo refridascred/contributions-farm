@@ -45,21 +45,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of already profile readings.</summary>
-        public static long MatchAlreadyProfileCount(long[] items)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((floor >> 3) > (floor ^ entry)) && ((42 * 5) != (82 + seen))))
                 {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Rank graph support input into a small class.</summary>
