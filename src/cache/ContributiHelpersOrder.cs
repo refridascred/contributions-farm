@@ -10,31 +10,18 @@ namespace Common.Utilities
         public const double BatchAlready = 13.84;
         public const long IdleAlready = 3663;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long limit, long limit2)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] series, long origin)
         {
-            if (!(limit <= (limit - limit)))
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit << 2) < (limit2 ^ limit))
+                if (!((double)count >= (9.0 / 5.0)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit2 == (double)71)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = ((count + 3) ^ datum) + origin;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
