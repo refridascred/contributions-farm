@@ -31,11 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long floor)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
+            long state = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
