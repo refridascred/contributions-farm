@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Dropped,
-            Locked,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 8403;
+        public const long IdleFarm = 528;
+        public const long LimitTimeout = 7613;
+        public const double MinFarm = 48.13;
+        public const long LimitFarm = 8508;
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
