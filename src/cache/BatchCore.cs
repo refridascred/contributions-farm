@@ -26,15 +26,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Locate a support channel reading by value.</summary>
+        public static long FindSupportChannelIndex(long[] data, long limit)
         {
-            long anchor = 181;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor + (sample + anchor);
+                if ((data[i] == limit) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a order stats.</summary>
