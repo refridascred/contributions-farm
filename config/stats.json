@@ -1,11 +1,17 @@
 {
-  "editor_threshold": 24.43,
-  "farm_delay": "strict",
-  "dry_run": {
-    "base_ratio_pct": 8.95,
-    "support_capacity": [320, 148],
-    "min_window": [218, 153, 75],
-    "soft_window_ms": 100,
-    "batch_ttl_count": 14
-  }
+  "session_depth": "edge",
+  "tools_delay": {
+    "batch_ratio": 5019,
+    "flush_retries": 6419,
+    "audit": 950,
+    "compress": {
+      "burst_delay": "edge",
+      "idle_retries": true,
+      "warm_window": "local",
+      "account_retries": 100,
+      "farm_interval": "green",
+      "verbose": "cached"
+    }
+  },
+  "soft_threshold_ms": 100
 }
