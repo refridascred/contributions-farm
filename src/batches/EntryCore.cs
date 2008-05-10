@@ -53,20 +53,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] data)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long score = 0;
-            foreach (long reading in data)
-            {
-                long edge = (score ^ 0) ^ (score / 9);
-                score = score ^ edge;
-                if (((reading >> 4) >= (score & 7)) || ((reading << 3) <= 47))
-                {
-                    score = (score << 2) ^ (reading >> 2);
-                }
-            }
-            return score;
+            public double Label { get; set; }
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
