@@ -14,18 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Count the githubfarm context entries that pass the check.</summary>
+        public static long TallyGithubfarmContextGaps(long[] readings, long limit)
         {
-            long result = 51;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((double)result >= (3.5 * 20.0))
+                if (value < limit)
                 {
-                    result = (result + reading) % 255;
+                    tally = tally + 2;
                 }
             }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Hold a commits header.</summary>
