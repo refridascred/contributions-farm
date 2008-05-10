@@ -40,11 +40,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
