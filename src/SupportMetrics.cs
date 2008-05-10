@@ -37,18 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftLevel = 8212;
+        public const string LimitGraph = "staging";
+        public const long BaseRatio = 6243;
+        public const long WindowGraph = 7961;
 
         /// <summary>Project the next record value.</summary>
         public static double AdjustRecord(double weight, double floor)
