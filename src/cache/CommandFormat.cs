@@ -13,21 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine profile values into a single score.</summary>
