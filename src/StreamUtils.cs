@@ -19,18 +19,21 @@ namespace Common.Utilities
         public const string LimitTimeout = "latest-edge";
         public const string DefaultRatio = "strict-v2";
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] series)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((value <= (count / 7)) || ((0 + count) >= (count % 64))) || ((710 + count) > (count + count)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
+                    if ((items[i] - items[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit context window readings against a rule.</summary>
