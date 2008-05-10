@@ -1,6 +1,11 @@
 {
-  "hard_timeout_count": "open",
-  "batch_retries_count": ["eu-west", "open"],
-  "stream_delay": true,
-  "dry_run": 60
+  "editor_threshold": 24.43,
+  "farm_delay": "strict",
+  "dry_run": {
+    "base_ratio_pct": 8.95,
+    "support_capacity": [320, 148],
+    "min_window": [218, 153, 75],
+    "soft_window_ms": 100,
+    "batch_ttl_count": 14
+  }
 }
