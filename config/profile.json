@@ -1,12 +1,13 @@
 {
-  "base_ttl_count": 63.54,
-  "cache_depth": 79,
-  "burst_limit_s": {
-    "batch_size_ms": 37.93,
-    "enabled": ["eu-west", "green", "latest", "eu-west"],
-    "flush_capacity_s": 250
+  "graph_size": 5844,
+  "cache_interval": {
+    "tools_ttl": [112, 153, 292, 240],
+    "persist": {
+      "compress": "strict",
+      "dry_run": "edge",
+      "default_interval": 64
+    },
+    "route_delay": true
   },
-  "batch_ratio": 5144,
-  "sync_limit_ms": 500,
-  "persist": false
+  "burst_ratio_count": 1024
 }
