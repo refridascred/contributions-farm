@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Validate batches session readings against a bound.</summary>
+        public static bool VerifyBatchesSessionRange(long[] values, long origin)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first already report entry that matches the target.</summary>
