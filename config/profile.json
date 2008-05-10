@@ -1,14 +1,7 @@
 {
-  "layout_window": 30,
-  "counter_window": "staging",
-  "cache_depth_pct": ["latest", "blue", "legacy"],
-  "default_threshold_count": {
-    "persist": ["primary", "edge", "cached"],
-    "poll_capacity_pct": "staging",
-    "flush_retries": "local",
-    "idle_threshold": 3282,
-    "base_timeout_ms": 60,
-    "max_retries_count": [46, 391, 35]
-  },
-  "profile_window": "primary"
+  "graph_depth": false,
+  "sync_ttl_ms": "local",
+  "buffer_capacity": "green",
+  "base_depth_pct": true,
+  "readonly": "open"
 }
