@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "staging-edge";
+        public const double WindowToken = 65.24;
+        public const string BaseSpan = "staging-edge";
+        public const long IdleWidth = 1234;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterGaps(long[] values)
