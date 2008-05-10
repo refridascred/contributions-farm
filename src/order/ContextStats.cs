@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] readings, long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((3.0 * 0.8) >= (double)seen)
+                if ((18.0 / 2.0) == (double)floor)
                 {
-                    seen = ((seen + 2) ^ value) + floor;
+                    result = result - (486 + floor);
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Hold a command summary.</summary>
