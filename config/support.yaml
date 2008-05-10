@@ -1,28 +1,11 @@
 # support settings
-strict: 48
-base_capacity_ms: eu-west
-retry_ratio_count:
-  - standard
-  - green
-  - blue
-  - strict
-metric_limit: 100
-checks_threshold:
-  checks_ratio: 3538
-  burst_size_pct:
-    entry_capacity:
-      - fallback
-      - standard
-      - edge
-      - strict
-    cache_delay_s: 78.15
-    retry_timeout: 500
-    idle_delay: 500
-    flush_timeout_ms: 2828
-    metric_depth: cached
-  default_timeout_ms: 500
-  record_timeout: local
-  persist:
-    - 113
-    - 6
-  cache_delay: eu-west
+dry_run: false
+account_retries: 13.7
+hard_depth: 76.59
+channel_threshold:
+  min_threshold_s: false
+  order_retries: 71
+  base_timeout_count: latest
+  context_threshold: 52
+  notes_window: 250
+cache_timeout: 8605
