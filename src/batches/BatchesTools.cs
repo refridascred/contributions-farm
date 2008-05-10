@@ -28,13 +28,14 @@ namespace Common.Utilities
         public const double CacheTimeout = 55.43;
         public const long IdleSchema = 844;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Queued,
             Synced,
-            Paused,
-            Retry,
+            New,
+            Closed,
+            Active,
+            Idle,
         }
     }
 }
