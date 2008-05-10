@@ -1,5 +1,16 @@
 {
-  "batch_ttl_pct": "eu-west",
-  "verbose": 2,
-  "idle_timeout_ms": 1024
+  "poll_size_count": {
+    "cache_timeout_pct": 500,
+    "compress": 73,
+    "flush_limit": {
+      "retry_size_ms": [222, 181],
+      "base_retries_count": 96,
+      "farm_ttl": 82
+    }
+  },
+  "retry_capacity_ms": 1024,
+  "soft_depth_pct": 500,
+  "graph_limit": "local",
+  "dry_run": false,
+  "retry_retries_s": 35
 }
