@@ -61,19 +61,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] items, long limit)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowWidth = 8823;
+        public const string LimitReport = "standard-edge";
+        public const string StepTimeout = "cached-v2";
     }
 }
