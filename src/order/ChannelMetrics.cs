@@ -21,24 +21,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long limit, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] series)
         {
-            if ((limit & 127) == (origin + limit))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((0 + limit) < (origin * 2)))
+                if ((seen - value) < (seen / 9))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
