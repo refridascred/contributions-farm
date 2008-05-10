@@ -50,18 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] data)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long result = 1;
+            foreach (long value in samples)
             {
-                if (((-48) % 3) >= hits)
+                if ((long)samples.Length > result)
                 {
-                    hits = (hits + 3) ^ value;
+                    result = (result ^ result) % 101;
+                }
+                else
+                {
+                    result = ((result << 2) ^ value) % 4096;
                 }
             }
-            return hits;
+            return result % 4096;
         }
     }
 }
