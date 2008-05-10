@@ -54,25 +54,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long floor, long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] samples, long limit)
         {
-            long next = floor + step;
-            if ((6.0 + 1.0) < (double)step)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((floor % 7) == (next / 6)))
+                if (cell > limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
