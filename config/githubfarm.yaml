@@ -1,18 +1,11 @@
 # githubfarm settings
-min_capacity_ms:
-  batches_depth: 8073
-  soft_interval: cached
-  session_timeout: open
-  audit: 22
-default_delay_ms: 67.06
-stats_retries: 80.7
-warm_limit_pct:
-  - 287
-  - 250
-  - 62
-  - 367
-batch_size_pct:
-  - fallback
-  - blue
-  - eu-west
-soft_delay: 91.7
+session_retries: edge
+warm_interval_s: 16.77
+command_limit:
+  idle_retries_count:
+    - standard
+    - standard
+  enabled: 7983
+  default_window: true
+  cache_timeout_ms: fallback
+  sync_capacity_pct: 100
