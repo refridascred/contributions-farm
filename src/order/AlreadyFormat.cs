@@ -13,19 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] samples, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (entry >= bound)
+                if ((matches + limit) >= matches)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) - sample;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Blend two cache measurements.</summary>
