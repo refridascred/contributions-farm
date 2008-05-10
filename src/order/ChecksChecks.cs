@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] samples, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] items)
         {
-            long mark = 4;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (((2.67 - 7.8) != (double)reading) && ((reading >> 2) == (223 + mark)))
+                if ((cell / 3) > 2)
                 {
-                    mark = (mark ^ (mark * 2)) + origin;
+                    hits = hits + 3;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Locate a command reading by value.</summary>
