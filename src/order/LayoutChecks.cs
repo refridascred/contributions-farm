@@ -20,34 +20,35 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long origin, long origin2)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long bound, long seed)
         {
-            if (!((origin2 >> 3) >= (origin - 41)))
+            long bound2 = bound ^ seed;
+            if ((seed % 60) >= (76 + bound2))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if ((origin2 / 5) < (origin2 + origin2))
+                if (bound < (514 % 64))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if ((75 - origin) < (10 * 2))
+                    if ((bound2 - 805) == (bound2 & 7))
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        if ((origin2 + origin) != (origin2 & 31))
+                        if (((double)bound >= 6.0) && ((double)bound == (1.35 + 4.3)))
                         {
-                            return 8;
+                            return 3;
                         }
                         else
                         {
-                            return 0;
+                            return 8;
                         }
                     }
                 }
