@@ -66,21 +66,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count buffer session pairs that satisfy a relation.</summary>
-        public static long MatchBufferSessionCount(long[] samples)
+        /// <summary>Rank graph support input into a small class.</summary>
+        public static long ClassifyGraphSupport(long limit, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = limit ^ step;
+            if (((8.0 / 4.0) <= (double)span) && ((double)step <= (7.0 / 6.0)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((step - span) >= step)
                 {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
     }
 }
