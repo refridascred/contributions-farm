@@ -26,13 +26,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Paused,
-            Dropped,
-            Queued,
-            Active,
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
