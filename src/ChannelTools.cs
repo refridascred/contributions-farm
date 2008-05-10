@@ -28,32 +28,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a command graph value against two limits.</summary>
-        public static long SortCommandGraph(long target, long offset)
-        {
-            long span = target - offset;
-            if ((double)offset != (12.0 * 18.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset * 2) == (target - span))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(span > (target + target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 9618;
+        public const long MaxRatio = 5311;
+        public const string IdleScore = "strict-1";
+        public const long CacheSpan = 2068;
+        public const string BurstDepth = "staging";
     }
 }
