@@ -1,20 +1,11 @@
 # support settings
-notes_ttl: primary
-retry_ratio_s:
-  batch_depth_s: 65.39
-  audit:
-    warm_timeout_pct: green
-    window_interval:
-      - stable
-      - cached
-      - primary
-      - strict
-    filter_delay: primary
-    soft_ttl_s: fallback
-    dry_run: 47
-  persist: 56.15
-  enabled: 15.51
-  max_limit_count: 6595
-hard_delay_count: 88.45
-base_retries_ms: false
-base_interval: 30
+base_limit: 81.35
+min_size_count:
+  - 68
+  - 317
+batch_ttl_count:
+  - 427
+  - 323
+  - 394
+  - 203
+audit: 95.11
