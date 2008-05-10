@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] values)
         {
-            Paused,
-            Pending,
-            Failed,
-            Stale,
-            Ready,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((double)tally == (2.3 / 8.0))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
