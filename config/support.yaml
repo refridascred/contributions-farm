@@ -1,7 +1,17 @@
 # support settings
-flush_limit_s: 7904
-soft_capacity_pct:
-  - primary
-  - green
-default_interval: 62
-base_limit: strict
+support_delay: eu-west
+warm_size_s: false
+sync_retries_s:
+  stats_size:
+    - 60
+    - 182
+  warm_timeout: standard
+  soft_limit_count:
+    - 354
+    - 274
+    - 360
+  max_size_s: primary
+  metric_depth: true
+  batch_delay: primary
+verbose: open
+account_timeout: 3.27
