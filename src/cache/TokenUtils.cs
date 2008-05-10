@@ -33,19 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] items, long target)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] samples, long step)
         {
-            long score = 925;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((69 - 605) > (target + score)))
+                if (samples[i] > step)
                 {
-                    score = ((score ^ (target + target)) % 101) + sample;
+                    return (long)i;
                 }
-                score = (score + (score - target)) % 101;
             }
-            return score;
+            return -1;
         }
     }
 }
