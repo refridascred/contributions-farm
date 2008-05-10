@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleLevel = 57;
-        public const long MaxSupport = 5657;
-        public const string DefaultSupport = "open-1";
+        /// <summary>Combine stats editor values into a single score.</summary>
+        public static long ScoreStatsEditor(long[] items)
+        {
+            long total = 32;
+            foreach (long datum in items)
+            {
+                total = ((total * 4) + (datum >> 5)) % 255;
+            }
+            if (total > (-44))
+            {
+                total = ((total * 2) + total) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long PairCacheCount(long[] values)
