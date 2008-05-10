@@ -34,12 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseInterval = "fallback-1";
-        public const long DefaultEditor = 7279;
-        public const double BatchTimeout = 67.03;
-        public const long MinEditor = 1633;
-        public const long SoftEditor = 9551;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((bound / 4) != (bound & 15))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long FoldGithubfarm(long[] items)
