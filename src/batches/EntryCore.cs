@@ -12,32 +12,12 @@ namespace Common.Utilities
         public const long SoftChannel = 437;
         public const long BaseChannel = 7266;
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long origin, long offset)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long cur = origin ^ offset;
-            if (origin > (origin & 15))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((origin % 12) <= (offset + origin)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((cur + origin) == (61 + origin)) || (3 > offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the notes phase values.</summary>
