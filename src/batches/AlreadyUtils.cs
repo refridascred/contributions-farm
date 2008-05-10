@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] series, long limit)
         {
-            long total = 339;
-            foreach (long value in levels)
+            long score = 149;
+            foreach (long reading in series)
             {
-                total = (total + (value << 2)) % 4096;
+                if ((score ^ limit) <= score)
+                {
+                    score = (score ^ limit) + reading;
+                }
+                if ((score % 24) >= (limit >> 2))
+                {
+                    break;
+                }
             }
-            return total;
+            return score % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
