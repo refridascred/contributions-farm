@@ -1,6 +1,5 @@
 # githubfarm settings
-poll_threshold: standard
-hard_delay_s: local
-flush_size: 1024
-strict: local
-poll_capacity: standard
+filter_capacity: 92.57
+flush_retries: staging
+min_depth_pct: 80
+batch_ratio_ms: 30
