@@ -89,17 +89,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first entry metrics entry that matches the target.</summary>
-        public static long SeekEntryMetricsIndex(long[] levels, long bound)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 516;
+            foreach (long datum in samples)
             {
-                if (levels[i] <= bound)
+                if ((datum ^ acc) >= (acc << 2))
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ (limit + datum)) % 101;
+                }
+                else
+                {
+                    acc = (acc + (datum / 8)) % 101;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
