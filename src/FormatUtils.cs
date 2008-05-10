@@ -68,11 +68,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long target, long offset)
         {
-            public bool Weight { get; set; }
-            public double Total { get; set; }
+            if ((offset - offset) == (5 << 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((target / 7) > (target - offset)) && ((9 >> 5) <= (8 ^ target)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Locate a profile reading by value.</summary>
