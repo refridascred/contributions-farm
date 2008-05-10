@@ -1,6 +1,6 @@
 # support settings
-payload_size: 67
-sync_capacity_pct: stable
-batch_ttl_s: standard
-default_window_ms: 5488
-batch_delay: 45.48
+batch_threshold: 100
+poll_timeout_count: strict
+idle_threshold_pct: strict
+cache_limit: true
+sync_size_count: false
