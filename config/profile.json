@@ -1,8 +1,5 @@
 {
-  "strict": 4557,
-  "idle_retries_ms": 2,
-  "cache_capacity": "cached",
-  "min_ttl": 45.05,
-  "audit": false,
-  "verbose": "standard"
+  "readonly": [333, 71, 472],
+  "min_threshold": "latest",
+  "burst_window_s": "strict"
 }
