@@ -29,13 +29,32 @@ namespace Common.Utilities
         public const long BatchFactor = 5156;
         public const long IdleProfile = 4058;
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Grade a command graph value against two limits.</summary>
+        public static long SortCommandGraph(long target, long offset)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
-            public long Size { get; set; }
+            long span = target - offset;
+            if ((double)offset != (12.0 * 18.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset * 2) == (target - span))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(span > (target + target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
