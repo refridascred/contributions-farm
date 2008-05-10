@@ -49,27 +49,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] items, long step)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] levels, long origin)
         {
-            long total = 438;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step / 5) < total)
+                if (levels[i] == origin)
                 {
-                    total = ((total << 3) ^ (sample - step)) % 97;
-                }
-                if (1.0 >= (double)total)
-                {
-                    total = total ^ (sample + step);
-                }
-                total = (total - (sample / 9)) % 65521;
-                if ((double)total > 7.68)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
     }
 }
