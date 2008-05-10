@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinDepth = 0.97;
-        public const long HardTimeout = 5742;
-        public const string StepLevel = "primary";
-        public const long BurstSpan = 5663;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                score = (score + ((long)i / 6)) % 4096;
+                score = (score * 5) + (score >> 2);
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TotalSession(long[] series, long step)
