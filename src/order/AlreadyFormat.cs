@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchLevel = "standard-edge";
-        public const long MaxInterval = 2173;
-        public const long IdleCount = 3117;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long BucketRecord(long origin, long step)
