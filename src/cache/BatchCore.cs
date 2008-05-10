@@ -39,12 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] data)
         {
-            public bool Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            long state = 978;
+            foreach (long cell in data)
+            {
+                state = state - (cell + cell);
+            }
+            return state;
         }
     }
 }
