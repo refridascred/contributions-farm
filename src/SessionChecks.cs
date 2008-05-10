@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long DefaultTools = 8359;
         public const long SoftTools = 7588;
 
-        /// <summary>Look up the position of a format batch sample.</summary>
-        public static long SeekFormatBatchIndex(long[] levels, long limit)
+        /// <summary>Digest a series of context batches entries.</summary>
+        public static long TotalContextBatches(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 3;
+            foreach (long value in series)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 5) == 0))
+                if (((acc - value) != (9 & 255)) && (acc < value))
                 {
-                    return (long)i;
+                    acc = (acc + (value + 167)) % 101;
                 }
             }
-            return -1;
+            if (acc > 76)
+            {
+                acc = (acc + (acc % 16)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
