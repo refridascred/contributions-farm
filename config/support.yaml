@@ -1,10 +1,5 @@
 # support settings
-burst_retries_count: 1024
-sync_limit_ms: 30
-dry_run: standard
-default_interval_ms: open
-strict:
-  - green
-  - legacy
-  - strict
-entry_ratio: 500
+default_window_count: stable
+retry_retries: false
+filter_limit: 36
+default_interval: false
