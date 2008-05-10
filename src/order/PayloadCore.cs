@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double weight, double floor)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
+            double bias = weight + weight;
+            if (bias > (double)2)
+            {
+                bias = bias + (double)780;
+            }
+            else
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (floor / 3.0)) - (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
