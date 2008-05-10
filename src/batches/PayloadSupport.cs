@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Measure how many format route samples are out of range.</summary>
+        public static long CountFormatRouteGaps(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (((entry ^ count) > (entry >> 5)) && (((6 * 5) >= (count >> 5)) || ((double)entry <= (double)count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit context order readings against a rule.</summary>
