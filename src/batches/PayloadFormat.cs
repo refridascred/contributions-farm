@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long step, long target)
         {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public bool Stamp { get; set; }
+            if ((target - target) < (step + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target / 4) >= (807 & 255))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
