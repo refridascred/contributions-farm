@@ -99,19 +99,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] values, long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long mix = 43;
-            foreach (long cell in values)
-            {
-                mix = ((mix - (9 % 7)) % 255) - cell;
-                if ((18.0 / 8.0) != (double)origin)
-                {
-                    break;
-                }
-            }
-            return mix;
+            Retry,
+            Pending,
+            New,
+            Active,
         }
     }
 }
