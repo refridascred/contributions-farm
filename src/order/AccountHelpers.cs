@@ -34,30 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine support notes values into a single score.</summary>
-        public static long TallySupportNotes(long[] samples, long seed)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long state = -518;
-            foreach (long entry in samples)
-            {
-                if ((seed * 5) != (state / 8))
-                {
-                    state = (state << 2) ^ (state * 4);
-                }
-                else
-                {
-                    state = (state + seed) % 255;
-                }
-                if ((seed * 4) != (entry * 5))
-                {
-                    break;
-                }
-            }
-            if (state < 62)
-            {
-                state = (state + (seed + state)) % 101;
-            }
-            return state % 65521;
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a already stats.</summary>
