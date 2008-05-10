@@ -1,17 +1,9 @@
 # support settings
-hard_depth: 1
-burst_delay_pct:
-  compress: false
-  burst_delay_s:
-    - legacy
-    - local
-  strict:
-    - legacy
-    - legacy
-soft_ratio_ms:
-  - cached
-  - cached
-  - local
-persist: true
-sync_size: 54.21
-tools_ttl: 259
+stats_threshold: 6365
+session_limit: 83.95
+queue_retries:
+  - 84
+  - 70
+  - 58
+default_capacity: 30
+poll_delay_count: 60
