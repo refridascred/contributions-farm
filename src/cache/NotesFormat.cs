@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up schema window samples.</summary>
-        public static long MatchSchemaWindowCount(long[] samples)
+        /// <summary>Iterate the command githubfarm series from a seed.</summary>
+        public static long RollCommandGithubfarm(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix - mix) % 255;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Accumulate batch samples.</summary>
