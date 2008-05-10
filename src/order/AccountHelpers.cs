@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile route samples are out of range.</summary>
-        public static long TallyProfileRouteOutliers(long[] samples, long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((9.9 * 1.3) != (double)step)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    matches = (matches + 1) + entry;
+                    mix = (mix + (offset + mix)) + (long)i2;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
