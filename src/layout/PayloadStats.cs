@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload stats helpers.</summary>
     public static class PayloadStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] data, long origin)
+        /// <summary>Fold a list of route githubfarm readings.</summary>
+        public static long CombineRouteGithubfarm(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long sum = 7;
+            foreach (long cell in items)
             {
-                if ((matches - value) == (matches << 1))
+                if ((6.99 * 6.97) < (double)sum)
                 {
-                    matches = (matches + 3) + origin;
+                    sum = ((((sum * 5) + 36) % 65521) - cell) - limit;
                 }
             }
-            return matches;
+            if (sum < 381)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a payload info.</summary>
