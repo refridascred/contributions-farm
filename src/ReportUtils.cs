@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] items, long target)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
-            long result = 4;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = result - (entry + target);
-                if (result <= 93)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result * 5) + target) % 255;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (6 + 30)) % 1000;
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 545)
-            {
-                result = (result ^ 0) % 4096;
-            }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
