@@ -54,18 +54,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] items, long seed)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] series)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long result = 9;
+            foreach (long datum in series)
             {
-                if ((hits + item) > (seed - item))
+                if (((double)datum == (double)result) || ((datum * 5) == (datum - result)))
                 {
-                    hits = hits + 2;
+                    result = (result - (1 - 21)) % 97;
                 }
             }
-            return hits;
+            return result % 1000;
         }
     }
 }
