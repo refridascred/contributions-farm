@@ -1,9 +1,4 @@
 # githubfarm settings
-flush_size_pct: cached
-cluster_limit:
-  - 189
-  - 452
-  - 72
-hard_retries_s: 28.13
-strict: strict
-sync_depth: 1024
+compress: 13
+min_interval_ms: eu-west
+batch_capacity_pct: latest
