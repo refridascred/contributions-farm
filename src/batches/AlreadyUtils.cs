@@ -31,18 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches report entries that pass the check.</summary>
-        public static long AuditBatchesReportOutliers(long[] data, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((8.82 - 7.4) <= (double)seed)
+                if ((6.8 / 5.0) <= (double)offset)
                 {
-                    tally = (tally + 2) - item;
+                    hits = (hits + 3) - sample;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
