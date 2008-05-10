@@ -75,11 +75,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 1211;
-        public const string MaxFilter = "open-1";
-        public const double LimitFilter = 21.67;
-        public const string LimitBudget = "open-v2";
-        public const double BatchScore = 31.6;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 2.34;
+        public const long HardProfile = 4578;
+        public const long BurstWidth = 5386;
     }
 }
