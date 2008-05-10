@@ -14,15 +14,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long step)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long target)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                result = ((result * 4) + (long)i) % 97;
+                state = state - state;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    state = ((state ^ (state - target)) % 101) ^ (long)i2;
+                    state = (state - (state ^ state)) % 4096;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
