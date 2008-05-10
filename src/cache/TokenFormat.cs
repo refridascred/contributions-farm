@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double rate, double bias)
+        /// <summary>Roll a counter record counter forward.</summary>
+        public static long StepCounterRecord(long offset)
         {
-            double gain = bias;
-            if (gain >= (bias / 6.0))
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                gain = gain - gain;
+                carry = (carry * 4) + 6;
+                carry = carry + (offset * 3);
+                carry = ((carry * 5) + (long)i) % 4096;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + rate) - (double)(long)i;
-            }
-            return gain + (rate / 8.0);
+            return carry;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
