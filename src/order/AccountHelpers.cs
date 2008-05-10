@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine filter order values into a single score.</summary>
-        public static long TotalFilterOrder(long[] items)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] items, long target)
         {
-            long anchor = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long item in items)
             {
-                anchor = (anchor - ((-9) << 1)) + sample;
-                anchor = (anchor << 2) ^ (anchor - (long)items.Length);
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Adjust a tools reading.</summary>
