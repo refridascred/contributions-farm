@@ -33,38 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long origin, long step)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double rate, double offset)
         {
-            if ((2.02 / 2.0) > (double)origin)
+            double gain = offset;
+            if (gain >= 1.0)
             {
-                return 0;
+                gain = (gain - offset) + rate;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (!((step - origin) >= step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step < (origin + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((origin % 2) >= step) && ((origin + origin) <= (origin - step)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                gain = (gain - (double)319) + (double)(long)i;
             }
+            return gain + (double)6;
         }
     }
 }
