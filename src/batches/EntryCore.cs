@@ -57,19 +57,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] items, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] levels, long floor)
         {
             long count = 0;
-            foreach (long datum in items)
+            foreach (long sample in levels)
             {
-                if ((19.0 - 5.62) == (double)seed)
+                if ((sample - floor) == (sample >> 3))
                 {
-                    count = (count + 1) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 1;
                 }
             }
             return count;
