@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] series, long bound)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long sum = -4;
-            foreach (long item in series)
-            {
-                sum = (sum ^ ((long)series.Length % 16)) + bound;
-                if (sum >= (item & 255))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
