@@ -20,39 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long limit, long seed)
-        {
-            if (((8.43 * 18.0) >= (double)seed) || ((double)118 <= (double)seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed << 3) <= seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((0.5 / 5.0) != (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((((-6) << 2) <= (limit - seed)) && ((double)seed >= (0.3 + 3.86)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 1430;
+        public const double BatchRatio = 38.98;
+        public const long MinScore = 5025;
+        public const long MinFarm = 2649;
 
         /// <summary>Match up already samples.</summary>
         public static long CompareAlreadyCount(long[] readings)
