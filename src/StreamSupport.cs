@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks record readings against a bound.</summary>
-        public static bool VerifyChecksRecordBounds(long[] samples, long bound)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            double gain2 = gain;
+            if (gain2 > gain2)
             {
-                if (cell != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                gain2 = gain2 - (floor / 5.0);
             }
-            return flag;
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 + gain) + (double)(long)i;
+            }
+            return gain2 - (gain - gain2);
         }
 
         /// <summary>Describe the record state values.</summary>
