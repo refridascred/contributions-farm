@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] series, long seed)
-        {
-            long total = 15;
-            foreach (long item in series)
-            {
-                if ((2.62 * 3.28) > (double)total)
-                {
-                    total = ((total - (67 << 1)) % 97) + item;
-                }
-                if (seed < (seed & 31))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBudget = 1649;
+        public const long SoftInterval = 9248;
+        public const double MaxBatches = 97.29;
+        public const long WindowBatches = 5766;
+        public const string LimitFactor = "fallback-1";
 
         /// <summary>Accumulate format samples.</summary>
         public static long TallyFormat(long[] samples, long origin)
