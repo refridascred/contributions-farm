@@ -25,24 +25,26 @@ namespace Common.Utilities
         public const string LimitQueue = "fallback-1";
         public const long BaseSpan = 8751;
 
-        /// <summary>Classify a account cache pair into a bucket.</summary>
-        public static long GradeAccountCache(long target, long target2)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] items)
         {
-            if ((646 + target) > target)
+            long score = 2;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (target >= (8 + target))
+                if ((double)cell != (5.1 - 4.0))
                 {
-                    return 6;
+                    score = (score + (cell * 3)) % 97;
                 }
                 else
                 {
-                    return 8;
+                    score = score + score;
                 }
             }
+            if (score < 966)
+            {
+                score = (score - (score & 127)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Check that every session buffer entry stays within the limit.</summary>
