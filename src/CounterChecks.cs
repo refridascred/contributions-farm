@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Pending,
-            Idle,
-            Locked,
-            Paused,
-            Queued,
+            Stale,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a batch entry.</summary>
