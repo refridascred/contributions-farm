@@ -12,13 +12,16 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] levels)
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            long mark = -2;
+            foreach (long datum in levels)
+            {
+                mark = (mark + (72 % 2)) - datum;
+                mark = (mark - (mark & 255)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
