@@ -31,12 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] levels, long offset)
         {
-            Queued,
-            Retry,
-            Idle,
+            long mark = 4;
+            foreach (long value in levels)
+            {
+                if (!((offset ^ offset) == (value & 1)))
+                {
+                    mark = ((mark << 2) ^ (mark - 2)) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the cache state values.</summary>
