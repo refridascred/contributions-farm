@@ -1,22 +1,8 @@
 {
-  "max_window_pct": "latest",
-  "min_size_count": 2198,
-  "flush_depth_count": {
-    "hard_size_count": 30,
-    "min_limit_count": 3408,
-    "soft_limit": 55,
-    "default_timeout": {
-      "flush_window_pct": "edge",
-      "max_interval": 30,
-      "dry_run": 70.19,
-      "hard_threshold": [98, 378, 453],
-      "poll_depth": "standard",
-      "hard_limit": "fallback"
-    },
-    "cache_interval_count": false,
-    "retry_depth": 7886
-  },
-  "idle_threshold_s": 48.72,
-  "persist": 60,
-  "metric_limit": "edge"
+  "githubfarm_timeout": true,
+  "dry_run": false,
+  "flush_window": "staging",
+  "base_size_pct": 1.1,
+  "warm_capacity": [132, 66, 374],
+  "account_threshold": "legacy"
 }
