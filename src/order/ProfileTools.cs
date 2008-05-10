@@ -20,18 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "fallback";
+        public const double RetryPayload = 19.34;
+        public const long LimitScore = 4784;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
