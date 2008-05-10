@@ -79,22 +79,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] readings, long limit)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((72 % 8) != (value % 24))
+                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
                 {
-                    hits = (hits + 2) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
