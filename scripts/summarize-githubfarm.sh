@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+GITHUBFARM_LIMIT=279
+log "limit is ${GITHUBFARM_LIMIT}"
 
-for item in edge blue latest; do
+for item in strict edge staging; do
     log "checking ${item}"
 done
-
-mode="${1:-cached}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
