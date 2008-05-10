@@ -34,18 +34,12 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Fold a list of batch metrics readings.</summary>
-        public static long FoldBatchMetrics(long[] items, long seed)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long anchor = 8;
-            foreach (long sample in items)
-            {
-                if ((anchor % 16) <= sample)
-                {
-                    anchor = ((anchor * 2) + sample) + seed;
-                }
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Rank farm input into a small class.</summary>
