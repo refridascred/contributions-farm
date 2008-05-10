@@ -50,22 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Count token contributi pairs that satisfy a relation.</summary>
+        public static long PairTokenContributiCount(long[] items)
         {
-            long result = 1;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((long)samples.Length > result)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result ^ result) % 101;
-                }
-                else
-                {
-                    result = ((result << 2) ^ value) % 4096;
+                    if ((items[i] - items[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return count;
         }
     }
 }
