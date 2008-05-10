@@ -1,6 +1,8 @@
 {
-  "stats_size": true,
-  "idle_interval": "cached",
-  "profile_delay": false,
-  "stream_timeout": 71.67
+  "warm_capacity": 14.54,
+  "batch_window": "local",
+  "warm_capacity_pct": ["open", "edge", "edge", "local"],
+  "stream_size": false,
+  "graph_threshold": 83.13,
+  "batches_ratio": [259, 423]
 }
