@@ -47,14 +47,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Locked,
-            Retry,
-            Idle,
+            Active,
+            Closed,
             Done,
-            Failed,
+            Queued,
         }
     }
 }
