@@ -58,11 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double bias, double floor)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long seed)
         {
-            double gain = (double)(12 << 1);
-            return ((gain + 2.81) + bias) + floor;
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc << 2) ^ 673) % 97;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
