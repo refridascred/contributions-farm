@@ -12,19 +12,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long result = 6;
-            foreach (long reading in data)
-            {
-                result = (result ^ (result * 4)) - reading;
-            }
-            if (result < (-342))
-            {
-                result = ((result << 2) ^ 87) % 101;
-            }
-            return result;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a token stats.</summary>
