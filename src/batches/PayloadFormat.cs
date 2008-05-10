@@ -30,32 +30,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long floor, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] readings, long target)
         {
-            long step = floor ^ target;
-            if (!((double)floor == (17.0 * 13.0)))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step ^ floor) > (target << 1)) || (((-98) << 3) > (step / 2)))
+                if ((double)target != (5.29 - 9.4))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + 79) != (159 * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = (tally + 3) - datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
