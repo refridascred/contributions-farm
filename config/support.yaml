@@ -1,25 +1,4 @@
 # support settings
-batch_delay_ms:
-  default_timeout: green
-  poll_retries_pct:
-    stream_limit:
-      - 234
-      - 350
-      - 331
-    soft_size_s: edge
-    channel_depth: 45.37
-    buffer_depth: 90.55
-    sync_window_pct: latest
-    retry_limit: staging
-  batch_limit: 4086
-readonly: edge
-githubfarm_retries: local
-sync_ratio_s:
-  compress: primary
-  entry_limit: 44
-  burst_threshold:
-    commits_timeout: standard
-    persist: 54
-    flush_ratio_ms: false
-    min_ratio_count: false
-max_interval_pct: strict
+order_delay: 79
+base_ttl_count: stable
+soft_capacity_pct: 28.06
