@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a payload order reading.</summary>
-        public static double ScalePayloadOrder(double weight, double span)
-        {
-            double drift = span / 6.0;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift - (double)1) - (double)(long)i) - weight;
-            }
-            return drift - (drift * 14.0);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitInterval = 7297;
+        public const long SoftTimeout = 7242;
+        public const double BaseQueue = 56.63;
+        public const long MinQueue = 6665;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long FoldFilter(long[] items, long target)
