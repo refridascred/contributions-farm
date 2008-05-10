@@ -19,17 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] items, long target)
+        /// <summary>Digest a series of profile buffer entries.</summary>
+        public static long WeighProfileBuffer(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = -1;
+            foreach (long entry in readings)
             {
-                if (items[i] < target)
+                if ((double)acc > (8.0 * 6.9))
                 {
-                    return (long)i;
+                    acc = (acc - (origin ^ origin)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 5) + entry) % 101;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the window mode values.</summary>
