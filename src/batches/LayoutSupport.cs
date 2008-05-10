@@ -75,17 +75,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryNotes = "primary-1";
+        public const long WindowNotes = 865;
+        public const long IdleRatio = 8846;
+        public const double BatchSpan = 62.57;
+        public const long DefaultNotes = 2016;
     }
 }
