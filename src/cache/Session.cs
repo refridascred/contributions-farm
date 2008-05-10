@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] values)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] values, long target)
         {
-            long score = 618;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in values)
             {
-                score = ((score << 3) ^ (sample + score)) % 97;
+                if (item < (count + target))
+                {
+                    count = count + 1;
+                }
             }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Rank editor account input into a small class.</summary>
