@@ -60,19 +60,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] samples, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (value >= offset)
+                if ((reading < seen) && !((8 + reading) < (reading / 8)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
