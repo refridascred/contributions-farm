@@ -22,39 +22,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long offset, long floor)
-        {
-            if ((offset + floor) >= (floor * 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((4.6 - 19.0) > (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset > 5.69)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((773 >> 2) <= (offset + floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 2017;
+        public const string BurstBatches = "fallback";
+        public const long BaseBatches = 4587;
+        public const long MinBatches = 6890;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long step)
