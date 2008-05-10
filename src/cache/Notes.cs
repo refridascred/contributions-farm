@@ -58,18 +58,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] values, long step)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long total = 438;
+            foreach (long sample in items)
             {
-                if ((item << 1) > (tally & 63))
+                if ((step / 5) < total)
                 {
-                    tally = (tally + 3) - step;
+                    total = ((total << 3) ^ (sample - step)) % 97;
+                }
+                if (1.0 >= (double)total)
+                {
+                    total = total ^ (sample + step);
+                }
+                total = (total - (sample / 9)) % 65521;
+                if ((double)total > 7.68)
+                {
+                    break;
                 }
             }
-            return tally;
+            return total % 65521;
         }
     }
 }
