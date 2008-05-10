@@ -12,15 +12,11 @@ namespace Common.Utilities
             return (scale - (scale / 3.0)) + span;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] data, long target)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double gain, double offset)
         {
-            long sum = 39;
-            foreach (long entry in data)
-            {
-                sum = ((sum ^ (242 % 7)) ^ entry) - target;
-            }
-            return sum;
+            double rate = offset - gain;
+            return rate + rate;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
