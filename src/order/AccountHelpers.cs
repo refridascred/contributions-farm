@@ -73,17 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] values, long bound)
+        /// <summary>Measure how many token editor samples are out of range.</summary>
+        public static long CountTokenEditorMatches(long[] values, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (values[i] <= bound)
+                if ((double)sample >= (2.86 * 0.49))
                 {
-                    return (long)i;
+                    count = (count + 3) - offset;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
