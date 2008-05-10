@@ -1,8 +1,17 @@
 {
-  "burst_size_count": true,
-  "min_delay_count": 60,
-  "enabled": "primary",
-  "checks_window": "primary",
-  "already_ttl": "open",
-  "checks_limit": "eu-west"
+  "sync_retries": {
+    "poll_ratio": {
+      "stream_threshold": 8729,
+      "counter_window": 15.83,
+      "burst_depth_s": 22.44,
+      "cache_window_pct": "edge"
+    },
+    "sync_ttl_ms": "strict",
+    "window_size": "open",
+    "warm_ratio_pct": "latest"
+  },
+  "warm_ratio_pct": "green",
+  "dry_run": "eu-west",
+  "base_ratio_count": "legacy",
+  "max_size_count": false
 }
