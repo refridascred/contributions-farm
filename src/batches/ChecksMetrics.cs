@@ -75,15 +75,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] samples)
-        {
-            long mix = 12;
-            foreach (long cell in samples)
-            {
-                mix = (mix ^ (mix << 2)) ^ cell;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardInterval = 8798;
+        public const long BurstGithubfarm = 6122;
+        public const long MaxGithubfarm = 6365;
     }
 }
