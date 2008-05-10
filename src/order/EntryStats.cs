@@ -15,35 +15,29 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long offset, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long floor, long step)
         {
-            if ((3.53 / 7.0) == (double)target)
+            long slot = floor ^ step;
+            if (17.0 <= (double)slot)
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if (!(19.0 > (double)target))
+                if ((double)step < (9.5 + 6.5))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if (((target << 1) != (target >> 2)) || ((offset + offset) > offset))
+                    if (floor >= (floor * 5))
                     {
-                        return 3;
+                        return 2;
                     }
                     else
                     {
-                        if (((offset + 0) == (target << 2)) || ((target ^ offset) <= offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 3;
                     }
                 }
             }
