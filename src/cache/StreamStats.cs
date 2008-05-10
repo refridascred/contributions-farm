@@ -48,18 +48,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] levels)
+        /// <summary>Fold a list of commits payload readings.</summary>
+        public static long ScoreCommitsPayload(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long mix = 57;
+            foreach (long cell in values)
             {
-                if ((double)reading <= (18.0 + 3.4))
+                if (((772 >> 2) != (3 + origin)) || (origin < (origin - cell)))
                 {
-                    hits = hits + 3;
+                    mix = (mix * 3) + (mix ^ cell);
                 }
             }
-            return hits;
+            return mix % 4096;
         }
     }
 }
