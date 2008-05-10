@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchTimeout = 7825;
-        public const double BaseContext = 5.26;
-        public const long IdleContext = 9060;
-        public const double HardContext = 56.32;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Locked,
+            Active,
+            Failed,
+            Idle,
+            New,
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long limit, long floor)
