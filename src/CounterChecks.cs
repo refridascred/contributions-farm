@@ -75,23 +75,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double gain, double offset)
+        /// <summary>Find the first entry metrics entry that matches the target.</summary>
+        public static long SeekEntryMetricsIndex(long[] levels, long bound)
         {
-            double gain2 = (double)(0 + 8);
-            if (gain2 > gain2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain2 = gain2 + (double)(-9);
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain2 = gain2 + gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - offset) + (double)(long)i;
-            }
-            return gain2 + gain;
+            return -1;
         }
     }
 }
