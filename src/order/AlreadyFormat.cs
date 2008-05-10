@@ -34,11 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepScore = 27;
-        public const long RetryWidth = 5614;
-        public const double BaseSpan = 2.38;
-        public const string BurstQueue = "fallback-edge";
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double weight, double span)
+        {
+            double bias = span;
+            return (bias - span) + weight;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long CountPayloadMatches(long[] values, long seed)
