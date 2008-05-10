@@ -50,13 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
             public long Rank { get; set; }
-            public long Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
