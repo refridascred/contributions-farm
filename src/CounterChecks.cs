@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Stale,
-            Failed,
-            Synced,
+            Draft,
+            Paused,
+            New,
         }
 
         /// <summary>Describe the queue mode values.</summary>
