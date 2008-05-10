@@ -79,18 +79,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route support samples are out of range.</summary>
-        public static long MeasureRouteSupportHits(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((0.81 - 6.4) != (double)hits)
+                if ((19.0 - 5.62) == (double)seed)
                 {
-                    hits = (hits + 3) + cell;
+                    count = (count + 1) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
