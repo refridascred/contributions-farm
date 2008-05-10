@@ -28,17 +28,21 @@ namespace Common.Utilities
         public const long BatchSpan = 9494;
         public const string StepRatio = "open-edge";
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] samples, long floor)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 5) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
