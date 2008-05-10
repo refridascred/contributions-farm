@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a counter record counter forward.</summary>
-        public static long StepCounterRecord(long offset)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] levels, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry * 4) + 6;
-                carry = carry + (offset * 3);
-                carry = ((carry * 5) + (long)i) % 4096;
-                carry = ((carry * 3) + (long)i) % 97;
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
