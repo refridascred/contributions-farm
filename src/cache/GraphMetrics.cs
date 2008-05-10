@@ -28,10 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxScore = 1134;
-        public const long StepStream = 9588;
-        public const long IdleStream = 5683;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((bound + bound) < (8 + entry))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportGaps(long[] items, long limit)
