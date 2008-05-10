@@ -22,12 +22,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 8736;
-        public const string CacheBudget = "cached-1";
-        public const long BaseWidth = 7967;
-        public const long LimitWidth = 1305;
-        public const long WindowSchema = 5301;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public bool Offset { get; set; }
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long HardSpan = 3263;
