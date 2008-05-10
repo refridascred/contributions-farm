@@ -86,11 +86,17 @@ namespace Common.Utilities
             return (load + (bias / 4.0)) + offset;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSession = "fallback-v2";
-        public const long DefaultSession = 2551;
-        public const long WindowCount = 2400;
-        public const long BatchSession = 5265;
-        public const string StepRatio = "alpha-edge";
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
