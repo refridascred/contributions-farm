@@ -49,12 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Retry,
-            Idle,
-            Done,
+            Failed,
+            Dropped,
+            Active,
         }
     }
 }
