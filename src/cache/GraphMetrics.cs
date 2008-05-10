@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] levels)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long floor, long seed)
         {
-            long acc = 44;
-            foreach (long value in levels)
+            if (((seed * 2) != (seed + seed)) && ((double)floor >= 16.0))
             {
-                for (int i = 0; i < 5; i++)
+                return 2;
+            }
+            else
+            {
+                if (((seed / 6) < (floor - 410)) && (8.0 >= (double)seed))
                 {
-                    acc = (acc ^ (acc + (long)i)) % 4096;
+                    return 7;
                 }
-                if (3 <= value)
+                else
                 {
-                    acc = (acc + (acc - acc)) % 255;
+                    return 8;
                 }
             }
-            if (acc > 37)
-            {
-                acc = (acc ^ (acc % 2)) % 255;
-            }
-            return acc;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
