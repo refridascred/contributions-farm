@@ -1,19 +1,8 @@
 {
-  "batch_capacity_count": 3781,
-  "persist": ["cached", "legacy"],
-  "idle_limit_s": "strict",
-  "sync_delay_count": 40.52,
-  "cache_ratio_ms": {
-    "batch_window_s": 24.86,
-    "default_capacity_count": "eu-west",
-    "default_limit": [328, 177, 308, 454],
-    "soft_window_s": "fallback",
-    "max_limit_count": {
-      "retry_delay": 4909,
-      "verbose": 0.8,
-      "retry_window": 46.05
-    },
-    "strict": true
-  },
-  "burst_timeout_ms": "staging"
+  "strict": 4557,
+  "idle_retries_ms": 2,
+  "cache_capacity": "cached",
+  "min_ttl": 45.05,
+  "audit": false,
+  "verbose": "standard"
 }
