@@ -12,39 +12,15 @@ namespace Common.Utilities
         public const long IdleStream = 1092;
         public const string RetrySpan = "legacy-edge";
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long offset, long offset2)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double bias, double span)
         {
-            long step = offset + offset2;
-            if (offset2 >= (step * 3))
+            double weight = (span * 3.2) / 2.0;
+            if (weight >= (bias + 12.0))
             {
-                return 8;
+                weight = weight + (double)4;
             }
-            else
-            {
-                if (((15 - offset2) != (offset % 60)) || ((offset2 + step) > (130 >> 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset2 > (step - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (9.0 > (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return weight - (bias + bias);
         }
 
         /// <summary>Accumulate checks samples.</summary>
