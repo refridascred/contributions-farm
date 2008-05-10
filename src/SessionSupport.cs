@@ -40,14 +40,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Done,
-            Retry,
-            New,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetrySize = 9157;
+        public const long WindowRecord = 252;
+        public const long LimitSpan = 4711;
+        public const long WindowInterval = 8257;
     }
 }
