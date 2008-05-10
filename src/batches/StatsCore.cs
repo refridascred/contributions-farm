@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitFilter = 41.33;
-        public const long DefaultFilter = 6443;
-        public const string WindowFilter = "local-edge";
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long SortStats(long offset, long floor)
