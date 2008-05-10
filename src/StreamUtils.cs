@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] levels, long seed)
         {
-            long carry = 32;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry ^ (carry / 9)) % 4096) - value;
-                if ((carry & 255) <= (75 + carry))
+                if ((levels[i] == seed) && ((levels[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
