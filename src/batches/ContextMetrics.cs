@@ -36,18 +36,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] values, long origin)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] items)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell + origin) == (count * 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] ^ items[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a account graph pair into a bucket.</summary>
