@@ -1,6 +1,4 @@
 # support settings
-strict: green
-burst_ratio:
-  - 59
-  - 287
-batch_interval_pct: true
+flush_window: 250
+batch_window_pct: local
+farm_threshold: 66.22
