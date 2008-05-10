@@ -28,17 +28,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] items, long origin)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((items[i] <= origin) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - (anchor - limit)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Compare every pair of already profile readings.</summary>
