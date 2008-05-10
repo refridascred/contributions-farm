@@ -52,38 +52,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a account graph pair into a bucket.</summary>
-        public static long GradeAccountGraph(long seed, long target)
+        /// <summary>Audit format checks readings against a rule.</summary>
+        public static long CountFormatChecksMatches(long[] levels)
         {
-            if ((target - 80) > target)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed <= (9.02 * 9.07))
+                if ((0 * 5) >= count)
                 {
-                    return 6;
+                    count = (count + 3) ^ cell;
                 }
                 else
                 {
-                    if ((8 >> 4) >= (target >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((115 + target) <= (seed >> 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
