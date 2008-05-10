@@ -1,6 +1,19 @@
 {
-  "dry_run": 2.8,
-  "report_depth": 5815,
-  "retry_interval": false,
-  "cache_delay_s": "strict"
+  "contributi_interval": "primary",
+  "default_ttl": 281,
+  "enabled": [362, 81, 268],
+  "channel_limit": {
+    "persist": {
+      "soft_interval_ms": 100,
+      "enabled": 3916,
+      "batch_limit": 500,
+      "strict": 9616,
+      "stream_interval": 41.99
+    },
+    "cache_depth": 100,
+    "hard_threshold_ms": true,
+    "audit": "legacy"
+  },
+  "checks_timeout": "primary",
+  "format_interval": 23.46
 }
