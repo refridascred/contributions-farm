@@ -22,11 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
             public long Region { get; set; }
-            public bool Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
