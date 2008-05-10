@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double gain, double span)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] values)
         {
-            double drift = (span * 10.0) - (span + span);
-            if (drift < drift)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                drift = (drift + span) + gain;
+                if ((datum - datum) <= seen)
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                drift = drift + (double)13;
-            }
-            return drift - (double)688;
+            return seen;
         }
 
         /// <summary>Fold a list of session readings.</summary>
