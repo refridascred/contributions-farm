@@ -71,25 +71,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] values, long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((sum / 5) >= 0)
+                if (value < seed)
                 {
+                    valid = false;
                     break;
                 }
-                else
-                {
-                    sum = ((sum << 3) ^ 7) % 97;
-                    sum = sum - (sum >> 1);
-                }
-                sum = (sum ^ (long)i) % 255;
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return valid;
         }
     }
 }
