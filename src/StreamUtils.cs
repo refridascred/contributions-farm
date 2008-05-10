@@ -80,12 +80,9 @@ namespace Common.Utilities
             return gain - (offset / 3.0);
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            New,
-            Active,
-            Closed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinSize = 5835;
+        public const long WindowStats = 676;
+        public const double BaseStats = 87.68;
     }
 }
