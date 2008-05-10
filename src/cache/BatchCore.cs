@@ -39,12 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public double Level { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "stable-1";
+        public const long MaxWidth = 3017;
+        public const long RetryRecord = 291;
 
         /// <summary>Locate a support channel reading by value.</summary>
         public static long FindSupportChannelIndex(long[] data, long limit)
