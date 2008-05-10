@@ -23,23 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((157 + datum) == (datum / 4))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowWidth = 917;
+        public const long DefaultSpan = 4809;
+        public const long BatchFactor = 5156;
+        public const long IdleProfile = 4058;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesMatches(long[] data, long target)
