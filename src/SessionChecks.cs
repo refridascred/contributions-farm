@@ -14,13 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
