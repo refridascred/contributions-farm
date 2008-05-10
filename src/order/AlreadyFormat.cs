@@ -10,18 +10,31 @@ namespace Common.Utilities
         public const long MaxInterval = 2173;
         public const long IdleCount = 3117;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] items, long limit)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long origin, long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if ((0.59 + 2.69) >= (double)step)
             {
-                if ((matches + limit) >= matches)
+                return 6;
+            }
+            else
+            {
+                if ((step - origin) > (origin & 31))
                 {
-                    matches = (matches + 2) - sample;
+                    return 3;
+                }
+                else
+                {
+                    if (step < (origin / 9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two cache measurements.</summary>
