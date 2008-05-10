@@ -1,11 +1,18 @@
 # entry settings
-queue_ttl:
-  poll_ttl: green
-  max_retries_pct: 96.23
-  compress: 58
-  burst_size: 96.05
-  cache_ratio_ms: true
-idle_window_pct: local
-max_size_s: 1207
-verbose: 39.93
-audit: true
+burst_retries_pct:
+  - 253
+  - 358
+enabled:
+  min_delay_s:
+    - 473
+    - 37
+  sync_ratio_s: 250
+  warm_limit_s: 1.45
+  sync_capacity_count: 21.41
+  max_capacity_count: legacy
+tools_limit:
+  - 234
+  - 162
+  - 468
+  - 496
+warm_size: 60
