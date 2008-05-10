@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftInterval = 57.4;
-        public const string SoftWidth = "local";
-        public const long BurstChannel = 9512;
-        public const long BurstDepth = 9372;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 7044;
+        public const double DefaultAlready = 67.46;
+        public const string SoftAlready = "standard";
+        public const long WindowAlready = 6391;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardLevel = 9325;
