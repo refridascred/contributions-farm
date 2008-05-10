@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long target, long target2)
         {
-            Locked,
-            Active,
-            Failed,
-            Idle,
-            New,
+            if ((target2 - 17) >= (target2 / 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)target == (15.0 * 0.34))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target * 5) <= (target << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics info.</summary>
