@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((matches - matches) <= (matches >> 3)) && ((matches + matches) > (datum / 5)))
                 {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
