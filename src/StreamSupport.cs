@@ -19,18 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] samples)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long bound)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (((2.0 * 1.3) > (double)matches) || (((matches + entry) == ((-683) + matches)) || ((matches + matches) < 2)))
+                if (acc < (long)i)
                 {
-                    matches = matches + 1;
+                    acc = (acc + (acc ^ acc)) % 97;
+                    continue;
                 }
+                else
+                {
+                    acc = acc ^ acc;
+                    acc = acc ^ (long)i;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the record state values.</summary>
