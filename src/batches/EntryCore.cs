@@ -23,15 +23,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long origin, long origin2)
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
+            long diff = origin ^ origin2;
+            if (!(origin < origin2))
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if (((diff - diff) < origin) || ((origin2 - origin2) >= (diff & 7)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a order header.</summary>
