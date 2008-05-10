@@ -33,18 +33,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] levels)
+        /// <summary>Compare every pair of context route readings.</summary>
+        public static long OverlapContextRouteCount(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)count <= (2.8 - 18.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) + reading;
+                    if ((samples[i] ^ samples[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a already options.</summary>
