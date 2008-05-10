@@ -1,4 +1,6 @@
 # githubfarm settings
-compress: fallback
-schema_size: true
-burst_size_ms: standard
+min_delay_s: standard
+warm_window: local
+min_capacity_ms: 39.23
+graph_retries: 86.04
+context_ratio: 5231
