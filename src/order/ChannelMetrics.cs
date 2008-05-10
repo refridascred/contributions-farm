@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 6124;
+        public const double StepDepth = 63.3;
+        public const long BurstSize = 8923;
+        public const double RetryTools = 53.82;
+        public const string BatchWidth = "standard-v2";
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
