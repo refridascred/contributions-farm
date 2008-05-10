@@ -21,25 +21,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long origin, long origin2)
+        /// <summary>Combine batches cluster values into a single score.</summary>
+        public static long CombineBatchesCluster(long[] levels)
         {
-            long diff = origin ^ origin2;
-            if (!(origin < origin2))
+            long state = 4;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((diff - diff) < origin) || ((origin2 - origin2) >= (diff & 7)))
+                state = (state - (state >> 4)) % 65521;
+                if ((double)state == (8.1 * 14.0))
                 {
-                    return 0;
+                    state = state ^ (state & 1);
                 }
-                else
+                if (((item ^ item) == (state * 3)) && (32 < (long)levels.Length))
                 {
-                    return 7;
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Hold a order header.</summary>
