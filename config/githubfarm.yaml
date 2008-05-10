@@ -1,7 +1,11 @@
 # githubfarm settings
-already_limit: 14.86
-idle_timeout_count: 250
-burst_delay: stable
-max_ttl_pct: fallback
-strict: 41.42
-readonly: standard
+tools_window:
+  enabled: 5179
+  contributi_ratio: 36.58
+  channel_capacity: false
+  poll_retries_ms:
+    - open
+    - strict
+batch_ratio: 4460
+readonly: fallback
+contributi_size: 86.71
