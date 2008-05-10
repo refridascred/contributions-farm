@@ -24,21 +24,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of context route readings.</summary>
-        public static long OverlapContextRouteCount(long[] samples)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a already options.</summary>
