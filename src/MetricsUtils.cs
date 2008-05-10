@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine stats editor values into a single score.</summary>
-        public static long ScoreStatsEditor(long[] items)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] series)
         {
-            long total = 32;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 4) + (datum >> 5)) % 255;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (total > (-44))
-            {
-                total = ((total * 2) + total) % 1000;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Match up cache samples.</summary>
