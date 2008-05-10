@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a token counter sample.</summary>
-        public static long SeekTokenCounterIndex(long[] levels, long seed)
+        /// <summary>Iterate the githubfarm schema series from a seed.</summary>
+        public static long IterateGithubfarmSchema(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = result ^ ((long)i / 3);
+                result = result - result;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Validate account cache readings against a bound.</summary>
