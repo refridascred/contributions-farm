@@ -15,16 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the filter cluster series from a seed.</summary>
-        public static long StepFilterCluster(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitWidth = 86.38;
+        public const double HardDepth = 89.06;
+        public const long IdleChecks = 5748;
+        public const long HardChecks = 2384;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long BucketAccount(long limit, long origin)
