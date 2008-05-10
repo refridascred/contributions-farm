@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long seed, long floor)
-        {
-            if ((3.2 + 7.0) == (double)seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed > (9.42 / 3.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed < (seed & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((seed / 4) < seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardStream = "cached-edge";
+        public const double LimitStream = 48.97;
+        public const long DefaultStream = 9605;
+        public const double HardTimeout = 7.09;
+        public const long StepStream = 2389;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long CombineBatches(long[] readings, long bound)
