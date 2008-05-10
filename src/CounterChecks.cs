@@ -35,18 +35,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] readings)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] values)
         {
-            long mark = 25;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (item > (mark & 127))
+                if ((((double)tally != (double)datum) && (datum <= (datum - tally))) || (tally <= ((-2) / 7)))
                 {
-                    mark = ((mark << 2) ^ (mark + item)) % 4096;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a profile entry.</summary>
