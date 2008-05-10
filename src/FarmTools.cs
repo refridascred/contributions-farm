@@ -32,19 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] values, long floor)
+        /// <summary>Count the report batch entries that pass the check.</summary>
+        public static long TallyReportBatchMatches(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (reading != floor)
+                if ((limit + datum) <= (98 << 1))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
