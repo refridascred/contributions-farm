@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary staging stable blue; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=207
+COMMAND_LIMIT=292
 log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
