@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] items, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((datum - (long)items.Length) <= tally)
+                if (((count ^ count) > (count << 2)) || ((3.1 * 8.2) >= (double)count))
                 {
-                    tally = (tally + 2) + seed;
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the tools status values.</summary>
