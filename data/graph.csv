@@ -1,10 +1,6 @@
-id,token,owner,region
-1,516,829,open
-2,451,479,509
-3,local,53.54,387
-4,legacy,73.35,local
-5,600,5.98,stable
-6,955,stable,stable
-7,edge,342,latest
-8,44.21,719,207
-9,388,526,301
+id,weight,level
+1,80.25,358
+2,stable,411
+3,19.97,open
+4,open,82.23
+5,32.42,837
