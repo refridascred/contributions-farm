@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] series, long origin)
         {
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
-            public bool Offset { get; set; }
+            long mix = 4;
+            foreach (long value in series)
+            {
+                if ((445 & 63) > (mix + value))
+                {
+                    continue;
+                }
+                if ((origin & 7) < (origin + origin))
+                {
+                    mix = (mix - (value & 7)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
