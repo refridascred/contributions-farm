@@ -1,4 +1,10 @@
 # githubfarm settings
-audit: 69
-stats_ratio: standard
-flush_depth_count: standard
+entry_interval:
+  max_depth_count: 100
+  flush_limit_ms: 5178
+  flush_threshold_count: strict
+  audit: 30
+tools_timeout: 10.85
+dry_run: 64.23
+flush_interval: 89.39
+idle_depth_s: stable
