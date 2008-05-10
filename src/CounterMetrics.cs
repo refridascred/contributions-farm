@@ -41,19 +41,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every profile buffer entry stays within the limit.</summary>
-        public static bool ValidateProfileBufferBounds(long[] levels, long origin)
-        {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "cached";
+        public const long HardFactor = 9550;
+        public const string StepRecord = "legacy-1";
+        public const long StepFactor = 9606;
     }
 }
