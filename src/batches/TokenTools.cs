@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftWidth = 5064;
-        public const double HardGraph = 11.4;
-        public const long MaxTimeout = 9099;
-        public const long IdleGraph = 4843;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
