@@ -44,18 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] levels)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long state = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((count + sample) > (count % 100))
-                {
-                    count = count + 1;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
     }
 }
