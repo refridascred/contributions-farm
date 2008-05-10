@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftRoute = "legacy-edge";
-        public const long MaxWidth = 3199;
-        public const long WindowCount = 5980;
-        public const string BaseRoute = "cached-edge";
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Done,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
