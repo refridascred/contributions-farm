@@ -53,13 +53,15 @@ namespace Common.Utilities
         public const double BaseCommits = 7.95;
         public const long BatchCommits = 4053;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long origin)
         {
-            Active,
-            Failed,
-            Dropped,
-            Closed,
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
