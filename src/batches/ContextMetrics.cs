@@ -58,22 +58,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format checks readings against a rule.</summary>
-        public static long CountFormatChecksMatches(long[] levels)
+        /// <summary>Roll a buffer githubfarm counter forward.</summary>
+        public static long SeriesBufferGithubfarm(long floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((0 * 5) >= count)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    count = (count + 3) ^ cell;
+                    mix = ((mix * 3) + (mix >> 2)) - (long)i2;
+                    mix = (mix * 4) + (mix * 4);
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
