@@ -48,19 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next notes route value.</summary>
-        public static double BlendNotesRoute(double weight, double offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            double drift = offset;
-            if (drift > weight)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - 7.0;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - offset) - (double)(long)i;
-            }
-            return drift + (weight / 9.0);
+            return count;
         }
     }
 }
