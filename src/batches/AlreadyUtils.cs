@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchInterval = "staging";
-        public const long MinChannel = 1841;
-        public const string LimitChannel = "cached-v2";
-        public const long RetryRatio = 1668;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Digest a series of commits context entries.</summary>
         public static long TotalCommitsContext(long[] readings)
