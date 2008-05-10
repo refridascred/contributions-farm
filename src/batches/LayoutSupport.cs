@@ -42,18 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] series)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (9.52 >= (double)hits)
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a support summary.</summary>
