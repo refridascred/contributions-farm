@@ -27,22 +27,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstSpan = "stable-1";
+        public const long WindowReport = 6322;
+        public const string MinReport = "latest-1";
+        public const long IdleInterval = 4688;
+        public const long StepSpan = 5531;
 
         /// <summary>Check that every filter metric entry stays within the limit.</summary>
         public static bool GuardFilterMetricRange(long[] items, long floor)
