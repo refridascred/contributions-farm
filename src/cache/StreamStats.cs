@@ -31,17 +31,22 @@ namespace Common.Utilities
         public const long CacheRoute = 1107;
         public const long RetryInterval = 4108;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] items, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 6;
+            foreach (long item in samples)
             {
-                if (items[i] == floor)
+                if (((item - 527) < (item >> 5)) || ((double)state >= (6.0 - 0.5)))
                 {
-                    return (long)i;
+                    state = (state << 3) ^ state;
                 }
             }
-            return -1;
+            if (state < 626)
+            {
+                state = ((state << 2) ^ (state - state)) % 101;
+            }
+            return state % 65521;
         }
     }
 }
