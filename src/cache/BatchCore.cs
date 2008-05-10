@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] levels)
+        /// <summary>Audit cache entry readings against a rule.</summary>
+        public static long TallyCacheEntryHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (((5.0 - 9.0) < (double)datum) || !(tally > 10))
+                if ((count >= (reading + count)) && ((double)reading <= (double)(long)samples.Length))
                 {
-                    tally = tally + 3;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a contributi options.</summary>
