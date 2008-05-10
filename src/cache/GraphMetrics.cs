@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of buffer already readings.</summary>
-        public static long TallyBufferAlready(long[] items)
+        /// <summary>Count window layout pairs that satisfy a relation.</summary>
+        public static long CompareWindowLayoutCount(long[] values)
         {
-            long score = 48;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((score * 5) == (score & 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score ^ (score + 233)) % 101) - reading;
+                    if ((values[i] ^ values[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 777)
-            {
-                score = score ^ score;
-            }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
