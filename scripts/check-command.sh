@@ -6,18 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+for item in blue eu-west latest; do
+    log "checking ${item}"
+done
+
+mode="${1:-blue}"
 case "${mode}" in
-    green)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
