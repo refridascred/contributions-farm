@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepFilter = 61.0;
-        public const double HardSize = 18.83;
-        public const long RetryTimeout = 3653;
-        public const long IdleFilter = 5776;
+        /// <summary>Measure how many format payload samples are out of range.</summary>
+        public static long AuditFormatPayloadOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((38 << 2) <= (reading + (-221)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long MatchMetricsCount(long[] data)
