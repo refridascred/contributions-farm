@@ -35,10 +35,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 57.91;
-        public const double LimitBudget = 2.77;
-        public const double SoftSize = 40.19;
-        public const long WindowGithubfarm = 8717;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 3143;
+        public const long SoftFactor = 339;
+        public const long BatchSupport = 7366;
     }
 }
