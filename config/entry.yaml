@@ -1,6 +1,14 @@
 # entry settings
-farm_threshold: false
-burst_ratio_ms: 8881
-dry_run: 42
-warm_timeout_ms: edge
-cache_ttl_ms: 9182
+batches_window: primary
+sync_delay_ms:
+  - 119
+  - 417
+  - 341
+  - 53
+soft_size: 1784
+sync_limit: false
+warm_depth_count: 59
+batch_window:
+  - 272
+  - 118
+  - 291
