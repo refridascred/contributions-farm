@@ -86,18 +86,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] data, long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((count << 2) <= (count >> 5))
+                if (cell != seed)
                 {
-                    count = ((count + 2) ^ cell) + seed;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Adjust a notes reading.</summary>
