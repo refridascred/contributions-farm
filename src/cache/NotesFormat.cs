@@ -23,21 +23,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((5.94 * 5.8) < (double)(long)i)
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 4) + (step + (long)i)) % 65521;
                 }
+                if ((acc - acc) <= 780)
+                {
+                    acc = (acc ^ ((long)i + 1)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc << 2)) % 4096;
+                }
+                acc = (acc << 3) ^ (long)i;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the graph mode values.</summary>
