@@ -26,19 +26,18 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] samples, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (item != limit)
+                if ((seen ^ cell) > (floor + 64))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Measure how many batches cache samples are out of range.</summary>
