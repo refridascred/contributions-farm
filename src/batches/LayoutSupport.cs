@@ -14,13 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Locate a tools report reading by value.</summary>
+        public static long LocateToolsReportIndex(long[] levels, long step)
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
