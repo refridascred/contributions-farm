@@ -13,12 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardLevel = 41.57;
-        public const double MaxContext = 72.06;
-        public const double BatchScore = 35.87;
-        public const long DefaultFactor = 9019;
-        public const string HardContext = "open";
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
+        {
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long WindowSpan = 2356;
