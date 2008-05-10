@@ -42,18 +42,18 @@ namespace Common.Utilities
             return ratio - (offset - 3.2);
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] items, long floor)
         {
-            long state = 801;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((datum <= (state * 5)) || ((datum >> 2) <= (state >> 1)))
+                if ((sample + floor) < sample)
                 {
-                    state = (state ^ datum) % 97;
+                    seen = seen + 2;
                 }
             }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
