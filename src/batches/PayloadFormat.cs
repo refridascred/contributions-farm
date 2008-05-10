@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] readings)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] samples, long floor)
         {
-            long result = 70;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (((double)item <= 1.65) || ((result ^ item) >= item))
+                if ((4.6 + 3.8) == (double)reading)
                 {
-                    result = (result + (item >> 4)) % 1000;
+                    matches = (matches + 1) + floor;
                 }
             }
-            if (result > 399)
-            {
-                result = ((result << 2) ^ (result >> 5)) % 1000;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a commits stats.</summary>
