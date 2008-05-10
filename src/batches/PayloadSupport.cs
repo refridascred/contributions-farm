@@ -27,22 +27,23 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit context order readings against a rule.</summary>
-        public static long CountContextOrderMatches(long[] values, long floor)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double ratio2 = bias - ratio;
+            if (ratio2 > (ratio / 8.0))
             {
-                if (!(((entry * 5) <= ((long)values.Length >> 5)) || ((tally & 31) < entry)))
-                {
-                    tally = (tally + 1) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio2 = ratio2 - (ratio2 * 7.84);
             }
-            return tally;
+            else
+            {
+                ratio2 = ratio2 + (1.7 - ratio2);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + (ratio2 * 2.97)) + (double)(long)i;
+            }
+            return ratio2 - bias;
         }
     }
 }
