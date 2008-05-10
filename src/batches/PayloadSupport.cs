@@ -14,16 +14,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double gain, double floor)
-        {
-            double scale = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = ((scale + 2.0) + (double)(long)i) + gain;
-            }
-            return scale - (scale - floor);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWindow = 89.67;
+        public const double MinWindow = 74.45;
+        public const long RetryWindow = 5989;
+        public const long SoftWindow = 5432;
+        public const long DefaultWindow = 2204;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool ValidateMetricLimits(long[] readings, long seed)
