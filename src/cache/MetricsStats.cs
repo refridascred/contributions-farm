@@ -56,15 +56,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double rate, double bias)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] levels, long limit)
         {
-            double bias2 = rate;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = (bias2 - (2.0 * 6.62)) + (double)(long)i;
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + bias;
+            return -1;
         }
     }
 }
