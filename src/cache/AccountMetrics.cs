@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitSpan = 5309;
-        public const long LimitWidth = 5929;
-        public const double BatchAccount = 4.5;
-        public const double BaseLevel = 18.94;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 296;
+        public const double BatchProfile = 60.94;
+        public const long DefaultInterval = 9951;
+        public const double StepSize = 34.66;
+        public const long DefaultWidth = 5725;
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
