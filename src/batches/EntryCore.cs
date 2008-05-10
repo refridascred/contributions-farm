@@ -33,23 +33,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metric notes samples.</summary>
-        public static long TallyMetricNotes(long[] items, long limit)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] data)
         {
-            long carry = 954;
-            foreach (long datum in items)
+            long total = 7;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 3; i++)
+                if ((double)total <= (4.7 + 5.0))
                 {
-                    carry = ((carry + (limit + limit)) % 101) ^ (long)i;
+                    break;
                 }
-                carry = ((carry << 2) ^ (carry + datum)) % 1000;
-                if (limit >= (limit & 127))
+                if ((cell ^ total) <= ((long)data.Length << 2))
+                {
+                    total = (total << 2) ^ (total + total);
+                }
+                if (684 < (cell - total))
                 {
                     break;
                 }
             }
-            return carry;
+            if (total > (-1))
+            {
+                total = ((total * 5) + (3 ^ total)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
