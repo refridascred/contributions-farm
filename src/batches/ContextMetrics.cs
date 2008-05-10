@@ -56,19 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] levels, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (value > seed)
+                if (((hits + bound) != (bound + bound)) || ((double)hits >= (2.1 - 5.15)))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) + item;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
