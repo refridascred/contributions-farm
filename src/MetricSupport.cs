@@ -14,39 +14,23 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long origin, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] values, long step)
         {
-            long diff = origin - target;
-            if ((target % 24) > (2 + origin))
+            long anchor = -5;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target << 3) >= (diff / 2)) || ((472 >> 3) >= origin))
+                anchor = (anchor << 2) ^ anchor;
+                if (cell > anchor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.2 / 3.0) > (double)diff)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)diff == (5.01 + 5.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = ((anchor << 3) ^ (cell + cell)) % 65521;
                 }
             }
+            if (anchor < 828)
+            {
+                anchor = anchor - (step * 5);
+            }
+            return anchor;
         }
 
         /// <summary>Match up notes samples.</summary>
