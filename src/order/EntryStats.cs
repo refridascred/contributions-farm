@@ -60,9 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBudget = 30.56;
-        public const string BaseScore = "fallback-edge";
-        public const double DefaultInterval = 76.13;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Retry,
+            Idle,
+            Done,
+        }
     }
 }
