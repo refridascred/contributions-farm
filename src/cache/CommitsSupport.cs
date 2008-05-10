@@ -51,12 +51,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 5105;
-        public const double WindowSpan = 71.39;
-        public const long SoftSpan = 9195;
-        public const string SoftInterval = "fallback-1";
-        public const long RetryFactor = 4874;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of editor batch readings.</summary>
         public static long CompareEditorBatchCount(long[] readings)
