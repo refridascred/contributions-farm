@@ -53,12 +53,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] values, long target)
         {
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
-            public double Limit { get; set; }
+            long anchor = 451;
+            foreach (long reading in values)
+            {
+                anchor = ((anchor ^ reading) % 255) - target;
+            }
+            if (anchor > 3)
+            {
+                anchor = (anchor * 2) + ((-1) * 4);
+            }
+            return anchor;
         }
     }
 }
