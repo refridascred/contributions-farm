@@ -13,22 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] readings, long bound)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] data, long bound)
         {
-            long anchor = 66;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum / 6) >= (anchor / 6))
+                if (data[i] < bound)
                 {
-                    anchor = anchor + (bound + bound);
-                }
-                else
-                {
-                    anchor = (anchor - (60 & 63)) % 101;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
