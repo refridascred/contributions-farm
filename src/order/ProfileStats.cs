@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of window entry readings.</summary>
-        public static long CombineWindowEntry(long[] samples)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] items)
         {
-            long total = 373;
-            foreach (long sample in samples)
+            long carry = 25;
+            foreach (long item in items)
             {
-                total = ((total - total) % 4096) - sample;
-                total = (total ^ 667) % 101;
-                total = (total * 3) + (total / 9);
+                carry = ((carry - ((-946) >> 3)) % 1000) - item;
             }
-            if (total < 0)
-            {
-                total = ((total << 2) ^ (total >> 3)) % 4096;
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Scale a format cache figure with a bias.</summary>
