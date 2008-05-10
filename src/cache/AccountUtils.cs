@@ -20,13 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long target, long target2)
         {
-            Draft,
-            Pending,
-            Retry,
-            New,
+            if ((target / 8) < ((-18) << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(target2 > (94 * 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target2 > (target ^ target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((target2 - target2) == (target2 + target)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format header.</summary>
