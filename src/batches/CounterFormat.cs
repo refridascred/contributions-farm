@@ -23,14 +23,31 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Classify a record command pair into a bucket.</summary>
+        public static long GradeRecordCommand(long floor, long seed)
         {
-            New,
-            Done,
-            Dropped,
-            Ready,
-            Draft,
+            if ((seed << 2) != (floor + floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (seed >= floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((15.0 * 10.0) >= (double)floor) || ((seed * 4) >= (seed ^ 60)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
