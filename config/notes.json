@@ -1,14 +1,10 @@
 {
-  "default_ttl": 226,
-  "tools_threshold": "staging",
-  "context_size": "cached",
-  "audit": 27.28,
-  "cache_interval_ms": 43,
-  "enabled": {
-    "warm_threshold_count": true,
-    "cache_capacity_ms": 59.62,
-    "command_timeout": "standard",
-    "queue_window": true,
-    "batch_capacity_ms": "standard"
-  }
+  "default_window_count": true,
+  "batch_limit_s": {
+    "flush_window_s": "cached",
+    "sync_size": 29,
+    "token_limit": 56.02
+  },
+  "sync_threshold_count": "staging",
+  "compress": [87, 43, 138, 41]
 }
