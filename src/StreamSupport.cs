@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the command batch entries that pass the check.</summary>
-        public static long AuditCommandBatchOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((sample & 3) <= (sample / 3)) && ((758 << 2) <= sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleLevel = 2.7;
+        public const double CacheEntry = 13.84;
+        public const long WindowEntry = 9382;
+        public const long DefaultEntry = 5058;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BurstRecord = 8112;
