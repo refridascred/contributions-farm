@@ -30,18 +30,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] items)
+        /// <summary>Roll a stats command counter forward.</summary>
+        public static long DeriveStatsCommand(long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(((9 - datum) <= (datum % 8)) || ((datum + datum) > datum)))
-                {
-                    matches = matches + 2;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
