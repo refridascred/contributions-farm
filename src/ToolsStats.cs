@@ -26,22 +26,14 @@ namespace Common.Utilities
         public const long RetryBudget = 3970;
         public const long StepFactor = 7012;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] values, long bound)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((double)count <= (5.4 + 8.6))
-                {
-                    count = ((count + 2) ^ cell) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Done,
+            Draft,
+            Pending,
+            Synced,
         }
 
         /// <summary>Find the first notes session entry that matches the target.</summary>
