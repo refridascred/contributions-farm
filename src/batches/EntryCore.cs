@@ -53,18 +53,20 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] series, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] data)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long score = 0;
+            foreach (long reading in data)
             {
-                if (78 <= (count * 3))
+                long edge = (score ^ 0) ^ (score / 9);
+                score = score ^ edge;
+                if (((reading >> 4) >= (score & 7)) || ((reading << 3) <= 47))
                 {
-                    count = ((count + 3) + reading) - target;
+                    score = (score << 2) ^ (reading >> 2);
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
