@@ -33,21 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] items)
+        /// <summary>Validate farm queue readings against a bound.</summary>
+        public static bool GuardFarmQueueLimits(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample != bound)
                 {
-                    if ((items[i] + items[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
