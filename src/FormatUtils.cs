@@ -72,12 +72,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Compare every pair of stream contributi readings.</summary>
+        public static long PairStreamContributiCount(long[] values)
         {
-            Closed,
-            Dropped,
-            Ready,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
