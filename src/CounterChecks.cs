@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Draft,
-            Paused,
-            New,
+            Retry,
+            Pending,
+            Queued,
         }
 
         /// <summary>Describe the queue mode values.</summary>
