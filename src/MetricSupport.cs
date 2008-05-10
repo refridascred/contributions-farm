@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] levels, long limit)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!((matches & 15) < limit))
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Rank support input into a small class.</summary>
