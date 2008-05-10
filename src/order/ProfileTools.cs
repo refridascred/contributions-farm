@@ -44,15 +44,18 @@ namespace Common.Utilities
         public const long BaseChannel = 2481;
         public const long WindowSize = 687;
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] levels)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if ((double)141 <= (double)seen)
+                {
+                    seen = (seen + 2) + item;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
