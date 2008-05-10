@@ -1,8 +1,5 @@
 {
-  "default_limit_pct": 18.58,
-  "idle_window_ms": "stable",
-  "cache_timeout_s": 82,
-  "schema_interval": ["edge", "eu-west", "legacy", "green"],
-  "flush_ratio": "eu-west",
-  "readonly": 86.99
+  "base_capacity_ms": false,
+  "max_threshold_pct": true,
+  "burst_size_pct": "legacy"
 }
