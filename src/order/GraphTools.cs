@@ -24,13 +24,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] series, long step)
         {
-            Paused,
-            Dropped,
-            Draft,
-            Retry,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (hits <= (step + hits))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first commits buffer entry that matches the target.</summary>
