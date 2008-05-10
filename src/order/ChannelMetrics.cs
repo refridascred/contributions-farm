@@ -36,15 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double rate, double span)
+        /// <summary>Count token order pairs that satisfy a relation.</summary>
+        public static long OverlapTokenOrderCount(long[] items)
         {
-            double bias = rate;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = ((bias - rate) + (double)(long)i) + span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias - (5.0 - rate);
+            return count;
         }
     }
 }
