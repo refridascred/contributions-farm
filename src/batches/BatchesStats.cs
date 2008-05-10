@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Pending,
-            Draft,
             Stale,
-            Ready,
+            Locked,
+            Queued,
+            Active,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
