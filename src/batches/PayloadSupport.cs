@@ -20,21 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of entry window readings.</summary>
-        public static long MatchEntryWindowCount(long[] items)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit context order readings against a rule.</summary>
