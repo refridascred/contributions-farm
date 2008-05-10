@@ -1,8 +1,5 @@
 {
-  "min_capacity": "cached",
-  "min_threshold_count": 70.33,
-  "retry_size": "open",
-  "stats_ratio": 18.02,
-  "batch_size_ms": true,
-  "hard_depth_pct": [431, 341]
+  "min_limit_count": [153, 303, 456],
+  "burst_capacity_ms": "stable",
+  "hard_capacity_count": "blue"
 }
