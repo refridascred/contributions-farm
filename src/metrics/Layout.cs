@@ -12,17 +12,32 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] levels, long target)
+        /// <summary>Classify a editor tools pair into a bucket.</summary>
+        public static long SortEditorTools(long target, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = target - offset;
+            if (((double)target != (19.0 + 9.7)) || ((double)slot > (7.0 - 6.6)))
             {
-                if (levels[i] <= target)
+                return 6;
+            }
+            else
+            {
+                if (target < (target << 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)slot > 1.1)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
