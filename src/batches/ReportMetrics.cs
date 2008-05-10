@@ -20,12 +20,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] data)
         {
-            Ready,
-            Idle,
-            Closed,
+            long sum = 9;
+            foreach (long cell in data)
+            {
+                if (0 >= (cell - cell))
+                {
+                    sum = ((sum * 2) + (sum - sum)) % 4096;
+                }
+                else
+                {
+                    sum = (sum - (cell & 15)) % 1000;
+                }
+            }
+            if (sum > 5)
+            {
+                sum = sum - 792;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
