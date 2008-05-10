@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate schema queue readings against a bound.</summary>
-        public static bool CheckSchemaQueueRange(long[] data, long seed)
-        {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftOrder = "staging";
+        public const long MaxOrder = 8041;
+        public const double StepOrder = 8.46;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long DigestQueue(long[] levels, long step)
