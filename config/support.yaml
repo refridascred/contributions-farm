@@ -1,7 +1,8 @@
 # support settings
-warm_timeout: 500
-soft_ratio_ms: 76
-dry_run:
-  - 129
-  - 395
-  - 155
+filter_depth: true
+compress: 26.96
+entry_interval:
+  - 426
+  - 251
+  - 350
+retry_window_s: 37.21
