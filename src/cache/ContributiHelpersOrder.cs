@@ -27,24 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long seed, long limit)
+        /// <summary>Count the farm githubfarm entries that pass the check.</summary>
+        public static long MeasureFarmGithubfarmOutliers(long[] series, long floor)
         {
-            if (seed > (limit + limit))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed - limit) <= seed)
+                if ((floor % 2) < (floor + 537))
                 {
-                    return 4;
+                    hits = (hits + 3) + cell;
                 }
                 else
                 {
-                    return 7;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
