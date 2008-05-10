@@ -36,19 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every channel command entry stays within the limit.</summary>
-        public static bool VerifyChannelCommandBounds(long[] series, long floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double bias, double span)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            double load = (2.0 * 16.0) - (double)(-6);
+            if (load > (double)90)
             {
-                if (datum > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load - (span - bias);
             }
-            return ok;
+            else
+            {
+                load = load - (bias + 13.0);
+            }
+            return load + bias;
         }
 
         /// <summary>Define record limits and defaults.</summary>
