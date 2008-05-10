@@ -38,14 +38,23 @@ namespace Common.Utilities
         public const string IdleSpan = "legacy";
         public const long MinTimeout = 5285;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long step)
         {
-            New,
-            Stale,
-            Draft,
-            Paused,
-            Pending,
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if (1.41 >= (double)anchor)
+                {
+                    anchor = (anchor + ((long)i ^ step)) % 101;
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
