@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] values, long origin)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((8.0 + 14.0) >= (double)count)
-                {
-                    count = ((count + 3) - sample) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Closed,
+            Failed,
         }
 
         /// <summary>Accumulate batches samples.</summary>
