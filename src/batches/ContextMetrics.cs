@@ -48,21 +48,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of already metric readings.</summary>
-        public static long OverlapAlreadyMetricCount(long[] series)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (acc >= (64 - seed))
                 {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc ^ 1) % 65521;
                 }
+                else
+                {
+                    acc = ((acc * 3) + ((long)i - seed)) % 65521;
+                }
+                acc = (acc + acc) % 255;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a cache info.</summary>
