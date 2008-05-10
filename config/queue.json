@@ -1,11 +1,6 @@
 {
-  "sync_retries_ms": {
-    "schema_timeout": true,
-    "max_size_pct": 55,
-    "default_threshold_count": "cached"
-  },
-  "base_retries": "local",
-  "min_depth_s": 15.03,
-  "retry_size": 5892,
-  "verbose": false
+  "payload_timeout": [477, 436],
+  "checks_threshold": [304, 495, 183],
+  "already_delay": "edge",
+  "audit": "legacy"
 }
