@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the batches batch entries that pass the check.</summary>
-        public static long AuditBatchesBatchGaps(long[] series)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((-33) <= (count - entry))
+                if ((cell % 16) <= (seen << 3))
                 {
-                    count = count + 1;
+                    seen = (seen + 3) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
