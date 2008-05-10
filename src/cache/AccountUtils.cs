@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a metric schema reading by value.</summary>
-        public static long FindMetricSchemaIndex(long[] series, long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 467;
+            foreach (long sample in samples)
             {
-                if (series[i] <= offset)
+                if (!(((-149) + 17) <= (floor >> 5)))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (long)samples.Length) ^ sample;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
