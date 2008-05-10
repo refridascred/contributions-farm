@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] items, long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long seed, long bound)
         {
-            bool found = true;
-            foreach (long item in items)
+            if (bound > (seed % 3))
             {
-                if (item >= target)
+                return 0;
+            }
+            else
+            {
+                if ((bound << 2) == (bound / 8))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound + seed) >= (356 << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many profile route samples are out of range.</summary>
