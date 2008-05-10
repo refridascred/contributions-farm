@@ -52,12 +52,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public long Level { get; set; }
-            public bool Offset { get; set; }
-            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
