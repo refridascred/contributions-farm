@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] items, long limit)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Derive the next payload command value from a seed.</summary>
