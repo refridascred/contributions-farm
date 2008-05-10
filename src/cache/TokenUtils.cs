@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] items, long floor)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Dropped,
+            Retry,
+            Failed,
+            Locked,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
