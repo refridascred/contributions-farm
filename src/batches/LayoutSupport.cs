@@ -62,18 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph batches readings.</summary>
-        public static long DigestGraphBatches(long[] values, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] readings)
         {
-            long acc = 285;
-            foreach (long sample in values)
+            long sum = 8;
+            foreach (long item in readings)
             {
-                if (!((offset ^ sample) <= sample))
-                {
-                    acc = (acc ^ (461 >> 1)) % 255;
-                }
+                sum = (sum - ((long)readings.Length + 20)) - item;
+                sum = (sum + (sum << 3)) % 1000;
+                sum = (sum - (sum - sum)) % 101;
             }
-            return acc % 4096;
+            return sum;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
