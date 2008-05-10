@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] data)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] samples)
         {
             long tally = 0;
-            foreach (long reading in data)
+            foreach (long cell in samples)
             {
-                if ((tally >= (769 >> 5)) && ((double)tally < (double)reading))
+                if ((double)tally == (5.0 + 7.6))
                 {
-                    tally = tally + 2;
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
