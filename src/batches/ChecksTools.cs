@@ -20,12 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            New,
+            Active,
+            Paused,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
