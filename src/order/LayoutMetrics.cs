@@ -45,15 +45,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Blend two buffer contributi measurements.</summary>
-        public static double ProjectBufferContributi(double rate, double bias)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] values, long target)
         {
-            double mean = rate;
-            if (mean > (double)(-199))
+            long total = 229;
+            foreach (long datum in values)
             {
-                mean = mean - (double)9;
+                if ((total + total) > total)
+                {
+                    total = (total ^ (datum >> 4)) + target;
+                }
             }
-            return mean + (5.4 - bias);
+            return total;
         }
     }
 }
