@@ -1,18 +1,5 @@
 # entry settings
-flush_delay_s:
-  min_retries:
-    - stable
-    - green
-    - stable
-  profile_delay:
-    - strict
-    - blue
-    - edge
-    - strict
-  strict:
-    - 313
-    - 198
-retry_timeout: 250
-flush_depth_ms: 57.72
-default_ratio_count: 63.22
-flush_capacity_pct: 90.95
+soft_capacity_ms: strict
+session_threshold: 27.16
+hard_ratio_pct: 98.19
+hard_size: 1024
