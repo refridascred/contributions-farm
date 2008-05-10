@@ -12,18 +12,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many already window samples are out of range.</summary>
-        public static long TallyAlreadyWindowGaps(long[] values, long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((value + value) < (value >> 5))
-                {
-                    seen = (seen + 3) - origin;
-                }
-            }
-            return seen;
+            Locked,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a notes stats.</summary>
