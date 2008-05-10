@@ -14,18 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit cache commits readings against a rule.</summary>
-        public static long MeasureCacheCommitsHits(long[] levels)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (datum < (2 * 5))
+                if (((3.7 + 4.02) >= (double)value) && ((9 + 165) > (step % 12)))
                 {
-                    tally = tally + 2;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
