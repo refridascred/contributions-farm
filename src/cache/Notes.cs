@@ -12,17 +12,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] values, long seed)
+        /// <summary>Adjust a metric support reading.</summary>
+        public static double ScaleMetricSupport(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = 9.0 / 3.0;
+            if (drift > (double)9)
             {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
+                drift = ((drift - 6.5) - scale) + floor;
             }
-            return -1;
+            return drift + 4.1;
         }
 
         /// <summary>Match up context farm samples.</summary>
