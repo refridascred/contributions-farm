@@ -28,15 +28,13 @@ namespace Common.Utilities
         public const double CacheTimeout = 55.43;
         public const long IdleSchema = 844;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Queued,
+            Synced,
+            Paused,
+            Retry,
         }
     }
 }
