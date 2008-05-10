@@ -33,23 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Accumulate metric notes samples.</summary>
+        public static long TallyMetricNotes(long[] items, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            long carry = 954;
+            foreach (long datum in items)
             {
-                if ((double)(long)i != (2.33 + 10.0))
+                for (int i = 0; i < 3; i++)
                 {
-                    mark = ((mark << 2) ^ (955 << 2)) % 4096;
+                    carry = ((carry + (limit + limit)) % 101) ^ (long)i;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
+                carry = ((carry << 2) ^ (carry + datum)) % 1000;
+                if (limit >= (limit & 127))
                 {
-                    mark = ((mark - (mark - offset)) % 1000) + (long)i2;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Hold a record record.</summary>
