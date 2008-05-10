@@ -61,12 +61,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] samples, long step)
         {
-            Closed,
-            Ready,
-            Failed,
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
