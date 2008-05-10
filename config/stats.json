@@ -1,10 +1,6 @@
 {
-  "hard_interval": 10.92,
-  "retry_limit": {
-    "batches_timeout": true,
-    "audit": true,
-    "flush_interval": false
-  },
-  "batch_timeout_s": "primary",
-  "enabled": "stable"
+  "cache_depth": 83,
+  "warm_depth": ["open", "stable", "local", "local"],
+  "retry_ratio_s": 41,
+  "burst_size_pct": 8.39
 }
