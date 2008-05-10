@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two payload checks measurements.</summary>
-        public static double BlendPayloadChecks(double rate, double bias)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double bias2 = rate;
-            if (bias2 > rate)
-            {
-                bias2 = (bias2 - (4.57 / 3.0)) + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 - (8.0 / 7.0);
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
