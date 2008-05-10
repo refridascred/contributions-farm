@@ -20,21 +20,15 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (bias + floor) / 4.0;
+            if (gain < (gain / 4.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain + (double)7;
             }
-            return hits;
+            return gain - floor;
         }
 
         /// <summary>Accumulate cache farm samples.</summary>
