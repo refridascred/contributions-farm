@@ -67,10 +67,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 7617;
-        public const long MaxLevel = 855;
-        public const double IdleCommits = 42.85;
-        public const long BaseCommits = 2530;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] data, long step)
+        {
+            long anchor = 72;
+            foreach (long entry in data)
+            {
+                anchor = ((anchor * 5) + (-69)) + entry;
+                anchor = (anchor - (step - anchor)) % 101;
+            }
+            return anchor % 1000;
+        }
     }
 }
