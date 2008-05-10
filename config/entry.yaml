@@ -1,14 +1,5 @@
 # entry settings
-batches_window: primary
-sync_delay_ms:
-  - 119
-  - 417
-  - 341
-  - 53
-soft_size: 1784
-sync_limit: false
-warm_depth_count: 59
-batch_window:
-  - 272
-  - 118
-  - 291
+report_timeout: 139
+warm_retries_ms: legacy
+sync_size: staging
+soft_depth: 4754
