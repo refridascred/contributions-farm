@@ -16,11 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleLevel = 2.7;
-        public const double CacheEntry = 13.84;
-        public const long WindowEntry = 9382;
-        public const long DefaultEntry = 5058;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BurstRecord = 8112;
