@@ -34,11 +34,23 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleDepth = 6161;
-        public const long BatchTools = 1366;
-        public const long HardSize = 326;
-        public const string SoftTimeout = "primary";
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!((long)items.Length <= (datum * 2)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double BlendRecord(double ratio, double offset)
