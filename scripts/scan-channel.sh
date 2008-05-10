@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary blue stable open; do
+for item in standard primary eu-west; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=36
+CHANNEL_LIMIT=135
 log "limit is ${CHANNEL_LIMIT}"
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
