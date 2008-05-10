@@ -20,11 +20,16 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitWidth = 6480;
-        public const string BaseAlready = "primary-edge";
-        public const double RetryAlready = 18.44;
-        public const long SoftAlready = 8463;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double weight, double offset)
+        {
+            double gain = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = ((gain - (15.0 * 16.0)) + (double)(long)i) - weight;
+            }
+            return gain + 8.9;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] readings)
