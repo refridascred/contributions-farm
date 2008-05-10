@@ -52,39 +52,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a checks command pair into a bucket.</summary>
-        public static long SortChecksCommand(long target, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] data)
         {
-            long cur = target ^ floor;
-            if ((9.0 / 3.0) <= (double)cur)
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (4 < (floor + cur))
+                if ((64 + item) <= (item * 3))
                 {
-                    return 3;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((floor ^ floor) < (target + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((20.0 + 6.2) <= (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
