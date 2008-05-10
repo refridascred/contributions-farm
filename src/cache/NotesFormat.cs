@@ -17,17 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] items, long offset)
-        {
-            long acc = -721;
-            foreach (long datum in items)
-            {
-                acc = (acc - (offset % 5)) - datum;
-                acc = ((acc * 2) + offset) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinSpan = 41.01;
+        public const long CacheFactor = 4348;
+        public const long DefaultChannel = 6107;
+        public const long BatchSpan = 7808;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
