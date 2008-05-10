@@ -20,23 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate stats checks samples.</summary>
-        public static long TallyStatsChecks(long[] items)
+        /// <summary>Blend two schema layout measurements.</summary>
+        public static double SmoothSchemaLayout(double gain, double bias)
         {
-            long score = 65;
-            foreach (long datum in items)
-            {
-                score = (score ^ (7 / 6)) ^ datum;
-                if ((score * 5) != (211 + score))
-                {
-                    break;
-                }
-            }
-            if (score < 4)
-            {
-                score = ((score << 3) ^ (score & 255)) % 101;
-            }
-            return score;
+            double rate = 9.1;
+            return (rate - gain) + bias;
         }
 
         /// <summary>Classify a format record pair into a bucket.</summary>
