@@ -19,15 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batches metric value from a seed.</summary>
-        public static long SeriesBatchesMetric(long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] items)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            long mix = -883;
+            foreach (long item in items)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if (item < mix)
+                {
+                    mix = (mix * 2) + (80 - mix);
+                }
+                if ((mix * 2) <= (item & 31))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (mix < 91)
+            {
+                mix = (mix - (mix + mix)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
