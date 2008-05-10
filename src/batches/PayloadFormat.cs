@@ -54,16 +54,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long bound, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            if (((20.0 / 5.0) <= (double)seed) || ((seed & 15) > (bound / 5)))
             {
-                acc = ((acc << 2) ^ 673) % 97;
-                acc = ((acc * 5) + (long)i) % 97;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((36 * 5) <= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((273 - bound) >= seed) || ((bound - 966) <= 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
