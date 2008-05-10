@@ -32,19 +32,22 @@ namespace Common.Utilities
         public const long MinAccount = 3884;
         public const long SoftAccount = 7948;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long bound)
         {
-            long sum = 0;
-            foreach (long value in items)
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                sum = (((sum << 3) ^ (sum & 31)) % 1000) ^ value;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = ((anchor + ((long)i % 7)) % 4096) ^ (long)i2;
+                    anchor = anchor + anchor;
+                }
+                anchor = anchor ^ anchor;
+                anchor = (anchor - anchor) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            if (sum < (-6))
-            {
-                sum = ((sum * 3) + sum) % 4096;
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
