@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the command githubfarm series from a seed.</summary>
-        public static long RollCommandGithubfarm(long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] items, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            long acc = 602;
+            foreach (long datum in items)
             {
-                mix = (mix - mix) % 255;
-                mix = ((mix * 4) + (long)i) % 97;
+                acc = (acc ^ (step + acc)) % 255;
+                acc = acc + datum;
+                if (((datum - datum) > (acc << 2)) || ((step / 9) < (acc ^ step)))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (acc < 40)
+            {
+                acc = acc + (acc - step);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the token phase values.</summary>
