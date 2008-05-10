@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Stale,
             Queued,
+            Paused,
+            Retry,
             Dropped,
+            Ready,
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
