@@ -29,14 +29,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long bound)
         {
-            Dropped,
-            Pending,
-            Locked,
-            New,
-            Failed,
+            long state = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                state = (state + (state * 3)) % 1000;
+                state = (state << 2) ^ (state + state);
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Blend two schema measurements.</summary>
