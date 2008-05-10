@@ -50,11 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitDepth = 5595;
-        public const string MaxProfile = "legacy-v2";
-        public const string StepFactor = "stable";
-        public const long BurstFactor = 9039;
-        public const long CacheWidth = 5503;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (floor >= (floor + (long)data.Length))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
+        }
     }
 }
