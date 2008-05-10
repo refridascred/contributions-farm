@@ -1,19 +1,6 @@
 {
-  "queue_retries": 19.23,
-  "session_delay": true,
-  "metrics_limit": {
-    "warm_interval": 88,
-    "dry_run": [335, 127, 83, 324],
-    "flush_depth_ms": 250,
-    "enabled": [215, 253, 69, 258],
-    "min_ratio_ms": 78
-  },
-  "warm_size": "fallback",
-  "already_size": {
-    "verbose": false,
-    "flush_retries": "latest",
-    "dry_run": 16.12,
-    "hard_retries": 37,
-    "retry_timeout": "primary"
-  }
+  "hard_threshold_count": "staging",
+  "min_threshold_count": 6415,
+  "flush_depth": 75,
+  "default_threshold_pct": "fallback"
 }
