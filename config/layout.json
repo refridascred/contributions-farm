@@ -1,10 +1,10 @@
 {
-  "max_ratio": 100,
-  "sync_limit": 96,
-  "metrics_capacity": {
-    "warm_depth_count": 48,
-    "tools_depth": 100,
-    "contributi_capacity": ["open", "fallback", "legacy"],
-    "poll_timeout_ms": [238, 128, 119, 177]
-  }
+  "sync_ttl_pct": {
+    "sync_threshold_s": "standard",
+    "cache_limit_pct": 623,
+    "schema_retries": "cached",
+    "compress": [244, 165, 229, 251]
+  },
+  "burst_threshold_ms": "local",
+  "verbose": ["fallback", "standard"]
 }
