@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] values, long floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Synced,
+            Retry,
         }
 
         /// <summary>Accumulate token samples.</summary>
