@@ -32,18 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] series, long origin)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double load = gain;
+            if (load < (8.0 / 2.0))
             {
-                if (((matches * 2) != (matches * 4)) && !((double)matches != (6.91 * 3.39)))
-                {
-                    matches = ((matches + 3) + sample) + origin;
-                }
+                load = load + offset;
             }
-            return matches;
+            else
+            {
+                load = load + (load - load);
+            }
+            return load + (load - offset);
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
