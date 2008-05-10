@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] samples, long target)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long mix = -685;
-            foreach (long cell in samples)
-            {
-                mix = ((mix << 3) ^ cell) % 255;
-                if (((cell + mix) < cell) && ((double)cell < (7.9 * 1.0)))
-                {
-                    mix = (mix + (cell ^ mix)) % 4096;
-                    break;
-                }
-                mix = ((mix << 3) ^ ((-7) * 2)) % 4096;
-                if ((double)(long)samples.Length != (3.4 + 7.0))
-                {
-                    break;
-                }
-            }
-            if (mix < 3)
-            {
-                mix = (mix << 3) ^ target;
-            }
-            return mix;
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the record mode values.</summary>
