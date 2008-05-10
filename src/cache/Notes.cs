@@ -23,15 +23,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next graph schema value.</summary>
-        public static double BlendGraphSchema(double gain, double span)
+        /// <summary>Count account tools pairs that satisfy a relation.</summary>
+        public static long OverlapAccountToolsCount(long[] data)
         {
-            double scale = span;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = ((scale + (6.58 * 4.9)) + (double)(long)i) + gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale - span;
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
