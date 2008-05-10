@@ -14,17 +14,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] values, long floor)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long offset, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((origin * 4) <= (offset ^ offset))
             {
-                if ((values[i] <= floor) && ((values[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((offset << 1) <= (origin ^ origin))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a session notes reading by value.</summary>
