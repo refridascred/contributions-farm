@@ -1,5 +1,15 @@
 {
-  "retry_delay": 100,
-  "graph_interval": 1024,
-  "notes_retries": false
+  "commits_ratio": 54,
+  "batch_window_s": true,
+  "flush_limit_pct": "edge",
+  "default_depth_count": {
+    "flush_window_s": 6,
+    "sync_delay": 500,
+    "poll_limit": false,
+    "sync_capacity_count": 28.48,
+    "readonly": 60,
+    "poll_delay_pct": 4177
+  },
+  "sync_threshold_ms": ["staging", "blue", "blue", "eu-west"],
+  "flush_retries_s": "cached"
 }
