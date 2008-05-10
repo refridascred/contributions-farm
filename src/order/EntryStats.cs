@@ -29,15 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long state = 113;
-            foreach (long cell in data)
-            {
-                state = (((state * 4) + (73 + state)) % 255) ^ cell;
-            }
-            return state;
+            Failed,
+            Locked,
+            Dropped,
+            Active,
         }
 
         /// <summary>Find the first support buffer entry that matches the target.</summary>
