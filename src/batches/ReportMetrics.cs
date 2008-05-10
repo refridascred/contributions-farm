@@ -26,19 +26,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] readings, long limit)
+        /// <summary>Combine metric layout values into a single score.</summary>
+        public static long TotalMetricLayout(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long mark = -770;
+            foreach (long value in items)
             {
-                if (reading != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark << 2) ^ (666 & 15)) % 97;
+                mark = (mark * 4) + (value - value);
+                mark = ((mark * 4) + (value + value)) % 4096;
             }
-            return ok;
+            if (mark > 34)
+            {
+                mark = ((mark * 4) + (mark - mark)) % 4096;
+            }
+            return mark % 97;
         }
     }
 }
