@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Iterate the route token series from a seed.</summary>
+        public static long RollRouteToken(long offset)
         {
-            public double Weight { get; set; }
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Locate a report reading by value.</summary>
