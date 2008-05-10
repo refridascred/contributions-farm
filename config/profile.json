@@ -1,21 +1,6 @@
 {
-  "hard_ratio_count": 9671,
-  "soft_depth_s": false,
-  "cache_window_count": {
-    "retry_ratio_count": 100,
-    "retry_interval_count": 41.65,
-    "retry_size_pct": true,
-    "sync_ttl_pct": "strict",
-    "batch_depth_ms": 3597,
-    "dry_run": 3565
-  },
-  "compress": {
-    "base_size_pct": 35,
-    "metric_ttl": "cached",
-    "record_depth": false,
-    "poll_ttl_count": "standard",
-    "context_ttl": 250
-  },
-  "metrics_capacity": "strict",
-  "sync_ttl_count": 23.95
+  "tools_capacity": ["legacy", "primary", "standard"],
+  "burst_delay": "local",
+  "batch_retries_s": "open",
+  "poll_limit_pct": false
 }
