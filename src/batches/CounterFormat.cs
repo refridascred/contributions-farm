@@ -28,17 +28,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] values, long bound)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long target, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (target < (28 / 2))
             {
-                if (values[i] >= bound)
+                return 6;
+            }
+            else
+            {
+                if ((limit << 1) < (target % 64))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
