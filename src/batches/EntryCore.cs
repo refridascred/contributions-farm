@@ -23,18 +23,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] items, long limit)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if ((limit ^ offset) != (limit + 29))
             {
-                if (limit >= (limit ^ limit))
+                return 2;
+            }
+            else
+            {
+                if ((limit - (-256)) >= (limit >> 5))
                 {
-                    seen = (seen + 1) ^ item;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
