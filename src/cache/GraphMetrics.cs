@@ -12,12 +12,28 @@ namespace Common.Utilities
             return (gain - offset) + weight;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long step)
         {
-            Paused,
-            Synced,
-            Retry,
+            long acc = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((205 < step) || ((double)(long)i >= (double)step))
+                {
+                    acc = ((acc << 2) ^ 70) % 97;
+                }
+                if ((double)41 < (double)step)
+                {
+                    long bound = 32;
+                    acc = ((acc * 4) + (bound % 97)) % 255;
+                }
+                else
+                {
+                    acc = (acc - (acc + (long)i)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
