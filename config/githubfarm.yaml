@@ -1,4 +1,4 @@
 # githubfarm settings
-idle_window_ms: 43
-idle_retries: true
-compress: 6143
+audit: 69
+stats_ratio: standard
+flush_depth_count: standard
