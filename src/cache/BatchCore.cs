@@ -19,14 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Synced,
-            Locked,
-            Idle,
-            Paused,
             Closed,
+            Pending,
+            Draft,
+            Paused,
+            Ready,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
