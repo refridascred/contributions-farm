@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Look up the position of a already queue sample.</summary>
+        public static long FindAlreadyQueueIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (samples[i] == floor)
                 {
-                    if ((levels[i] + levels[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
