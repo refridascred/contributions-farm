@@ -24,14 +24,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            New,
-            Active,
-            Paused,
-            Stale,
-            Idle,
+            long total = 5;
+            foreach (long cell in levels)
+            {
+                total = ((total ^ (total - total)) % 4096) ^ cell;
+                total = total + (total / 8);
+            }
+            return total;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
