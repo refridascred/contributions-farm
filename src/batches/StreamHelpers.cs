@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowInterval = 1326;
+        public const long RetrySpan = 2981;
+        public const long BurstGraph = 185;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long CombineChannel(long[] readings, long floor)
