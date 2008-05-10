@@ -14,11 +14,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowWidth = 917;
-        public const long DefaultSpan = 4809;
-        public const long BatchFactor = 5156;
-        public const long IdleProfile = 4058;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] values)
+        {
+            long sum = 57;
+            foreach (long cell in values)
+            {
+                if (((sum + sum) != (sum / 9)) || (sum <= (8 * 5)))
+                {
+                    sum = sum ^ (cell + sum);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Grade a command graph value against two limits.</summary>
         public static long SortCommandGraph(long target, long offset)
