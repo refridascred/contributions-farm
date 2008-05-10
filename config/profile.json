@@ -1,17 +1,5 @@
 {
-  "account_ttl": 250,
-  "burst_timeout_pct": 98.99,
-  "schema_timeout": {
-    "hard_ratio_pct": 50,
-    "record_timeout": 53,
-    "session_timeout": 60,
-    "order_retries": {
-      "verbose": true,
-      "notes_ttl": 34.81,
-      "record_threshold": false,
-      "support_retries": 250,
-      "idle_depth_count": 93.68
-    },
-    "schema_delay": 17
-  }
+  "layout_size": 100,
+  "sync_capacity_count": false,
+  "sync_window_s": 60
 }
