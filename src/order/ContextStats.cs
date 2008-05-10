@@ -49,19 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two account window measurements.</summary>
-        public static double SmoothAccountWindow(double gain, double floor)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double rate = floor / 9.0;
-            if (rate > gain)
-            {
-                rate = rate + (0.4 + gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (gain / 8.0)) + (double)(long)i;
-            }
-            return rate + (floor + gain);
+            public bool Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
