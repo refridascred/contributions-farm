@@ -1,19 +1,12 @@
 {
-  "contributi_interval": "primary",
-  "default_ttl": 281,
-  "enabled": [362, 81, 268],
-  "channel_limit": {
-    "persist": {
-      "soft_interval_ms": 100,
-      "enabled": 3916,
-      "batch_limit": 500,
-      "strict": 9616,
-      "stream_interval": 41.99
-    },
-    "cache_depth": 100,
-    "hard_threshold_ms": true,
-    "audit": "legacy"
+  "compress": [19, 397],
+  "flush_capacity_pct": [352, 198, 414, 317],
+  "idle_depth_pct": 6993,
+  "default_delay_s": {
+    "strict": [68, 181, 60, 363],
+    "flush_limit_count": 30,
+    "dry_run": 500,
+    "metrics_size": 23
   },
-  "checks_timeout": "primary",
-  "format_interval": 23.46
+  "readonly": ["edge", "latest", "legacy", "open"]
 }
