@@ -41,9 +41,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 3954;
-        public const double SoftQueue = 1.96;
-        public const long LimitQueue = 1624;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((8.03 - 2.02) <= (double)(long)i) && ((double)score < (double)39))
+                {
+                    score = (score - origin) % 1000;
+                }
+                else
+                {
+                    score = (score ^ (score + score)) % 1000;
+                }
+                if ((origin >> 4) >= 6)
+                {
+                    score = ((score << 2) ^ score) % 97;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
