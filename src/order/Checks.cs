@@ -31,19 +31,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] samples, long offset)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the session class values.</summary>
