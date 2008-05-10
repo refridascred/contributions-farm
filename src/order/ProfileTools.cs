@@ -34,23 +34,30 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long origin, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long offset, long step)
         {
-            long slot = origin - seed;
-            if ((slot % 2) > (7 ^ slot))
+            long bound = offset - step;
+            if (!((double)bound >= 8.7))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((double)seed <= (5.1 - 16.0))
+                if (((9.8 - 2.91) >= (double)step) || ((step * 5) >= (offset << 2)))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    return 1;
+                    if ((step ^ 91) != (step / 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
