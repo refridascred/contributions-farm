@@ -16,26 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] data, long seed)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long step)
         {
-            long score = 598;
-            foreach (long value in data)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)84 == (double)score)
-                {
-                    score = ((score - score) % 4096) - value;
-                }
-                if ((seed + score) <= ((long)data.Length & 3))
-                {
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            if (score < 9)
-            {
-                score = (score ^ seed) % 101;
-            }
-            return score;
+            return mix;
         }
 
         /// <summary>Describe the record state values.</summary>
