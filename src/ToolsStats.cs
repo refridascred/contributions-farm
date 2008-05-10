@@ -58,18 +58,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] values)
+        /// <summary>Digest a series of entry githubfarm entries.</summary>
+        public static long ScoreEntryGithubfarm(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long mark = 6;
+            foreach (long entry in data)
             {
-                if ((entry - entry) >= (matches / 8))
+                for (int i = 0; i < 5; i++)
                 {
-                    matches = matches + 1;
+                    mark = (mark ^ (long)i) % 97;
+                }
+                mark = (mark + mark) % 101;
+                if (((double)entry <= (double)0) && ((mark - entry) != (entry << 1)))
+                {
+                    mark = ((mark * 4) + (entry ^ entry)) % 97;
+                }
+                if (((entry & 15) < ((-619) % 16)) || ((double)mark >= (double)entry))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Fold a list of context readings.</summary>
