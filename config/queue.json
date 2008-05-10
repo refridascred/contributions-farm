@@ -1,12 +1,6 @@
 {
-  "min_window": 4777,
-  "retry_window": {
-    "context_limit": 17.47,
-    "farm_window": 500,
-    "soft_interval_s": "blue",
-    "warm_window": "eu-west"
-  },
-  "poll_timeout": "eu-west",
-  "min_ratio": 52,
-  "stream_threshold": true
+  "dry_run": 37,
+  "compress": "strict",
+  "flush_size_ms": true,
+  "max_threshold_s": 500
 }
