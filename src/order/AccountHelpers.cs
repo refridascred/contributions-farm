@@ -35,23 +35,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = (anchor ^ (floor & 127)) % 4096;
-                if (!((95 / 4) == (anchor << 1)))
-                {
-                    anchor = (anchor << 3) ^ (67 ^ (long)i);
-                    anchor = ((anchor * 3) + ((long)i + floor)) % 4096;
-                }
-                anchor = (anchor << 3) ^ (anchor % 8);
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double SoftBuffer = 17.52;
+        public const long DefaultWidth = 1868;
+        public const double MaxLevel = 77.2;
+        public const string BurstSize = "strict-v2";
+        public const long LimitBuffer = 5584;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long FoldGithubfarm(long[] items)
