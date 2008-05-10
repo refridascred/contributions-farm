@@ -23,11 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] samples)
         {
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((item < matches) || (((double)matches < 0.07) || (item > matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
