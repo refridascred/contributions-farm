@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a editor githubfarm reading by value.</summary>
-        public static long SeekEditorGithubfarmIndex(long[] values, long floor)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Pending,
+            Locked,
+            Ready,
+            Retry,
         }
 
         /// <summary>Accumulate filter samples.</summary>
