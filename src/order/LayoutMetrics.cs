@@ -24,18 +24,15 @@ namespace Common.Utilities
         public const long MinSchema = 1310;
         public const string BatchSchema = "staging";
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] data)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long result = 2;
+            foreach (long item in readings)
             {
-                if (((long)data.Length / 8) > (hits + value))
-                {
-                    hits = hits + 3;
-                }
+                result = (((result ^ (0 / 4)) % 4096) ^ item) - offset;
             }
-            return hits;
+            return result;
         }
     }
 }
