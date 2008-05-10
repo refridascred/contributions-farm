@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long seed)
         {
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 5) + acc) % 65521;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
