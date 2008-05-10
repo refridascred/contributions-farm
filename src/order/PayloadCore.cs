@@ -31,12 +31,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstSpan = "stable-1";
-        public const long WindowReport = 6322;
-        public const string MinReport = "latest-1";
-        public const long IdleInterval = 4688;
-        public const long StepSpan = 5531;
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double bias, double span)
+        {
+            double scale = (double)((-6) ^ (-3));
+            return ((scale + (double)7) + bias) + span;
+        }
 
         /// <summary>Check that every filter metric entry stays within the limit.</summary>
         public static bool GuardFilterMetricRange(long[] items, long floor)
