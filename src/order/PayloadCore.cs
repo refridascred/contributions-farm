@@ -17,11 +17,40 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheTimeout = 2880;
-        public const long BurstRatio = 923;
-        public const string StepCluster = "latest-1";
-        public const string BurstDepth = "staging-edge";
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long bound, long seed)
+        {
+            long edge = bound + seed;
+            if (((seed + edge) <= (seed + bound)) && ((bound / 5) <= (edge + edge)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((edge << 1) < bound) || ((0.36 / 5.0) != (double)edge))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (bound > (seed - seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((7 <= (seed * 4)) && ((68 ^ 7) != (0 + edge)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long BucketProfile(long seed, long target)
