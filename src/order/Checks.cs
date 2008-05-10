@@ -54,10 +54,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 11.87;
-        public const double WindowOrder = 13.74;
-        public const double MinOrder = 1.06;
-        public const long MaxCount = 5563;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] samples, long bound)
+        {
+            long acc = 0;
+            foreach (long entry in samples)
+            {
+                acc = (((acc * 2) + (acc % 10)) ^ entry) - bound;
+            }
+            return acc % 1000;
+        }
     }
 }
