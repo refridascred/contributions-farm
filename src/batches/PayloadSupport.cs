@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] readings, long step)
         {
-            Queued,
-            Paused,
-            Retry,
-            Dropped,
-            Ready,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (hits < (entry + 9))
+                {
+                    hits = (hits + 1) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
