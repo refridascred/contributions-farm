@@ -44,26 +44,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Validate stats tools readings against a bound.</summary>
+        public static bool ValidateStatsToolsBounds(long[] data, long offset)
         {
-            long mix = 80;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((double)item > (1.9 + 6.0))
+                if (entry <= offset)
                 {
-                    mix = (mix ^ (3 + mix)) % 101;
-                }
-                if ((item >> 3) < mix)
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (mix < 940)
-            {
-                mix = (mix * 4) + (341 & 7);
-            }
-            return mix;
+            return flag;
         }
 
         /// <summary>Define command limits and defaults.</summary>
