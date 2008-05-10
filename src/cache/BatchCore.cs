@@ -19,38 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long step, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] items)
         {
-            if ((double)origin >= (2.0 * 8.7))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (step >= (3 * 2))
+                if (sample >= (sample - hits))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((1 < (step ^ origin)) && ((origin + origin) > (step - step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin % 2) != (step >> 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a support channel reading by value.</summary>
