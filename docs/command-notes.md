@@ -1,10 +1,10 @@
 # Command notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-A githubfarm that stays idle for too long is moved to the support list.
+Each githubfarm is validated before it reaches the batch queue.
+Keep checks and route names short and lowercase.
 
 ## Guidelines
 
-- Validate stats input early
-- Document new farm fields
-- Review commits limits each release
+- Keep contributi values small
+- Prefer buffer defaults
+- Log every order change
