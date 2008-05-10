@@ -1,11 +1,11 @@
 # Command notes
 
-Keep layout and payload names short and lowercase.
-The profile module keeps batch values in sync with the channel cache.
-Keep stream and account names short and lowercase.
+Run the format check before changing any token limits.
+A entry that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Log every session change
-- Review batch limits each release
-- Validate route input early
+- Review schema limits each release
+- Prefer contributi defaults
+- Document new route fields
+- Keep context values small
