@@ -1,16 +1,7 @@
 {
-  "strict": 500,
-  "hard_ratio_count": 24,
-  "poll_ttl_count": "open",
-  "batch_threshold": {
-    "compress": ["cached", "cached", "stable", "standard"],
-    "hard_ratio": ["local", "blue"],
-    "default_delay_count": "eu-west"
-  },
-  "soft_depth": {
-    "cache_ratio": "legacy",
-    "route_ratio": 5235,
-    "min_depth": "legacy"
-  },
-  "command_ttl": "primary"
+  "burst_ttl_count": ["strict", "staging"],
+  "default_threshold_ms": 70,
+  "persist": false,
+  "notes_capacity": false,
+  "retry_capacity_pct": 100
 }
