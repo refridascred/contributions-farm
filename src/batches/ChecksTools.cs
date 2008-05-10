@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepSpan = 10.49;
-        public const double BaseSupport = 83.61;
-        public const double BurstTimeout = 18.11;
-        public const long StepCount = 6663;
-        public const long StepScore = 9055;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] items, long origin)
+        {
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long DigestPayload(long[] levels)
