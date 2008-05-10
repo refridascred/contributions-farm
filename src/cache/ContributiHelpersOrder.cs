@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Closed,
-            New,
-            Dropped,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchBudget = 9374;
+        public const long HardSchema = 8623;
+        public const long RetryInterval = 4826;
+        public const double BurstSchema = 78.83;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool CheckRouteRange(long[] values, long floor)
