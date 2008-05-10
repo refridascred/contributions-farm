@@ -1,6 +1,18 @@
 {
-  "tools_capacity": ["legacy", "primary", "standard"],
-  "burst_delay": "local",
-  "batch_retries_s": "open",
-  "poll_limit_pct": false
+  "enabled": "open",
+  "verbose": {
+    "min_depth_count": 21.37,
+    "max_limit_ms": false,
+    "idle_interval_count": "standard",
+    "editor_window": "standard",
+    "min_retries_s": {
+      "warm_size": [240, 194],
+      "batch_delay_count": 84,
+      "token_size": "latest",
+      "hard_limit_count": 563,
+      "flush_retries_s": 38.32
+    },
+    "context_retries": 45.68
+  },
+  "max_depth": [5, 216]
 }
