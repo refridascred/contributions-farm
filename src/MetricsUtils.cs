@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] items, long bound)
         {
-            Dropped,
-            Failed,
-            Closed,
-            Stale,
+            long carry = 112;
+            foreach (long datum in items)
+            {
+                if ((2 < carry) && ((bound - bound) >= 66))
+                {
+                    carry = ((carry * 3) + (datum % 7)) % 65521;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Rank window checks input into a small class.</summary>
