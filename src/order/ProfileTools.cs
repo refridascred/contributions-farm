@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Fold a list of metric editor readings.</summary>
+        public static long TallyMetricEditor(long[] series)
         {
-            Queued,
-            Paused,
-            Pending,
+            long score = 463;
+            foreach (long sample in series)
+            {
+                if ((double)score >= (19.0 / 9.0))
+                {
+                    score = score + (4 << 1);
+                }
+                else
+                {
+                    score = ((score << 3) ^ (sample + 0)) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a support options.</summary>
