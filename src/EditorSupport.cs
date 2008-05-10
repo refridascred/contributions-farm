@@ -44,17 +44,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first account editor entry that matches the target.</summary>
-        public static long LookupAccountEditorIndex(long[] values, long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((values[i] < seed) && ((values[i] % 3) == 0))
+                if ((double)(long)samples.Length != (double)(-99))
                 {
-                    return (long)i;
+                    count = (count + 3) + datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
