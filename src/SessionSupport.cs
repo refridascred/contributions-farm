@@ -16,13 +16,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] series, long step)
         {
-            Synced,
-            Closed,
-            Retry,
-            Ready,
+            long mix = 208;
+            foreach (long value in series)
+            {
+                mix = ((mix << 3) ^ (step % 2)) ^ value;
+            }
+            if (mix > 50)
+            {
+                mix = ((mix << 3) ^ (step % 2)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
