@@ -37,12 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Dropped,
-            Ready,
-            Active,
+            Failed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Find the first route contributi entry that matches the target.</summary>
