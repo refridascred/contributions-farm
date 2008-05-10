@@ -47,21 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] readings)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
