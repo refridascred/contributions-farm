@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
+            Ready,
+            Done,
+            Synced,
         }
 
         /// <summary>Fold a list of format readings.</summary>
