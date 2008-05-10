@@ -49,21 +49,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheDepth = 5143;
+        public const long BaseLevel = 8461;
+        public const double BaseFactor = 36.97;
+        public const long CacheTimeout = 4539;
+        public const long StepFarm = 6137;
     }
 }
