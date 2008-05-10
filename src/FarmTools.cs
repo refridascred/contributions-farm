@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] series, long offset)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((136 << 3) < offset)
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
