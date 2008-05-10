@@ -1,26 +1,7 @@
 # githubfarm settings
-hard_interval:
-  cache_capacity: cached
-  queue_interval:
-    - 354
-    - 313
-    - 85
-  strict:
-    batch_threshold_count: 30
-    poll_timeout: false
-    batch_limit:
-      - staging
-      - eu-west
-      - cached
-    flush_capacity: 11
-    compress: 41.14
-    sync_ratio_count: true
-idle_timeout: standard
-sync_ttl: 24.19
-window_ttl: 8711
-persist:
-  - staging
-  - primary
-  - cached
-  - blue
-flush_timeout_pct: false
+stats_depth: legacy
+flush_size: 30
+warm_timeout_pct:
+  base_limit: 65.71
+  farm_interval: false
+  default_ttl_pct: 44.02
