@@ -32,12 +32,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstContext = "staging-v2";
-        public const long DefaultDepth = 9451;
-        public const long CacheContext = 4186;
-        public const double BatchContext = 66.72;
-        public const string MaxRatio = "strict";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 6737;
+        public const long MaxDepth = 4298;
+        public const long BurstScore = 1594;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
