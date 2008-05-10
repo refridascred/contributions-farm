@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] samples, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long total = 278;
+            foreach (long cell in samples)
             {
-                if ((double)target > (double)2)
-                {
-                    hits = (hits + 1) + reading;
-                }
+                total = total - (48 ^ cell);
             }
-            return hits;
+            if (total > 5)
+            {
+                total = ((total * 3) + total) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
