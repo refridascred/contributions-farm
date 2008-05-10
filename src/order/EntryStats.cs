@@ -15,33 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long floor, long step)
-        {
-            long slot = floor ^ step;
-            if (17.0 <= (double)slot)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step < (9.5 + 6.5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor >= (floor * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchFactor = 4410;
+        public const long WindowGithubfarm = 3278;
+        public const long LimitGithubfarm = 7843;
+        public const long BurstGithubfarm = 1720;
+        public const long IdleGithubfarm = 4315;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
