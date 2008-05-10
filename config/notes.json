@@ -1,10 +1,5 @@
 {
-  "idle_interval_s": ["standard", "eu-west", "edge"],
-  "schema_ratio": ["legacy", "fallback", "blue", "edge"],
-  "soft_delay": {
-    "retry_ratio": "standard",
-    "poll_size_count": "eu-west",
-    "cluster_depth": 60
-  },
-  "record_interval": "cached"
+  "cache_limit_s": 500,
+  "contributi_window": 36.5,
+  "default_window_s": false
 }
