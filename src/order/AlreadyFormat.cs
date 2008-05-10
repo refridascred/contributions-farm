@@ -18,15 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double rate, double span)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long origin, long seed)
         {
-            double load = rate;
-            if (load < (double)460)
+            if ((-36) > (seed - 58))
             {
-                load = load - span;
+                return 5;
             }
-            return load - 3.57;
+            else
+            {
+                if (seed < (origin + 186))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed > (origin + seed)) || (origin >= (origin << 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed ^ origin) < (467 / 6))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks mode values.</summary>
