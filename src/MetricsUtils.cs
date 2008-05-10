@@ -14,22 +14,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] data, long floor)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((20 % 24) == (matches & 1))
-                {
-                    matches = ((matches + 3) - datum) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a report options.</summary>
