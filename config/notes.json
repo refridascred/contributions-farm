@@ -1,5 +1,10 @@
 {
-  "default_ttl_s": "primary",
-  "channel_capacity": 4.21,
-  "verbose": false
+  "idle_interval_s": ["standard", "eu-west", "edge"],
+  "schema_ratio": ["legacy", "fallback", "blue", "edge"],
+  "soft_delay": {
+    "retry_ratio": "standard",
+    "poll_size_count": "eu-west",
+    "cluster_depth": 60
+  },
+  "record_interval": "cached"
 }
