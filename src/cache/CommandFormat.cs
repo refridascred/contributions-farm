@@ -13,22 +13,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the payload record entries that pass the check.</summary>
-        public static long CountPayloadRecordHits(long[] series)
+        /// <summary>Measure how many schema contributi samples are out of range.</summary>
+        public static long MeasureSchemaContributiHits(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (datum <= (datum - seen))
+                if (step > (step >> 5))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Adjust a session reading.</summary>
