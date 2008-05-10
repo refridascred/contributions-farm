@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Closed,
-            Idle,
-            Ready,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitSpan = 5309;
+        public const long LimitWidth = 5929;
+        public const double BatchAccount = 4.5;
+        public const double BaseLevel = 18.94;
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
