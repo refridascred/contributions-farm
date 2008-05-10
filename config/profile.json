@@ -1,7 +1,22 @@
 {
-  "layout_window": 30,
-  "notes_interval": true,
-  "retry_delay_ms": 1.94,
-  "burst_interval_s": 6118,
-  "hard_delay_pct": "edge"
+  "compress": {
+    "poll_limit_count": "local",
+    "hard_timeout": "edge",
+    "min_size_pct": {
+      "base_size_s": "fallback",
+      "idle_ttl_ms": 1024,
+      "idle_window": 92.66,
+      "flush_timeout_pct": true,
+      "strict": ["green", "local"],
+      "record_size": 5194
+    },
+    "editor_window": 1024,
+    "cache_interval_ms": "fallback",
+    "session_capacity": ["primary", "latest"]
+  },
+  "checks_capacity": 4771,
+  "readonly": "edge",
+  "tools_interval": "local",
+  "buffer_threshold": 83.31,
+  "batch_interval_count": 68.59
 }
