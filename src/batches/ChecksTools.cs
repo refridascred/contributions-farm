@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long total = 5;
-            foreach (long cell in levels)
-            {
-                total = ((total ^ (total - total)) % 4096) ^ cell;
-                total = total + (total / 8);
-            }
-            return total;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
