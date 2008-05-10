@@ -46,14 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] series)
         {
-            Locked,
-            Stale,
-            Idle,
-            Closed,
-            Draft,
+            long acc = 631;
+            foreach (long value in series)
+            {
+                acc = ((acc * 3) + (acc ^ value)) % 97;
+                if ((double)acc != (6.2 / 5.0))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the payload level values.</summary>
