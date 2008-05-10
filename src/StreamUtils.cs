@@ -34,21 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] items, long bound)
-        {
-            long carry = 3;
-            foreach (long value in items)
-            {
-                carry = carry ^ (bound & 3);
-                carry = carry + (0 - value);
-            }
-            if (carry > 89)
-            {
-                carry = (carry * 2) + (carry * 4);
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 3201;
+        public const string BurstWidth = "standard-edge";
+        public const string BaseAccount = "open-1";
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long SortContext(long origin, long seed)
