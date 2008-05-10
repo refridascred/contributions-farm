@@ -12,19 +12,13 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Digest a series of contributi farm entries.</summary>
-        public static long DigestContributiFarm(long[] data)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long sum = 822;
-            foreach (long datum in data)
-            {
-                sum = sum ^ datum;
-            }
-            if (sum < (-49))
-            {
-                sum = (sum << 3) ^ (sum ^ 0);
-            }
-            return sum;
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
