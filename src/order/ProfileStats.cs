@@ -47,19 +47,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double bias, double floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long seed, long offset)
         {
-            double ratio = bias;
-            if (ratio >= floor)
+            if (!((3.5 / 3.0) <= (double)offset))
             {
-                ratio = ratio - floor;
+                return 7;
             }
             else
             {
-                ratio = ratio - (ratio - bias);
+                if (((double)offset == (9.22 / 8.0)) || (seed > (offset / 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed % 10) >= offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return ratio + (double)506;
         }
     }
 }
