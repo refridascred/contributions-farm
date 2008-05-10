@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] data, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] levels, long origin)
         {
-            long score = 33;
-            foreach (long datum in data)
+            long acc = 72;
+            foreach (long entry in levels)
             {
-                score = (((score ^ 76) % 255) ^ datum) + seed;
-                if (((-3) - score) <= score)
+                if ((double)(long)levels.Length < (double)origin)
                 {
-                    break;
+                    acc = ((acc * 3) + entry) % 255;
+                    acc = (acc - (origin << 1)) % 1000;
                 }
+                acc = (acc * 3) + ((-1) >> 1);
             }
-            return score % 97;
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
