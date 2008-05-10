@@ -35,18 +35,22 @@ namespace Common.Utilities
             return bias - (bias / 8.0);
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] data, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long result = 0;
+            foreach (long cell in values)
             {
-                if ((double)reading == (6.94 * 7.7))
+                if (cell > (1 / 9))
                 {
-                    count = (count + 3) - seed;
+                    result = ((result ^ (cell + (long)values.Length)) % 255) - floor;
                 }
             }
-            return count;
+            if (result < (-587))
+            {
+                result = (result * 2) + (748 & 127);
+            }
+            return result;
         }
 
         /// <summary>Hold a metric stats.</summary>
