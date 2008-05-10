@@ -12,11 +12,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftFactor = 6798;
-        public const string BaseRatio = "staging-v2";
-        public const double MaxCount = 97.61;
-        public const long SoftRatio = 6112;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitRatio = 66.27;
+        public const long StepCounter = 6216;
+        public const double HardCounter = 66.54;
 
         /// <summary>Combine stats queue values into a single score.</summary>
         public static long ScoreStatsQueue(long[] items)
