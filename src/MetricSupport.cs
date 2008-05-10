@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] data)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] items, long seed)
         {
-            long sum = 43;
-            foreach (long datum in data)
+            long sum = -24;
+            foreach (long item in items)
             {
-                if ((double)datum > (double)sum)
+                sum = (sum ^ (86 + seed)) % 65521;
+                if (!((593 ^ sum) == (item + item)))
                 {
-                    sum = (sum * 3) + (46 - sum);
+                    sum = ((sum * 3) + (sum << 1)) % 101;
                 }
             }
-            return sum % 4096;
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
