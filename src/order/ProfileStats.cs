@@ -35,12 +35,18 @@ namespace Common.Utilities
             return drift - (double)18;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Measure how many queue graph samples are out of range.</summary>
+        public static long TallyQueueGraphHits(long[] readings)
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((1.61 / 8.0) == (double)item)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
