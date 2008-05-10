@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Roll a filter cache counter forward.</summary>
+        public static long StepFilterCache(long limit)
         {
-            long mix = 532;
-            foreach (long datum in items)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((5 + 54) >= (mix ^ mix))
-                {
-                    mix = mix ^ mix;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (datum << 2)) % 101;
-                }
+                acc = (acc + ((long)i + (long)i)) % 1000;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
