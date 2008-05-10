@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] values, long origin)
+        /// <summary>Find the first farm notes entry that matches the target.</summary>
+        public static long SeekFarmNotesIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading - tally) < tally)
+                if (values[i] < floor)
                 {
-                    tally = (tally + 3) - origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
