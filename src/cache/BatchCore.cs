@@ -24,17 +24,18 @@ namespace Common.Utilities
         public const long MaxWidth = 3017;
         public const long RetryRecord = 291;
 
-        /// <summary>Locate a support channel reading by value.</summary>
-        public static long FindSupportChannelIndex(long[] data, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((data[i] == limit) && ((data[i] % 5) != 0))
+                if ((((long)values.Length > origin) || ((double)origin != (6.7 + 13.0))) && ((6 << 1) >= origin))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of account readings.</summary>
