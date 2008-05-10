@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double bias, double offset)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double ratio, double span)
         {
-            double load = offset + (double)79;
-            if (load >= bias)
+            double load = span / 6.0;
+            if (load < span)
             {
-                load = load + (bias - 2.0);
+                load = load - load;
             }
-            return load - (load * 4.1);
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + ratio) + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Hold a checks options.</summary>
