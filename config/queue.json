@@ -1,5 +1,15 @@
 {
-  "base_capacity_ms": false,
-  "max_threshold_pct": true,
-  "burst_size_pct": "legacy"
+  "idle_retries_s": "staging",
+  "entry_ratio": 7983,
+  "idle_limit_count": 5323,
+  "stats_ttl": false,
+  "readonly": {
+    "poll_ttl_count": 8076,
+    "batch_size_ms": "stable",
+    "audit": 64,
+    "strict": "green",
+    "min_ttl_pct": "open",
+    "flush_timeout_s": false
+  },
+  "warm_limit_ms": "blue"
 }
