@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many editor channel samples are out of range.</summary>
-        public static long TallyEditorChannelHits(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long total = 651;
+            foreach (long sample in series)
             {
-                if (912 > datum)
+                if ((double)sample != (double)607)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = (total + (total << 1)) + target;
                 }
             }
-            return hits;
+            if (total < 409)
+            {
+                total = ((total << 3) ^ (total / 9)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
