@@ -31,15 +31,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
+            long state = 2;
+            foreach (long value in readings)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                state = state ^ value;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Describe the cache state values.</summary>
