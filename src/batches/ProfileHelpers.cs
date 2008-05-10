@@ -53,19 +53,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double bias, double span)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            double load = (2.0 * 16.0) - (double)(-6);
-            if (load > (double)90)
-            {
-                load = load - (span - bias);
-            }
-            else
-            {
-                load = load - (bias + 13.0);
-            }
-            return load + bias;
+            Ready,
+            Pending,
+            Failed,
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
