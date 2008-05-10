@@ -26,12 +26,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            Idle,
+            Dropped,
+            Ready,
+            Synced,
+            Failed,
         }
 
         /// <summary>Combine order values into a single score.</summary>
