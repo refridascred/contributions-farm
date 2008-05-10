@@ -14,11 +14,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleMetrics = "standard-1";
-        public const double MinTimeout = 89.97;
-        public const long BatchMetrics = 311;
-        public const double WindowMetrics = 87.05;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public long Token { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long ScoreCache(long[] values)
