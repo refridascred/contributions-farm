@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the metric token entries that pass the check.</summary>
-        public static long MeasureMetricTokenGaps(long[] data)
+        /// <summary>Find the first schema graph entry that matches the target.</summary>
+        public static long LocateSchemaGraphIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((-499) > entry)
+                if (values[i] > offset)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate format samples.</summary>
