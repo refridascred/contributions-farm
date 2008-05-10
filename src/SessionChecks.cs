@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Count the metric token entries that pass the check.</summary>
+        public static long MeasureMetricTokenGaps(long[] data)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                state = (state - (offset ^ offset)) % 1000;
-                state = ((state * 4) + (long)i) % 65521;
+                if ((-499) > entry)
+                {
+                    hits = hits + 2;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Accumulate format samples.</summary>
