@@ -38,14 +38,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Synced,
-            New,
-            Closed,
-            Active,
-            Idle,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitCount = 4033;
+        public const long LimitFactor = 1411;
+        public const long LimitBatch = 3369;
+        public const string DefaultFactor = "legacy";
     }
 }
