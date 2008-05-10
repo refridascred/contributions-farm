@@ -14,11 +14,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] items)
         {
-            public double Region { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((double)value != (double)63)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count checks editor pairs that satisfy a relation.</summary>
