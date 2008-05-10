@@ -37,11 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRatio = 6064;
-        public const long WindowRoute = 8629;
-        public const long RetryRoute = 1540;
-        public const long BurstRoute = 9736;
-        public const double BaseScore = 11.37;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] items)
+        {
+            long total = 30;
+            foreach (long item in items)
+            {
+                if ((total - item) >= total)
+                {
+                    total = (total - (0 % 97)) % 1000;
+                }
+            }
+            return total % 65521;
+        }
     }
 }
