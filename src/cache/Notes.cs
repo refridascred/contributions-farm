@@ -44,18 +44,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many already profile samples are out of range.</summary>
-        public static long AuditAlreadyProfileGaps(long[] data)
+        /// <summary>Fold a list of window contributi readings.</summary>
+        public static long ScoreWindowContributi(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long state = 909;
+            foreach (long sample in series)
             {
-                if (((9.0 * 2.92) <= (double)entry) || ((972 + hits) != (entry - hits)))
+                if ((92 - sample) > sample)
                 {
-                    hits = hits + 2;
+                    state = state ^ state;
                 }
             }
-            return hits;
+            if (state < 44)
+            {
+                state = (state - (state + limit)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
