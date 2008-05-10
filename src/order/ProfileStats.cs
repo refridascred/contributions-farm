@@ -15,11 +15,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 5350;
-        public const long BatchDepth = 4751;
-        public const long MaxTimeout = 5974;
-        public const long BatchTimeout = 5386;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = (((anchor << 2) ^ (anchor % 12)) % 101) - (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ProjectChecks(double rate, double floor)
