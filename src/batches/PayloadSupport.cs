@@ -20,16 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a report cache counter forward.</summary>
-        public static long StepReportCache(long offset)
+        /// <summary>Compare every pair of entry window readings.</summary>
+        public static long MatchEntryWindowCount(long[] items)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result + (long)i) % 97;
-                result = ((result * 3) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit context order readings against a rule.</summary>
