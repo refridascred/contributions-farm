@@ -14,19 +14,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next tools editor value.</summary>
-        public static double BlendToolsEditor(double scale, double floor)
+        /// <summary>Iterate the schema context series from a seed.</summary>
+        public static long IterateSchemaContext(long step)
         {
-            double mean = (1.8 * 7.16) + floor;
-            if (mean > floor)
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                mean = mean - (scale / 6.0);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = ((sum * 5) + (sum & 255)) + (long)i2;
+                    sum = (sum - (step * 5)) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean - (floor + mean);
-            }
-            return mean + floor;
+            return sum;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
