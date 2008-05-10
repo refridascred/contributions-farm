@@ -1,11 +1,16 @@
 # support settings
-base_limit: 81.35
-min_size_count:
-  - 68
-  - 317
-batch_ttl_count:
-  - 427
-  - 323
-  - 394
-  - 203
-audit: 95.11
+batch_capacity_pct: 250
+strict: standard
+window_retries: 100
+warm_window:
+  compress: 3595
+  format_retries:
+    - strict
+    - green
+    - primary
+  flush_limit_s:
+    - eu-west
+    - open
+  stream_retries: legacy
+max_ratio_count: blue
+min_timeout_ms: 74.5
