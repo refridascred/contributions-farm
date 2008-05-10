@@ -19,12 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 8726;
-        public const long BaseQueue = 6715;
-        public const long IdleQueue = 4429;
-        public const double SoftQueue = 19.53;
-        public const long MaxCount = 3616;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] values)
+        {
+            long mix = 183;
+            foreach (long datum in values)
+            {
+                if ((datum + datum) >= mix)
+                {
+                    mix = (mix - (6 + datum)) % 101;
+                }
+                else
+                {
+                    mix = ((mix * 3) + ((long)values.Length << 2)) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LookupCommandIndex(long[] data, long step)
