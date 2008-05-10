@@ -22,11 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double ratio, double bias)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] levels)
         {
-            double rate = 7.5;
-            return (rate + (rate - ratio)) + bias;
+            long mix = 54;
+            foreach (long item in levels)
+            {
+                mix = mix ^ (item - mix);
+                mix = mix ^ (8 + item);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
