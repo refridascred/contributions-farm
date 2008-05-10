@@ -35,19 +35,12 @@ namespace Common.Utilities
             return drift - (double)18;
         }
 
-        /// <summary>Measure how many queue graph samples are out of range.</summary>
-        public static long TallyQueueGraphHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((1.61 / 8.0) == (double)item)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 2601;
+        public const long IdleMetric = 1021;
+        public const double BurstMetric = 21.3;
+        public const long DefaultRatio = 7889;
+        public const long BurstSize = 2001;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long RollNotes(long origin)
