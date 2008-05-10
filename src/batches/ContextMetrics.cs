@@ -46,24 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] values, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (acc >= (64 - seed))
+                if (entry != origin)
                 {
-                    acc = (acc ^ 1) % 65521;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    acc = ((acc * 3) + ((long)i - seed)) % 65521;
-                }
-                acc = (acc + acc) % 255;
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Hold a cache info.</summary>
