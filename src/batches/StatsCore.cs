@@ -84,21 +84,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix << 3) ^ (bound - mix);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
     }
 }
