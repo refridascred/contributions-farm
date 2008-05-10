@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const string BatchDepth = "alpha-v2";
         public const long BatchLevel = 8341;
 
-        /// <summary>Check that every graph already entry stays within the limit.</summary>
-        public static bool GuardGraphAlreadyLimits(long[] series, long seed)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
