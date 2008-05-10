@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Grade a graph report value against two limits.</summary>
+        public static long GradeGraphReport(long seed, long seed2)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (seed < (seed2 - seed2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((seed * 5) < 442)
                 {
-                    if ((values[i] + values[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
