@@ -1,6 +1,11 @@
 {
-  "batch_window_pct": 85.08,
-  "profile_capacity": 70.27,
-  "farm_ttl": "staging",
-  "audit": 6576
+  "flush_limit_s": 67.42,
+  "hard_window_ms": true,
+  "compress": {
+    "strict": "blue",
+    "githubfarm_size": 14.59,
+    "audit": "staging"
+  },
+  "poll_interval": ["strict", "standard"],
+  "hard_threshold_pct": ["edge", "standard"]
 }
