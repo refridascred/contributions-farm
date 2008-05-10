@@ -47,9 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowContributi = "open-1";
-        public const string MaxContributi = "cached-v2";
-        public const long BaseContributi = 5340;
+        /// <summary>Audit cache editor readings against a rule.</summary>
+        public static long CountCacheEditorOutliers(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((double)value > (7.29 - 18.0)) && ((3.8 * 7.0) > (double)value))
+                {
+                    hits = (hits + 2) + floor;
+                }
+            }
+            return hits;
+        }
     }
 }
