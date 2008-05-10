@@ -58,15 +58,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double ratio, double offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] items, long origin)
         {
-            double weight = 9.1 + (ratio + offset);
-            if (weight <= ratio)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - (weight / 4.0);
+                if ((items[i] == origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - ratio;
+            return -1;
         }
     }
 }
