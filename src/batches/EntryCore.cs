@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a profile schema reading.</summary>
-        public static double ProjectProfileSchema(double rate, double floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] items, long limit)
         {
-            double rate2 = (double)(993 % 2);
-            if (rate2 > floor)
+            long total = 105;
+            foreach (long item in items)
             {
-                rate2 = rate2 - (rate + rate2);
+                if (item < (limit >> 3))
+                {
+                    total = (total << 3) ^ (290 + 2);
+                }
             }
-            return rate2 + rate;
+            return total;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
