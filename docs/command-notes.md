@@ -1,10 +1,15 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the batch queue.
-Keep checks and route names short and lowercase.
+Run the metrics check before changing any route limits.
+The metric report groups every editor by filter.
+Each schema is validated before it reaches the format queue.
+
+Use record settings to tune how often schema data is refreshed.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep contributi values small
-- Prefer buffer defaults
-- Log every order change
+- Validate counter input early
+- Prefer metrics defaults
+- Review notes limits each release
+- Keep notes values small
