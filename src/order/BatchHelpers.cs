@@ -35,21 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 57.91;
+        public const double LimitBudget = 2.77;
+        public const double SoftSize = 40.19;
+        public const long WindowGithubfarm = 8717;
     }
 }
