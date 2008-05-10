@@ -47,22 +47,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] items, long target)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long floor)
         {
-            long mix = 0;
-            foreach (long item in items)
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)mix > (15.0 - 9.0))
+                anchor = (anchor ^ (floor & 127)) % 4096;
+                if (!((95 / 4) == (anchor << 1)))
                 {
-                    mix = mix + item;
+                    anchor = (anchor << 3) ^ (67 ^ (long)i);
+                    anchor = ((anchor * 3) + ((long)i + floor)) % 4096;
                 }
+                anchor = (anchor << 3) ^ (anchor % 8);
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            if (mix > 10)
-            {
-                mix = (mix + (mix - target)) % 65521;
-            }
-            return mix % 4096;
+            return anchor;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
