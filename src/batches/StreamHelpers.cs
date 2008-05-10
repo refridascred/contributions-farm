@@ -82,17 +82,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first route contributi entry that matches the target.</summary>
-        public static long SeekRouteContributiIndex(long[] levels, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
+                if (reading >= seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define report limits and defaults.</summary>
