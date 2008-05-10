@@ -14,32 +14,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank window checks input into a small class.</summary>
-        public static long RankWindowChecks(long bound, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] data, long floor)
         {
-            long diff = bound - seed;
-            if (((bound >> 4) >= 172) && ((4.9 * 5.15) != (double)diff))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound > 9.0)
+                if ((20 % 24) == (matches & 1))
                 {
-                    return 6;
+                    matches = ((matches + 3) - datum) - floor;
                 }
                 else
                 {
-                    if ((diff + seed) >= seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a report options.</summary>
