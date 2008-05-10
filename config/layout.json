@@ -1,18 +1,6 @@
 {
-  "stats_limit": {
-    "soft_retries": 16.66,
-    "soft_ttl_pct": 1554,
-    "persist": 250,
-    "min_interval": false,
-    "record_depth": "edge",
-    "idle_interval": {
-      "verbose": true,
-      "min_threshold": 58,
-      "idle_depth_ms": 9572
-    }
-  },
-  "batch_limit": 60,
-  "base_ttl_s": 7496,
-  "retry_depth_ms": 293,
-  "warm_delay": 22.05
+  "stats_size": true,
+  "idle_interval": "cached",
+  "profile_delay": false,
+  "stream_timeout": 71.67
 }
