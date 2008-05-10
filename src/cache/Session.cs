@@ -5,36 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] items, long bound)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double bias, double offset)
         {
-            long mix = 68;
-            foreach (long reading in items)
+            double load = offset + (double)79;
+            if (load >= bias)
             {
-                mix = mix ^ (reading << 1);
-                if ((mix >> 3) < (reading + reading))
-                {
-                    mix = (mix ^ (mix + reading)) % 65521;
-                    mix = mix ^ mix;
-                }
-                if (((0 - 3) <= (reading >> 5)) && ((double)reading > (3.98 / 8.0)))
-                {
-                    mix = (mix - mix) % 65521;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (4 * 3);
-                }
-                if ((reading ^ reading) > (bound << 1))
-                {
-                    break;
-                }
+                load = load + (bias - 2.0);
             }
-            if (mix > 7)
-            {
-                mix = (mix ^ (bound * 4)) % 4096;
-            }
-            return mix;
+            return load - (load * 4.1);
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
