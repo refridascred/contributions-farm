@@ -1,7 +1,7 @@
 # entry settings
-base_depth_ms: cached
-token_delay:
-  - 110
-  - 289
-  - 45
-dry_run: 79
+cluster_capacity: stable
+flush_threshold_pct:
+  - 439
+  - 275
+  - 180
+audit: 76.46
