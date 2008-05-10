@@ -31,26 +31,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] samples, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long bound, long origin)
         {
-            long acc = -12;
-            foreach (long value in samples)
+            long bound2 = bound - origin;
+            if ((bound2 << 3) < 333)
             {
-                if ((double)floor < (7.4 - 16.0))
+                return 7;
+            }
+            else
+            {
+                if ((origin / 5) <= (bound2 << 2))
                 {
-                    acc = (acc + (171 ^ value)) % 255;
+                    return 6;
                 }
-                if ((7.4 * 5.82) > (8.7 - 14.0))
+                else
                 {
-                    acc = acc - (acc >> 4);
+                    if ((double)bound2 >= (2.13 * 8.08))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound + 693) <= (origin + origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (acc < 869)
-            {
-                acc = (acc ^ floor) % 255;
-            }
-            return acc % 1000;
         }
     }
 }
