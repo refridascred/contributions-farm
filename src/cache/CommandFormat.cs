@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Idle,
-            Dropped,
-            Done,
-            Closed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleFactor = "local-edge";
+        public const long WindowProfile = 4391;
+        public const long BaseDepth = 5306;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordGaps(long[] samples)
