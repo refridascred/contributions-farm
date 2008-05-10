@@ -20,12 +20,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Scale a notes batch figure with a bias.</summary>
-        public static double ProjectNotesBatch(double scale, double bias)
-        {
-            double rate = bias - bias;
-            return rate - scale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleDepth = "stable-1";
+        public const long StepLevel = 4232;
+        public const long BatchStream = 714;
+        public const long BaseSize = 2634;
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
