@@ -1,5 +1,11 @@
 # entry settings
-hard_ratio_pct: 1024
-metrics_limit: 68.01
-min_size_pct: 250
-burst_depth_pct: 1024
+readonly: 1076
+cache_limit: standard
+persist: legacy
+default_interval:
+  enabled: staging
+  verbose: 8276
+  already_interval: strict
+  readonly:
+    - 427
+    - 433
