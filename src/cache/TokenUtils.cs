@@ -36,13 +36,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] values, long floor)
         {
-            Active,
-            Retry,
-            Closed,
-            Queued,
+            long anchor = 67;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    anchor = (((anchor - 50) % 97) + (long)i) - sample;
+                    anchor = ((anchor * 4) + 28) % 4096;
+                }
+                if ((floor << 3) == (6 / 8))
+                {
+                    anchor = (anchor ^ floor) % 65521;
+                }
+            }
+            return anchor % 97;
         }
     }
 }
