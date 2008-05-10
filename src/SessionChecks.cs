@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first schema graph entry that matches the target.</summary>
-        public static long LocateSchemaGraphIndex(long[] values, long offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 15;
+            foreach (long item in series)
             {
-                if (values[i] > offset)
+                if ((2.62 * 3.28) > (double)total)
                 {
-                    return (long)i;
+                    total = ((total - (67 << 1)) % 97) + item;
+                }
+                if (seed < (seed & 31))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Accumulate format samples.</summary>
