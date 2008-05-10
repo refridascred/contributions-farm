@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            long total = 339;
+            foreach (long value in levels)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = (((total * 5) + (floor ^ floor)) % 101) + (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 101;
+                total = (total + (value << 2)) % 4096;
             }
             return total;
         }
