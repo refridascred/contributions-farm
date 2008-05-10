@@ -17,27 +17,12 @@ namespace Common.Utilities
         public const long LimitAlready = 83;
         public const double MaxSize = 94.9;
 
-        /// <summary>Fold a list of route session readings.</summary>
-        public static long ScoreRouteSession(long[] series, long limit)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long mark = 0;
-            foreach (long sample in series)
-            {
-                mark = ((mark + mark) % 65521) + sample;
-                if (limit > (mark * 3))
-                {
-                    mark = ((mark << 3) ^ (131 & 1)) % 255;
-                }
-                else
-                {
-                    mark = (mark - (334 & 15)) % 97;
-                }
-            }
-            if (mark < 6)
-            {
-                mark = mark - (mark + (-8));
-            }
-            return mark;
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the cluster level values.</summary>
