@@ -41,13 +41,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public bool Label { get; set; }
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxScore = 1134;
+        public const long StepStream = 9588;
+        public const long IdleStream = 5683;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool VerifyGithubfarmBounds(long[] items, long seed)
