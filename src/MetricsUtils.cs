@@ -53,19 +53,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double gain, double floor)
+        /// <summary>Derive the next record payload value from a seed.</summary>
+        public static long RollRecordPayload(long origin)
         {
-            double scale = (gain + 8.0) - (floor - 9.11);
-            if (scale < (gain / 5.0))
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
             {
-                scale = scale - (floor / 2.0);
+                acc = acc ^ (acc * 5);
+                if ((1.2 + 20.0) >= (double)acc)
+                {
+                    acc = (acc - (acc + acc)) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + gain) + (double)(long)i;
-            }
-            return scale - scale;
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
