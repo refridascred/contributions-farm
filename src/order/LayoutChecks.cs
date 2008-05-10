@@ -56,13 +56,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
+            Paused,
+            Closed,
+            Queued,
+            Retry,
+            Failed,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
