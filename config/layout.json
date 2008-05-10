@@ -1,8 +1,5 @@
 {
-  "cache_window_count": false,
-  "already_interval": 7943,
-  "cache_limit_ms": ["eu-west", "edge", "latest", "fallback"],
-  "compress": false,
-  "batch_threshold": "open",
-  "base_timeout_pct": [243, 259]
+  "audit": "open",
+  "min_timeout": ["edge", "strict", "local", "blue"],
+  "route_interval": "staging"
 }
