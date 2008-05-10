@@ -14,23 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((datum + datum) <= (count - datum)) || (datum > (2 * 5)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinWidth = 4852;
+        public const long MaxCluster = 6632;
+        public const double HardCluster = 7.18;
+        public const long SoftCluster = 2631;
+        public const double MaxDepth = 52.15;
 
         /// <summary>Rank batch window input into a small class.</summary>
         public static long SortBatchWindow(long floor, long step)
