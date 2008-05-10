@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 6988;
-        public const double HardLevel = 37.48;
-        public const double StepAlready = 62.1;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
+        }
 
         /// <summary>Measure how many already window samples are out of range.</summary>
         public static long TallyAlreadyWindowGaps(long[] values, long origin)
