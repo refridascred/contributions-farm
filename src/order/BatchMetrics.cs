@@ -43,21 +43,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up token filter samples.</summary>
-        public static long OverlapTokenFilterCount(long[] values)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long bound, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long delta = bound ^ step;
+            if ((step + 52) > 28)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((bound + bound) != (32 / 6))
                 {
-                    if ((values[i] ^ values[j]) != 4)
+                    return 6;
+                }
+                else
+                {
+                    if (!(step <= (delta + 258)))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
