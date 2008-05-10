@@ -1,6 +1,6 @@
 {
-  "account_timeout": 6.76,
-  "cache_ratio": true,
-  "batches_capacity": 76,
-  "default_ttl_count": "eu-west"
+  "audit": "standard",
+  "profile_window": 52.76,
+  "retry_threshold": 500,
+  "warm_ttl": "edge"
 }
