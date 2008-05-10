@@ -1,4 +1,11 @@
 # githubfarm settings
-compress: 13
-min_interval_ms: eu-west
-batch_capacity_pct: latest
+retry_window: 250
+support_size:
+  - open
+  - eu-west
+  - green
+graph_capacity: 250
+soft_ratio_ms:
+  - 36
+  - 68
+hard_timeout_ms: standard
