@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double gain, double span)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
+            double drift = (span * 10.0) - (span + span);
+            if (drift < drift)
+            {
+                drift = (drift + span) + gain;
+            }
+            else
+            {
+                drift = drift + (double)13;
+            }
+            return drift - (double)688;
         }
 
         /// <summary>Fold a list of session readings.</summary>
