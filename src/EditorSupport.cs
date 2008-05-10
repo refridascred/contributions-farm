@@ -34,11 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] levels)
         {
-            public double Count { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)count <= (2.8 - 18.0))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a already options.</summary>
