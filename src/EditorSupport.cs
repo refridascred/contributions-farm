@@ -52,17 +52,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a editor filter sample.</summary>
-        public static long LocateEditorFilterIndex(long[] data, long offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] >= offset) && ((data[i] % 2) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
