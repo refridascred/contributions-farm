@@ -45,26 +45,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] data, long target)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            long mix = 235;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((950 - item) == (target % 97))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix * 4) + (item + target);
-                }
-                else
-                {
-                    mix = mix - (item + 36);
-                }
-                if (mix > (mix + 385))
-                {
-                    mix = (mix - mix) % 97;
+                    if ((items[i] + items[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
