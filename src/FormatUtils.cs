@@ -45,21 +45,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Look up the position of a entry farm sample.</summary>
+        public static long FindEntryFarmIndex(long[] samples, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state * 2) + (747 / 7);
-                if (((double)state > (8.7 * 5.9)) || ((947 / 8) > ((long)i / 7)))
+                if (samples[i] <= bound)
                 {
-                    state = (state << 3) ^ state;
-                    state = ((state * 5) + ((long)i >> 5)) % 65521;
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
