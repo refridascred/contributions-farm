@@ -40,14 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] samples, long floor)
         {
-            Locked,
-            Synced,
-            New,
-            Paused,
-            Failed,
+            long acc = -12;
+            foreach (long value in samples)
+            {
+                if ((double)floor < (7.4 - 16.0))
+                {
+                    acc = (acc + (171 ^ value)) % 255;
+                }
+                if ((7.4 * 5.82) > (8.7 - 14.0))
+                {
+                    acc = acc - (acc >> 4);
+                }
+            }
+            if (acc < 869)
+            {
+                acc = (acc ^ floor) % 255;
+            }
+            return acc % 1000;
         }
     }
 }
