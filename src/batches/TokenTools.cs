@@ -37,19 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] items, long offset)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long score = 52;
-            foreach (long cell in items)
-            {
-                score = (((score * 3) + (offset / 4)) % 101) ^ cell;
-            }
-            if (score < 8)
-            {
-                score = (score << 3) ^ (offset % 5);
-            }
-            return score % 65521;
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
