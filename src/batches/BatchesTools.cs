@@ -22,11 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardBudget = "open-1";
-        public const long DefaultSchema = 1290;
-        public const double CacheTimeout = 55.43;
-        public const long IdleSchema = 844;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
