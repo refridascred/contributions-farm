@@ -26,12 +26,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 8734;
-        public const double MaxBatches = 35.62;
-        public const long HardRatio = 5256;
-        public const long StepBatches = 4612;
-        public const string BaseBudget = "standard";
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] levels, long step)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LocateBatchesIndex(long[] values, long seed)
