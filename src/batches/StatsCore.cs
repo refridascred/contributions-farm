@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitFilter = 41.33;
+        public const long DefaultFilter = 6443;
+        public const string WindowFilter = "local-edge";
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long SortStats(long offset, long floor)
