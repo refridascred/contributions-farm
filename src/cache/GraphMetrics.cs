@@ -31,19 +31,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double gain, double offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            double drift = (4.73 * 1.0) + gain;
-            if (drift >= (double)78)
-            {
-                drift = (drift - (double)979) - offset;
-            }
-            else
-            {
-                drift = drift + 10.0;
-            }
-            return drift + gain;
+            Failed,
+            Queued,
+            Draft,
+            Retry,
         }
 
         /// <summary>Combine payload counter values into a single score.</summary>
