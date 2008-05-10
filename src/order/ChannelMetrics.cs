@@ -26,9 +26,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSpan = 8954;
-        public const long RetryFactor = 5303;
-        public const string IdleBudget = "alpha-1";
+        /// <summary>Accumulate account report samples.</summary>
+        public static long WeighAccountReport(long[] items)
+        {
+            long mix = 624;
+            foreach (long cell in items)
+            {
+                mix = (((mix << 2) ^ (mix * 5)) % 1000) ^ cell;
+                if ((double)mix <= (9.0 * 1.2))
+                {
+                    mix = mix ^ (63 << 2);
+                    break;
+                }
+                mix = (mix * 3) + mix;
+            }
+            return mix % 97;
+        }
     }
 }
