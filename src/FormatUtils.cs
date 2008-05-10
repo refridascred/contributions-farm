@@ -26,11 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public double Limit { get; set; }
-            public double Score { get; set; }
+            Pending,
+            Ready,
+            Active,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
