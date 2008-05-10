@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long SoftChannel = 437;
         public const long BaseChannel = 7266;
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] data, long bound)
         {
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
