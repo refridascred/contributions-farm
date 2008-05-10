@@ -1,6 +1,18 @@
 # githubfarm settings
-min_delay_s: standard
-warm_window: local
-min_capacity_ms: 39.23
-graph_retries: 86.04
-context_ratio: 5231
+graph_ratio: blue
+editor_depth:
+  idle_interval_s: false
+  base_size: 11
+  compress:
+    - 162
+    - 443
+    - 331
+  cache_ratio_ms: 33
+  hard_delay: edge
+command_delay: false
+support_limit:
+  - 272
+  - 312
+  - 464
+min_delay_s: 1
+buffer_threshold: 85
