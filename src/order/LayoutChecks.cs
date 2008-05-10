@@ -72,13 +72,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] items, long step)
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (15 >= hits)
+                {
+                    hits = ((hits + 2) + datum) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
