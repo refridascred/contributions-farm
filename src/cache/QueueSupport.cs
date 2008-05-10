@@ -39,19 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long sum = 57;
-            foreach (long sample in items)
-            {
-                sum = (sum - sample) % 97;
-            }
-            if (sum < 682)
-            {
-                sum = (sum ^ (sum % 8)) % 101;
-            }
-            return sum % 4096;
+            Synced,
+            Draft,
+            Locked,
+            Failed,
+            Active,
         }
     }
 }
