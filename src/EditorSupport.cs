@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double weight, double span)
         {
-            public string Ratio { get; set; } = "";
-            public double Region { get; set; }
+            double scale = span - (2.0 / 3.0);
+            if (scale < (weight - 13.0))
+            {
+                scale = scale + (span + span);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (scale - 0.38)) + (double)(long)i;
+            }
+            return scale + span;
         }
 
         /// <summary>Describe the account state values.</summary>
