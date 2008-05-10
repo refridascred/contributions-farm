@@ -58,12 +58,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 3389;
-        public const long BaseScore = 4983;
-        public const string BurstStats = "fallback";
-        public const string DefaultBudget = "cached-edge";
-        public const long BaseSize = 7773;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (!(5.2 <= (double)item) || ((item < (item + item)) && (item >= (count - count))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long ClassifyChannel(long offset, long bound)
