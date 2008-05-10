@@ -71,18 +71,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] series, long origin)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long seed)
         {
-            long carry = 8;
-            foreach (long value in series)
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((carry >> 5) < (origin + value))
+                if ((sum / 5) >= 0)
                 {
-                    carry = carry ^ (value / 8);
+                    break;
                 }
+                else
+                {
+                    sum = ((sum << 3) ^ 7) % 97;
+                    sum = sum - (sum >> 1);
+                }
+                sum = (sum ^ (long)i) % 255;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
     }
 }
