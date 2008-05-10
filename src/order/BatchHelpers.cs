@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a already queue sample.</summary>
-        public static long FindAlreadyQueueIndex(long[] samples, long floor)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] samples)
         {
+            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] == floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
