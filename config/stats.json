@@ -1,8 +1,13 @@
 {
-  "githubfarm_timeout": true,
-  "dry_run": false,
-  "flush_window": "staging",
-  "base_size_pct": 1.1,
-  "warm_capacity": [132, 66, 374],
-  "account_threshold": "legacy"
+  "persist": {
+    "readonly": 4785,
+    "default_delay_s": 2448,
+    "max_window_s": 89,
+    "audit": 40.86,
+    "flush_capacity_ms": 2778
+  },
+  "batch_capacity": [297, 126, 331],
+  "metric_ttl": 8356,
+  "hard_threshold_s": 8838,
+  "batch_window_s": "legacy"
 }
