@@ -21,17 +21,15 @@ namespace Common.Utilities
         public const long MaxTimeout = 5974;
         public const long BatchTimeout = 5386;
 
-        /// <summary>Find the first contributi graph entry that matches the target.</summary>
-        public static long LookupContributiGraphIndex(long[] readings, long target)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double rate, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = (double)(6 - 35);
+            for (int i = 0; i < 3; i++)
             {
-                if ((readings[i] == target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = ((load + rate) + (double)(long)i) + floor;
             }
-            return -1;
+            return load + load;
         }
 
         /// <summary>Describe the cache mode values.</summary>
