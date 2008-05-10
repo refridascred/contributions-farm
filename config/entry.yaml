@@ -1,18 +1,10 @@
 # entry settings
-burst_retries_pct:
-  - 253
-  - 358
-enabled:
-  min_delay_s:
-    - 473
-    - 37
-  sync_ratio_s: 250
-  warm_limit_s: 1.45
-  sync_capacity_count: 21.41
-  max_capacity_count: legacy
-tools_limit:
-  - 234
-  - 162
-  - 468
-  - 496
-warm_size: 60
+compress: stable
+graph_depth: 5535
+stats_retries:
+  - 492
+  - 266
+notes_threshold:
+  - 80
+  - 120
+audit: green
