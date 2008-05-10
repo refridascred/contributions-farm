@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const double CacheBudget = 11.94;
         public const long LimitSupport = 3551;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitWidth = 86.38;
-        public const double HardDepth = 89.06;
-        public const long IdleChecks = 5748;
-        public const long HardChecks = 2384;
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Locked,
+            Dropped,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long BucketAccount(long limit, long origin)
