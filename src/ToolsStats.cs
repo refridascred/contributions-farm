@@ -30,19 +30,22 @@ namespace Common.Utilities
         public const long RetryBudget = 3970;
         public const long StepFactor = 7012;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] values, long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (!((double)acc < (1.0 * 7.23)))
+                if ((double)count <= (5.4 + 8.6))
                 {
-                    acc = (acc - acc) % 101;
+                    count = ((count + 2) ^ cell) + bound;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Find the first notes session entry that matches the target.</summary>
