@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowBatch = "strict";
-        public const long BaseLevel = 3204;
-        public const long WindowRatio = 4078;
-        public const string MinBatch = "latest-1";
-        public const double MaxSpan = 51.69;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileMatches(long[] samples)
