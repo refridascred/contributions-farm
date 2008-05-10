@@ -35,21 +35,22 @@ namespace Common.Utilities
             return weight + (double)89;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)reading == (double)8) && ((reading - 69) <= (reading + reading)))
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
