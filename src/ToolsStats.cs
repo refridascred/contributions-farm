@@ -45,11 +45,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Find the first notes session entry that matches the target.</summary>
+        public static long LookupNotesSessionIndex(long[] data, long offset)
         {
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
