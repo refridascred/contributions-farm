@@ -58,32 +58,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long offset, long step)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long seed)
         {
-            long bound = offset - step;
-            if (!((double)bound >= 8.7))
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (((9.8 - 2.91) >= (double)step) || ((step * 5) >= (offset << 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step ^ 91) != (step / 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
