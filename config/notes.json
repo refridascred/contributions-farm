@@ -1,5 +1,8 @@
 {
-  "cache_limit_s": 500,
-  "contributi_window": 36.5,
-  "default_window_s": false
+  "base_threshold": "open",
+  "readonly": false,
+  "idle_ttl_pct": "primary",
+  "soft_capacity_count": 71.69,
+  "metrics_depth": 45.01,
+  "persist": 6368
 }
