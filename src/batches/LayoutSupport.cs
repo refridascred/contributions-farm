@@ -42,12 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] values, long bound)
         {
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (bound < count)
+                {
+                    count = (count + 1) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a support summary.</summary>
