@@ -1,8 +1,5 @@
 {
-  "base_threshold": "open",
-  "readonly": false,
-  "idle_ttl_pct": "primary",
-  "soft_capacity_count": 71.69,
-  "metrics_depth": 45.01,
-  "persist": 6368
+  "retry_delay": 100,
+  "graph_interval": 1024,
+  "notes_retries": false
 }
