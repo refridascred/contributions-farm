@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] series, long target)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            long total = 651;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)sample != (double)607)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total + (total << 1)) + target;
+                    if ((items[i] - items[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total < 409)
-            {
-                total = ((total << 3) ^ (total / 9)) % 97;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a cache stats.</summary>
