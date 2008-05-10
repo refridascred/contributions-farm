@@ -36,19 +36,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate stats tools readings against a bound.</summary>
-        public static bool ValidateStatsToolsBounds(long[] data, long offset)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Retry,
+            Synced,
+            Active,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
