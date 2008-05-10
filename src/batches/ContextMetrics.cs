@@ -64,31 +64,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((long)i & 31) > 5)
-                {
-                    total = total - (total / 4);
-                }
-                else
-                {
-                    total = (total << 2) ^ (long)i;
-                }
-                if ((8.83 / 4.0) == (double)(long)i)
-                {
-                    continue;
-                }
-                else
-                {
-                    total = total - (step * 3);
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
