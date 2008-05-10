@@ -47,10 +47,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 2593;
-        public const double MaxScore = 5.32;
-        public const double RetryCommand = 14.92;
-        public const double SoftCommand = 96.74;
+        /// <summary>Check that every channel counter entry stays within the limit.</summary>
+        public static bool ValidateChannelCounterLimits(long[] readings, long bound)
+        {
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
