@@ -35,22 +35,21 @@ namespace Common.Utilities
             return bias - (bias / 8.0);
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] values, long floor)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] readings)
         {
-            long result = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > (1 / 9))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result ^ (cell + (long)values.Length)) % 255) - floor;
+                    if ((readings[i] ^ readings[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < (-587))
-            {
-                result = (result * 2) + (748 & 127);
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a metric stats.</summary>
