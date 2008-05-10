@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double weight, double span)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long seed, long floor)
         {
-            double bias = span / 9.0;
-            if (bias <= (double)0)
+            if ((3.2 + 7.0) == (double)seed)
             {
-                bias = (bias - span) - weight;
+                return 3;
             }
-            return bias - 3.0;
+            else
+            {
+                if ((double)seed > (9.42 / 3.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (seed < (seed & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((seed / 4) < seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a support reading by value.</summary>
