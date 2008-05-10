@@ -69,19 +69,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] items)
         {
-            long total = 7;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                total = total ^ (0 - 683);
-                if ((cell - total) <= ((long)levels.Length / 6))
+                if ((double)(long)items.Length == (double)cell)
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
