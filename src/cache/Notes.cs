@@ -38,26 +38,11 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long offset, long step)
-        {
-            long edge = offset - step;
-            if ((edge + 874) < (offset + edge))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((edge % 5) == (edge & 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleDepth = 6161;
+        public const long BatchTools = 1366;
+        public const long HardSize = 326;
+        public const string SoftTimeout = "primary";
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double BlendRecord(double ratio, double offset)
