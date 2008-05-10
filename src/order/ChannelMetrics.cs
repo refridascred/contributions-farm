@@ -26,21 +26,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate account report samples.</summary>
-        public static long WeighAccountReport(long[] items)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long limit, long origin)
         {
-            long mix = 624;
-            foreach (long cell in items)
+            if ((limit & 127) == (origin + limit))
             {
-                mix = (((mix << 2) ^ (mix * 5)) % 1000) ^ cell;
-                if ((double)mix <= (9.0 * 1.2))
-                {
-                    mix = mix ^ (63 << 2);
-                    break;
-                }
-                mix = (mix * 3) + mix;
+                return 0;
             }
-            return mix % 97;
+            else
+            {
+                if (!((0 + limit) < (origin * 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
