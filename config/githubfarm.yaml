@@ -1,12 +1,26 @@
 # githubfarm settings
-retry_timeout_s:
-  - 115
-  - 91
-  - 349
-burst_timeout_ms: 9400
-soft_threshold_ms:
-  - 87
-  - 23
-sync_delay_ms: 100
-poll_ttl_pct: false
-cache_capacity_s: blue
+hard_interval:
+  cache_capacity: cached
+  queue_interval:
+    - 354
+    - 313
+    - 85
+  strict:
+    batch_threshold_count: 30
+    poll_timeout: false
+    batch_limit:
+      - staging
+      - eu-west
+      - cached
+    flush_capacity: 11
+    compress: 41.14
+    sync_ratio_count: true
+idle_timeout: standard
+sync_ttl: 24.19
+window_ttl: 8711
+persist:
+  - staging
+  - primary
+  - cached
+  - blue
+flush_timeout_pct: false
