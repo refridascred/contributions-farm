@@ -38,13 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            Pending,
+            Paused,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a command info.</summary>
