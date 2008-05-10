@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 891;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((393 - value) != (148 - value))
                 {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry * 4) + ((long)series.Length * 5)) % 1000;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
