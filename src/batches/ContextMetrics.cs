@@ -19,14 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] levels)
+        /// <summary>Derive the next batches metric value from a seed.</summary>
+        public static long SeriesBatchesMetric(long limit)
         {
-            long mark = -2;
-            foreach (long datum in levels)
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                mark = (mark + (72 % 2)) - datum;
-                mark = (mark - (mark & 255)) % 65521;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
             return mark;
         }
