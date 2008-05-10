@@ -61,17 +61,9 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 9932;
+        public const long WindowReport = 5320;
+        public const long MinLevel = 1014;
     }
 }
