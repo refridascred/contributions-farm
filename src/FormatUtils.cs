@@ -44,11 +44,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Blend two filter record measurements.</summary>
-        public static double ProjectFilterRecord(double ratio, double bias)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double rate = ratio;
-            return (rate - ratio) + bias;
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
