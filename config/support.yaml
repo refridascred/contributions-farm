@@ -1,10 +1,7 @@
 # support settings
-idle_depth: cached
-min_timeout_ms: 9
-batches_window:
-  - staging
+poll_retries: fallback
+flush_interval: 60
+cache_capacity_pct:
   - standard
-  - eu-west
-  - edge
-command_window: open
-format_ratio: latest
+  - latest
+  - local
