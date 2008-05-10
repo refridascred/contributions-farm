@@ -20,20 +20,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] series, long step)
-        {
-            long mix = 208;
-            foreach (long value in series)
-            {
-                mix = ((mix << 3) ^ (step % 2)) ^ value;
-            }
-            if (mix > 50)
-            {
-                mix = ((mix << 3) ^ (step % 2)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepScore = 7444;
+        public const long MinTimeout = 7329;
+        public const double WindowNotes = 57.24;
+        public const long LimitNotes = 6395;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheRecord = 9865;
