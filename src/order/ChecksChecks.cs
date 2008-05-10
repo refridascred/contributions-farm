@@ -22,22 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] readings, long floor)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (!((9.4 / 2.0) <= (double)datum) && ((floor << 1) > datum))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Dropped,
+            Queued,
+            Locked,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
