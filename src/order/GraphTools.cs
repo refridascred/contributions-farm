@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const long IdleBudget = 5856;
         public const long MinScore = 3848;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepPayload = 79.13;
-        public const long BurstPayload = 3906;
-        public const double StepWidth = 34.35;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long FindContributiIndex(long[] items, long origin)
