@@ -20,22 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] series, long bound)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long result = 55;
-            foreach (long sample in series)
-            {
-                if ((8 & 255) <= (bound % 12))
-                {
-                    result = ((result * 2) + sample) % 4096;
-                }
-            }
-            if (result < 120)
-            {
-                result = ((result * 4) + ((-86) / 7)) % 65521;
-            }
-            return result;
+            Dropped,
+            Locked,
+            Retry,
         }
 
         /// <summary>Adjust a session reading.</summary>
