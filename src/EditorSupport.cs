@@ -36,11 +36,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowLevel = 84.86;
-        public const double LimitDepth = 16.67;
-        public const long MinWidth = 9874;
-        public const double WindowSchema = 80.97;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Stale,
+            Synced,
+            Queued,
+            Done,
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenHits(long[] samples)
