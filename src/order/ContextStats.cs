@@ -20,19 +20,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine buffer channel values into a single score.</summary>
-        public static long ScoreBufferChannel(long[] data)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] data)
         {
-            long acc = -6;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc * 3) + (acc << 2)) % 97) + entry;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (acc < 76)
-            {
-                acc = (acc - (acc & 1)) % 255;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
