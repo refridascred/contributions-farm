@@ -40,10 +40,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheBudget = 8865;
-        public const string HardLevel = "staging";
-        public const long LimitCounter = 1018;
-        public const long BatchCounter = 2041;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
