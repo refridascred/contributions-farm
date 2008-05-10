@@ -31,12 +31,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double bias, double span)
-        {
-            double scale = (double)((-6) ^ (-3));
-            return ((scale + (double)7) + bias) + span;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultBudget = "open-edge";
+        public const string BaseFilter = "latest-v2";
+        public const string MinInterval = "stable-v2";
+        public const long DefaultCount = 745;
+        public const long CacheDepth = 9219;
 
         /// <summary>Check that every filter metric entry stays within the limit.</summary>
         public static bool GuardFilterMetricRange(long[] items, long floor)
