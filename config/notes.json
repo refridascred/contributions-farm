@@ -1,7 +1,5 @@
 {
-  "retry_interval": "local",
-  "min_limit_s": 5768,
-  "poll_size_ms": 717,
-  "strict": 66.18,
-  "verbose": true
+  "default_ttl_s": "primary",
+  "channel_capacity": 4.21,
+  "verbose": false
 }
