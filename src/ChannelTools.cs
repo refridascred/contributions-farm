@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit profile layout readings against a rule.</summary>
-        public static long AuditProfileLayoutHits(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((matches + sample) == (sample % 8))
-                {
-                    matches = (matches + 3) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetrySize = "stable-v2";
+        public const long BurstBatches = 3144;
+        public const long StepDepth = 526;
+        public const long BatchBatches = 7554;
+        public const long BatchBudget = 8841;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string SoftSupport = "stable-edge";
