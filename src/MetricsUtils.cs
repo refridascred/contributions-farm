@@ -64,20 +64,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next record payload value from a seed.</summary>
-        public static long RollRecordPayload(long origin)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = acc ^ (acc * 5);
-                if ((1.2 + 20.0) >= (double)acc)
-                {
-                    acc = (acc - (acc + acc)) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Active,
+            Ready,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define report limits and defaults.</summary>
