@@ -28,19 +28,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long limit)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(((long)i + (long)i) < anchor))
-                {
-                    anchor = ((anchor * 4) + (anchor - anchor)) % 65521;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return anchor;
+            return mark;
         }
     }
 }
