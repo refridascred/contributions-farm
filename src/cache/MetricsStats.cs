@@ -29,33 +29,12 @@ namespace Common.Utilities
         public const string BurstInterval = "open-edge";
         public const long RetrySpan = 436;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long offset, long floor)
-        {
-            long delta = offset ^ floor;
-            if ((floor + floor) > (offset + offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if (9.63 >= (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((181 * 5) > (delta ^ delta))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitSize = 4631;
+        public const string HardBatches = "legacy-edge";
+        public const long RetryBatches = 1864;
+        public const string DefaultBatches = "local";
+        public const long BurstBatches = 3999;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long WeighAlready(long[] levels, long step)
