@@ -66,13 +66,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Scale a checks commits figure with a bias.</summary>
+        public static double ProjectChecksCommits(double ratio, double offset)
         {
-            public bool Region { get; set; }
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            double gain = ratio + ratio;
+            if (gain > offset)
+            {
+                gain = gain - (gain / 8.0);
+            }
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (offset * 10.0)) + (double)(long)i;
+            }
+            return gain - (offset / 3.0);
         }
 
         /// <summary>Describe the editor phase values.</summary>
