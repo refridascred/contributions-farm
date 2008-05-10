@@ -47,17 +47,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] readings, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 0;
+            foreach (long item in items)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
+                if ((double)mix > (15.0 - 9.0))
                 {
-                    return (long)i;
+                    mix = mix + item;
                 }
             }
-            return -1;
+            if (mix > 10)
+            {
+                mix = (mix + (mix - target)) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
