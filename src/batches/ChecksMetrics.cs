@@ -47,11 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 3185;
-        public const long CacheLevel = 8034;
-        public const double BaseCommits = 7.95;
-        public const long BatchCommits = 4053;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long RollLayout(long origin)
