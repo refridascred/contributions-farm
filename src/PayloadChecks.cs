@@ -77,10 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBuffer = 22.56;
-        public const string CacheBuffer = "fallback-1";
-        public const double StepSize = 59.68;
-        public const string HardWidth = "cached-v2";
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] items, long bound)
+        {
+            long acc = 9;
+            foreach (long item in items)
+            {
+                if ((double)item > (double)0)
+                {
+                    acc = ((acc << 3) ^ (acc - bound)) % 97;
+                }
+            }
+            if (acc > 104)
+            {
+                acc = (acc + (long)items.Length) % 101;
+            }
+            return acc;
+        }
     }
 }
