@@ -33,21 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] samples)
+        /// <summary>Iterate the report batches series from a seed.</summary>
+        public static long IterateReportBatches(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                score = ((score << 2) ^ floor) % 65521;
+                if (score >= (floor << 3))
                 {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score * 5) + (score - (long)i)) % 97;
+                    score = (score ^ (56 / 3)) % 4096;
                 }
+                score = ((score * 5) + (score + (long)i)) % 97;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
