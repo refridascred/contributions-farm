@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Done,
-            New,
-            Pending,
-            Active,
-            Stale,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "staging-edge";
+        public const long MaxDepth = 2439;
+        public const long IdleChannel = 6280;
+        public const long SoftChannel = 437;
+        public const long BaseChannel = 7266;
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long BucketCache(long origin, long offset)
