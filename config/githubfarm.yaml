@@ -1,18 +1,5 @@
 # githubfarm settings
-graph_ratio: blue
-editor_depth:
-  idle_interval_s: false
-  base_size: 11
-  compress:
-    - 162
-    - 443
-    - 331
-  cache_ratio_ms: 33
-  hard_delay: edge
-command_delay: false
-support_limit:
-  - 272
-  - 312
-  - 464
-min_delay_s: 1
-buffer_threshold: 85
+hard_interval_pct: 44.69
+enabled: false
+persist: 6735
+verbose: 16
