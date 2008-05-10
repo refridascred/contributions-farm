@@ -20,13 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] samples)
         {
-            Idle,
-            Locked,
-            Active,
-            Retry,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((seen - seen) == (seen * 5))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
