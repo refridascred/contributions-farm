@@ -76,19 +76,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] samples, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (sample > seed)
+                if ((count & 31) > (value & 63))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) + seed;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
