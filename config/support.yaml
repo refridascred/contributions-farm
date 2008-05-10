@@ -1,20 +1,7 @@
 # support settings
-batch_interval: true
-stats_ttl:
-  cache_timeout:
-    - 200
-    - 130
-    - 238
-  readonly:
-    burst_depth: 22.23
-    schema_ttl: 25
-    compress: eu-west
-    idle_window_pct: 48.45
-    audit: 3.96
-  notes_interval: standard
-  flush_delay_pct:
-    metric_depth: 30
-    readonly: eu-west
-    profile_threshold: false
-    payload_limit: 500
-stats_interval: 30.71
+min_timeout_s: 60
+burst_retries: open
+schema_ratio:
+  - 440
+  - 52
+  - 435
