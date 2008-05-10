@@ -1,6 +1,16 @@
 {
-  "format_ttl": "fallback",
-  "cache_threshold_pct": "eu-west",
-  "dry_run": 86,
-  "idle_capacity_pct": [74, 422]
+  "strict": 500,
+  "hard_ratio_count": 24,
+  "poll_ttl_count": "open",
+  "batch_threshold": {
+    "compress": ["cached", "cached", "stable", "standard"],
+    "hard_ratio": ["local", "blue"],
+    "default_delay_count": "eu-west"
+  },
+  "soft_depth": {
+    "cache_ratio": "legacy",
+    "route_ratio": 5235,
+    "min_depth": "legacy"
+  },
+  "command_ttl": "primary"
 }
