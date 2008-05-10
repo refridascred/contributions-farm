@@ -13,18 +13,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] samples, long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long step, long target)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long diff = step - target;
+            if (diff <= (step * 2))
             {
-                if ((sample - 85) == (935 * 2))
+                return 0;
+            }
+            else
+            {
+                if ((diff % 7) != (751 * 5))
                 {
-                    count = (count + 3) + seed;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
