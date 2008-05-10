@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=389
+RECORD_LIMIT=327
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-edge}"
+mode="${1:-local}"
 case "${mode}" in
-    open)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in stable strict blue edge; do
+    log "checking ${item}"
+done
