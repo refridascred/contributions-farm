@@ -20,10 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 9100;
-        public const string CacheReport = "local-v2";
-        public const double DefaultLevel = 7.49;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Stale,
+            Paused,
+            Draft,
+            Done,
+            Active,
+        }
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
