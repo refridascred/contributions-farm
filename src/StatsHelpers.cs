@@ -54,18 +54,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] samples)
+        /// <summary>Audit counter farm readings against a rule.</summary>
+        public static long TallyCounterFarmHits(long[] items, long origin)
         {
-            long score = 749;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (((sample + score) < score) || ((score * 5) > (score / 4)))
+                if (tally > item)
                 {
-                    score = ((score << 2) ^ (score * 3)) % 4096;
+                    tally = (tally + 2) + origin;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Accumulate queue samples.</summary>
