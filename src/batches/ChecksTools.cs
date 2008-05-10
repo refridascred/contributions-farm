@@ -32,22 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] series)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (cell <= 97)
+                if (value >= target)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Accumulate checks samples.</summary>
