@@ -36,14 +36,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Locked,
-            Retry,
-            Synced,
-            Active,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchSpan = 6869;
+        public const long BatchLayout = 6462;
+        public const long MinSize = 8565;
+        public const string BaseLayout = "latest";
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TotalSchema(long[] series)
