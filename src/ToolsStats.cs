@@ -36,22 +36,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] readings, long step)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!(step > (seen % 8)))
-                {
-                    seen = (seen + 1) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a command info.</summary>
