@@ -50,22 +50,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] data, long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long carry = 0;
-            foreach (long cell in data)
-            {
-                if (((-4) - cell) < (cell + offset))
-                {
-                    carry = (carry - (465 / 3)) % 255;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ offset;
-                }
-            }
-            return carry;
+            Idle,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
