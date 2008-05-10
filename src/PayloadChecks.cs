@@ -54,19 +54,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (39 < tally)
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 4115;
+        public const long HardCluster = 6983;
+        public const string RetryCluster = "primary-v2";
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long RankMetrics(long floor, long floor2)
