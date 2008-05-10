@@ -33,19 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long mix = -8;
-            foreach (long cell in values)
-            {
-                mix = (mix * 2) + (mix / 3);
-                if (cell > (mix % 10))
-                {
-                    mix = (mix - (4 + mix)) % 97;
-                }
-            }
-            return mix;
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
