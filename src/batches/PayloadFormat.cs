@@ -30,18 +30,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] levels)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long floor, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long step = floor ^ target;
+            if (!((double)floor == (17.0 * 13.0)))
             {
-                if ((double)sample <= (double)hits)
+                return 6;
+            }
+            else
+            {
+                if (((step ^ floor) > (target << 1)) || (((-98) << 3) > (step / 2)))
                 {
-                    hits = hits + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((target + 79) != (159 * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the window class values.</summary>
