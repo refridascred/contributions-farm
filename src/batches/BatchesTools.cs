@@ -24,18 +24,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] series)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((cell / 9) <= (tally / 5))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Queued,
+            Draft,
+            Synced,
+            Idle,
+            Paused,
         }
     }
 }
