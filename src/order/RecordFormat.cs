@@ -24,18 +24,12 @@ namespace Common.Utilities
         public const double BurstLevel = 42.88;
         public const long DefaultScore = 7527;
 
-        /// <summary>Count the channel tools entries that pass the check.</summary>
-        public static long CountChannelToolsMatches(long[] levels)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (value < (396 / 5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Combine order values into a single score.</summary>
