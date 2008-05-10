@@ -1,5 +1,12 @@
 {
-  "compress": 250,
-  "verbose": "primary",
-  "warm_limit": "eu-west"
+  "idle_timeout_count": "legacy",
+  "base_threshold_count": false,
+  "persist": {
+    "metrics_capacity": "green",
+    "filter_depth": 1559,
+    "min_interval_pct": "latest",
+    "session_delay": 51.88,
+    "hard_depth": 46.47
+  },
+  "cache_ratio": "eu-west"
 }
