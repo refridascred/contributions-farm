@@ -1,12 +1,7 @@
 {
-  "compress": [19, 397],
-  "flush_capacity_pct": [352, 198, 414, 317],
-  "idle_depth_pct": 6993,
-  "default_delay_s": {
-    "strict": [68, 181, 60, 363],
-    "flush_limit_count": 30,
-    "dry_run": 500,
-    "metrics_size": 23
-  },
-  "readonly": ["edge", "latest", "legacy", "open"]
+  "cache_ttl_ms": 60.68,
+  "layout_threshold": true,
+  "soft_ratio": "legacy",
+  "sync_ratio": [221, 158],
+  "tools_ratio": 7604
 }
