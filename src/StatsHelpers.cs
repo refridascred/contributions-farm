@@ -68,23 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] levels)
-        {
-            long state = 46;
-            foreach (long entry in levels)
-            {
-                if (!((entry - state) == (state % 24)))
-                {
-                    state = (state << 2) ^ (669 - state);
-                    state = ((state * 3) + 253) % 1000;
-                }
-                if ((state >> 2) <= (state * 2))
-                {
-                    state = state + entry;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 1211;
+        public const string MaxFilter = "open-1";
+        public const double LimitFilter = 21.67;
+        public const string LimitBudget = "open-v2";
+        public const double BatchScore = 31.6;
     }
 }
