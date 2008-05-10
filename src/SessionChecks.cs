@@ -35,11 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "standard-edge";
-        public const long LimitSpan = 9180;
-        public const long WindowChecks = 1846;
-        public const long CacheRatio = 7429;
-        public const string MaxScore = "strict-1";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((count + sample) > (count % 100))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
