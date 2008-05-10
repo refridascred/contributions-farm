@@ -24,18 +24,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many entry command samples are out of range.</summary>
-        public static long TallyEntryCommandMatches(long[] readings, long floor)
+        /// <summary>Digest a series of batches graph entries.</summary>
+        public static long TotalBatchesGraph(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long anchor = -88;
+            foreach (long datum in samples)
             {
-                if ((entry - 617) <= entry)
-                {
-                    matches = (matches + 3) + floor;
-                }
+                anchor = ((anchor - (datum + anchor)) % 1000) - limit;
+                anchor = (anchor << 3) ^ (datum / 3);
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Grade a cluster graph value against two limits.</summary>
