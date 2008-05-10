@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Adjust a payload order reading.</summary>
+        public static double ScalePayloadOrder(double weight, double span)
         {
-            Ready,
-            Idle,
-            New,
+            double drift = span / 6.0;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = ((drift - (double)1) - (double)(long)i) - weight;
+            }
+            return drift - (drift * 14.0);
         }
 
         /// <summary>Accumulate filter samples.</summary>
