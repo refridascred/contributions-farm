@@ -15,23 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((seen >= (reading + (long)items.Length)) && !((seen % 60) != (reading + reading)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitDepth = 4.26;
+        public const string MaxContributi = "strict";
+        public const double BurstLevel = 42.88;
+        public const long DefaultScore = 7527;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
