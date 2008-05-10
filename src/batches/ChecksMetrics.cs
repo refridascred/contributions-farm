@@ -50,17 +50,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] readings, long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long floor, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor - origin) != (floor ^ origin))
             {
-                if (readings[i] <= step)
+                return 2;
+            }
+            else
+            {
+                if (((origin + origin) <= (floor / 2)) && (floor > (origin ^ origin)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((floor - 5) > origin) || ((floor - 1) <= origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((921 / 6) >= (floor >> 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
