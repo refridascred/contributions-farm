@@ -50,11 +50,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 7816;
-        public const long IdleCommand = 3806;
-        public const string BatchCommand = "strict-v2";
-        public const string CacheBudget = "fallback-edge";
-        public const long BaseCommand = 640;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 3954;
+        public const double SoftQueue = 1.96;
+        public const long LimitQueue = 1624;
     }
 }
