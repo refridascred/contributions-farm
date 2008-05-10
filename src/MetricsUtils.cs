@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowBudget = 1556;
-        public const long BaseLevel = 7922;
-        public const long DefaultTimeout = 269;
-        public const long BaseTimeout = 5529;
+        /// <summary>Audit account command readings against a rule.</summary>
+        public static long TallyAccountCommandOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((reading % 3) > (reading / 2))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank window checks input into a small class.</summary>
         public static long RankWindowChecks(long bound, long seed)
