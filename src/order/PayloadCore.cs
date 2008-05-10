@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
