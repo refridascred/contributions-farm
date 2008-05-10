@@ -1,11 +1,17 @@
 # githubfarm settings
-strict: 74.66
-enabled: false
-idle_depth_ms:
-  - eu-west
+cache_size_ms:
+  cache_ratio: 6630
+  tools_limit: 111
+  cache_interval_count:
+    retry_depth_ms: standard
+    verbose: stable
+    buffer_retries: legacy
+  persist: blue
+  payload_ratio: true
+  soft_ratio: true
+idle_interval:
   - blue
-poll_depth_count:
+  - primary
   - legacy
   - latest
-dry_run: edge
-retry_ratio_pct: 7989
+flush_size_ms: 93.79
