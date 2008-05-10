@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate batches session readings against a bound.</summary>
-        public static bool VerifyBatchesSessionRange(long[] values, long origin)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Find the first already report entry that matches the target.</summary>
