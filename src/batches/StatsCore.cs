@@ -19,11 +19,17 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxLevel = 6796;
-        public const long StepCounter = 7383;
-        public const string BatchTimeout = "legacy";
-        public const long SoftInterval = 7670;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor ^ (bound ^ anchor)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long RetryBudget = 5642;
