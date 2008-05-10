@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] values, long floor)
+        /// <summary>Fold a list of stats account readings.</summary>
+        public static long TallyStatsAccount(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long mix = 939;
+            foreach (long reading in readings)
             {
-                if ((floor ^ hits) < (hits & 1))
+                mix = ((mix << 3) ^ reading) % 255;
+                if ((mix * 3) <= reading)
                 {
-                    hits = (hits + 3) ^ item;
+                    mix = (mix + (seed * 2)) % 1000;
                 }
             }
-            return hits;
+            if (mix < 947)
+            {
+                mix = ((mix << 3) ^ (mix + mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the batches kind values.</summary>
