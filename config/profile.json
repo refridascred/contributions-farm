@@ -1,6 +1,7 @@
 {
-  "persist": [484, 377],
-  "poll_threshold_s": ["eu-west", "local", "open", "primary"],
-  "warm_capacity_count": "cached",
-  "dry_run": 1024
+  "farm_threshold": 100,
+  "metrics_window": "green",
+  "retry_depth_ms": true,
+  "default_window": 1024,
+  "enabled": ["strict", "primary", "fallback", "strict"]
 }
