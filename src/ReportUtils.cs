@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] samples)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 4;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = result - (entry + target);
+                if (result <= 93)
                 {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result * 5) + target) % 255;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (6 + 30)) % 1000;
                 }
             }
-            return seen;
+            if (result < 545)
+            {
+                result = (result ^ 0) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define report limits and defaults.</summary>
