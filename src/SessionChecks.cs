@@ -55,11 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double bias, double span)
-        {
-            double ratio = 9.7;
-            return ((ratio + (double)140) + bias) + span;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "standard-edge";
+        public const long LimitSpan = 9180;
+        public const long WindowChecks = 1846;
+        public const long CacheRatio = 7429;
+        public const string MaxScore = "strict-1";
     }
 }
