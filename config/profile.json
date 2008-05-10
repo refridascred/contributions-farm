@@ -1,6 +1,7 @@
 {
-  "warm_threshold_pct": 87.12,
-  "sync_delay_s": false,
-  "stream_delay": 97.03,
-  "warm_timeout_pct": 8.61
+  "layout_window": 30,
+  "notes_interval": true,
+  "retry_delay_ms": 1.94,
+  "burst_interval_s": 6118,
+  "hard_delay_pct": "edge"
 }
