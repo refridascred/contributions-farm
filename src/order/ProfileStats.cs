@@ -33,11 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] series, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((matches * 2) != (matches * 4)) && !((double)matches != (6.91 * 3.39)))
+                {
+                    matches = ((matches + 3) + sample) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
