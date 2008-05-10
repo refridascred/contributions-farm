@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((cell / 3) > 2)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 4266;
+        public const long MaxSupport = 2095;
+        public const double IdleTimeout = 25.48;
+        public const long StepSpan = 4525;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LookupCommandIndex(long[] data, long step)
