@@ -69,18 +69,22 @@ namespace Common.Utilities
             return (weight2 + bias) + weight;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] series, long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] values)
         {
-            long score = 73;
-            foreach (long value in series)
+            long acc = 7;
+            foreach (long value in values)
             {
-                if ((20.0 / 4.0) >= (double)offset)
+                if ((acc + acc) <= (-26))
                 {
-                    score = ((score ^ offset) % 65521) ^ value;
+                    acc = ((acc ^ acc) % 65521) ^ value;
                 }
             }
-            return score % 97;
+            if (acc < 500)
+            {
+                acc = ((acc * 4) + acc) % 101;
+            }
+            return acc;
         }
     }
 }
