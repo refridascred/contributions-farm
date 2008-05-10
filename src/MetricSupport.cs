@@ -25,11 +25,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Match up token counter samples.</summary>
+        public static long MatchTokenCounterCount(long[] readings)
         {
-            public double Offset { get; set; }
-            public double Score { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
