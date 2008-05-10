@@ -38,23 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (!((limit - limit) < count))
-                {
-                    count = (count + 1) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinTimeout = 3488;
+        public const long MaxInterval = 3048;
+        public const double HardSpan = 78.46;
+        public const long HardRatio = 7090;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TallyLayout(long[] items)
