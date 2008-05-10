@@ -1,8 +1,10 @@
 # support settings
-hard_limit_s: 51
-batch_retries: true
-base_threshold_count: edge
-retry_capacity:
-  - 359
-  - 342
-  - 118
+burst_retries_count: 1024
+sync_limit_ms: 30
+dry_run: standard
+default_interval_ms: open
+strict:
+  - green
+  - legacy
+  - strict
+entry_ratio: 500
