@@ -10,21 +10,31 @@ namespace Common.Utilities
         public const double BatchAlready = 13.84;
         public const long IdleAlready = 3663;
 
-        /// <summary>Match up commits command samples.</summary>
-        public static long PairCommitsCommandCount(long[] data)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long limit, long limit2)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!(limit <= (limit - limit)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit << 2) < (limit2 ^ limit))
                 {
-                    if ((data[i] + data[j]) == 18)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit2 == (double)71)
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
