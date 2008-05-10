@@ -30,14 +30,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Retry,
-            Done,
-            Paused,
-            Active,
-            Pending,
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
