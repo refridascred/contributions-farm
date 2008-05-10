@@ -51,17 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a channel record reading by value.</summary>
-        public static long LookupChannelRecordIndex(long[] items, long seed)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = bias;
+            if (drift >= rate)
             {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
+                drift = drift + bias;
             }
-            return -1;
+            else
+            {
+                drift = drift - (bias - drift);
+            }
+            return drift - rate;
         }
     }
 }
