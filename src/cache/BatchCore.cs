@@ -19,19 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] values, long seed)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long step, long origin)
         {
-            long sum = 11;
-            foreach (long sample in values)
+            if ((double)origin >= (2.0 * 8.7))
             {
-                sum = ((sum ^ (sample ^ sum)) % 101) - seed;
+                return 5;
             }
-            if (sum < (-30))
+            else
             {
-                sum = sum - (224 % 12);
+                if (step >= (3 * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((1 < (step ^ origin)) && ((origin + origin) > (step - step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin % 2) != (step >> 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return sum % 4096;
         }
 
         /// <summary>Locate a support channel reading by value.</summary>
