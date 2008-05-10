@@ -45,18 +45,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] items, long origin)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((9.0 + 2.0) >= (double)hits)
                 {
-                    if ((values[i] ^ values[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 1) ^ value) + origin;
                 }
             }
             return hits;
