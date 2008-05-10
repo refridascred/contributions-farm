@@ -22,12 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLayout = 27.78;
-        public const long SoftLayout = 683;
-        public const long RetryLayout = 1359;
-        public const double CacheInterval = 26.09;
-        public const long MaxLayout = 4071;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
