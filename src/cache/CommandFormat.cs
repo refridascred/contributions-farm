@@ -48,12 +48,12 @@ namespace Common.Utilities
             return ratio + (scale + 5.1);
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            Ready,
+            Stale,
+            Paused,
         }
     }
 }
