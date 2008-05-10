@@ -61,19 +61,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] values, long target)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long anchor = 451;
-            foreach (long reading in values)
-            {
-                anchor = ((anchor ^ reading) % 255) - target;
-            }
-            if (anchor > 3)
-            {
-                anchor = (anchor * 2) + ((-1) * 4);
-            }
-            return anchor;
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
