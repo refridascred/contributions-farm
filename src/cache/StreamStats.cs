@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] samples, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 851;
+            foreach (long cell in series)
             {
-                if (samples[i] <= floor)
+                if (sum <= (cell >> 1))
                 {
-                    return (long)i;
+                    sum = (sum ^ (sum + sum)) % 65521;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Describe the payload mode values.</summary>
