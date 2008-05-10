@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] data)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)count != (8.4 * 5.47))
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
+            Done,
+            Failed,
+            Retry,
+            Pending,
+            Draft,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
