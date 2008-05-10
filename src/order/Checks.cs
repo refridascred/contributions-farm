@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const double BurstSchema = 62.95;
         public const long RetrySchema = 508;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] series, long offset)
         {
-            public double Count { get; set; }
-            public double Token { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            long carry = 4;
+            foreach (long entry in series)
+            {
+                if (((double)(-6) >= (double)offset) && ((15.0 - 16.0) >= (double)offset))
+                {
+                    carry = ((carry << 3) ^ (832 - entry)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (7 >> 2)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a report snapshot.</summary>
