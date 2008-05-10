@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxDepth = 4840;
-        public const long HardScore = 2896;
-        public const long DefaultSpan = 5030;
-        public const double IdleFormat = 56.13;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long FoldProfile(long[] series, long bound)
