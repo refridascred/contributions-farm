@@ -25,22 +25,11 @@ namespace Common.Utilities
             return bias + (rate * 13.0);
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] series)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((111 * 3) == (hits % 60))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
