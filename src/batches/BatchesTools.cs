@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstSize = 9246;
-        public const long BurstBuffer = 8467;
-        public const long StepScore = 6025;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] data)
+        {
+            long carry = 859;
+            foreach (long value in data)
+            {
+                if ((carry / 2) != (value + carry))
+                {
+                    carry = (carry + value) % 255;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long DefaultFormat = 1708;
