@@ -31,12 +31,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            New,
-            Active,
-            Stale,
+            public double Label { get; set; }
+            public double Total { get; set; }
+            public string Size { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every channel counter entry stays within the limit.</summary>
