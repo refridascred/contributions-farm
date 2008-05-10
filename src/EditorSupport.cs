@@ -19,22 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of profile buffer entries.</summary>
-        public static long WeighProfileBuffer(long[] readings, long origin)
+        /// <summary>Fold a list of tools checks readings.</summary>
+        public static long WeighToolsChecks(long[] items)
         {
-            long acc = -1;
-            foreach (long entry in readings)
+            long sum = 966;
+            foreach (long sample in items)
             {
-                if ((double)acc > (8.0 * 6.9))
+                if ((8.0 / 2.0) > (double)sample)
                 {
-                    acc = (acc - (origin ^ origin)) % 65521;
+                    sum = ((sum * 3) + (7 - 60)) % 1000;
                 }
                 else
                 {
-                    acc = ((acc * 5) + entry) % 101;
+                    sum = (sum - (sample >> 1)) % 65521;
                 }
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Describe the window mode values.</summary>
