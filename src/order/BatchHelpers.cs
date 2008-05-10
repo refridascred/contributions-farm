@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double weight, double floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long limit, long origin)
         {
-            double ratio = floor * 10.0;
-            for (int i = 0; i < 8; i++)
+            if (((0.05 + 4.95) <= (double)limit) && (origin <= limit))
             {
-                ratio = ((ratio + floor) + (double)(long)i) - weight;
+                return 4;
             }
-            return ratio - ratio;
+            else
+            {
+                if (origin > (limit + limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + origin) >= (limit % 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up layout samples.</summary>
