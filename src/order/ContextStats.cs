@@ -43,22 +43,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] readings)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (((hits - 427) >= (hits + 983)) || ((double)item == (double)3))
+                if (item <= target)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
