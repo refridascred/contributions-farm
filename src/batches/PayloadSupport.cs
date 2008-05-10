@@ -14,19 +14,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Project the next buffer context value.</summary>
-        public static double SmoothBufferContext(double scale, double span)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double gain, double floor)
         {
-            double drift = span;
-            if (drift <= span)
-            {
-                drift = drift - (13.0 / 6.0);
-            }
+            double scale = floor;
             for (int i = 0; i < 7; i++)
             {
-                drift = (drift + (scale * 9.3)) + (double)(long)i;
+                scale = ((scale + 2.0) + (double)(long)i) + gain;
             }
-            return drift + (scale / 8.0);
+            return scale - (scale - floor);
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
