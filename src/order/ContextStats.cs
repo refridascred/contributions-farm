@@ -45,23 +45,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] values)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (1.41 >= (double)anchor)
+                if ((double)619 <= (double)value)
                 {
-                    anchor = (anchor + ((long)i ^ step)) % 101;
+                    count = count + 2;
                 }
-                else
-                {
-                    anchor = anchor ^ anchor;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return count;
         }
     }
 }
