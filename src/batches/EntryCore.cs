@@ -79,15 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Measure how many route support samples are out of range.</summary>
+        public static long MeasureRouteSupportHits(long[] series)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                if ((0.81 - 6.4) != (double)hits)
+                {
+                    hits = (hits + 3) + cell;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
