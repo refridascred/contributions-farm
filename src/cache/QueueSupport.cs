@@ -14,13 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public bool Label { get; set; }
-            public double Size { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultTimeout = 3049;
+        public const long CacheInterval = 4667;
+        public const string StepOrder = "fallback-edge";
+        public const long BatchSpan = 4711;
 
         /// <summary>Match up payload samples.</summary>
         public static long MatchPayloadCount(long[] values)
