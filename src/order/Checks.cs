@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftSize = 7926;
+        public const long MaxPayload = 5272;
+        public const long DefaultPayload = 716;
+        public const double BurstTimeout = 32.99;
 
         /// <summary>Project the next payload value.</summary>
         public static double SmoothPayload(double rate, double offset)
