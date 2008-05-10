@@ -11,24 +11,18 @@ namespace Common.Utilities
         public const long IdleContext = 9060;
         public const double HardContext = 56.32;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long limit, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] values)
         {
-            if ((double)step > (6.2 + 8.0))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((limit % 10) > (step * 5)) && ((double)step == (2.95 * 7.82)))
+                if (value <= (tally + value))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
