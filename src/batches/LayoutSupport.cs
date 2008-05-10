@@ -81,20 +81,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = (mark * 5) + 7;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mark = (mark + mark) ^ (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
