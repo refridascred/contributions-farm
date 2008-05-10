@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const string LimitChannel = "cached-v2";
         public const long RetryRatio = 1668;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowSize = 6832;
-        public const long BatchLevel = 1513;
-        public const string MaxMetrics = "latest-1";
-        public const long HardMetrics = 4509;
-        public const long StepSize = 2192;
+        /// <summary>Digest a series of commits context entries.</summary>
+        public static long TotalCommitsContext(long[] readings)
+        {
+            long acc = 592;
+            foreach (long reading in readings)
+            {
+                acc = ((acc - (acc + acc)) % 255) - reading;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long RankContributi(long offset, long floor)
