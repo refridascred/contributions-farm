@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] samples)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] items, long target)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long carry = 0;
+            foreach (long entry in items)
             {
-                if (((count ^ count) > (count << 2)) || ((3.1 * 8.2) >= (double)count))
-                {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (carry - target) + entry;
             }
-            return count;
+            if (carry > (-27))
+            {
+                carry = ((carry * 5) + (carry - carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the tools status values.</summary>
