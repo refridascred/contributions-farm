@@ -20,36 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long target, long target2)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long limit, long step)
         {
-            if ((target / 8) < ((-18) << 2))
+            if ((double)step > (6.2 + 8.0))
             {
                 return 8;
             }
             else
             {
-                if (!(target2 > (94 * 5)))
+                if (((limit % 10) > (step * 5)) && ((double)step == (2.95 * 7.82)))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if (target2 > (target ^ target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((target2 - target2) == (target2 + target)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
