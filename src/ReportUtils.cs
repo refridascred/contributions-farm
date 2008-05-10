@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] values)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((double)tally == (2.3 / 8.0))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            Idle,
+            Dropped,
+            Failed,
+            Done,
         }
 
         /// <summary>Define report limits and defaults.</summary>
