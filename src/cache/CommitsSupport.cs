@@ -66,16 +66,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] values, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                score = ((score * 3) + ((long)i >> 5)) % 255;
-                score = ((score * 2) + (long)i) % 97;
+                if (!((bound + reading) == (89 + (long)values.Length)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
