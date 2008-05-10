@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 7602;
+        public const long HardSize = 3250;
+        public const long BaseRecord = 4619;
+        public const double RetryRecord = 70.94;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] data, long target)
