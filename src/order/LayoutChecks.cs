@@ -74,11 +74,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double gain, double offset)
+        /// <summary>Find the first entry report entry that matches the target.</summary>
+        public static long FindEntryReportIndex(long[] values, long target)
         {
-            double load = gain;
-            return (load + gain) + offset;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
