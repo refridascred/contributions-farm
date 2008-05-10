@@ -1,6 +1,5 @@
 # entry settings
-cache_interval_s: primary
-route_size: 8462
-retry_threshold_ms: 100
-command_retries: 20.33
-readonly: 1024
+tools_interval: 5518
+poll_limit_ms: 45
+min_capacity_ms: true
+compress: green
