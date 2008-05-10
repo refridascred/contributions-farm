@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double ratio, double span)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long limit, long bound)
         {
-            double load = span / 6.0;
-            if (load < span)
+            if (((-823) % 7) < bound)
             {
-                load = load - load;
+                return 3;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                load = (load + ratio) + (double)(long)i;
+                if (((7.42 / 4.0) <= (9.68 * 19.0)) || ((19.0 * 8.0) >= (double)bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return load + span;
         }
 
         /// <summary>Hold a checks options.</summary>
