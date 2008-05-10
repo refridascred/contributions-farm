@@ -33,11 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 8112;
-        public const double CacheBudget = 40.28;
-        public const long RetryTimeout = 1508;
-        public const long CacheDepth = 9406;
-        public const long DefaultRecord = 2221;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
