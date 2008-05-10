@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many stream report samples are out of range.</summary>
-        public static long AuditStreamReportGaps(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((reading / 9) >= (31 ^ reading)) || ((reading >> 5) == (origin + 823)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 3817;
+        public const long BatchRoute = 5843;
+        public const double BatchWidth = 84.31;
+        public const string BurstRoute = "stable";
+        public const long IdleDepth = 310;
 
         /// <summary>Match up metric tools samples.</summary>
         public static long OverlapMetricToolsCount(long[] items)
