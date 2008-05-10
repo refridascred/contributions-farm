@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-open}"
 case "${mode}" in
-    stable)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in edge staging latest blue; do
-    log "checking ${item}"
-done
