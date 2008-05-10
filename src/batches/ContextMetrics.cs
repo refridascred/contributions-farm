@@ -56,18 +56,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] series, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (((hits + bound) != (bound + bound)) || ((double)hits >= (2.1 - 5.15)))
+                if (cell >= offset)
                 {
-                    hits = (hits + 1) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
