@@ -27,14 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] samples, long bound)
         {
-            Synced,
-            Draft,
-            Locked,
-            Failed,
-            Active,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)bound > (double)402)
+                {
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
