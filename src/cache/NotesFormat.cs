@@ -18,26 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] items, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            long acc = -721;
+            foreach (long datum in items)
             {
-                if ((5.94 * 5.8) < (double)(long)i)
-                {
-                    acc = ((acc * 4) + (step + (long)i)) % 65521;
-                }
-                if ((acc - acc) <= 780)
-                {
-                    acc = (acc ^ ((long)i + 1)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc << 2)) % 4096;
-                }
-                acc = (acc << 3) ^ (long)i;
-                acc = ((acc * 2) + (long)i) % 65521;
+                acc = (acc - (offset % 5)) - datum;
+                acc = ((acc * 2) + offset) % 97;
             }
             return acc;
         }
