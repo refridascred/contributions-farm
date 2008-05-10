@@ -56,17 +56,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] levels, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (levels[i] >= limit)
+                if (!(((-4) + entry) <= (964 >> 5)) || (((hits + (-912)) != (5 - hits)) && ((-78) <= (hits - (-13)))))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
