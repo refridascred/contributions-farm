@@ -1,5 +1,8 @@
 # support settings
-default_window_count: stable
-retry_retries: false
-filter_limit: 36
-default_interval: false
+hard_delay: edge
+compress:
+  compress: 27
+  burst_interval_ms: latest
+  counter_size: 38.8
+idle_threshold: 84.35
+metric_timeout: legacy
