@@ -10,19 +10,39 @@ namespace Common.Utilities
         public const long BatchRoute = 2747;
         public const long WindowRoute = 4989;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] items, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long offset, long offset2)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long step = offset + offset2;
+            if (offset2 >= (step * 3))
             {
-                if (cell != offset)
+                return 8;
+            }
+            else
+            {
+                if (((15 - offset2) != (offset % 60)) || ((offset2 + step) > (130 >> 1)))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (offset2 > (step - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (9.0 > (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Accumulate checks samples.</summary>
