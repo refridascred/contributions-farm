@@ -19,14 +19,24 @@ namespace Common.Utilities
         public const double HardCount = 81.49;
         public const double HardEntry = 3.38;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Rank metrics token input into a small class.</summary>
+        public static long SortMetricsToken(long seed, long seed2)
         {
-            Done,
-            Idle,
-            Dropped,
-            Synced,
-            Failed,
+            if (seed > (seed - 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed2 ^ seed) < (seed << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
