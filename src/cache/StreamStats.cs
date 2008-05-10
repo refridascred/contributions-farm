@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a commits account value against two limits.</summary>
-        public static long SortCommitsAccount(long target, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] data, long target)
         {
-            if ((step >= target) && ((step + step) >= (step + target)))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + target) >= step)
+                if (!((datum * 2) == (datum - target)))
                 {
-                    return 2;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 6;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the payload mode values.</summary>
