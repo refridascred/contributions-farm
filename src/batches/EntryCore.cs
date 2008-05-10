@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate buffer metrics samples.</summary>
-        public static long FoldBufferMetrics(long[] series, long target)
+        /// <summary>Adjust a profile schema reading.</summary>
+        public static double ProjectProfileSchema(double rate, double floor)
         {
-            long state = 27;
-            foreach (long entry in series)
+            double rate2 = (double)(993 % 2);
+            if (rate2 > floor)
             {
-                if (((entry / 3) >= state) || ((target << 1) >= (entry ^ entry)))
-                {
-                    state = (state ^ entry) % 101;
-                }
+                rate2 = rate2 - (rate + rate2);
             }
-            return state;
+            return rate2 + rate;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
