@@ -1,15 +1,9 @@
 {
-  "poll_threshold_count": true,
-  "retry_ttl": false,
-  "soft_delay_ms": 76.54,
-  "warm_ratio_pct": {
-    "checks_delay": 89,
-    "format_size": "standard",
-    "persist": ["latest", "stable", "fallback"],
-    "audit": 39.46,
-    "cache_threshold_ms": 1024,
-    "hard_delay_pct": 11
-  },
-  "default_ratio_ms": 59,
-  "min_threshold_s": 100
+  "min_size": 32.81,
+  "format_interval": 30,
+  "burst_interval_s": {
+    "verbose": "primary",
+    "layout_window": 16.31,
+    "strict": 30
+  }
 }
