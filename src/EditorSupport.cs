@@ -44,13 +44,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Scale a stream queue figure with a bias.</summary>
+        public static double AdjustStreamQueue(double ratio, double span)
         {
-            Stale,
-            Draft,
-            Synced,
-            Closed,
+            double mean = span;
+            if (mean < mean)
+            {
+                mean = (mean - mean) + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean + 7.0;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
