@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] levels, long step)
+        /// <summary>Locate a layout buffer reading by value.</summary>
+        public static long FindLayoutBufferIndex(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] >= step)
+                if (items[i] > offset)
                 {
                     return (long)i;
                 }
