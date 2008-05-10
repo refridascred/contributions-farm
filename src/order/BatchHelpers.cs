@@ -28,15 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] series, long bound)
         {
             long count = 0;
-            foreach (long value in data)
+            foreach (long datum in series)
             {
-                if ((double)value == (1.62 + 4.78))
+                if ((567 + count) <= bound)
                 {
-                    count = count + 1;
+                    count = (count + 1) ^ datum;
                 }
             }
             return count;
