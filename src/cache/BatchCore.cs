@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] levels, long floor)
+        /// <summary>Adjust a queue batches reading.</summary>
+        public static double ProjectQueueBatches(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((5.8 + 3.99) >= (double)floor)
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
+            double gain = 18.0;
+            return (gain + (floor * 5.1)) + ratio;
         }
 
         /// <summary>Describe the profile level values.</summary>
