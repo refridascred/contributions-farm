@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] items, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] samples)
         {
-            long carry = 239;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((seed * 2) == (seed - datum))
+                if ((double)item != (double)seen)
                 {
-                    carry = ((carry * 3) + (seed % 2)) % 4096;
+                    seen = seen + 3;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Derive the next route cache value from a seed.</summary>
