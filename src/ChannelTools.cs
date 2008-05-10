@@ -12,11 +12,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a token stats.</summary>
