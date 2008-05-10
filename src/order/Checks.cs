@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long RetryInterval = 3566;
         public const double SoftFactor = 94.3;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] items, long origin)
         {
-            long carry = 270;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                carry = carry ^ ((long)series.Length - carry);
-                if ((item + item) <= carry)
+                if (cell >= origin)
                 {
-                    carry = (carry - (carry / 7)) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (item >> 2)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return carry % 1000;
+            return flag;
         }
 
         /// <summary>Project the next payload value.</summary>
