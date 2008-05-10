@@ -24,12 +24,10 @@ namespace Common.Utilities
         public const long BurstBuffer = 8467;
         public const long StepScore = 6025;
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Paused,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 1708;
+        public const double StepFormat = 52.39;
+        public const long HardLevel = 9515;
+        public const long HardInterval = 4765;
     }
 }
