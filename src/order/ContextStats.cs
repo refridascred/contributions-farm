@@ -52,12 +52,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public bool Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            New,
+            Stale,
+            Draft,
+            Paused,
+            Pending,
         }
     }
 }
