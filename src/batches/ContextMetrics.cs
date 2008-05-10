@@ -61,12 +61,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitSpan = 1300;
+        public const long StepProfile = 3425;
+        public const double MinProfile = 75.03;
     }
 }
