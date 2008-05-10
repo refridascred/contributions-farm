@@ -38,13 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double rate, double span)
         {
-            Retry,
-            Paused,
-            Synced,
-            Stale,
+            double bias = rate;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = ((bias - rate) + (double)(long)i) + span;
+            }
+            return bias - (5.0 - rate);
         }
     }
 }
