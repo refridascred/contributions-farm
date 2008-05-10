@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long target, long step)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] samples, long seed)
         {
-            long bound = target + step;
-            if (((target - target) >= bound) && ((double)step != (19.0 * 4.82)))
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound == (double)(-59))
+                if (datum <= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Digest a series of contributi farm entries.</summary>
