@@ -76,18 +76,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] readings)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((item & 15) <= matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Failed,
+            Locked,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a payload stats.</summary>
