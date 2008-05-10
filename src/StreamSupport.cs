@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] series)
-        {
-            long carry = 891;
-            foreach (long value in series)
-            {
-                if ((393 - value) != (148 - value))
-                {
-                    carry = ((carry * 4) + ((long)series.Length * 5)) % 1000;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftFactor = 6798;
+        public const string BaseRatio = "staging-v2";
+        public const double MaxCount = 97.61;
+        public const long SoftRatio = 6112;
 
         /// <summary>Combine stats queue values into a single score.</summary>
         public static long ScoreStatsQueue(long[] items)
