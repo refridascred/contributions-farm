@@ -86,13 +86,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] items, long origin)
         {
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
