@@ -1,7 +1,5 @@
 {
-  "hard_ttl_s": true,
-  "commits_timeout": 30,
-  "flush_ratio_s": false,
-  "max_ratio_count": "eu-west",
-  "retry_interval": 60
+  "batch_ttl_pct": "eu-west",
+  "verbose": 2,
+  "idle_timeout_ms": 1024
 }
