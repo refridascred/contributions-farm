@@ -40,33 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metrics contributi value from a seed.</summary>
-        public static long IterateMetricsContributi(long step)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((step << 1) <= step)
-                {
-                    mark = mark + step;
-                }
-                if ((double)mark != (8.0 - 11.0))
-                {
-                    mark = mark ^ (step / 8);
-                    break;
-                }
-                else
-                {
-                    mark = (mark + (mark * 3)) % 255;
-                }
-                if (!(mark < ((-556) & 31)))
-                {
-                    mark = (mark + ((long)i + step)) % 65521;
-                    mark = mark ^ ((long)i << 3);
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Synced,
+            Active,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a format options.</summary>
