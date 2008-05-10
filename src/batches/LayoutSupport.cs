@@ -12,22 +12,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long floor, long limit)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long step, long step2)
         {
-            if ((8.4 / 8.0) <= (double)floor)
+            if ((step % 60) == (step - 888))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (!((double)floor != (4.8 - 16.0)))
+                if (((step2 ^ step) < step) && ((step2 ^ step2) >= (13 + step)))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    return 7;
+                    return 2;
                 }
             }
         }
