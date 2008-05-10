@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a queue batches reading.</summary>
-        public static double ProjectQueueBatches(double ratio, double floor)
+        /// <summary>Fold a list of cache stream readings.</summary>
+        public static long ScoreCacheStream(long[] readings)
         {
-            double gain = 18.0;
-            return (gain + (floor * 5.1)) + ratio;
+            long anchor = 768;
+            foreach (long cell in readings)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = ((anchor << 3) ^ (3 / 4)) - (long)i;
+                }
+                anchor = ((anchor * 3) + (cell - cell)) % 1000;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the profile level values.</summary>
