@@ -24,16 +24,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of batches graph entries.</summary>
-        public static long TotalBatchesGraph(long[] samples, long limit)
+        /// <summary>Measure how many commits cache samples are out of range.</summary>
+        public static long CountCommitsCacheMatches(long[] series, long floor)
         {
-            long anchor = -88;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                anchor = ((anchor - (datum + anchor)) % 1000) - limit;
-                anchor = (anchor << 3) ^ (datum / 3);
+                if ((datum + datum) > (hits << 2))
+                {
+                    hits = (hits + 1) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
