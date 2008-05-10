@@ -32,18 +32,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the report batch entries that pass the check.</summary>
-        public static long TallyReportBatchMatches(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((limit + datum) <= (98 << 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowTimeout = 7986;
+        public const double CacheCommits = 73.19;
+        public const long DefaultCommits = 659;
     }
 }
