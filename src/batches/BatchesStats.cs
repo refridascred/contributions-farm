@@ -22,13 +22,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 8736;
+        public const string CacheBudget = "cached-1";
+        public const long BaseWidth = 7967;
+        public const long LimitWidth = 1305;
+        public const long WindowSchema = 5301;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long HardSpan = 3263;
