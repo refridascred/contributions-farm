@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] items)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long origin, long step)
         {
-            long carry = 25;
-            foreach (long item in items)
+            long diff = origin - step;
+            if ((double)diff > (double)(-388))
             {
-                carry = ((carry - ((-946) >> 3)) % 1000) - item;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if (593 > (step + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step + diff) < (diff ^ step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
