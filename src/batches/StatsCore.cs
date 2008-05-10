@@ -12,39 +12,12 @@ namespace Common.Utilities
             return (scale - (scale / 3.0)) + span;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long offset, long floor)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long prev = offset - floor;
-            if ((prev << 3) >= offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((prev > (prev & 1)) && ((double)floor == (1.04 + 2.8)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.0 * 9.22) >= (double)prev)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((double)prev != (double)19))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the editor token entries that pass the check.</summary>
