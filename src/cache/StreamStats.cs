@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 8154;
         public const long DefaultStream = 77;
 
-        /// <summary>Derive the next route cache value from a seed.</summary>
-        public static long SeriesRouteCache(long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] items, long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if (item > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
