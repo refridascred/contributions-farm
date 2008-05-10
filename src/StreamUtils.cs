@@ -38,13 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
+            long acc = 9;
+            foreach (long datum in samples)
+            {
+                acc = acc + (datum * 4);
+            }
+            if (acc > 20)
+            {
+                acc = (acc - acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
