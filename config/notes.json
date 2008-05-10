@@ -1,5 +1,7 @@
 {
-  "dry_run": "fallback",
-  "max_threshold_s": false,
-  "burst_depth_count": 47.75
+  "retry_interval": "local",
+  "min_limit_s": 5768,
+  "poll_size_ms": 717,
+  "strict": 66.18,
+  "verbose": true
 }
