@@ -1,17 +1,8 @@
 # support settings
-support_delay: eu-west
-warm_size_s: false
-sync_retries_s:
-  stats_size:
-    - 60
-    - 182
-  warm_timeout: standard
-  soft_limit_count:
-    - 354
-    - 274
-    - 360
-  max_size_s: primary
-  metric_depth: true
-  batch_delay: primary
-verbose: open
-account_timeout: 3.27
+stream_window:
+  - eu-west
+  - stable
+batches_threshold: 81.02
+enabled: false
+hard_threshold_pct: true
+idle_capacity: 1024
