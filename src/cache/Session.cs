@@ -54,14 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] levels, long step)
         {
-            Failed,
-            Locked,
-            Active,
-            Stale,
-            Dropped,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((467 >= (step >> 2)) && ((4.6 - 20.0) <= (double)value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
