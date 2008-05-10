@@ -1,7 +1,12 @@
 # githubfarm settings
-filter_limit: 44
-layout_limit: 30
-verbose: 500
-session_threshold: 57.42
-readonly: 500
-flush_capacity_count: 19.8
+retry_timeout_s:
+  - 115
+  - 91
+  - 349
+burst_timeout_ms: 9400
+soft_threshold_ms:
+  - 87
+  - 23
+sync_delay_ms: 100
+poll_ttl_pct: false
+cache_capacity_s: blue
