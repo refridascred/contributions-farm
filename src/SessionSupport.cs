@@ -21,14 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Done,
-            Closed,
-            Failed,
+            Draft,
             Idle,
-            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the session kind values.</summary>
