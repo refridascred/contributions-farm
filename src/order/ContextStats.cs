@@ -20,18 +20,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] values, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((15.0 - 5.99) >= (double)seen)
+                if ((double)count == (double)cell)
                 {
-                    seen = ((seen + 2) ^ reading) - target;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
