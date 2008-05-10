@@ -22,18 +22,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] samples, long origin)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (((origin + (long)samples.Length) <= (hits % 2)) && (hits >= (814 << 2)))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
+            Dropped,
+            Pending,
+            Locked,
+            New,
+            Failed,
         }
 
         /// <summary>Blend two schema measurements.</summary>
