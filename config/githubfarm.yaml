@@ -1,28 +1,13 @@
 # githubfarm settings
-record_limit: 84
-warm_threshold_count: 26.33
-commits_limit: open
-support_ttl:
-  idle_retries:
-    readonly: 250
-    base_ratio_ms:
-      - 118
-      - 356
-      - 240
-    hard_ttl_count: 97
-  base_timeout: latest
-  record_capacity: 60
-  poll_delay_s: strict
-base_interval_s:
-  cache_capacity:
-    - 436
-    - 451
-  audit: true
-  base_retries_count: false
-  already_timeout: true
-  max_window:
-    dry_run: strict
-    audit: 8896
-    cache_ttl: 93.42
-    flush_window_pct: latest
-    warm_limit_count: 500
+hard_limit:
+  base_size_ms:
+    - cached
+    - local
+    - legacy
+  cache_timeout: 30
+  persist: 54
+default_delay_ms: 60
+payload_retries: 89.39
+base_ttl_s: strict
+enabled: legacy
+warm_interval: standard
