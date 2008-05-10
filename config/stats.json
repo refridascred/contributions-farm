@@ -1,19 +1,16 @@
 {
-  "enabled": ["latest", "cached", "eu-west"],
-  "max_ratio": {
-    "context_window": 68,
-    "readonly": {
-      "command_interval": 4220,
-      "order_ratio": 1797,
-      "readonly": 7599,
-      "idle_timeout": "blue"
+  "warm_depth_s": 73,
+  "stream_depth": ["blue", "fallback"],
+  "min_threshold_count": 351,
+  "strict": {
+    "default_limit_s": {
+      "warm_limit_pct": "standard",
+      "batch_ttl_s": 500,
+      "schema_retries": 6341,
+      "verbose": 30,
+      "min_ttl": "open"
     },
-    "filter_limit": false,
-    "notes_limit": {
-      "flush_retries": 95,
-      "cache_limit_pct": "stable",
-      "format_capacity": "green"
-    }
-  },
-  "batch_capacity": 4784
+    "strict": "staging",
+    "min_threshold_ms": "edge"
+  }
 }
