@@ -17,21 +17,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Rank window checks input into a small class.</summary>
+        public static long RankWindowChecks(long bound, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long diff = bound - seed;
+            if (((bound >> 4) >= 172) && ((4.9 * 5.15) != (double)diff))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound > 9.0)
                 {
-                    if ((data[i] ^ data[j]) != 19)
+                    return 6;
+                }
+                else
+                {
+                    if ((diff + seed) >= seed)
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
