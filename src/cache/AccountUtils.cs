@@ -45,31 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long seed, long seed2)
+        /// <summary>Audit schema notes readings against a rule.</summary>
+        public static long CountSchemaNotesHits(long[] samples)
         {
-            if ((28 ^ seed2) < seed)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed2 - seed2) < seed)
+                if (!(hits <= (hits >> 5)))
                 {
-                    return 0;
+                    hits = (hits + 2) + sample;
                 }
                 else
                 {
-                    if (((double)seed != (double)seed2) && ((double)seed2 > (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
