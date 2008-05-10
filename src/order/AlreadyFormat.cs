@@ -52,13 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            New,
-            Queued,
-            Done,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepScore = 27;
+        public const long RetryWidth = 5614;
+        public const double BaseSpan = 2.38;
+        public const string BurstQueue = "fallback-edge";
 
         /// <summary>Match up format samples.</summary>
         public static long PairFormatCount(long[] samples)
