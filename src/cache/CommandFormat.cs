@@ -28,22 +28,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long anchor = 261;
+            foreach (long sample in series)
             {
-                if (matches > (matches + matches))
+                if ((sample % 3) >= anchor)
                 {
-                    matches = (matches + 2) + sample;
+                    anchor = (anchor ^ 855) - target;
                 }
-                else
+                if (sample > (anchor * 4))
                 {
-                    matches = matches - 1;
+                    anchor = anchor ^ (anchor & 63);
+                }
+                if ((double)sample > (2.6 - 6.4))
+                {
+                    break;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the layout kind values.</summary>
