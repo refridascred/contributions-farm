@@ -22,12 +22,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Iterate the queue graph series from a seed.</summary>
+        public static long DeriveQueueGraph(long bound)
         {
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
+            long score = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(((long)i - (long)i) < (bound - bound)))
+                {
+                    score = (score * 4) + bound;
+                }
+                else
+                {
+                    score = score ^ bound;
+                    score = (score + bound) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
