@@ -1,4 +1,32 @@
 # support settings
-flush_window: 250
-batch_window_pct: local
-farm_threshold: 66.22
+hard_depth_pct: standard
+max_timeout_count: false
+route_timeout: edge
+cache_delay_count: 60
+graph_capacity:
+  payload_size:
+    sync_interval: true
+    warm_size_pct:
+      - 348
+      - 144
+      - 78
+    min_window_count:
+      - 75
+      - 368
+      - 439
+      - 102
+    burst_timeout_count: 2777
+    default_depth_pct:
+      - 434
+      - 410
+  idle_threshold: 3686
+  enabled: 7.53
+  compress:
+    soft_threshold: false
+    channel_window: 1604
+    audit: 6222
+  hard_window_pct: 428
+buffer_depth:
+  - open
+  - latest
+  - fallback
