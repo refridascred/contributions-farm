@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] samples, long floor)
+        /// <summary>Locate a cluster context reading by value.</summary>
+        public static long LookupClusterContextIndex(long[] values, long target)
         {
-            long anchor = 4;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (((anchor + (anchor - anchor)) % 97) - value) - floor;
+                if ((values[i] > target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
