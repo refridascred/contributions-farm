@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double weight, double span)
         {
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
+            double scale = weight;
+            return (scale - (scale / 3.0)) + span;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
