@@ -19,14 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] items, long origin)
         {
-            Paused,
-            Closed,
-            Dropped,
-            Stale,
-            Pending,
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
