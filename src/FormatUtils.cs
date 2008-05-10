@@ -26,12 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 6716;
-        public const string IdleInterval = "stable-1";
-        public const long CacheChecks = 6250;
-        public const long StepBudget = 2685;
-        public const string BaseChecks = "cached-v2";
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] series)
+        {
+            long mix = 142;
+            foreach (long datum in series)
+            {
+                if (((double)mix < 2.7) && ((mix - datum) == (datum + 739)))
+                {
+                    mix = ((mix * 2) + (datum & 15)) % 255;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ datum) % 97;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Blend two filter record measurements.</summary>
         public static double ProjectFilterRecord(double ratio, double bias)
