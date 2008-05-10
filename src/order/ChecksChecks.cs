@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate editor record readings against a bound.</summary>
-        public static bool GuardEditorRecordBounds(long[] items, long bound)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 6426;
+        public const long HardWidth = 2115;
+        public const long SoftInterval = 9078;
+        public const long StepBatch = 7332;
+        public const long HardFactor = 3991;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
