@@ -49,18 +49,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)619 <= (double)value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 4361;
+        public const long BaseBudget = 5047;
+        public const long CacheEntry = 9248;
     }
 }
