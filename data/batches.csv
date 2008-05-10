@@ -1,7 +1,6 @@
-id,region
-1,153
-2,12.78
-3,local
-4,287
-5,18.0
-6,stable
+id,score,token,label
+1,273,30.33,512
+2,282,12,fallback
+3,stable,39.97,271
+4,eu-west,49.0,173
+5,38.02,standard,34.5
