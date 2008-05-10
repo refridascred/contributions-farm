@@ -39,17 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] values, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 66;
+            foreach (long datum in readings)
             {
-                if ((values[i] < offset) && ((values[i] % 3) == 0))
+                if ((datum / 6) >= (anchor / 6))
                 {
-                    return (long)i;
+                    anchor = anchor + (bound + bound);
+                }
+                else
+                {
+                    anchor = (anchor - (60 & 63)) % 101;
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Blend two tools measurements.</summary>
