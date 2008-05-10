@@ -20,22 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] items)
+        /// <summary>Accumulate stats checks samples.</summary>
+        public static long TallyStatsChecks(long[] items)
         {
-            long result = 7;
+            long score = 65;
             foreach (long datum in items)
             {
-                if (((3.0 + 1.0) < 8.65) || (((-617) / 4) < datum))
+                score = (score ^ (7 / 6)) ^ datum;
+                if ((score * 5) != (211 + score))
                 {
-                    result = ((result << 3) ^ datum) % 1000;
+                    break;
                 }
             }
-            if (result < 2)
+            if (score < 4)
             {
-                result = (result ^ result) % 1000;
+                score = ((score << 3) ^ (score & 255)) % 101;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Classify a format record pair into a bucket.</summary>
