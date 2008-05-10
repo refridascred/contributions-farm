@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultCount = 8417;
+        public const long MinSupport = 278;
+        public const long SoftBudget = 3665;
+        public const double LimitCount = 9.25;
+        public const long BurstWidth = 4035;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double CacheWindow = 89.67;
