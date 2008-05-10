@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the githubfarm schema series from a seed.</summary>
-        public static long IterateGithubfarmSchema(long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long target, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            long lane = target ^ step;
+            if (!(target < (target + step)))
             {
-                result = result ^ ((long)i / 3);
-                result = result - result;
-                result = ((result * 5) + (long)i) % 65521;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (step < (lane * 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(target > (step ^ 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate account cache readings against a bound.</summary>
