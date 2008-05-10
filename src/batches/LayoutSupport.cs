@@ -20,17 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a tools report reading by value.</summary>
-        public static long LocateToolsReportIndex(long[] levels, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 7;
+            foreach (long datum in items)
             {
-                if (levels[i] > step)
+                if (((3.0 + 1.0) < 8.65) || (((-617) / 4) < datum))
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ datum) % 1000;
                 }
             }
-            return -1;
+            if (result < 2)
+            {
+                result = (result ^ result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Classify a format record pair into a bucket.</summary>
