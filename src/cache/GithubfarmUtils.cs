@@ -40,19 +40,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate order token samples.</summary>
-        public static long FoldOrderToken(long[] items, long floor)
+        /// <summary>Measure how many graph route samples are out of range.</summary>
+        public static long TallyGraphRouteMatches(long[] data, long target)
         {
-            long state = 234;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                state = state - (floor % 2);
-                if (((entry - state) <= floor) || ((3.23 / 8.0) >= (15.0 - 14.0)))
+                if ((cell - seen) < (167 << 2))
                 {
-                    break;
+                    seen = (seen + 1) + target;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
