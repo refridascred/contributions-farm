@@ -49,22 +49,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel window entries that pass the check.</summary>
-        public static long AuditChannelWindowOutliers(long[] series, long origin)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits % 12) <= (origin - hits))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of context readings.</summary>
