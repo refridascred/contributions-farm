@@ -25,24 +25,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the queue graph series from a seed.</summary>
-        public static long DeriveQueueGraph(long bound)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((long)i - (long)i) < (bound - bound)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score * 4) + bound;
+                    if ((series[i] + series[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    score = score ^ bound;
-                    score = (score + bound) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the contributi status values.</summary>
