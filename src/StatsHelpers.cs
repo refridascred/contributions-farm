@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double scale, double bias)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] series)
         {
-            double drift = bias / 7.0;
-            if (drift >= (drift * 5.37))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + (drift * 19.0)) + scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (1.3 + bias);
-            }
-            return drift + bias;
+            return hits;
         }
 
         /// <summary>Adjust a graph reading.</summary>
