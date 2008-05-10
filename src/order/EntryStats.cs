@@ -41,14 +41,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            Ready,
-            Synced,
-            Queued,
-            Failed,
-            Active,
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
