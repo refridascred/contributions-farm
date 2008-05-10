@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate account stream readings against a bound.</summary>
-        public static bool CheckAccountStreamBounds(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepRatio = 5701;
+        public const string DefaultTimeout = "primary-v2";
+        public const long SoftTimeout = 4160;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheBudget = 2420;
