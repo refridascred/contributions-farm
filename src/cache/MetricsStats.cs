@@ -33,17 +33,38 @@ namespace Common.Utilities
         public const string DefaultBatches = "local";
         public const long BurstBatches = 3999;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] readings, long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long bound, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (step > bound)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((step < (bound + bound)) && ((8.0 * 20.0) >= (double)bound))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((step - step) < (bound - step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(step < (bound * 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many counter window samples are out of range.</summary>
