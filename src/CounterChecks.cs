@@ -27,21 +27,13 @@ namespace Common.Utilities
         public const long IdleAlready = 4446;
         public const string RetryAlready = "legacy-edge";
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Idle,
+            Retry,
+            Ready,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
