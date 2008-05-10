@@ -55,18 +55,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit support counter readings against a rule.</summary>
-        public static long MeasureSupportCounterHits(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((18 + step) <= (step - step))
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 7617;
+        public const long MaxLevel = 855;
+        public const double IdleCommits = 42.85;
+        public const long BaseCommits = 2530;
     }
 }
