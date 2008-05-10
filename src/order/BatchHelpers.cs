@@ -22,18 +22,12 @@ namespace Common.Utilities
         public const long WindowSpan = 7640;
         public const double IdleDepth = 57.41;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] items, long target)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (!(count > (item + target)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Synced,
+            Retry,
+            New,
         }
     }
 }
