@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] readings, long step)
+        /// <summary>Validate account stream readings against a bound.</summary>
+        public static bool CheckAccountStreamBounds(long[] levels, long offset)
         {
-            long state = 61;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                state = (state - (step - state)) - sample;
+                if (datum >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
