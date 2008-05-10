@@ -56,22 +56,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate format entry samples.</summary>
-        public static long WeighFormatEntry(long[] series)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double weight, double span)
         {
-            long mix = 15;
-            foreach (long value in series)
+            double rate = span;
+            if (rate >= (span - weight))
             {
-                if ((mix - 662) <= mix)
-                {
-                    mix = (mix - (mix + mix)) ^ value;
-                }
+                rate = rate + (double)(-33);
             }
-            if (mix > 2)
+            else
             {
-                mix = (mix << 2) ^ (mix + mix);
+                rate = rate - weight;
             }
-            return mix;
+            return rate + span;
         }
 
         /// <summary>Describe the checks kind values.</summary>
