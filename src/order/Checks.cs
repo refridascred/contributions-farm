@@ -49,15 +49,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] samples, long bound)
+        /// <summary>Roll a token cluster counter forward.</summary>
+        public static long DeriveTokenCluster(long step)
         {
-            long acc = 0;
-            foreach (long entry in samples)
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                acc = (((acc * 2) + (acc % 10)) ^ entry) - bound;
+                sum = (sum ^ (sum + sum)) % 97;
+                if (!(((long)i & 15) != (sum % 97)))
+                {
+                    sum = (sum ^ (step << 1)) % 101;
+                }
+                sum = ((sum << 2) ^ (90 % 2)) % 97;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return acc % 1000;
+            return sum;
         }
     }
 }
