@@ -48,11 +48,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 1843;
-        public const long LimitRatio = 6807;
-        public const long MaxInterval = 6706;
-        public const long MinRoute = 7979;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Synced,
+            Active,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Blend two tools checks measurements.</summary>
         public static double ScaleToolsChecks(double weight, double bias)
