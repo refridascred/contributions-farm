@@ -29,15 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
+            long state = 113;
+            foreach (long cell in data)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                state = (((state * 4) + (73 + state)) % 255) ^ cell;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Find the first support buffer entry that matches the target.</summary>
