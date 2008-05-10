@@ -55,16 +55,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double ratio, double offset)
-        {
-            double bias = offset + (7.24 - offset);
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (double)(long)i) - ratio;
-            }
-            return bias - offset;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxFactor = 4394;
+        public const string BurstPayload = "fallback-1";
+        public const double HardCount = 72.52;
+        public const long BurstWidth = 4931;
+        public const double MinPayload = 35.26;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long WeighCluster(long[] series, long bound)
