@@ -1,5 +1,8 @@
 {
-  "context_timeout": 40.14,
-  "verbose": 23.63,
-  "burst_delay_pct": "strict"
+  "base_limit": "eu-west",
+  "editor_ttl": 94,
+  "hard_ratio_ms": "edge",
+  "layout_retries": [326, 155, 15, 131],
+  "readonly": 52.47,
+  "order_timeout": "latest"
 }
