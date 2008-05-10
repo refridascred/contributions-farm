@@ -61,18 +61,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches support entries that pass the check.</summary>
-        public static long AuditBatchesSupportOutliers(long[] values, long floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((sample * 2) <= (sample ^ matches))
-                {
-                    matches = (matches + 3) + floor;
-                }
-            }
-            return matches;
+            Ready,
+            Done,
+            Draft,
+            Failed,
+            Locked,
         }
 
         /// <summary>Fold a list of context readings.</summary>
