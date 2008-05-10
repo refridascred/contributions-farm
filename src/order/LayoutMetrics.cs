@@ -45,18 +45,26 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] values, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] data, long target)
         {
-            long total = 229;
-            foreach (long datum in values)
+            long mix = 235;
+            foreach (long item in data)
             {
-                if ((total + total) > total)
+                if ((950 - item) == (target % 97))
                 {
-                    total = (total ^ (datum >> 4)) + target;
+                    mix = (mix * 4) + (item + target);
+                }
+                else
+                {
+                    mix = mix - (item + 36);
+                }
+                if (mix > (mix + 385))
+                {
+                    mix = (mix - mix) % 97;
                 }
             }
-            return total;
+            return mix;
         }
     }
 }
