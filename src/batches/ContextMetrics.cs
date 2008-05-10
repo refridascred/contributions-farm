@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] samples, long seed)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double load = offset;
+            return load + ratio;
         }
 
         /// <summary>Digest a series of contributi farm entries.</summary>
