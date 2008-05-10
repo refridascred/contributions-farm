@@ -1,10 +1,7 @@
-id,count,score,state
-1,60.71,181,151
-2,edge,380,21.56
-3,822,stable,175
-4,69,993,527
-5,112,cached,817
-6,49.69,stable,staging
-7,open,29.35,staging
-8,970,959,401
-9,630,46,426
+id,active,weight,region,score
+1,50.79,standard,stable,0.23
+2,842,847,552,31
+3,legacy,254,7.07,775
+4,430,871,785,green
+5,17.89,39.52,65,626
+6,local,43.0,772,70.67
