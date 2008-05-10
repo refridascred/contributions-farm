@@ -50,26 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes layout readings.</summary>
-        public static long CombineNotesLayout(long[] data, long seed)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long score = 2;
-            foreach (long value in data)
-            {
-                if (((1 + 6) < (score << 1)) || ((1.13 * 14.0) <= (double)score))
-                {
-                    score = ((score * 4) + (value - value)) % 255;
-                }
-                if (!(value <= (score % 100)))
-                {
-                    break;
-                }
-            }
-            if (score > 5)
-            {
-                score = ((score << 2) ^ (seed - seed)) % 97;
-            }
-            return score % 65521;
+            public long Level { get; set; }
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
