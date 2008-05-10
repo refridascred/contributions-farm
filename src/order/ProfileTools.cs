@@ -27,17 +27,24 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] values, long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long offset, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((9.8 - 2.6) < (double)offset) || (3.3 >= (double)offset))
             {
-                if ((values[i] >= offset) && ((values[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if (((offset / 4) < 104) || ((double)seed <= 4.9))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
