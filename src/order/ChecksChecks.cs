@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 6426;
-        public const long HardWidth = 2115;
-        public const long SoftInterval = 9078;
-        public const long StepBatch = 7332;
-        public const long HardFactor = 3991;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                long tally = (long)i >> 1;
+                mix = (mix * 5) + ((long)i + tally);
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long WeighContributi(long[] values, long step)
