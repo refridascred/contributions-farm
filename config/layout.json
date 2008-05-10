@@ -1,7 +1,8 @@
 {
-  "burst_ttl_count": ["strict", "staging"],
-  "default_threshold_ms": 70,
-  "persist": false,
-  "notes_capacity": false,
-  "retry_capacity_pct": 100
+  "retry_window_ms": "open",
+  "idle_limit": "staging",
+  "metric_ttl": "eu-west",
+  "cache_limit": true,
+  "soft_threshold_pct": "local",
+  "readonly": true
 }
