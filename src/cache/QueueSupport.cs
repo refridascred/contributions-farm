@@ -14,13 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public long Token { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            public bool Label { get; set; }
+            public double Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a token entry.</summary>
