@@ -72,11 +72,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] series)
         {
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (((count >> 5) >= (14 / 4)) || ((715 % 3) > (entry >> 5)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
