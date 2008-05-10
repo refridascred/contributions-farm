@@ -52,22 +52,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] data)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] data)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long anchor = 699;
+            foreach (long sample in data)
             {
-                if ((64 + item) <= (item * 3))
+                anchor = (anchor * 2) + anchor;
+                anchor = (anchor ^ sample) % 97;
+                if ((69 - sample) <= (27 + anchor))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    anchor = anchor ^ (49 ^ sample);
                 }
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
