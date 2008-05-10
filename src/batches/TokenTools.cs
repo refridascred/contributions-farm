@@ -37,18 +37,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] data)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if ((limit2 + limit) <= limit2)
             {
-                if ((count << 3) < (count & 127))
+                return 6;
+            }
+            else
+            {
+                if (!((double)limit <= (double)limit2))
                 {
-                    count = (count + 1) ^ sample;
+                    return 3;
+                }
+                else
+                {
+                    if ((6.62 + 6.0) < (double)limit2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
     }
 }
