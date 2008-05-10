@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftRoute = "legacy-edge";
+        public const long MaxWidth = 3199;
+        public const long WindowCount = 5980;
+        public const string BaseRoute = "cached-edge";
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
