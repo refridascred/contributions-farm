@@ -1,4 +1,8 @@
 # support settings
-metrics_timeout: 6819
-warm_threshold: 91
-sync_capacity: 86
+hard_limit_s: 51
+batch_retries: true
+base_threshold_count: edge
+retry_capacity:
+  - 359
+  - 342
+  - 118
