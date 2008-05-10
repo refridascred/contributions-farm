@@ -21,11 +21,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)seen >= (double)entry)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the commits status values.</summary>
