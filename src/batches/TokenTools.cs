@@ -24,24 +24,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum - sum) % 1000) + (long)i2;
+                    if ((data[i] ^ data[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if ((2 << 3) > floor)
-                {
-                    sum = ((sum << 2) ^ floor) % 255;
-                    sum = sum ^ floor;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return tally;
         }
     }
 }
