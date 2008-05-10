@@ -40,22 +40,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine payload counter values into a single score.</summary>
-        public static long DigestPayloadCounter(long[] values)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] items, long seed)
         {
-            long result = 505;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((result - result) > (result + result))
+                if (sample >= seed)
                 {
-                    result = result + (entry ^ entry);
-                }
-                else
-                {
-                    result = result ^ (28 + result);
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Describe the payload kind values.</summary>
