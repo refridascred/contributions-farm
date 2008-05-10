@@ -30,15 +30,19 @@ namespace Common.Utilities
         public const double BatchSession = 3.84;
         public const string SoftSession = "fallback";
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] readings, long limit)
+        /// <summary>Count the token cluster entries that pass the check.</summary>
+        public static long CountTokenClusterOutliers(long[] levels)
         {
             long seen = 0;
-            foreach (long item in readings)
+            foreach (long cell in levels)
             {
-                if (!((double)limit > (17.0 - 8.0)) && ((seen - item) <= ((-97) >> 2)))
+                if (((13.0 - 1.0) < (double)seen) && ((cell + seen) <= (seen + seen)))
                 {
-                    seen = seen + 3;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
