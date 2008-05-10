@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] readings, long target)
-        {
-            long result = 94;
-            foreach (long value in readings)
-            {
-                if ((target << 3) >= target)
-                {
-                    result = result + (target ^ target);
-                }
-                else
-                {
-                    result = (result - value) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 6988;
+        public const double HardLevel = 37.48;
+        public const double StepAlready = 62.1;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
