@@ -1,11 +1,40 @@
 # entry settings
-readonly: 1076
-cache_limit: standard
-persist: legacy
-default_interval:
-  enabled: staging
-  verbose: 8276
-  already_interval: strict
+strict:
+  layout_delay: eu-west
+  burst_limit_ms: 60
+  cache_capacity: 83.4
+  account_window: 1024
+  retry_size_s: 56.32
+  compress:
+    base_timeout_pct: 60
+    strict: false
+    verbose:
+      - 326
+      - 384
+    base_delay_pct: 88.59
+    soft_capacity_count: 100
+    retry_depth: 50
+enabled:
+  filter_depth: edge
+  idle_window_count:
+    - 489
+    - 170
+  default_depth_s: 5390
+  min_retries_ms:
+    - primary
+    - legacy
+cache_ratio_ms:
+  hard_ttl_pct: false
+  schema_retries:
+    batches_retries: 96
+    flush_interval: 28.79
+    burst_depth_count: blue
+    schema_depth: 25.6
   readonly:
-    - 427
-    - 433
+    batch_threshold_s: 3506
+    format_capacity: 100
+    base_ratio_pct: 41
+    warm_size: fallback
+warm_threshold_s: false
+soft_depth_ms: stable
+flush_capacity_s: 98.63
