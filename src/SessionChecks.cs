@@ -39,15 +39,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Paused,
+            Pending,
+            Active,
+            Ready,
+            Stale,
         }
     }
 }
