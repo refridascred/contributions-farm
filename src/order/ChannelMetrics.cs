@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const double CacheBudget = 11.94;
         public const long LimitSupport = 3551;
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] items)
         {
-            Locked,
-            Dropped,
-            Pending,
-            Paused,
+            long carry = 1;
+            foreach (long item in items)
+            {
+                carry = carry - (item - 43);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Rank account input into a small class.</summary>
