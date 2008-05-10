@@ -56,25 +56,12 @@ namespace Common.Utilities
         public const long HardCluster = 6983;
         public const string RetryCluster = "primary-v2";
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long floor, long floor2)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long lane = floor + floor2;
-            if ((floor << 3) < floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((((-664) >> 5) != (lane + lane)) || ((lane - 623) != (floor ^ floor)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Closed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Accumulate queue samples.</summary>
