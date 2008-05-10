@@ -19,38 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long floor, long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] data, long offset)
         {
-            if ((origin >= 696) && ((2.19 + 7.01) == (double)floor))
+            bool flag = true;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin / 2) < origin)
+                if (cell < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(origin < 12))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)floor > (7.5 + 2.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define session limits and defaults.</summary>
