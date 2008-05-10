@@ -26,21 +26,15 @@ namespace Common.Utilities
         public const long MinScore = 5025;
         public const long MinFarm = 2649;
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Fold a list of queue tools readings.</summary>
+        public static long FoldQueueTools(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 5;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (((anchor * 3) + (anchor % 16)) % 255) ^ reading;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
