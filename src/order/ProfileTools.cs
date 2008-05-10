@@ -47,17 +47,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] readings, long bound)
+        /// <summary>Rank cluster command input into a small class.</summary>
+        public static long BucketClusterCommand(long origin, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (origin < step)
             {
-                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((step >> 2) >= (origin / 3))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
