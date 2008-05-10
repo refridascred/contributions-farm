@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge open standard legacy; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=480
+log "limit is ${BUFFER_LIMIT}"
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+mode="${1:-green}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
