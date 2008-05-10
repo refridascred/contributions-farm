@@ -54,18 +54,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cache editor readings against a rule.</summary>
-        public static long CountCacheEditorOutliers(long[] samples, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long anchor = 18;
+            foreach (long entry in levels)
             {
-                if (((double)value > (7.29 - 18.0)) && ((3.8 * 7.0) > (double)value))
+                anchor = ((anchor * 4) + (anchor + entry)) % 97;
+                anchor = (anchor << 2) ^ (entry - anchor);
+                if ((6.34 - 16.0) < (double)anchor)
                 {
-                    hits = (hits + 2) + floor;
+                    break;
                 }
             }
-            return hits;
+            if (anchor > 45)
+            {
+                anchor = ((anchor << 2) ^ (anchor % 64)) % 65521;
+            }
+            return anchor;
         }
     }
 }
