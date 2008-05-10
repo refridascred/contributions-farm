@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 1849;
-        public const long BaseMetric = 5599;
-        public const long IdleBudget = 6399;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally >= (769 >> 5)) && ((double)tally < (double)reading))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
