@@ -61,18 +61,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] series, long target)
-        {
-            long carry = 56;
-            foreach (long cell in series)
-            {
-                if ((carry + (-80)) == (target ^ carry))
-                {
-                    carry = (carry - target) - cell;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "legacy-1";
+        public const long BaseTimeout = 9044;
+        public const long MaxSize = 315;
+        public const long MaxProfile = 3533;
     }
 }
