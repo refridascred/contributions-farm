@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long step, long origin)
-        {
-            if ((origin + origin) < (origin << 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step < (4.7 / 8.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin << 3) != (step * 4)) && ((9 ^ step) <= ((-6) + origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin > step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftInterval = 57.4;
+        public const string SoftWidth = "local";
+        public const long BurstChannel = 9512;
+        public const long BurstDepth = 9372;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] items, long step)
