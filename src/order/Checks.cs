@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const long CacheLevel = 8991;
         public const long MinRatio = 3106;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] items, long limit)
         {
-            New,
-            Synced,
-            Failed,
-            Ready,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next payload value.</summary>
