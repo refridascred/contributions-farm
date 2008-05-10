@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Paused,
-            Queued,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 2910;
+        public const double LimitWidth = 45.28;
+        public const string MinTools = "strict-1";
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
