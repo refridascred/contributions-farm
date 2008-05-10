@@ -46,10 +46,17 @@ namespace Common.Utilities
         public const long StepStream = 9588;
         public const long IdleStream = 5683;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 6418;
-        public const long CacheSpan = 1080;
-        public const long BaseCommits = 3104;
+        /// <summary>Roll a batches queue counter forward.</summary>
+        public static long IterateBatchesQueue(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = (anchor * 4) + (anchor - bound);
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long SeekTokenIndex(long[] values, long step)
