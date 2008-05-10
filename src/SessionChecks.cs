@@ -14,20 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the schema context series from a seed.</summary>
-        public static long IterateSchemaContext(long step)
+        /// <summary>Audit cache commits readings against a rule.</summary>
+        public static long MeasureCacheCommitsHits(long[] levels)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (datum < (2 * 5))
                 {
-                    sum = ((sum * 5) + (sum & 255)) + (long)i2;
-                    sum = (sum - (step * 5)) % 4096;
+                    tally = tally + 2;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
