@@ -1,5 +1,22 @@
 # entry settings
-tools_interval: 5518
-poll_limit_ms: 45
-min_capacity_ms: true
-compress: green
+poll_limit_s: edge
+queue_retries:
+  - 415
+  - 224
+  - 422
+min_size:
+  persist: 19
+  counter_ttl: 9994
+  batch_retries_ms: false
+  flush_ratio_s:
+    - 105
+    - 185
+    - 291
+  cache_window:
+    soft_capacity_ms: 35.73
+    max_timeout: 35.98
+    idle_limit_ms: 9688
+    retry_interval_pct: open
+    flush_limit_ms: 25
+  soft_window_s: standard
+sync_capacity_pct: blue
