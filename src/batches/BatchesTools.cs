@@ -38,10 +38,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitCount = 4033;
-        public const long LimitFactor = 1411;
-        public const long LimitBatch = 3369;
-        public const string DefaultFactor = "legacy";
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Synced,
+            Locked,
+            Retry,
+            Failed,
+            New,
+        }
     }
 }
