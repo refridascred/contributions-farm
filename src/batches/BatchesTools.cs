@@ -22,15 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the route token series from a seed.</summary>
-        public static long RollRouteToken(long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long limit, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
+            long cur = limit ^ bound;
+            if (((limit - cur) < (limit / 9)) && (98 <= limit))
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (93 >= (bound - limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
