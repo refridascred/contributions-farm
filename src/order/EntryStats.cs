@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data, long floor)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long carry = 47;
-            foreach (long reading in data)
-            {
-                carry = (carry ^ (reading - reading)) - floor;
-            }
-            if (carry > 7)
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry;
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
