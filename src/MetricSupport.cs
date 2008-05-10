@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long BurstChannel = 9512;
         public const long BurstDepth = 9372;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] items, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] items)
         {
-            long score = 6;
+            long tally = 0;
             foreach (long item in items)
             {
-                if (!((0.1 + 5.3) <= (double)score))
+                if (tally < 974)
                 {
-                    score = ((score ^ (step + 1)) % 65521) - item;
-                }
-                else
-                {
-                    score = score - (403 >> 1);
+                    tally = (tally + 2) + item;
                 }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Hold a batch stats.</summary>
