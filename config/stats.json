@@ -1,13 +1,10 @@
 {
-  "persist": {
-    "readonly": 4785,
-    "default_delay_s": 2448,
-    "max_window_s": 89,
-    "audit": 40.86,
-    "flush_capacity_ms": 2778
+  "hard_interval": 10.92,
+  "retry_limit": {
+    "batches_timeout": true,
+    "audit": true,
+    "flush_interval": false
   },
-  "batch_capacity": [297, 126, 331],
-  "metric_ttl": 8356,
-  "hard_threshold_s": 8838,
-  "batch_window_s": "legacy"
+  "batch_timeout_s": "primary",
+  "enabled": "stable"
 }
