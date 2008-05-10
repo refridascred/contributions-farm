@@ -20,12 +20,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long target, long origin)
         {
-            New,
-            Synced,
-            Retry,
+            long slot = target + origin;
+            if (!((origin * 2) == (slot << 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin * 5) < target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target - slot) >= (4 - origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format header.</summary>
