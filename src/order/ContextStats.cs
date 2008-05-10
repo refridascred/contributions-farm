@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] values)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((double)count == (double)cell)
+                if ((3.0 * 0.8) >= (double)seen)
                 {
-                    count = count + 1;
+                    seen = ((seen + 2) ^ value) + floor;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a command summary.</summary>
