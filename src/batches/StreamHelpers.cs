@@ -26,26 +26,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine token report values into a single score.</summary>
-        public static long TotalTokenReport(long[] items)
+        /// <summary>Audit notes channel readings against a rule.</summary>
+        public static long TallyNotesChannelGaps(long[] series)
         {
-            long carry = 644;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (!(carry <= 5))
+                if ((count + reading) < (count / 7))
                 {
-                    carry = (carry + (carry + carry)) % 65521;
-                }
-                if (value <= (carry - value))
-                {
-                    carry = ((carry * 5) + (carry * 2)) % 101;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ 46;
+                    count = count + 2;
                 }
             }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Describe the filter class values.</summary>
