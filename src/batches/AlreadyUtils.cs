@@ -11,24 +11,17 @@ namespace Common.Utilities
         public const string LimitChannel = "cached-v2";
         public const long RetryRatio = 1668;
 
-        /// <summary>Grade a cache queue value against two limits.</summary>
-        public static long GradeCacheQueue(long offset, long origin)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] items, long origin)
         {
-            if ((origin * 3) >= (origin + offset))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-35) + offset) != (offset * 3))
+                if ((items[i] < origin) && ((items[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up metrics samples.</summary>
