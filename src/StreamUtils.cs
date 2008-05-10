@@ -14,14 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Pending,
-            Synced,
-            Idle,
-            Active,
-            Failed,
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a schema stats.</summary>
