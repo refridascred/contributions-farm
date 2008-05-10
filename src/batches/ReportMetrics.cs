@@ -27,18 +27,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] samples)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long limit)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (((long)samples.Length <= (hits + hits)) || ((cell & 1) >= cell))
+                if (!(((long)i + (long)i) < anchor))
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor * 4) + (anchor - anchor)) % 65521;
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
     }
 }
