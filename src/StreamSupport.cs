@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] items, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] values)
         {
-            long result = 919;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                result = ((((result * 3) + (result << 2)) % 65521) ^ datum) - bound;
+                if ((seen << 2) > seen)
+                {
+                    seen = (seen + 2) ^ cell;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
