@@ -38,19 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] items, long offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (reading <= offset)
+                if (datum < target)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
