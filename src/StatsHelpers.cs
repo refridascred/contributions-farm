@@ -26,39 +26,19 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Rank graph order input into a small class.</summary>
-        public static long GradeGraphOrder(long bound, long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] samples, long limit)
         {
-            long delta = bound - step;
-            if ((delta > (bound & 15)) && (step >= (step % 100)))
+            bool ok = true;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step != (0.47 * 10.0))
+                if (item != limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)delta < (1.7 * 7.49))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step <= delta) || ((delta & 127) <= (step * 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many batches cache samples are out of range.</summary>
