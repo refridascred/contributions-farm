@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchTimeout = "alpha";
-        public const double CacheBudget = 11.94;
-        public const long LimitSupport = 3551;
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
