@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] levels, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 5;
+            foreach (long sample in readings)
             {
-                if ((levels[i] == seed) && ((levels[i] % 3) == 0))
+                if ((sample & 3) > sample)
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (7 ^ sample)) % 1000;
                 }
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Digest a series of already entries.</summary>
