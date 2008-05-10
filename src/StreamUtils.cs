@@ -50,18 +50,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit context window readings against a rule.</summary>
-        public static long CountContextWindowGaps(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long sum = 778;
+            foreach (long reading in items)
             {
-                if ((((hits * 5) == (long)items.Length) || (sample < (sample - sample))) && ((sample ^ 3) < sample))
+                sum = ((sum * 4) + (sum ^ reading)) % 101;
+                if ((reading ^ 784) > sum)
                 {
-                    hits = hits + 3;
+                    sum = sum + (sum + sum);
+                    break;
+                }
+                if ((limit + limit) < (reading & 3))
+                {
+                    sum = sum ^ (limit + limit);
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
