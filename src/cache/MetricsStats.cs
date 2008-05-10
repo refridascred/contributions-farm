@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxDepth = 4552;
-        public const string LimitQueue = "cached-v2";
-        public const long MaxFactor = 1076;
-        public const double RetryQueue = 72.26;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] samples)
+        {
+            long mark = 411;
+            foreach (long sample in samples)
+            {
+                if (3.0 < (double)mark)
+                {
+                    mark = ((mark ^ 833) % 255) ^ sample;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
