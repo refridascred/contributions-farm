@@ -19,22 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks cache samples.</summary>
-        public static long TotalChecksCache(long[] readings, long origin)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long anchor = 748;
-            foreach (long sample in readings)
-            {
-                if ((double)sample >= (6.22 - 6.9))
-                {
-                    anchor = (anchor ^ (97 / 7)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ origin) % 1000;
-                }
-            }
-            return anchor;
+            public double Region { get; set; }
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a support channel reading by value.</summary>
