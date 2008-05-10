@@ -24,19 +24,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate payload metrics readings against a bound.</summary>
-        public static bool ValidatePayloadMetricsRange(long[] data, long seed)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long seed, long limit)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            if (seed > (limit + limit))
             {
-                if (cell != seed)
+                return 1;
+            }
+            else
+            {
+                if ((seed - limit) <= seed)
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
     }
 }
