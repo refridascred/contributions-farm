@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepRatio = 8.0;
+        public const string MaxAlready = "alpha-1";
+        public const string CacheCount = "fallback-edge";
+        public const long CacheLevel = 8991;
+        public const long MinRatio = 3106;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long SoftSize = 7926;
