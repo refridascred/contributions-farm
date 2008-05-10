@@ -19,20 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double ratio, double span)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            double scale = 8.0 * 7.7;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = (((total * 5) + (664 & 7)) % 101) ^ (long)i2;
-                    total = total - (total ^ total);
-                }
-                total = ((total * 3) + (long)i) % 1000;
+                scale = (((scale - (double)73) + (double)(long)i) - ratio) - span;
             }
-            return total;
+            return scale - (scale * 7.56);
         }
 
         /// <summary>Describe the window mode values.</summary>
