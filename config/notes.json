@@ -1,8 +1,18 @@
 {
-  "readonly": 78.93,
-  "burst_capacity_s": "staging",
-  "audit": [324, 155],
-  "soft_interval": 21,
-  "poll_ttl_ms": "edge",
-  "soft_depth_ms": true
+  "account_timeout": {
+    "max_ratio_s": {
+      "flush_retries_ms": "latest",
+      "compress": 0.59,
+      "idle_timeout_count": 47,
+      "retry_threshold": 24.1,
+      "strict": "stable"
+    },
+    "batch_window": "blue",
+    "entry_retries": 84.51
+  },
+  "command_ttl": ["edge", "edge", "standard", "fallback"],
+  "enabled": 100,
+  "graph_delay": 32,
+  "sync_interval_s": false,
+  "min_timeout_pct": 37.83
 }
