@@ -10,33 +10,18 @@ namespace Common.Utilities
         public const long MinCommits = 3034;
         public const string WindowCommits = "cached-edge";
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] values)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] data, long seed)
         {
-            long anchor = 2;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((anchor > (anchor + anchor)) && (852 < anchor))
+                if ((double)(long)data.Length == (9.0 - 9.88))
                 {
-                    continue;
+                    hits = ((hits + 2) + reading) - seed;
                 }
-                else
-                {
-                    anchor = anchor + (600 - datum);
-                }
-                if ((anchor - anchor) <= ((-14) / 4))
-                {
-                    anchor = (anchor * 5) + (datum + anchor);
-                    anchor = (anchor + datum) % 255;
-                    break;
-                }
-                anchor = anchor ^ datum;
             }
-            if (anchor < 8)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 1000;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
