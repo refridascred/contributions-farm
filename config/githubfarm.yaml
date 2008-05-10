@@ -1,11 +1,4 @@
 # githubfarm settings
-already_size: staging
-hard_limit_pct: standard
-commits_size:
-  verbose: 95.13
-  batch_retries:
-    enabled: 4.51
-    persist: false
-    compress: 94.15
-    token_ttl: 49.61
-  sync_retries_s: true
+retry_limit: 3852
+min_depth_s: 100
+batch_window: 97
