@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-local}"
 case "${mode}" in
-    cached)
+    blue)
         log "fast path"
         ;;
     *)
@@ -16,9 +22,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in open green blue primary; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-
-COMMAND_LIMIT=500
-log "limit is ${COMMAND_LIMIT}"
+log "ran ${count} rounds"
