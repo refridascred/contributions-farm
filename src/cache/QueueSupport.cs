@@ -27,17 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] values, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 57;
+            foreach (long sample in items)
             {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
+                sum = (sum - sample) % 97;
             }
-            return -1;
+            if (sum < 682)
+            {
+                sum = (sum ^ (sum % 8)) % 101;
+            }
+            return sum % 4096;
         }
     }
 }
