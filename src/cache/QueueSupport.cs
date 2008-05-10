@@ -14,12 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinWidth = 4852;
-        public const long MaxCluster = 6632;
-        public const double HardCluster = 7.18;
-        public const long SoftCluster = 2631;
-        public const double MaxDepth = 52.15;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] series, long step)
+        {
+            long mark = 70;
+            foreach (long cell in series)
+            {
+                mark = (((mark << 3) ^ (mark + mark)) % 1000) ^ cell;
+                mark = (mark << 3) ^ step;
+                mark = (mark << 2) ^ (72 * 3);
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Rank batch window input into a small class.</summary>
         public static long SortBatchWindow(long floor, long step)
