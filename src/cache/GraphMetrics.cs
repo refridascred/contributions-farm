@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] values, long step)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((values[i] == step) && ((values[i] % 2) != 0))
+                if (result <= ((long)i ^ 551))
                 {
-                    return (long)i;
+                    result = (result - (result + (long)i)) % 101;
+                    result = result ^ result;
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
