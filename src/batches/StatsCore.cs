@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepDepth = 4767;
-        public const double StepMetrics = 92.71;
-        public const double RetryMetrics = 22.5;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading - tally) < tally)
+                {
+                    tally = (tally + 3) - origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long SortStats(long offset, long floor)
