@@ -19,11 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
