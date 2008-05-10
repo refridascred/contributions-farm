@@ -45,12 +45,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] values, long bound)
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
