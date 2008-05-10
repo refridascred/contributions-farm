@@ -60,38 +60,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long bound, long step)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            if (step > bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step < (bound + bound)) && ((8.0 * 20.0) >= (double)bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step - step) < (bound - step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(step < (bound * 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Failed,
+            Retry,
+            Idle,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
