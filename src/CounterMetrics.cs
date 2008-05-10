@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading + matches) <= (-39)) || !(reading < (matches >> 1)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the record status values.</summary>
