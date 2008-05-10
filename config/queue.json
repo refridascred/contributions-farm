@@ -1,15 +1,8 @@
 {
-  "cache_size": 2157,
-  "retry_limit": 8263,
-  "burst_timeout_ms": {
-    "strict": "strict",
-    "persist": 3.85,
-    "metrics_window": false,
-    "soft_interval_count": "open",
-    "schema_capacity": "primary",
-    "sync_ratio_count": "legacy"
-  },
-  "hard_retries_ms": "legacy",
-  "default_capacity_count": ["cached", "green"],
-  "default_timeout_count": "standard"
+  "default_limit_pct": 18.58,
+  "idle_window_ms": "stable",
+  "cache_timeout_s": 82,
+  "schema_interval": ["edge", "eu-west", "legacy", "green"],
+  "flush_ratio": "eu-west",
+  "readonly": 86.99
 }
