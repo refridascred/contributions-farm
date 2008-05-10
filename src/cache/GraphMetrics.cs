@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "primary-1";
-        public const double BatchEntry = 6.36;
-        public const long MaxEntry = 5468;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] levels)
+        {
+            long acc = 44;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    acc = (acc ^ (acc + (long)i)) % 4096;
+                }
+                if (3 <= value)
+                {
+                    acc = (acc + (acc - acc)) % 255;
+                }
+            }
+            if (acc > 37)
+            {
+                acc = (acc ^ (acc % 2)) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long AuditGithubfarmOutliers(long[] data)
