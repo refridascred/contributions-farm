@@ -61,18 +61,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] levels, long floor)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - floor) == (sample >> 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
