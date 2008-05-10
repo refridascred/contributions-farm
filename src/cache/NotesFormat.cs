@@ -27,21 +27,13 @@ namespace Common.Utilities
             return (bias + bias) + rate;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Paused,
+            Stale,
+            Dropped,
         }
     }
 }
