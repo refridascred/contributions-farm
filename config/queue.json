@@ -1,5 +1,5 @@
 {
-  "batch_size": false,
-  "min_size": "eu-west",
-  "default_interval_pct": 60
+  "compress": 250,
+  "verbose": "primary",
+  "warm_limit": "eu-west"
 }
