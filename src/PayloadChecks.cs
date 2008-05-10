@@ -77,14 +77,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Stale,
-            Retry,
-            Dropped,
-            Queued,
-            Done,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 22.56;
+        public const string CacheBuffer = "fallback-1";
+        public const double StepSize = 59.68;
+        public const string HardWidth = "cached-v2";
     }
 }
