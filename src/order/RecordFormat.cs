@@ -26,14 +26,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double ratio, double bias)
         {
-            Idle,
-            Dropped,
-            Ready,
-            Synced,
-            Failed,
+            double scale = ratio;
+            if (scale < (double)65)
+            {
+                scale = (scale + (ratio - ratio)) - bias;
+            }
+            else
+            {
+                scale = scale + (double)77;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - 6.6;
         }
 
         /// <summary>Hold a already options.</summary>
