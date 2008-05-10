@@ -1,11 +1,7 @@
 # githubfarm settings
-retry_window: 250
-support_size:
-  - open
-  - eu-west
-  - green
-graph_capacity: 250
-soft_ratio_ms:
-  - 36
-  - 68
-hard_timeout_ms: standard
+filter_limit: 44
+layout_limit: 30
+verbose: 500
+session_threshold: 57.42
+readonly: 500
+flush_capacity_count: 19.8
