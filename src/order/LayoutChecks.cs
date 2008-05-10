@@ -71,18 +71,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] series)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((count >> 5) >= (14 / 4)) || ((715 % 3) > (entry >> 5)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
