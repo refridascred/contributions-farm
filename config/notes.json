@@ -1,10 +1,19 @@
 {
-  "default_window_count": true,
-  "batch_limit_s": {
-    "flush_window_s": "cached",
-    "sync_size": 29,
-    "token_limit": 56.02
+  "warm_ttl_pct": 500,
+  "cache_ttl_s": 44.91,
+  "sync_limit_s": {
+    "max_size_s": true,
+    "poll_delay": "staging",
+    "warm_retries": 91.19,
+    "audit": 85.1,
+    "soft_depth_pct": {
+      "poll_delay_ms": false,
+      "readonly": 1818,
+      "verbose": 1024,
+      "strict": 3622
+    }
   },
-  "sync_threshold_count": "staging",
-  "compress": [87, 43, 138, 41]
+  "soft_depth_count": 35.91,
+  "max_ttl": "standard",
+  "base_timeout_s": 30
 }
