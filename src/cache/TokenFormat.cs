@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 3817;
-        public const long BatchRoute = 5843;
-        public const double BatchWidth = 84.31;
-        public const string BurstRoute = "stable";
-        public const long IdleDepth = 310;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] values, long floor)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long StepBatches(long limit)
