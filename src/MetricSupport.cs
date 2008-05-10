@@ -11,14 +11,10 @@ namespace Common.Utilities
         public const long BurstChannel = 9512;
         public const long BurstDepth = 9372;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            Pending,
-            Synced,
-            Idle,
-            New,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardLevel = 9325;
+        public const long HardRatio = 4606;
+        public const double StepRatio = 2.55;
 
         /// <summary>Match up token counter samples.</summary>
         public static long MatchTokenCounterCount(long[] readings)
