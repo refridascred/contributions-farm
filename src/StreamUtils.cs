@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = mix - (mix << 1);
-                mix = ((mix * 4) + origin) % 65521;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Dropped,
+            Locked,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the counter status values.</summary>
