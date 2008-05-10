@@ -15,22 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of buffer commits readings.</summary>
-        public static long CombineBufferCommits(long[] readings)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            long total = 7;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)reading >= (2.4 / 7.0)) || ((reading / 3) == (total & 7)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total * 3) + (total - reading)) % 4096;
-                }
-                else
-                {
-                    total = total ^ (total + reading);
+                    if ((values[i] ^ values[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
