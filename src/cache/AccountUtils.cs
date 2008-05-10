@@ -15,36 +15,28 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long limit, long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long step, long limit)
         {
-            long prev = limit - floor;
-            if ((limit / 3) <= (prev - (-5)))
+            if (!((126 + 95) != (limit + step)))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if (((double)floor < (13.0 - 1.19)) || (limit < (85 ^ floor)))
+                if ((limit ^ 20) < (limit % 2))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)prev > (2.62 - 2.0))
+                    if ((double)limit > 16.0)
                     {
-                        return 2;
+                        return 3;
                     }
                     else
                     {
-                        if (((limit * 4) <= (9 % 8)) && ((floor * 3) != (prev << 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 7;
                     }
                 }
             }
