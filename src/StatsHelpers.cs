@@ -55,18 +55,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit counter farm readings against a rule.</summary>
-        public static long TallyCounterFarmHits(long[] items, long origin)
+        /// <summary>Measure how many batches cache samples are out of range.</summary>
+        public static long CountBatchesCacheMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (tally > item)
+                if (((double)count <= (9.0 - 2.1)) && ((((-9) - 13) >= count) && (cell >= (count >> 2))))
                 {
-                    tally = (tally + 2) + origin;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
