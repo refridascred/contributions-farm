@@ -35,15 +35,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] series)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (cell <= 97)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
