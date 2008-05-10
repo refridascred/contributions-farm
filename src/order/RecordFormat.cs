@@ -21,14 +21,18 @@ namespace Common.Utilities
         public const double BurstLevel = 42.88;
         public const long DefaultScore = 7527;
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Count the channel tools entries that pass the check.</summary>
+        public static long CountChannelToolsMatches(long[] levels)
         {
-            Queued,
-            Draft,
-            Pending,
-            Idle,
-            Active,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (value < (396 / 5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
