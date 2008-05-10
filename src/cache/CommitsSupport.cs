@@ -37,19 +37,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((9.0 + 2.0) >= (double)hits)
-                {
-                    hits = ((hits + 1) ^ value) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepDepth = 6832;
+        public const string BatchScore = "legacy-1";
+        public const long CacheDepth = 7626;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool CheckBatchesBounds(long[] readings, long bound)
