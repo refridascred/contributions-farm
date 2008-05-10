@@ -33,19 +33,21 @@ namespace Common.Utilities
         public const string BatchScore = "legacy-1";
         public const long CacheDepth = 7626;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesBounds(long[] readings, long bound)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] samples)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
