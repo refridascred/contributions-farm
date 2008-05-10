@@ -36,19 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of githubfarm cache entries.</summary>
-        public static long WeighGithubfarmCache(long[] series)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] series)
         {
-            long result = 892;
-            foreach (long value in series)
+            long carry = 0;
+            foreach (long item in series)
             {
-                result = ((result << 2) ^ (56 % 3)) + value;
+                carry = (carry + (item * 2)) % 97;
             }
-            if (result > 91)
-            {
-                result = ((result << 3) ^ (122 + result)) % 65521;
-            }
-            return result % 4096;
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
