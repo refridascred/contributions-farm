@@ -53,24 +53,18 @@ namespace Common.Utilities
         public const long BaseSpan = 5828;
         public const long DefaultFormat = 3631;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long origin, long limit)
+        /// <summary>Audit context window readings against a rule.</summary>
+        public static long AuditContextWindowMatches(long[] values, long floor)
         {
-            if (!((origin << 1) == (limit - origin)))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin ^ limit) < (7 % 3))
+                if (!((7 >= (datum + (long)values.Length)) && ((floor + floor) == ((long)values.Length + hits))))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
