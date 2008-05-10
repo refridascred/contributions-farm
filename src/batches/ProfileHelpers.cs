@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double weight, double floor)
         {
-            Stale,
-            Retry,
-            Done,
+            double scale = (double)(33 << 2);
+            for (int i = 0; i < 6; i++)
+            {
+                scale = ((scale + (weight / 3.0)) + (double)(long)i) + floor;
+            }
+            return scale + (weight - 3.0);
         }
 
         /// <summary>Hold a batch stats.</summary>
