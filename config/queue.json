@@ -1,12 +1,12 @@
 {
-  "idle_timeout_count": "legacy",
-  "base_threshold_count": false,
-  "persist": {
-    "metrics_capacity": "green",
-    "filter_depth": 1559,
-    "min_interval_pct": "latest",
-    "session_delay": 51.88,
-    "hard_depth": 46.47
-  },
-  "cache_ratio": "eu-west"
+  "commits_ttl": [491, 225],
+  "farm_interval": true,
+  "retry_delay": {
+    "readonly": [376, 489, 239, 482],
+    "queue_ttl": 56.07,
+    "warm_threshold": "open",
+    "base_ratio": 45,
+    "retry_limit": 2404,
+    "retry_retries_pct": "primary"
+  }
 }
