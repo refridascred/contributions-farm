@@ -33,17 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] items, long origin)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Failed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a stream header.</summary>
