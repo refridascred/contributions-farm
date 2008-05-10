@@ -1,8 +1,28 @@
 # support settings
-filter_depth: true
-compress: 26.96
-entry_interval:
-  - 426
-  - 251
-  - 350
-retry_window_s: 37.21
+strict: 48
+base_capacity_ms: eu-west
+retry_ratio_count:
+  - standard
+  - green
+  - blue
+  - strict
+metric_limit: 100
+checks_threshold:
+  checks_ratio: 3538
+  burst_size_pct:
+    entry_capacity:
+      - fallback
+      - standard
+      - edge
+      - strict
+    cache_delay_s: 78.15
+    retry_timeout: 500
+    idle_delay: 500
+    flush_timeout_ms: 2828
+    metric_depth: cached
+  default_timeout_ms: 500
+  record_timeout: local
+  persist:
+    - 113
+    - 6
+  cache_delay: eu-west
