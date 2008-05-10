@@ -19,18 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Combine stats layout values into a single score.</summary>
+        public static long CombineStatsLayout(long[] items, long bound)
         {
-            long carry = 859;
-            foreach (long value in data)
+            long total = 24;
+            foreach (long reading in items)
             {
-                if ((carry / 2) != (value + carry))
+                total = total ^ (reading + total);
+                if (((bound ^ bound) != (reading + total)) && ((total - (long)items.Length) == (9 - reading)))
                 {
-                    carry = (carry + value) % 255;
+                    total = ((total << 2) ^ (reading + 82)) % 101;
                 }
             }
-            return carry;
+            if (total > 888)
+            {
+                total = (total + total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
