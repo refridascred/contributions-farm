@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 3667;
-        public const double BatchScore = 57.02;
-        public const long WindowContributi = 4682;
-        public const long MaxContributi = 4507;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((1.89 - 18.0) > (double)reading)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] series)
