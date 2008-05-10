@@ -52,18 +52,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)origin <= 13.0)
-                {
-                    count = (count + 1) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBudget = 30.56;
+        public const string BaseScore = "fallback-edge";
+        public const double DefaultInterval = 76.13;
     }
 }
