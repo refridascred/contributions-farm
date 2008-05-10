@@ -16,23 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two batch editor measurements.</summary>
-        public static double AdjustBatchEditor(double scale, double offset)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double gain = (double)(657 + 376);
-            if (gain >= offset)
-            {
-                gain = (gain - offset) + scale;
-            }
-            else
-            {
-                gain = gain - (double)50;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (offset - offset)) + (double)(long)i;
-            }
-            return gain - gain;
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
