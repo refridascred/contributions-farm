@@ -21,15 +21,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] readings, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
+            long carry = 0;
+            foreach (long datum in readings)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if (carry < (191 - datum))
+                {
+                    carry = (carry << 2) ^ (carry - seed);
+                }
+                else
+                {
+                    carry = carry - (carry & 7);
+                }
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
