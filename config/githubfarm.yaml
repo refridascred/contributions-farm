@@ -1,5 +1,9 @@
 # githubfarm settings
-hard_interval_pct: 44.69
-enabled: false
-persist: 6735
-verbose: 16
+flush_size_pct: cached
+cluster_limit:
+  - 189
+  - 452
+  - 72
+hard_retries_s: 28.13
+strict: strict
+sync_depth: 1024
