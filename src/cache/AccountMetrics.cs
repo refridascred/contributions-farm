@@ -20,22 +20,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many commits cache samples are out of range.</summary>
-        public static long CountCommitsCacheMatches(long[] series, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long anchor = 2;
+            foreach (long entry in levels)
             {
-                if ((datum + datum) > (hits << 2))
-                {
-                    hits = (hits + 1) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (((anchor * 3) + anchor) % 65521) ^ entry;
             }
-            return hits;
+            if (anchor < 63)
+            {
+                anchor = ((anchor << 2) ^ (target >> 3)) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
