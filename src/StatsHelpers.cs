@@ -19,21 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] data)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 27;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state + (163 + bound)) - (long)i;
+                    state = state + (24 + item);
+                }
+                state = (state << 3) ^ (state << 1);
+                if ((bound + 641) == (state - 23))
+                {
+                    state = (state - 93) % 1000;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a counter entry.</summary>
