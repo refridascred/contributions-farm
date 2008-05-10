@@ -27,22 +27,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Iterate the report batches series from a seed.</summary>
-        public static long IterateReportBatches(long floor)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score << 2) ^ floor) % 65521;
-                if (score >= (floor << 3))
-                {
-                    score = ((score * 5) + (score - (long)i)) % 97;
-                    score = (score ^ (56 / 3)) % 4096;
-                }
-                score = ((score * 5) + (score + (long)i)) % 97;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
