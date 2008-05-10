@@ -21,10 +21,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxBudget = 3148;
-        public const double CacheLayout = 24.96;
-        public const string CacheCount = "primary-1";
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Closed,
+            Active,
+            Draft,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
