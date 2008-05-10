@@ -36,24 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long target, long limit)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] series)
         {
-            if (target < (28 / 2))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit << 1) < (target % 64))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    if ((series[i] ^ series[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
