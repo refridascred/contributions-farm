@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Validate checks record readings against a bound.</summary>
+        public static bool VerifyChecksRecordBounds(long[] samples, long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (acc < (long)i)
+                if (cell != bound)
                 {
-                    acc = (acc + (acc ^ acc)) % 97;
-                    continue;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    acc = acc ^ acc;
-                    acc = acc ^ (long)i;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Describe the record state values.</summary>
