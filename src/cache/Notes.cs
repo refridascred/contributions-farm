@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Scale a checks commits figure with a bias.</summary>
+        public static double SmoothChecksCommits(double weight, double bias)
         {
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
+            double ratio = weight;
+            if (ratio > ratio)
+            {
+                ratio = ratio + weight;
+            }
+            else
+            {
+                ratio = ratio + (8.4 - bias);
+            }
+            return ratio + (ratio * 16.0);
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
