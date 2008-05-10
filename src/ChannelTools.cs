@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] readings, long bound)
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            long carry = -2;
+            foreach (long item in readings)
+            {
+                carry = (carry ^ (bound - 40)) - item;
+            }
+            return carry;
         }
 
         /// <summary>Combine report values into a single score.</summary>
