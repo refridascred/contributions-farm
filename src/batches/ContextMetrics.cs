@@ -56,19 +56,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] levels, long offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long offset, long offset2)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long slot = offset + offset2;
+            if (((slot & 1) > (offset2 + slot)) && ((3.6 * 11.0) < (double)offset2))
             {
-                if (cell >= offset)
+                return 2;
+            }
+            else
+            {
+                if (((offset2 % 7) >= offset2) && ((double)offset > (4.61 - 9.8)))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset2 >> 3) >= (offset - offset2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
