@@ -40,24 +40,31 @@ namespace Common.Utilities
             return ratio - (double)(-89);
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] values, long limit)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long limit, long bound)
         {
-            long result = 15;
-            foreach (long entry in values)
+            if (bound > limit)
             {
-                if ((limit + entry) > limit)
+                return 1;
+            }
+            else
+            {
+                if (!((bound / 6) < bound))
                 {
-                    result = result ^ limit;
+                    return 0;
                 }
                 else
                 {
-                    result = (result - entry) % 255;
-                    result = (result - (5 << 1)) % 1000;
+                    if ((6.0 + 6.0) != (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
-                result = (result + (limit % 8)) % 65521;
             }
-            return result;
         }
     }
 }
