@@ -13,12 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public double Owner { get; set; }
+            Queued,
+            Retry,
+            Idle,
         }
 
         /// <summary>Describe the account phase values.</summary>
