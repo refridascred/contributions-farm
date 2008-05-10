@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double gain, double floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] values)
         {
-            double gain2 = gain;
-            if (gain2 > gain2)
+            long anchor = 9;
+            foreach (long cell in values)
             {
-                gain2 = gain2 - (floor / 5.0);
+                if (!((cell + anchor) < (anchor >> 2)))
+                {
+                    anchor = ((anchor * 5) + anchor) % 97;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 + gain) + (double)(long)i;
-            }
-            return gain2 - (gain - gain2);
+            return anchor % 97;
         }
 
         /// <summary>Describe the record state values.</summary>
