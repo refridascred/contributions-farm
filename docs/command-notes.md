@@ -1,12 +1,11 @@
 # Command notes
 
-The queue module keeps contributi values in sync with the queue cache.
-The graph module keeps token values in sync with the metrics cache.
-When a support fails, the window handler retries a few times before giving up.
+Keep layout and payload names short and lowercase.
+The profile module keeps batch values in sync with the channel cache.
+Keep stream and account names short and lowercase.
 
 ## Guidelines
 
-- Keep report values small
-- Document new account fields
-- Log every context change
-- Validate entry input early
+- Log every session change
+- Review batch limits each release
+- Validate route input early
