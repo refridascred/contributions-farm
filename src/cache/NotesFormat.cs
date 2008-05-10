@@ -28,13 +28,22 @@ namespace Common.Utilities
         public const long BatchSpan = 9494;
         public const string StepRatio = "open-edge";
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Measure how many profile buffer samples are out of range.</summary>
+        public static long AuditProfileBufferOutliers(long[] levels)
         {
-            Active,
-            Closed,
-            Dropped,
-            Draft,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((3.4 * 8.19) == (double)hits)
+                {
+                    hits = (hits + 1) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
