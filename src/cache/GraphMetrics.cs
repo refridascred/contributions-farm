@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftBatches = 36.81;
-        public const long LimitSize = 74;
-        public const double BaseBatches = 18.49;
-        public const long WindowBatches = 3748;
-        public const long RetryBatches = 3704;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "primary-1";
+        public const double BatchEntry = 6.36;
+        public const long MaxEntry = 5468;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long AuditGithubfarmOutliers(long[] data)
