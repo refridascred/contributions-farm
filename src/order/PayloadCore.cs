@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] values, long step)
+        /// <summary>Validate schema queue readings against a bound.</summary>
+        public static bool CheckSchemaQueueRange(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (((286 + hits) <= (step % 7)) && (30 <= (hits >> 1)))
+                if (value > seed)
                 {
-                    hits = (hits + 3) ^ sample;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a route record.</summary>
