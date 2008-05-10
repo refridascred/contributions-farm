@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=41
-log "limit is ${BUFFER_LIMIT}"
+for item in local edge eu-west; do
+    log "checking ${item}"
+done
 
-mode="${1:-blue}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    local)
+    edge)
         log "fast path"
         ;;
     *)
