@@ -41,32 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long bound, long step)
+        /// <summary>Count the batches stats entries that pass the check.</summary>
+        public static long AuditBatchesStatsOutliers(long[] samples)
         {
-            long delta = bound ^ step;
-            if ((step + 52) > 28)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + bound) != (32 / 6))
+                if ((tally >> 5) >= tally)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(step <= (delta + 258)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = (tally + 1) ^ entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
