@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Validate account cache readings against a bound.</summary>
+        public static bool GuardAccountCacheLimits(long[] readings, long offset)
         {
-            Failed,
-            Locked,
-            Active,
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
