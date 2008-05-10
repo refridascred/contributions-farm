@@ -20,19 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] readings, long offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > offset)
+                if (values[i] < floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
