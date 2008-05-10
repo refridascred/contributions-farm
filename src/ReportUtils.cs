@@ -28,11 +28,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxReport = 2.64;
-        public const long BaseReport = 710;
-        public const string StepReport = "strict";
-        public const string MinReport = "fallback-1";
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = (anchor + (bound % 24)) % 97;
+                anchor = (anchor - anchor) % 255;
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up farm session samples.</summary>
         public static long CompareFarmSessionCount(long[] data)
