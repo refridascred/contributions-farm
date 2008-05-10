@@ -23,12 +23,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] data)
         {
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (((-1) / 3) >= (seen - reading))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
