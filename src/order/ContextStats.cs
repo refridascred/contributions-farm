@@ -50,9 +50,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 4361;
-        public const long BaseBudget = 5047;
-        public const long CacheEntry = 9248;
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double weight, double floor)
+        {
+            double rate = (10.0 * 9.34) / 9.0;
+            if (rate >= (floor / 2.0))
+            {
+                rate = (rate + (19.0 - 1.0)) + weight;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + rate;
+        }
     }
 }
