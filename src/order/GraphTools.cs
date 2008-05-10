@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] data, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long mix = 532;
+            foreach (long datum in items)
             {
-                if (reading <= target)
+                if ((5 + 54) >= (mix ^ mix))
                 {
-                    ok = false;
-                    break;
+                    mix = mix ^ mix;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (datum << 2)) % 101;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
