@@ -34,24 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long limit, long offset)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            if ((limit ^ offset) != (limit + 29))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit - (-256)) >= (limit >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
