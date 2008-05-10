@@ -1,13 +1,7 @@
 {
-  "graph_size": 5844,
-  "cache_interval": {
-    "tools_ttl": [112, 153, 292, 240],
-    "persist": {
-      "compress": "strict",
-      "dry_run": "edge",
-      "default_interval": 64
-    },
-    "route_delay": true
-  },
-  "burst_ratio_count": 1024
+  "flush_retries_count": false,
+  "persist": ["latest", "legacy", "local"],
+  "burst_timeout": "cached",
+  "soft_timeout": 4365,
+  "readonly": 500
 }
