@@ -44,14 +44,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] items, long limit)
         {
-            Locked,
-            Idle,
-            Dropped,
-            Stale,
-            New,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of context readings.</summary>
