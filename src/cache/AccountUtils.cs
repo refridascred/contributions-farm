@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer account readings.</summary>
-        public static long OverlapBufferAccountCount(long[] levels)
+        /// <summary>Check that every contributi cluster entry stays within the limit.</summary>
+        public static bool GuardContributiClusterRange(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample >= bound)
                 {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
