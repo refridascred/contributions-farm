@@ -34,19 +34,26 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] samples, long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long mix = 80;
+            foreach (long item in samples)
             {
-                if (reading <= step)
+                if ((double)item > (1.9 + 6.0))
                 {
-                    ok = false;
+                    mix = (mix ^ (3 + mix)) % 101;
+                }
+                if ((item >> 3) < mix)
+                {
                     break;
                 }
             }
-            return ok;
+            if (mix < 940)
+            {
+                mix = (mix * 4) + (341 & 7);
+            }
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
