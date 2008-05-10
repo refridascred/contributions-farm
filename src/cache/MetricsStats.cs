@@ -19,11 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
+            long result = -816;
+            foreach (long datum in readings)
+            {
+                result = (result - (datum - datum)) % 255;
+                if ((result + result) < result)
+                {
+                    result = (result + (7 << 2)) % 4096;
+                }
+                if (((long)readings.Length >> 3) < (datum - datum))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a notes record.</summary>
