@@ -62,26 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] levels, long limit)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long bound)
         {
-            long acc = 4;
-            foreach (long value in levels)
+            long result = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (((12.0 + 5.0) != (double)acc) || ((limit & 15) > 4))
+                if ((result % 8) < bound)
                 {
-                    acc = acc ^ (acc + acc);
+                    result = (result + (5 / 6)) % 4096;
                 }
-                else
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-                if (!((limit * 3) >= (acc - value)))
-                {
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return acc;
+            return result;
         }
     }
 }
