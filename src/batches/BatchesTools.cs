@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const string BatchDepth = "alpha-v2";
         public const long BatchLevel = 8341;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] samples)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 42;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                carry = (carry - (carry + entry)) % 65521;
+                if (((entry + carry) >= entry) || ((double)carry > 11.0))
                 {
-                    if ((samples[i] - samples[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
