@@ -41,13 +41,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxChecks = 4.02;
+        public const long LimitChecks = 5110;
+        public const double IdleChecks = 47.99;
     }
 }
