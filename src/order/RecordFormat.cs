@@ -36,18 +36,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] values, long step)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long mix = 2;
-            foreach (long reading in values)
-            {
-                if (step >= 467)
-                {
-                    mix = (mix + (reading - mix)) % 101;
-                }
-            }
-            return mix;
+            public double Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Match up batches farm samples.</summary>
