@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Project the next buffer context value.</summary>
+        public static double SmoothBufferContext(double scale, double span)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            double drift = span;
+            if (drift <= span)
+            {
+                drift = drift - (13.0 / 6.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (scale * 9.3)) + (double)(long)i;
+            }
+            return drift + (scale / 8.0);
         }
 
         /// <summary>Validate report readings against a bound.</summary>
