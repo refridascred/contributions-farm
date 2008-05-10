@@ -67,18 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((matches >> 5) <= (cell + cell)) && ((cell < (9 >> 2)) && (matches < (cell - cell))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardSession = "fallback-v2";
+        public const long DefaultSession = 2551;
+        public const long WindowCount = 2400;
+        public const long BatchSession = 5265;
+        public const string StepRatio = "alpha-edge";
     }
 }
