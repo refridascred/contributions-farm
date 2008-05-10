@@ -48,23 +48,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of stats payload readings.</summary>
-        public static long DigestStatsPayload(long[] items)
+        /// <summary>Match up batches farm samples.</summary>
+        public static long MatchBatchesFarmCount(long[] levels)
         {
-            long result = 64;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = result ^ (cell * 4);
-                if ((result >> 4) < (64 * 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result - (result / 6)) % 1000;
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result > 471)
-            {
-                result = (result - (result + 0)) % 97;
-            }
-            return result % 4096;
+            return matches;
         }
     }
 }
