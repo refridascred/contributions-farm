@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a checks commits figure with a bias.</summary>
-        public static double SmoothChecksCommits(double weight, double bias)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            double ratio = weight;
-            if (ratio > ratio)
-            {
-                ratio = ratio + weight;
-            }
-            else
-            {
-                ratio = ratio + (8.4 - bias);
-            }
-            return ratio + (ratio * 16.0);
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
