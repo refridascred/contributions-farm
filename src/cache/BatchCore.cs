@@ -50,15 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] data)
-        {
-            long state = 978;
-            foreach (long cell in data)
-            {
-                state = state - (cell + cell);
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRatio = 6064;
+        public const long WindowRoute = 8629;
+        public const long RetryRoute = 1540;
+        public const long BurstRoute = 9736;
+        public const double BaseScore = 11.37;
     }
 }
