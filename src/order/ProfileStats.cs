@@ -21,19 +21,17 @@ namespace Common.Utilities
         public const long MaxTimeout = 5974;
         public const long BatchTimeout = 5386;
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double gain, double offset)
+        /// <summary>Find the first contributi graph entry that matches the target.</summary>
+        public static long LookupContributiGraphIndex(long[] readings, long target)
         {
-            double load = gain;
-            if (load < (8.0 / 2.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + offset;
+                if ((readings[i] == target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (load - load);
-            }
-            return load + (load - offset);
+            return -1;
         }
 
         /// <summary>Describe the cache mode values.</summary>
