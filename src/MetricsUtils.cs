@@ -36,11 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            public bool Count { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next metrics value.</summary>
