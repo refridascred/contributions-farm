@@ -1,12 +1,12 @@
 {
-  "dry_run": 37.38,
-  "audit": {
-    "counter_window": false,
-    "metric_threshold": false,
-    "default_limit": 15
+  "min_window": 4777,
+  "retry_window": {
+    "context_limit": 17.47,
+    "farm_window": 500,
+    "soft_interval_s": "blue",
+    "warm_window": "eu-west"
   },
-  "cache_size_count": ["standard", "edge", "latest", "eu-west"],
-  "strict": 1667,
-  "cache_depth_s": "strict",
-  "idle_ttl_s": 250
+  "poll_timeout": "eu-west",
+  "min_ratio": 52,
+  "stream_threshold": true
 }
