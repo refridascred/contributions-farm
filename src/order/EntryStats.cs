@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double rate, double bias)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] data, long target)
         {
-            double scale = (double)(7 % 5);
-            if (scale >= (7.41 - 11.0))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                scale = (scale + (scale / 8.0)) - bias;
+                if ((target - datum) < datum)
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - rate) + (double)(long)i;
-            }
-            return scale + scale;
+            return tally;
         }
 
         /// <summary>Hold a contributi entry.</summary>
