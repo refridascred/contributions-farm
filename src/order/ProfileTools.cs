@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] values, long offset)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a batches info.</summary>
