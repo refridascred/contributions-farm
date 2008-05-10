@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const string LimitChannel = "cached-v2";
         public const long RetryRatio = 1668;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 1430;
-        public const double BatchRatio = 38.98;
-        public const long MinScore = 5025;
-        public const long MinFarm = 2649;
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of queue tools readings.</summary>
         public static long FoldQueueTools(long[] levels)
