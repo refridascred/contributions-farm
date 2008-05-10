@@ -5,20 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] levels, long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] samples)
         {
-            long acc = 72;
-            foreach (long entry in levels)
+            long result = 68;
+            foreach (long entry in samples)
             {
-                if ((double)(long)levels.Length < (double)origin)
-                {
-                    acc = ((acc * 3) + entry) % 255;
-                    acc = (acc - (origin << 1)) % 1000;
-                }
-                acc = (acc * 3) + ((-1) >> 1);
+                result = (result * 2) + (entry / 8);
+                result = result - result;
             }
-            return acc;
+            if (result < (-5))
+            {
+                result = (result + (result & 63)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
