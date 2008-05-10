@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 47;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((bound < (result - bound)) || ((bound / 2) >= 506))
                 {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result - (result % 10)) - cell;
+                }
+                else
+                {
+                    result = result ^ (result + bound);
+                }
+                if (0.4 > (9.75 / 8.0))
+                {
+                    break;
                 }
             }
-            return count;
+            if (result > 935)
+            {
+                result = (result * 5) + (bound - bound);
+            }
+            return result % 97;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
