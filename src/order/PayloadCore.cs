@@ -24,39 +24,21 @@ namespace Common.Utilities
         public const string CacheRatio = "standard";
         public const long WindowCounter = 2511;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long bound, long seed)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] samples)
         {
-            long edge = bound + seed;
-            if (((seed + edge) <= (seed + bound)) && ((bound / 5) <= (edge + edge)))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((edge << 1) < bound) || ((0.36 / 5.0) != (double)edge))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (bound > (seed - seed))
+                    if ((samples[i] - samples[j]) == 17)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((7 <= (seed * 4)) && ((68 ^ 7) != (0 + edge)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
