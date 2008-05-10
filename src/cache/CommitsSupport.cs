@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinDepth = 6905;
-        public const double BaseEditor = 19.91;
-        public const double IdleEditor = 52.46;
-        public const long LimitScore = 8390;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum + datum) < (89 % 2))
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
