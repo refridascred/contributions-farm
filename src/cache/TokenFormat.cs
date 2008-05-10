@@ -40,11 +40,24 @@ namespace Common.Utilities
             return ratio - (double)(-89);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "standard";
-        public const long HardFactor = 3018;
-        public const double SoftCount = 47.75;
-        public const long BasePayload = 8332;
-        public const long LimitFactor = 4406;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] values, long limit)
+        {
+            long result = 15;
+            foreach (long entry in values)
+            {
+                if ((limit + entry) > limit)
+                {
+                    result = result ^ limit;
+                }
+                else
+                {
+                    result = (result - entry) % 255;
+                    result = (result - (5 << 1)) % 1000;
+                }
+                result = (result + (limit % 8)) % 65521;
+            }
+            return result;
+        }
     }
 }
