@@ -58,17 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] items, long origin)
+        /// <summary>Check that every checks farm entry stays within the limit.</summary>
+        public static bool CheckChecksFarmBounds(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((items[i] == origin) && ((items[i] % 3) != 0))
+                if (reading != origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
