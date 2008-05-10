@@ -1,9 +1,7 @@
-id,owner,ratio
-1,50.96,703
-2,primary,714
-3,157,fallback
-4,63.11,latest
-5,69.95,23.25
-6,51.9,green
-7,946,77
-8,500,staging
+id,owner,state,ratio
+1,577,511,20.3
+2,697,613,17.58
+3,cached,162,42.12
+4,50.66,34.96,400
+5,72.33,143,487
+6,open,staging,208
