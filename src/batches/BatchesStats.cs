@@ -36,10 +36,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepSpan = 33.74;
-        public const double HardSize = 41.76;
-        public const long SoftInterval = 37;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (!(seen >= (datum - seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] data, long floor)
