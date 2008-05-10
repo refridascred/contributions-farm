@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            Retry,
+            Failed,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
