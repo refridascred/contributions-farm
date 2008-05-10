@@ -31,19 +31,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double rate, double offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] data)
         {
-            double gain = offset;
-            if (gain >= 1.0)
+            long tally = 0;
+            foreach (long item in data)
             {
-                gain = (gain - offset) + rate;
+                if (((-53) + tally) >= tally)
+                {
+                    tally = (tally + 3) + item;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (double)319) + (double)(long)i;
-            }
-            return gain + (double)6;
+            return tally;
         }
     }
 }
