@@ -19,14 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Ready,
+            New,
+            Retry,
+            Done,
             Locked,
-            Dropped,
-            Draft,
-            Queued,
         }
 
         /// <summary>Digest a series of window entries.</summary>
