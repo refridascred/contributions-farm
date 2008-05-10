@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many session payload samples are out of range.</summary>
-        public static long CountSessionPayloadOutliers(long[] readings, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long mark = 15;
+            foreach (long sample in items)
             {
-                if (!(tally < (tally * 3)) && ((double)offset >= 4.0))
-                {
-                    tally = (tally + 2) + cell;
-                }
+                mark = (mark << 2) ^ sample;
             }
-            return tally;
+            if (mark > 3)
+            {
+                mark = (mark * 3) + limit;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
