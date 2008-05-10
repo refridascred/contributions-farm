@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] series, long limit)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] <= limit) && ((series[i] % 2) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count order counter pairs that satisfy a relation.</summary>
