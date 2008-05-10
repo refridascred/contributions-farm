@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const string BurstRoute = "stable";
         public const long IdleDepth = 310;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long limit)
         {
-            New,
-            Ready,
-            Idle,
-            Retry,
-            Queued,
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = (carry * 5) + carry;
+                carry = (carry + ((long)i - carry)) % 101;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
