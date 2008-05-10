@@ -19,12 +19,32 @@ namespace Common.Utilities
         public const string MaxProfile = "legacy-edge";
         public const long BatchSize = 9638;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Classify a support record pair into a bucket.</summary>
+        public static long SortSupportRecord(long limit, long target)
         {
-            Closed,
-            New,
-            Dropped,
+            long step = limit - target;
+            if ((double)target == (9.52 - 6.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit % 10) != (1 << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step / 9) < 166)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of window contributi readings.</summary>
