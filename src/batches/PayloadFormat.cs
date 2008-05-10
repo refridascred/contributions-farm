@@ -22,14 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
             Paused,
-            Ready,
-            Idle,
-            Synced,
             Closed,
+            Stale,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
