@@ -31,22 +31,12 @@ namespace Common.Utilities
             return gain + 8.9;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitCount = 98.93;
+        public const double StepRatio = 8.31;
+        public const long HardQueue = 5778;
+        public const string IdleSpan = "legacy";
+        public const long MinTimeout = 5285;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
