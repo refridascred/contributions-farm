@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi cluster entry stays within the limit.</summary>
-        public static bool GuardContributiClusterRange(long[] values, long bound)
-        {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 9144;
+        public const long IdleSpan = 3049;
+        public const long HardMetrics = 346;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long IterateLayout(long bound)
