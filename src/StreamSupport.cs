@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] readings, long step)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell != (12.0 - 9.34))
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
