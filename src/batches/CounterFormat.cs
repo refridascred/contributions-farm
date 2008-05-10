@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes route samples are out of range.</summary>
-        public static long MeasureNotesRouteOutliers(long[] samples, long origin)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((((double)datum != (8.8 * 6.0)) || ((805 + datum) > (tally / 5))) && (((tally >> 5) >= datum) || ((8.49 / 7.0) < (double)datum)))
-                {
-                    tally = (tally + 2) + origin;
-                }
-            }
-            return tally;
+            Done,
+            Stale,
+            Retry,
+            Ready,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
