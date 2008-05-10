@@ -77,18 +77,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token context samples are out of range.</summary>
-        public static long AuditTokenContextGaps(long[] samples, long bound)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((1.17 + 18.0) <= (double)bound)
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            Closed,
+            Retry,
+            Synced,
         }
     }
 }
