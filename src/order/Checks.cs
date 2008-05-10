@@ -29,11 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] series, long origin)
         {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            long mark = 2;
+            foreach (long item in series)
+            {
+                mark = ((((mark << 3) ^ ((long)series.Length << 3)) % 97) + item) - origin;
+            }
+            if (mark > 834)
+            {
+                mark = ((mark * 3) + (mark & 63)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
