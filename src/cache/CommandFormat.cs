@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftSize = 6668;
-        public const long DefaultDepth = 5651;
-        public const long CacheBatches = 7008;
-        public const string StepTimeout = "strict";
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long MatchStatsCount(long[] levels)
