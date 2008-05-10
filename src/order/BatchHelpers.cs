@@ -20,12 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Validate cache githubfarm readings against a bound.</summary>
+        public static bool ValidateCacheGithubfarmBounds(long[] series, long bound)
         {
-            Ready,
-            Paused,
-            Pending,
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
