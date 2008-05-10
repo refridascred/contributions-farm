@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double ratio, double bias)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double gain = (double)(381 + 9);
-            if (gain <= ratio)
-            {
-                gain = gain - (8.46 + 10.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + ratio) + (double)(long)i;
-            }
-            return gain + (bias * 18.0);
+            Retry,
+            Queued,
+            Failed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the payload mode values.</summary>
