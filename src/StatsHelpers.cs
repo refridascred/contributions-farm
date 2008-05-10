@@ -54,19 +54,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] samples, long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long score = 749;
+            foreach (long sample in samples)
             {
-                if (cell > limit)
+                if (((sample + score) < score) || ((score * 5) > (score / 4)))
                 {
-                    ok = false;
-                    break;
+                    score = ((score << 2) ^ (score * 3)) % 4096;
                 }
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
