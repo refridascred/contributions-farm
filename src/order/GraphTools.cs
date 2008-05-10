@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a filter cache counter forward.</summary>
-        public static long StepFilterCache(long limit)
+        /// <summary>Validate buffer cache readings against a bound.</summary>
+        public static bool GuardBufferCacheBounds(long[] levels, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                acc = (acc + ((long)i + (long)i)) % 1000;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (entry < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
