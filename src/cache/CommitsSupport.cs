@@ -58,19 +58,23 @@ namespace Common.Utilities
         public const long LimitToken = 6507;
         public const string BatchToken = "local-edge";
 
-        /// <summary>Scale a batches report figure with a bias.</summary>
-        public static double AdjustBatchesReport(double scale, double bias)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double gain, double bias)
         {
-            double bias2 = scale;
-            if (bias2 <= bias)
+            double rate = bias;
+            if (rate >= rate)
             {
-                bias2 = bias2 + (double)(-6);
+                rate = rate + (gain - bias);
+            }
+            else
+            {
+                rate = rate + (double)92;
             }
             for (int i = 0; i < 5; i++)
             {
-                bias2 = (bias2 - scale) + (double)(long)i;
+                rate = (rate - (rate * 0.43)) + (double)(long)i;
             }
-            return bias2 + (scale - 6.5);
+            return rate + gain;
         }
     }
 }
