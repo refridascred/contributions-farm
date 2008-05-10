@@ -13,12 +13,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] values, long offset)
         {
-            Retry,
-            Closed,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of account readings.</summary>
