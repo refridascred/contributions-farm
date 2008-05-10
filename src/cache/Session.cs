@@ -50,18 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((467 >= (step >> 2)) && ((4.6 - 20.0) <= (double)value))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitDepth = 5595;
+        public const string MaxProfile = "legacy-v2";
+        public const string StepFactor = "stable";
+        public const long BurstFactor = 9039;
+        public const long CacheWidth = 5503;
     }
 }
