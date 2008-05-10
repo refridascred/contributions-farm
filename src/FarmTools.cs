@@ -13,18 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftChecks = 16.73;
+        public const string RetryScore = "stable";
+        public const string SoftSize = "stable-1";
+        public const long CacheRatio = 1443;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadLimits(long[] values, long floor)
