@@ -58,19 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every checks farm entry stays within the limit.</summary>
-        public static bool CheckChecksFarmBounds(long[] series, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (reading != origin)
+                if ((item << 1) > (tally & 63))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) - step;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
