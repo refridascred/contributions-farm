@@ -35,12 +35,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] data, long floor)
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the payload phase values.</summary>
