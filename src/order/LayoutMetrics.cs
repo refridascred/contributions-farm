@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            Queued,
-            Pending,
-            Locked,
-            Ready,
-            Retry,
+            long acc = 617;
+            foreach (long reading in series)
+            {
+                if (reading >= acc)
+                {
+                    acc = (acc + acc) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Accumulate filter samples.</summary>
