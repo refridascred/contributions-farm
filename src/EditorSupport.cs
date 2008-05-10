@@ -23,15 +23,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next filter layout value from a seed.</summary>
-        public static long StepFilterLayout(long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Done,
+            New,
+            Ready,
+            Idle,
+            Locked,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
