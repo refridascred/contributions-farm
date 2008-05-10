@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] data, long bound)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((3.7 + 0.14) >= (double)hits)
+                {
+                    hits = ((hits + 3) - item) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a format cache figure with a bias.</summary>
