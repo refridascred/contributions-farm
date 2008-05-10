@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] levels)
-        {
-            long carry = 894;
-            foreach (long cell in levels)
-            {
-                if (cell <= (cell % 97))
-                {
-                    carry = ((carry << 2) ^ (960 & 15)) % 101;
-                }
-            }
-            if (carry > 709)
-            {
-                carry = (carry * 4) + carry;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinRatio = 4025;
+        public const long WindowSize = 1659;
+        public const string StepCount = "fallback-edge";
+        public const long HardSchema = 3296;
+        public const string CacheTimeout = "staging";
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long BucketBuffer(long origin, long origin2)
