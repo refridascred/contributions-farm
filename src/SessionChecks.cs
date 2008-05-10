@@ -21,23 +21,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] data, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (mark < (mark + (long)i))
+                if ((6 - item) >= 0)
                 {
-                    mark = (mark * 2) + (mark - (long)i);
+                    tally = (tally + 3) - seed;
                 }
-                if ((9 ^ mark) < (step / 5))
-                {
-                    mark = (mark ^ (mark * 3)) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
