@@ -1,5 +1,14 @@
 {
-  "batch_depth_count": 86.67,
-  "metrics_window": [25, 246],
-  "metric_limit": 60
+  "layout_window": 30,
+  "counter_window": "staging",
+  "cache_depth_pct": ["latest", "blue", "legacy"],
+  "default_threshold_count": {
+    "persist": ["primary", "edge", "cached"],
+    "poll_capacity_pct": "staging",
+    "flush_retries": "local",
+    "idle_threshold": 3282,
+    "base_timeout_ms": 60,
+    "max_retries_count": [46, 391, 35]
+  },
+  "profile_window": "primary"
 }
