@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 7044;
-        public const double DefaultAlready = 67.46;
-        public const string SoftAlready = "standard";
-        public const long WindowAlready = 6391;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] levels, long bound)
