@@ -36,11 +36,20 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchSpan = 6869;
-        public const long BatchLayout = 6462;
-        public const long MinSize = 8565;
-        public const string BaseLayout = "latest";
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double gain, double floor)
+        {
+            double scale = (gain + 8.0) - (floor - 9.11);
+            if (scale < (gain / 5.0))
+            {
+                scale = scale - (floor / 2.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + gain) + (double)(long)i;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TotalSchema(long[] series)
