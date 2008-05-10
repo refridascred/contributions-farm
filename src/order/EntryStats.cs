@@ -41,19 +41,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate context payload readings against a bound.</summary>
-        public static bool CheckContextPayloadBounds(long[] data, long limit)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Synced,
+            Queued,
+            Failed,
+            Active,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
