@@ -46,25 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] values, long step)
-        {
-            long acc = 96;
-            foreach (long reading in values)
-            {
-                acc = ((acc << 3) ^ (reading - 12)) % 65521;
-                acc = (acc << 3) ^ (acc - step);
-                if (step >= (acc << 2))
-                {
-                    break;
-                }
-            }
-            if (acc < 6)
-            {
-                acc = (acc << 2) ^ (step + step);
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 3185;
+        public const long CacheLevel = 8034;
+        public const double BaseCommits = 7.95;
+        public const long BatchCommits = 4053;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
