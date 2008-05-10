@@ -42,18 +42,13 @@ namespace Common.Utilities
         public const string BurstSize = "strict-v2";
         public const long LimitBuffer = 5584;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] items)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long acc = 35;
-            foreach (long sample in items)
-            {
-                if ((6.14 - 17.0) != (double)acc)
-                {
-                    acc = (acc - (6 % 10)) + sample;
-                }
-            }
-            return acc;
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
