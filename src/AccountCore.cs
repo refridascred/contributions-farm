@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account core helpers.</summary>
     public static class AccountCore
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] readings, long seed)
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((seed ^ datum) <= seed)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
