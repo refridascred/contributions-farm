@@ -56,19 +56,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double weight, double span)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            double rate = span;
-            if (rate >= (span - weight))
-            {
-                rate = rate + (double)(-33);
-            }
-            else
-            {
-                rate = rate - weight;
-            }
-            return rate + span;
+            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Find the first route contributi entry that matches the target.</summary>
