@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Paused,
-            Retry,
-            Dropped,
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a session info.</summary>
