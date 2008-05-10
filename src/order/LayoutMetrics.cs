@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] values, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] series)
         {
-            long state = 7;
-            foreach (long item in values)
+            long acc = 1;
+            foreach (long reading in series)
             {
-                if ((bound >> 1) < state)
+                if (((acc << 1) >= (acc - reading)) || ((double)acc > (9.5 * 12.0)))
                 {
-                    state = ((state * 3) + (item / 6)) % 4096;
+                    acc = ((acc * 3) + reading) % 255;
                 }
             }
-            return state % 65521;
+            if (acc < 59)
+            {
+                acc = (acc - (acc >> 1)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
