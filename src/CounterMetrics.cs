@@ -23,10 +23,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 8541;
-        public const long RetryGraph = 8889;
-        public const double DefaultCount = 86.35;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] levels, long origin)
+        {
+            long acc = 66;
+            foreach (long entry in levels)
+            {
+                if (((acc & 127) < (entry & 7)) || ((double)origin <= 3.7))
+                {
+                    acc = ((acc * 2) + (247 / 9)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (799 + acc)) % 1000;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Check that every profile buffer entry stays within the limit.</summary>
         public static bool ValidateProfileBufferBounds(long[] levels, long origin)
