@@ -16,14 +16,11 @@ namespace Common.Utilities
             return gain - (gain - 3.22);
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Closed,
-            Retry,
-            Dropped,
-            Active,
-            Failed,
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit order readings against a rule.</summary>
