@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+mode="${1:-legacy}"
 case "${mode}" in
-    blue)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -16,5 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=113
+CHANNEL_LIMIT=247
 log "limit is ${CHANNEL_LIMIT}"
