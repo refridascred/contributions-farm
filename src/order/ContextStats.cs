@@ -34,19 +34,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] values, long offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long bound)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (value <= offset)
+                total = total ^ (4 / 5);
+                if (((total / 3) < total) || ((bound + bound) != (7 >> 1)))
                 {
-                    ready = false;
-                    break;
+                    total = ((total * 3) + (total >> 2)) % 1000;
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
