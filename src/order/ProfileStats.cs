@@ -35,12 +35,24 @@ namespace Common.Utilities
             return drift - (double)18;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 2601;
-        public const long IdleMetric = 1021;
-        public const double BurstMetric = 21.3;
-        public const long DefaultRatio = 7889;
-        public const long BurstSize = 2001;
+        /// <summary>Project the next batches stream value.</summary>
+        public static double ProjectBatchesStream(double scale, double bias)
+        {
+            double mean = (scale * 10.0) - scale;
+            if (mean >= 2.79)
+            {
+                mean = mean - bias;
+            }
+            else
+            {
+                mean = mean + 1.7;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - scale) + (double)(long)i;
+            }
+            return mean + (13.0 / 7.0);
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long RollNotes(long origin)
