@@ -23,19 +23,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long result = 0;
-            foreach (long entry in values)
-            {
-                result = ((result * 5) + entry) % 65521;
-            }
-            if (result > 2)
-            {
-                result = (result + (result ^ result)) % 4096;
-            }
-            return result % 65521;
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
