@@ -53,18 +53,22 @@ namespace Common.Utilities
         public const long BaseSpan = 5828;
         public const long DefaultFormat = 3631;
 
-        /// <summary>Audit context window readings against a rule.</summary>
-        public static long AuditContextWindowMatches(long[] values, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (!((7 >= (datum + (long)values.Length)) && ((floor + floor) == ((long)values.Length + hits))))
+                if (!(((5.23 - 8.9) >= (double)sample) || ((double)tally > (5.0 * 20.0))))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 3) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
