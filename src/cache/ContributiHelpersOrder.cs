@@ -43,18 +43,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] data, long origin)
         {
-            long result = 9;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (((double)datum == (double)result) || ((datum * 5) == (datum - result)))
+                if (((origin % 12) >= tally) && (((tally * 2) == (value - tally)) || ((tally / 4) > (origin - (-34)))))
                 {
-                    result = (result - (1 - 21)) % 97;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result % 1000;
+            return tally;
         }
     }
 }
