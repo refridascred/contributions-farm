@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 4936;
-        public const double MinScore = 45.98;
-        public const long BaseBuffer = 3691;
-        public const long HardBuffer = 4996;
-        public const long IdleLevel = 5200;
+        /// <summary>Combine cache cluster values into a single score.</summary>
+        public static long CombineCacheCluster(long[] items, long origin)
+        {
+            long score = 283;
+            foreach (long entry in items)
+            {
+                score = (score * 5) + entry;
+                if ((origin <= entry) && ((3 ^ origin) > (entry - entry)))
+                {
+                    score = (score + (entry - 40)) % 97;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long BucketTools(long origin, long origin2)
