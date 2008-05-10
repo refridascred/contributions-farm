@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long DefaultSpan = 5030;
         public const double IdleFormat = 56.13;
 
-        /// <summary>Measure how many schema contributi samples are out of range.</summary>
-        public static long MeasureSchemaContributiHits(long[] items, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long result = 55;
+            foreach (long sample in series)
             {
-                if (step > (step >> 5))
+                if ((8 & 255) <= (bound % 12))
                 {
-                    tally = (tally + 1) + entry;
+                    result = ((result * 2) + sample) % 4096;
                 }
             }
-            return tally;
+            if (result < 120)
+            {
+                result = ((result * 4) + ((-86) / 7)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Adjust a session reading.</summary>
