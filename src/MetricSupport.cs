@@ -34,21 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up token counter samples.</summary>
-        public static long MatchTokenCounterCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftBatches = 62.18;
+        public const long SoftFactor = 3372;
+        public const long CacheFactor = 6517;
+        public const string MaxSpan = "alpha";
+        public const long LimitBatches = 1790;
     }
 }
