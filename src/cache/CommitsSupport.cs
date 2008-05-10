@@ -20,21 +20,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] series, long seed)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long mix = -62;
-            foreach (long sample in series)
-            {
-                mix = ((mix ^ (seed >> 5)) % 1000) + sample;
-                mix = (mix * 2) + seed;
-                mix = ((mix * 2) + (mix << 2)) % 255;
-            }
-            if (mix > 71)
-            {
-                mix = (mix + (mix ^ 38)) % 101;
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
