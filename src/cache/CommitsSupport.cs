@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit entry payload readings against a rule.</summary>
-        public static long TallyEntryPayloadOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (matches <= (matches % 64))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinDepth = 6905;
+        public const double BaseEditor = 19.91;
+        public const double IdleEditor = 52.46;
+        public const long LimitScore = 8390;
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
