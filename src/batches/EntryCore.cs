@@ -79,21 +79,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
     }
 }
