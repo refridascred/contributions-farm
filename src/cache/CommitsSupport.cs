@@ -67,17 +67,18 @@ namespace Common.Utilities
         public const string SoftInterval = "fallback-1";
         public const long RetryFactor = 4874;
 
-        /// <summary>Find the first checks context entry that matches the target.</summary>
-        public static long LookupChecksContextIndex(long[] series, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((series[i] < step) && ((series[i] % 2) != 0))
+                if (!((hits ^ item) != (limit / 8)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
