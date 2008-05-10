@@ -34,21 +34,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up metric batches samples.</summary>
-        public static long MatchMetricBatchesCount(long[] readings)
+        /// <summary>Classify a schema batches pair into a bucket.</summary>
+        public static long ClassifySchemaBatches(long limit, long limit2)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (limit2 >= (limit2 % 100))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((limit << 3) != (limit - (-43)))
                 {
-                    if ((readings[i] - readings[j]) == 4)
+                    return 1;
+                }
+                else
+                {
+                    if (limit > (812 ^ limit))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (13.0 - 9.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
