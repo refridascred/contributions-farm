@@ -49,24 +49,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long origin, long origin2)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] items, long target)
         {
-            if ((4.11 * 0.3) == (double)origin2)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin <= (origin2 ^ origin))
+                if ((double)(-4) >= (double)reading)
                 {
-                    return 7;
+                    hits = (hits + 2) - target;
                 }
                 else
                 {
-                    return 8;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
