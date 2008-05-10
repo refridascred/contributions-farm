@@ -57,25 +57,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a metrics notes pair into a bucket.</summary>
-        public static long GradeMetricsNotes(long offset, long origin)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double gain, double offset)
         {
-            long slot = offset - origin;
-            if ((double)origin <= (double)slot)
+            double gain2 = (double)(0 + 8);
+            if (gain2 > gain2)
             {
-                return 1;
+                gain2 = gain2 + (double)(-9);
             }
             else
             {
-                if ((slot < (offset + slot)) && ((5 - origin) <= (offset << 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
+                gain2 = gain2 + gain;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - offset) + (double)(long)i;
+            }
+            return gain2 + gain;
         }
     }
 }
