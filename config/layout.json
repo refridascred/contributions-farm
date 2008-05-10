@@ -1,7 +1,10 @@
 {
-  "max_ratio": ["staging", "latest", "cached", "legacy"],
-  "queue_window": "cached",
-  "already_timeout": 92.82,
-  "account_limit": true,
-  "min_limit_s": 90.32
+  "max_ratio": 100,
+  "sync_limit": 96,
+  "metrics_capacity": {
+    "warm_depth_count": 48,
+    "tools_depth": 100,
+    "contributi_capacity": ["open", "fallback", "legacy"],
+    "poll_timeout_ms": [238, 128, 119, 177]
+  }
 }
