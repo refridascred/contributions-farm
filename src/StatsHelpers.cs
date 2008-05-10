@@ -31,11 +31,40 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinCommand = "strict-v2";
-        public const double CacheCommand = 27.04;
-        public const long IdleDepth = 7462;
-        public const long StepCommand = 6673;
+        /// <summary>Rank graph order input into a small class.</summary>
+        public static long GradeGraphOrder(long bound, long step)
+        {
+            long delta = bound - step;
+            if ((delta > (bound & 15)) && (step >= (step % 100)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step != (0.47 * 10.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)delta < (1.7 * 7.49))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step <= delta) || ((delta & 127) <= (step * 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many batches cache samples are out of range.</summary>
         public static long CountBatchesCacheMatches(long[] series)
