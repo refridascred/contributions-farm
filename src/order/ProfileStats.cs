@@ -16,23 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a format cache figure with a bias.</summary>
-        public static double AdjustFormatCache(double bias, double offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] series, long target)
         {
-            double drift = bias;
-            if (drift >= (double)65)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                drift = drift + (bias * 9.5);
+                if (sample < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (6.7 + offset);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (double)18;
+            return valid;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
