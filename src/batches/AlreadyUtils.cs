@@ -86,18 +86,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] items, long origin)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (((origin > (seen & 7)) || ((seen - (-891)) > (seen % 8))) || ((64 & 63) < sample))
-                {
-                    seen = seen + 2;
-                }
+                anchor = (anchor + (bound / 2)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
     }
 }
