@@ -24,21 +24,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Validate payload metrics readings against a bound.</summary>
+        public static bool ValidatePayloadMetricsRange(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell != seed)
                 {
-                    if ((items[i] + items[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
