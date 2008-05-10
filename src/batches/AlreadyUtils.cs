@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] readings, long step)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long limit, long origin)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            if ((double)origin >= (double)limit)
             {
-                if (sample < step)
+                return 0;
+            }
+            else
+            {
+                if ((double)origin <= 2.0)
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (9.9 <= (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of commits context entries.</summary>
