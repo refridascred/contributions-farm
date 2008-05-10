@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstSize = 53.26;
-        public const long IdleScore = 42;
-        public const long HardFilter = 5730;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Closed,
+            New,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
