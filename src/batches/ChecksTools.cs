@@ -46,21 +46,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)offset == (double)count) || !((reading ^ count) != (count / 4)))
                 {
-                    if ((samples[i] ^ samples[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
