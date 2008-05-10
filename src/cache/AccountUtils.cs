@@ -19,10 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 9144;
-        public const long IdleSpan = 3049;
-        public const long HardMetrics = 346;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public long Level { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long IterateLayout(long bound)
