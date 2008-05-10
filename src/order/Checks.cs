@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftScore = 9752;
-        public const long MinCount = 6680;
-        public const double StepWidth = 22.49;
-        public const long RetryInterval = 3566;
-        public const double SoftFactor = 94.3;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < seed) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool VerifyTokenRange(long[] items, long origin)
