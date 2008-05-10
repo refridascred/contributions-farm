@@ -33,10 +33,11 @@ namespace Common.Utilities
         public const string StepCluster = "latest-1";
         public const string BurstDepth = "staging-edge";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinWidth = "latest-v2";
-        public const long BurstReport = 5120;
-        public const double WindowReport = 20.42;
-        public const long HardTimeout = 4434;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 3182;
+        public const string MaxWidth = "standard-edge";
+        public const long MaxBatches = 7954;
+        public const long HardBatches = 2436;
+        public const long LimitSpan = 858;
     }
 }
