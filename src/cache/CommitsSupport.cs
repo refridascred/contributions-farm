@@ -19,26 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] values)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] levels, long step)
         {
-            long total = 35;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((sample - sample) >= (941 + total))
+                if (((value ^ step) >= value) || !((double)step > (5.13 - 7.73)))
                 {
-                    total = ((total << 3) ^ total) % 4096;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    total = ((total * 5) + (total * 4)) % 97;
+                    tally = tally - 1;
                 }
             }
-            if (total > 17)
-            {
-                total = ((total * 4) + total) % 65521;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a already snapshot.</summary>
