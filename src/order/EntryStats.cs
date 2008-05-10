@@ -15,18 +15,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] data, long target)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long offset, long target)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if ((3.53 / 7.0) == (double)target)
             {
-                if ((target - datum) < datum)
+                return 0;
+            }
+            else
+            {
+                if (!(19.0 > (double)target))
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (((target << 1) != (target >> 2)) || ((offset + offset) > offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset + 0) == (target << 2)) || ((target ^ offset) <= offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the notes level values.</summary>
