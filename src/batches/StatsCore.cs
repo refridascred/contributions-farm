@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first farm notes entry that matches the target.</summary>
-        public static long SeekFarmNotesIndex(long[] values, long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long target, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((bound >> 1) < (target - target)) && ((45 / 5) > (bound << 1)))
             {
-                if (values[i] < floor)
+                return 2;
+            }
+            else
+            {
+                if ((8.06 + 0.5) < (double)target)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((target >> 5) == (target - 441)) && ((4.27 / 4.0) >= (double)target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((677 % 5) == (target + bound)) && (target > (target << 1)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
