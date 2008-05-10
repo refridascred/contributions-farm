@@ -47,18 +47,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] items, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            long mark = 7;
+            foreach (long sample in items)
             {
-                sum = sum - 821;
-                sum = ((sum << 2) ^ (seed - (long)i)) % 255;
-                sum = (sum ^ (seed & 15)) % 65521;
-                sum = ((sum * 3) + (long)i) % 65521;
+                mark = ((mark << 2) ^ sample) - step;
             }
-            return sum;
+            return mark;
         }
     }
 }
