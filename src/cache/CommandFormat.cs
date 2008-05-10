@@ -16,12 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Dropped,
-            Locked,
-            Retry,
+            Done,
+            New,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Adjust a session reading.</summary>
