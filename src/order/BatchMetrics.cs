@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] values, long offset)
+        /// <summary>Find the first already report entry that matches the target.</summary>
+        public static long SeekAlreadyReportIndex(long[] series, long target)
         {
-            long sum = 6;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum - sum) ^ datum) - offset;
+                if ((series[i] == target) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 591)
-            {
-                sum = ((sum * 5) + (sum + sum)) % 97;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
