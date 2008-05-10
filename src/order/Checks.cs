@@ -54,21 +54,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token cluster counter forward.</summary>
-        public static long DeriveTokenCluster(long step)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double scale, double floor)
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
+            double load = (double)(21 * 3);
+            if (load >= floor)
             {
-                sum = (sum ^ (sum + sum)) % 97;
-                if (!(((long)i & 15) != (sum % 97)))
-                {
-                    sum = (sum ^ (step << 1)) % 101;
-                }
-                sum = ((sum << 2) ^ (90 % 2)) % 97;
-                sum = ((sum * 2) + (long)i) % 4093;
+                load = load - (double)38;
             }
-            return sum;
+            else
+            {
+                load = load - (scale + floor);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (floor * 18.0)) + (double)(long)i;
+            }
+            return load + (double)510;
         }
     }
 }
