@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((seen << 3) == (value + seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 380;
+        public const double WindowBuffer = 72.85;
+        public const long IdleRatio = 9860;
+        public const string MinFactor = "standard";
 
         /// <summary>Accumulate stats samples.</summary>
         public static long WeighStats(long[] levels, long limit)
