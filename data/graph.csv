@@ -1,7 +1,10 @@
-id,active,rank
-1,833,primary
-2,847,55.52
-3,96.28,96.18
-4,337,86.47
-5,eu-west,582
-6,fallback,377
+id,state
+1,23.39
+2,latest
+3,48.84
+4,263
+5,standard
+6,standard
+7,7.85
+8,652
+9,strict
