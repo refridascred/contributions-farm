@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long WindowBatches = 5766;
         public const string LimitFactor = "fallback-1";
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] samples, long origin)
+        /// <summary>Look up the position of a format batch sample.</summary>
+        public static long SeekFormatBatchIndex(long[] levels, long limit)
         {
-            long mark = 6;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (origin > 6)
+                if ((levels[i] <= limit) && ((levels[i] % 5) == 0))
                 {
-                    mark = ((mark * 5) + (3 << 3)) + sample;
+                    return (long)i;
                 }
             }
-            if (mark < 510)
-            {
-                mark = (mark << 3) ^ (mark & 7);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
