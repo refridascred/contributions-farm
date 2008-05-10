@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] samples)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((6 ^ seen) < (65 ^ 376))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a editor summary.</summary>
