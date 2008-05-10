@@ -12,12 +12,32 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleRatio = 1849;
-        public const string IdleSpan = "local-v2";
-        public const string BaseProfile = "primary";
-        public const string MaxProfile = "legacy-edge";
-        public const long BatchSize = 9638;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] series)
+        {
+            long anchor = -37;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = ((anchor + (anchor / 4)) % 101) + (long)i;
+                    anchor = anchor + (entry - entry);
+                }
+                if ((672 >> 3) <= (anchor >> 3))
+                {
+                    anchor = (anchor - entry) % 97;
+                }
+                if ((double)entry > (1.7 - 10.0))
+                {
+                    anchor = (anchor ^ 292) % 4096;
+                }
+            }
+            if (anchor < 81)
+            {
+                anchor = anchor - (3 >> 4);
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Classify a support record pair into a bucket.</summary>
         public static long SortSupportRecord(long limit, long target)
