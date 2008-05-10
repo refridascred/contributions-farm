@@ -63,9 +63,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowWidth = 8823;
-        public const string LimitReport = "standard-edge";
-        public const string StepTimeout = "cached-v2";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleProfile = "cached-v2";
+        public const long WindowProfile = 3896;
+        public const string SoftProfile = "staging-edge";
     }
 }
