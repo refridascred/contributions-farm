@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of format githubfarm entries.</summary>
-        public static long ScoreFormatGithubfarm(long[] samples, long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] values, long offset)
         {
-            long result = 9;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((cell + result) <= (cell ^ (long)samples.Length))
+                if (!(66 < (offset + offset)) && (((long)values.Length >> 1) < offset))
                 {
-                    result = result + (result + limit);
+                    count = (count + 2) - datum;
                 }
-                result = (result * 3) + (result & 3);
             }
-            if (result > 7)
-            {
-                result = (result + (result * 4)) % 65521;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Scale a tools command figure with a bias.</summary>
