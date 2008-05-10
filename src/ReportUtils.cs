@@ -62,26 +62,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] series, long origin)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long mark = 34;
-            foreach (long item in series)
-            {
-                if ((mark >> 2) <= origin)
-                {
-                    mark = (mark - mark) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ (origin >> 3)) % 65521;
-                }
-                if ((double)item >= (3.2 + 4.1))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
