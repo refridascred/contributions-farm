@@ -66,21 +66,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of editor batch readings.</summary>
-        public static long CompareEditorBatchCount(long[] readings)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = target;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 3) + ((long)i >> 5)) % 255;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
     }
 }
