@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 380;
-        public const double WindowBuffer = 72.85;
-        public const long IdleRatio = 9860;
-        public const string MinFactor = "standard";
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] readings, long target)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long WeighStats(long[] levels, long limit)
