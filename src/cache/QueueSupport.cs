@@ -46,21 +46,19 @@ namespace Common.Utilities
         public const long BatchMetrics = 311;
         public const double WindowMetrics = 87.05;
 
-        /// <summary>Count farm route pairs that satisfy a relation.</summary>
-        public static long OverlapFarmRouteCount(long[] readings)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 5) + entry) % 65521;
             }
-            return hits;
+            if (result > 2)
+            {
+                result = (result + (result ^ result)) % 4096;
+            }
+            return result % 65521;
         }
     }
 }
