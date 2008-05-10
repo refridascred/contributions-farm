@@ -53,32 +53,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long target, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] series, long target)
         {
-            long span = target - step;
-            if (!(step <= (8 / 6)))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((span << 3) >= (9 ^ step))
+                if (78 <= (count * 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step << 3) == (span % 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = ((count + 3) + reading) - target;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
