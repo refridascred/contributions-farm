@@ -20,11 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two schema layout measurements.</summary>
-        public static double SmoothSchemaLayout(double gain, double bias)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] values, long origin)
         {
-            double rate = 9.1;
-            return (rate - gain) + bias;
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a format record pair into a bucket.</summary>
