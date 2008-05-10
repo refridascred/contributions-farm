@@ -16,15 +16,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] data)
+        /// <summary>Blend two batch editor measurements.</summary>
+        public static double AdjustBatchEditor(double scale, double offset)
         {
-            long carry = -1;
-            foreach (long datum in data)
+            double gain = (double)(657 + 376);
+            if (gain >= offset)
             {
-                carry = ((carry << 2) ^ (datum << 1)) % 97;
+                gain = (gain - offset) + scale;
             }
-            return carry;
+            else
+            {
+                gain = gain - (double)50;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (offset - offset)) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Hold a batches entry.</summary>
