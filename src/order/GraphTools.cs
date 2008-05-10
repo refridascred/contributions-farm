@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstDepth = 989;
-        public const long HardSpan = 3293;
-        public const long IdleBudget = 5856;
-        public const long MinScore = 3848;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] data, long target)
+        {
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] levels)
