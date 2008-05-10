@@ -27,12 +27,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Project the next graph schema value.</summary>
+        public static double BlendGraphSchema(double gain, double span)
         {
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
-            public bool Score { get; set; }
+            double scale = span;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = ((scale + (6.58 * 4.9)) + (double)(long)i) + gain;
+            }
+            return scale - span;
         }
 
         /// <summary>Rank format input into a small class.</summary>
