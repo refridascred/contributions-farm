@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public double Token { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchLevel = "standard-edge";
+        public const long MaxInterval = 2173;
+        public const long IdleCount = 3117;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportOutliers(long[] items, long limit)
