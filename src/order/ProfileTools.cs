@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] samples, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long score = 42;
+            foreach (long value in values)
             {
-                if (reading != step)
+                if ((value + 42) <= (score >> 2))
                 {
-                    valid = false;
-                    break;
+                    score = (score - (score * 4)) % 97;
+                }
+                else
+                {
+                    score = ((score << 2) ^ score) % 65521;
                 }
             }
-            return valid;
+            if (score < 531)
+            {
+                score = (score + (464 / 3)) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
