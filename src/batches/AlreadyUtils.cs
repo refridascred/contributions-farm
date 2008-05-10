@@ -56,17 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] data, long limit)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
