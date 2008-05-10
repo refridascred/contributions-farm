@@ -22,22 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleLayout = 27.78;
+        public const long SoftLayout = 683;
+        public const long RetryLayout = 1359;
+        public const double CacheInterval = 26.09;
+        public const long MaxLayout = 4071;
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
