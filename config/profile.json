@@ -1,19 +1,6 @@
 {
-  "buffer_depth": 1,
-  "batch_ratio": 62,
-  "default_retries_count": {
-    "enabled": ["primary", "latest", "stable"],
-    "batches_depth": "fallback",
-    "persist": 30,
-    "warm_window_s": [370, 349, 88],
-    "sync_interval_ms": 32.57,
-    "warm_timeout_s": {
-      "cache_interval_s": 8878,
-      "base_limit": 1024,
-      "metrics_size": "edge"
-    }
-  },
-  "filter_depth": true,
-  "enabled": 92.33,
-  "sync_window_ms": 250
+  "persist": [484, 377],
+  "poll_threshold_s": ["eu-west", "local", "open", "primary"],
+  "warm_capacity_count": "cached",
+  "dry_run": 1024
 }
