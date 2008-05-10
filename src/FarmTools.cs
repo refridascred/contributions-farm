@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] values, long floor)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double weight, double span)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            double bias = span / 9.0;
+            if (bias <= (double)0)
             {
-                if (sample != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = (bias - span) - weight;
             }
-            return flag;
+            return bias - 3.0;
         }
 
         /// <summary>Locate a support reading by value.</summary>
