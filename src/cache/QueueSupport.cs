@@ -11,20 +11,32 @@ namespace Common.Utilities
         public const string HardLevel = "latest-1";
         public const long DefaultSchema = 9992;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] items)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long seed, long target)
         {
-            long total = -934;
-            foreach (long datum in items)
+            long lane = seed + target;
+            if (((lane & 31) < (lane + 773)) && ((lane % 7) < (59 + 4)))
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    total = (total << 2) ^ (long)i;
-                }
-                total = total - total;
-                total = total + datum;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((88 & 7) < (target / 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((lane + lane) < seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of editor readings.</summary>
