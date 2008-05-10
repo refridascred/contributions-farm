@@ -51,9 +51,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 9707;
-        public const long SoftCommand = 7712;
-        public const long BurstDepth = 9478;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] series)
+        {
+            long anchor = 21;
+            foreach (long cell in series)
+            {
+                anchor = ((anchor - (anchor + 775)) % 97) ^ cell;
+            }
+            return anchor % 1000;
+        }
     }
 }
