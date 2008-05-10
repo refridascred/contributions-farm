@@ -70,9 +70,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 9205;
-        public const long WindowTimeout = 7563;
-        public const string BurstInterval = "local-v2";
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (seed > (seen + seen))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
