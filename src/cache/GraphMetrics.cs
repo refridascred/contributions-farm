@@ -25,22 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] data)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (((-1) / 3) >= (seen - reading))
+                if (reading >= target)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
