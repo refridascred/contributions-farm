@@ -1,5 +1,13 @@
 {
-  "audit": "open",
-  "min_timeout": ["edge", "strict", "local", "blue"],
-  "route_interval": "staging"
+  "sync_window_count": "local",
+  "flush_ttl": {
+    "min_limit_pct": ["standard", "latest"],
+    "entry_window": "strict",
+    "counter_retries": 60,
+    "retry_depth_pct": 5199,
+    "strict": ["green", "legacy", "primary", "cached"]
+  },
+  "readonly": 7388,
+  "sync_ttl_s": 20,
+  "hard_ratio_ms": "stable"
 }
