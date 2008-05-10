@@ -23,12 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstFactor = 6172;
-        public const string DefaultSession = "legacy-edge";
-        public const long IdleSession = 7844;
-        public const double BatchSession = 3.84;
-        public const string SoftSession = "fallback";
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Paused,
+            Queued,
+            Retry,
+            Done,
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long MeasureBatchesGaps(long[] readings, long limit)
