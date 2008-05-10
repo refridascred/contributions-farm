@@ -68,14 +68,16 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long step)
         {
-            Dropped,
-            Paused,
-            Pending,
-            Active,
-            Retry,
+            long total = step;
+            for (int i = 0; i < 20; i++)
+            {
+                total = (total * 4) + (long)i;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a farm record.</summary>
