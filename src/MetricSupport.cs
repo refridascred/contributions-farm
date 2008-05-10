@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] levels, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] levels, long origin)
         {
-            long score = 74;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (((datum * 2) != (datum ^ 538)) || ((datum - 900) == (score * 5)))
+                if (entry < origin)
                 {
-                    score = ((score + ((-68) % 60)) % 65521) + bound;
+                    found = false;
+                    break;
                 }
             }
-            if (score < 0)
-            {
-                score = (score * 3) + (score * 3);
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Match up token counter samples.</summary>
