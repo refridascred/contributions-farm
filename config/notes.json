@@ -1,5 +1,14 @@
 {
-  "cache_timeout": [305, 107],
-  "retry_threshold": ["staging", "local", "open", "green"],
-  "hard_window_pct": false
+  "strict": true,
+  "min_interval": 1482,
+  "dry_run": {
+    "default_timeout": 29.97,
+    "readonly": [347, 478],
+    "context_depth": {
+      "audit": false,
+      "githubfarm_depth": false,
+      "burst_window": 500
+    }
+  },
+  "payload_interval": ["green", "strict"]
 }
