@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            New,
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
