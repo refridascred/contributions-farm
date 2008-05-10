@@ -54,32 +54,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long floor, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] values)
         {
-            long offset = floor ^ step;
-            if (step < floor)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((25 + step) == (offset & 255))
+                if ((entry - entry) >= (matches / 8))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step >> 2) == (offset - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of context readings.</summary>
