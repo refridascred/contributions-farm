@@ -57,18 +57,9 @@ namespace Common.Utilities
             return ratio + (scale + 5.1);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!(((12.0 + 17.0) > (double)seen) || ((double)step > (4.5 + 3.73))))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 6517;
+        public const string MinSpan = "fallback-1";
+        public const string CacheSpan = "fallback-edge";
     }
 }
