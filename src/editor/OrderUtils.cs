@@ -36,13 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] levels, long offset)
         {
-            Active,
-            Stale,
-            Retry,
-            Queued,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a window reading by value.</summary>
