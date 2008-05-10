@@ -41,11 +41,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Check that every session buffer entry stays within the limit.</summary>
+        public static bool ValidateSessionBufferRange(long[] series, long offset)
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
