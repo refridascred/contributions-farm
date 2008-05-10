@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 3352;
-        public const long RetryQueue = 3915;
-        public const long BatchQueue = 740;
-        public const string LimitQueue = "fallback-1";
-        public const long BaseSpan = 8751;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = (sum * 3) + (53 + (long)i);
+                sum = ((sum << 2) ^ step) % 65521;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long AuditCommitsMatches(long[] series, long limit)
