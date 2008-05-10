@@ -29,12 +29,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public double Size { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheTimeout = 2880;
+        public const long BurstRatio = 923;
+        public const string StepCluster = "latest-1";
+        public const string BurstDepth = "staging-edge";
 
         /// <summary>Define report limits and defaults.</summary>
         public const string MinWidth = "latest-v2";
