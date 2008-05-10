@@ -48,15 +48,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Audit support counter readings against a rule.</summary>
+        public static long MeasureSupportCounterHits(long[] items, long step)
         {
-            long mix = 875;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                mix = ((mix + 441) % 101) ^ reading;
+                if ((18 + step) <= (step - step))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
             }
-            return mix % 4096;
+            return seen;
         }
     }
 }
