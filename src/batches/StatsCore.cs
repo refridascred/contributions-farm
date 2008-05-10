@@ -20,22 +20,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the editor token entries that pass the check.</summary>
-        public static long AuditEditorTokenMatches(long[] readings, long limit)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double load = weight;
+            if (load < (load - load))
             {
-                if ((27 << 3) == (limit + (long)readings.Length))
-                {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = load - (floor / 2.0);
             }
-            return hits;
+            else
+            {
+                load = load + (double)45;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (double)4) - (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Define account limits and defaults.</summary>
