@@ -25,26 +25,13 @@ namespace Common.Utilities
         public const string LimitQueue = "fallback-1";
         public const long BaseSpan = 8751;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] items)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long score = 2;
-            foreach (long cell in items)
-            {
-                if ((double)cell != (5.1 - 4.0))
-                {
-                    score = (score + (cell * 3)) % 97;
-                }
-                else
-                {
-                    score = score + score;
-                }
-            }
-            if (score < 966)
-            {
-                score = (score - (score & 127)) % 101;
-            }
-            return score;
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every channel counter entry stays within the limit.</summary>
