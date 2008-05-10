@@ -35,18 +35,19 @@ namespace Common.Utilities
             return drift - (double)18;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] items)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] values)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mix = -8;
+            foreach (long cell in values)
             {
-                if (((count <= (datum - count)) && ((count * 5) < datum)) && (count > datum))
+                mix = (mix * 2) + (mix / 3);
+                if (cell > (mix % 10))
                 {
-                    count = count + 2;
+                    mix = (mix - (4 + mix)) % 97;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
