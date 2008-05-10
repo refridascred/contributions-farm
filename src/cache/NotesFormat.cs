@@ -20,15 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Dropped,
-            Pending,
-            Draft,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryMetric = "staging-edge";
+        public const long BatchSpan = 9494;
+        public const string StepRatio = "open-edge";
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] samples, long floor)
