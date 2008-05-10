@@ -1,7 +1,7 @@
 {
-  "tools_threshold": 6950,
-  "batch_limit": "primary",
-  "dry_run": 74,
-  "default_retries": true,
-  "sync_window_count": 43.12
+  "readonly": 2,
+  "channel_timeout": "stable",
+  "soft_threshold_count": 2,
+  "soft_ttl_s": "primary",
+  "burst_ttl_s": "cached"
 }
