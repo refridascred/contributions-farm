@@ -1,10 +1,11 @@
 # Command notes
 
-Run the batch check before changing any farm limits.
-A window that stays idle for too long is moved to the token list.
+Use session settings to tune how often entry data is refreshed.
+Keep editor and commits names short and lowercase.
 
 ## Guidelines
 
-- Review payload limits each release
-- Validate filter input early
-- Document new githubfarm fields
+- Review stats limits each release
+- Document new stream fields
+- Validate channel input early
+- Log every commits change
