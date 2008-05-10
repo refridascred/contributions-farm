@@ -26,23 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double gain, double span)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long target)
         {
-            double gain2 = gain;
-            if (gain2 < span)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                gain2 = gain2 - (double)605;
+                total = ((total * 3) + (long)i) % 97;
             }
-            else
-            {
-                gain2 = gain2 - gain2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 + (gain2 + 19.0)) + (double)(long)i;
-            }
-            return gain2 + gain;
+            return total;
         }
     }
 }
