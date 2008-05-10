@@ -50,38 +50,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long floor, long origin)
+        /// <summary>Fold a list of notes layout readings.</summary>
+        public static long CombineNotesLayout(long[] data, long seed)
         {
-            if ((floor - origin) != (floor ^ origin))
+            long score = 2;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin + origin) <= (floor / 2)) && (floor > (origin ^ origin)))
+                if (((1 + 6) < (score << 1)) || ((1.13 * 14.0) <= (double)score))
                 {
-                    return 8;
+                    score = ((score * 4) + (value - value)) % 255;
                 }
-                else
+                if (!(value <= (score % 100)))
                 {
-                    if (((floor - 5) > origin) || ((floor - 1) <= origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((921 / 6) >= (floor >> 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            if (score > 5)
+            {
+                score = ((score << 2) ^ (seed - seed)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
