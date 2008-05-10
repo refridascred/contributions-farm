@@ -1,11 +1,12 @@
 # githubfarm settings
-session_retries: edge
-warm_interval_s: 16.77
-command_limit:
-  idle_retries_count:
-    - standard
-    - standard
-  enabled: 7983
-  default_window: true
-  cache_timeout_ms: fallback
-  sync_capacity_pct: 100
+readonly: legacy
+default_ttl: 250
+checks_threshold:
+  - standard
+  - open
+  - local
+max_delay_pct:
+  - legacy
+  - standard
+  - standard
+  - cached
