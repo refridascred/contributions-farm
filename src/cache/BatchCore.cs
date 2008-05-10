@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long seed)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many session payload samples are out of range.</summary>
