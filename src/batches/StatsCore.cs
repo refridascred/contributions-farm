@@ -55,14 +55,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double ratio, double offset)
         {
-            Pending,
-            Paused,
-            Draft,
-            Queued,
-            Retry,
+            double bias = offset + (7.24 - offset);
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (double)(long)i) - ratio;
+            }
+            return bias - offset;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
