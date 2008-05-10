@@ -1,7 +1,9 @@
-id,active,weight,region,score
-1,50.79,standard,stable,0.23
-2,842,847,552,31
-3,legacy,254,7.07,775
-4,430,871,785,green
-5,17.89,39.52,65,626
-6,local,43.0,772,70.67
+id,state,rank,weight
+1,603,445,69.87
+2,38.93,653,6.5
+3,edge,563,open
+4,54.69,179,132
+5,369,232,strict
+6,944,standard,17.61
+7,latest,856,181
+8,789,24.97,staging
