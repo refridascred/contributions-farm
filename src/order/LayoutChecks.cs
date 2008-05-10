@@ -65,18 +65,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((item & 15) <= matches)
                 {
-                    if ((samples[i] - samples[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
