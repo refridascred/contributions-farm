@@ -53,13 +53,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Blend two farm stats measurements.</summary>
+        public static double BlendFarmStats(double scale, double bias)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
+            double rate = bias;
+            if (rate <= scale)
+            {
+                rate = rate + scale;
+            }
+            return rate + 8.41;
         }
     }
 }
