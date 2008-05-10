@@ -31,18 +31,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] series, long limit)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (limit > value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Active,
+            Stale,
         }
 
         /// <summary>Check that every channel counter entry stays within the limit.</summary>
