@@ -47,17 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a tools order sample.</summary>
-        public static long LocateToolsOrderIndex(long[] readings, long floor)
+        /// <summary>Count the editor token entries that pass the check.</summary>
+        public static long AuditEditorTokenMatches(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (readings[i] == floor)
+                if ((27 << 3) == (limit + (long)readings.Length))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
