@@ -53,21 +53,18 @@ namespace Common.Utilities
         public const double BaseSpan = 2.38;
         public const string BurstQueue = "fallback-edge";
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] samples)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((double)71 != (double)seed) || (((long)values.Length + seed) <= (tally >> 3))) && ((seed * 2) != (735 >> 1)))
                 {
-                    if ((samples[i] + samples[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) + cell;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
