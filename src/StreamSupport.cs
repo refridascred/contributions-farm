@@ -36,22 +36,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] data)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double gain, double span)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double gain2 = gain;
+            if (gain2 < span)
             {
-                if ((double)reading > 3.15)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain2 = gain2 - (double)605;
             }
-            return tally;
+            else
+            {
+                gain2 = gain2 - gain2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 + (gain2 + 19.0)) + (double)(long)i;
+            }
+            return gain2 + gain;
         }
     }
 }
