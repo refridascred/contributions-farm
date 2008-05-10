@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            New,
-            Active,
-            Synced,
-            Stale,
+            Paused,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
