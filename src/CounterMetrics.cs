@@ -41,17 +41,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] values, long seed)
+        /// <summary>Check that every profile buffer entry stays within the limit.</summary>
+        public static bool ValidateProfileBufferBounds(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((values[i] == seed) && ((values[i] % 2) != 0))
+                if (item >= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
