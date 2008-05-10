@@ -49,12 +49,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] readings, long origin)
         {
-            public double Label { get; set; }
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (((long)readings.Length & 3) < ((long)readings.Length + origin))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
