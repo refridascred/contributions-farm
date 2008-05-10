@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long seed)
         {
-            Active,
-            Paused,
-            Done,
-            Locked,
+            long result = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Accumulate batch samples.</summary>
