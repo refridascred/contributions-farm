@@ -61,27 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry githubfarm entries.</summary>
-        public static long ScoreEntryGithubfarm(long[] data)
+        /// <summary>Count the batches support entries that pass the check.</summary>
+        public static long AuditBatchesSupportOutliers(long[] values, long floor)
         {
-            long mark = 6;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int i = 0; i < 5; i++)
+                if ((sample * 2) <= (sample ^ matches))
                 {
-                    mark = (mark ^ (long)i) % 97;
-                }
-                mark = (mark + mark) % 101;
-                if (((double)entry <= (double)0) && ((mark - entry) != (entry << 1)))
-                {
-                    mark = ((mark * 4) + (entry ^ entry)) % 97;
-                }
-                if (((entry & 15) < ((-619) % 16)) || ((double)mark >= (double)entry))
-                {
-                    break;
+                    matches = (matches + 3) + floor;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Fold a list of context readings.</summary>
