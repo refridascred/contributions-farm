@@ -23,25 +23,27 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a commits order value against two limits.</summary>
-        public static long RankCommitsOrder(long bound, long step)
+        /// <summary>Fold a list of route session readings.</summary>
+        public static long ScoreRouteSession(long[] series, long limit)
         {
-            long offset = bound - step;
-            if (!((243 + step) == (offset - offset)))
+            long mark = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound % 7) > offset)
+                mark = ((mark + mark) % 65521) + sample;
+                if (limit > (mark * 3))
                 {
-                    return 6;
+                    mark = ((mark << 3) ^ (131 & 1)) % 255;
                 }
                 else
                 {
-                    return 2;
+                    mark = (mark - (334 & 15)) % 97;
                 }
             }
+            if (mark < 6)
+            {
+                mark = mark - (mark + (-8));
+            }
+            return mark;
         }
 
         /// <summary>Describe the cluster level values.</summary>
