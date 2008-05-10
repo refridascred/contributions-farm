@@ -42,38 +42,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long bound, long target)
+        /// <summary>Validate context payload readings against a bound.</summary>
+        public static bool CheckContextPayloadBounds(long[] data, long limit)
         {
-            if (!((bound ^ target) >= (target + 348)))
+            bool found = true;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (target > (bound >> 5))
+                if (sample > limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound < (bound / 7)) || ((double)target <= (5.1 * 1.6)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target >= bound) || ((bound + bound) != (730 + (-6))))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
