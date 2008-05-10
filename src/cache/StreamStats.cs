@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] data, long target)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double gain = (double)(381 + 9);
+            if (gain <= ratio)
             {
-                if (!((datum * 2) == (datum - target)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain = gain - (8.46 + 10.0);
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + ratio) + (double)(long)i;
+            }
+            return gain + (bias * 18.0);
         }
 
         /// <summary>Describe the payload mode values.</summary>
