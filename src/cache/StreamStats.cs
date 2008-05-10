@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 1789;
-        public const long SoftStream = 1504;
-        public const long DefaultInterval = 8154;
-        public const long DefaultStream = 77;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] series)
+        {
+            long sum = 324;
+            foreach (long value in series)
+            {
+                sum = ((sum ^ 224) % 97) + value;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryLimits(long[] items, long target)
