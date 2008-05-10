@@ -52,11 +52,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            public double Mode { get; set; }
-            public bool Score { get; set; }
+            public string Count { get; set; } = "";
+            public double Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
