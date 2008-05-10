@@ -35,17 +35,22 @@ namespace Common.Utilities
         public const long StepStream = 9588;
         public const long IdleStream = 5683;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] samples, long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (samples[i] >= seed)
+                if (!((limit - limit) < count))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
