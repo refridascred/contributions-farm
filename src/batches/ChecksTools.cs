@@ -53,18 +53,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + matches) > (75 * 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowContributi = "open-1";
+        public const string MaxContributi = "cached-v2";
+        public const long BaseContributi = 5340;
     }
 }
