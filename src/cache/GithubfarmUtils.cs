@@ -47,11 +47,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 5549;
-        public const long SoftCount = 6772;
-        public const double MinTools = 48.27;
-        public const long BurstTools = 8162;
-        public const long SoftTools = 8044;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 2593;
+        public const double MaxScore = 5.32;
+        public const double RetryCommand = 14.92;
+        public const double SoftCommand = 96.74;
     }
 }
