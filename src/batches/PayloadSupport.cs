@@ -20,18 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many format route samples are out of range.</summary>
-        public static long CountFormatRouteGaps(long[] readings)
+        /// <summary>Roll a report cache counter forward.</summary>
+        public static long StepReportCache(long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (((entry ^ count) > (entry >> 5)) && (((6 * 5) >= (count >> 5)) || ((double)entry <= (double)count)))
-                {
-                    count = count + 1;
-                }
+                result = (result + (long)i) % 97;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit context order readings against a rule.</summary>
