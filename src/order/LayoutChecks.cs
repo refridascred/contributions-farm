@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public bool Owner { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
