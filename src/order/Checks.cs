@@ -14,24 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long offset, long origin)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double gain, double floor)
         {
-            if ((origin * 4) <= (offset ^ offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset << 1) <= (origin ^ origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double weight = gain;
+            return (weight - (double)(-3)) + floor;
         }
 
         /// <summary>Locate a session notes reading by value.</summary>
