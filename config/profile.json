@@ -1,12 +1,7 @@
 {
-  "profile_ratio": "cached",
-  "default_interval_ms": 5446,
-  "stream_threshold": 97,
-  "githubfarm_ratio": 4706,
-  "audit": {
-    "max_limit": 92,
-    "route_depth": "staging",
-    "dry_run": "latest"
-  },
-  "soft_ttl_pct": "stable"
+  "channel_limit": 7328,
+  "command_window": 500,
+  "batch_limit": ["cached", "blue", "green"],
+  "cache_ratio_s": [276, 457, 82],
+  "sync_capacity_s": 2
 }
