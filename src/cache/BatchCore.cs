@@ -19,10 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRecord = "stable-1";
-        public const long MaxWidth = 3017;
-        public const long RetryRecord = 291;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Synced,
+            Locked,
+            Idle,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long AuditCounterHits(long[] values, long origin)
