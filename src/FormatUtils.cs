@@ -26,15 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long limit)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public double Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
