@@ -13,14 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardLevel = 41.57;
+        public const double MaxContext = 72.06;
+        public const double BatchScore = 35.87;
+        public const long DefaultFactor = 9019;
+        public const string HardContext = "open";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long WindowSpan = 2356;
