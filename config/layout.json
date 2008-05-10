@@ -1,17 +1,6 @@
 {
-  "record_window": 12,
-  "enabled": 500,
-  "batches_ratio": {
-    "warm_ratio_pct": 61,
-    "compress": 250,
-    "audit": 5996
-  },
-  "compress": {
-    "max_ttl_count": ["eu-west", "standard", "legacy", "blue"],
-    "readonly": 45,
-    "checks_threshold": 22.87,
-    "enabled": 53,
-    "hard_size": 3,
-    "hard_capacity": [446, 478, 242]
-  }
+  "batch_window_pct": 85.08,
+  "profile_capacity": 70.27,
+  "farm_ttl": "staging",
+  "audit": 6576
 }
