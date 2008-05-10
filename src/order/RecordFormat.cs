@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitDepth = 4.26;
-        public const string MaxContributi = "strict";
-        public const double BurstLevel = 42.88;
-        public const long DefaultScore = 7527;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
