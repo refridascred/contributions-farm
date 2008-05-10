@@ -54,31 +54,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long bound, long seed)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            if (((20.0 / 5.0) <= (double)seed) || ((seed & 15) > (bound / 5)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((36 * 5) <= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((273 - bound) >= seed) || ((bound - 966) <= 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Closed,
+            Done,
+            New,
+            Stale,
         }
     }
 }
