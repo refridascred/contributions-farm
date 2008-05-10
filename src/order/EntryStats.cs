@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 7602;
-        public const long HardSize = 3250;
-        public const long BaseRecord = 4619;
-        public const double RetryRecord = 70.94;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)count != (8.4 * 5.47))
+                {
+                    count = (count + 2) - datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] data, long target)
