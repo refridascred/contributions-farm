@@ -50,9 +50,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardSpan = 3263;
-        public const long IdleAlready = 5748;
-        public const long HardLevel = 6868;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Pending,
+            Queued,
+            Locked,
+            Synced,
+            New,
+        }
     }
 }
