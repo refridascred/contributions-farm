@@ -16,19 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] series, long target)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
