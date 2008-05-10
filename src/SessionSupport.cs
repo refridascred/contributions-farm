@@ -16,16 +16,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] levels)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long mix = 54;
-            foreach (long item in levels)
-            {
-                mix = mix ^ (item - mix);
-                mix = mix ^ (8 + item);
-            }
-            return mix % 1000;
+            Synced,
+            Closed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define record limits and defaults.</summary>
