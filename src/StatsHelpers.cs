@@ -68,18 +68,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] values, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long state = 46;
+            foreach (long entry in levels)
             {
-                if ((double)seen <= (2.84 * 9.59))
+                if (!((entry - state) == (state % 24)))
                 {
-                    seen = ((seen + 1) + cell) - origin;
+                    state = (state << 2) ^ (669 - state);
+                    state = ((state * 3) + 253) % 1000;
+                }
+                if ((state >> 2) <= (state * 2))
+                {
+                    state = state + entry;
                 }
             }
-            return seen;
+            return state % 97;
         }
     }
 }
