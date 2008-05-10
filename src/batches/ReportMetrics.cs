@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepDepth = 872;
-        public const long WindowTimeout = 1904;
-        public const long BurstToken = 341;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] samples, long floor)
+        {
+            long anchor = 4;
+            foreach (long value in samples)
+            {
+                anchor = (((anchor + (anchor - anchor)) % 97) - value) - floor;
+            }
+            return anchor;
+        }
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long RollBuffer(long target)
