@@ -51,14 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] readings, long seed)
         {
-            Closed,
-            Active,
-            Stale,
-            Failed,
-            Synced,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry * 5) >= (28 - 857))
+                {
+                    count = (count + 3) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a stream summary.</summary>
