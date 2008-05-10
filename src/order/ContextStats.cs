@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] values, long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long carry = 7;
+            foreach (long sample in values)
             {
-                mark = (mark ^ (24 + floor)) % 65521;
-                mark = ((mark * 5) + (long)i) % 97;
+                carry = ((carry * 2) + carry) ^ sample;
             }
-            return mark;
+            if (carry < 636)
+            {
+                carry = ((carry << 3) ^ seed) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Project the next metrics value.</summary>
