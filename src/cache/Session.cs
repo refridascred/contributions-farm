@@ -37,25 +37,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank editor account input into a small class.</summary>
-        public static long GradeEditorAccount(long floor, long seed)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] items)
         {
-            long span = floor ^ seed;
-            if ((floor >> 4) < (seed / 2))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor + floor) > (span + span))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] ^ items[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up counter samples.</summary>
