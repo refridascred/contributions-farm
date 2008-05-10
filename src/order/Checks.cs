@@ -50,14 +50,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Failed,
-            Paused,
-            Draft,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 11.87;
+        public const double WindowOrder = 13.74;
+        public const double MinOrder = 1.06;
+        public const long MaxCount = 5563;
     }
 }
