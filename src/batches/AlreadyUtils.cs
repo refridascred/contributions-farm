@@ -58,13 +58,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            long mix = 875;
+            foreach (long reading in samples)
+            {
+                mix = ((mix + 441) % 101) ^ reading;
+            }
+            return mix % 4096;
         }
     }
 }
