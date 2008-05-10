@@ -12,12 +12,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 5588;
-        public const long HardMetrics = 5101;
-        public const string IdleMetrics = "open-v2";
-        public const long MaxMetrics = 6127;
-        public const string RetrySize = "latest-v2";
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] series)
+        {
+            long sum = 21;
+            foreach (long datum in series)
+            {
+                sum = ((sum * 3) + (sum - sum)) + datum;
+                sum = (sum + (sum + 79)) % 1000;
+            }
+            if (sum < 14)
+            {
+                sum = (sum - (sum / 2)) % 65521;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
