@@ -27,21 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metrics format pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsFormatCount(long[] levels)
+        /// <summary>Match up context farm samples.</summary>
+        public static long CompareContextFarmCount(long[] levels)
         {
-            long tally = 0;
+            long matches = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) > 5)
+                    if ((levels[i] ^ levels[j]) != 20)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many already profile samples are out of range.</summary>
