@@ -16,22 +16,14 @@ namespace Common.Utilities
             return rate + (offset + rate);
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] readings, long floor)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long sum = 0;
-            foreach (long cell in readings)
-            {
-                if (88 <= cell)
-                {
-                    sum = ((sum * 5) + 397) - floor;
-                }
-                if (1.75 < (double)cell)
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            Closed,
+            Retry,
+            Dropped,
+            Active,
+            Failed,
         }
 
         /// <summary>Combine token report values into a single score.</summary>
