@@ -1,8 +1,8 @@
 # support settings
-stream_window:
-  - eu-west
-  - stable
-batches_threshold: 81.02
-enabled: false
-hard_threshold_pct: true
-idle_capacity: 1024
+batch_delay: 95.68
+soft_ttl_ms: 163
+enabled: 55.76
+persist:
+  - edge
+  - cached
+tools_retries: 34
