@@ -31,12 +31,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultBudget = "open-edge";
-        public const string BaseFilter = "latest-v2";
-        public const string MinInterval = "stable-v2";
-        public const long DefaultCount = 745;
-        public const long CacheDepth = 9219;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((8.64 / 3.0) <= (double)(-88))
+                {
+                    seen = ((seen + 1) ^ entry) + floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every filter metric entry stays within the limit.</summary>
         public static bool GuardFilterMetricRange(long[] items, long floor)
