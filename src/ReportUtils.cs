@@ -61,13 +61,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
