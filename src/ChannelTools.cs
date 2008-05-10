@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetrySize = "stable-v2";
-        public const long BurstBatches = 3144;
-        public const long StepDepth = 526;
-        public const long BatchBatches = 7554;
-        public const long BatchBudget = 8841;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string SoftSupport = "stable-edge";
