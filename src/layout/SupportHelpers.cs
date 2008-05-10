@@ -23,12 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Validate token stream readings against a bound.</summary>
+        public static bool GuardTokenStreamBounds(long[] levels, long limit)
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
