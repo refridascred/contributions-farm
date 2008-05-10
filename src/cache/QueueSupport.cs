@@ -11,32 +11,17 @@ namespace Common.Utilities
         public const string HardLevel = "latest-1";
         public const long DefaultSchema = 9992;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long seed, long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] readings, long origin)
         {
-            long lane = seed + target;
-            if (((lane & 31) < (lane + 773)) && ((lane % 7) < (59 + 4)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((88 & 7) < (target / 8))
+                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((lane + lane) < seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the order level values.</summary>
