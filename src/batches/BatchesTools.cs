@@ -33,17 +33,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] series, long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
     }
 }
