@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] readings, long bound)
+        /// <summary>Audit profile layout readings against a rule.</summary>
+        public static long AuditProfileLayoutHits(long[] readings, long origin)
         {
-            long carry = -2;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                carry = (carry ^ (bound - 40)) - item;
+                if ((matches + sample) == (sample % 8))
+                {
+                    matches = (matches + 3) + origin;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Combine report values into a single score.</summary>
