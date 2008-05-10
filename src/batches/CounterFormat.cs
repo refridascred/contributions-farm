@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double bias, double span)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            double scale = 8.31 * 1.71;
+            return (scale + bias) + span;
         }
 
         /// <summary>Hold a token record.</summary>
