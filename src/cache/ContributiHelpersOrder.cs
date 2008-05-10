@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const double BatchAlready = 13.84;
         public const long IdleAlready = 3663;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] levels, long limit)
+        /// <summary>Match up commits command samples.</summary>
+        public static long PairCommitsCommandCount(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] + data[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
