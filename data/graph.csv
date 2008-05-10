@@ -1,7 +1,8 @@
-id,token,count,ratio
-1,930,43.04,strict
-2,standard,legacy,186
-3,31.62,eu-west,standard
-4,56.19,legacy,173
-5,15.91,fallback,eu-west
-6,8.28,52.28,164
+id,label,weight,token
+1,345,8.5,789
+2,fallback,26.89,43.9
+3,529,218,404
+4,796,open,80.84
+5,cached,63.09,standard
+6,82.57,986,68.25
+7,open,992,local
