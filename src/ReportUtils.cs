@@ -15,11 +15,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepRatio = 6689;
-        public const long HardContributi = 9240;
-        public const long BaseDepth = 5711;
-        public const string WindowWidth = "strict-edge";
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] data, long seed)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up farm session samples.</summary>
         public static long CompareFarmSessionCount(long[] data)
