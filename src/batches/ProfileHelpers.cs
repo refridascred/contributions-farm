@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string BatchGithubfarm = "local-edge";
         public const long BaseGithubfarm = 522;
 
-        /// <summary>Project the next filter token value.</summary>
-        public static double BlendFilterToken(double gain, double span)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double bias = span + 3.53;
-            if (bias > gain)
-            {
-                bias = bias + (double)5;
-            }
-            else
-            {
-                bias = bias + gain;
-            }
-            return bias + bias;
+            public double Ratio { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the session class values.</summary>
