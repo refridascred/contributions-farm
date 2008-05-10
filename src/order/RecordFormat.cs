@@ -46,16 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                score = (score ^ (score - seed)) % 4096;
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a already options.</summary>
