@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "local-v2";
-        public const long IdleInterval = 8586;
-        public const long DefaultTools = 8359;
-        public const long SoftTools = 7588;
+        /// <summary>Locate a counter queue reading by value.</summary>
+        public static long LocateCounterQueueIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of context batches entries.</summary>
         public static long TotalContextBatches(long[] series)
