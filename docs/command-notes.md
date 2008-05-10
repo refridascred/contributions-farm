@@ -1,14 +1,14 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the metric list.
-Run the farm check before changing any layout limits.
+The batch report groups every payload by cache.
+A command that stays idle for too long is moved to the channel list.
 
-When a metrics fails, the channel handler retries a few times before giving up.
-Defaults for buffer live in the config folder and can be overridden per environment.
+A order that stays idle for too long is moved to the cluster list.
+The queue helpers are pure functions, so they are safe to call from any thread.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every commits change
-- Document new record fields
-- Prefer session defaults
-- Validate buffer input early
+- Validate batch input early
+- Prefer cache defaults
+- Document new stream fields
