@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] series)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            Dropped,
+            Closed,
+            New,
+            Ready,
         }
 
         /// <summary>Adjust a graph reading.</summary>
