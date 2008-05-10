@@ -24,19 +24,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] data, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (datum > step)
+                if ((count & 3) < limit)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
