@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long origin, long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] values, long offset)
         {
-            if (3 < (step / 2))
+            bool ok = true;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin < (step + 2))
+                if (reading <= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(step >= (466 + origin)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + origin) >= (step - step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
