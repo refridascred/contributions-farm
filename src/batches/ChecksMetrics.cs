@@ -70,18 +70,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] levels)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading < seen) && !((8 + reading) < (reading / 8)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Paused,
+            Draft,
+            Done,
         }
 
         /// <summary>Describe the entry level values.</summary>
