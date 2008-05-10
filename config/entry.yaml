@@ -1,26 +1,13 @@
 # entry settings
-cache_size_pct: 60
-enabled: false
-idle_capacity_s: staging
-idle_threshold:
-  checks_depth:
-    enabled:
-      - 335
-      - 455
-      - 286
-      - 61
-    flush_retries_count: 60
-    max_interval: 95.03
-    batch_delay: cached
-    cache_threshold_pct: stable
-  metrics_depth:
-    - edge
-    - primary
-    - open
-    - staging
-  batch_ratio: fallback
-  verbose: 60
-  compress: open
-  session_threshold: 250
-cache_retries: 50
-burst_size: false
+checks_capacity: 250
+audit:
+  - strict
+  - eu-west
+  - legacy
+  - open
+warm_capacity_count: 30
+entry_threshold:
+  - 57
+  - 71
+soft_threshold_s: legacy
+default_ttl_s: cached
