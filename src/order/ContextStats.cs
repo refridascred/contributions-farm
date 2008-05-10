@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first queue command entry that matches the target.</summary>
-        public static long LocateQueueCommandIndex(long[] readings, long floor)
+        /// <summary>Iterate the channel stream series from a seed.</summary>
+        public static long IterateChannelStream(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
+                score = score ^ (long)i;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
