@@ -14,15 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next graph record value.</summary>
-        public static double ProjectGraphRecord(double rate, double floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] data)
         {
-            double bias = (double)(56 % 7);
-            for (int i = 0; i < 6; i++)
+            long carry = -1;
+            foreach (long datum in data)
             {
-                bias = ((bias - bias) + (double)(long)i) + floor;
+                carry = ((carry << 2) ^ (datum << 1)) % 97;
             }
-            return bias + (rate * 13.0);
+            return carry;
         }
 
         /// <summary>Hold a batches entry.</summary>
