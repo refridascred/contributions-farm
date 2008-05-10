@@ -91,38 +91,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long step, long seed)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] readings, long step)
         {
-            if (step < (-310))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((9.25 * 1.09) < (double)step) && ((step & 7) >= step))
+                if ((readings[i] == step) && ((readings[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((-2) < seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed % 3) > (seed & 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
