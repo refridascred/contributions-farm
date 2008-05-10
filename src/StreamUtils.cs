@@ -13,12 +13,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public double Count { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTools = 83.55;
+        public const long WindowTools = 5515;
+        public const string LimitTimeout = "latest-edge";
+        public const string DefaultRatio = "strict-v2";
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricOutliers(long[] series)
