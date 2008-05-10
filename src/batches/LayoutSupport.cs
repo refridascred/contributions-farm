@@ -83,11 +83,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryNotes = "primary-1";
-        public const long WindowNotes = 865;
-        public const long IdleRatio = 8846;
-        public const double BatchSpan = 62.57;
-        public const long DefaultNotes = 2016;
+        /// <summary>Grade a cluster support value against two limits.</summary>
+        public static long RankClusterSupport(long floor, long limit)
+        {
+            if ((floor >> 1) > floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit % 100) >= (floor + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit & 1) >= (limit - 689))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
