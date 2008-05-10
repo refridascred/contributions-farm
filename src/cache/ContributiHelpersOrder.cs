@@ -14,15 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a checks order counter forward.</summary>
-        public static long StepChecksOrder(long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] levels, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if (entry >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
