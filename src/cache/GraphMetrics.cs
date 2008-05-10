@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count window layout pairs that satisfy a relation.</summary>
-        public static long CompareWindowLayoutCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftBatches = 36.81;
+        public const long LimitSize = 74;
+        public const double BaseBatches = 18.49;
+        public const long WindowBatches = 3748;
+        public const long RetryBatches = 3704;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long AuditGithubfarmOutliers(long[] data)
