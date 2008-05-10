@@ -24,19 +24,11 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] series, long seed)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((value << 1) > 24)
-                {
-                    hits = (hits + 1) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxLevel = 2.02;
+        public const long MinDepth = 2373;
+        public const long RetryBudget = 3970;
+        public const long StepFactor = 7012;
 
         /// <summary>Roll a order counter forward.</summary>
         public static long RollOrder(long bound)
