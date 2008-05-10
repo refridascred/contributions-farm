@@ -1,28 +1,8 @@
 # githubfarm settings
-buffer_capacity: false
-persist: 6157
-stream_ratio:
-  - strict
-  - cached
-  - green
+cluster_interval: 25
+enabled: standard
+poll_delay_pct: 500
+hard_capacity: 3472
+retry_ratio_count:
+  - primary
   - open
-idle_interval: 67.8
-cache_depth_pct:
-  base_ttl_ms:
-    strict: false
-    cache_retries: 38.7
-    cache_capacity: 15.62
-    dry_run:
-      - eu-west
-      - strict
-    audit: latest
-    warm_timeout: true
-  readonly: standard
-  min_window: 8082
-  min_capacity_count: 30
-  hard_interval_pct:
-    - cached
-    - open
-    - stable
-    - blue
-cache_retries_s: fallback
