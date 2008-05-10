@@ -1,6 +1,32 @@
 {
-  "payload_timeout": [477, 436],
-  "checks_threshold": [304, 495, 183],
-  "already_delay": "edge",
-  "audit": "legacy"
+  "hard_limit": "cached",
+  "idle_threshold_ms": {
+    "commits_ttl": "open",
+    "batch_capacity_count": {
+      "soft_delay_s": 61,
+      "default_interval_s": "fallback",
+      "sync_size": 6174,
+      "record_depth": true,
+      "cache_ratio": "green",
+      "filter_delay": 9222
+    },
+    "session_size": {
+      "report_limit": [350, 160, 58],
+      "strict": 60,
+      "cache_window_count": ["cached", "staging", "strict", "strict"],
+      "warm_interval": 27.08
+    },
+    "hard_threshold": 76,
+    "batches_timeout": {
+      "base_timeout_pct": [447, 487, 145],
+      "burst_limit": [245, 200],
+      "base_limit_count": "cached",
+      "max_size": 87,
+      "cache_retries": "strict"
+    }
+  },
+  "persist": ["staging", "standard", "open"],
+  "base_capacity": 85.85,
+  "hard_window_count": ["local", "blue", "cached"],
+  "hard_threshold": 100
 }
