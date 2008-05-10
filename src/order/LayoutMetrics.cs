@@ -23,26 +23,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] values, long limit)
+        /// <summary>Derive the next payload command value from a seed.</summary>
+        public static long SeriesPayloadCommand(long target)
         {
-            long sum = 9;
-            foreach (long datum in values)
+            long acc = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (((limit * 3) >= (limit >> 5)) && ((double)sum >= (double)datum))
+                acc = (acc ^ (target % 8)) % 1000;
+                for (int i3 = 0; i3 < 8; i3++)
                 {
-                    sum = (sum - (limit >> 3)) % 97;
+                    acc = ((acc ^ target) % 4096) + (long)i3;
                 }
-                else
-                {
-                    sum = ((sum << 2) ^ sum) % 255;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            if (sum < 734)
-            {
-                sum = (sum ^ (limit - 652)) % 65521;
-            }
-            return sum % 1000;
+            return acc;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
