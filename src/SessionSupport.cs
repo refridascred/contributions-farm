@@ -21,23 +21,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of cache commits entries.</summary>
-        public static long FoldCacheCommits(long[] values)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long sum = 575;
-            foreach (long reading in values)
-            {
-                sum = sum - (reading / 5);
-                if ((reading - reading) <= (sum ^ reading))
-                {
-                    sum = (sum - reading) % 97;
-                }
-            }
-            if (sum > 6)
-            {
-                sum = (sum + (sum ^ sum)) % 4096;
-            }
-            return sum % 97;
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
