@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count cache stream pairs that satisfy a relation.</summary>
-        public static long PairCacheStreamCount(long[] samples)
+        /// <summary>Combine notes session values into a single score.</summary>
+        public static long ScoreNotesSession(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 31;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(entry >= (score << 3)))
                 {
-                    if ((samples[i] + samples[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score + score) % 4096;
+                }
+                if ((origin % 97) == (origin % 3))
+                {
+                    score = ((score * 4) + (origin & 1)) % 1000;
+                }
+                else
+                {
+                    score = score + (entry - origin);
                 }
             }
-            return tally;
+            if (score > 55)
+            {
+                score = (score + (score >> 1)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
