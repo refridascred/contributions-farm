@@ -54,21 +54,12 @@ namespace Common.Utilities
         public const string BatchScore = "legacy-1";
         public const long CacheDepth = 7626;
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Failed,
+            Pending,
         }
 
         /// <summary>Scale a batches report figure with a bias.</summary>
