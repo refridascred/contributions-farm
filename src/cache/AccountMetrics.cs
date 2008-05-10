@@ -12,14 +12,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Pending,
-            Draft,
+            Done,
+            Locked,
             Dropped,
-            Retry,
-            Ready,
         }
 
         /// <summary>Measure how many commits cache samples are out of range.</summary>
