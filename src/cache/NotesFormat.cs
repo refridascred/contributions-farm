@@ -19,25 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long offset, long target)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            long offset2 = offset ^ target;
-            if (71 <= (offset - offset2))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset > (double)7)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many profile buffer samples are out of range.</summary>
