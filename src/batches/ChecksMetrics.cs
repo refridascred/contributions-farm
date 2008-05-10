@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] data)
+        /// <summary>Digest a series of format githubfarm entries.</summary>
+        public static long ScoreFormatGithubfarm(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 9;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell + result) <= (cell ^ (long)samples.Length))
                 {
-                    if ((data[i] ^ data[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    result = result + (result + limit);
                 }
+                result = (result * 3) + (result & 3);
             }
-            return count;
+            if (result > 7)
+            {
+                result = (result + (result * 4)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Accumulate stats buffer samples.</summary>
