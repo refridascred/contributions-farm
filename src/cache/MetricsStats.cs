@@ -57,11 +57,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftWidth = "open-edge";
-        public const long MaxMetrics = 2479;
-        public const long IdleMetrics = 1647;
-        public const long SoftMetrics = 8957;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] levels, long step)
+        {
+            long anchor = 899;
+            foreach (long item in levels)
+            {
+                anchor = (((anchor * 4) + (61 ^ (long)levels.Length)) + item) + step;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiGaps(long[] samples, long step)
