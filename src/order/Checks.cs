@@ -25,19 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double rate, double offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] series)
         {
-            double ratio = rate;
-            if (ratio >= 0.3)
+            long sum = 797;
+            foreach (long reading in series)
             {
-                ratio = ratio + rate;
+                sum = ((sum ^ (sum / 6)) % 65521) + reading;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - rate) + (double)(long)i;
-            }
-            return ratio - (offset - 3.2);
+            return sum;
         }
 
         /// <summary>Describe the session class values.</summary>
