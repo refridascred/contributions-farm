@@ -1,7 +1,11 @@
 {
-  "metric_size": 92.26,
-  "warm_window": 69.98,
-  "readonly": 72.27,
-  "batch_limit_ms": 26.91,
-  "sync_ratio": [23, 215, 309]
+  "retry_ratio_count": ["local", "primary"],
+  "githubfarm_retries": {
+    "audit": "standard",
+    "editor_retries": true,
+    "contributi_timeout": false
+  },
+  "enabled": "primary",
+  "sync_ratio_ms": 5905,
+  "metrics_timeout": 26
 }
