@@ -1,7 +1,20 @@
 {
-  "layout_ttl": 100,
-  "counter_threshold": 76,
-  "verbose": 37,
-  "idle_interval_count": 1024,
-  "graph_window": "stable"
+  "queue_timeout": {
+    "warm_timeout_count": 7187,
+    "poll_interval_ms": "staging",
+    "dry_run": {
+      "persist": true,
+      "poll_timeout_count": 43,
+      "idle_timeout_pct": false
+    }
+  },
+  "schema_size": "open",
+  "flush_size": ["green", "latest", "local", "edge"],
+  "metric_retries": 25.02,
+  "tools_timeout": {
+    "cache_timeout": 1024,
+    "base_capacity_pct": false,
+    "window_delay": 100
+  },
+  "default_depth": true
 }
