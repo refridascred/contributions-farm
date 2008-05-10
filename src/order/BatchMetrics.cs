@@ -25,18 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] data, long seed)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seed >= (cell / 3))
+                if (series[i] == floor)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
