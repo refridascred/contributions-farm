@@ -1,9 +1,6 @@
-id,state
-1,291
-2,staging
-3,5.48
-4,624
-5,9.81
-6,61.53
-7,62.0
-8,20
+id,region,token,label,count
+1,411,38.22,166,25.91
+2,edge,89.09,standard,863
+3,390,green,edge,910
+4,1,73.53,local,43
+5,178,local,31.27,standard
