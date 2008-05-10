@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] readings)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long origin)
         {
-            long total = 5;
-            foreach (long sample in readings)
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((sample & 3) > sample)
-                {
-                    total = ((total << 2) ^ (7 ^ sample)) % 1000;
-                }
+                mix = mix - (mix << 1);
+                mix = ((mix * 4) + origin) % 65521;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return total % 97;
+            return mix;
         }
 
         /// <summary>Digest a series of already entries.</summary>
