@@ -23,19 +23,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] levels, long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] readings, long target)
         {
-            long anchor = 2;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                anchor = (((anchor * 3) + anchor) % 65521) ^ entry;
+                if (reading <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (anchor < 63)
-            {
-                anchor = ((anchor << 2) ^ (target >> 3)) % 4096;
-            }
-            return anchor % 65521;
+            return valid;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
