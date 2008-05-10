@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 2107;
-        public const long BaseGithubfarm = 4874;
-        public const long DefaultSpan = 8103;
-        public const long RetryGithubfarm = 9764;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] levels, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
