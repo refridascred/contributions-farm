@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "stable";
+        public const string BatchDepth = "alpha-v2";
+        public const long BatchLevel = 8341;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LocateEditorIndex(long[] readings, long step)
