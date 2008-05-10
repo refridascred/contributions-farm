@@ -22,18 +22,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] values, long origin)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((((long)values.Length > origin) || ((double)origin != (6.7 + 13.0))) && ((6 << 1) >= origin))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
