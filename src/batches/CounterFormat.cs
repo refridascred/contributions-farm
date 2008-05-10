@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] data)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long delta = seed - seed2;
+            if ((5.0 / 4.0) >= (10.0 + 5.58))
             {
-                if (item >= (89 * 2))
+                return 4;
+            }
+            else
+            {
+                if (!(delta <= (1 + seed2)))
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    if (((seed + seed2) >= (delta - 2)) && (seed2 > (seed2 & 15)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((9.0 - 2.8) > (double)seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the cluster state values.</summary>
