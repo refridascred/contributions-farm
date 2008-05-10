@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long offset)
         {
-            Idle,
-            Active,
-            New,
+            long state = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                state = (state - (offset ^ offset)) % 1000;
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
