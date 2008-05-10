@@ -1,10 +1,13 @@
 # entry settings
-compress: stable
-graph_depth: 5535
-stats_retries:
-  - 492
-  - 266
-notes_threshold:
-  - 80
-  - 120
-audit: green
+profile_depth: 71
+min_delay_ms:
+  - blue
+  - standard
+batches_limit: eu-west
+poll_limit: legacy
+soft_ttl_ms: 41.6
+idle_threshold_s:
+  - 275
+  - 21
+  - 206
+  - 496
