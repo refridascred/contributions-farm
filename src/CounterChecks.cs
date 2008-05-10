@@ -21,11 +21,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 3286;
-        public const long BurstAlready = 4463;
-        public const long IdleAlready = 4446;
-        public const string RetryAlready = "legacy-edge";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxBudget = 3148;
+        public const double CacheLayout = 24.96;
+        public const string CacheCount = "primary-1";
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
