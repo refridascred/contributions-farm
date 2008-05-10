@@ -1,5 +1,19 @@
 # entry settings
-soft_capacity_ms: strict
-session_threshold: 27.16
-hard_ratio_pct: 98.19
-hard_size: 1024
+idle_limit_pct: stable
+route_ttl: fallback
+base_limit: 51.96
+hard_threshold:
+  burst_size_s:
+    - cached
+    - stable
+    - strict
+  sync_depth: true
+  format_timeout: 18.18
+  base_limit_count:
+    flush_depth: legacy
+    strict: 1527
+    burst_size: true
+    idle_delay: 8317
+  default_ttl_s: eu-west
+cluster_capacity: true
+strict: false
