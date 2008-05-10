@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double rate, double bias)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double bias2 = rate - bias;
-            if (bias2 >= 15.0)
-            {
-                bias2 = bias2 - (double)7;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 + 19.0;
+            Failed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
