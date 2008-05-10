@@ -19,13 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Done,
-            Stale,
-            Retry,
-            Ready,
+            Queued,
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
