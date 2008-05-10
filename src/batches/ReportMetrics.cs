@@ -20,26 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long sum = 9;
-            foreach (long cell in data)
-            {
-                if (0 >= (cell - cell))
-                {
-                    sum = ((sum * 2) + (sum - sum)) % 4096;
-                }
-                else
-                {
-                    sum = (sum - (cell & 15)) % 1000;
-                }
-            }
-            if (sum > 5)
-            {
-                sum = sum - 792;
-            }
-            return sum;
+            Idle,
+            Locked,
+            Active,
+            Retry,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
