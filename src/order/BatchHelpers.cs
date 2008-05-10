@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long seed, long seed2)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            long delta = seed ^ seed2;
-            if ((double)delta >= (17.0 / 3.0))
+            long state = 0;
+            foreach (long item in samples)
             {
-                return 4;
+                state = (state * 3) + (item << 1);
             }
-            else
+            if (state < 6)
             {
-                if ((36 % 7) > seed2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
+                state = (state + (state << 2)) % 4096;
             }
+            return state;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
