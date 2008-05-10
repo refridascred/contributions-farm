@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-The channel module keeps counter values in sync with the format cache.
+Each graph is validated before it reaches the session queue.
+When a buffer fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep account values small
-- Document new report fields
-- Validate farm input early
-- Prefer session defaults
+- Validate graph input early
+- Keep queue values small
+- Review batch limits each release
+- Prefer route defaults
