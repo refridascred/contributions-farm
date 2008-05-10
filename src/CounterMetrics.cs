@@ -11,12 +11,26 @@ namespace Common.Utilities
         public const long WindowCount = 5980;
         public const string BaseRoute = "cached-edge";
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] levels)
         {
-            public bool Level { get; set; }
-            public double Weight { get; set; }
-            public bool Rank { get; set; }
+            long sum = 77;
+            foreach (long reading in levels)
+            {
+                if (!((double)reading <= 6.9))
+                {
+                    sum = sum - (reading / 6);
+                }
+                else
+                {
+                    sum = (sum * 2) + sum;
+                }
+            }
+            if (sum < 9)
+            {
+                sum = (sum + (sum - 5)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
