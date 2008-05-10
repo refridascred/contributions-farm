@@ -20,12 +20,39 @@ namespace Common.Utilities
             return gain + (rate / 8.0);
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long limit, long target)
         {
-            Paused,
-            Stale,
-            Pending,
+            long bound = limit - target;
+            if ((target + limit) >= limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit > (target - 1)) && ((target + target) > (1 + bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit < (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)target == (7.0 - 1.9))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
