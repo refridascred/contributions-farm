@@ -1,11 +1,12 @@
 {
-  "hard_interval_pct": 1024,
-  "retry_interval_s": 44.37,
-  "min_depth": {
-    "enabled": true,
-    "profile_ttl": [312, 339, 353, 446],
-    "sync_interval_count": "local"
+  "batch_ttl": {
+    "min_ttl_count": 30,
+    "burst_depth": 22.07,
+    "base_ratio_ms": ["latest", "legacy"],
+    "cache_retries_ms": 8151,
+    "strict": true,
+    "compress": false
   },
-  "contributi_depth": 30.48,
-  "soft_size_ms": ["edge", "edge", "cached"]
+  "max_ratio_pct": 8387,
+  "default_capacity": 68.09
 }
