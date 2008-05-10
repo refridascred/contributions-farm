@@ -1,7 +1,6 @@
 {
-  "burst_capacity": "open",
-  "persist": 60,
-  "strict": "blue",
-  "audit": 96.43,
-  "enabled": "green"
+  "commits_depth": false,
+  "base_window_count": "legacy",
+  "strict": 90,
+  "cache_window": true
 }
