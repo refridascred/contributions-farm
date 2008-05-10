@@ -66,21 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] items)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 8;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((carry >> 5) < (origin + value))
                 {
-                    if ((items[i] ^ items[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry ^ (value / 8);
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
