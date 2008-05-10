@@ -45,15 +45,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] readings, long offset)
+        /// <summary>Blend two buffer contributi measurements.</summary>
+        public static double ProjectBufferContributi(double rate, double bias)
         {
-            long result = 2;
-            foreach (long item in readings)
+            double mean = rate;
+            if (mean > (double)(-199))
             {
-                result = (((result ^ (0 / 4)) % 4096) ^ item) - offset;
+                mean = mean - (double)9;
             }
-            return result;
+            return mean + (5.4 - bias);
         }
     }
 }
