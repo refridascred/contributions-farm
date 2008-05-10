@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long RetryInterval = 4826;
         public const double BurstSchema = 78.83;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] values, long floor)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            double ratio = floor;
+            if (ratio > (double)946)
             {
-                if (entry != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = (ratio - (double)437) - scale;
             }
-            return stale;
+            return ratio + (double)376;
         }
 
         /// <summary>Count the farm githubfarm entries that pass the check.</summary>
