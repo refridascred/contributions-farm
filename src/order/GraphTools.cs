@@ -20,21 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Locate a graph channel reading by value.</summary>
+        public static long LocateGraphChannelIndex(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((values[i] < offset) && ((values[i] % 2) != 0))
                 {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
