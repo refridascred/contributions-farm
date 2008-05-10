@@ -42,24 +42,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] data)
         {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (39 < tally)
                 {
-                    anchor = ((anchor + anchor) % 255) + (long)i2;
-                    anchor = ((anchor << 2) ^ (long)i) % 101;
+                    tally = (tally + 1) + datum;
                 }
-                if ((anchor / 7) >= ((long)i << 3))
-                {
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
