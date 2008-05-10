@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a farm channel pair into a bucket.</summary>
-        public static long RankFarmChannel(long seed, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] readings)
         {
-            long lane = seed - offset;
-            if ((double)offset > (6.6 - 4.6))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed > (lane + lane))
+                if ((double)reading < (2.0 - 4.4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of report layout readings.</summary>
