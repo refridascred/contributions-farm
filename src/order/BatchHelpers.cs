@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] series, long limit)
+        /// <summary>Locate a stats contributi reading by value.</summary>
+        public static long FindStatsContributiIndex(long[] series, long floor)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] == limit) && ((series[i] % 3) != 0))
+                if (series[i] >= floor)
                 {
                     return (long)i;
                 }
