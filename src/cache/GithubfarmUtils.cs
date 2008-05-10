@@ -40,19 +40,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Check that every channel counter entry stays within the limit.</summary>
-        public static bool ValidateChannelCounterLimits(long[] readings, long bound)
+        /// <summary>Accumulate order token samples.</summary>
+        public static long FoldOrderToken(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long state = 234;
+            foreach (long entry in items)
             {
-                if (entry <= bound)
+                state = state - (floor % 2);
+                if (((entry - state) <= floor) || ((3.23 / 8.0) >= (15.0 - 14.0)))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return state;
         }
     }
 }
