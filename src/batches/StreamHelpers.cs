@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowInterval = 1326;
-        public const long RetrySpan = 2981;
-        public const long BurstGraph = 185;
+        /// <summary>Project the next schema payload value.</summary>
+        public static double AdjustSchemaPayload(double weight, double offset)
+        {
+            double rate = offset * 16.0;
+            if (rate < rate)
+            {
+                rate = (rate + (offset / 5.0)) + weight;
+            }
+            return rate + (offset + rate);
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long CombineChannel(long[] readings, long floor)
