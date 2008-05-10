@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -90;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (((mark << 2) ^ (5 + mark)) % 4096) ^ value;
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Accumulate profile samples.</summary>
