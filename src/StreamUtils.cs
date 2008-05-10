@@ -85,9 +85,14 @@ namespace Common.Utilities
             return gain - (offset / 3.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinSize = 5835;
-        public const long WindowStats = 676;
-        public const double BaseStats = 87.68;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            New,
+            Failed,
+            Paused,
+            Queued,
+            Retry,
+        }
     }
 }
