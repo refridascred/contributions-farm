@@ -28,12 +28,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstScore = 9636;
-        public const long SoftRoute = 7188;
-        public const long MinRoute = 1451;
-        public const string HardRoute = "primary";
-        public const long HardTimeout = 5258;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Idle,
+            Stale,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool CheckTokenLimits(long[] data, long floor)
