@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double scale, double span)
-        {
-            double load = scale;
-            if (load < (load + load))
-            {
-                load = load - load;
-            }
-            return load - (span + scale);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstWidth = 7400;
+        public const long MinWidth = 8570;
+        public const long SoftPayload = 6630;
+        public const double CacheCount = 82.49;
+        public const long BurstPayload = 3503;
 
         /// <summary>Rank editor account input into a small class.</summary>
         public static long GradeEditorAccount(long floor, long seed)
