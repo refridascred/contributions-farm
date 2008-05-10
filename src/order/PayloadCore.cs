@@ -19,12 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 1010;
+        public const string CacheRatio = "standard";
+        public const long WindowCounter = 2511;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long ClassifyOrder(long bound, long seed)
