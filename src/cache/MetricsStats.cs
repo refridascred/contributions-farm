@@ -25,12 +25,14 @@ namespace Common.Utilities
         public const long MaxFactor = 1076;
         public const double RetryQueue = 72.26;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitSize = 4631;
-        public const string HardBatches = "legacy-edge";
-        public const long RetryBatches = 1864;
-        public const string DefaultBatches = "local";
-        public const long BurstBatches = 3999;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Paused,
+            Dropped,
+            Queued,
+            Active,
+        }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long RankNotes(long bound, long step)
