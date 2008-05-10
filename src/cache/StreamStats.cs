@@ -30,19 +30,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate farm queue readings against a bound.</summary>
-        public static bool GuardFarmQueueLimits(long[] data, long bound)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long score = 94;
+            foreach (long reading in items)
             {
-                if (sample != bound)
+                if ((reading % 100) <= (35 * 5))
                 {
-                    stale = false;
-                    break;
+                    score = ((score << 2) ^ (22 << 3)) % 65521;
+                }
+                else
+                {
+                    score = score - (score ^ 9);
                 }
             }
-            return stale;
+            return score % 1000;
         }
 
         /// <summary>Fold a list of commits payload readings.</summary>
