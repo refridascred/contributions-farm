@@ -1,15 +1,31 @@
 # support settings
-batch_retries_ms:
-  - stable
-  - green
-buffer_capacity: true
-max_size_ms:
-  contributi_delay: green
-  batch_capacity:
-    soft_threshold_pct: 29.64
-    profile_interval:
-      - 5
-      - 149
-    retry_window: 62.34
-  payload_interval: 5577
-  dry_run: local
+cache_depth: 70
+payload_capacity:
+  burst_timeout_count: blue
+  strict: false
+  enabled:
+    - 402
+    - 149
+    - 78
+    - 122
+  filter_size: true
+  idle_window: 0.76
+  hard_threshold_pct:
+    already_retries:
+      - 102
+      - 491
+      - 116
+      - 431
+    verbose: 250
+    channel_retries: legacy
+    idle_delay:
+      - cached
+      - latest
+      - standard
+      - cached
+    min_window_count: primary
+    base_depth_count: false
+poll_ratio: false
+max_depth: green
+poll_capacity: blue
+filter_retries: false
