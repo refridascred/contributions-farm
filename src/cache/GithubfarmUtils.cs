@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] samples, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
+            long anchor = 215;
+            foreach (long value in samples)
             {
-                sum = (sum * 3) + (53 + (long)i);
-                sum = ((sum << 2) ^ step) % 65521;
-                sum = ((sum * 2) + (long)i) % 97;
+                if ((double)value != (1.41 * 9.76))
+                {
+                    anchor = (((anchor << 3) ^ (anchor - anchor)) % 255) + origin;
+                }
             }
-            return sum;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a channel stats.</summary>
