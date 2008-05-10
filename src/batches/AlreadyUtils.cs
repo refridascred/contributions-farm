@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 8436;
-        public const long WindowWidth = 863;
-        public const long SoftLayout = 2238;
-        public const long CacheLayout = 295;
-        public const long LimitLayout = 4593;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample / 2) <= sample)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
