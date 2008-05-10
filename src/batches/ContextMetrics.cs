@@ -19,27 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] items)
-        {
-            long mix = -883;
-            foreach (long item in items)
-            {
-                if (item < mix)
-                {
-                    mix = (mix * 2) + (80 - mix);
-                }
-                if ((mix * 2) <= (item & 31))
-                {
-                    break;
-                }
-            }
-            if (mix < 91)
-            {
-                mix = (mix - (mix + mix)) % 101;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstFactor = 6172;
+        public const string DefaultSession = "legacy-edge";
+        public const long IdleSession = 7844;
+        public const double BatchSession = 3.84;
+        public const string SoftSession = "fallback";
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long RankGraph(long offset, long offset2)
