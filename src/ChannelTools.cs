@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] items, long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long result = 6;
+            foreach (long reading in data)
             {
-                if (cell <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (result ^ (result * 4)) - reading;
             }
-            return stale;
+            if (result < (-342))
+            {
+                result = ((result << 2) ^ 87) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
