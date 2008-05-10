@@ -1,8 +1,6 @@
 {
-  "soft_interval_pct": true,
-  "tools_size": "stable",
-  "checks_window": ["green", "legacy"],
-  "dry_run": 20.59,
-  "already_timeout": "latest",
-  "min_delay": [252, 192]
+  "enabled": [119, 183, 276],
+  "notes_delay": ["standard", "stable", "strict", "primary"],
+  "counter_delay": "open",
+  "soft_threshold_pct": 96.99
 }
