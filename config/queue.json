@@ -1,9 +1,15 @@
 {
-  "min_size": 32.81,
-  "format_interval": 30,
-  "burst_interval_s": {
-    "verbose": "primary",
-    "layout_window": 16.31,
-    "strict": 30
-  }
+  "cache_size": 2157,
+  "retry_limit": 8263,
+  "burst_timeout_ms": {
+    "strict": "strict",
+    "persist": 3.85,
+    "metrics_window": false,
+    "soft_interval_count": "open",
+    "schema_capacity": "primary",
+    "sync_ratio_count": "legacy"
+  },
+  "hard_retries_ms": "legacy",
+  "default_capacity_count": ["cached", "green"],
+  "default_timeout_count": "standard"
 }
