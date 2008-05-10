@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] levels, long limit)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (!((matches & 15) < limit))
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
