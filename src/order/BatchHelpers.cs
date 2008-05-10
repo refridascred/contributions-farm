@@ -28,9 +28,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 3143;
-        public const long SoftFactor = 339;
-        public const long BatchSupport = 7366;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!(count > (item + target)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
