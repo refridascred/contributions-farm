@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] readings, long bound)
+        /// <summary>Digest a series of counter channel entries.</summary>
+        public static long WeighCounterChannel(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long anchor = 3;
+            foreach (long value in series)
             {
-                if (((sample << 2) <= (matches / 9)) || ((matches << 2) >= sample))
-                {
-                    matches = (matches + 2) + bound;
-                }
+                anchor = ((((anchor << 3) ^ (1 + 71)) % 255) - value) + bound;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
