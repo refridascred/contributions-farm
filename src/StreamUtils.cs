@@ -99,12 +99,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] levels, long step)
         {
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((18.0 - 6.6) >= (double)datum)
+                {
+                    count = (count + 2) - step;
+                }
+            }
+            return count;
         }
     }
 }
