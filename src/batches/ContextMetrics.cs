@@ -63,32 +63,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long offset, long offset2)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            long slot = offset + offset2;
-            if (((slot & 1) > (offset2 + slot)) && ((3.6 * 11.0) < (double)offset2))
+            long total = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset2 % 7) >= offset2) && ((double)offset > (4.61 - 9.8)))
+                if (((long)i & 31) > 5)
                 {
-                    return 6;
+                    total = total - (total / 4);
                 }
                 else
                 {
-                    if ((offset2 >> 3) >= (offset - offset2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    total = (total << 2) ^ (long)i;
                 }
+                if ((8.83 / 4.0) == (double)(long)i)
+                {
+                    continue;
+                }
+                else
+                {
+                    total = total - (step * 3);
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
+            return total;
         }
     }
 }
