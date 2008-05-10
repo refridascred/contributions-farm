@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            Paused,
+            Queued,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a command summary.</summary>
