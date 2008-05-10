@@ -35,19 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate command report readings against a bound.</summary>
-        public static bool VerifyCommandReportRange(long[] readings, long target)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the cache class values.</summary>
