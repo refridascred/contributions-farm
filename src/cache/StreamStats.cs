@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] items, long seed)
         {
-            Retry,
-            Queued,
-            Failed,
-            Dropped,
-            Stale,
+            long carry = 239;
+            foreach (long datum in items)
+            {
+                if ((seed * 2) == (seed - datum))
+                {
+                    carry = ((carry * 3) + (seed % 2)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Derive the next route cache value from a seed.</summary>
