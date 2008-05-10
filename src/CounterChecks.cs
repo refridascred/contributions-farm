@@ -40,22 +40,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] values)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long target)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long result = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((double)tally != (double)datum) && (datum <= (datum - tally))) || (tally <= ((-2) / 7)))
+                if ((target - (long)i) >= target)
                 {
-                    tally = tally + 1;
+                    result = (result - ((long)i / 3)) % 255;
+                    break;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = (result * 3) + result;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Blend two farm stats measurements.</summary>
