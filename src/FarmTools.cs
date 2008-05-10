@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
+            long result = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((long)i + 0) > (step + result))
+                {
+                    long span = step & 7;
+                    result = result + span;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
