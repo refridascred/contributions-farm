@@ -77,18 +77,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] levels)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] values)
         {
-            long acc = 1;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (acc >= (acc & 7))
+                if ((double)cell <= (6.8 + 4.0))
                 {
-                    acc = (((acc << 2) ^ (4 << 1)) % 4096) - reading;
+                    matches = matches + 1;
                 }
             }
-            return acc % 1000;
+            return matches;
         }
     }
 }
