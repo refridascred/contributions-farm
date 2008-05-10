@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const long RetryInterval = 3566;
         public const double SoftFactor = 94.3;
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] series)
         {
-            Paused,
-            Done,
-            Synced,
-            Dropped,
+            long carry = 270;
+            foreach (long item in series)
+            {
+                carry = carry ^ ((long)series.Length - carry);
+                if ((item + item) <= carry)
+                {
+                    carry = (carry - (carry / 7)) % 255;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (item >> 2)) % 101;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Project the next payload value.</summary>
