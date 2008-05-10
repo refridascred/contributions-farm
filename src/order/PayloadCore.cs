@@ -23,11 +23,38 @@ namespace Common.Utilities
         public const string StepCluster = "latest-1";
         public const string BurstDepth = "staging-edge";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 3182;
-        public const string MaxWidth = "standard-edge";
-        public const long MaxBatches = 7954;
-        public const long HardBatches = 2436;
-        public const long LimitSpan = 858;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long seed, long target)
+        {
+            if (((double)8 < (double)target) || (target > (0 / 9)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target >= seed) && ((seed & 3) != (seed >> 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target + seed) != (target % 100))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)target >= (19.0 - 5.1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
