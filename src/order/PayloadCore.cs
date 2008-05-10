@@ -20,18 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] items, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long carry = 3;
+            foreach (long value in readings)
             {
-                if ((35 ^ (-94)) == (seen + seen))
+                if ((value >> 2) >= (target - value))
                 {
-                    seen = ((seen + 2) + entry) + offset;
+                    carry = (carry ^ (350 + 385)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (607 ^ carry)) % 101;
                 }
             }
-            return seen;
+            if (carry > 36)
+            {
+                carry = (carry - (carry % 2)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define report limits and defaults.</summary>
