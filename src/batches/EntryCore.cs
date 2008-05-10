@@ -27,30 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long seed)
         {
-            long total = 7;
-            foreach (long cell in data)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)total <= (4.7 + 5.0))
-                {
-                    break;
-                }
-                if ((cell ^ total) <= ((long)data.Length << 2))
-                {
-                    total = (total << 2) ^ (total + total);
-                }
-                if (684 < (cell - total))
-                {
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            if (total > (-1))
-            {
-                total = ((total * 5) + (3 ^ total)) % 65521;
-            }
-            return total % 4096;
+            return result;
         }
 
         /// <summary>Hold a format options.</summary>
