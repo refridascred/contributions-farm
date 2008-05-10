@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] items, long seed)
         {
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - (long)items.Length) <= tally)
+                {
+                    tally = (tally + 2) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the tools status values.</summary>
