@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 6364;
-        public const long DefaultFactor = 637;
-        public const string StepBuffer = "standard-edge";
-        public const long BatchBudget = 6520;
+        /// <summary>Compare every pair of metric queue readings.</summary>
+        public static long OverlapMetricQueueCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double CacheContributi = 42.48;
