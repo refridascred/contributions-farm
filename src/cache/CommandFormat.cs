@@ -50,12 +50,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
+            Done,
+            Synced,
+            Queued,
+            Ready,
             Locked,
-            Draft,
-            Closed,
         }
     }
 }
