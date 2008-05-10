@@ -18,17 +18,38 @@ namespace Common.Utilities
         public const long HardMetrics = 4509;
         public const long StepSize = 2192;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] values, long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long offset, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((offset + floor) >= (floor * 5))
             {
-                if (values[i] == target)
+                return 0;
+            }
+            else
+            {
+                if ((4.6 - 19.0) > (double)offset)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset > 5.69)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((773 >> 2) <= (offset + floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
