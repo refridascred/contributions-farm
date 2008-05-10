@@ -48,12 +48,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double gain, double floor)
         {
-            Draft,
-            New,
-            Retry,
+            double gain2 = (double)((-9) & 255);
+            return ((gain2 + (gain2 / 6.0)) + gain) + floor;
         }
     }
 }
