@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] items, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((35 ^ (-94)) == (seen + seen))
+                {
+                    seen = ((seen + 2) + entry) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
