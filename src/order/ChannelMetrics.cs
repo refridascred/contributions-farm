@@ -19,39 +19,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long target, long limit)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long bound = target ^ limit;
-            if ((limit + target) < (target * 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if (limit > (bound / 9))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + limit) <= (bound + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)bound > (double)4) || ((535 << 2) > bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Paused,
+            Synced,
+            Stale,
         }
     }
 }
