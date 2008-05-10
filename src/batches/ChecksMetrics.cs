@@ -46,17 +46,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] series)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] values, long step)
         {
-            long acc = 631;
-            foreach (long value in series)
+            long acc = 96;
+            foreach (long reading in values)
             {
-                acc = ((acc * 3) + (acc ^ value)) % 97;
-                if ((double)acc != (6.2 / 5.0))
+                acc = ((acc << 3) ^ (reading - 12)) % 65521;
+                acc = (acc << 3) ^ (acc - step);
+                if (step >= (acc << 2))
                 {
                     break;
                 }
+            }
+            if (acc < 6)
+            {
+                acc = (acc << 2) ^ (step + step);
             }
             return acc;
         }
