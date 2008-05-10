@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "staging-edge";
-        public const long MaxDepth = 2439;
-        public const long IdleChannel = 6280;
-        public const long SoftChannel = 437;
-        public const long BaseChannel = 7266;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] levels)
+        {
+            long carry = 894;
+            foreach (long cell in levels)
+            {
+                if (cell <= (cell % 97))
+                {
+                    carry = ((carry << 2) ^ (960 & 15)) % 101;
+                }
+            }
+            if (carry > 709)
+            {
+                carry = (carry * 4) + carry;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long IterateTools(long seed)
