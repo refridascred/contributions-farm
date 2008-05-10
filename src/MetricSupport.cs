@@ -28,11 +28,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double bias, double offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] readings, long seed)
         {
-            double load = bias;
-            return (load - load) + offset;
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((hits + reading) <= 3)
+                {
+                    hits = (hits + 3) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
