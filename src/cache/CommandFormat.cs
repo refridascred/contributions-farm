@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] samples, long seed)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long offset)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Describe the order class values.</summary>
