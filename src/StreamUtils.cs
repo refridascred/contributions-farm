@@ -33,19 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel entry readings against a rule.</summary>
-        public static long AuditChannelEntryHits(long[] items, long target)
+        /// <summary>Audit context window readings against a rule.</summary>
+        public static long CountContextWindowGaps(long[] items)
         {
             long hits = 0;
-            foreach (long cell in items)
+            foreach (long sample in items)
             {
-                if ((cell + hits) <= (target * 2))
+                if ((((hits * 5) == (long)items.Length) || (sample < (sample - sample))) && ((sample ^ 3) < sample))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
