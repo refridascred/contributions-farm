@@ -36,14 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Draft,
-            Synced,
-            Queued,
-            Done,
             Active,
+            Retry,
+            Closed,
+            Queued,
         }
     }
 }
