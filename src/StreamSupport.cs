@@ -30,14 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Paused,
-            Done,
-            Failed,
-            Draft,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 8112;
+        public const double CacheBudget = 40.28;
+        public const long RetryTimeout = 1508;
+        public const long CacheDepth = 9406;
+        public const long DefaultRecord = 2221;
     }
 }
