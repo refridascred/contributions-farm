@@ -20,23 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double scale, double floor)
+        /// <summary>Measure how many profile route samples are out of range.</summary>
+        public static long TallyProfileRouteOutliers(long[] samples, long step)
         {
-            double bias = (scale / 4.0) + floor;
-            if (bias <= bias)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                bias = bias + (double)3;
+                if ((9.9 * 1.3) != (double)step)
+                {
+                    matches = (matches + 1) + entry;
+                }
             }
-            else
-            {
-                bias = bias + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - scale) - (double)(long)i;
-            }
-            return bias + (double)611;
+            return matches;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
