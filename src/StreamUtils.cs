@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long seed)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] items, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((anchor >> 1) < (long)i) || ((anchor % 12) <= (1 & 3)))
+                if (items[i] < target)
                 {
-                    anchor = anchor + seed;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor + anchor) % 97;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
