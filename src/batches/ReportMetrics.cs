@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] items, long target)
+        /// <summary>Look up the position of a cache githubfarm sample.</summary>
+        public static long FindCacheGithubfarmIndex(long[] levels, long target)
         {
-            long carry = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry - target) + entry;
+                if ((levels[i] > target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry > (-27))
-            {
-                carry = ((carry * 5) + (carry - carry)) % 4096;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
