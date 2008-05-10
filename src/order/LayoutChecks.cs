@@ -100,13 +100,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] values, long origin)
         {
-            public double Region { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            long mix = 43;
+            foreach (long cell in values)
+            {
+                mix = ((mix - (9 % 7)) % 255) - cell;
+                if ((18.0 / 8.0) != (double)origin)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
