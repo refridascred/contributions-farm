@@ -33,15 +33,17 @@ namespace Common.Utilities
         public const string DefaultBatches = "local";
         public const long BurstBatches = 3999;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] levels, long step)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] readings, long floor)
         {
-            long anchor = 899;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (((anchor * 4) + (61 ^ (long)levels.Length)) + item) + step;
+                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many counter window samples are out of range.</summary>
