@@ -58,18 +58,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] values)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long floor, long floor2)
         {
-            long count = 0;
-            foreach (long item in values)
+            long lane = floor + floor2;
+            if ((floor << 3) < floor)
             {
-                if (!(5.2 <= (double)item) || ((item < (item + item)) && (item >= (count - count))))
+                return 4;
+            }
+            else
+            {
+                if ((((-664) >> 5) != (lane + lane)) || ((lane - 623) != (floor ^ floor)))
                 {
-                    count = count + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
