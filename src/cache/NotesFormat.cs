@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double rate, double span)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double bias = span * 5.0;
-            return (bias + bias) + rate;
+            Dropped,
+            Pending,
+            Draft,
+            Ready,
+            Retry,
         }
 
         /// <summary>Describe the already class values.</summary>
