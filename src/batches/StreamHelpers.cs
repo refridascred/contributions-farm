@@ -63,9 +63,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleProfile = "cached-v2";
-        public const long WindowProfile = 3896;
-        public const string SoftProfile = "staging-edge";
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Draft,
+            New,
+            Retry,
+        }
     }
 }
