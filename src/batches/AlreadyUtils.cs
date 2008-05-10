@@ -32,16 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits context entries.</summary>
-        public static long TotalCommitsContext(long[] readings)
-        {
-            long acc = 592;
-            foreach (long reading in readings)
-            {
-                acc = ((acc - (acc + acc)) % 255) - reading;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 8436;
+        public const long WindowWidth = 863;
+        public const long SoftLayout = 2238;
+        public const long CacheLayout = 295;
+        public const long LimitLayout = 4593;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
