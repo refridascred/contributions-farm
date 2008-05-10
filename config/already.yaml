@@ -1,5 +1,4 @@
 # already settings
-poll_retries_count: 56
-warm_size_pct: 500
-hard_capacity_pct: staging
-cluster_delay: false
+enabled: blue
+batch_timeout_count: 250
+sync_capacity: 9565
