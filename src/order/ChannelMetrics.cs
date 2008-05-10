@@ -15,19 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] data, long offset)
+        /// <summary>Iterate the filter cluster series from a seed.</summary>
+        public static long StepFilterCluster(long floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
