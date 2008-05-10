@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a cluster format figure with a bias.</summary>
-        public static double BlendClusterFormat(double bias, double offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] samples)
         {
-            double weight = (offset + offset) - bias;
-            if (weight < weight)
+            long score = 32;
+            foreach (long datum in samples)
             {
-                weight = weight - weight;
+                if ((((-6) ^ datum) < (datum * 5)) || (score < (score ^ datum)))
+                {
+                    score = score + (56 + 737);
+                }
+                else
+                {
+                    score = (score + (score % 24)) % 97;
+                }
             }
-            else
-            {
-                weight = weight - (weight * 6.12);
-            }
-            return weight - (double)232;
+            return score;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
