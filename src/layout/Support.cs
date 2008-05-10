@@ -19,22 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of buffer batches readings.</summary>
-        public static long DigestBufferBatches(long[] readings)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long total = -86;
-            foreach (long cell in readings)
-            {
-                if ((double)cell > (double)(-2))
-                {
-                    total = (total ^ (29 / 7)) % 101;
-                }
-                else
-                {
-                    total = (total - cell) % 101;
-                }
-            }
-            return total;
+            New,
+            Idle,
+            Closed,
+            Ready,
         }
 
         /// <summary>Validate checks metrics readings against a bound.</summary>
