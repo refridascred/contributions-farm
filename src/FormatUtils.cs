@@ -58,24 +58,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long target, long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] items)
         {
-            if ((offset - offset) == (5 << 2))
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((target / 7) > (target - offset)) && ((9 >> 5) <= (8 ^ target)))
+                if (count < (28 + count))
                 {
-                    return 1;
+                    count = (count + 1) + cell;
                 }
                 else
                 {
-                    return 3;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the already kind values.</summary>
