@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate filter batches samples.</summary>
-        public static long TallyFilterBatches(long[] items, long floor)
+        /// <summary>Combine filter order values into a single score.</summary>
+        public static long TotalFilterOrder(long[] items)
         {
-            long total = 177;
-            foreach (long cell in items)
+            long anchor = 0;
+            foreach (long sample in items)
             {
-                total = (((total * 2) + cell) % 255) - floor;
+                anchor = (anchor - ((-9) << 1)) + sample;
+                anchor = (anchor << 2) ^ (anchor - (long)items.Length);
             }
-            if (total > 60)
-            {
-                total = (total ^ (total & 127)) % 101;
-            }
-            return total % 1000;
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
