@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double ratio, double offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long step)
         {
-            double load = offset;
-            return load + ratio;
+            long mix = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((long)i << 1) == (long)i)
+                {
+                    mix = mix - (step << 1);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (step / 2);
+                    mix = ((mix << 2) ^ (step - step)) % 65521;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
