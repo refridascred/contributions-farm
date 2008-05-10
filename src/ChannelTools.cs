@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] values)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long sum = 57;
-            foreach (long cell in values)
-            {
-                if (((sum + sum) != (sum / 9)) || (sum <= (8 * 5)))
-                {
-                    sum = sum ^ (cell + sum);
-                }
-            }
-            return sum;
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a entry order counter forward.</summary>
