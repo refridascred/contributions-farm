@@ -40,23 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] readings, long seed)
-        {
-            long carry = 0;
-            foreach (long datum in readings)
-            {
-                if (carry < (191 - datum))
-                {
-                    carry = (carry << 2) ^ (carry - seed);
-                }
-                else
-                {
-                    carry = carry - (carry & 7);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowSpan = 2356;
+        public const string WindowChannel = "primary-1";
+        public const long IdleScore = 2794;
+        public const long BaseChannel = 2481;
+        public const long WindowSize = 687;
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long IteratePayload(long seed)
