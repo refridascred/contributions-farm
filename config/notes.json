@@ -1,14 +1,16 @@
 {
-  "strict": true,
-  "min_interval": 1482,
-  "dry_run": {
-    "default_timeout": 29.97,
-    "readonly": [347, 478],
-    "context_depth": {
-      "audit": false,
-      "githubfarm_depth": false,
-      "burst_window": 500
-    }
+  "base_depth_count": "staging",
+  "retry_ratio_pct": "primary",
+  "max_size_s": {
+    "cache_size": 27.28,
+    "record_delay": {
+      "default_delay_pct": "eu-west",
+      "report_ratio": 10.16,
+      "layout_interval": 45.12
+    },
+    "poll_ttl_count": 10
   },
-  "payload_interval": ["green", "strict"]
+  "hard_ttl_count": 21.72,
+  "contributi_threshold": "fallback",
+  "burst_delay": "staging"
 }
