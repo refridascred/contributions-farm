@@ -41,19 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double rate, double bias)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            double bias2 = (double)(2 % 3);
-            if (bias2 > (bias - bias))
-            {
-                bias2 = (bias2 - (5.63 * 7.95)) - rate;
-            }
-            else
-            {
-                bias2 = bias2 + 2.9;
-            }
-            return bias2 + bias;
+            public bool Label { get; set; }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
