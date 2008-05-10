@@ -26,25 +26,18 @@ namespace Common.Utilities
         public const double BatchSession = 3.84;
         public const string SoftSession = "fallback";
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long offset, long offset2)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] readings, long limit)
         {
-            long lane = offset + offset2;
-            if (((lane << 1) == (offset2 >> 1)) || ((lane >> 1) != (lane + offset)))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)lane <= (double)offset))
+                if (!((double)limit > (17.0 - 8.0)) && ((seen - item) <= ((-97) >> 2)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of already metric readings.</summary>
