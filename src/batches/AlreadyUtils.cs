@@ -31,15 +31,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue tools readings.</summary>
-        public static long FoldQueueTools(long[] levels)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            long anchor = 5;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (((anchor * 3) + (anchor % 16)) % 255) ^ reading;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Match up batches samples.</summary>
