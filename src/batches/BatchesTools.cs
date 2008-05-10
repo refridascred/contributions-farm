@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] samples, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (!(((466 + bound) > 978) && ((8 + bound) != (datum << 3))))
+                if (!(((double)matches < (5.59 + 9.5)) || ((8.6 + 5.0) == (double)sample)))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 1) - limit;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a filter header.</summary>
