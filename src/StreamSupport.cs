@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] samples, long target)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 919;
+            foreach (long datum in items)
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((((result * 3) + (result << 2)) % 65521) ^ datum) - bound;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
