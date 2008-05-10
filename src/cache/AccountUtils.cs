@@ -27,15 +27,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public string Region { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
