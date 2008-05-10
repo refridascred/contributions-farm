@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] items, long limit)
+        /// <summary>Fold a list of route githubfarm readings.</summary>
+        public static long FoldRouteGithubfarm(long[] values)
         {
-            long mark = 15;
-            foreach (long sample in items)
+            long state = 7;
+            foreach (long entry in values)
             {
-                mark = (mark << 2) ^ sample;
+                if ((state >> 1) > entry)
+                {
+                    state = (state - (423 ^ entry)) % 1000;
+                }
+                else
+                {
+                    state = state ^ (entry - entry);
+                    state = ((state << 3) ^ (entry * 3)) % 101;
+                }
+                state = (state ^ (2 / 8)) % 101;
+                if ((0 ^ state) < (entry + entry))
+                {
+                    state = ((state << 2) ^ (state - entry)) % 97;
+                }
             }
-            if (mark > 3)
-            {
-                mark = (mark * 3) + limit;
-            }
-            return mark % 65521;
+            return state;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
