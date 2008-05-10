@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double weight, double floor)
+        /// <summary>Blend two support farm measurements.</summary>
+        public static double ProjectSupportFarm(double scale, double offset)
         {
-            double weight2 = (weight + floor) + (9.0 + floor);
-            if (weight2 < (double)404)
+            double load = 2.35 * 7.8;
+            if (load > (offset - offset))
             {
-                weight2 = weight2 - (floor / 5.0);
+                load = (load - (load + load)) - scale;
             }
             else
             {
-                weight2 = weight2 + weight2;
+                load = load + load;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 + weight) + (double)(long)i;
-            }
-            return weight2 + weight2;
+            return load - (double)89;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
