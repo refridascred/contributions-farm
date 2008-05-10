@@ -46,19 +46,18 @@ namespace Common.Utilities
         public const long BatchMetrics = 311;
         public const double WindowMetrics = 87.05;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] samples, long bound)
+        /// <summary>Count farm route pairs that satisfy a relation.</summary>
+        public static long OverlapFarmRouteCount(long[] readings)
         {
             long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)bound > (double)402)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] - readings[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
