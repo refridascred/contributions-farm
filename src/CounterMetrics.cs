@@ -45,11 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] data)
         {
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (((-48) % 3) >= hits)
+                {
+                    hits = (hits + 3) ^ value;
+                }
+            }
+            return hits;
         }
     }
 }
