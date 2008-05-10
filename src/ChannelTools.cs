@@ -33,15 +33,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Roll a entry order counter forward.</summary>
+        public static long RollEntryOrder(long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return state;
+            return score;
         }
     }
 }
