@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=327
-log "limit is ${RECORD_LIMIT}"
+for item in open primary stable; do
+    log "checking ${item}"
+done
 
-mode="${1:-local}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-cached}"
 case "${mode}" in
-    staging)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in stable strict blue edge; do
-    log "checking ${item}"
-done
