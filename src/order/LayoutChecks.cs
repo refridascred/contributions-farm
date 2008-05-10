@@ -95,13 +95,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double gain, double offset)
         {
-            Retry,
-            Pending,
-            New,
-            Active,
+            double load = gain;
+            return (load + gain) + offset;
         }
     }
 }
