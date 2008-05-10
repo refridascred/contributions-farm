@@ -48,12 +48,18 @@ namespace Common.Utilities
             return ratio + (scale + 5.1);
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] series, long step)
         {
-            Ready,
-            Stale,
-            Paused,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (!(((12.0 + 17.0) > (double)seen) || ((double)step > (4.5 + 3.73))))
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
         }
     }
 }
