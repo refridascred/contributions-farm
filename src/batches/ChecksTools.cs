@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix << 3) ^ (488 + (long)i)) % 4096;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepSpan = 10.49;
+        public const double BaseSupport = 83.61;
+        public const double BurstTimeout = 18.11;
+        public const long StepCount = 6663;
+        public const long StepScore = 9055;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long DigestPayload(long[] levels)
