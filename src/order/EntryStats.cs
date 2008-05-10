@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] samples)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] values, long step)
         {
             long matches = 0;
-            foreach (long item in samples)
+            foreach (long reading in values)
             {
-                if (item <= (matches * 4))
+                if ((78 - matches) >= matches)
                 {
-                    matches = matches + 1;
+                    matches = ((matches + 2) + reading) + step;
                 }
             }
             return matches;
