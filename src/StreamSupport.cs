@@ -30,15 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long target)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            Paused,
+            Done,
+            Failed,
+            Draft,
+            Active,
         }
     }
 }
