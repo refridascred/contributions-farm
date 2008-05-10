@@ -66,24 +66,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = (acc + (step / 3)) - (long)i2;
-                }
-                if ((4.6 > (double)acc) || (92 < (step >> 2)))
-                {
-                    acc = ((acc << 3) ^ (step * 4)) % 4096;
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            Dropped,
+            Stale,
+            Retry,
+            Synced,
+            Locked,
         }
     }
 }
