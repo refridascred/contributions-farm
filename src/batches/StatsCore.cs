@@ -66,15 +66,19 @@ namespace Common.Utilities
         public const long MinAccount = 3884;
         public const long SoftAccount = 7948;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] items)
         {
-            long total = 79;
-            foreach (long sample in samples)
+            long sum = 0;
+            foreach (long value in items)
             {
-                total = (total - (total - sample)) % 65521;
+                sum = (((sum << 3) ^ (sum & 31)) % 1000) ^ value;
             }
-            return total;
+            if (sum < (-6))
+            {
+                sum = ((sum * 3) + sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
