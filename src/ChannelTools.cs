@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftSupport = "stable-edge";
+        public const string CacheSupport = "cached-1";
+        public const double BurstSupport = 85.7;
+        public const double IdleSpan = 41.89;
+        public const long RetrySupport = 6303;
 
         /// <summary>Roll a entry order counter forward.</summary>
         public static long RollEntryOrder(long bound)
