@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const string LimitQueue = "fallback-1";
         public const long BaseSpan = 8751;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] series, long limit)
         {
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (limit > value)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every channel counter entry stays within the limit.</summary>
