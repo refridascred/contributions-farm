@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next metrics support value from a seed.</summary>
-        public static long StepMetricsSupport(long bound)
+        /// <summary>Validate tools counter readings against a bound.</summary>
+        public static bool GuardToolsCounterBounds(long[] levels, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (value != step)
                 {
-                    total = ((total + ((long)i / 6)) % 1000) + (long)i2;
+                    ready = false;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
