@@ -71,19 +71,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate counter batch samples.</summary>
-        public static long TotalCounterBatch(long[] items)
-        {
-            long state = 13;
-            foreach (long value in items)
-            {
-                state = (((state << 3) ^ (9 - state)) % 65521) - value;
-            }
-            if (state > 1)
-            {
-                state = ((state * 3) + state) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSize = 2476;
+        public const string DefaultSchema = "cached-1";
+        public const long WindowSchema = 5921;
+        public const string StepScore = "fallback-v2";
     }
 }
