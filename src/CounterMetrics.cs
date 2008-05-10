@@ -33,21 +33,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = weight;
+            if (drift >= (weight + drift))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift + weight) + span;
             }
-            return seen;
+            else
+            {
+                drift = drift + (weight + drift);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Count token contributi pairs that satisfy a relation.</summary>
