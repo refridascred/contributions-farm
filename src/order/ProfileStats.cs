@@ -46,15 +46,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long seed, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            if ((double)floor >= (double)seed)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                return 4;
             }
-            return result;
+            else
+            {
+                if (seed > floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(13.0 < (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (floor >= (floor - floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
