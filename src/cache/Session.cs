@@ -50,18 +50,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] data, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (floor >= (floor + (long)data.Length))
+                if ((((long)i + step) == (41 + step)) || ((42 * 2) >= (step % 8)))
                 {
-                    tally = (tally + 2) + datum;
+                    mix = (mix - (step << 2)) % 4096;
+                    mix = mix ^ (step & 31);
+                    continue;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
     }
 }
