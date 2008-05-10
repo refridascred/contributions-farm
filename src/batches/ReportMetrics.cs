@@ -10,18 +10,16 @@ namespace Common.Utilities
         public const long WindowTimeout = 1904;
         public const long BurstToken = 341;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] samples)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long target)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long score = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((seen - seen) == (seen * 5))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
+                score = (score - ((long)i & 15)) % 1000;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
