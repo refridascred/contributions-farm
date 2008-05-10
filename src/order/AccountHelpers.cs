@@ -67,18 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token editor samples are out of range.</summary>
-        public static long CountTokenEditorMatches(long[] values, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] series)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((double)sample >= (2.86 * 0.49))
+                if (((matches >> 5) <= (cell + cell)) && ((cell < (9 >> 2)) && (matches < (cell - cell))))
                 {
-                    count = (count + 3) - offset;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
