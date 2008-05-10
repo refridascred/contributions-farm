@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Closed,
-            Queued,
-            Active,
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine format queue values into a single score.</summary>
