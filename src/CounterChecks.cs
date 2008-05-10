@@ -42,14 +42,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long origin, long origin2)
         {
-            Closed,
-            Active,
-            Draft,
-            Pending,
-            Stale,
+            long cur = origin + origin2;
+            if ((origin2 - cur) < cur)
+            {
+                return 1;
+            }
+            else
+            {
+                if (cur < (origin2 + 57))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
