@@ -12,10 +12,20 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "fallback";
-        public const double RetryPayload = 19.34;
-        public const long LimitScore = 4784;
+        /// <summary>Check that every editor commits entry stays within the limit.</summary>
+        public static bool ValidateEditorCommitsLimits(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
