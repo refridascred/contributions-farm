@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] levels, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] data)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long sum = 43;
+            foreach (long datum in data)
             {
-                if (entry < origin)
+                if ((double)datum > (double)sum)
                 {
-                    found = false;
-                    break;
+                    sum = (sum * 3) + (46 - sum);
                 }
             }
-            return found;
+            return sum % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
