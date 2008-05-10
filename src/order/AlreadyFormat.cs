@@ -63,18 +63,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen & 3) < (seen >> 2))
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 9205;
+        public const long WindowTimeout = 7563;
+        public const string BurstInterval = "local-v2";
     }
 }
