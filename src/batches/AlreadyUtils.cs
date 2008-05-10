@@ -18,18 +18,17 @@ namespace Common.Utilities
         public const long HardMetrics = 4509;
         public const long StepSize = 2192;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] values, long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] values, long target)
         {
-            long sum = 90;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)value == (0.41 * 7.0))
+                if (values[i] == target)
                 {
-                    sum = (((sum << 2) ^ (sum / 6)) % 255) + bound;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Count the batches report entries that pass the check.</summary>
