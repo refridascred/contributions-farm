@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Measure how many notes route samples are out of range.</summary>
+        public static long MeasureNotesRouteOutliers(long[] samples, long origin)
         {
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((((double)datum != (8.8 * 6.0)) || ((805 + datum) > (tally / 5))) && (((tally >> 5) >= datum) || ((8.49 / 7.0) < (double)datum)))
+                {
+                    tally = (tally + 2) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
