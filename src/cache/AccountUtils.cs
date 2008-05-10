@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] samples, long floor)
+        /// <summary>Derive the next metrics support value from a seed.</summary>
+        public static long StepMetricsSupport(long bound)
         {
-            long state = 467;
-            foreach (long sample in samples)
+            long total = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(((-149) + 17) <= (floor >> 5)))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    state = ((state << 2) ^ (long)samples.Length) ^ sample;
+                    total = ((total + ((long)i / 6)) % 1000) + (long)i2;
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the queue phase values.</summary>
