@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] values, long seed)
+        /// <summary>Digest a series of contributi token entries.</summary>
+        public static long ScoreContributiToken(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 1;
+            foreach (long value in data)
             {
-                if ((values[i] >= seed) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix - (value - value)) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Project the next order value.</summary>
