@@ -10,21 +10,32 @@ namespace Common.Utilities
         public const string WindowTimeout = "stable-v2";
         public const double HardCache = 45.86;
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] items)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long origin, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long cur = origin ^ offset;
+            if (origin > (origin & 15))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((origin % 12) <= (offset + origin)))
                 {
-                    if ((items[i] ^ items[j]) != 1)
+                    return 3;
+                }
+                else
+                {
+                    if (((cur + origin) == (61 + origin)) || (3 > offset))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a already counter forward.</summary>
