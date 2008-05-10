@@ -1,11 +1,11 @@
 {
-  "retry_ratio_count": ["local", "primary"],
-  "githubfarm_retries": {
-    "audit": "standard",
-    "editor_retries": true,
-    "contributi_timeout": false
+  "warm_threshold_ms": {
+    "batch_window": 66.08,
+    "warm_threshold_count": 6135,
+    "dry_run": false
   },
-  "enabled": "primary",
-  "sync_ratio_ms": 5905,
-  "metrics_timeout": 26
+  "poll_delay": 31,
+  "retry_capacity_pct": 4255,
+  "default_limit": 98.38,
+  "channel_delay": false
 }
