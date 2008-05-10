@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if (((-1) ^ seen) < (item + seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Measure how many session payload samples are out of range.</summary>
