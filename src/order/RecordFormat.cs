@@ -33,19 +33,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] readings, long floor)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long sum = 44;
-            foreach (long item in readings)
-            {
-                sum = (sum ^ (sum + 6)) ^ item;
-            }
-            if (sum < 6)
-            {
-                sum = (sum * 5) + (floor * 3);
-            }
-            return sum;
+            Queued,
+            Draft,
+            Pending,
+            Idle,
+            Active,
         }
 
         /// <summary>Combine order values into a single score.</summary>
