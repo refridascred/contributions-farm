@@ -43,17 +43,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] items, long target)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
     }
 }
