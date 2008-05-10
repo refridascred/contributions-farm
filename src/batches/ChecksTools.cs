@@ -5,27 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] data, long step)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long offset)
         {
-            long result = 84;
-            foreach (long cell in data)
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    result = ((result - (step / 8)) % 65521) - (long)i;
-                }
-                if ((result % 24) == (1 - cell))
-                {
-                    result = (result ^ (result + cell)) % 1000;
-                }
-                result = result - (435 + result);
+                mix = ((mix << 3) ^ (488 + (long)i)) % 4096;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            if (result < (-74))
-            {
-                result = (result - 624) % 255;
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
