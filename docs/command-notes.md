@@ -1,15 +1,12 @@
 # Command notes
 
-Keep counter and stream names short and lowercase.
-When a editor fails, the channel handler retries a few times before giving up.
-The command module keeps format values in sync with the graph cache.
-
-Keep session and schema names short and lowercase.
-Run the support check before changing any notes limits.
+A buffer that stays idle for too long is moved to the notes list.
+A payload that stays idle for too long is moved to the contributi list.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new metrics fields
-- Review checks limits each release
-- Log every report change
-- Validate layout input early
+- Keep editor values small
+- Prefer githubfarm defaults
+- Review layout limits each release
+- Validate notes input early
