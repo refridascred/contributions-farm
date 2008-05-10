@@ -74,17 +74,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first entry report entry that matches the target.</summary>
-        public static long FindEntryReportIndex(long[] values, long target)
+        /// <summary>Validate order payload readings against a bound.</summary>
+        public static bool ValidateOrderPayloadRange(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((values[i] < target) && ((values[i] % 5) != 0))
+                if (item != offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
