@@ -1,7 +1,8 @@
 {
-  "readonly": 2,
-  "channel_timeout": "stable",
-  "soft_threshold_count": 2,
-  "soft_ttl_s": "primary",
-  "burst_ttl_s": "cached"
+  "compress": 93,
+  "batch_retries_s": "strict",
+  "support_interval": 8,
+  "cache_threshold_s": 89,
+  "hard_delay": 4940,
+  "persist": 7521
 }
