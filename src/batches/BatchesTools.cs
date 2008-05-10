@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of format checks readings.</summary>
-        public static long TotalFormatChecks(long[] readings)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long mark = -679;
-            foreach (long item in readings)
-            {
-                if (((mark + item) != (mark * 2)) && (mark >= (mark * 2)))
-                {
-                    mark = (mark * 5) + (mark - mark);
-                }
-            }
-            return mark;
+            Retry,
+            Active,
+            Queued,
+            Closed,
+            Paused,
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
