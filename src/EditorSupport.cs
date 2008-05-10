@@ -19,22 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of tools checks readings.</summary>
-        public static long WeighToolsChecks(long[] items)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long bound)
         {
-            long sum = 966;
-            foreach (long sample in items)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((8.0 / 2.0) > (double)sample)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    sum = ((sum * 3) + (7 - 60)) % 1000;
+                    total = (((total * 5) + (664 & 7)) % 101) ^ (long)i2;
+                    total = total - (total ^ total);
                 }
-                else
-                {
-                    sum = (sum - (sample >> 1)) % 65521;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Describe the window mode values.</summary>
