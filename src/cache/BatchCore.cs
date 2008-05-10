@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit cache entry readings against a rule.</summary>
-        public static long TallyCacheEntryHits(long[] samples)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long target, long bound)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            if ((bound % 97) <= target)
             {
-                if ((count >= (reading + count)) && ((double)reading <= (double)(long)samples.Length))
+                return 5;
+            }
+            else
+            {
+                if ((bound / 5) <= target)
                 {
-                    count = count + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)57 < (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((1.6 - 8.0) <= (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a graph summary.</summary>
