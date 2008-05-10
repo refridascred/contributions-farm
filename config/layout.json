@@ -1,8 +1,16 @@
 {
-  "warm_capacity": 14.54,
-  "batch_window": "local",
-  "warm_capacity_pct": ["open", "edge", "edge", "local"],
-  "stream_size": false,
-  "graph_threshold": 83.13,
-  "batches_ratio": [259, 423]
+  "counter_timeout": "eu-west",
+  "flush_depth_ms": 250,
+  "cache_threshold_count": 246,
+  "idle_limit_count": {
+    "batch_threshold_count": 81.95,
+    "channel_depth": ["strict", "open", "standard", "local"],
+    "readonly": "fallback"
+  },
+  "support_ratio": {
+    "cache_timeout": 9804,
+    "soft_ttl_count": 55.3,
+    "cache_capacity": [94, 265, 426, 459],
+    "sync_ttl": "local"
+  }
 }
