@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitScore = 8864;
-        public const long BurstStream = 2255;
-        public const long DefaultStream = 2005;
-        public const long IdleStream = 1092;
-        public const string RetrySpan = "legacy-edge";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheWidth = 4830;
+        public const long RetryPayload = 7114;
+        public const long WindowScore = 4034;
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double SmoothGraph(double bias, double span)
