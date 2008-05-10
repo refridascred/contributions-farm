@@ -1,6 +1,10 @@
-id,region,token,label,count
-1,411,38.22,166,25.91
-2,edge,89.09,standard,863
-3,390,green,edge,910
-4,1,73.53,local,43
-5,178,local,31.27,standard
+id,owner,state
+1,latest,80.53
+2,strict,795
+3,fallback,55.76
+4,47.37,77.09
+5,6,395
+6,978,37.84
+7,781,cached
+8,fallback,standard
+9,29.82,927
