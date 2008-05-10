@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 3031;
-        public const double RetryCommand = 42.26;
-        public const string StepDepth = "stable-edge";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstDepth = 989;
+        public const long HardSpan = 3293;
+        public const long IdleBudget = 5856;
+        public const long MinScore = 3848;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double StepPayload = 79.13;
