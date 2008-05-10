@@ -77,18 +77,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] readings, long seed)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((count & 31) > (value & 63))
-                {
-                    count = (count + 3) + seed;
-                }
-            }
-            return count;
+            Paused,
+            Active,
+            Dropped,
+            Done,
         }
     }
 }
