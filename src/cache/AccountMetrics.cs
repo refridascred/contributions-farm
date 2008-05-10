@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const double StepSize = 34.66;
         public const long DefaultWidth = 5725;
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Roll a cluster filter counter forward.</summary>
+        public static long RollClusterFilter(long bound)
         {
-            Done,
-            Locked,
-            Dropped,
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
