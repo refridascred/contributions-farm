@@ -1,7 +1,17 @@
 # support settings
-idle_limit: 56.29
-farm_depth: cached
-soft_interval_s: 40
-cache_limit_count: 27
-sync_threshold_count: 1968
-readonly: 95.69
+hard_depth: 1
+burst_delay_pct:
+  compress: false
+  burst_delay_s:
+    - legacy
+    - local
+  strict:
+    - legacy
+    - legacy
+soft_ratio_ms:
+  - cached
+  - cached
+  - local
+persist: true
+sync_size: 54.21
+tools_ttl: 259
