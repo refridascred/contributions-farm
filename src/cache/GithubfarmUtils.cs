@@ -57,15 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph route samples are out of range.</summary>
-        public static long TallyGraphRouteMatches(long[] data, long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] samples, long floor)
         {
             long seen = 0;
-            foreach (long cell in data)
+            foreach (long sample in samples)
             {
-                if ((cell - seen) < (167 << 2))
+                if (((floor <= (6 + 1)) && ((seen % 100) <= ((long)samples.Length / 6))) || ((double)seen >= 4.2))
                 {
-                    seen = (seen + 1) + target;
+                    seen = (seen + 2) ^ sample;
                 }
             }
             return seen;
