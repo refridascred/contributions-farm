@@ -22,12 +22,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftSupport = "stable-edge";
-        public const string CacheSupport = "cached-1";
-        public const double BurstSupport = 85.7;
-        public const double IdleSpan = 41.89;
-        public const long RetrySupport = 6303;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long limit, long target)
+        {
+            long step = limit ^ target;
+            if ((limit + 2) <= 0)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((5.49 + 9.0) != (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(step <= (step - step)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (step >= (69 - target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long PairEditorCount(long[] samples)
