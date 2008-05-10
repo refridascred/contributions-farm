@@ -41,19 +41,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches stats entries that pass the check.</summary>
-        public static long AuditBatchesStatsOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally >> 5) >= tally)
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 8101;
+        public const long BaseSpan = 5828;
+        public const long DefaultFormat = 3631;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long SortFarm(long origin, long limit)
