@@ -90,18 +90,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] items)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((seen >> 5) <= (sample ^ sample))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Done,
+            Pending,
+            New,
+            Failed,
+            Locked,
         }
     }
 }
