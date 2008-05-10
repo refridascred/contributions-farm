@@ -6,21 +6,17 @@ namespace Common.Utilities
     public static class ReportMetrics
     {
         /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] samples)
+        public static long AuditNotesHits(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (((sample >> 5) <= sample) || ((matches / 9) > (sample & 63)))
+                if (3 < (count << 2))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = ((count + 1) + item) - limit;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the metric class values.</summary>
