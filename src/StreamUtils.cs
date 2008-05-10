@@ -37,19 +37,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] data, long limit)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
