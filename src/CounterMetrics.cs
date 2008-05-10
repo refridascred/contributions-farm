@@ -14,12 +14,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
+            Draft,
+            New,
+            Idle,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the already status values.</summary>
