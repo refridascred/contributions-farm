@@ -52,14 +52,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] data, long target)
         {
-            Done,
-            Synced,
-            Queued,
-            Ready,
-            Locked,
+            long state = -71;
+            foreach (long item in data)
+            {
+                state = (((state << 2) ^ item) % 65521) + target;
+            }
+            if (state > (-46))
+            {
+                state = ((state * 2) + (0 >> 1)) % 255;
+            }
+            return state;
         }
     }
 }
