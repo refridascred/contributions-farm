@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up already commits samples.</summary>
-        public static long CompareAlreadyCommitsCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "legacy-v2";
+        public const long BurstDepth = 9084;
+        public const long MaxFactor = 7359;
+        public const long DefaultWidth = 914;
+        public const string MaxBudget = "cached-1";
 
         /// <summary>Match up cluster samples.</summary>
         public static long MatchClusterCount(long[] readings)
