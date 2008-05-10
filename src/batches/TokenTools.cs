@@ -14,14 +14,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Done,
-            Idle,
-            Stale,
-            Queued,
-            Dropped,
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
