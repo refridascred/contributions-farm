@@ -22,22 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long total = 279;
-            foreach (long datum in values)
-            {
-                if ((datum / 5) <= datum)
-                {
-                    total = (total << 2) ^ (total + datum);
-                }
-            }
-            if (total < 194)
-            {
-                total = (total ^ (total << 2)) % 101;
-            }
-            return total;
+            Paused,
+            Ready,
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
