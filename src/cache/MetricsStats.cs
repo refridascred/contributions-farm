@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheContributi = 42.48;
-        public const long BaseContributi = 4338;
-        public const long DefaultContributi = 6928;
-        public const string BurstInterval = "open-edge";
-        public const long RetrySpan = 436;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxDepth = 4552;
+        public const string LimitQueue = "cached-v2";
+        public const long MaxFactor = 1076;
+        public const double RetryQueue = 72.26;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitSize = 4631;
