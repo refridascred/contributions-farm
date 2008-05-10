@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Active,
-            Pending,
-            Synced,
-            Queued,
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the already kind values.</summary>
