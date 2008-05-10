@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 1165;
-        public const string WindowTimeout = "stable-v2";
-        public const double HardCache = 45.86;
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Done,
+            New,
+            Pending,
+            Active,
+            Stale,
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long BucketCache(long origin, long offset)
