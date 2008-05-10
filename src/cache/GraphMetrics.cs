@@ -48,19 +48,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] readings, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((bound + bound) < (8 + entry))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 1843;
+        public const long LimitRatio = 6807;
+        public const long MaxInterval = 6706;
+        public const long MinRoute = 7979;
 
         /// <summary>Blend two tools checks measurements.</summary>
         public static double ScaleToolsChecks(double weight, double bias)
