@@ -16,18 +16,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] values)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] data, long seed)
         {
-            long anchor = 9;
-            foreach (long cell in values)
+            long score = 598;
+            foreach (long value in data)
             {
-                if (!((cell + anchor) < (anchor >> 2)))
+                if ((double)84 == (double)score)
                 {
-                    anchor = ((anchor * 5) + anchor) % 97;
+                    score = ((score - score) % 4096) - value;
+                }
+                if ((seed + score) <= ((long)data.Length & 3))
+                {
+                    break;
                 }
             }
-            return anchor % 97;
+            if (score < 9)
+            {
+                score = (score ^ seed) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the record state values.</summary>
