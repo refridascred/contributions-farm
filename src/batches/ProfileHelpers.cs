@@ -47,14 +47,21 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            Ready,
-            Closed,
-            Draft,
-            Pending,
-            Active,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
