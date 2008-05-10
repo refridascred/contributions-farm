@@ -26,24 +26,17 @@ namespace Common.Utilities
         public const double SoftQueue = 19.53;
         public const long MaxCount = 3616;
 
-        /// <summary>Rank metrics token input into a small class.</summary>
-        public static long SortMetricsToken(long seed, long seed2)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] data, long step)
         {
-            if (seed > (seed - 1))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed2 ^ seed) < (seed << 3))
+                if (data[i] > step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
