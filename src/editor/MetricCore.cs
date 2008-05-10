@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long limit)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = (total - total) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Locked,
+            Ready,
+            Queued,
+            Stale,
         }
 
         /// <summary>Classify a schema batches pair into a bucket.</summary>
