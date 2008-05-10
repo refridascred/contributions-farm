@@ -18,15 +18,21 @@ namespace Common.Utilities
         public const double BurstTimeout = 40.03;
         public const long DefaultTimeout = 9713;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the channel status values.</summary>
