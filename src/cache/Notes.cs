@@ -44,22 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] items)
+        /// <summary>Measure how many already profile samples are out of range.</summary>
+        public static long AuditAlreadyProfileGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (!((long)items.Length <= (datum * 2)))
+                if (((9.0 * 2.92) <= (double)entry) || ((972 + hits) != (entry - hits)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
