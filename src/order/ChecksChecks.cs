@@ -37,19 +37,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] series, long limit)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Idle,
+            Dropped,
+            Synced,
+            Failed,
         }
     }
 }
