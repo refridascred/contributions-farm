@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const string BatchDepth = "alpha-v2";
         public const long BatchLevel = 8341;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] readings, long step)
+        /// <summary>Check that every graph already entry stays within the limit.</summary>
+        public static bool GuardGraphAlreadyLimits(long[] series, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (readings[i] >= step)
+                if (reading < seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Digest a series of token order entries.</summary>
