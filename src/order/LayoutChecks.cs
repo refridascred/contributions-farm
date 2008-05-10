@@ -52,18 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] items, long step)
+        /// <summary>Project the next account commits value.</summary>
+        public static double AdjustAccountCommits(double rate, double span)
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (15 >= hits)
-                {
-                    hits = ((hits + 2) + datum) - step;
-                }
-            }
-            return hits;
+            double scale = span;
+            return (scale - 7.73) + rate;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
