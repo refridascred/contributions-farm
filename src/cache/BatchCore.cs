@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of cache stream readings.</summary>
-        public static long ScoreCacheStream(long[] readings)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] items, long step)
         {
-            long anchor = 768;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 8; i++)
+                if (datum <= step)
                 {
-                    anchor = ((anchor << 3) ^ (3 / 4)) - (long)i;
+                    stale = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (cell - cell)) % 1000;
             }
-            return anchor % 65521;
+            return stale;
         }
 
         /// <summary>Hold a support options.</summary>
