@@ -71,32 +71,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a profile contributi value against two limits.</summary>
-        public static long RankProfileContributi(long origin, long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] data, long seed)
         {
-            long gap = origin ^ floor;
-            if ((double)origin <= (double)floor)
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin % 12) >= (gap - floor))
+                if ((count << 2) <= (count >> 5))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((gap * 2) >= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = ((count + 2) ^ cell) + seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a payload stats.</summary>
