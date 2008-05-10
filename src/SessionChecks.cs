@@ -66,29 +66,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long limit, long offset)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long offset, long floor)
         {
-            long offset2 = limit + offset;
-            if (((-37) > (limit / 9)) || ((double)offset2 == (9.9 * 3.0)))
+            long cur = offset - floor;
+            if (!((double)offset < (13.0 / 2.0)))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if (((double)offset2 <= 1.0) && ((limit - offset) != (offset2 << 3)))
+                if (((floor / 7) <= cur) || ((double)floor != (3.2 * 8.48)))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((limit < (offset2 % 60)) || ((offset2 >> 1) >= offset))
+                    if ((double)floor <= (11.0 / 2.0))
                     {
-                        return 2;
+                        return 0;
                     }
                     else
                     {
-                        return 6;
+                        return 4;
                     }
                 }
             }
