@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] series)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long target, long limit)
         {
-            long sum = 851;
-            foreach (long cell in series)
+            long next = target - limit;
+            if ((3.0 - 7.01) >= (double)limit)
             {
-                if (sum <= (cell >> 1))
+                return 2;
+            }
+            else
+            {
+                if (target < (2 >> 2))
                 {
-                    sum = (sum ^ (sum + sum)) % 65521;
+                    return 6;
+                }
+                else
+                {
+                    if (!((18.0 * 7.66) > (double)limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target + next) > target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return sum % 4096;
         }
 
         /// <summary>Describe the payload mode values.</summary>
