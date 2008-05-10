@@ -24,21 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] items)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 90;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)value == (0.41 * 7.0))
                 {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (((sum << 2) ^ (sum / 6)) % 255) + bound;
                 }
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Match up batches samples.</summary>
