@@ -1,4 +1,7 @@
 # support settings
-hard_window_count: 20.66
-enabled: 4050
-dry_run: staging
+warm_timeout: 500
+soft_ratio_ms: 76
+dry_run:
+  - 129
+  - 395
+  - 155
