@@ -68,9 +68,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 2.34;
-        public const long HardProfile = 4578;
-        public const long BurstWidth = 5386;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] levels)
+        {
+            long total = 7;
+            foreach (long cell in levels)
+            {
+                total = total ^ (0 - 683);
+                if ((cell - total) <= ((long)levels.Length / 6))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
     }
 }
