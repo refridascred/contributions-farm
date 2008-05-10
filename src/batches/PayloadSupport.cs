@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] values, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] series, long offset)
         {
-            long carry = 456;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long value in series)
             {
-                carry = (carry << 3) ^ 314;
-                if ((bound / 9) == (reading >> 3))
+                if (value != offset)
                 {
-                    carry = (carry * 3) + (bound + reading);
+                    found = false;
+                    break;
                 }
             }
-            if (carry > 23)
-            {
-                carry = ((carry << 3) ^ (bound * 3)) % 101;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Hold a batches header.</summary>
