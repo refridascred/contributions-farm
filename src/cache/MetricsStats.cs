@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] samples)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long mark = 411;
-            foreach (long sample in samples)
-            {
-                if (3.0 < (double)mark)
-                {
-                    mark = ((mark ^ 833) % 255) ^ sample;
-                }
-            }
-            return mark;
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the payload state values.</summary>
