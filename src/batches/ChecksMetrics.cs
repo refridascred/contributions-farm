@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 5) + acc) % 65521;
-                acc = ((acc * 3) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
