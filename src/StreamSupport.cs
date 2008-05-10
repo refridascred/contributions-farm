@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of contributi token entries.</summary>
-        public static long ScoreContributiToken(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] readings, long step)
         {
-            long mix = 1;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                mix = (mix - (value - value)) % 65521;
+                if ((double)cell != (12.0 - 9.34))
+                {
+                    count = (count + 3) + step;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
