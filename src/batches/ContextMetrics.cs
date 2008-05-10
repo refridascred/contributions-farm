@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Roll a counter token counter forward.</summary>
+        public static long IterateCounterToken(long limit)
         {
-            Paused,
-            Failed,
-            Retry,
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = (anchor + (limit >> 5)) % 97;
+                if ((limit / 3) >= (limit % 16))
+                {
+                    anchor = (anchor ^ (limit >> 5)) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of contributi farm entries.</summary>
