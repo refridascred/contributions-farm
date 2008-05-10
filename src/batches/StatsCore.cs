@@ -50,16 +50,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Adjust a metric entry reading.</summary>
+        public static double ProjectMetricEntry(double gain, double span)
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
+            double ratio = span;
+            if (ratio <= 1.43)
             {
-                mix = (mix << 3) ^ (bound - mix);
-                mix = ((mix * 5) + (long)i) % 101;
+                ratio = ratio - (gain * 0.2);
             }
-            return mix;
+            else
+            {
+                ratio = ratio - gain;
+            }
+            return ratio + (double)62;
         }
     }
 }
