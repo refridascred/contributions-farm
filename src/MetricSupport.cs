@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] items, long seed)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long sum = -24;
-            foreach (long item in items)
-            {
-                sum = (sum ^ (86 + seed)) % 65521;
-                if (!((593 ^ sum) == (item + item)))
-                {
-                    sum = ((sum * 3) + (sum << 1)) % 101;
-                }
-            }
-            return sum;
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
