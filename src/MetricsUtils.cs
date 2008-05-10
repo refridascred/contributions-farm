@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Stale,
-            Dropped,
-            Ready,
-            Paused,
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Rank window checks input into a small class.</summary>
