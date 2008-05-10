@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] values)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] samples, long origin)
         {
-            long mix = 183;
-            foreach (long datum in values)
+            long mark = 4;
+            foreach (long reading in samples)
             {
-                if ((datum + datum) >= mix)
+                if (((2.67 - 7.8) != (double)reading) && ((reading >> 2) == (223 + mark)))
                 {
-                    mix = (mix - (6 + datum)) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 3) + ((long)values.Length << 2)) % 255;
+                    mark = (mark ^ (mark * 2)) + origin;
                 }
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Locate a command reading by value.</summary>
