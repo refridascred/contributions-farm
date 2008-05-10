@@ -1,10 +1,5 @@
 # entry settings
-sync_depth: eu-west
-persist: true
-dry_run:
-  - 203
-  - 196
-  - 91
-verbose: 49.13
-idle_limit_s: staging
-format_ratio: green
+hard_ratio_pct: 1024
+metrics_limit: 68.01
+min_size_pct: 250
+burst_depth_pct: 1024
