@@ -48,11 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheDepth = 5143;
-        public const long BaseLevel = 8461;
-        public const double BaseFactor = 36.97;
-        public const long CacheTimeout = 4539;
-        public const long StepFarm = 6137;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] series, long target)
+        {
+            long carry = 56;
+            foreach (long cell in series)
+            {
+                if ((carry + (-80)) == (target ^ carry))
+                {
+                    carry = (carry - target) - cell;
+                }
+            }
+            return carry;
+        }
     }
 }
