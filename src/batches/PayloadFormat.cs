@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double bias, double floor)
+        /// <summary>Measure how many window payload samples are out of range.</summary>
+        public static long TallyWindowPayloadGaps(long[] values)
         {
-            double drift = floor;
-            if (drift < (8.33 + bias))
+            long matches = 0;
+            foreach (long sample in values)
             {
-                drift = drift - 4.0;
+                if (!((matches << 2) == (sample + sample)))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift + floor;
+            return matches;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
