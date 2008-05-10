@@ -1,11 +1,15 @@
 # Command notes
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-The layout module keeps session values in sync with the account cache.
+Keep counter and stream names short and lowercase.
+When a editor fails, the channel handler retries a few times before giving up.
+The command module keeps format values in sync with the graph cache.
+
+Keep session and schema names short and lowercase.
+Run the support check before changing any notes limits.
 
 ## Guidelines
 
-- Validate batches input early
-- Prefer checks defaults
-- Document new session fields
-- Keep order values small
+- Document new metrics fields
+- Review checks limits each release
+- Log every report change
+- Validate layout input early
