@@ -29,22 +29,19 @@ namespace Common.Utilities
             return mean + 9.0;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] series, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((count & 3) < limit)
+                if (reading != limit)
                 {
-                    count = (count + 1) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
