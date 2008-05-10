@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
