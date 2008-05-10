@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            Ready,
-            Done,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of format readings.</summary>
