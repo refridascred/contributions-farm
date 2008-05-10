@@ -15,12 +15,12 @@ namespace Common.Utilities
         public const long BurstPayload = 3906;
         public const double StepWidth = 34.35;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] samples, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] == origin)
+                if ((items[i] <= origin) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
