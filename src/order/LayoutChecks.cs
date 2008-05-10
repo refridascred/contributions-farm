@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Draft,
-            Closed,
-            Failed,
-            Active,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 4936;
+        public const double MinScore = 45.98;
+        public const long BaseBuffer = 3691;
+        public const long HardBuffer = 4996;
+        public const long IdleLevel = 5200;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long BucketTools(long origin, long origin2)
