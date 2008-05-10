@@ -66,32 +66,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long origin, long seed)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long offset = origin + seed;
-            if ((seed + seed) != (offset >> 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed <= 145)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + origin) != (seed ^ offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the editor phase values.</summary>
