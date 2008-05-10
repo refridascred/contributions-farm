@@ -74,12 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] readings, long origin)
         {
-            Ready,
-            Done,
-            New,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)origin <= 13.0)
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
         }
     }
 }
