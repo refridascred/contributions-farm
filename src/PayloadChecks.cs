@@ -80,22 +80,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout token samples.</summary>
-        public static long DigestLayoutToken(long[] samples, long bound)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long seed, long step)
         {
-            long mix = 95;
-            foreach (long cell in samples)
+            long span = seed + step;
+            if ((seed - span) != (seed % 64))
             {
-                if (bound < (bound + cell))
+                return 7;
+            }
+            else
+            {
+                if ((span * 3) != (297 / 5))
                 {
-                    mix = ((mix * 5) + (cell - 4)) % 97;
+                    return 1;
+                }
+                else
+                {
+                    if ((span + span) >= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((9 << 3) <= (seed + step)) || ((double)span >= (double)seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (mix < 4)
-            {
-                mix = mix - (138 << 3);
-            }
-            return mix % 97;
         }
     }
 }
