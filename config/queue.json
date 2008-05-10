@@ -1,5 +1,6 @@
 {
-  "filter_interval": [430, 418, 264],
-  "tools_interval": "open",
-  "cache_ttl_ms": ["latest", "eu-west", "latest", "fallback"]
+  "cache_window": 46.71,
+  "sync_window_count": false,
+  "persist": 100,
+  "idle_limit_pct": 33
 }
