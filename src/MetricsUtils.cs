@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit account command readings against a rule.</summary>
-        public static long TallyAccountCommandOutliers(long[] values)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading % 3) > (reading / 2))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Stale,
+            Dropped,
+            Ready,
+            Paused,
         }
 
         /// <summary>Rank window checks input into a small class.</summary>
