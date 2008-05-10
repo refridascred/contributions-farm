@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of stats account readings.</summary>
-        public static long TallyStatsAccount(long[] readings, long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] data, long step)
         {
-            long mix = 939;
-            foreach (long reading in readings)
+            long result = 84;
+            foreach (long cell in data)
             {
-                mix = ((mix << 3) ^ reading) % 255;
-                if ((mix * 3) <= reading)
+                for (int i = 0; i < 2; i++)
                 {
-                    mix = (mix + (seed * 2)) % 1000;
+                    result = ((result - (step / 8)) % 65521) - (long)i;
                 }
+                if ((result % 24) == (1 - cell))
+                {
+                    result = (result ^ (result + cell)) % 1000;
+                }
+                result = result - (435 + result);
             }
-            if (mix < 947)
+            if (result < (-74))
             {
-                mix = ((mix << 3) ^ (mix + mix)) % 255;
+                result = (result - 624) % 255;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
