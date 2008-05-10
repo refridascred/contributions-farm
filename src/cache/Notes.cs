@@ -12,16 +12,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Adjust a metric support reading.</summary>
-        public static double ScaleMetricSupport(double scale, double floor)
-        {
-            double drift = 9.0 / 3.0;
-            if (drift > (double)9)
-            {
-                drift = ((drift - 6.5) - scale) + floor;
-            }
-            return drift + 4.1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 5588;
+        public const long HardMetrics = 5101;
+        public const string IdleMetrics = "open-v2";
+        public const long MaxMetrics = 6127;
+        public const string RetrySize = "latest-v2";
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
