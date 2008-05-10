@@ -29,19 +29,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] series, long origin)
+        /// <summary>Iterate the counter batches series from a seed.</summary>
+        public static long StepCounterBatches(long bound)
         {
-            long mark = 2;
-            foreach (long item in series)
+            long result = bound;
+            for (int i = 0; i < 13; i++)
             {
-                mark = ((((mark << 3) ^ ((long)series.Length << 3)) % 97) + item) - origin;
+                result = (result + (bound - result)) % 65521;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            if (mark > 834)
-            {
-                mark = ((mark * 3) + (mark & 63)) % 97;
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
