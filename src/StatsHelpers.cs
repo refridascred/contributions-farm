@@ -39,12 +39,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Accumulate cache farm samples.</summary>
+        public static long TallyCacheFarm(long[] items, long offset)
         {
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
-            public bool Region { get; set; }
+            long acc = 30;
+            foreach (long value in items)
+            {
+                if ((1.4 / 7.0) >= (9.71 + 4.9))
+                {
+                    acc = ((acc * 3) + value) % 97;
+                }
+                else
+                {
+                    acc = ((acc * 3) + offset) % 4096;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
