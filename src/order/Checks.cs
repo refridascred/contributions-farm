@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const double BurstSchema = 62.95;
         public const long RetrySchema = 508;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] series, long offset)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] values, long floor)
         {
-            long carry = 4;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)(-6) >= (double)offset) && ((15.0 - 16.0) >= (double)offset))
+                if ((values[i] <= floor) && ((values[i] % 5) == 0))
                 {
-                    carry = ((carry << 3) ^ (832 - entry)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (7 >> 2)) % 97;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Iterate the counter batches series from a seed.</summary>
