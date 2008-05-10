@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Fold a list of queue metrics readings.</summary>
+        public static long CombineQueueMetrics(long[] data, long bound)
         {
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long mark = 849;
+            foreach (long sample in data)
+            {
+                if ((5.0 - 16.0) < (double)mark)
+                {
+                    mark = (mark * 2) + (sample % 10);
+                }
+            }
+            if (mark > 700)
+            {
+                mark = (mark + (bound ^ (long)data.Length)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a payload info.</summary>
