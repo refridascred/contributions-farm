@@ -53,11 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
+            Failed,
+            Dropped,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the record state values.</summary>
