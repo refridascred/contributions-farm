@@ -48,11 +48,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleSpan = 9683;
-        public const double BaseFilter = 72.06;
-        public const long DefaultFilter = 2590;
-        public const long HardFilter = 821;
-        public const string CacheRatio = "legacy-edge";
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample ^ 345) <= sample)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
