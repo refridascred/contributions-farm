@@ -37,39 +37,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long offset, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] levels, long limit)
         {
-            long step = offset + limit;
-            if (!(limit >= (1 % 64)))
+            long mix = 587;
+            foreach (long sample in levels)
             {
-                return 0;
+                mix = (mix - sample) % 97;
+                mix = (mix << 3) ^ (limit - sample);
             }
-            else
-            {
-                if ((double)offset == (9.37 + 20.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit % 97) >= ((-62) * 4)) && ((offset + offset) != (offset << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)step != (4.0 / 5.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
