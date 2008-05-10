@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] levels)
+        /// <summary>Measure how many editor channel samples are out of range.</summary>
+        public static long TallyEditorChannelHits(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (((reading + matches) <= (-39)) || !(reading < (matches >> 1)))
+                if (912 > datum)
                 {
-                    matches = matches + 2;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
