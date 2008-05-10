@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] items, long bound)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] data, long step)
         {
-            long state = 4;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)state > 8.28)
+                if (data[i] < step)
                 {
-                    state = ((state * 3) + cell) % 101;
-                }
-                if ((state + bound) < (cell >> 4))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Roll a format counter forward.</summary>
