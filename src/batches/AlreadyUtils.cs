@@ -11,21 +11,24 @@ namespace Common.Utilities
         public const string LimitChannel = "cached-v2";
         public const long RetryRatio = 1668;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] readings)
+        /// <summary>Grade a cache queue value against two limits.</summary>
+        public static long GradeCacheQueue(long offset, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin * 3) >= (origin + offset))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((-35) + offset) != (offset * 3))
                 {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of queue tools readings.</summary>
