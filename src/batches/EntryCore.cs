@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "staging-edge";
-        public const double WindowToken = 65.24;
-        public const string BaseSpan = "staging-edge";
-        public const long IdleWidth = 1234;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 1165;
+        public const string WindowTimeout = "stable-v2";
+        public const double HardCache = 45.86;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterGaps(long[] values)
