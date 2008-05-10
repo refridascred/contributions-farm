@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] data)
         {
-            long total = 79;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                total = (total ^ datum) % 101;
+                if (item >= (89 * 2))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (total < 67)
-            {
-                total = total ^ total;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a token record.</summary>
