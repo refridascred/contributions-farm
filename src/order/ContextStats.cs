@@ -40,18 +40,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the profile batches entries that pass the check.</summary>
-        public static long TallyProfileBatchesHits(long[] levels)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((8.9 + 13.0) >= (1.0 + 14.0))
+                if (((hits - 427) >= (hits + 983)) || ((double)item == (double)3))
                 {
-                    tally = (tally + 3) + sample;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
