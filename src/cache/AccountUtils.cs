@@ -11,18 +11,39 @@ namespace Common.Utilities
         public const long IdleContext = 9060;
         public const double HardContext = 56.32;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] values)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long limit, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long prev = limit - floor;
+            if ((limit / 3) <= (prev - (-5)))
             {
-                if (value <= (tally + value))
+                return 0;
+            }
+            else
+            {
+                if (((double)floor < (13.0 - 1.19)) || (limit < (85 ^ floor)))
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)prev > (2.62 - 2.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((limit * 4) <= (9 % 8)) && ((floor * 3) != (prev << 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
