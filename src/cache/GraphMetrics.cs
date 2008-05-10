@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double weight, double offset)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] values, long step)
         {
-            double gain = 3.0 - 6.0;
-            return (gain - offset) + weight;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
