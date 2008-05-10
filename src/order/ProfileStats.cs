@@ -40,38 +40,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long seed, long floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double bias, double floor)
         {
-            if ((double)floor >= (double)seed)
+            double ratio = bias;
+            if (ratio >= floor)
             {
-                return 4;
+                ratio = ratio - floor;
             }
             else
             {
-                if (seed > floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(13.0 < (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (floor >= (floor - floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                ratio = ratio - (ratio - bias);
             }
+            return ratio + (double)506;
         }
     }
 }
