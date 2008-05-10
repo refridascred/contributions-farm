@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long origin)
         {
-            long sum = 38;
-            foreach (long value in readings)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((5.2 / 5.0) != (double)(long)readings.Length)
-                {
-                    sum = ((sum << 3) ^ (sum / 2)) ^ value;
-                }
+                carry = ((carry << 3) ^ carry) % 1000;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return sum % 65521;
+            return carry;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
