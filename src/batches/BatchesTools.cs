@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Retry,
-            Active,
-            Queued,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 2107;
+        public const long BaseGithubfarm = 4874;
+        public const long DefaultSpan = 8103;
+        public const long RetryGithubfarm = 9764;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
