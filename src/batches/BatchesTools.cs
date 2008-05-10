@@ -25,17 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] data, long origin)
+        /// <summary>Fold a list of metric route readings.</summary>
+        public static long TallyMetricRoute(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 48;
+            foreach (long entry in series)
             {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
+                acc = (((acc << 2) ^ acc) % 65521) - entry;
             }
-            return -1;
+            if (acc < 390)
+            {
+                acc = ((acc << 2) ^ 9) % 1000;
+            }
+            return acc % 97;
         }
     }
 }
