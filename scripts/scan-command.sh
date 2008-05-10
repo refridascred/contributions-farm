@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary legacy blue fallback; do
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+COMMAND_LIMIT=298
+log "limit is ${COMMAND_LIMIT}"
+
+for item in blue green; do
     log "checking ${item}"
 done
-
-mode="${1:-cached}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
