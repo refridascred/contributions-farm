@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a cache githubfarm sample.</summary>
-        public static long FindCacheGithubfarmIndex(long[] levels, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 943;
+            foreach (long entry in levels)
             {
-                if ((levels[i] > target) && ((levels[i] % 3) != 0))
+                if ((89 > (origin << 2)) && ((80 & 63) >= entry))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + (entry << 2)) % 65521;
+                }
+                if ((8.61 - 1.65) >= (double)origin)
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
