@@ -41,13 +41,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] series, long target)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seen - target) <= (625 + target))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
