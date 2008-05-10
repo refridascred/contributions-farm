@@ -27,14 +27,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstContext = "staging-v2";
+        public const long DefaultDepth = 9451;
+        public const long CacheContext = 4186;
+        public const double BatchContext = 66.72;
+        public const string MaxRatio = "strict";
 
         /// <summary>Roll a token counter forward.</summary>
         public static long SeriesToken(long offset)
