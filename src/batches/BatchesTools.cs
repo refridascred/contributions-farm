@@ -38,22 +38,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of already batches entries.</summary>
-        public static long FoldAlreadyBatches(long[] data)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long total = 191;
-            foreach (long reading in data)
-            {
-                if ((double)reading != (2.19 * 7.3))
-                {
-                    total = (total + (reading + reading)) % 65521;
-                }
-                else
-                {
-                    total = (total ^ (reading % 97)) % 101;
-                }
-            }
-            return total;
+            Paused,
+            Dropped,
+            Pending,
         }
     }
 }
