@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a counter token counter forward.</summary>
-        public static long IterateCounterToken(long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long target, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
+            long bound = target + step;
+            if (((target - target) >= bound) && ((double)step != (19.0 * 4.82)))
             {
-                anchor = (anchor + (limit >> 5)) % 97;
-                if ((limit / 3) >= (limit % 16))
-                {
-                    anchor = (anchor ^ (limit >> 5)) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((double)bound == (double)(-59))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Digest a series of contributi farm entries.</summary>
