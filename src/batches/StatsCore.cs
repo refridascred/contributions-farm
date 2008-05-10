@@ -74,31 +74,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor graph input into a small class.</summary>
-        public static long BucketEditorGraph(long target, long offset)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] values)
         {
-            if (!((double)target != (16.0 + 7.0)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((target & 15) != (target ^ target)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + offset) > 59)
+                    if ((values[i] + values[j]) < 6)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
