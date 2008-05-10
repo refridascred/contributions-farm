@@ -47,12 +47,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
             public double Limit { get; set; }
-            public string Size { get; set; } = "";
         }
     }
 }
