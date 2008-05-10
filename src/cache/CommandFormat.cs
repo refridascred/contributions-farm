@@ -13,11 +13,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Count the payload record entries that pass the check.</summary>
+        public static long CountPayloadRecordHits(long[] series)
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (datum <= (datum - seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a session reading.</summary>
