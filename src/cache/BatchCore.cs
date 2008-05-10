@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session payload samples are out of range.</summary>
-        public static long AuditSessionPayloadOutliers(long[] samples, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long sum = 11;
+            foreach (long sample in values)
             {
-                if ((3.82 >= (double)item) || ((12.0 / 3.0) == (double)matches))
-                {
-                    matches = (matches + 3) + offset;
-                }
+                sum = ((sum ^ (sample ^ sum)) % 101) - seed;
             }
-            return matches;
+            if (sum < (-30))
+            {
+                sum = sum - (224 % 12);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Locate a support channel reading by value.</summary>
