@@ -47,12 +47,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Active,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 5549;
+        public const long SoftCount = 6772;
+        public const double MinTools = 48.27;
+        public const long BurstTools = 8162;
+        public const long SoftTools = 8044;
     }
 }
