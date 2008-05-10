@@ -42,13 +42,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit checks githubfarm readings against a rule.</summary>
+        public static long MeasureChecksGithubfarmMatches(long[] series)
         {
-            New,
-            Idle,
-            Done,
-            Dropped,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((20.0 / 8.0) < (double)value)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
