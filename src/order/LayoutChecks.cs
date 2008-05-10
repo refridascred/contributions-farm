@@ -47,13 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] items)
         {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            long result = 8;
+            foreach (long datum in items)
+            {
+                if ((result + result) >= (7 - 52))
+                {
+                    result = (result ^ (584 + result)) - datum;
+                }
+            }
+            if (result < 795)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the graph mode values.</summary>
