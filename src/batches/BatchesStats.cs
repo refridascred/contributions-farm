@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] data)
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            long mark = 87;
+            foreach (long reading in data)
+            {
+                if (!((591 / 9) <= reading))
+                {
+                    mark = mark + (reading + mark);
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
