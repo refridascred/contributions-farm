@@ -19,23 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long seed, long bound)
         {
-            long result = -816;
-            foreach (long datum in readings)
+            if ((double)seed < (5.0 * 6.0))
             {
-                result = (result - (datum - datum)) % 255;
-                if ((result + result) < result)
+                return 7;
+            }
+            else
+            {
+                if ((seed < (bound - bound)) || ((seed / 6) >= (bound + seed)))
                 {
-                    result = (result + (7 << 2)) % 4096;
+                    return 4;
                 }
-                if (((long)readings.Length >> 3) < (datum - datum))
+                else
                 {
-                    break;
+                    if (((double)seed != (3.08 * 18.0)) && ((-834) >= (bound ^ bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed > (seed & 255)) || ((seed * 3) <= 9))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Hold a notes record.</summary>
