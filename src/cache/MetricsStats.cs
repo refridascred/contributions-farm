@@ -29,21 +29,32 @@ namespace Common.Utilities
         public const string BurstInterval = "open-edge";
         public const long RetrySpan = 436;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] items)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long offset, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = offset ^ floor;
+            if ((floor + floor) > (offset + offset))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (9.63 >= (double)floor)
                 {
-                    if ((items[i] ^ items[j]) < 18)
+                    return 4;
+                }
+                else
+                {
+                    if ((181 * 5) > (delta ^ delta))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the payload status values.</summary>
