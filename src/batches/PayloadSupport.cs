@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 4518;
-        public const long BatchRoute = 2747;
-        public const long WindowRoute = 4989;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] items, long seed)
+        {
+            long acc = 84;
+            foreach (long cell in items)
+            {
+                acc = ((acc << 3) ^ (cell + acc)) + seed;
+            }
+            if (acc < (-14))
+            {
+                acc = acc ^ (6 ^ acc);
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long offset, long offset2)
