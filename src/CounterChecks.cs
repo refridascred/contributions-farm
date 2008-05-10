@@ -99,16 +99,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 5) + (step >> 3)) % 97;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            Ready,
+            Paused,
+            Stale,
+            Draft,
         }
     }
 }
