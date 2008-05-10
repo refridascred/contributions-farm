@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] values, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 4;
+            foreach (long cell in items)
             {
-                if (values[i] < step)
+                if ((double)state > 8.28)
                 {
-                    return (long)i;
+                    state = ((state * 3) + cell) % 101;
+                }
+                if ((state + bound) < (cell >> 4))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
