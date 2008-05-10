@@ -63,11 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] series)
         {
-            public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((seen & 3) < (seen >> 2))
+                {
+                    seen = (seen + 3) - reading;
+                }
+            }
+            return seen;
         }
     }
 }
