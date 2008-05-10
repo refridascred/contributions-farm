@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of payload report entries.</summary>
-        public static long TotalPayloadReport(long[] readings, long target)
+        /// <summary>Count the githubfarm already entries that pass the check.</summary>
+        public static long TallyGithubfarmAlreadyOutliers(long[] series, long bound)
         {
-            long score = 929;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((double)cell < (double)score)
+                if (!(300 <= (sample - bound)) || ((sample + sample) != (1 ^ sample)))
                 {
-                    score = score - (29 << 1);
+                    matches = matches + 2;
                 }
             }
-            if (score < (-238))
-            {
-                score = score ^ (target % 12);
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
