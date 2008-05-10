@@ -31,18 +31,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] data)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (((-53) + tally) >= tally)
+                if (reading != floor)
                 {
-                    tally = (tally + 3) + item;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
