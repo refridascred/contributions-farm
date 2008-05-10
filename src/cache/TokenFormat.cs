@@ -33,21 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = -36;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((3.8 * 8.0) == (double)carry)
                 {
-                    if ((values[i] ^ values[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (((carry * 4) + (reading + carry)) % 4096) - target;
+                }
+                else
+                {
+                    carry = (carry + 11) % 101;
                 }
             }
-            return tally;
+            return carry % 97;
         }
     }
 }
