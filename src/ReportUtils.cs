@@ -59,12 +59,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            Dropped,
+            Closed,
+            Ready,
+            Locked,
         }
     }
 }
