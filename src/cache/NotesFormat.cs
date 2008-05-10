@@ -36,22 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile buffer samples are out of range.</summary>
-        public static long AuditProfileBufferOutliers(long[] levels)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3.4 * 8.19) == (double)hits)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] + data[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
