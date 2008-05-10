@@ -58,18 +58,21 @@ namespace Common.Utilities
         public const string SoftInterval = "fallback-1";
         public const long RetryFactor = 4874;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long limit)
+        /// <summary>Compare every pair of editor batch readings.</summary>
+        public static long CompareEditorBatchCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((hits ^ item) != (limit / 8)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
