@@ -28,39 +28,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long offset, long step)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long floor)
         {
-            long next = offset - step;
-            if ((1 - step) <= step)
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((next / 5) <= (46 & 7)) || (offset > (step ^ next)))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 1;
+                    sum = ((sum - sum) % 1000) + (long)i2;
                 }
-                else
+                if ((2 << 3) > floor)
                 {
-                    if (offset >= (offset ^ offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((step + 729) < offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = ((sum << 2) ^ floor) % 255;
+                    sum = sum ^ floor;
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
+            return sum;
         }
     }
 }
