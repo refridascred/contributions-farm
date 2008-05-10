@@ -1,18 +1,17 @@
 {
-  "enabled": "open",
-  "verbose": {
-    "min_depth_count": 21.37,
-    "max_limit_ms": false,
-    "idle_interval_count": "standard",
-    "editor_window": "standard",
-    "min_retries_s": {
-      "warm_size": [240, 194],
-      "batch_delay_count": 84,
-      "token_size": "latest",
-      "hard_limit_count": 563,
-      "flush_retries_s": 38.32
+  "account_ttl": 250,
+  "burst_timeout_pct": 98.99,
+  "schema_timeout": {
+    "hard_ratio_pct": 50,
+    "record_timeout": 53,
+    "session_timeout": 60,
+    "order_retries": {
+      "verbose": true,
+      "notes_ttl": 34.81,
+      "record_threshold": false,
+      "support_retries": 250,
+      "idle_depth_count": 93.68
     },
-    "context_retries": 45.68
-  },
-  "max_depth": [5, 216]
+    "schema_delay": 17
+  }
 }
