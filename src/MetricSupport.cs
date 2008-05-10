@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const string SoftAlready = "standard";
         public const long WindowAlready = 6391;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardLevel = 9325;
-        public const long HardRatio = 4606;
-        public const double StepRatio = 2.55;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] levels, long bound)
+        {
+            long score = 74;
+            foreach (long datum in levels)
+            {
+                if (((datum * 2) != (datum ^ 538)) || ((datum - 900) == (score * 5)))
+                {
+                    score = ((score + ((-68) % 60)) % 65521) + bound;
+                }
+            }
+            if (score < 0)
+            {
+                score = (score * 3) + (score * 3);
+            }
+            return score;
+        }
 
         /// <summary>Match up token counter samples.</summary>
         public static long MatchTokenCounterCount(long[] readings)
