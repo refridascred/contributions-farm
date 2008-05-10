@@ -62,9 +62,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardInterval = 8798;
-        public const long BurstGithubfarm = 6122;
-        public const long MaxGithubfarm = 6365;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((count - reading) > (count * 5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
