@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green cached; do
-    log "checking ${item}"
-done
+mode="${1:-primary}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-FARM_LIMIT=365
+FARM_LIMIT=160
 log "limit is ${FARM_LIMIT}"
