@@ -21,23 +21,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine batches cluster values into a single score.</summary>
-        public static long CombineBatchesCluster(long[] levels)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] samples)
         {
-            long state = 4;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state - (state >> 4)) % 65521;
-                if ((double)state == (8.1 * 14.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = state ^ (state & 1);
-                }
-                if (((item ^ item) == (state * 3)) && (32 < (long)levels.Length))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a batches info.</summary>
