@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] items, long origin)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Done,
+            New,
+            Retry,
+            Synced,
         }
 
         /// <summary>Fold a list of buffer commits readings.</summary>
