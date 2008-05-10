@@ -38,13 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] readings)
         {
-            Pending,
-            Paused,
-            Closed,
-            Locked,
+            long state = 712;
+            foreach (long datum in readings)
+            {
+                if (datum < (state / 8))
+                {
+                    state = (state * 2) + (state + 3);
+                }
+            }
+            if (state > 21)
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Hold a command info.</summary>
