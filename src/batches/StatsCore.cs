@@ -65,23 +65,18 @@ namespace Common.Utilities
         public const long BurstWidth = 4931;
         public const double MinPayload = 35.26;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] series, long bound)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] readings, long target)
         {
-            long acc = 2;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                acc = (acc - (cell & 1)) % 4096;
-                if ((bound << 1) != (cell % 10))
+                if (((matches > target) && (sample >= ((long)readings.Length / 9))) || (((-876) & 31) >= matches))
                 {
-                    acc = (acc ^ (cell + bound)) % 97;
+                    matches = matches + 2;
                 }
             }
-            if (acc < 955)
-            {
-                acc = ((acc << 3) ^ (acc + 411)) % 101;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
