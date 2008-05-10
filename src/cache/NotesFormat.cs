@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((matches / 3) == (45 & 127))
+                if (((limit << 2) > (limit + limit)) && ((datum << 1) != (limit >> 3)))
                 {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
