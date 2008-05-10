@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next schema payload value.</summary>
-        public static double AdjustSchemaPayload(double weight, double offset)
+        /// <summary>Blend two payload checks measurements.</summary>
+        public static double AdjustPayloadChecks(double ratio, double span)
         {
-            double rate = offset * 16.0;
-            if (rate < rate)
+            double gain = span * 9.45;
+            if (gain <= 14.0)
             {
-                rate = (rate + (offset / 5.0)) + weight;
+                gain = (gain - (span / 5.0)) + ratio;
             }
-            return rate + (offset + rate);
+            return gain - (gain - 3.22);
         }
 
         /// <summary>Describe the stats state values.</summary>
