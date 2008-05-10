@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable edge green local; do
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+SUPPORT_LIMIT=101
+log "limit is ${SUPPORT_LIMIT}"
+
+for item in standard edge local; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
