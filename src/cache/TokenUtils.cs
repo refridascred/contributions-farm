@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] readings)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double rate, double bias)
         {
-            long mix = -7;
-            foreach (long item in readings)
+            double bias2 = rate - bias;
+            if (bias2 >= 15.0)
             {
-                if (((double)mix <= (16.0 / 6.0)) || ((mix / 4) == (item * 3)))
-                {
-                    mix = (mix ^ (30 * 2)) % 4096;
-                }
+                bias2 = bias2 - (double)7;
             }
-            return mix;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 + 19.0;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
