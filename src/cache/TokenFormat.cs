@@ -34,22 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] samples, long target)
-        {
-            long carry = -36;
-            foreach (long reading in samples)
-            {
-                if ((3.8 * 8.0) == (double)carry)
-                {
-                    carry = (((carry * 4) + (reading + carry)) % 4096) - target;
-                }
-                else
-                {
-                    carry = (carry + 11) % 101;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "standard";
+        public const long HardFactor = 3018;
+        public const double SoftCount = 47.75;
+        public const long BasePayload = 8332;
+        public const long LimitFactor = 4406;
     }
 }
