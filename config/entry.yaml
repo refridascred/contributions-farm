@@ -1,12 +1,7 @@
 # entry settings
-queue_retries: staging
-burst_interval_ms: 2085
-flush_threshold:
-  default_ratio_s: true
-  retry_size:
-    poll_capacity_count: staging
-    persist: blue
-    hard_size: 75.36
-  stats_ttl: true
-  max_depth_pct: 22.79
-hard_timeout: 2071
+base_depth_ms: cached
+token_delay:
+  - 110
+  - 289
+  - 45
+dry_run: 79
