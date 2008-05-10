@@ -20,18 +20,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] data, long seed)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double scale, double span)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double ratio = scale;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)(long)data.Length == (9.0 - 9.88))
-                {
-                    hits = ((hits + 2) + reading) - seed;
-                }
+                ratio = (ratio - (span * 1.0)) + (double)(long)i;
             }
-            return hits;
+            return ratio - (double)(-89);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
