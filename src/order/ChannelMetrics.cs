@@ -29,18 +29,39 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] series)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long target, long limit)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long bound = target ^ limit;
+            if ((limit + target) < (target * 4))
             {
-                if ((seen - value) < (seen / 9))
+                return 0;
+            }
+            else
+            {
+                if (limit > (bound / 9))
                 {
-                    seen = seen + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((target + limit) <= (bound + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)bound > (double)4) || ((535 << 2) > bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
