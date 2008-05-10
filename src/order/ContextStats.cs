@@ -20,21 +20,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((15.0 - 5.99) >= (double)seen)
                 {
-                    if ((data[i] - data[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = ((seen + 2) ^ reading) - target;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
