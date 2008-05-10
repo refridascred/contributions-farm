@@ -23,10 +23,27 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheBudget = 2420;
-        public const long MinSchema = 1310;
-        public const string BatchSchema = "staging";
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] values, long limit)
+        {
+            long sum = 9;
+            foreach (long datum in values)
+            {
+                if (((limit * 3) >= (limit >> 5)) && ((double)sum >= (double)datum))
+                {
+                    sum = (sum - (limit >> 3)) % 97;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ sum) % 255;
+                }
+            }
+            if (sum < 734)
+            {
+                sum = (sum ^ (limit - 652)) % 65521;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long ScoreMetric(long[] readings, long offset)
