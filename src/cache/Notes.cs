@@ -59,21 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] readings)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = 9.1 + (ratio + offset);
+            if (weight <= ratio)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight - (weight / 4.0);
             }
-            return hits;
+            return weight - ratio;
         }
     }
 }
