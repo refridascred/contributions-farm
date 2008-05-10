@@ -36,17 +36,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] values, long origin)
+        /// <summary>Audit notes record readings against a rule.</summary>
+        public static long AuditNotesRecordMatches(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((values[i] > origin) && ((values[i] % 2) == 0))
+                if (!(5.5 >= (double)sample))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + origin;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
