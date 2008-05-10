@@ -62,12 +62,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] series, long limit)
         {
-            Ready,
-            Draft,
-            Idle,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
