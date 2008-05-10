@@ -40,12 +40,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Fold a list of queue batch readings.</summary>
+        public static long TallyQueueBatch(long[] readings, long seed)
         {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
+            long result = 10;
+            foreach (long datum in readings)
+            {
+                result = ((result + (93 % 8)) % 1000) - seed;
+                if ((double)datum > (8.3 - 5.46))
+                {
+                    result = ((result * 5) + (13 & 255)) % 97;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Project the next token value.</summary>
