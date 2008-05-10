@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardStream = "cached-edge";
-        public const double LimitStream = 48.97;
-        public const long DefaultStream = 9605;
-        public const double HardTimeout = 7.09;
-        public const long StepStream = 2389;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((8.0 + 14.0) >= (double)count)
+                {
+                    count = ((count + 3) - sample) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long CombineBatches(long[] readings, long bound)
