@@ -46,16 +46,17 @@ namespace Common.Utilities
         public const long StepStream = 9588;
         public const long IdleStream = 5683;
 
-        /// <summary>Roll a batches queue counter forward.</summary>
-        public static long IterateBatchesQueue(long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] samples, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor * 4) + (anchor - bound);
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
