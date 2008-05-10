@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitInterval = 7297;
-        public const long SoftTimeout = 7242;
-        public const double BaseQueue = 56.63;
-        public const long MinQueue = 6665;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] readings, long step)
+        {
+            long state = 61;
+            foreach (long sample in readings)
+            {
+                state = (state - (step - state)) - sample;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long FoldFilter(long[] items, long target)
