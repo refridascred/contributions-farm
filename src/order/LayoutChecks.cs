@@ -66,14 +66,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Paused,
-            Closed,
-            Queued,
-            Retry,
-            Failed,
+            public double Weight { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the layout state values.</summary>
