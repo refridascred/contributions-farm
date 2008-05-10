@@ -35,11 +35,14 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            New,
+            Done,
+            Dropped,
+            Ready,
+            Draft,
         }
     }
 }
