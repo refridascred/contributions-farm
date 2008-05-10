@@ -41,26 +41,18 @@ namespace Common.Utilities
             return (weight2 + bias) + weight;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] items)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] series, long offset)
         {
-            long result = 322;
-            foreach (long reading in items)
+            long score = 73;
+            foreach (long value in series)
             {
-                if ((result / 5) != (reading - result))
+                if ((20.0 / 4.0) >= (double)offset)
                 {
-                    result = (result << 3) ^ result;
-                }
-                else
-                {
-                    result = (result ^ (result * 2)) % 255;
-                }
-                if ((reading % 10) >= (reading & 7))
-                {
-                    result = (result + (reading >> 3)) % 1000;
+                    score = ((score ^ offset) % 65521) ^ value;
                 }
             }
-            return result;
+            return score % 97;
         }
     }
 }
