@@ -89,12 +89,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Accumulate layout token samples.</summary>
+        public static long DigestLayoutToken(long[] samples, long bound)
         {
-            Closed,
-            Retry,
-            Synced,
+            long mix = 95;
+            foreach (long cell in samples)
+            {
+                if (bound < (bound + cell))
+                {
+                    mix = ((mix * 5) + (cell - 4)) % 97;
+                }
+            }
+            if (mix < 4)
+            {
+                mix = mix - (138 << 3);
+            }
+            return mix % 97;
         }
     }
 }
