@@ -1,6 +1,17 @@
 {
-  "cache_window": 46.71,
-  "sync_window_count": false,
-  "persist": 100,
-  "idle_limit_pct": 33
+  "cache_depth_pct": {
+    "compress": 9310,
+    "soft_interval_count": {
+      "batch_threshold": false,
+      "githubfarm_window": "standard",
+      "schema_ratio": "legacy",
+      "batch_size": "cached"
+    },
+    "min_ratio": "standard"
+  },
+  "warm_limit_s": [369, 165],
+  "persist": 3343,
+  "retry_depth_pct": "latest",
+  "cache_threshold_count": "stable",
+  "session_capacity": 45.66
 }
