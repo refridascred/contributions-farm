@@ -53,9 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxScore = 8066;
-        public const string WindowBuffer = "primary-1";
-        public const long BaseRatio = 8329;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] series, long step)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell <= (9.52 + 5.2))
+                {
+                    count = (count + 1) - step;
+                }
+            }
+            return count;
+        }
     }
 }
