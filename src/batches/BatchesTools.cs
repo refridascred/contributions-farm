@@ -19,23 +19,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine stats layout values into a single score.</summary>
-        public static long CombineStatsLayout(long[] items, long bound)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] levels, long offset)
         {
-            long total = 24;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total ^ (reading + total);
-                if (((bound ^ bound) != (reading + total)) && ((total - (long)items.Length) == (9 - reading)))
+                if (levels[i] < offset)
                 {
-                    total = ((total << 2) ^ (reading + 82)) % 101;
+                    return (long)i;
                 }
             }
-            if (total > 888)
-            {
-                total = (total + total) % 4096;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
