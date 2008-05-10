@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] series, long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long mix = 9;
+            foreach (long sample in levels)
             {
-                if (datum > step)
+                if ((double)sample <= 0.34)
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix * 2) + (limit % 2)) % 101;
+                }
+                else
+                {
+                    mix = mix + (sample + sample);
                 }
             }
-            return valid;
+            return mix % 4096;
         }
 
         /// <summary>Describe the commits phase values.</summary>
