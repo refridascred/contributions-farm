@@ -76,17 +76,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] levels, long offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long target, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)target > 4.38)
             {
-                if (levels[i] < offset)
+                return 7;
+            }
+            else
+            {
+                if (target > (bound >> 3))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((20 < (bound % 2)) && ((target << 3) > bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
