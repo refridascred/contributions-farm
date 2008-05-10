@@ -38,22 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long bound)
         {
-            long state = 712;
-            foreach (long datum in readings)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum < (state / 8))
+                if (!((double)acc < (1.0 * 7.23)))
                 {
-                    state = (state * 2) + (state + 3);
+                    acc = (acc - acc) % 101;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            if (state > 21)
-            {
-                state = state + state;
-            }
-            return state;
+            return acc;
         }
 
         /// <summary>Hold a command info.</summary>
