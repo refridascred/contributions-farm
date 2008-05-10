@@ -34,11 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinTimeout = 3488;
-        public const long MaxInterval = 3048;
-        public const double HardSpan = 78.46;
-        public const long HardRatio = 7090;
+        /// <summary>Blend two tools checks measurements.</summary>
+        public static double ScaleToolsChecks(double weight, double bias)
+        {
+            double weight2 = (double)(51 - 6);
+            return (weight2 + bias) + weight;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TallyLayout(long[] items)
