@@ -1,5 +1,5 @@
 {
-  "idle_ratio_s": false,
-  "report_size": "blue",
-  "min_limit_ms": 61.12
+  "report_window": "fallback",
+  "min_capacity_count": 30,
+  "strict": [39, 304, 6]
 }
