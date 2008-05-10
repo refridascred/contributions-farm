@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long offset)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Closed,
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the payload kind values.</summary>
