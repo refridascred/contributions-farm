@@ -61,21 +61,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((target - (long)i) >= target)
-                {
-                    result = (result - ((long)i / 3)) % 255;
-                    break;
-                }
-                result = (result * 3) + result;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Done,
+            Active,
+            Paused,
         }
 
         /// <summary>Find the first entry metrics entry that matches the target.</summary>
