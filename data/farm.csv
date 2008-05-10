@@ -1,7 +1,9 @@
-id,weight,region,rank
-1,67.54,717,50.1
-2,40.12,364,11.72
-3,531,strict,83.83
-4,5.22,primary,409
-5,909,959,latest
-6,66.39,117,181
+id,owner,ratio
+1,50.96,703
+2,primary,714
+3,157,fallback
+4,63.11,latest
+5,69.95,23.25
+6,51.9,green
+7,946,77
+8,500,staging
