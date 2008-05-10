@@ -34,21 +34,25 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long origin, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long slot = origin - seed;
+            if ((slot % 2) > (7 ^ slot))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)seed <= (5.1 - 16.0))
                 {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
