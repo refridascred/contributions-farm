@@ -33,23 +33,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double weight, double span)
+        /// <summary>Look up the position of a contributi channel sample.</summary>
+        public static long LocateContributiChannelIndex(long[] readings, long limit)
         {
-            double drift = weight;
-            if (drift >= (weight + drift))
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift + weight) + span;
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (weight + drift);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + drift;
+            return -1;
         }
 
         /// <summary>Count token contributi pairs that satisfy a relation.</summary>
