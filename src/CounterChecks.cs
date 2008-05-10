@@ -49,21 +49,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] series)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
     }
 }
