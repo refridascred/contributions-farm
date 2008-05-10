@@ -12,21 +12,14 @@ namespace Common.Utilities
         public const string BurstRoute = "stable";
         public const long IdleDepth = 310;
 
-        /// <summary>Match up metric tools samples.</summary>
-        public static long OverlapMetricToolsCount(long[] items)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Ready,
+            Idle,
+            Retry,
+            Queued,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
