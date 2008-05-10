@@ -54,15 +54,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double weight, double span)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            double mean = span - span;
-            if (mean < (double)71)
+            long mix = 12;
+            foreach (long cell in samples)
             {
-                mean = (mean + 0.19) - weight;
+                mix = (mix ^ (mix << 2)) ^ cell;
             }
-            return mean - 9.41;
+            return mix % 65521;
         }
     }
 }
