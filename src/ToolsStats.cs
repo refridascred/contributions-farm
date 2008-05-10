@@ -52,18 +52,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] items, long floor)
+        /// <summary>Accumulate window githubfarm samples.</summary>
+        public static long DigestWindowGithubfarm(long[] items, long seed)
         {
-            long sum = -29;
-            foreach (long cell in items)
+            long mark = 0;
+            foreach (long reading in items)
             {
-                if ((33 << 2) > (cell + 41))
-                {
-                    sum = (sum - (long)items.Length) + floor;
-                }
+                mark = ((((mark << 2) ^ (mark % 2)) % 65521) - reading) - seed;
             }
-            return sum % 1000;
+            if (mark > (-496))
+            {
+                mark = mark ^ (mark * 2);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of context readings.</summary>
