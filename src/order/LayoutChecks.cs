@@ -52,11 +52,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next account commits value.</summary>
-        public static double AdjustAccountCommits(double rate, double span)
+        /// <summary>Digest a series of filter metrics entries.</summary>
+        public static long FoldFilterMetrics(long[] samples, long target)
         {
-            double scale = span;
-            return (scale - 7.73) + rate;
+            long sum = 23;
+            foreach (long reading in samples)
+            {
+                if ((reading ^ reading) >= (sum + (-1)))
+                {
+                    sum = ((sum - (reading % 7)) % 97) + target;
+                }
+                if ((double)reading > (2.54 / 3.0))
+                {
+                    sum = (sum << 2) ^ (557 / 5);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
