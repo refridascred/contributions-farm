@@ -61,12 +61,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxFactor = 4394;
-        public const string BurstPayload = "fallback-1";
-        public const double HardCount = 72.52;
-        public const long BurstWidth = 4931;
-        public const double MinPayload = 35.26;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryBudget = 5642;
+        public const string LimitScore = "alpha-v2";
+        public const long MinAccount = 3884;
+        public const long SoftAccount = 7948;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long TotalMetrics(long[] samples)
