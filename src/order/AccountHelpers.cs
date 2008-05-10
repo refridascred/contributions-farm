@@ -34,11 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] items, long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a already stats.</summary>
