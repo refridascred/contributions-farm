@@ -59,11 +59,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftChecks = "staging-1";
-        public const long StepSize = 9468;
-        public const double BaseWidth = 50.94;
-        public const long BurstCount = 4485;
-        public const long HardScore = 8161;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches - matches) >= (matches + 17))
+                {
+                    matches = ((matches + 2) - item) - origin;
+                }
+            }
+            return matches;
+        }
     }
 }
