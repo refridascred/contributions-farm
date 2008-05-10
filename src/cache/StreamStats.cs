@@ -40,9 +40,16 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultCount = 11.08;
-        public const long SoftCommits = 8055;
-        public const double MaxCount = 22.97;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 2) + (anchor - anchor)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
