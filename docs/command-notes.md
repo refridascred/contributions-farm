@@ -1,14 +1,10 @@
 # Command notes
 
-Use commits settings to tune how often command data is refreshed.
-A context that stays idle for too long is moved to the batch list.
-The cluster report groups every queue by report.
-
-Defaults for batch live in the config folder and can be overridden per environment.
-A order that stays idle for too long is moved to the account list.
+Each batch is validated before it reaches the account queue.
+Each layout is validated before it reaches the contributi queue.
 
 ## Guidelines
 
-- Validate command input early
-- Keep command values small
-- Document new record fields
+- Log every session change
+- Keep contributi values small
+- Prefer entry defaults
