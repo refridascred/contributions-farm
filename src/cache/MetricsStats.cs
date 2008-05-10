@@ -69,22 +69,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value & 7) != (hits << 1))
-                {
-                    hits = (hits + 1) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardEntry = 93.79;
+        public const long SoftEntry = 8261;
+        public const double StepEntry = 69.54;
     }
 }
