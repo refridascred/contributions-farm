@@ -14,38 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long step, long limit)
+        /// <summary>Project the next graph record value.</summary>
+        public static double ProjectGraphRecord(double rate, double floor)
         {
-            if (((step - step) <= limit) || ((9.63 * 1.85) <= (double)step))
+            double bias = (double)(56 % 7);
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
+                bias = ((bias - bias) + (double)(long)i) + floor;
             }
-            else
-            {
-                if (step > (step + 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)542 < (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit * 2) == (limit >> 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return bias + (rate * 13.0);
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
