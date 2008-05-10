@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of metric queue readings.</summary>
-        public static long OverlapMetricQueueCount(long[] series)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count + value) <= count)
                 {
-                    if ((series[i] + series[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
