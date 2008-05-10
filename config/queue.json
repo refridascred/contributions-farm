@@ -1,11 +1,8 @@
 {
-  "min_window_count": false,
-  "flush_threshold_count": 29,
-  "poll_capacity": {
-    "soft_size_count": 44,
-    "contributi_threshold": 9697,
-    "warm_capacity_count": 8919
-  },
-  "poll_interval": 53.21,
-  "soft_ttl_s": "staging"
+  "default_delay_count": "local",
+  "flush_interval": 8446,
+  "report_size": 4634,
+  "min_interval_count": "open",
+  "max_retries_pct": false,
+  "cache_threshold_count": [441, 135, 182]
 }
