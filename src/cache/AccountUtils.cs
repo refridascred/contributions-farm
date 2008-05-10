@@ -15,31 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long step, long limit)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            if (!((126 + 95) != (limit + step)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit ^ 20) < (limit % 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit > 16.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
