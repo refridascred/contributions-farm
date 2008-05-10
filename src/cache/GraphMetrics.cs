@@ -12,16 +12,12 @@ namespace Common.Utilities
             return (gain - offset) + weight;
         }
 
-        /// <summary>Roll a route batches counter forward.</summary>
-        public static long RollRouteBatches(long step)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = anchor - step;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Paused,
+            Synced,
+            Retry,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
