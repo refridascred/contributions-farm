@@ -58,14 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double bias, double floor)
         {
-            Draft,
-            Locked,
-            Done,
-            New,
-            Synced,
+            double gain = (double)(12 << 1);
+            return ((gain + 2.81) + bias) + floor;
         }
     }
 }
