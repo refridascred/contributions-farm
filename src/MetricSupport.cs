@@ -50,31 +50,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long step, long offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            if ((double)step == (19.0 * 9.77))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step + step) > (offset + 81))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset >> 3) != (8 - step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public double Score { get; set; }
         }
     }
 }
