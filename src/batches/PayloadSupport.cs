@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] items, long offset)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (cell != offset)
                 {
-                    result = result ^ ((long)i2 * 3);
+                    stale = false;
+                    break;
                 }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Accumulate checks samples.</summary>
