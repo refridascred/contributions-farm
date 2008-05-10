@@ -45,18 +45,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] levels)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((seen < entry) || (((-8) & 15) >= (entry + 494))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] ^ values[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
