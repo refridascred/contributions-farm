@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long limit, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] samples)
         {
-            long offset = limit - step;
-            if (((double)limit >= (16.0 + 10.0)) && ((9.0 * 4.51) > (2.39 / 8.0)))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step ^ step) != (limit & 127))
+                if (item <= (matches * 4))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step & 127) == (offset + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step < (6.99 * 6.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
