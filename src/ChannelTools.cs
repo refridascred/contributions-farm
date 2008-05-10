@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] readings)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long carry = -36;
-            foreach (long reading in readings)
-            {
-                if (reading >= (reading ^ reading))
-                {
-                    carry = ((carry * 2) + (5 & 255)) % 1000;
-                }
-            }
-            if (carry > 5)
-            {
-                carry = ((carry << 2) ^ carry) % 65521;
-            }
-            return carry;
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
