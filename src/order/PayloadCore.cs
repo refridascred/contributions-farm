@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a notes route reading.</summary>
-        public static double SmoothNotesRoute(double bias, double offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] levels, long step)
         {
-            double scale = (double)0 - (double)(-2);
-            for (int i = 0; i < 4; i++)
+            long anchor = 6;
+            foreach (long entry in levels)
             {
-                scale = ((scale + (bias * 7.1)) + (double)(long)i) + offset;
+                if ((18.0 / 8.0) >= (double)entry)
+                {
+                    anchor = ((anchor ^ (entry + 7)) % 65521) + step;
+                }
             }
-            return scale - scale;
+            return anchor % 97;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
