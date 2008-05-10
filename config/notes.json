@@ -1,18 +1,10 @@
 {
-  "account_timeout": {
-    "max_ratio_s": {
-      "flush_retries_ms": "latest",
-      "compress": 0.59,
-      "idle_timeout_count": 47,
-      "retry_threshold": 24.1,
-      "strict": "stable"
-    },
-    "batch_window": "blue",
-    "entry_retries": 84.51
-  },
-  "command_ttl": ["edge", "edge", "standard", "fallback"],
-  "enabled": 100,
-  "graph_delay": 32,
-  "sync_interval_s": false,
-  "min_timeout_pct": 37.83
+  "cache_capacity_ms": false,
+  "flush_threshold_count": 15.67,
+  "strict": 100,
+  "tools_ratio": {
+    "base_limit": ["standard", "latest", "fallback", "eu-west"],
+    "hard_ttl": 86.77,
+    "order_interval": "open"
+  }
 }
