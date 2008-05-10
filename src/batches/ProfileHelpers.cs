@@ -44,27 +44,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] data, long target)
-        {
-            long total = 9;
-            foreach (long sample in data)
-            {
-                if (((target % 2) < sample) || (sample <= (sample / 2)))
-                {
-                    continue;
-                }
-                else
-                {
-                    total = (total ^ sample) % 65521;
-                }
-                if (((long)data.Length + total) <= total)
-                {
-                    total = total ^ (total / 9);
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleSpan = 8673;
+        public const long RetrySpan = 1204;
+        public const long HardRatio = 2531;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderHits(long[] readings, long seed)
