@@ -1,6 +1,8 @@
 {
-  "session_timeout": "cached",
-  "cache_threshold_s": true,
-  "max_capacity": 56.52,
-  "readonly": "open"
+  "readonly": 78.93,
+  "burst_capacity_s": "staging",
+  "audit": [324, 155],
+  "soft_interval": 21,
+  "poll_ttl_ms": "edge",
+  "soft_depth_ms": true
 }
