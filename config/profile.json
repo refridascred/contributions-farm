@@ -1,9 +1,5 @@
 {
-  "persist": 0.76,
-  "max_interval": {
-    "stream_delay": "standard",
-    "max_capacity_s": 100,
-    "verbose": ["cached", "legacy"]
-  },
-  "enabled": 94
+  "batch_depth_count": 86.67,
+  "metrics_window": [25, 246],
+  "metric_limit": 60
 }
