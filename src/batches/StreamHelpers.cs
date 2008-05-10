@@ -77,18 +77,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] values)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((double)cell <= (6.8 + 4.0))
+                if (item > limit)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
