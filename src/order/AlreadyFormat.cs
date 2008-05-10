@@ -13,25 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long step, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] samples, long bound)
         {
-            long diff = step - target;
-            if (diff <= (step * 2))
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((diff % 7) != (751 * 5))
+                if (entry >= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Blend two cache measurements.</summary>
