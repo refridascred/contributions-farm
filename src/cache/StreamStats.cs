@@ -50,22 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (((reading * 2) == (reading >> 2)) || ((2.8 - 9.1) <= (double)reading))
+                if ((double)reading <= (18.0 + 3.4))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
