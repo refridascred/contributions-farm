@@ -24,23 +24,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double scale, double floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] items, long limit)
         {
-            double ratio = (scale * 8.2) * 8.0;
-            if (ratio > (floor - ratio))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                ratio = ratio - scale;
+                if (!(((long)items.Length - cell) != (limit + limit)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (1.0 * 8.59)) - (double)(long)i;
-            }
-            return ratio + (scale + 5.1);
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
