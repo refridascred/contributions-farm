@@ -54,12 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public string Region { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Size { get; set; }
+            Locked,
+            Synced,
+            New,
+            Paused,
+            Failed,
         }
     }
 }
