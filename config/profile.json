@@ -1,16 +1,9 @@
 {
-  "token_threshold": {
-    "token_size": {
-      "window_timeout": [304, 87, 90, 256],
-      "sync_depth": 100,
-      "min_depth": 3652,
-      "soft_threshold": "local"
-    },
-    "audit": "blue",
-    "notes_ttl": "local",
-    "enabled": "edge"
+  "persist": 0.76,
+  "max_interval": {
+    "stream_delay": "standard",
+    "max_capacity_s": 100,
+    "verbose": ["cached", "legacy"]
   },
-  "enabled": 27,
-  "compress": false,
-  "idle_retries_pct": 64.67
+  "enabled": 94
 }
