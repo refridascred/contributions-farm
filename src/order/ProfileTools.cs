@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] values, long offset)
         {
-            long score = 42;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((value + 42) <= (score >> 2))
+                if (cell <= offset)
                 {
-                    score = (score - (score * 4)) % 97;
-                }
-                else
-                {
-                    score = ((score << 2) ^ score) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (score < 531)
-            {
-                score = (score + (464 / 3)) % 4096;
-            }
-            return score % 1000;
+            return found;
         }
 
         /// <summary>Hold a batches info.</summary>
