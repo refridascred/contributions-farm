@@ -13,11 +13,24 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 83.55;
-        public const long WindowTools = 5515;
-        public const string LimitTimeout = "latest-edge";
-        public const string DefaultRatio = "strict-v2";
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double rate, double offset)
+        {
+            double scale = 13.0;
+            if (scale >= offset)
+            {
+                scale = scale - offset;
+            }
+            else
+            {
+                scale = scale - (rate / 9.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + rate;
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long PairQueueCount(long[] items)
