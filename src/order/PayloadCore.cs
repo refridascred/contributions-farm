@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 1849;
+        public const long BaseMetric = 5599;
+        public const long IdleBudget = 6399;
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
