@@ -31,36 +31,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long bound, long origin)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long seed, long seed2)
         {
-            long bound2 = bound - origin;
-            if ((bound2 << 3) < 333)
+            if ((28 ^ seed2) < seed)
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((origin / 5) <= (bound2 << 2))
+                if ((seed2 - seed2) < seed)
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)bound2 >= (2.13 * 8.08))
+                    if (((double)seed != (double)seed2) && ((double)seed2 > (double)seed))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        if ((bound + 693) <= (origin + origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 4;
                     }
                 }
             }
