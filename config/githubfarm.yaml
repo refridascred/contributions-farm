@@ -1,13 +1,6 @@
 # githubfarm settings
-hard_limit:
-  base_size_ms:
-    - cached
-    - local
-    - legacy
-  cache_timeout: 30
-  persist: 54
-default_delay_ms: 60
-payload_retries: 89.39
-base_ttl_s: strict
-enabled: legacy
-warm_interval: standard
+poll_capacity_s: 33.79
+burst_limit_pct: cached
+strict:
+  - 218
+  - 121
