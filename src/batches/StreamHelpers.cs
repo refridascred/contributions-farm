@@ -71,13 +71,17 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Find the first route contributi entry that matches the target.</summary>
+        public static long SeekRouteContributiIndex(long[] levels, long floor)
         {
-            Pending,
-            Paused,
-            Done,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate account samples.</summary>
