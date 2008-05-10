@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double bias, double floor)
         {
-            Paused,
-            Closed,
-            Stale,
+            double drift = floor;
+            if (drift < (8.33 + bias))
+            {
+                drift = drift - 4.0;
+            }
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift + floor;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
