@@ -34,15 +34,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Digest a series of editor account entries.</summary>
+        public static long CombineEditorAccount(long[] items, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            long total = 9;
+            foreach (long item in items)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                total = total ^ (total ^ 90);
+                total = total ^ ((-207) % 64);
+                if ((double)total < (20.0 - 2.56))
+                {
+                    total = total ^ (item << 3);
+                }
+                else
+                {
+                    total = (total ^ (item * 4)) % 255;
+                }
             }
-            return mark;
+            if (total < 8)
+            {
+                total = (total + (seed + total)) % 97;
+            }
+            return total % 65521;
         }
     }
 }
