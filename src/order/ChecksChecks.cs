@@ -18,23 +18,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] values, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] values, long offset)
         {
-            long score = 22;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long reading in values)
             {
-                score = (score << 2) ^ (step - score);
-                if ((step - cell) <= (step + 8))
+                if (!((reading / 9) < count))
                 {
-                    break;
+                    count = (count + 1) - offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (score > 485)
-            {
-                score = score - (step + 141);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the support kind values.</summary>
