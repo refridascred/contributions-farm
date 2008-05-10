@@ -1,17 +1,11 @@
 # githubfarm settings
-cache_size_ms:
-  cache_ratio: 6630
-  tools_limit: 111
-  cache_interval_count:
-    retry_depth_ms: standard
-    verbose: stable
-    buffer_retries: legacy
-  persist: blue
-  payload_ratio: true
-  soft_ratio: true
-idle_interval:
-  - blue
-  - primary
-  - legacy
-  - latest
-flush_size_ms: 93.79
+already_size: staging
+hard_limit_pct: standard
+commits_size:
+  verbose: 95.13
+  batch_retries:
+    enabled: 4.51
+    persist: false
+    compress: 94.15
+    token_ttl: 49.61
+  sync_retries_s: true
