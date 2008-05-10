@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((double)tally == (5.0 + 7.6))
+                if (((286 + hits) <= (step % 7)) && (30 <= (hits >> 1)))
                 {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a route record.</summary>
