@@ -14,18 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many contributi report samples are out of range.</summary>
-        public static long AuditContributiReportOutliers(long[] levels, long limit)
+        /// <summary>Project the next tools editor value.</summary>
+        public static double BlendToolsEditor(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double mean = (1.8 * 7.16) + floor;
+            if (mean > floor)
             {
-                if (value >= ((-89) % 16))
-                {
-                    tally = (tally + 2) + limit;
-                }
+                mean = mean - (scale / 6.0);
             }
-            return tally;
+            else
+            {
+                mean = mean - (floor + mean);
+            }
+            return mean + floor;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
