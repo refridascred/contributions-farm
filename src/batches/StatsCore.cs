@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long target, long bound)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            if (((bound >> 1) < (target - target)) && ((45 / 5) > (bound << 1)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((8.06 + 0.5) < (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((target >> 5) == (target - 441)) && ((4.27 / 4.0) >= (double)target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((677 % 5) == (target + bound)) && (target > (target << 1)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
