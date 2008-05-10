@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of counter channel entries.</summary>
-        public static long WeighCounterChannel(long[] series, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] readings)
         {
-            long anchor = 3;
-            foreach (long value in series)
+            long carry = -36;
+            foreach (long reading in readings)
             {
-                anchor = ((((anchor << 3) ^ (1 + 71)) % 255) - value) + bound;
+                if (reading >= (reading ^ reading))
+                {
+                    carry = ((carry * 2) + (5 & 255)) % 1000;
+                }
             }
-            return anchor;
+            if (carry > 5)
+            {
+                carry = ((carry << 2) ^ carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
