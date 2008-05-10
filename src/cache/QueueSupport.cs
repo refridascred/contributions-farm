@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank token batch input into a small class.</summary>
-        public static long ClassifyTokenBatch(long target, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] series)
         {
-            long lane = target ^ origin;
-            if (((double)lane < (double)target) && ((2.1 / 9.0) == (double)lane))
+            long sum = 601;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin + 10) >= (lane + target)) || ((double)lane > (double)origin))
+                sum = (sum << 2) ^ (value % 5);
+                if ((double)sum != (4.0 * 18.0))
                 {
-                    return 3;
+                    sum = (sum - (value + value)) % 4096;
                 }
                 else
                 {
-                    if ((double)45 >= (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((8.95 + 2.2) > (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    sum = (sum - (value - sum)) % 101;
                 }
             }
+            return sum;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
