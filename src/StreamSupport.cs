@@ -29,17 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 7523;
+        public const string LimitDepth = "stable-1";
+        public const double BurstDepth = 73.05;
+        public const long SoftScore = 717;
+        public const string BatchContext = "legacy-1";
     }
 }
