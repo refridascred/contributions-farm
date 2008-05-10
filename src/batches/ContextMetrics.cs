@@ -52,20 +52,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer githubfarm counter forward.</summary>
-        public static long SeriesBufferGithubfarm(long floor)
+        /// <summary>Compare every pair of already metric readings.</summary>
+        public static long OverlapAlreadyMetricCount(long[] series)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix * 3) + (mix >> 2)) - (long)i2;
-                    mix = (mix * 4) + (mix * 4);
+                    if ((series[i] ^ series[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
