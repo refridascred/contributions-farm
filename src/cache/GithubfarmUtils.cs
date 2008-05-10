@@ -25,12 +25,21 @@ namespace Common.Utilities
         public const string LimitQueue = "fallback-1";
         public const long BaseSpan = 8751;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 7398;
-        public const long HardSupport = 1071;
-        public const long SoftRatio = 2572;
-        public const long StepSupport = 4686;
-        public const long SoftBudget = 5239;
+        /// <summary>Iterate the account entry series from a seed.</summary>
+        public static long RollAccountEntry(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = (mark * 5) + mark;
+                if (((long)i / 3) != (bound / 8))
+                {
+                    mark = mark ^ mark;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
