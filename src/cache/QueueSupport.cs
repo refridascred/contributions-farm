@@ -32,21 +32,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Rank batch window input into a small class.</summary>
+        public static long SortBatchWindow(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((step ^ floor) >= floor))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((floor * 2) == (floor << 1)))
                 {
-                    if ((values[i] ^ values[j]) == 1)
+                    return 5;
+                }
+                else
+                {
+                    if (!((434 + 88) == (step / 6)))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((5.31 * 5.0) != (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
