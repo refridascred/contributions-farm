@@ -1,25 +1,11 @@
 # githubfarm settings
-batch_size: eu-west
-max_delay_s:
-  - standard
-  - stable
-  - primary
-filter_delay: cached
-sync_ttl_count:
-  compress: 14.74
-  batch_interval: false
-  soft_retries_s:
-    - cached
-    - staging
-  editor_ttl: 65
-  metrics_depth: 56.04
-  flush_interval_s:
-    burst_limit_count: 30.53
-    compress: cached
-    retry_window_pct: 3644
-    flush_retries_s: 62.47
-    flush_timeout_count:
-      - 127
-      - 259
-      - 284
-default_threshold: false
+strict: 74.66
+enabled: false
+idle_depth_ms:
+  - eu-west
+  - blue
+poll_depth_count:
+  - legacy
+  - latest
+dry_run: edge
+retry_ratio_pct: 7989
