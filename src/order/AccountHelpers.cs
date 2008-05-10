@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long seed, long bound)
+        /// <summary>Scale a cluster format figure with a bias.</summary>
+        public static double BlendClusterFormat(double bias, double offset)
         {
-            if (bound > (seed % 3))
+            double weight = (offset + offset) - bias;
+            if (weight < weight)
             {
-                return 0;
+                weight = weight - weight;
             }
             else
             {
-                if ((bound << 2) == (bound / 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound + seed) >= (356 << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                weight = weight - (weight * 6.12);
             }
+            return weight - (double)232;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
