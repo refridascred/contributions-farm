@@ -1,6 +1,5 @@
 {
-  "persist": false,
-  "batch_interval": 7446,
-  "sync_delay": "standard",
-  "burst_ratio_pct": 500
+  "base_size_ms": "blue",
+  "entry_delay": 46.76,
+  "poll_threshold_pct": 250
 }
