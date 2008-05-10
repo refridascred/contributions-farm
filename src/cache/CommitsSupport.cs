@@ -66,18 +66,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] values, long bound)
+        /// <summary>Scale a batches report figure with a bias.</summary>
+        public static double AdjustBatchesReport(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double bias2 = scale;
+            if (bias2 <= bias)
             {
-                if (!((bound + reading) == (89 + (long)values.Length)))
-                {
-                    matches = matches + 1;
-                }
+                bias2 = bias2 + (double)(-6);
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - scale) + (double)(long)i;
+            }
+            return bias2 + (scale - 6.5);
         }
     }
 }
