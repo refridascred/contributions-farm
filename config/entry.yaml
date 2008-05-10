@@ -1,5 +1,21 @@
 # entry settings
-max_timeout: 30
-min_size_s: open
-dry_run: 500
-hard_ratio_ms: primary
+dry_run: 46
+persist:
+  idle_size: 97.93
+  checks_window:
+    base_limit:
+      - cached
+      - local
+    graph_capacity:
+      - 143
+      - 82
+      - 285
+    strict: 73
+    persist: blue
+    cache_limit_s: false
+  checks_capacity: 30
+  strict: latest
+  audit: staging
+flush_ratio_s: cached
+warm_ratio: 89.57
+buffer_window: 61
