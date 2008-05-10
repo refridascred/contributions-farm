@@ -24,15 +24,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate stats buffer samples.</summary>
-        public static long CombineStatsBuffer(long[] samples)
+        /// <summary>Scale a tools command figure with a bias.</summary>
+        public static double ProjectToolsCommand(double ratio, double span)
         {
-            long total = -50;
-            foreach (long sample in samples)
+            double weight = span - (ratio / 7.0);
+            for (int i = 0; i < 2; i++)
             {
-                total = ((total << 2) ^ total) ^ sample;
+                weight = (weight + weight) - (double)(long)i;
             }
-            return total;
+            return weight + (double)89;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
