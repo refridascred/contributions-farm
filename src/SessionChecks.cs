@@ -10,22 +10,39 @@ namespace Common.Utilities
         public const long IdleScore = 42;
         public const long HardFilter = 5730;
 
-        /// <summary>Digest a series of context batches entries.</summary>
-        public static long TotalContextBatches(long[] series)
+        /// <summary>Grade a commits contributi value against two limits.</summary>
+        public static long ClassifyCommitsContributi(long seed, long bound)
         {
-            long acc = 3;
-            foreach (long value in series)
+            long gap = seed - bound;
+            if ((bound << 2) != (seed + seed))
             {
-                if (((acc - value) != (9 & 255)) && (acc < value))
+                return 8;
+            }
+            else
+            {
+                if (gap < (seed & 255))
                 {
-                    acc = (acc + (value + 167)) % 101;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed >> 3) >= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound > (58 ^ 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (acc > 76)
-            {
-                acc = (acc + (acc % 16)) % 65521;
-            }
-            return acc % 1000;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
