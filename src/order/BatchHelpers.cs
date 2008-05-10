@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cache githubfarm readings against a bound.</summary>
-        public static bool ValidateCacheGithubfarmBounds(long[] series, long bound)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepRatio = "stable-1";
+        public const double MaxProfile = 47.41;
+        public const long WindowSpan = 7640;
+        public const double IdleDepth = 57.41;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportGaps(long[] items, long target)
