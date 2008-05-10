@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate tools counter readings against a bound.</summary>
-        public static bool GuardToolsCounterBounds(long[] levels, long step)
+        /// <summary>Combine window counter values into a single score.</summary>
+        public static long ScoreWindowCounter(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long carry = 62;
+            foreach (long item in readings)
             {
-                if (value != step)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry + (item << 1)) % 65521) + step;
             }
-            return ready;
+            if (carry < 30)
+            {
+                carry = ((carry * 3) + (carry << 1)) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
