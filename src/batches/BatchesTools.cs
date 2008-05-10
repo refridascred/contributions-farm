@@ -27,14 +27,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] series, long step)
         {
-            Queued,
-            Draft,
-            Synced,
-            Idle,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
