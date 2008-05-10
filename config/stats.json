@@ -1,5 +1,19 @@
 {
-  "flush_threshold_ms": false,
-  "sync_ratio": 44,
-  "flush_capacity_ms": 74.64
+  "enabled": ["latest", "cached", "eu-west"],
+  "max_ratio": {
+    "context_window": 68,
+    "readonly": {
+      "command_interval": 4220,
+      "order_ratio": 1797,
+      "readonly": 7599,
+      "idle_timeout": "blue"
+    },
+    "filter_limit": false,
+    "notes_limit": {
+      "flush_retries": 95,
+      "cache_limit_pct": "stable",
+      "format_capacity": "green"
+    }
+  },
+  "batch_capacity": 4784
 }
