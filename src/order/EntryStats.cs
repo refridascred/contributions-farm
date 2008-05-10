@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] values, long step)
+        /// <summary>Count cache stream pairs that satisfy a relation.</summary>
+        public static long PairCacheStreamCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((78 - matches) >= matches)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = ((matches + 2) + reading) + step;
+                    if ((samples[i] + samples[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
