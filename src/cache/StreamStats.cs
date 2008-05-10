@@ -48,18 +48,9 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of commits payload readings.</summary>
-        public static long ScoreCommitsPayload(long[] values, long origin)
-        {
-            long mix = 57;
-            foreach (long cell in values)
-            {
-                if (((772 >> 2) != (3 + origin)) || (origin < (origin - cell)))
-                {
-                    mix = (mix * 3) + (mix ^ cell);
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultCount = 11.08;
+        public const long SoftCommits = 8055;
+        public const double MaxCount = 22.97;
     }
 }
