@@ -1,7 +1,12 @@
 {
-  "farm_threshold": 100,
-  "metrics_window": "green",
-  "retry_depth_ms": true,
-  "default_window": 1024,
-  "enabled": ["strict", "primary", "fallback", "strict"]
+  "base_ttl_count": 63.54,
+  "cache_depth": 79,
+  "burst_limit_s": {
+    "batch_size_ms": 37.93,
+    "enabled": ["eu-west", "green", "latest", "eu-west"],
+    "flush_capacity_s": 250
+  },
+  "batch_ratio": 5144,
+  "sync_limit_ms": 500,
+  "persist": false
 }
