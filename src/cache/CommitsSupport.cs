@@ -49,10 +49,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepDepth = 6832;
-        public const string BatchScore = "legacy-1";
-        public const long CacheDepth = 7626;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseInterval = 76.78;
+        public const long RetryTimeout = 7444;
+        public const long DefaultWidth = 2861;
+        public const long RetryCluster = 3908;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
