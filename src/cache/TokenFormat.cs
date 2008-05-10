@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxWidth = "fallback-edge";
-        public const long MinCommits = 3034;
-        public const string WindowCommits = "cached-edge";
+        /// <summary>Measure how many session payload samples are out of range.</summary>
+        public static long CountSessionPayloadOutliers(long[] readings, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (!(tally < (tally * 3)) && ((double)offset >= 4.0))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long TallyRouteMatches(long[] data, long seed)
