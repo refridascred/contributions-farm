@@ -18,32 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] readings, long offset)
+        /// <summary>Count order counter pairs that satisfy a relation.</summary>
+        public static long CompareOrderCounterCount(long[] data)
         {
-            long total = 750;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total * 5) + (total + offset);
-                if ((offset + total) < (offset & 63))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total ^ (reading & 1)) % 1000;
-                    break;
-                }
-                if ((offset + total) < (total << 2))
-                {
-                    total = total ^ (offset * 5);
-                }
-                else
-                {
-                    total = (total * 2) + (offset ^ 742);
+                    if ((data[i] + data[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < 332)
-            {
-                total = total ^ offset;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
