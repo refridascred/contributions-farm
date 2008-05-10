@@ -55,17 +55,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] readings, long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 0;
+            foreach (long cell in data)
             {
-                if (readings[i] == limit)
+                if (((-4) - cell) < (cell + offset))
                 {
-                    return (long)i;
+                    carry = (carry - (465 / 3)) % 255;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ offset;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Accumulate counter batch samples.</summary>
