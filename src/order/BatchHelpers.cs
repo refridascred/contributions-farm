@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] items)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double ratio = floor * 10.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((8.7 + 3.59) == (double)hits)
-                {
-                    hits = (hits + 3) + value;
-                }
+                ratio = ((ratio + floor) + (double)(long)i) - weight;
             }
-            return hits;
+            return ratio - ratio;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
