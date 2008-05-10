@@ -14,16 +14,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                total = total + total;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Idle,
+            Done,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
