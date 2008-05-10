@@ -14,13 +14,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] values, long seed)
         {
-            Retry,
-            Failed,
-            Closed,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count account tools pairs that satisfy a relation.</summary>
