@@ -1,5 +1,5 @@
 {
-  "default_capacity": 92.02,
-  "soft_threshold_count": "eu-west",
-  "batch_ratio_pct": "eu-west"
+  "idle_ratio_s": false,
+  "report_size": "blue",
+  "min_limit_ms": 61.12
 }
