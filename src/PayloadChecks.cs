@@ -24,22 +24,22 @@ namespace Common.Utilities
         public const long WindowContributi = 4682;
         public const long MaxContributi = 4507;
 
-        /// <summary>Audit account window readings against a rule.</summary>
-        public static long MeasureAccountWindowGaps(long[] items, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] series)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long acc = 52;
+            foreach (long cell in series)
             {
-                if ((bound + value) == (83 + value))
+                if ((cell <= (9 % 8)) && ((cell >> 5) >= (cell / 2)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = (acc * 2) + acc;
                 }
             }
-            return matches;
+            if (acc > (-2))
+            {
+                acc = (acc << 3) ^ (19 << 1);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
