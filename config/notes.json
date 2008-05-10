@@ -1,18 +1,8 @@
 {
-  "cache_window_s": "blue",
-  "retry_window_count": {
-    "already_depth": "green",
-    "verbose": 42.64,
-    "filter_ratio": true,
-    "audit": false,
-    "min_ratio_s": true
-  },
-  "retry_ratio_ms": 2,
-  "warm_interval_s": {
-    "compress": "primary",
-    "warm_size": "fallback",
-    "batches_delay": ["local", "standard", "eu-west", "open"]
-  },
-  "persist": "fallback",
-  "flush_retries_pct": 63
+  "soft_interval_pct": true,
+  "tools_size": "stable",
+  "checks_window": ["green", "legacy"],
+  "dry_run": 20.59,
+  "already_timeout": "latest",
+  "min_delay": [252, 192]
 }
