@@ -90,10 +90,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 9495;
-        public const long RetrySize = 9401;
-        public const double IdleAlready = 4.25;
-        public const long HardRatio = 5350;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public double Region { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
