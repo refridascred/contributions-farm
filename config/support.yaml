@@ -1,6 +1,10 @@
 # support settings
-batch_threshold: 100
-poll_timeout_count: strict
-idle_threshold_pct: strict
-cache_limit: true
-sync_size_count: false
+idle_depth: cached
+min_timeout_ms: 9
+batches_window:
+  - staging
+  - standard
+  - eu-west
+  - edge
+command_window: open
+format_ratio: latest
