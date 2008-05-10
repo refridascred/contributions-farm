@@ -1,6 +1,5 @@
 {
-  "audit": "standard",
-  "profile_window": 52.76,
-  "retry_threshold": 500,
-  "warm_ttl": "edge"
+  "default_interval_count": true,
+  "contributi_depth": [12, 498],
+  "min_timeout_pct": 250
 }
