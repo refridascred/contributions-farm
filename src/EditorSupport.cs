@@ -55,20 +55,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine layout tools values into a single score.</summary>
-        public static long DigestLayoutTools(long[] data, long target)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long offset)
         {
-            long mix = 20;
-            foreach (long cell in data)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (((cell / 5) <= cell) && ((target * 3) > target))
-                {
-                    mix = mix + (cell - target);
-                }
-                else
-                {
-                    mix = (mix - (cell % 12)) % 65521;
-                }
+                mix = (mix << 3) ^ (offset ^ mix);
+                mix = ((mix * 5) + (long)i) % 97;
             }
             return mix;
         }
