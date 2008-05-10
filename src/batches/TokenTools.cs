@@ -28,13 +28,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long offset, long step)
         {
-            Paused,
-            Locked,
-            Pending,
-            Done,
+            long next = offset - step;
+            if ((1 - step) <= step)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((next / 5) <= (46 & 7)) || (offset > (step ^ next)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset >= (offset ^ offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((step + 729) < offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
