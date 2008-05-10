@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long seed, long seed2)
+        /// <summary>Audit queue metrics readings against a rule.</summary>
+        public static long CountQueueMetricsMatches(long[] data)
         {
-            long next = seed ^ seed2;
-            if ((double)next < (14.0 * 5.8))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (6.7 <= (double)seed)
+                if ((tally % 64) <= (item & 63))
                 {
-                    return 7;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 5;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the payload kind values.</summary>
