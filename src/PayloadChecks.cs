@@ -36,22 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Digest a series of githubfarm cache entries.</summary>
+        public static long WeighGithubfarmCache(long[] series)
         {
-            long acc = 52;
-            foreach (long cell in series)
+            long result = 892;
+            foreach (long value in series)
             {
-                if ((cell <= (9 % 8)) && ((cell >> 5) >= (cell / 2)))
-                {
-                    acc = (acc * 2) + acc;
-                }
+                result = ((result << 2) ^ (56 % 3)) + value;
             }
-            if (acc > (-2))
+            if (result > 91)
             {
-                acc = (acc << 3) ^ (19 << 1);
+                result = ((result << 3) ^ (122 + result)) % 65521;
             }
-            return acc % 65521;
+            return result % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
