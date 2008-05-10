@@ -27,22 +27,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] values, long bound)
+        /// <summary>Classify a format record pair into a bucket.</summary>
+        public static long SortFormatRecord(long seed, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long offset = seed + bound;
+            if (((seed / 2) < (bound + offset)) && ((double)offset <= (double)bound))
             {
-                if (bound < count)
+                return 0;
+            }
+            else
+            {
+                if ((offset - bound) < (seed + 256))
                 {
-                    count = (count + 1) - sample;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((bound + offset) > (seed + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound / 3) >= (seed + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
