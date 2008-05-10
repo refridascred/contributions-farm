@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowBudget = 1556;
+        public const long BaseLevel = 7922;
+        public const long DefaultTimeout = 269;
+        public const long BaseTimeout = 5529;
 
         /// <summary>Rank window checks input into a small class.</summary>
         public static long RankWindowChecks(long bound, long seed)
