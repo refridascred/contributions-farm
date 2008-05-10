@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long target, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] levels, long floor)
         {
-            if ((bound % 97) <= target)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound / 5) <= target)
+                if ((5.8 + 3.99) >= (double)floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)57 < (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((1.6 - 8.0) <= (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = (count + 2) ^ entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
