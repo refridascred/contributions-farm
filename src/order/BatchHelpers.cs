@@ -16,11 +16,22 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepRatio = "stable-1";
-        public const double MaxProfile = 47.41;
-        public const long WindowSpan = 7640;
-        public const double IdleDepth = 57.41;
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
