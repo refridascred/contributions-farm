@@ -26,32 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] values, long limit)
+        /// <summary>Compare every pair of report layout readings.</summary>
+        public static long PairReportLayoutCount(long[] levels)
         {
-            long score = 0;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item & 31) != (limit + limit))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = ((score * 4) + (624 - item)) % 255;
-                    score = (score ^ (item << 3)) % 101;
-                }
-                if (((item - 6) <= item) && ((double)score >= 5.0))
-                {
-                    score = score ^ (item - limit);
-                    continue;
-                }
-                if (score < (long)values.Length)
-                {
-                    score = (score << 2) ^ limit;
+                    if ((levels[i] - levels[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > 367)
-            {
-                score = (score << 3) ^ (score + score);
-            }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
