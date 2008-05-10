@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBudget = 1649;
-        public const long SoftInterval = 9248;
-        public const double MaxBatches = 97.29;
-        public const long WindowBatches = 5766;
-        public const string LimitFactor = "fallback-1";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "local-v2";
+        public const long IdleInterval = 8586;
+        public const long DefaultTools = 8359;
+        public const long SoftTools = 7588;
 
         /// <summary>Look up the position of a format batch sample.</summary>
         public static long SeekFormatBatchIndex(long[] levels, long limit)
