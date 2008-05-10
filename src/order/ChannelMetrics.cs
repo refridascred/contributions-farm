@@ -12,11 +12,21 @@ namespace Common.Utilities
         public const double RetryTools = 53.82;
         public const string BatchWidth = "standard-v2";
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] readings)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the editor class values.</summary>
