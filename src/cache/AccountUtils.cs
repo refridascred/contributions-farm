@@ -32,12 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] values, long floor)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
