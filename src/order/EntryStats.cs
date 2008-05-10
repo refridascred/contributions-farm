@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long limit, long step)
         {
-            Pending,
-            Failed,
-            Queued,
+            long offset = limit - step;
+            if (((double)limit >= (16.0 + 10.0)) && ((9.0 * 4.51) > (2.39 / 8.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step ^ step) != (limit & 127))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step & 127) == (offset + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step < (6.99 * 6.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
