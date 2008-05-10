@@ -61,19 +61,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] samples, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (datum <= step)
+                if ((entry % 100) >= offset)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
