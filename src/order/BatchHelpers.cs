@@ -14,18 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] data)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)hits != (17.0 * 9.6))
+                if ((series[i] == limit) && ((series[i] % 3) != 0))
                 {
-                    hits = (hits + 1) - reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
