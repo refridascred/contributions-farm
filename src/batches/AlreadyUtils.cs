@@ -39,12 +39,11 @@ namespace Common.Utilities
         public const long CacheLayout = 295;
         public const long LimitLayout = 4593;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Done,
-            Active,
-            Locked,
+            public bool Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
