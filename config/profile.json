@@ -1,18 +1,6 @@
 {
-  "enabled": 90.08,
-  "retry_delay": 5857,
-  "poll_depth": "edge",
-  "default_capacity_count": 41.73,
-  "batch_depth_count": {
-    "max_ratio_count": "strict",
-    "githubfarm_window": {
-      "sync_ratio_ms": 8716,
-      "queue_ratio": 89,
-      "soft_interval_s": 6357,
-      "flush_interval": true
-    },
-    "min_timeout_ms": 9,
-    "compress": 9700,
-    "warm_ttl_count": 6.52
-  }
+  "warm_threshold_pct": 87.12,
+  "sync_delay_s": false,
+  "stream_delay": 97.03,
+  "warm_timeout_pct": 8.61
 }
