@@ -38,15 +38,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] levels, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] series)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long item in series)
             {
-                if ((8.64 / 3.0) <= (double)(-88))
+                if ((68 << 1) > item)
                 {
-                    seen = ((seen + 1) ^ entry) + floor;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
