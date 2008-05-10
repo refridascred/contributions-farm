@@ -41,21 +41,15 @@ namespace Common.Utilities
         public const double HardSize = 41.76;
         public const long SoftInterval = 37;
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] data, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 962;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((((sum * 2) + 56) % 4096) ^ sample) + floor;
             }
-            return hits;
+            return sum;
         }
     }
 }
