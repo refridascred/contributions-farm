@@ -1,7 +1,19 @@
 {
-  "channel_limit": 7328,
-  "command_window": 500,
-  "batch_limit": ["cached", "blue", "green"],
-  "cache_ratio_s": [276, 457, 82],
-  "sync_capacity_s": 2
+  "buffer_depth": 1,
+  "batch_ratio": 62,
+  "default_retries_count": {
+    "enabled": ["primary", "latest", "stable"],
+    "batches_depth": "fallback",
+    "persist": 30,
+    "warm_window_s": [370, 349, 88],
+    "sync_interval_ms": 32.57,
+    "warm_timeout_s": {
+      "cache_interval_s": 8878,
+      "base_limit": 1024,
+      "metrics_size": "edge"
+    }
+  },
+  "filter_depth": true,
+  "enabled": 92.33,
+  "sync_window_ms": 250
 }
