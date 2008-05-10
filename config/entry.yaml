@@ -1,5 +1,6 @@
 # entry settings
-report_timeout: 139
-warm_retries_ms: legacy
-sync_size: staging
-soft_depth: 4754
+cache_interval_s: primary
+route_size: 8462
+retry_threshold_ms: 100
+command_retries: 20.33
+readonly: 1024
