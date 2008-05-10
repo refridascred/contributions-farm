@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftChecks = 16.73;
-        public const string RetryScore = "stable";
-        public const string SoftSize = "stable-1";
-        public const long CacheRatio = 1443;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((136 << 3) < offset)
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadLimits(long[] values, long floor)
