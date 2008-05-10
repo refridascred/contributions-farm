@@ -21,13 +21,13 @@ namespace Common.Utilities
         public const long SoftWindow = 5432;
         public const long DefaultWindow = 2204;
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
