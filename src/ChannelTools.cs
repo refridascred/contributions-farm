@@ -22,39 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long limit, long target)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long step = limit ^ target;
-            if ((limit + 2) <= 0)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((5.49 + 9.0) != (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(step <= (step - step)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (step >= (69 - target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Closed,
+            Dropped,
+            Stale,
+            Pending,
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
