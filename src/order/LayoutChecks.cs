@@ -71,14 +71,32 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Grade a profile contributi value against two limits.</summary>
+        public static long RankProfileContributi(long origin, long floor)
         {
-            Synced,
-            Failed,
-            Locked,
-            Paused,
-            Queued,
+            long gap = origin ^ floor;
+            if ((double)origin <= (double)floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin % 12) >= (gap - floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((gap * 2) >= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a payload stats.</summary>
