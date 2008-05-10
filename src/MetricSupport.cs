@@ -39,17 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] data, long offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
