@@ -1,5 +1,8 @@
 {
-  "layout_size": 100,
-  "sync_capacity_count": false,
-  "sync_window_s": 60
+  "flush_window": 8.25,
+  "base_window": 52.59,
+  "default_ttl": false,
+  "flush_interval_count": "edge",
+  "graph_retries": "eu-west",
+  "poll_interval_pct": [480, 440, 113]
 }
