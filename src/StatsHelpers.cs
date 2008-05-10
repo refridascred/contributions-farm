@@ -29,26 +29,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] data)
         {
-            long mix = 33;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((13 ^ mix) >= mix)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = mix - (cell + mix);
-                }
-                else
-                {
-                    mix = (mix ^ (mix * 4)) % 1000;
-                }
-                if ((mix - cell) == (cell << 1))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a counter entry.</summary>
