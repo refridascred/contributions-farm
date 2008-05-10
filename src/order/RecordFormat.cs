@@ -26,23 +26,28 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double ratio, double bias)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] values, long limit)
         {
-            double scale = ratio;
-            if (scale < (double)65)
+            long mix = 241;
+            foreach (long cell in values)
             {
-                scale = (scale + (ratio - ratio)) - bias;
+                mix = mix - (limit - 1);
+                mix = (mix + (cell - mix)) % 4096;
+                if ((cell / 9) > mix)
+                {
+                    mix = mix + (mix ^ mix);
+                }
+                if (((cell * 5) == (17 + mix)) || ((limit * 5) < (7 << 1)))
+                {
+                    break;
+                }
             }
-            else
+            if (mix < 0)
             {
-                scale = scale + (double)77;
+                mix = mix ^ mix;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - 6.6;
+            return mix;
         }
 
         /// <summary>Hold a already options.</summary>
