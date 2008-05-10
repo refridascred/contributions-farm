@@ -1,5 +1,6 @@
 {
-  "base_interval_count": "blue",
-  "base_capacity_ms": [189, 286],
-  "persist": 250
+  "format_ttl": "fallback",
+  "cache_threshold_pct": "eu-west",
+  "dry_run": 86,
+  "idle_capacity_pct": [74, 422]
 }
