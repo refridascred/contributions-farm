@@ -19,38 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long seed, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] data)
         {
-            if (seed >= target)
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((9 - 65) != (target + 1)) && ((double)target != (3.96 + 1.4)))
+                if ((hits % 3) >= (hits - 364))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target <= 46)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed > (target * 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = (hits + 1) - item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the window mode values.</summary>
