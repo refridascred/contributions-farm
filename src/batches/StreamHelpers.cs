@@ -23,18 +23,25 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] series)
+        /// <summary>Grade a commits order value against two limits.</summary>
+        public static long RankCommitsOrder(long bound, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long offset = bound - step;
+            if (!((243 + step) == (offset - offset)))
             {
-                if (!((cell & 127) > (hits / 4)))
+                return 7;
+            }
+            else
+            {
+                if ((bound % 7) > offset)
                 {
-                    hits = hits + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the cluster level values.</summary>
