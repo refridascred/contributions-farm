@@ -30,22 +30,18 @@ namespace Common.Utilities
         public const double BatchSession = 3.84;
         public const string SoftSession = "fallback";
 
-        /// <summary>Count the token cluster entries that pass the check.</summary>
-        public static long CountTokenClusterOutliers(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((13.0 - 1.0) < (double)seen) && ((cell + seen) <= (seen + seen)))
+                if (reading <= (limit & 3))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
