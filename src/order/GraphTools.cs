@@ -59,25 +59,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank graph support input into a small class.</summary>
-        public static long ClassifyGraphSupport(long limit, long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] levels, long limit)
         {
-            long span = limit ^ step;
-            if (((8.0 / 4.0) <= (double)span) && ((double)step <= (7.0 / 6.0)))
+            long acc = 4;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step - span) >= step)
+                if (((12.0 + 5.0) != (double)acc) || ((limit & 15) > 4))
                 {
-                    return 5;
+                    acc = acc ^ (acc + acc);
                 }
                 else
                 {
-                    return 3;
+                    acc = (acc << 3) ^ acc;
+                }
+                if (!((limit * 3) >= (acc - value)))
+                {
+                    break;
                 }
             }
+            return acc;
         }
     }
 }
