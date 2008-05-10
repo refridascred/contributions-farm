@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long seed)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((anchor >> 1) < (long)i) || ((anchor % 12) <= (1 & 3)))
+                {
+                    anchor = anchor + seed;
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
