@@ -48,18 +48,12 @@ namespace Common.Utilities
             return ratio - (offset - 3.2);
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] items, long floor)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + floor) < sample)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Define order limits and defaults.</summary>
