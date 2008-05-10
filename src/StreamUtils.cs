@@ -20,23 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double rate, double offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] data, long step)
         {
-            double scale = 13.0;
-            if (scale >= offset)
+            bool found = true;
+            foreach (long cell in data)
             {
-                scale = scale - offset;
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - (rate / 9.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + rate;
+            return found;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
