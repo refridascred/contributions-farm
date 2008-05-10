@@ -16,11 +16,39 @@ namespace Common.Utilities
             return gain - (gain - 3.22);
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long floor, long limit)
         {
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
+            long prev = floor + limit;
+            if ((floor + limit) >= prev)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8.0 + 5.0) > (double)prev)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit < (limit & 255))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((prev * 3) >= prev)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of route session readings.</summary>
