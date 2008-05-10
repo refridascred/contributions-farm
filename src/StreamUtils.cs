@@ -50,24 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] items, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] data)
         {
-            long sum = 778;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                sum = ((sum * 4) + (sum ^ reading)) % 101;
-                if ((reading ^ 784) > sum)
+                if ((13.0 / 9.0) <= (double)reading)
                 {
-                    sum = sum + (sum + sum);
-                    break;
-                }
-                if ((limit + limit) < (reading & 3))
-                {
-                    sum = sum ^ (limit + limit);
+                    seen = seen + 2;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
