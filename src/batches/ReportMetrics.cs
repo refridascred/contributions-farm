@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] levels, long origin)
-        {
-            long anchor = 943;
-            foreach (long entry in levels)
-            {
-                if ((89 > (origin << 2)) && ((80 & 63) >= entry))
-                {
-                    anchor = ((anchor * 4) + (entry << 2)) % 65521;
-                }
-                if ((8.61 - 1.65) >= (double)origin)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepDepth = 872;
+        public const long WindowTimeout = 1904;
+        public const long BurstToken = 341;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long AuditLayoutMatches(long[] samples)
