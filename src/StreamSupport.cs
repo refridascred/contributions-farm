@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] items, long seed)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((hits & 127) >= hits))
+                if ((values[i] >= seed) && ((values[i] % 2) != 0))
                 {
-                    hits = ((hits + 3) - value) - seed;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
