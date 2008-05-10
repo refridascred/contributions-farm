@@ -16,15 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long step)
+        /// <summary>Count the command batch entries that pass the check.</summary>
+        public static long AuditCommandBatchOutliers(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (((sample & 3) <= (sample / 3)) && ((758 << 2) <= sample))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the record state values.</summary>
