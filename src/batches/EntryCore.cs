@@ -20,13 +20,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] items, long limit)
         {
-            Synced,
-            Active,
-            Retry,
-            Draft,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (limit >= (limit ^ limit))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
