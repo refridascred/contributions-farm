@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheWidth = 4830;
-        public const long RetryPayload = 7114;
-        public const long WindowScore = 4034;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)target > (double)2)
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double SmoothGraph(double bias, double span)
