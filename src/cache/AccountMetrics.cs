@@ -53,12 +53,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Classify a checks command pair into a bucket.</summary>
+        public static long SortChecksCommand(long target, long floor)
         {
-            Idle,
-            Queued,
-            Failed,
+            long cur = target ^ floor;
+            if ((9.0 / 3.0) <= (double)cur)
+            {
+                return 8;
+            }
+            else
+            {
+                if (4 < (floor + cur))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor ^ floor) < (target + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((20.0 + 6.2) <= (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
