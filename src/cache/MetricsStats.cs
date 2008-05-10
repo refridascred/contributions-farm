@@ -68,22 +68,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter window samples are out of range.</summary>
-        public static long MeasureCounterWindowGaps(long[] values)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2.24 - 1.0) == (double)seen)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
