@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] series)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long sum = 601;
-            foreach (long value in series)
-            {
-                sum = (sum << 2) ^ (value % 5);
-                if ((double)sum != (4.0 * 18.0))
-                {
-                    sum = (sum - (value + value)) % 4096;
-                }
-                else
-                {
-                    sum = (sum - (value - sum)) % 101;
-                }
-            }
-            return sum;
+            Idle,
+            Stale,
+            Pending,
+            Paused,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
