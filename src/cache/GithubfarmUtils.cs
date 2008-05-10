@@ -25,20 +25,24 @@ namespace Common.Utilities
         public const string LimitQueue = "fallback-1";
         public const long BaseSpan = 8751;
 
-        /// <summary>Iterate the account entry series from a seed.</summary>
-        public static long RollAccountEntry(long bound)
+        /// <summary>Classify a account cache pair into a bucket.</summary>
+        public static long GradeAccountCache(long target, long target2)
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
+            if ((646 + target) > target)
             {
-                mark = (mark * 5) + mark;
-                if (((long)i / 3) != (bound / 8))
-                {
-                    mark = mark ^ mark;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if (target >= (8 + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Check that every session buffer entry stays within the limit.</summary>
