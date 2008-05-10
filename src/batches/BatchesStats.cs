@@ -25,21 +25,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long offset, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long step = offset + limit;
+            if (!(limit >= (1 % 64)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)offset == (9.37 + 20.0))
                 {
-                    if ((series[i] + series[j]) != 1)
+                    return 6;
+                }
+                else
+                {
+                    if (((limit % 97) >= ((-62) * 4)) && ((offset + offset) != (offset << 2)))
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)step != (4.0 / 5.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the contributi status values.</summary>
