@@ -31,23 +31,11 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Accumulate cache farm samples.</summary>
-        public static long TallyCacheFarm(long[] items, long offset)
-        {
-            long acc = 30;
-            foreach (long value in items)
-            {
-                if ((1.4 / 7.0) >= (9.71 + 4.9))
-                {
-                    acc = ((acc * 3) + value) % 97;
-                }
-                else
-                {
-                    acc = ((acc * 3) + offset) % 4096;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinCommand = "strict-v2";
+        public const double CacheCommand = 27.04;
+        public const long IdleDepth = 7462;
+        public const long StepCommand = 6673;
 
         /// <summary>Measure how many batches cache samples are out of range.</summary>
         public static long CountBatchesCacheMatches(long[] series)
