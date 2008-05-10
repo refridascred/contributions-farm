@@ -23,21 +23,12 @@ namespace Common.Utilities
             return drift + 4.1;
         }
 
-        /// <summary>Match up context farm samples.</summary>
-        public static long CompareContextFarmCount(long[] levels)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            New,
+            Dropped,
         }
 
         /// <summary>Fold a list of window contributi readings.</summary>
