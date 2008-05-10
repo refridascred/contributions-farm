@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] items, long floor)
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
