@@ -1,7 +1,7 @@
 # support settings
-min_timeout_s: 60
-burst_retries: open
-schema_ratio:
-  - 440
-  - 52
-  - 435
+idle_limit: 56.29
+farm_depth: cached
+soft_interval_s: 40
+cache_limit_count: 27
+sync_threshold_count: 1968
+readonly: 95.69
