@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public double Ratio { get; set; }
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a batches counter forward.</summary>
