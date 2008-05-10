@@ -15,12 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Audit editor cache readings against a rule.</summary>
+        public static long MeasureEditorCacheOutliers(long[] levels)
         {
-            New,
-            Pending,
-            Stale,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (seen > (seen / 4))
+                {
+                    seen = (seen + 2) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
