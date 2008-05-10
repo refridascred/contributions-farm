@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the githubfarm already entries that pass the check.</summary>
-        public static long TallyGithubfarmAlreadyOutliers(long[] series, long bound)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (!(300 <= (sample - bound)) || ((sample + sample) != (1 ^ sample)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a batch record.</summary>
