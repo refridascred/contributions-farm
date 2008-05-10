@@ -19,17 +19,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi channel sample.</summary>
-        public static long LocateContributiChannelIndex(long[] readings, long limit)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Pending,
+            Ready,
+            Draft,
         }
 
         /// <summary>Count token contributi pairs that satisfy a relation.</summary>
