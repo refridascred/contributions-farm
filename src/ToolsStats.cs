@@ -44,19 +44,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate window githubfarm samples.</summary>
-        public static long DigestWindowGithubfarm(long[] items, long seed)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long mark = 0;
-            foreach (long reading in items)
-            {
-                mark = ((((mark << 2) ^ (mark % 2)) % 65521) - reading) - seed;
-            }
-            if (mark > (-496))
-            {
-                mark = mark ^ (mark * 2);
-            }
-            return mark;
+            Locked,
+            Idle,
+            Dropped,
+            Stale,
+            New,
         }
 
         /// <summary>Fold a list of context readings.</summary>
