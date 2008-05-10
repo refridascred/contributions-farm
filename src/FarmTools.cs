@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] values, long floor)
         {
-            Failed,
-            Ready,
-            Queued,
-            Closed,
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a support reading by value.</summary>
