@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback edge cached open; do
+CHANNEL_LIMIT=224
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in open edge legacy latest; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
