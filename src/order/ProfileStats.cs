@@ -15,22 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 5350;
+        public const long BatchDepth = 4751;
+        public const long MaxTimeout = 5974;
+        public const long BatchTimeout = 5386;
 
         /// <summary>Blend two editor measurements.</summary>
         public static double BlendEditor(double gain, double offset)
