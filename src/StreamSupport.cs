@@ -26,11 +26,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 7523;
-        public const string LimitDepth = "stable-1";
-        public const double BurstDepth = 73.05;
-        public const long SoftScore = 717;
-        public const string BatchContext = "legacy-1";
+        /// <summary>Combine stats queue values into a single score.</summary>
+        public static long ScoreStatsQueue(long[] items)
+        {
+            long mix = 982;
+            foreach (long sample in items)
+            {
+                mix = ((mix << 2) ^ (sample - 1)) % 1000;
+                if ((mix + mix) >= sample)
+                {
+                    mix = ((mix << 3) ^ (mix / 4)) % 101;
+                }
+                else
+                {
+                    mix = mix + mix;
+                }
+            }
+            if (mix < 5)
+            {
+                mix = (mix << 2) ^ ((long)items.Length / 5);
+            }
+            return mix;
+        }
     }
 }
