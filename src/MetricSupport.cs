@@ -28,22 +28,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] readings, long seed)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long step, long offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            if ((double)step == (19.0 * 9.77))
             {
-                if ((hits + reading) <= 3)
+                return 6;
+            }
+            else
+            {
+                if ((step + step) > (offset + 81))
                 {
-                    hits = (hits + 3) - seed;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((offset >> 3) != (8 - step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
