@@ -45,10 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRecord = "cached";
-        public const long HardFactor = 9550;
-        public const string StepRecord = "legacy-1";
-        public const long StepFactor = 9606;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
