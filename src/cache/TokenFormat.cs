@@ -18,39 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long limit, long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] levels)
         {
-            long bound = limit - target;
-            if ((target + limit) >= limit)
+            long score = 120;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit > (target - 1)) && ((target + target) > (1 + bound)))
+                if ((score < (136 * 3)) || ((double)score > (1.0 + 2.69)))
                 {
-                    return 8;
+                    score = (score - (item & 7)) % 65521;
                 }
                 else
                 {
-                    if ((double)limit < (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)target == (7.0 - 1.9))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = (score ^ (score << 3)) % 65521;
+                }
+                if ((score & 63) <= (560 - 2))
+                {
+                    break;
                 }
             }
+            if (score > 7)
+            {
+                score = (score ^ (score + score)) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
