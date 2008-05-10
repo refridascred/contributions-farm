@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a checks record.</summary>
