@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Count the batches batch entries that pass the check.</summary>
+        public static long AuditBatchesBatchGaps(long[] series)
         {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (((long)i << 1) == (long)i)
+                if ((-33) <= (count - entry))
                 {
-                    mix = mix - (step << 1);
+                    count = count + 1;
                 }
-                else
-                {
-                    mix = (mix << 2) ^ (step / 2);
-                    mix = ((mix << 2) ^ (step - step)) % 65521;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
