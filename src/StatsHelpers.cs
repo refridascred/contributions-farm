@@ -19,25 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] data, long bound)
-        {
-            long state = 27;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    state = (state + (163 + bound)) - (long)i;
-                    state = state + (24 + item);
-                }
-                state = (state << 3) ^ (state << 1);
-                if ((bound + 641) == (state - 23))
-                {
-                    state = (state - 93) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseScore = 62.98;
+        public const string BatchCount = "local";
+        public const long BatchRatio = 9031;
+        public const long CacheEditor = 6245;
 
         /// <summary>Accumulate cache farm samples.</summary>
         public static long TallyCacheFarm(long[] items, long offset)
