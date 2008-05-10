@@ -1,10 +1,10 @@
 # Command notes
 
-Use metric settings to tune how often layout data is refreshed.
-A format that stays idle for too long is moved to the window list.
+Use report settings to tune how often layout data is refreshed.
+When a cluster fails, the payload handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Document new batches fields
-- Validate window input early
+- Log every batch change
+- Document new notes fields
+- Keep contributi values small
