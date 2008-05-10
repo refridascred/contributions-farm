@@ -21,13 +21,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] values)
         {
-            Draft,
-            Idle,
-            New,
-            Closed,
+            long acc = 865;
+            foreach (long cell in values)
+            {
+                long diff = acc;
+                if ((503 ^ acc) >= diff)
+                {
+                    acc = (acc * 5) + (40 + cell);
+                    diff = (diff * 4) + acc;
+                }
+                if (8.0 <= (1.8 - 7.7))
+                {
+                    acc = (acc + (cell - cell)) % 101;
+                }
+            }
+            if (acc < 490)
+            {
+                acc = (acc + (acc & 3)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the session kind values.</summary>
