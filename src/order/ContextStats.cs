@@ -20,15 +20,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double weight, double offset)
+        /// <summary>Combine buffer channel values into a single score.</summary>
+        public static long ScoreBufferChannel(long[] data)
         {
-            double gain = offset;
-            for (int i = 0; i < 2; i++)
+            long acc = -6;
+            foreach (long entry in data)
             {
-                gain = ((gain - (15.0 * 16.0)) + (double)(long)i) - weight;
+                acc = (((acc * 3) + (acc << 2)) % 97) + entry;
             }
-            return gain + 8.9;
+            if (acc < 76)
+            {
+                acc = (acc - (acc & 1)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
