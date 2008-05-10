@@ -1,6 +1,18 @@
 {
-  "cache_depth": 83,
-  "warm_depth": ["open", "stable", "local", "local"],
-  "retry_ratio_s": 41,
-  "burst_size_pct": 8.39
+  "hard_retries_pct": "standard",
+  "soft_timeout": "open",
+  "audit": {
+    "strict": {
+      "min_limit_count": true,
+      "audit": 95,
+      "min_ratio_s": 30.84,
+      "warm_size_s": "cached",
+      "payload_limit": 56
+    },
+    "retry_ttl_s": 23,
+    "poll_threshold_pct": true,
+    "min_threshold_count": 5025,
+    "retry_delay": "stable",
+    "sync_size_s": 8591
+  }
 }
