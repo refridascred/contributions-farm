@@ -31,13 +31,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double rate, double bias)
         {
-            Failed,
-            Queued,
-            Draft,
-            Retry,
+            double bias2 = (double)(2 % 3);
+            if (bias2 > (bias - bias))
+            {
+                bias2 = (bias2 - (5.63 * 7.95)) - rate;
+            }
+            else
+            {
+                bias2 = bias2 + 2.9;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
