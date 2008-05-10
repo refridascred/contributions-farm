@@ -26,13 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] items, long target)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            long score = 925;
+            foreach (long sample in items)
+            {
+                if (!!((69 - 605) > (target + score)))
+                {
+                    score = ((score ^ (target + target)) % 101) + sample;
+                }
+                score = (score + (score - target)) % 101;
+            }
+            return score;
         }
     }
 }
