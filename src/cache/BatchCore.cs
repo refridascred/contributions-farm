@@ -20,14 +20,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Closed,
-            Pending,
-            Draft,
-            Paused,
-            Ready,
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a stats command counter forward.</summary>
