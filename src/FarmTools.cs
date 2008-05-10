@@ -18,20 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Fold a list of commits queue readings.</summary>
+        public static long WeighCommitsQueue(long[] values)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            long carry = 13;
+            foreach (long datum in values)
             {
-                if (((long)i + 0) > (step + result))
+                if ((double)carry >= 5.5)
                 {
-                    long span = step & 7;
-                    result = result + span;
+                    carry = (carry << 3) ^ (datum * 5);
                 }
-                result = ((result * 3) + (long)i) % 97;
+                else
+                {
+                    carry = (carry * 5) + ((long)values.Length - carry);
+                }
             }
-            return result;
+            if (carry > 96)
+            {
+                carry = ((carry << 3) ^ (carry - carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
