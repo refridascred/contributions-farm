@@ -17,12 +17,19 @@ namespace Common.Utilities
         public const long LimitAlready = 83;
         public const double MaxSize = 94.9;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] readings, long offset)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the cluster level values.</summary>
