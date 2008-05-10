@@ -54,14 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Idle,
-            Draft,
-            Queued,
             Dropped,
-            Paused,
+            Synced,
+            Ready,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
