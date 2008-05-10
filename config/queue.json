@@ -1,12 +1,5 @@
 {
-  "commits_ttl": [491, 225],
-  "farm_interval": true,
-  "retry_delay": {
-    "readonly": [376, 489, 239, 482],
-    "queue_ttl": 56.07,
-    "warm_threshold": "open",
-    "base_ratio": 45,
-    "retry_limit": 2404,
-    "retry_retries_pct": "primary"
-  }
+  "notes_window": [258, 254],
+  "batch_threshold_count": 84.42,
+  "flush_capacity_count": [141, 132]
 }
