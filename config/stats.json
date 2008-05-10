@@ -1,6 +1,5 @@
 {
-  "poll_size": "primary",
-  "min_ttl_pct": "eu-west",
-  "max_capacity_s": "latest",
-  "idle_delay_s": "legacy"
+  "default_capacity": 92.02,
+  "soft_threshold_count": "eu-west",
+  "batch_ratio_pct": "eu-west"
 }
