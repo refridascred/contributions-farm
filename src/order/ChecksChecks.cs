@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const long StepBatch = 7332;
         public const long HardFactor = 3991;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] values, long step)
         {
-            Stale,
-            Dropped,
-            Queued,
-            Locked,
+            long score = 22;
+            foreach (long cell in values)
+            {
+                score = (score << 2) ^ (step - score);
+                if ((step - cell) <= (step + 8))
+                {
+                    break;
+                }
+            }
+            if (score > 485)
+            {
+                score = score - (step + 141);
+            }
+            return score;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
