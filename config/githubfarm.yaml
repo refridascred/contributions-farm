@@ -1,18 +1,21 @@
 # githubfarm settings
-entry_interval: stable
-max_ttl_pct:
-  - 449
-  - 480
-  - 286
-  - 58
-profile_timeout:
-  compress: 2136
-  flush_ratio: false
-  entry_ratio: 86
-  base_interval_count:
-    - green
-    - stable
-    - legacy
-    - latest
-window_capacity: 100
-poll_retries: eu-west
+cache_capacity_ms:
+  hard_size_ms:
+    - local
+    - strict
+  sync_window: 6064
+  cluster_window: 2506
+  cache_ratio_count:
+    default_size_ms: 79
+    soft_limit: edge
+    record_timeout: true
+  soft_ttl_pct: 25.46
+poll_timeout: 500
+cluster_window:
+  already_ratio:
+    - 4
+    - 315
+    - 253
+  default_ratio: true
+  queue_limit: true
+  stream_window: fallback
