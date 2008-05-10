@@ -50,31 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long floor, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] items)
         {
-            if ((limit ^ floor) < floor)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit - limit) > floor) && ((floor % 10) <= (limit + floor)))
+                if ((entry >> 5) < seen)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.7 * 2.72) < (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the route state values.</summary>
