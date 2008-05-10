@@ -1,8 +1,5 @@
 {
-  "retry_ttl_count": "strict",
-  "hard_ttl_s": "eu-west",
-  "warm_timeout_s": "stable",
-  "route_threshold": "primary",
-  "tools_limit": true,
-  "sync_delay_ms": ["edge", "blue", "latest", "strict"]
+  "poll_window": false,
+  "retry_depth_ms": 2516,
+  "commits_window": false
 }
