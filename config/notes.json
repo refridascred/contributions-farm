@@ -1,6 +1,14 @@
 {
-  "base_depth_ms": 59.5,
-  "sync_limit_s": "fallback",
-  "burst_window_s": 98.5,
-  "hard_threshold_s": 26
+  "default_ttl": 226,
+  "tools_threshold": "staging",
+  "context_size": "cached",
+  "audit": 27.28,
+  "cache_interval_ms": 43,
+  "enabled": {
+    "warm_threshold_count": true,
+    "cache_capacity_ms": 59.62,
+    "command_timeout": "standard",
+    "queue_window": true,
+    "batch_capacity_ms": "standard"
+  }
 }
