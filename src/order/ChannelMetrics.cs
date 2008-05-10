@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the cluster cache entries that pass the check.</summary>
-        public static long CountClusterCacheMatches(long[] levels)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4.3 + 0.3) != (double)item)
+                if ((readings[i] >= seed) && ((readings[i] % 3) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
