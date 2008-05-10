@@ -20,22 +20,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the farm githubfarm entries that pass the check.</summary>
-        public static long MeasureFarmGithubfarmOutliers(long[] series, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long total = 5;
+            foreach (long datum in readings)
             {
-                if ((floor % 2) < (floor + 537))
-                {
-                    hits = (hits + 3) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = (((total * 2) + total) % 255) + datum;
             }
-            return hits;
+            if (total < 71)
+            {
+                total = ((total * 4) + (1 + 706)) % 65521;
+            }
+            return total % 1000;
         }
     }
 }
