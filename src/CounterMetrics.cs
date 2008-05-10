@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Done,
-            Paused,
-            Ready,
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a filter info.</summary>
