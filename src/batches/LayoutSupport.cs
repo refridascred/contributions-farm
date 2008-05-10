@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            Paused,
+            Active,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a commits stats.</summary>
