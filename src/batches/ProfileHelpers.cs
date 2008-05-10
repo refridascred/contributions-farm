@@ -84,13 +84,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Paused,
-            Active,
-            Dropped,
-            Done,
+            Draft,
+            Ready,
+            Failed,
         }
     }
 }
