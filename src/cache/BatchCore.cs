@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] items)
+        /// <summary>Accumulate checks cache samples.</summary>
+        public static long TotalChecksCache(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long anchor = 748;
+            foreach (long sample in readings)
             {
-                if (sample >= (sample - hits))
+                if ((double)sample >= (6.22 - 6.9))
                 {
-                    hits = hits + 1;
+                    anchor = (anchor ^ (97 / 7)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ origin) % 1000;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Locate a support channel reading by value.</summary>
