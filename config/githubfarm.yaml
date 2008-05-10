@@ -1,12 +1,19 @@
 # githubfarm settings
-readonly: legacy
-default_ttl: 250
-checks_threshold:
-  - standard
-  - open
-  - local
-max_delay_pct:
-  - legacy
-  - standard
-  - standard
-  - cached
+command_size: 84.78
+soft_size_ms:
+  warm_limit_pct: standard
+  retry_depth: 2493
+  entry_threshold: staging
+  retry_size_pct: fallback
+  entry_delay:
+    entry_threshold:
+      - 463
+      - 77
+      - 312
+      - 300
+    idle_capacity: stable
+    warm_limit_ms: primary
+filter_delay: 46.13
+default_window: 17.82
+hard_ratio_s: fallback
+idle_depth_count: edge
