@@ -23,12 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public double Weight { get; set; }
+            New,
+            Dropped,
+            Synced,
+            Failed,
         }
 
         /// <summary>Combine metric layout values into a single score.</summary>
