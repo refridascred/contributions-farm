@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 4963;
-        public const double BatchAlready = 13.84;
-        public const long IdleAlready = 3663;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Closed,
+            New,
+            Dropped,
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryMatches(long[] series, long origin)
