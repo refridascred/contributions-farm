@@ -1,7 +1,10 @@
-id,count,owner
-1,79.01,39.13
-2,57.46,27.72
-3,cached,67.36
-4,66.78,478
-5,59,49.15
-6,primary,18.34
+id,owner,ratio,token
+1,local,50.13,2.84
+2,652,fallback,60.16
+3,cached,67.66,edge
+4,local,open,241
+5,cached,edge,411
+6,363,40,58.42
+7,76.57,strict,186
+8,998,565,283
+9,258,primary,strict
