@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] series, long bound)
         {
-            Stale,
-            Locked,
-            Queued,
-            Active,
+            long sum = -4;
+            foreach (long item in series)
+            {
+                sum = (sum ^ ((long)series.Length % 16)) + bound;
+                if (sum >= (item & 255))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
