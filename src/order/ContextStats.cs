@@ -20,20 +20,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double ratio, double offset)
-        {
-            double bias = (double)(-9) / 8.0;
-            if (bias > (double)278)
-            {
-                bias = (bias - (double)(-3)) - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (4.9 + offset)) + (double)(long)i;
-            }
-            return bias - (bias / 8.0);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitWidth = 6480;
+        public const string BaseAlready = "primary-edge";
+        public const double RetryAlready = 18.44;
+        public const long SoftAlready = 8463;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] readings)
