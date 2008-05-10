@@ -36,39 +36,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank format githubfarm input into a small class.</summary>
-        public static long BucketFormatGithubfarm(long target, long bound)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long next = target - bound;
-            if ((target & 63) < target)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((813 - next) == (next + target)) || (719 > (bound ^ 0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (38 < bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(next >= (next ^ 29)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
