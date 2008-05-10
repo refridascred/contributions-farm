@@ -28,19 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] samples)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long acc = 9;
-            foreach (long datum in samples)
-            {
-                acc = acc + (datum * 4);
-            }
-            if (acc > 20)
-            {
-                acc = (acc - acc) % 65521;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
