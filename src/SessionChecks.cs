@@ -17,22 +17,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] values)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long mark = 6;
+            foreach (long sample in samples)
             {
-                if ((hits * 4) != (hits * 3))
+                if (origin > 6)
                 {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mark = ((mark * 5) + (3 << 3)) + sample;
                 }
             }
-            return hits;
+            if (mark < 510)
+            {
+                mark = (mark << 3) ^ (mark & 7);
+            }
+            return mark;
         }
 
         /// <summary>Rank format githubfarm input into a small class.</summary>
