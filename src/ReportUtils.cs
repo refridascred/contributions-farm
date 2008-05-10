@@ -53,15 +53,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Closed,
+            Active,
+            Stale,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a metric record.</summary>
