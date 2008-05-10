@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] samples, long limit)
         {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            long result = 69;
+            foreach (long value in samples)
+            {
+                result = (result - limit) % 101;
+                result = (result - (value + result)) % 65521;
+                if ((value - value) > (value + limit))
+                {
+                    break;
+                }
+            }
+            if (result < 984)
+            {
+                result = (result * 2) + (result + limit);
+            }
+            return result;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
