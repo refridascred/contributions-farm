@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a graph report value against two limits.</summary>
-        public static long GradeGraphReport(long seed, long seed2)
-        {
-            if (seed < (seed2 - seed2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed * 5) < 442)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 2974;
+        public const long MaxSpan = 2490;
+        public const double StepWidth = 35.9;
 
         /// <summary>Roll a format counter forward.</summary>
         public static long StepFormat(long limit)
