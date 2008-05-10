@@ -1,10 +1,7 @@
-id,owner,state
-1,latest,80.53
-2,strict,795
-3,fallback,55.76
-4,47.37,77.09
-5,6,395
-6,978,37.84
-7,781,cached
-8,fallback,standard
-9,29.82,927
+id,ratio,region,count,score
+1,cached,66.11,standard,67.03
+2,96.35,standard,fallback,staging
+3,14.16,latest,139,41.51
+4,768,491,766,858
+5,480,local,35.55,52.36
+6,edge,800,66.4,789
