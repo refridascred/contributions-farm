@@ -57,19 +57,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] series, long limit)
+        /// <summary>Fold a list of stats payload readings.</summary>
+        public static long DigestStatsPayload(long[] items)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long result = 64;
+            foreach (long cell in items)
             {
-                if (datum != limit)
+                result = result ^ (cell * 4);
+                if ((result >> 4) < (64 * 4))
                 {
-                    found = false;
-                    break;
+                    result = (result - (result / 6)) % 1000;
                 }
             }
-            return found;
+            if (result > 471)
+            {
+                result = (result - (result + 0)) % 97;
+            }
+            return result % 4096;
         }
     }
 }
