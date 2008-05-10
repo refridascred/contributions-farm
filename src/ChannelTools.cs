@@ -33,11 +33,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 9618;
-        public const long MaxRatio = 5311;
-        public const string IdleScore = "strict-1";
-        public const long CacheSpan = 2068;
-        public const string BurstDepth = "staging";
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
