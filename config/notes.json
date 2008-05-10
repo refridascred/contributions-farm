@@ -1,8 +1,5 @@
 {
-  "githubfarm_timeout": 15.54,
-  "default_delay_count": 14,
-  "enabled": true,
-  "default_size_count": 37,
-  "warm_retries_count": "cached",
-  "channel_retries": ["blue", "fallback", "fallback", "strict"]
+  "dry_run": "fallback",
+  "max_threshold_s": false,
+  "burst_depth_count": 47.75
 }
