@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a farm batches value against two limits.</summary>
-        public static long GradeFarmBatches(long origin, long origin2)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] values)
         {
-            long prev = origin ^ origin2;
-            if ((20.0 + 0.4) < (double)6)
+            long total = -128;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin - prev) >= (origin2 - 72))
+                total = ((total * 5) + (value << 1)) % 65521;
+                if (!((double)value < (double)total))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    break;
                 }
             }
+            if (total > 105)
+            {
+                total = (total + (total + 11)) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the window class values.</summary>
