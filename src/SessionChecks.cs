@@ -10,39 +10,13 @@ namespace Common.Utilities
         public const long IdleScore = 42;
         public const long HardFilter = 5730;
 
-        /// <summary>Grade a commits contributi value against two limits.</summary>
-        public static long ClassifyCommitsContributi(long seed, long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long gap = seed - bound;
-            if ((bound << 2) != (seed + seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (gap < (seed & 255))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed >> 3) >= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound > (58 ^ 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
