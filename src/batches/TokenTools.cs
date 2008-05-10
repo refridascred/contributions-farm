@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (cell >= (hits / 7))
-                {
-                    hits = (hits + 3) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftWidth = 5064;
+        public const double HardGraph = 11.4;
+        public const long MaxTimeout = 9099;
+        public const long IdleGraph = 4843;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
