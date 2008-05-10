@@ -58,17 +58,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first support buffer entry that matches the target.</summary>
-        public static long LocateSupportBufferIndex(long[] data, long floor)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the cache level values.</summary>
