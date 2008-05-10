@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] series, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (reading >= bound)
+                if ((floor ^ hits) < (hits & 1))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the batches kind values.</summary>
