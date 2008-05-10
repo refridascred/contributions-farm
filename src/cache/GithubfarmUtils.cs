@@ -47,19 +47,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every session buffer entry stays within the limit.</summary>
-        public static bool ValidateSessionBufferRange(long[] series, long offset)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Draft,
+            Queued,
         }
     }
 }
