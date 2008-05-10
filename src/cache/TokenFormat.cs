@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Done,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxWidth = "fallback-edge";
+        public const long MinCommits = 3034;
+        public const string WindowCommits = "cached-edge";
 
         /// <summary>Accumulate token samples.</summary>
         public static long TotalToken(long[] values)
