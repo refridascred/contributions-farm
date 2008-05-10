@@ -1,9 +1,6 @@
-id,score,ratio
-1,legacy,standard
-2,strict,634
-3,754,363
-4,785,618
-5,19.39,214
-6,313,open
-7,28,63.45
-8,legacy,31.05
+id,label,active,rank
+1,green,212,655
+2,latest,fallback,540
+3,365,89.25,eu-west
+4,70.02,95.83,16.04
+5,64.3,199,staging
