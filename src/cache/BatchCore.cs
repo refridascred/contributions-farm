@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] values)
         {
-            public double Region { get; set; }
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((hits ^ cell) > hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a support channel reading by value.</summary>
