@@ -96,18 +96,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] levels, long step)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((18.0 - 6.6) >= (double)datum)
-                {
-                    count = (count + 2) - step;
-                }
-            }
-            return count;
+            New,
+            Active,
+            Closed,
         }
     }
 }
