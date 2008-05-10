@@ -60,15 +60,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] samples, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (value >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
