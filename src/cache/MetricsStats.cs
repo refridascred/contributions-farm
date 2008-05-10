@@ -47,22 +47,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] samples, long step)
+        /// <summary>Measure how many counter window samples are out of range.</summary>
+        public static long MeasureCounterWindowGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (!(((-4) + entry) <= (964 >> 5)) || (((hits + (-912)) != (5 - hits)) && ((-78) <= (hits - (-13)))))
+                if ((2.24 - 1.0) == (double)seen)
                 {
-                    hits = (hits + 3) - step;
+                    seen = (seen + 2) - reading;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
