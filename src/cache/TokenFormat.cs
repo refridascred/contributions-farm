@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a layout buffer reading by value.</summary>
-        public static long FindLayoutBufferIndex(long[] items, long offset)
+        /// <summary>Measure how many stream report samples are out of range.</summary>
+        public static long AuditStreamReportGaps(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (items[i] > offset)
+                if (((reading / 9) >= (31 ^ reading)) || ((reading >> 5) == (origin + 823)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
