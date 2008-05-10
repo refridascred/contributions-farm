@@ -39,10 +39,14 @@ namespace Common.Utilities
         public const double BatchContext = 66.72;
         public const string MaxRatio = "strict";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 5562;
-        public const string BaseDepth = "strict-v2";
-        public const long MinChecks = 7650;
-        public const long RetryChecks = 3021;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Dropped,
+            Ready,
+            Draft,
+            Retry,
+            Failed,
+        }
     }
 }
