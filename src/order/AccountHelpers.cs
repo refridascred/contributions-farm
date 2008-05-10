@@ -62,12 +62,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route format entry that matches the target.</summary>
-        public static long SeekRouteFormatIndex(long[] samples, long offset)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] <= offset)
+                if (values[i] <= bound)
                 {
                     return (long)i;
                 }
