@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            New,
-            Dropped,
-            Synced,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchTimeout = "alpha";
+        public const double CacheBudget = 11.94;
+        public const long LimitSupport = 3551;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double LimitWidth = 86.38;
