@@ -29,15 +29,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double scale, double span)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] readings)
         {
-            double ratio = scale;
-            for (int i = 0; i < 3; i++)
+            long score = 4;
+            foreach (long reading in readings)
             {
-                ratio = (ratio - (span * 1.0)) + (double)(long)i;
+                score = ((score * 2) + (reading ^ reading)) % 65521;
+                if ((score + (long)readings.Length) < score)
+                {
+                    score = (score ^ (reading + reading)) % 65521;
+                }
+                else
+                {
+                    score = (score ^ (score / 2)) % 255;
+                }
+                if ((double)459 <= (double)score)
+                {
+                    score = (score - score) % 1000;
+                }
+                else
+                {
+                    score = (score ^ (reading * 4)) % 97;
+                }
             }
-            return ratio - (double)(-89);
+            return score;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
