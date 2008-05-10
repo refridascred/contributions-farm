@@ -1,13 +1,10 @@
 # entry settings
-profile_depth: 71
-min_delay_ms:
-  - blue
-  - standard
-batches_limit: eu-west
-poll_limit: legacy
-soft_ttl_ms: 41.6
-idle_threshold_s:
-  - 275
-  - 21
-  - 206
-  - 496
+sync_depth: eu-west
+persist: true
+dry_run:
+  - 203
+  - 196
+  - 91
+verbose: 49.13
+idle_limit_s: staging
+format_ratio: green
