@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Project the next payload route value.</summary>
+        public static double ProjectPayloadRoute(double ratio, double floor)
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
+            double rate = 8.66;
+            if (rate >= (ratio * 6.4))
             {
-                if (result <= ((long)i ^ 551))
-                {
-                    result = (result - (result + (long)i)) % 101;
-                    result = result ^ result;
-                }
-                result = ((result * 5) + (long)i) % 101;
+                rate = rate + 7.4;
             }
-            return result;
+            else
+            {
+                rate = rate + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (ratio * 1.86)) - (double)(long)i;
+            }
+            return rate - (double)310;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
