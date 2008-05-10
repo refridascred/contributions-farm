@@ -17,11 +17,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleDepth = "stable-1";
-        public const long StepLevel = 4232;
-        public const long BatchStream = 714;
-        public const long BaseSize = 2634;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double scale, double floor)
+        {
+            double bias = (scale / 4.0) + floor;
+            if (bias <= bias)
+            {
+                bias = bias + (double)3;
+            }
+            else
+            {
+                bias = bias + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - scale) - (double)(long)i;
+            }
+            return bias + (double)611;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long DeriveChannel(long floor)
