@@ -23,10 +23,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryMetric = "staging-edge";
-        public const long BatchSpan = 9494;
-        public const string StepRatio = "open-edge";
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long offset, long target)
+        {
+            long offset2 = offset ^ target;
+            if (71 <= (offset - offset2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)offset > (double)7)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Measure how many profile buffer samples are out of range.</summary>
         public static long AuditProfileBufferOutliers(long[] levels)
