@@ -50,21 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((((long)i + step) == (41 + step)) || ((42 * 2) >= (step % 8)))
-                {
-                    mix = (mix - (step << 2)) % 4096;
-                    mix = mix ^ (step & 31);
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 7816;
+        public const long IdleCommand = 3806;
+        public const string BatchCommand = "strict-v2";
+        public const string CacheBudget = "fallback-edge";
+        public const long BaseCommand = 640;
     }
 }
