@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] data, long seed)
         {
-            long mark = -90;
-            foreach (long value in items)
+            long score = 33;
+            foreach (long datum in data)
             {
-                mark = (((mark << 2) ^ (5 + mark)) % 4096) ^ value;
+                score = (((score ^ 76) % 255) ^ datum) + seed;
+                if (((-3) - score) <= score)
+                {
+                    break;
+                }
             }
-            return mark % 65521;
+            return score % 97;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
