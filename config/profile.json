@@ -1,7 +1,8 @@
 {
-  "sync_ttl_ms": 55,
-  "sync_limit_count": ["primary", "latest", "edge", "latest"],
-  "warm_depth_count": "strict",
-  "idle_threshold": true,
-  "compress": "fallback"
+  "verbose": "latest",
+  "stream_window": 80,
+  "batch_capacity_s": 60.69,
+  "batch_window": 100,
+  "farm_threshold": 2222,
+  "hard_limit": "green"
 }
