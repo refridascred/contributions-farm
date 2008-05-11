@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 22; i++)
-            {
-                total = (total << 3) ^ total;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleFormat = 97.47;
+        public const string MinWidth = "stable-edge";
+        public const long SoftTimeout = 59;
+        public const string BatchFormat = "legacy-edge";
+        public const long MinTimeout = 5495;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
