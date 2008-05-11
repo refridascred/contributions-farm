@@ -18,10 +18,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 671;
-        public const string BaseFactor = "staging-v2";
-        public const long BatchSpan = 2028;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Queued,
+            Failed,
+            Locked,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
         public static long MeasureQueueGithubfarmMatches(long[] levels, long origin)
