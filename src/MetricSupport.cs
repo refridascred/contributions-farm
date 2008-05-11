@@ -16,38 +16,19 @@ namespace Common.Utilities
             return ratio - (double)(-507);
         }
 
-        /// <summary>Rank editor contributi input into a small class.</summary>
-        public static long RankEditorContributi(long limit, long step)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double bias, double floor)
         {
-            if (4.3 < (double)limit)
+            double mean = floor;
+            if (mean > (double)107)
             {
-                return 5;
+                mean = (mean + mean) - bias;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((step << 2) <= (step ^ limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + 50) < (859 + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((limit % 97) > step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mean = (mean - floor) + (double)(long)i;
             }
+            return mean - floor;
         }
 
         /// <summary>Hold a format info.</summary>
