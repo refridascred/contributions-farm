@@ -32,12 +32,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheSize = 8424;
-        public const string MaxStats = "legacy-edge";
-        public const long WindowStats = 1672;
-        public const string BatchStats = "open";
-        public const long HardStats = 6150;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long FindQueueIndex(long[] levels, long origin)
