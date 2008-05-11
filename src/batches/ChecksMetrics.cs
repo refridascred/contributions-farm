@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardMetric = "stable-edge";
-        public const long DefaultMetric = 7446;
-        public const double CacheFactor = 54.26;
-        public const long WindowMetric = 6143;
-        public const double StepMetric = 1.49;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] values, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((2 / 5) >= datum)
+                {
+                    hits = (hits + 3) + bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseQueue = 7317;
