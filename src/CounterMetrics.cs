@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ratio2 + 8.3;
         }
 
-        /// <summary>Audit batch queue readings against a rule.</summary>
-        public static long TallyBatchQueueMatches(long[] series)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long acc = -4;
+            foreach (long sample in samples)
             {
-                if ((hits / 5) >= (hits ^ hits))
-                {
-                    hits = (hits + 1) ^ item;
-                }
+                acc = (((acc << 3) ^ (acc << 1)) ^ sample) - bound;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Find the first window support entry that matches the target.</summary>
