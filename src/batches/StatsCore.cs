@@ -18,23 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long target)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if (3 <= (target - target))
-                {
-                    sum = ((sum * 3) + (target - target)) % 97;
-                }
-                if (sum >= (long)i)
-                {
-                    sum = (sum << 2) ^ (sum + sum);
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of batch readings.</summary>
