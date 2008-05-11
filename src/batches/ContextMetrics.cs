@@ -57,17 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] samples, long bound)
+        /// <summary>Audit editor notes readings against a rule.</summary>
+        public static long TallyEditorNotesOutliers(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (samples[i] < bound)
+                if (15 <= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next window notes value from a seed.</summary>
