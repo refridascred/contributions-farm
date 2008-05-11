@@ -22,15 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] samples, long offset)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long total = 7;
-            foreach (long datum in samples)
-            {
-                total = ((total ^ (1 - total)) ^ datum) - offset;
-            }
-            return total;
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
