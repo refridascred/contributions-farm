@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] values, long target)
         {
-            Draft,
-            Active,
-            Dropped,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank support input into a small class.</summary>
