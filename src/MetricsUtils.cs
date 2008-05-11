@@ -14,21 +14,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long step, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((bound * 5) > (step >> 5)) || (bound >= 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((bound * 4) <= (step + bound)))
                 {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
