@@ -45,20 +45,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] levels)
+        /// <summary>Grade a route queue value against two limits.</summary>
+        public static long ClassifyRouteQueue(long limit, long bound)
         {
-            long anchor = 14;
-            foreach (long cell in levels)
+            if ((bound >> 5) > limit)
             {
-                if (((2.0 - 17.0) != (double)cell) || (3 <= cell))
-                {
-                    anchor = anchor ^ (anchor + anchor);
-                }
-                anchor = ((anchor * 3) + (cell & 127)) % 97;
-                anchor = anchor + (anchor - anchor);
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((bound / 8) <= (limit / 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound ^ 4) == (615 & 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit % 24) >= (limit + bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
