@@ -32,21 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up channel order samples.</summary>
-        public static long CompareChannelOrderCount(long[] series)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
