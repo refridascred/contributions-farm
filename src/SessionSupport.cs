@@ -12,19 +12,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double rate, double floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] series)
         {
-            double ratio = rate * 1.0;
-            if (ratio <= ratio)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                ratio = ratio + (floor * 3.46);
+                if ((hits + hits) == (reading << 2))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                ratio = ratio + floor;
-            }
-            return ratio + (double)4;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
