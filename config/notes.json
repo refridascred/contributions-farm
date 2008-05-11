@@ -1,14 +1,5 @@
 {
-  "flush_threshold_ms": {
-    "hard_delay_s": [324, 203, 12, 76],
-    "payload_ratio": 28.1,
-    "default_capacity_ms": "primary",
-    "base_limit_ms": 5103,
-    "poll_threshold": true,
-    "default_delay": ["open", "local", "cached"]
-  },
-  "persist": 25.88,
-  "githubfarm_limit": false,
-  "burst_interval": 232,
-  "default_window": "open"
+  "batch_threshold": false,
+  "sync_delay_pct": 60,
+  "soft_retries": 1024
 }
