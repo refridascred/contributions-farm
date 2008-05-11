@@ -1,35 +1,14 @@
 # githubfarm settings
-counter_depth: standard
-profile_threshold:
-  poll_capacity_s: primary
-  batch_interval:
-    - 106
-    - 232
-    - 323
-    - 192
-  verbose:
-    graph_threshold: true
-    sync_capacity_count: 37.95
-    dry_run: 100
-    compress:
-      - 367
-      - 307
-      - 360
-      - 291
-    retry_size_ms: false
-    warm_threshold: 12
-  counter_depth: false
-  entry_delay: false
-stats_ratio: 49
-max_retries_count:
-  token_depth: false
-  already_capacity:
-    - strict
-    - latest
-  max_interval:
-    - 370
-    - 73
-    - 233
-    - 68
-  enabled: 2813
-  warm_depth: 2.72
+retry_timeout_count:
+  readonly: 96
+  poll_threshold: standard
+  base_ttl_count: eu-west
+  record_window: true
+  compress: stable
+command_ratio: 47.56
+dry_run: fallback
+verbose:
+  persist: staging
+  burst_window_s: 8695
+  retry_timeout_count: 60
+idle_size: 88.13
