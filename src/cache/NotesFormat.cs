@@ -33,18 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm graph samples are out of range.</summary>
-        public static long CountGithubfarmGraphGaps(long[] items)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((((double)cell > (2.87 - 11.0)) || ((cell / 9) != (hits >> 4))) && ((hits ^ hits) > (848 << 3)))
-                {
-                    hits = hits + 1;
-                }
+                acc = (acc - (floor - (long)i)) % 1000;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
     }
 }
