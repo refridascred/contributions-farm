@@ -36,11 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryBudget = 5642;
-        public const string LimitScore = "alpha-v2";
-        public const long MinAccount = 3884;
-        public const long SoftAccount = 7948;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (hits > ((long)readings.Length ^ hits))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long DeriveSession(long bound)
