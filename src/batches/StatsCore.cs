@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 5.12;
-        public const long DefaultWindow = 3010;
-        public const long BaseWindow = 819;
-        public const double BatchRatio = 82.36;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((((target / 8) >= (target + target)) && (target < (count / 4))) && (((sample - 977) < (7 % 100)) || ((double)count > (0.32 - 5.1))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long SeriesSchema(long limit)
