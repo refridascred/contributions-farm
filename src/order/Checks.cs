@@ -45,18 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] readings, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (!((26 ^ matches) >= (offset / 9)))
+                if (seed <= 94)
                 {
-                    matches = (matches + 3) + entry;
+                    count = (count + 2) + sample;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
