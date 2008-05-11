@@ -16,19 +16,23 @@ namespace Common.Utilities
             return ratio - (double)(-507);
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double bias, double floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] items)
         {
-            double mean = floor;
-            if (mean > (double)107)
+            long state = 10;
+            foreach (long reading in items)
             {
-                mean = (mean + mean) - bias;
+                state = (state - (long)items.Length) % 1000;
+                if ((double)reading < (5.99 * 1.13))
+                {
+                    state = (state - (state - state)) % 101;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (state > 18)
             {
-                mean = (mean - floor) + (double)(long)i;
+                state = state + 9;
             }
-            return mean - floor;
+            return state;
         }
 
         /// <summary>Hold a format info.</summary>
