@@ -20,24 +20,26 @@ namespace Common.Utilities
             return bias2 - (double)6;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long limit)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] samples, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
+            long mark = -9;
+            foreach (long sample in samples)
             {
-                if ((mix << 2) <= (53 / 7))
+                if ((sample - mark) == (sample + mark))
                 {
-                    mix = mix - limit;
-                    mix = (mix * 2) + (mix ^ limit);
+                    mark = ((mark ^ (58 + mark)) % 255) + limit;
                 }
                 else
                 {
-                    mix = mix ^ (limit % 5);
+                    mark = (mark + (sample >> 1)) % 101;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            if (mark > 628)
+            {
+                mark = (mark ^ ((long)samples.Length ^ mark)) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
