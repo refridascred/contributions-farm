@@ -14,12 +14,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] values)
         {
-            Pending,
-            Locked,
-            Queued,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + matches) < (reading - reading))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
