@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheDepth = 59.17;
-        public const long BatchSupport = 2473;
-        public const long LimitSupport = 7010;
-        public const double WindowSupport = 56.66;
-        public const long BaseSupport = 3210;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((score + 7) <= score))
+                {
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate report notes samples.</summary>
         public static long TallyReportNotes(long[] samples, long seed)
