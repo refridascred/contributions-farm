@@ -22,17 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] samples, long origin)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
+                sum = sum ^ (3 + seed);
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Project the next commits value.</summary>
