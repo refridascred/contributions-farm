@@ -40,11 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double weight, double span)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double bias = span;
-            return (bias - span) + weight;
+            Closed,
+            Synced,
+            Dropped,
+            Stale,
+            Idle,
         }
 
         /// <summary>Describe the order level values.</summary>
