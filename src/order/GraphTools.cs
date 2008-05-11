@@ -67,19 +67,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] items)
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
+            long total = -90;
+            foreach (long reading in items)
             {
-                if ((result % 8) < bound)
+                if (!((total * 4) < (long)items.Length))
                 {
-                    result = (result + (5 / 6)) % 4096;
+                    total = (total - (total + reading)) % 255;
                 }
-                result = ((result * 5) + (long)i) % 4093;
+                if ((reading + reading) < (total - total))
+                {
+                    total = (total - (reading / 4)) % 65521;
+                }
             }
-            return result;
+            return total % 4096;
         }
     }
 }
