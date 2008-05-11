@@ -1,6 +1,7 @@
 {
-  "base_limit_s": ["strict", "strict"],
-  "contributi_interval": 16,
-  "commits_size": "standard",
-  "flush_threshold": "local"
+  "warm_interval_count": "staging",
+  "soft_size": "latest",
+  "buffer_window": 74.07,
+  "hard_depth_ms": 727,
+  "readonly": 250
 }
