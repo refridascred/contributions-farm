@@ -1,6 +1,12 @@
 # entry settings
-support_ttl: 35.06
-payload_retries: 67
-metrics_delay: green
-burst_capacity: 13
-max_timeout_pct: 30
+soft_depth_pct: 71.35
+max_interval:
+  hard_depth: strict
+  cache_capacity: strict
+  flush_threshold: latest
+  default_size_pct: false
+warm_window:
+  - 295
+  - 462
+  - 80
+  - 173
