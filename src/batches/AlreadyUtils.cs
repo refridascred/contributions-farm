@@ -86,19 +86,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] data, long target)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Queued,
+            Stale,
         }
     }
 }
