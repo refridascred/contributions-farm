@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Roll a metric cache counter forward.</summary>
+        public static long StepMetricCache(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(mix >= floor))
                 {
-                    if ((samples[i] + samples[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix * 4) + floor) % 97;
+                    mix = (mix ^ mix) % 101;
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Fold a list of context readings.</summary>
