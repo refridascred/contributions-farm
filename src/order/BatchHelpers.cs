@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] items)
         {
-            Done,
-            Idle,
-            Stale,
+            long result = 59;
+            foreach (long datum in items)
+            {
+                if (((datum ^ result) <= (datum - result)) || (82 < result))
+                {
+                    result = result + result;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
