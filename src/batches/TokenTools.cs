@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long bound, long bound2)
+        /// <summary>Audit order batch readings against a rule.</summary>
+        public static long TallyOrderBatchGaps(long[] samples, long floor)
         {
-            if ((bound + bound) > bound)
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound - bound2) == (36 >> 1))
+                if (floor < (9 << 2))
                 {
-                    return 6;
+                    count = (count + 1) ^ value;
                 }
                 else
                 {
-                    if ((bound - bound2) != (bound2 + 88))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound > (bound2 >> 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
