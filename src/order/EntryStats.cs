@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Synced,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheMetrics = "stable-1";
+        public const string BatchLevel = "primary-1";
+        public const long HardFactor = 1770;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
