@@ -53,32 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long offset, long target)
+        /// <summary>Audit format window readings against a rule.</summary>
+        public static long MeasureFormatWindowGaps(long[] values)
         {
-            long edge = offset ^ target;
-            if ((offset > (edge / 7)) || (offset < (edge % 5)))
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset > (edge & 3))
+                if (!!(item <= (item % 100)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset >> 4) > (-50))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count channel checks pairs that satisfy a relation.</summary>
