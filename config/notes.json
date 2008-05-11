@@ -1,8 +1,13 @@
 {
-  "checks_ttl": 28.08,
-  "idle_ttl": true,
-  "cluster_ratio": 78,
-  "idle_threshold_count": 98,
-  "batch_retries_ms": 3835,
-  "strict": 89
+  "readonly": "stable",
+  "report_capacity": 4290,
+  "batch_interval_count": 47,
+  "profile_depth": [75, 316, 465, 468],
+  "min_timeout_s": {
+    "flush_interval_s": 23.9,
+    "min_retries": "stable",
+    "queue_capacity": 500,
+    "stats_depth": 19
+  },
+  "enabled": [461, 306, 428]
 }
