@@ -98,30 +98,17 @@ namespace Common.Utilities
             return load - (double)1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] levels, long floor)
         {
-            long sum = 357;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.3 * 18.0) < (double)reading)
+                if (levels[i] == floor)
                 {
-                    break;
-                }
-                if ((double)reading > (6.41 + 4.6))
-                {
-                    sum = (sum ^ (reading - sum)) % 255;
-                }
-                if ((sum << 1) <= (sum / 6))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum < 25)
-            {
-                sum = (sum - (sum / 9)) % 255;
-            }
-            return sum;
+            return -1;
         }
     }
 }
