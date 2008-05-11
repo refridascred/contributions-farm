@@ -18,23 +18,11 @@ namespace Common.Utilities
         public const long IdleInterval = 5519;
         public const long StepBudget = 7786;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (((double)reading == (double)8) && ((reading - 69) <= (reading + reading)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitCommits = 50.44;
+        public const long IdleTimeout = 5285;
+        public const long BurstCommits = 8867;
+        public const long SoftScore = 6426;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long MatchBufferCount(long[] data)
