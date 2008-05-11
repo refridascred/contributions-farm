@@ -31,13 +31,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            New,
-            Draft,
-            Dropped,
             Queued,
+            Closed,
+            Active,
         }
     }
 }
