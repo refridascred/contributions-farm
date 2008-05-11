@@ -23,18 +23,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] series, long step)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] values, long limit)
         {
-            long anchor = -663;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((215 % 5) <= (anchor & 1)) || ((double)anchor < (double)step))
+                if (values[i] > limit)
                 {
-                    anchor = (anchor + ((long)series.Length - datum)) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
