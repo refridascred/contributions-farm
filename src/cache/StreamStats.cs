@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstLevel = 4934;
-        public const double RetryDepth = 63.12;
-        public const long BatchWidth = 1495;
-        public const long RetryRecord = 5280;
-        public const long HardSize = 2458;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long WeighCommand(long[] levels, long seed)
