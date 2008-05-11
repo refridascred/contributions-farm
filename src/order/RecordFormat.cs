@@ -30,12 +30,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] levels, long origin)
         {
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
