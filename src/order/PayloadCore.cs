@@ -38,13 +38,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Validate filter metric readings against a bound.</summary>
+        public static bool GuardFilterMetricLimits(long[] values, long limit)
         {
-            Done,
-            Pending,
-            Paused,
-            Dropped,
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
