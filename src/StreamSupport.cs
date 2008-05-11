@@ -16,10 +16,16 @@ namespace Common.Utilities
             return load - (1.86 - weight);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitRatio = 66.27;
-        public const long StepCounter = 6216;
-        public const double HardCounter = 66.54;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double ratio, double floor)
+        {
+            double weight = ratio;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - (floor / 9.0);
+        }
 
         /// <summary>Match up account samples.</summary>
         public static long PairAccountCount(long[] values)
