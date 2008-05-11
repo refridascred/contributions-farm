@@ -33,19 +33,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a buffer already figure with a bias.</summary>
-        public static double SmoothBufferAlready(double scale, double floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] values, long step)
         {
-            double weight = floor * 9.93;
-            if (weight > (weight * 9.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + scale;
+                if ((values[i] < step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight + 12.0;
+            return -1;
         }
 
         /// <summary>Describe the support kind values.</summary>
