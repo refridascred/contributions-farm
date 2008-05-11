@@ -27,18 +27,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] levels, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] readings, long floor)
         {
-            long sum = 565;
-            foreach (long sample in levels)
+            long acc = 1;
+            foreach (long reading in readings)
             {
-                if ((sum + 65) >= (seed + sum))
+                acc = (((acc * 5) + (acc / 8)) % 97) - floor;
+                if ((acc ^ reading) == (reading >> 3))
                 {
-                    sum = ((sum ^ seed) % 65521) - sample;
+                    acc = acc ^ reading;
+                }
+                else
+                {
+                    acc = (acc * 4) + (reading >> 3);
                 }
             }
-            return sum % 1000;
+            return acc;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
