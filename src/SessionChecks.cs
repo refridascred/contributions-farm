@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long seed, long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] readings, long origin)
         {
-            if ((origin >> 4) >= (origin - origin))
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((seed % 64) != (origin ^ seed)))
+                if (sample >= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((701 & 7) > (seed << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
