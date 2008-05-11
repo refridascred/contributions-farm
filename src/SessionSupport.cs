@@ -33,11 +33,19 @@ namespace Common.Utilities
         public const long LimitGraph = 8781;
         public const long WindowScore = 1577;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchEntry = 29.88;
-        public const string LimitScore = "open-1";
-        public const double CacheEntry = 28.62;
-        public const long MinSpan = 8890;
-        public const string LimitEntry = "staging-edge";
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] samples, long bound)
+        {
+            long mix = 82;
+            foreach (long value in samples)
+            {
+                mix = (mix ^ (bound + mix)) % 65521;
+                if (!((0.1 * 5.0) > (double)value))
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
+        }
     }
 }
