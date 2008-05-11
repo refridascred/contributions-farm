@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Audit route stream readings against a rule.</summary>
+        public static long MeasureRouteStreamOutliers(long[] series)
         {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample >> 5) < (sample - 72))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank record input into a small class.</summary>
