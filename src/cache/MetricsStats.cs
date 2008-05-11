@@ -62,14 +62,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Pending,
-            Failed,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 8691;
+        public const long WindowFarm = 2457;
+        public const double BurstCount = 22.2;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double HardEntry = 93.79;
