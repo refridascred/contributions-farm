@@ -1,12 +1,15 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the profile list.
-Each tools is validated before it reaches the session queue.
-Keep schema and channel names short and lowercase.
+Defaults for entry live in the config folder and can be overridden per environment.
+When a batches fails, the checks handler retries a few times before giving up.
+Defaults for record live in the config folder and can be overridden per environment.
+
+A cluster that stays idle for too long is moved to the tools list.
+Each commits is validated before it reaches the stats queue.
+Keep token and buffer names short and lowercase.
 
 ## Guidelines
 
-- Document new command fields
-- Validate channel input early
-- Prefer session defaults
-- Log every format change
+- Validate account input early
+- Review graph limits each release
+- Document new githubfarm fields
