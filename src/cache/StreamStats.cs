@@ -38,18 +38,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] levels)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)matches <= 19.0)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) + sample;
+                    if ((readings[i] ^ readings[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
