@@ -41,21 +41,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of channel metric readings.</summary>
-        public static long CompareChannelMetricCount(long[] items)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 444;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry << 3) ^ (carry / 9)) - value;
             }
-            return tally;
+            if (carry > 129)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
