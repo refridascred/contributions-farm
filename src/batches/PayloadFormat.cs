@@ -65,10 +65,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstSize = "local-1";
-        public const double RetryLevel = 93.16;
-        public const long RetryCluster = 8508;
-        public const long LimitWidth = 9429;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                total = (total + total) % 1000;
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
