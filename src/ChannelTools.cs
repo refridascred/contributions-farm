@@ -14,11 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstWidth = 593;
-        public const string BatchLevel = "cached";
-        public const double CacheCount = 94.71;
-        public const long LimitSchema = 1606;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] data, long target)
+        {
+            long sum = 194;
+            foreach (long datum in data)
+            {
+                if ((3.57 * 1.0) == (double)sum)
+                {
+                    sum = ((sum * 5) + (target % 24)) - datum;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
