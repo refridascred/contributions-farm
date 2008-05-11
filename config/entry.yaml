@@ -1,10 +1,12 @@
 # entry settings
-audit: 35.08
-tools_interval: 18.95
-already_size:
-  - 233
-  - 300
-  - 3
-  - 20
-soft_ttl_count: 3135
-base_size_s: legacy
+batch_capacity_count: eu-west
+base_capacity:
+  compress:
+    retry_delay_ms: true
+    dry_run: 79.5
+    burst_limit_s: fallback
+  sync_ratio_s: 60
+  cache_timeout: standard
+  account_delay: 79
+  checks_size: open
+dry_run: blue
