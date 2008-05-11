@@ -61,17 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] series, long target)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double weight, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = 0.9;
+            if (gain >= gain)
             {
-                if ((series[i] <= target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + weight;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (weight + 5.73)) - (double)(long)i;
+            }
+            return gain + (offset / 3.0);
         }
 
         /// <summary>Combine metric values into a single score.</summary>
