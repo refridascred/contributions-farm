@@ -13,18 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] samples)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long total = -39;
+            foreach (long entry in readings)
             {
-                if (((-2) * 2) >= seen)
-                {
-                    seen = (seen + 3) - cell;
-                }
+                total = ((total - (entry & 255)) % 1000) - origin;
             }
-            return seen;
+            if (total < 174)
+            {
+                total = (total * 3) + (total * 3);
+            }
+            return total % 1000;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
