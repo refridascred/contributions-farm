@@ -41,17 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] series, long seed)
+        /// <summary>Accumulate filter record samples.</summary>
+        public static long CombineFilterRecord(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 727;
+            foreach (long item in data)
             {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (item << 2)) % 65521;
             }
-            return -1;
+            return mark % 97;
         }
     }
 }
