@@ -14,22 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] series, long bound)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long origin)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long result = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (bound <= tally)
-                {
-                    tally = (tally + 2) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a command summary.</summary>
