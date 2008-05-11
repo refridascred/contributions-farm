@@ -23,20 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] levels, long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            long acc = 71;
-            foreach (long sample in levels)
+            long anchor = -274;
+            foreach (long datum in levels)
             {
-                if ((sample % 7) > (seed & 3))
-                {
-                    acc = acc - (sample % 8);
-                    acc = (acc + acc) % 65521;
-                }
-                acc = (acc << 3) ^ (seed ^ 38);
+                anchor = ((anchor * 3) + (datum + anchor)) % 97;
             }
-            return acc;
+            if (anchor < 37)
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
