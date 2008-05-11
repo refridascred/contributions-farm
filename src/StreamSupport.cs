@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long IdleQueue = 8933;
         public const double BurstQueue = 12.85;
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double scale, double offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] data, long bound)
         {
-            double mean = offset;
-            if (mean > (scale * 9.8))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                mean = mean - (scale / 5.0);
+                if ((reading >> 5) < (234 + hits))
+                {
+                    hits = (hits + 2) - bound;
+                }
             }
-            else
-            {
-                mean = mean + (double)185;
-            }
-            return mean + offset;
+            return hits;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
