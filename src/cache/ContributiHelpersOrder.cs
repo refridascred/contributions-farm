@@ -27,12 +27,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] samples, long origin)
         {
-            Paused,
-            Locked,
-            Done,
+            long result = -720;
+            foreach (long sample in samples)
+            {
+                result = ((((result << 2) ^ result) % 1000) + sample) + origin;
+            }
+            return result;
         }
 
         /// <summary>Validate counter profile readings against a bound.</summary>
