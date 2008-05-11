@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Combine format queue values into a single score.</summary>
