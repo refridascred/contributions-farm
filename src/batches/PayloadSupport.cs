@@ -33,13 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
+            Ready,
+            Active,
+            New,
         }
     }
 }
