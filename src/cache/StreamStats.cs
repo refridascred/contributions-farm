@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] levels)
+        /// <summary>Find the first profile contributi entry that matches the target.</summary>
+        public static long SeekProfileContributiIndex(long[] values, long floor)
         {
-            long anchor = -91;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor - (cell << 1)) % 101;
+                if ((values[i] == floor) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < (-83))
-            {
-                anchor = ((anchor << 3) ^ (anchor & 31)) % 65521;
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
