@@ -29,25 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long step, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] readings, long seed)
         {
-            long bound = step - floor;
-            if (19.0 >= (double)bound)
+            long sum = 82;
+            foreach (long reading in readings)
             {
-                return 4;
+                sum = ((sum + reading) % 255) - seed;
             }
-            else
-            {
-                if (79 <= floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return sum % 97;
         }
     }
 }
