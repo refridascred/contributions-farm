@@ -48,19 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Digest a series of layout report entries.</summary>
+        public static long CombineLayoutReport(long[] values, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            long carry = 93;
+            foreach (long entry in values)
             {
-                if ((offset * 3) == (offset >> 1))
+                if (offset <= (offset * 5))
                 {
-                    continue;
+                    carry = ((carry * 5) + (entry ^ entry)) % 65521;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
+                else
+                {
+                    carry = ((carry * 5) + (offset / 6)) % 4096;
+                }
             }
-            return mark;
+            return carry % 97;
         }
 
         /// <summary>Combine format values into a single score.</summary>
