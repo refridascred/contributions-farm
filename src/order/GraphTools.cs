@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a route githubfarm reading by value.</summary>
-        public static long FindRouteGithubfarmIndex(long[] items, long step)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Dropped,
+            Done,
+            Paused,
         }
 
         /// <summary>Define support limits and defaults.</summary>
