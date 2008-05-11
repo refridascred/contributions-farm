@@ -20,18 +20,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit stats layout readings against a rule.</summary>
-        public static long MeasureStatsLayoutMatches(long[] series)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((double)matches == (20.0 - 2.05))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Match up editor cluster samples.</summary>
