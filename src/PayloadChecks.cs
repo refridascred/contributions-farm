@@ -34,16 +34,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the metric context series from a seed.</summary>
-        public static long RollMetricContext(long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] samples)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            long mark = 5;
+            foreach (long reading in samples)
             {
-                mix = ((mix << 2) ^ (target - target)) % 101;
-                mix = ((mix * 3) + (long)i) % 97;
+                if (reading <= (3 << 2))
+                {
+                    mark = ((mark * 2) + mark) % 65521;
+                    mark = ((mark * 3) + (reading >> 5)) % 1000;
+                }
+                mark = ((mark << 3) ^ 44) % 1000;
             }
-            return mix;
+            if (mark < 16)
+            {
+                mark = ((mark * 2) + mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the farm status values.</summary>
