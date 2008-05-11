@@ -65,13 +65,20 @@ namespace Common.Utilities
         public const long RetryLevel = 6226;
         public const string MaxCache = "latest-edge";
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Roll a tools support counter forward.</summary>
+        public static long DeriveToolsSupport(long floor)
         {
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public double Count { get; set; }
+            long result = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result << 2) ^ (17 ^ result)) % 255;
+                if (((result << 3) >= (floor << 1)) || (4 < floor))
+                {
+                    result = result - (result - 539);
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
