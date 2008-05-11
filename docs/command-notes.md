@@ -1,15 +1,15 @@
 # Command notes
 
-The layout module keeps channel values in sync with the command cache.
-Use stream settings to tune how often commits data is refreshed.
-Keep channel and commits names short and lowercase.
+The farm report groups every report by checks.
+Use editor settings to tune how often profile data is refreshed.
+Each window is validated before it reaches the record queue.
 
-Use cluster settings to tune how often commits data is refreshed.
-A metric that stays idle for too long is moved to the window list.
-When a profile fails, the counter handler retries a few times before giving up.
+Defaults for payload live in the config folder and can be overridden per environment.
+Keep queue and notes names short and lowercase.
 
 ## Guidelines
 
-- Document new layout fields
-- Review stream limits each release
-- Validate stream input early
+- Document new githubfarm fields
+- Log every checks change
+- Validate metrics input early
+- Prefer entry defaults
