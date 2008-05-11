@@ -46,11 +46,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheStream = 57.42;
-        public const string LimitStream = "standard-v2";
-        public const string MinStream = "open-1";
-        public const long StepScore = 2830;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((hits + 1) == (hits >> 4)) || (sample <= (hits ^ hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
