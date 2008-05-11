@@ -30,21 +30,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Match up editor cluster samples.</summary>
-        public static long OverlapEditorClusterCount(long[] data)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Locate a metrics support reading by value.</summary>
