@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxRatio = 79.2;
+        public const long BurstSupport = 2256;
+        public const string DefaultDepth = "primary-edge";
+        public const double HardFactor = 29.03;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmMatches(long[] values)
