@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepSpan = "standard-v2";
-        public const long BatchReport = 645;
-        public const long SoftBudget = 6242;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!(hits <= (step + 322)) && ((item < (item % 64)) || ((2 * 3) >= (step + item))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the command notes series from a seed.</summary>
         public static long IterateCommandNotes(long floor)
