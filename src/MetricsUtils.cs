@@ -23,11 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] data, long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
+            long mix = 155;
+            foreach (long cell in data)
+            {
+                mix = (mix ^ (long)data.Length) ^ cell;
+            }
+            if (mix < 8)
+            {
+                mix = (mix ^ (origin << 2)) % 255;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Fold a list of route readings.</summary>
