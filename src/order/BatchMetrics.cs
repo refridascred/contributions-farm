@@ -67,19 +67,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 87.33;
+        public const double HardRatio = 23.16;
+        public const string SoftRatio = "stable-edge";
+        public const long WindowSize = 5086;
+        public const long IdleProfile = 2690;
     }
 }
