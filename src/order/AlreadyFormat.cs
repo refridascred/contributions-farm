@@ -48,19 +48,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of already editor readings.</summary>
-        public static long TotalAlreadyEditor(long[] readings, long step)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] items)
         {
-            long result = -15;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result + (6 + (long)readings.Length)) - entry;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (result > (-156))
-            {
-                result = (result - (step + result)) % 65521;
-            }
-            return result % 97;
+            return seen;
         }
     }
 }
