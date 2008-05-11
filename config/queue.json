@@ -1,13 +1,8 @@
 {
-  "dry_run": {
-    "cache_delay": 1.11,
-    "dry_run": 16.31,
-    "sync_delay_s": [277, 335, 229, 482],
-    "audit": "fallback",
-    "cluster_limit": ["latest", "strict", "fallback", "green"],
-    "cache_ttl_count": 4705
-  },
-  "queue_depth": 89,
-  "burst_delay": [384, 324, 95, 407],
-  "idle_size_pct": "staging"
+  "max_ttl_pct": "latest",
+  "soft_window": 67.62,
+  "burst_timeout_count": "edge",
+  "filter_delay": "green",
+  "soft_ratio": true,
+  "farm_limit": 50.44
 }
