@@ -20,11 +20,16 @@ namespace Common.Utilities
             return weight2 + bias;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] series, long step)
         {
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
+            long carry = -40;
+            foreach (long sample in series)
+            {
+                carry = ((carry << 3) ^ (carry * 2)) - sample;
+                carry = (carry + (step & 63)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
