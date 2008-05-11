@@ -51,21 +51,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] samples)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long step, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long bound = step + target;
+            if ((5.0 + 6.2) >= (double)bound)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (bound < (step % 7))
                 {
-                    if ((samples[i] - samples[j]) < 8)
+                    return 6;
+                }
+                else
+                {
+                    if ((target << 2) <= (target - step))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
     }
 }
