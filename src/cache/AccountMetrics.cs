@@ -29,21 +29,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up report context samples.</summary>
-        public static long CompareReportContextCount(long[] items)
+        /// <summary>Rank filter githubfarm input into a small class.</summary>
+        public static long ClassifyFilterGithubfarm(long offset, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long next = offset ^ floor;
+            if (offset < (floor & 255))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (272 <= (next + offset))
                 {
-                    if ((items[i] ^ items[j]) != 18)
+                    return 7;
+                }
+                else
+                {
+                    if (21 <= (next - offset))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((next % 2) <= floor) && (6.7 > (double)offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up editor cluster samples.</summary>
