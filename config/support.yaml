@@ -1,7 +1,28 @@
 # support settings
-burst_interval: 91
-flush_ttl_pct:
-  - primary
-  - legacy
-verbose: 30
-audit: 21.36
+route_depth:
+  default_interval_pct:
+    report_ttl: primary
+    enabled: primary
+    persist: 500
+  counter_timeout: true
+  idle_timeout:
+    token_depth: standard
+    retry_retries:
+      - edge
+      - eu-west
+    flush_interval_s: 8.89
+    base_retries_count: 10.83
+    farm_limit: blue
+    base_capacity:
+      - green
+      - strict
+  enabled: true
+  flush_retries_pct: true
+batch_window_pct:
+  - 294
+  - 115
+  - 6
+retry_delay_s: 3970
+soft_interval: 1024
+max_interval: open
+format_threshold: open
