@@ -20,12 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Dropped,
-            Draft,
-            Stale,
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
