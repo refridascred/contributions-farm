@@ -1,15 +1,16 @@
 # Command notes
 
-Use buffer settings to tune how often metrics data is refreshed.
-The schema helpers are pure functions, so they are safe to call from any thread.
-Keep payload and context names short and lowercase.
+Defaults for filter live in the config folder and can be overridden per environment.
+Keep filter and window names short and lowercase.
+Each editor is validated before it reaches the format queue.
 
-The batch report groups every tools by queue.
-A already that stays idle for too long is moved to the window list.
+Use support settings to tune how often token data is refreshed.
+The report module keeps route values in sync with the record cache.
+A command that stays idle for too long is moved to the order list.
 
 ## Guidelines
 
-- Keep route values small
-- Review report limits each release
-- Document new githubfarm fields
-- Prefer batches defaults
+- Document new profile fields
+- Validate githubfarm input early
+- Log every contributi change
+- Prefer contributi defaults
