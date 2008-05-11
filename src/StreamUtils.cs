@@ -40,23 +40,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a checks commits figure with a bias.</summary>
-        public static double ProjectChecksCommits(double ratio, double offset)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] series)
         {
-            double gain = ratio + ratio;
-            if (gain > offset)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain - (gain / 8.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (offset * 10.0)) + (double)(long)i;
-            }
-            return gain - (offset / 3.0);
+            return hits;
         }
 
         /// <summary>Describe the context level values.</summary>
