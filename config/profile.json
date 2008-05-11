@@ -1,15 +1,7 @@
 {
-  "soft_ttl_s": {
-    "poll_size_pct": [221, 260, 392, 216],
-    "hard_capacity_ms": "local",
-    "retry_ratio_pct": "standard",
-    "max_ratio_s": ["cached", "standard", "green"],
-    "format_size": 54,
-    "verbose": "fallback"
-  },
-  "poll_ttl_s": 38.51,
-  "retry_threshold": 70,
-  "enabled": "standard",
-  "readonly": "green",
-  "batch_threshold_pct": "fallback"
+  "cache_ttl": true,
+  "warm_depth_s": 500,
+  "report_ratio": true,
+  "compress": "strict",
+  "sync_size": ["staging", "eu-west", "local"]
 }
