@@ -12,10 +12,19 @@ namespace Common.Utilities
             return (drift + rate) + floor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheRatio = 5313;
-        public const long LimitInterval = 8049;
-        public const string StepSpan = "staging-1";
+        /// <summary>Audit githubfarm tools readings against a rule.</summary>
+        public static long TallyGithubfarmToolsGaps(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item >> 5) > offset)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double BatchFactor = 9.8;
