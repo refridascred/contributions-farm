@@ -12,16 +12,10 @@ namespace Common.Utilities
             return (drift + rate) + floor;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double rate, double bias)
-        {
-            double mean = 8.37;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (double)(long)i) - bias;
-            }
-            return mean - rate;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheRatio = 5313;
+        public const long LimitInterval = 8049;
+        public const string StepSpan = "staging-1";
 
         /// <summary>Define record limits and defaults.</summary>
         public const double BatchFactor = 9.8;
