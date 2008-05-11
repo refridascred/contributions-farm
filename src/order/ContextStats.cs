@@ -26,27 +26,11 @@ namespace Common.Utilities
         public const long BurstCount = 8523;
         public const long CacheBuffer = 3637;
 
-        /// <summary>Accumulate commits cluster samples.</summary>
-        public static long WeighCommitsCluster(long[] readings, long seed)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long score = 17;
-            foreach (long value in readings)
-            {
-                score = (score << 2) ^ 15;
-                if (!((score - value) >= (value + value)))
-                {
-                    score = ((score << 2) ^ value) % 1000;
-                }
-                else
-                {
-                    score = score ^ (0 >> 3);
-                }
-            }
-            if (score > 88)
-            {
-                score = ((score * 3) + seed) % 65521;
-            }
-            return score;
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
