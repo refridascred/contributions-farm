@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] levels, long seed)
+        /// <summary>Grade a notes already value against two limits.</summary>
+        public static long RankNotesAlready(long origin, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((1 + 0) > (origin + origin))
             {
-                if (levels[i] > seed)
+                return 1;
+            }
+            else
+            {
+                if (((origin / 4) <= (431 >> 3)) || ((origin + offset) <= (8 ^ 0)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the payload kind values.</summary>
