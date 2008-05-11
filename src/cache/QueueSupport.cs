@@ -13,19 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] readings, long origin)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long total = -39;
-            foreach (long entry in readings)
-            {
-                total = ((total - (entry & 255)) % 1000) - origin;
-            }
-            if (total < 174)
-            {
-                total = (total * 3) + (total * 3);
-            }
-            return total % 1000;
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
