@@ -38,12 +38,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseCommits = "standard-1";
+        public const long IdleRatio = 3841;
+        public const double SoftCommits = 67.53;
+        public const long LimitCommits = 6953;
 
         /// <summary>Match up record samples.</summary>
         public static long OverlapRecordCount(long[] series)
