@@ -26,39 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long step, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] levels, long seed)
         {
-            long span = step ^ limit;
-            if (((4.6 - 9.7) <= (double)limit) || ((double)span > (8.9 - 5.4)))
+            bool ready = true;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + span) > (limit * 3))
+                if (value <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit > (15.0 - 20.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((limit ^ limit) > (limit ^ 353)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
