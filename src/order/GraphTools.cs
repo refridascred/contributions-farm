@@ -47,17 +47,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a queue context reading by value.</summary>
-        public static long SeekQueueContextIndex(long[] samples, long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((samples[i] <= step) && ((samples[i] % 3) == 0))
+                if (cell > target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
