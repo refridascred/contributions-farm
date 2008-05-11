@@ -27,11 +27,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstDepth = 8054;
-        public const long CacheScore = 6222;
-        public const long StepFilter = 8188;
-        public const long IdleTimeout = 4178;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Paused,
+            Locked,
+            Done,
+        }
 
         /// <summary>Validate counter profile readings against a bound.</summary>
         public static bool CheckCounterProfileLimits(long[] series, long limit)
