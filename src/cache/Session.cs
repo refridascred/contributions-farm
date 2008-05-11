@@ -12,12 +12,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
+            Dropped,
             Closed,
-            Failed,
-            Active,
+            Done,
+            Retry,
             New,
         }
 
