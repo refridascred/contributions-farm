@@ -27,20 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long seed)
+        /// <summary>Count the order format entries that pass the check.</summary>
+        public static long TallyOrderFormatMatches(long[] levels, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (anchor < ((long)i + anchor))
+                if (((double)reading < (double)seed) || ((seed < (seed + reading)) || ((reading - seed) < seen)))
                 {
-                    anchor = anchor + anchor;
-                    anchor = (anchor - (long)i) % 65521;
+                    seen = seen + 3;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return seen;
         }
     }
 }
