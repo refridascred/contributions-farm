@@ -1,7 +1,5 @@
 {
-  "readonly": "blue",
-  "compress": "standard",
-  "layout_depth": 1024,
-  "enabled": "open",
-  "idle_window_s": 1024
+  "idle_retries": 82.87,
+  "counter_ttl": 45,
+  "warm_depth": "green"
 }
