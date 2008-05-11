@@ -40,12 +40,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 4034;
-        public const long StepWidth = 1431;
-        public const long WindowLevel = 7830;
-        public const string IdleSize = "primary-edge";
-        public const string MaxMetric = "staging-v2";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBudget = "strict-v2";
+        public const double BaseTimeout = 67.43;
+        public const long CacheBuffer = 7704;
 
         /// <summary>Project the next channel value.</summary>
         public static double BlendChannel(double ratio, double span)
