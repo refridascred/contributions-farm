@@ -1,8 +1,5 @@
 {
-  "min_retries_ms": "cached",
-  "report_depth": "edge",
-  "batch_interval": 500,
-  "enabled": "primary",
-  "poll_retries_count": "primary",
-  "contributi_retries": 50
+  "base_limit": true,
+  "min_depth": 85,
+  "already_ratio": 500
 }
