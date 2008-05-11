@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] items)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double weight2 = bias;
+            if (weight2 >= (double)756)
             {
-                if ((3.9 + 6.4) <= (double)entry)
-                {
-                    seen = seen + 1;
-                }
+                weight2 = (weight2 + (bias * 4.0)) - weight;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 - (double)(-789)) + (double)(long)i;
+            }
+            return weight2 + bias;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
