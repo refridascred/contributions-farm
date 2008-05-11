@@ -42,19 +42,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = ((total - (total & 7)) % 1000) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Validate support cache readings against a bound.</summary>
