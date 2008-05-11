@@ -51,18 +51,11 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFarm = 91.52;
+        public const double MaxScore = 9.45;
+        public const double LimitFarm = 91.57;
+        public const double WindowSpan = 50.31;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseBudget = 3396;
