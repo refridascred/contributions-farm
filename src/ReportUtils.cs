@@ -41,13 +41,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] levels, long limit)
         {
-            Queued,
-            Idle,
-            Synced,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the farm class values.</summary>
