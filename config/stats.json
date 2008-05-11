@@ -1,20 +1,5 @@
 {
-  "default_capacity_ms": 60,
-  "readonly": true,
-  "flush_capacity_count": 1333,
-  "poll_ttl_pct": "standard",
-  "base_interval_ms": {
-    "persist": [115, 211, 106, 423],
-    "graph_ratio": "staging",
-    "channel_ratio": 38,
-    "cache_size_ms": {
-      "poll_size_ms": true,
-      "metrics_capacity": ["green", "eu-west", "latest"],
-      "cache_retries": [177, 320, 12],
-      "batch_threshold": 78.31,
-      "burst_depth_pct": "primary"
-    },
-    "idle_window_count": false,
-    "support_size": 77
-  }
+  "format_threshold": 1024,
+  "soft_capacity": "local",
+  "max_timeout_pct": 46.18
 }
