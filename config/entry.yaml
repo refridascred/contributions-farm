@@ -1,20 +1,19 @@
 # entry settings
-base_size_ms: 9823
-burst_retries_s: false
-soft_limit_count:
-  sync_timeout:
-    sync_limit: edge
-    already_size: 23.49
-    retry_window:
-      - cached
-      - edge
-      - edge
-  poll_delay_count:
-    - 33
-    - 276
-    - 55
-  retry_retries_count: open
-  token_retries: blue
-  warm_interval: green
-  audit: 8612
-retry_delay: cached
+already_capacity:
+  dry_run: 1024
+  cache_delay: green
+  poll_capacity_s: false
+  filter_delay:
+    - 73
+    - 31
+  batch_depth_pct: true
+  flush_retries_s: cached
+min_limit: false
+persist:
+  - 21
+  - 100
+  - 270
+compress: 100
+sync_delay_s:
+  - strict
+  - blue
