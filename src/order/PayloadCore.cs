@@ -24,18 +24,13 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] levels, long step)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long anchor = 6;
-            foreach (long entry in levels)
-            {
-                if ((18.0 / 8.0) >= (double)entry)
-                {
-                    anchor = ((anchor ^ (entry + 7)) % 65521) + step;
-                }
-            }
-            return anchor % 97;
+            Ready,
+            Closed,
+            Idle,
+            Active,
         }
 
         /// <summary>Check that every cache stream entry stays within the limit.</summary>
