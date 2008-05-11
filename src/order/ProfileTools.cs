@@ -45,22 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] levels)
+        /// <summary>Count order window pairs that satisfy a relation.</summary>
+        public static long CompareOrderWindowCount(long[] series)
         {
-            long total = 9;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading * 5) > total)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = total - reading;
-                }
-                else
-                {
-                    total = (total ^ reading) % 101;
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
