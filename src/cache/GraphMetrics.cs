@@ -53,19 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] samples, long seed)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double scale, double offset)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            double mean = 7.6 / 9.0;
+            if (mean >= scale)
             {
-                if (cell != seed)
-                {
-                    found = false;
-                    break;
-                }
+                mean = (mean - (mean * 4.15)) + offset;
             }
-            return found;
+            return mean + (double)46;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
