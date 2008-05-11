@@ -1,11 +1,17 @@
 # entry settings
-entry_delay: 37.49
-compress: 74
-burst_capacity:
-  queue_retries: 2393
-  readonly: green
-  entry_delay: 60
-report_threshold: 5642
-sync_ratio:
-  - cached
-  - local
+persist:
+  - latest
+  - staging
+retry_size_pct: 500
+profile_interval:
+  - blue
+  - latest
+  - green
+  - blue
+filter_capacity: 63
+layout_delay: eu-west
+poll_depth_count:
+  - strict
+  - open
+  - standard
+  - eu-west
