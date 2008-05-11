@@ -53,12 +53,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double rate, double span)
         {
-            Dropped,
-            Closed,
-            Active,
+            double rate2 = rate / 4.0;
+            if (rate2 < (rate * 6.1))
+            {
+                rate2 = rate2 - (span / 9.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 + rate2;
         }
     }
 }
