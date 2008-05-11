@@ -66,10 +66,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 9686;
-        public const double MinContext = 51.88;
-        public const long DefaultSpan = 1312;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 13;
+        public const long DefaultAccount = 1708;
+        public const long SoftFactor = 8505;
+        public const long BatchAccount = 7033;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteRange(long[] series, long step)
