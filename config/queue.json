@@ -1,16 +1,6 @@
 {
-  "support_window": "edge",
-  "soft_ratio_pct": 30,
-  "base_delay_count": 1024,
-  "dry_run": {
-    "enabled": "legacy",
-    "strict": true,
-    "sync_interval_s": {
-      "retry_delay_count": ["edge", "staging", "stable"],
-      "session_delay": 32,
-      "sync_retries_ms": 50.73
-    },
-    "retry_capacity_ms": 49.69,
-    "default_ratio": ["latest", "standard", "eu-west", "cached"]
-  }
+  "cache_timeout": "stable",
+  "compress": 500,
+  "batch_threshold": "primary",
+  "soft_capacity_ms": "fallback"
 }
