@@ -57,18 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] samples, long floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((floor <= (6 + 1)) && ((seen % 100) <= ((long)samples.Length / 6))) || ((double)seen >= 4.2))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public long Total { get; set; }
         }
     }
 }
