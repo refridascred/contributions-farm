@@ -36,13 +36,18 @@ namespace Common.Utilities
             return mean + (mean * 3.6);
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] samples)
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!((9.9 / 8.0) > (double)seen))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a notes record.</summary>
