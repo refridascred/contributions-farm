@@ -29,21 +29,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] readings)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 244;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum + 247) < (datum & 31))
                 {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum * 5) + 82) % 255;
                 }
             }
-            return tally;
+            if (sum > 1)
+            {
+                sum = (sum + (4 - sum)) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Adjust a batches reading.</summary>
