@@ -52,12 +52,16 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long floor)
         {
-            Failed,
-            Active,
-            Synced,
+            long state = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                state = state ^ (floor + (long)i);
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Project the next payload value.</summary>
