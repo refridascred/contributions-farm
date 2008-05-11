@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] values, long target)
+        /// <summary>Audit metrics schema readings against a rule.</summary>
+        public static long CountMetricsSchemaOutliers(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (value >= target)
+                if (((2.4 + 6.9) != (double)item) || ((54 % 24) > (tally ^ item)))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
