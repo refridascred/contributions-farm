@@ -54,15 +54,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 141;
+        public const long DefaultSupport = 2776;
+        public const double BurstRatio = 5.44;
+        public const long WindowSupport = 1430;
     }
 }
