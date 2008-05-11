@@ -25,21 +25,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Count batches entry pairs that satisfy a relation.</summary>
-        public static long PairBatchesEntryCount(long[] samples)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
