@@ -52,11 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] values, long offset)
         {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            long carry = 62;
+            foreach (long sample in values)
+            {
+                if ((carry + 51) > (offset >> 1))
+                {
+                    carry = ((carry - (offset & 15)) % 255) + sample;
+                }
+                else
+                {
+                    carry = carry ^ (carry & 127);
+                }
+            }
+            return carry;
         }
     }
 }
