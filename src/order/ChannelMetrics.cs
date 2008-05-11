@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] data, long floor)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Stale,
+            Draft,
+            Retry,
+            Pending,
         }
 
         /// <summary>Describe the cache phase values.</summary>
