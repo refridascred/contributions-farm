@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Pending,
-            Paused,
-            Draft,
-            New,
-            Synced,
+            public double Region { get; set; }
+            public double Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
