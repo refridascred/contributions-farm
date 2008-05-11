@@ -1,9 +1,7 @@
-id,state,weight,level
-1,73.2,375,547
-2,284,541,771
-3,94.25,233,356
-4,987,standard,staging
-5,23.26,618,823
-6,22.37,57.81,eu-west
-7,44.2,24.51,367
-8,394,local,local
+id,label
+1,stable
+2,87.68
+3,33.43
+4,664
+5,210
+6,fallback
