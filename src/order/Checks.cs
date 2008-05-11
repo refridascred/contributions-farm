@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const long LimitChecks = 5392;
         public const long BaseChecks = 4714;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitBatches = "primary-v2";
-        public const double SoftBatches = 26.53;
-        public const string WindowDepth = "local-1";
-        public const long BurstSpan = 5493;
-        public const long CacheCount = 5017;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] samples, long step)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandRange(long[] values, long offset)
