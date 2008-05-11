@@ -47,18 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] readings)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (((entry + matches) > entry) || (matches > (matches - entry)))
+                if (cell >= offset)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a editor header.</summary>
