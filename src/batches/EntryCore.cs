@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long DefaultSchema = 6259;
         public const string HardSpan = "fallback-v2";
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double ratio, double floor)
+        /// <summary>Project the next order account value.</summary>
+        public static double BlendOrderAccount(double rate, double span)
         {
-            double weight = floor;
-            if (weight <= (double)(-7))
+            double ratio = span - rate;
+            if (ratio >= (span * 14.0))
             {
-                weight = (weight + weight) - ratio;
+                ratio = ratio - (ratio * 4.5);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                weight = weight + floor;
+                ratio = (ratio + ratio) - (double)(long)i;
             }
-            return weight - weight;
+            return ratio - (double)25;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
