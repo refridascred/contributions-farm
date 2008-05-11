@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] items, long seed)
+        /// <summary>Classify a contributi order pair into a bucket.</summary>
+        public static long RankContributiOrder(long origin, long limit)
         {
-            bool found = true;
-            foreach (long item in items)
+            if (((0.2 * 6.8) >= (double)limit) && ((origin << 3) < (origin - limit)))
             {
-                if (item > seed)
+                return 0;
+            }
+            else
+            {
+                if (origin <= (origin / 5))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((3.0 / 7.0) < (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((origin - origin) > (origin << 1)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
