@@ -53,11 +53,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long step)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
+            long state = step;
+            for (int i = 0; i < 4; i++)
+            {
+                state = state ^ (step + state);
+                state = state ^ (state & 7);
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Locate a account reading by value.</summary>
