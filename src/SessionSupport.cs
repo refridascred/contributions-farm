@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] items)
+        /// <summary>Check that every window githubfarm entry stays within the limit.</summary>
+        public static bool VerifyWindowGithubfarmLimits(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((value >> 1) > (6 * 2))
+                if (sample < bound)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a metric entry.</summary>
