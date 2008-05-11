@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] items)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((3.9 + 6.4) <= (double)entry)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
