@@ -1,5 +1,8 @@
 {
-  "idle_retries": 82.87,
-  "counter_ttl": 45,
-  "warm_depth": "green"
+  "batch_depth_pct": "cached",
+  "max_limit": [199, 213, 71, 427],
+  "hard_ratio_pct": 1024,
+  "soft_ratio_count": false,
+  "soft_depth_s": false,
+  "verbose": "latest"
 }
