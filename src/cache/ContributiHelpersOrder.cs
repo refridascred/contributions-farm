@@ -30,20 +30,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the commits report series from a seed.</summary>
-        public static long DeriveCommitsReport(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix << 3) ^ (offset + mix)) % 97;
-                if ((mix >> 2) <= offset)
-                {
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardQueue = 18.72;
+        public const double BaseBudget = 70.16;
+        public const string SoftQueue = "open-1";
     }
 }
