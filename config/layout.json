@@ -1,8 +1,8 @@
 {
-  "cluster_ttl": false,
-  "flush_retries": 8.5,
-  "stats_retries": 92,
-  "dry_run": 32.55,
-  "enabled": "fallback",
-  "default_timeout": [104, 340, 192, 468]
+  "metric_window": 23.17,
+  "idle_limit_s": true,
+  "hard_window": "blue",
+  "base_timeout_s": 85.65,
+  "counter_ratio": 2985,
+  "idle_interval_ms": [1, 462, 147, 369]
 }
