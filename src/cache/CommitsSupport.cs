@@ -52,18 +52,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Accumulate context metrics samples.</summary>
+        public static long CombineContextMetrics(long[] series)
         {
-            long mark = 46;
-            foreach (long value in levels)
+            long result = 7;
+            foreach (long sample in series)
             {
-                if ((mark / 2) >= value)
-                {
-                    mark = ((mark << 2) ^ (mark * 2)) % 65521;
-                }
+                result = result ^ (sample + result);
+                result = (result + (result >> 1)) % 65521;
             }
-            return mark;
+            if (result < 8)
+            {
+                result = result + (result - result);
+            }
+            return result;
         }
     }
 }
