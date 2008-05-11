@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 3419;
-        public const long BatchWidth = 7718;
-        public const long DefaultSchema = 6259;
-        public const string HardSpan = "fallback-v2";
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= step) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next order account value.</summary>
         public static double BlendOrderAccount(double rate, double span)
