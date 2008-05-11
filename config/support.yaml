@@ -1,14 +1,24 @@
 # support settings
-base_ratio_count: 60
-retry_window:
-  - 15
-  - 411
-  - 218
-  - 107
-cache_timeout: false
-batch_delay_pct: 77
-session_retries:
-  - 101
-  - 450
-  - 407
-githubfarm_ttl: true
+idle_window_ms:
+  strict:
+    - 8
+    - 195
+    - 9
+  metrics_size:
+    compress: open
+    soft_timeout_pct: 24
+    sync_delay: false
+  warm_interval_pct: false
+  default_ttl_count:
+    queue_capacity: 1024
+    default_capacity_ms:
+      - eu-west
+      - standard
+      - open
+    base_size: true
+    verbose: staging
+    idle_ttl_ms:
+      - legacy
+      - legacy
+strict: 500
+warm_retries_ms: 68.01
