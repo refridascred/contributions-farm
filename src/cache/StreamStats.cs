@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double ratio, double bias)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] data)
         {
-            double gain = (double)(628 + 82);
-            if (gain < (double)2)
+            long score = 92;
+            foreach (long reading in data)
             {
-                gain = gain - (ratio * 5.53);
+                score = ((score * 3) + 0) % 4096;
+                if (((8.17 + 9.28) != (double)reading) && ((5 % 8) <= (score + score)))
+                {
+                    score = (score * 5) + (reading ^ score);
+                }
             }
-            else
-            {
-                gain = gain - (gain * 3.0);
-            }
-            return gain + (bias / 6.0);
+            return score;
         }
 
         /// <summary>Project the next notes order value.</summary>
