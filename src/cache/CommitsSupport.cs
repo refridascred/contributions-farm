@@ -20,12 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Rank batch cluster input into a small class.</summary>
+        public static long RankBatchCluster(long bound, long floor)
         {
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            long slot = bound + floor;
+            if ((bound + floor) < (slot << 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((slot + floor) != (slot << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + floor) >= (floor ^ floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of payload record readings.</summary>
