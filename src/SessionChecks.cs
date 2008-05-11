@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 3239;
-        public const double StepQueue = 49.69;
-        public const string MaxSpan = "strict-v2";
-        public const string IdleSize = "local-1";
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] series, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowPayload = 671;
