@@ -53,13 +53,12 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCount = 284;
+        public const double StepInterval = 6.66;
+        public const long HardCache = 666;
+        public const string SoftCache = "legacy";
+        public const long HardBudget = 1240;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelGaps(long[] data, long origin)
