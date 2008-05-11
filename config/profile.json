@@ -1,6 +1,8 @@
 {
-  "warm_ratio": 1024,
-  "cache_ratio_pct": false,
-  "batch_delay": false,
-  "dry_run": ["open", "primary", "legacy"]
+  "base_retries_pct": 12,
+  "dry_run": "eu-west",
+  "queue_capacity": 44.43,
+  "enabled": 15,
+  "poll_threshold": 2208,
+  "cache_ttl_count": 62
 }
