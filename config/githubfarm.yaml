@@ -1,18 +1,38 @@
 # githubfarm settings
-poll_delay_s:
-  poll_window_s: blue
-  max_capacity:
-    poll_size_ms: true
-    sync_threshold_s: false
-    token_ttl: blue
-    poll_interval_ms: eu-west
-    metrics_size: 24
-    min_capacity_count: 59.11
-  order_ratio: 100
-hard_ttl: stable
-checks_depth: 4627
-strict:
-  - 217
-  - 160
-  - 340
-base_size_ms: cached
+graph_ratio: true
+default_ttl_pct: 500
+warm_capacity_ms:
+  - 54
+  - 237
+  - 26
+soft_ttl_pct:
+  - blue
+  - strict
+  - local
+  - primary
+readonly:
+  enabled:
+    retry_interval_count: green
+    record_retries:
+      - 306
+      - 73
+      - 405
+    default_delay: 42.22
+    metric_ttl: true
+    min_timeout_s: 6327
+  strict:
+    - 1
+    - 401
+    - 489
+  channel_capacity: 90.15
+  soft_timeout_s: blue
+  notes_retries: 26.73
+  dry_run:
+    record_depth: blue
+    metrics_delay:
+      - 398
+      - 154
+      - 225
+    verbose: 62
+    poll_timeout_ms: 4448
+    idle_timeout_s: false
