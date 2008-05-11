@@ -54,14 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Synced,
-            Failed,
-            New,
-            Ready,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 3002;
+        public const long CacheContext = 8679;
+        public const string MaxContext = "staging";
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
