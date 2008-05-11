@@ -58,21 +58,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Match up profile queue samples.</summary>
-        public static long MatchProfileQueueCount(long[] items)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
-            long matches = 0;
+            long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 18)
+                    if ((items[i] - items[j]) != 9)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
