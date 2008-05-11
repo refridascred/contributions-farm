@@ -34,27 +34,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] data)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            long acc = 871;
-            foreach (long item in data)
+            long result = 388;
+            foreach (long cell in items)
             {
-                if ((item + 13) != (94 + item))
+                if ((result & 63) == (result % 2))
                 {
-                    acc = ((acc * 4) + acc) % 65521;
+                    result = result - cell;
                 }
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = (((acc * 3) + (12 - item)) % 97) - (long)i;
-                }
-                acc = ((acc * 4) + acc) % 65521;
             }
-            if (acc < 703)
-            {
-                acc = acc ^ (acc - (-9));
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Describe the farm status values.</summary>
