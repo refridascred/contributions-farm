@@ -59,14 +59,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Pending,
-            Done,
+            Synced,
             Draft,
             Retry,
-            Ready,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
