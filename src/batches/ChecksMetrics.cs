@@ -13,12 +13,20 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 2124;
-        public const double StepBatches = 40.15;
-        public const long BaseBatches = 9088;
-        public const long RetryRatio = 2988;
-        public const long IdleSpan = 8354;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string WindowMetrics = "primary-1";
