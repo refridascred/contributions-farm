@@ -30,19 +30,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double weight, double span)
-        {
-            double mean = (weight / 6.0) * 4.65;
-            if (mean <= weight)
-            {
-                mean = mean + 0.87;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean - (weight + span);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 9600;
+        public const double BurstLevel = 43.13;
+        public const long IdleStats = 6654;
     }
 }
