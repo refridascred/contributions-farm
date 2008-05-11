@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchBudget = 9374;
-        public const long HardSchema = 8623;
-        public const long RetryInterval = 4826;
-        public const double BurstSchema = 78.83;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] series)
+        {
+            long mark = 249;
+            foreach (long cell in series)
+            {
+                if ((9.2 * 6.4) < (double)mark)
+                {
+                    mark = ((mark * 5) + (mark & 7)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (cell + mark)) % 4096;
+                }
+                if (((18.0 / 6.0) == (double)cell) && ((mark >> 5) != (cell - mark)))
+                {
+                    mark = (mark << 3) ^ (-884);
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseSize = 8498;
