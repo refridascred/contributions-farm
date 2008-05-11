@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] levels)
         {
-            Done,
-            Paused,
-            Draft,
+            long mark = 4;
+            foreach (long value in levels)
+            {
+                mark = ((mark + (mark / 4)) % 4096) + value;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a stream header.</summary>
