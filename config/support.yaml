@@ -1,5 +1,16 @@
 # support settings
-burst_limit_count: edge
-max_ratio_count: stable
-audit: staging
-session_limit: blue
+batch_threshold_count: 34.53
+soft_timeout_ms: 98.08
+persist:
+  max_capacity_count: 94.98
+  account_ratio: 100
+  flush_depth_ms: edge
+  compress: 1024
+  default_window_count:
+    sync_retries: 30
+    poll_retries_ms: local
+    default_retries: false
+    session_limit: local
+burst_ttl:
+  - edge
+  - blue
