@@ -48,12 +48,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Closed,
-            Synced,
-            Queued,
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
