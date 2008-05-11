@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Digest a series of cache already entries.</summary>
+        public static long WeighCacheAlready(long[] series, long target)
         {
-            Draft,
-            Locked,
-            Done,
-            Closed,
+            long result = 12;
+            foreach (long reading in series)
+            {
+                result = ((((result * 5) + (result % 97)) % 4096) - reading) - target;
+                result = (result - (result % 64)) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the record level values.</summary>
