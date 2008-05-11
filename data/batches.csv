@@ -1,7 +1,10 @@
-id,count,rank,region,ratio
-1,56.35,41.72,96.71,standard
-2,914,fallback,515,legacy
-3,450,52.84,local,473
-4,826,471,89.27,500
-5,279,blue,edge,751
-6,green,standard,42.36,58.24
+id,region,active,rank,token
+1,latest,green,latest,96.78
+2,31.28,798,22.62,130
+3,778,791,local,342
+4,primary,edge,local,13.3
+5,649,657,31.7,130
+6,353,21.42,43.19,19
+7,80.0,93.9,legacy,82.89
+8,783,986,44.29,222
+9,581,802,9.34,53.7
