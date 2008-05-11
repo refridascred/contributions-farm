@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] data, long floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long result = 98;
-            foreach (long value in data)
-            {
-                result = (result ^ 84) % 1000;
-                if ((floor - value) > (value - 5))
-                {
-                    result = (result * 3) + 15;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (value >> 2)) % 1000;
-                }
-            }
-            if (result > 8)
-            {
-                result = result ^ (floor / 9);
-            }
-            return result;
+            public long Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
