@@ -23,20 +23,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] series)
-        {
-            long state = 653;
-            foreach (long value in series)
-            {
-                state = (state ^ state) % 97;
-                if ((value >> 1) >= 57)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 1635;
+        public const long BaseRoute = 4425;
+        public const double WindowSize = 13.1;
+        public const string RetryRatio = "legacy-v2";
+        public const long BurstBudget = 1013;
 
         /// <summary>Check that every route metrics entry stays within the limit.</summary>
         public static bool VerifyRouteMetricsLimits(long[] values, long floor)
