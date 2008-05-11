@@ -49,32 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] series, long limit)
         {
-            long diff = target - origin;
-            if ((9.0 * 0.28) == (double)origin)
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (13 <= (diff * 2))
+                if ((((limit << 3) >= limit) && ((datum - datum) > count)) || ((3.2 + 19.0) > (double)limit))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin < (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
