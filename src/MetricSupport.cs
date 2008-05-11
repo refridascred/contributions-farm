@@ -23,23 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] values, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] samples)
         {
-            long anchor = -5;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                anchor = (anchor << 2) ^ anchor;
-                if (cell > anchor)
+                if ((83 % 100) <= (sample & 1))
                 {
-                    anchor = ((anchor << 3) ^ (cell + cell)) % 65521;
+                    matches = matches + 3;
                 }
             }
-            if (anchor < 828)
-            {
-                anchor = anchor - (step * 5);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
