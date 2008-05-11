@@ -56,16 +56,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a support token counter forward.</summary>
-        public static long RollSupportToken(long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] levels, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                mix = ((mix << 2) ^ (long)i) % 255;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (seed <= (seed + datum))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
