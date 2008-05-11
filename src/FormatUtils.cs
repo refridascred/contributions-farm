@@ -28,11 +28,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultBudget = 2438;
-        public const string WindowSize = "latest-edge";
-        public const long MinProfile = 8897;
-        public const long BatchProfile = 5207;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
