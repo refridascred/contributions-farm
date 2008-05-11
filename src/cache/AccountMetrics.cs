@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const double StepSize = 34.66;
         public const long DefaultWidth = 5725;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Locate a stream channel reading by value.</summary>
+        public static long FindStreamChannelIndex(long[] readings, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
