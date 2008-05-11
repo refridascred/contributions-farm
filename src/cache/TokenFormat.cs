@@ -5,28 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of route githubfarm readings.</summary>
-        public static long FoldRouteGithubfarm(long[] values)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long state = 7;
-            foreach (long entry in values)
-            {
-                if ((state >> 1) > entry)
-                {
-                    state = (state - (423 ^ entry)) % 1000;
-                }
-                else
-                {
-                    state = state ^ (entry - entry);
-                    state = ((state << 3) ^ (entry * 3)) % 101;
-                }
-                state = (state ^ (2 / 8)) % 101;
-                if ((0 ^ state) < (entry + entry))
-                {
-                    state = ((state << 2) ^ (state - entry)) % 97;
-                }
-            }
-            return state;
+            Dropped,
+            Queued,
+            Closed,
+            Idle,
+            Failed,
         }
 
         /// <summary>Accumulate schema samples.</summary>
