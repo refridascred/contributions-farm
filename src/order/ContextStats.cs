@@ -27,18 +27,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] data, long step)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)value <= (18.0 * 2.0))
+                if (items[i] <= step)
                 {
-                    hits = (hits + 3) + step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
