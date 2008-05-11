@@ -19,12 +19,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two format githubfarm measurements.</summary>
-        public static double AdjustFormatGithubfarm(double ratio, double span)
-        {
-            double mean = span;
-            return mean + ratio;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchRatio = 6565;
+        public const double CacheContributi = 41.55;
+        public const string StepFactor = "staging-1";
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
