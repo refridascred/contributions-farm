@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine channel farm values into a single score.</summary>
-        public static long WeighChannelFarm(long[] values)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long score = 0;
-            foreach (long datum in values)
-            {
-                score = ((score * 2) + 863) + datum;
-            }
-            return score;
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the commits report series from a seed.</summary>
