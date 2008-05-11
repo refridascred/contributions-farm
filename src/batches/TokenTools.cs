@@ -20,10 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleTimeout = "stable-1";
-        public const string IdleGithubfarm = "primary-v2";
-        public const long BurstScore = 844;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepSpan = "latest";
+        public const string MaxWidth = "strict-1";
+        public const double LimitFilter = 91.07;
+        public const long BaseBudget = 3680;
+        public const long MinFactor = 5784;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmBounds(long[] items, long bound)
