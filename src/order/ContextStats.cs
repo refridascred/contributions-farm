@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleSize = 9181;
+        public const long SoftProfile = 5621;
+        public const long StepCount = 2259;
+        public const long WindowProfile = 9361;
+        public const long LimitInterval = 5039;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 2784;
