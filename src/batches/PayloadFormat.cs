@@ -23,18 +23,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] readings, long target)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)target != (5.29 - 9.4))
-                {
-                    tally = (tally + 3) - datum;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the already mode values.</summary>
