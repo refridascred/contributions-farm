@@ -54,21 +54,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] items)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits >> 3) == (hits + entry))
                 {
-                    if ((items[i] + items[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
