@@ -64,14 +64,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] levels, long origin)
         {
-            Failed,
-            Active,
-            Draft,
-            Dropped,
-            Queued,
+            long acc = 5;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = (acc ^ origin) + (long)i;
+                }
+                if ((sample >> 3) == (sample + origin))
+                {
+                    acc = (acc ^ (45 >> 5)) % 97;
+                }
+                else
+                {
+                    acc = acc + (sample + origin);
+                }
+            }
+            if (acc > 3)
+            {
+                acc = (acc * 4) + (acc - acc);
+            }
+            return acc;
         }
     }
 }
