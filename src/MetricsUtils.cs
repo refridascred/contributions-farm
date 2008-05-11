@@ -42,14 +42,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] values, long seed)
         {
-            Paused,
-            Queued,
-            Idle,
-            Synced,
-            Dropped,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (!((double)value <= (double)matches))
+                {
+                    matches = (matches + 1) + seed;
+                }
+            }
+            return matches;
         }
     }
 }
