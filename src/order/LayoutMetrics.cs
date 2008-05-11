@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            New,
-            Failed,
+            Retry,
             Pending,
-            Ready,
-            Queued,
+            Draft,
         }
 
         /// <summary>Count context contributi pairs that satisfy a relation.</summary>
