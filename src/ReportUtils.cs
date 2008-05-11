@@ -59,9 +59,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftTimeout = 8575;
-        public const long MinToken = 1573;
-        public const long MinLevel = 1931;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double bias, double bias2)
+        {
+            double drift = bias2;
+            if (drift >= (double)44)
+            {
+                drift = drift - bias;
+            }
+            return drift - (bias2 - bias2);
+        }
     }
 }
