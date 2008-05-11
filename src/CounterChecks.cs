@@ -31,15 +31,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long state = 2;
-            foreach (long value in readings)
-            {
-                state = state ^ value;
-            }
-            return state;
+            Failed,
+            Stale,
+            Active,
+            Queued,
+            Paused,
         }
 
         /// <summary>Match up order samples.</summary>
