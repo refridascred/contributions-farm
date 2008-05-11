@@ -68,31 +68,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long floor, long step)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] samples)
         {
-            if (((step >> 3) > 49) && ((double)step == (8.9 / 5.0)))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step == (17.0 * 18.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((10.0 - 3.79) <= (double)step) || ((12.0 - 2.0) == (double)step))
+                    if ((samples[i] - samples[j]) == 6)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the account mode values.</summary>
