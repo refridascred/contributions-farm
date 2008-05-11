@@ -42,39 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long bound, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] series, long limit)
         {
-            long prev = bound + offset;
-            if (prev >= (bound - bound))
+            long anchor = 319;
+            foreach (long reading in series)
             {
-                return 4;
+                anchor = (anchor - (limit + anchor)) + reading;
             }
-            else
+            if (anchor < 47)
             {
-                if ((double)prev >= (10.0 - 20.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((prev * 2) >= (offset / 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound < 8.0)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                anchor = (anchor + anchor) % 4096;
             }
+            return anchor;
         }
     }
 }
