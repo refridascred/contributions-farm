@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback staging edge green; do
+for item in blue open eu-west; do
     log "checking ${item}"
 done
 
