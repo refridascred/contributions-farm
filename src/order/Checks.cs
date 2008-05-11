@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long CacheAccount = 1972;
         public const string BatchFactor = "legacy";
 
-        /// <summary>Project the next format cache value.</summary>
-        public static double AdjustFormatCache(double ratio, double span)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] samples, long bound)
         {
-            double weight = ratio;
-            if (weight <= (ratio * 4.0))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                weight = weight - (double)52;
+                if ((cell / 9) != (cell - matches))
+                {
+                    matches = (matches + 1) + bound;
+                }
             }
-            else
-            {
-                weight = weight + (span / 9.0);
-            }
-            return weight + ratio;
+            return matches;
         }
 
         /// <summary>Describe the command phase values.</summary>
