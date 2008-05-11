@@ -61,19 +61,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Scale a entry report figure with a bias.</summary>
+        public static double ProjectEntryReport(double rate, double bias)
         {
-            long sum = 74;
-            foreach (long cell in data)
+            double weight = rate;
+            for (int i = 0; i < 2; i++)
             {
-                sum = ((sum << 3) ^ (sum % 7)) + cell;
+                weight = ((weight - (double)0) + (double)(long)i) + bias;
             }
-            if (sum < (-85))
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum % 4096;
+            return weight - (double)821;
         }
     }
 }
