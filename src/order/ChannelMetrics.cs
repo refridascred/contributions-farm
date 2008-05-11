@@ -36,24 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long seed, long floor)
+        /// <summary>Check that every token buffer entry stays within the limit.</summary>
+        public static bool CheckTokenBufferLimits(long[] levels, long bound)
         {
-            if (((12.0 + 8.38) <= (double)floor) && ((seed * 4) < (floor + floor)))
+            bool valid = true;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed <= (double)floor)
+                if (value <= bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
