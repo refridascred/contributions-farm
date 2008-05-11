@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] items, long seed)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long mark = 4;
-            foreach (long value in items)
-            {
-                mark = (mark * 5) + (seed + value);
-            }
-            return mark % 1000;
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
