@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] items, long step)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long acc = 602;
-            foreach (long datum in items)
-            {
-                acc = (acc ^ (step + acc)) % 255;
-                acc = acc + datum;
-                if (((datum - datum) > (acc << 2)) || ((step / 9) < (acc ^ step)))
-                {
-                    break;
-                }
-            }
-            if (acc < 40)
-            {
-                acc = acc + (acc - step);
-            }
-            return acc % 1000;
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the token phase values.</summary>
