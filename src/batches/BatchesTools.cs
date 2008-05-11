@@ -27,11 +27,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchCount = 3753;
-        public const long BurstDepth = 6972;
-        public const double WindowAccount = 3.04;
-        public const long MaxAccount = 416;
-        public const long IdleAccount = 6077;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public long Flag { get; set; }
+            public double Token { get; set; }
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+        }
     }
 }
