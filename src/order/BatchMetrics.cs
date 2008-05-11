@@ -42,22 +42,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] levels, long seed)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (seed <= (seed + datum))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Describe the report mode values.</summary>
