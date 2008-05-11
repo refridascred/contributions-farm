@@ -1,24 +1,5 @@
 # support settings
-idle_window_ms:
-  strict:
-    - 8
-    - 195
-    - 9
-  metrics_size:
-    compress: open
-    soft_timeout_pct: 24
-    sync_delay: false
-  warm_interval_pct: false
-  default_ttl_count:
-    queue_capacity: 1024
-    default_capacity_ms:
-      - eu-west
-      - standard
-      - open
-    base_size: true
-    verbose: staging
-    idle_ttl_ms:
-      - legacy
-      - legacy
-strict: 500
-warm_retries_ms: 68.01
+burst_limit_count: edge
+max_ratio_count: stable
+audit: staging
+session_limit: blue
