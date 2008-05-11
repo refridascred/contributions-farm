@@ -1,12 +1,7 @@
 # entry settings
-soft_depth_pct: 71.35
-max_interval:
-  hard_depth: strict
-  cache_capacity: strict
-  flush_threshold: latest
-  default_size_pct: false
-warm_window:
-  - 295
-  - 462
-  - 80
-  - 173
+sync_ratio:
+  hard_capacity: 24.73
+  soft_threshold: legacy
+  poll_limit_count: 60
+profile_window: 28.91
+warm_threshold_s: 16
