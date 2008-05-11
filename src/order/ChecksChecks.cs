@@ -18,19 +18,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double gain, double floor)
+        /// <summary>Check that every githubfarm session entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmSessionLimits(long[] values, long origin)
         {
-            double ratio = (double)4 + floor;
-            if (ratio > gain)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                ratio = ratio + (floor - floor);
+                if (entry >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (ratio * 16.0);
-            }
-            return ratio + (ratio / 7.0);
+            return ready;
         }
     }
 }
