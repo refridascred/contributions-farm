@@ -53,13 +53,25 @@ namespace Common.Utilities
         public const long RetryInterval = 4319;
         public const string MinSpan = "strict-edge";
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long floor, long offset)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long bound = floor ^ offset;
+            if ((0.71 * 6.76) >= (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + bound) < floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
