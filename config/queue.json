@@ -1,7 +1,16 @@
 {
-  "hard_ratio": 60,
-  "idle_retries_pct": 94,
-  "compress": false,
-  "window_ttl": 1.11,
-  "min_timeout_ms": 16.71
+  "flush_size": 5862,
+  "default_size_s": 17,
+  "persist": {
+    "idle_ratio_count": true,
+    "sync_delay_ms": 4,
+    "retry_limit": 65,
+    "enabled": 43.08,
+    "verbose": {
+      "strict": 500,
+      "persist": 32.11,
+      "batch_limit": 58.05,
+      "cache_window": true
+    }
+  }
 }
