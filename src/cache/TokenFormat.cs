@@ -33,38 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long bound, long floor)
+        /// <summary>Count the farm commits entries that pass the check.</summary>
+        public static long TallyFarmCommitsOutliers(long[] items)
         {
-            if ((floor + 313) <= floor)
+            long count = 0;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor >> 1) >= (floor - bound))
+                if ((item * 5) >= (item / 4))
                 {
-                    return 3;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((2.26 * 18.0) != (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((780 % 24) > (floor * 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
