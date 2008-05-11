@@ -12,17 +12,23 @@ namespace Common.Utilities
         public const double MinFarm = 48.13;
         public const long LimitFarm = 8508;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] items, long bound)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = (double)(457 + 7);
+            if (bias > (span / 3.0))
             {
-                if ((items[i] <= bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + (16.0 / 7.0);
             }
-            return -1;
+            else
+            {
+                bias = bias + rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias + (double)491;
         }
 
         /// <summary>Hold a schema stats.</summary>
