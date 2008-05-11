@@ -48,19 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] data, long floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
