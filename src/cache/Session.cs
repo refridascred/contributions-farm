@@ -12,23 +12,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((entry & 7) >= (hits + entry))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftTimeout = 6499;
+        public const long StepStream = 4641;
+        public const string MinStream = "local-1";
+        public const double DefaultSize = 22.48;
+        public const long BurstStream = 4689;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long AuditEditorHits(long[] values, long target)
