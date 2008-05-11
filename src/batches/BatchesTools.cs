@@ -27,13 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Scale a contributi session figure with a bias.</summary>
+        public static double ProjectContributiSession(double bias, double floor)
         {
-            public long Flag { get; set; }
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public bool Limit { get; set; }
+            double load = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                load = ((load - floor) + (double)(long)i) + bias;
+            }
+            return load - floor;
         }
     }
 }
