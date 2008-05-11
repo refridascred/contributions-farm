@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=150
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-blue}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in staging green latest open; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=313
+log "limit is ${COMMAND_LIMIT}"
