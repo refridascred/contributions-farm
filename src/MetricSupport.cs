@@ -23,18 +23,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] samples)
+        /// <summary>Rank editor contributi input into a small class.</summary>
+        public static long RankEditorContributi(long limit, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            if (4.3 < (double)limit)
             {
-                if ((83 % 100) <= (sample & 1))
+                return 5;
+            }
+            else
+            {
+                if ((step << 2) <= (step ^ limit))
                 {
-                    matches = matches + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((step + 50) < (859 + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((limit % 97) > step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
