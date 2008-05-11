@@ -1,17 +1,11 @@
 # entry settings
-schema_interval: cached
-sync_interval_ms: edge
-base_ttl_pct:
-  - 19
-  - 425
-dry_run:
-  metric_retries: open
-  max_size_pct: 100
-  cache_limit_count: 12.02
-  min_depth_ms: 352
-  warm_timeout: edge
-  base_limit_pct: false
-base_retries_pct:
-  - latest
-  - eu-west
-  - open
+compress: open
+verbose:
+  base_capacity_s:
+    - strict
+    - standard
+    - green
+  batch_limit_ms: blue
+  soft_threshold_count: 86.26
+  batches_timeout: 77.53
+dry_run: legacy
