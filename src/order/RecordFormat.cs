@@ -46,20 +46,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every editor payload entry stays within the limit.</summary>
-        public static bool VerifyEditorPayloadLimits(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheStream = 57.42;
+        public const string LimitStream = "standard-v2";
+        public const string MinStream = "open-1";
+        public const long StepScore = 2830;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
