@@ -1,12 +1,7 @@
 # entry settings
-enabled: false
-context_ratio: 5303
-metrics_threshold: true
-min_ttl:
-  metrics_size:
-    readonly: 30
-    dry_run: strict
-    sync_ratio: fallback
-    persist: edge
-  audit: 81.0
-  burst_window: legacy
+batches_ratio: false
+flush_window_ms: false
+dry_run: strict
+cache_interval: staging
+batches_interval: 8214
+poll_size_s: false
