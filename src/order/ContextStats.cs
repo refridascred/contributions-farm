@@ -61,12 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] levels, long step)
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (!((double)cell >= (1.0 / 6.0)))
+                {
+                    hits = (hits + 1) - step;
+                }
+            }
+            return hits;
         }
     }
 }
