@@ -41,13 +41,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] values)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a metrics support pair into a bucket.</summary>
