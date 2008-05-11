@@ -1,8 +1,7 @@
 {
-  "metric_window": 23.17,
-  "idle_limit_s": true,
-  "hard_window": "blue",
-  "base_timeout_s": 85.65,
-  "counter_ratio": 2985,
-  "idle_interval_ms": [1, 462, 147, 369]
+  "max_ttl": true,
+  "max_size_count": "legacy",
+  "retry_capacity": 71,
+  "strict": "latest",
+  "dry_run": 1490
 }
