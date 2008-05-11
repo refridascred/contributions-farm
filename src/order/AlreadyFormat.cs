@@ -43,19 +43,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] levels, long target)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            double mean = floor;
+            if (mean <= bias)
             {
-                if (item < target)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean + floor;
             }
-            return flag;
+            else
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - bias) - (double)(long)i;
+            }
+            return mean - (3.87 * 2.0);
         }
     }
 }
