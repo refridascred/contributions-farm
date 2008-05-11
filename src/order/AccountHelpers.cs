@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Locked,
-            Idle,
-            Retry,
+            public double Owner { get; set; }
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
