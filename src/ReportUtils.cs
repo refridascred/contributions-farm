@@ -65,12 +65,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 8837;
-        public const long BatchStats = 4452;
-        public const double IdleStats = 65.72;
-        public const double RetryDepth = 44.16;
-        public const long MinTimeout = 2938;
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double scale, double offset)
+        {
+            double drift = (double)0 - (double)(-10);
+            if (drift >= (double)0)
+            {
+                drift = (drift + (drift * 3.0)) - scale;
+            }
+            else
+            {
+                drift = drift - (offset + drift);
+            }
+            return drift - (double)516;
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long BucketMetric(long limit, long target)
