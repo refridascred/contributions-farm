@@ -16,15 +16,18 @@ namespace Common.Utilities
             return load - (1.86 - weight);
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double ratio, double floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] series)
         {
-            double weight = ratio;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                weight = (weight + weight) + (double)(long)i;
+                if ((double)hits < (3.0 / 6.0))
+                {
+                    hits = (hits + 3) - reading;
+                }
             }
-            return weight - (floor / 9.0);
+            return hits;
         }
 
         /// <summary>Match up account samples.</summary>
