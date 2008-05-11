@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Fold a list of checks order readings.</summary>
+        public static long DigestChecksOrder(long[] series)
         {
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
+            long sum = 2;
+            foreach (long reading in series)
+            {
+                if ((double)sum <= (6.54 - 4.8))
+                {
+                    continue;
+                }
+                if (!((double)reading >= 10.0))
+                {
+                    sum = ((sum << 3) ^ (960 + sum)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
