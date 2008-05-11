@@ -56,18 +56,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((long)series.Length > datum) && ((matches - 257) != (datum ^ 4)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleSpan = 119;
+        public const string BatchReport = "stable-edge";
+        public const long MaxReport = 5447;
+        public const long BaseReport = 4159;
+        public const long SoftScore = 1574;
     }
 }
