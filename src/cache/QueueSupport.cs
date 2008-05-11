@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] samples, long seed)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((384 >> 4) == (seen << 2))
-                {
-                    seen = ((seen + 3) + entry) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Locked,
+            Ready,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
