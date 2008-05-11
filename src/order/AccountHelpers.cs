@@ -48,22 +48,13 @@ namespace Common.Utilities
         public const string RetryDepth = "standard";
         public const string DefaultCount = "alpha-edge";
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] series, long seed)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((double)count >= (double)value)
-                {
-                    count = (count + 2) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
