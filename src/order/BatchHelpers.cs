@@ -30,10 +30,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowCount = 5919;
-        public const long IdleFilter = 9343;
-        public const string HardFilter = "alpha";
-        public const long MinFilter = 9496;
+        /// <summary>Rank route queue input into a small class.</summary>
+        public static long GradeRouteQueue(long floor, long target)
+        {
+            long span = floor - target;
+            if (floor < (54 + target))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((13.0 * 11.0) <= (double)target) || ((2.72 * 7.0) < (double)floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor & 7) != (6 * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((7 + span) >= target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
