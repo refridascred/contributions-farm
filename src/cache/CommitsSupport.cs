@@ -37,17 +37,22 @@ namespace Common.Utilities
             return gain + (floor + scale);
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] readings, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((readings[i] >= target) && ((readings[i] % 3) != 0))
+                if (((long)samples.Length * 5) >= item)
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the order state values.</summary>
