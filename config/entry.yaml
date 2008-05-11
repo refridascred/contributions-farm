@@ -1,25 +1,10 @@
 # entry settings
-verbose: 97
-base_threshold_s: primary
-hard_size_pct: 1143
-retry_size:
-  stats_threshold: edge
-  hard_timeout:
-    min_threshold: 4
-    readonly:
-      - edge
-      - strict
-      - fallback
-      - strict
-    default_limit: legacy
-    format_ttl: primary
-    strict: 39
-  audit: false
-  batches_capacity:
-    min_limit: true
-    base_ratio_ms:
-      - blue
-      - primary
-      - staging
-      - cached
-    compress: 4369
+audit: 35.08
+tools_interval: 18.95
+already_size:
+  - 233
+  - 300
+  - 3
+  - 20
+soft_ttl_count: 3135
+base_size_s: legacy
