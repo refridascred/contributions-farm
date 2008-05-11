@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public bool Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
