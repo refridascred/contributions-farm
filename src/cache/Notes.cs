@@ -16,15 +16,19 @@ namespace Common.Utilities
             return drift - (span - span);
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long target)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double weight, double span)
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
+            double load = weight;
+            if (load > (0.5 / 7.0))
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                load = (load + load) - span;
             }
-            return sum;
+            else
+            {
+                load = load + (double)9;
+            }
+            return load + 8.94;
         }
 
         /// <summary>Blend two batch payload measurements.</summary>
