@@ -1,5 +1,18 @@
 # support settings
-enabled: 15.15
-sync_size_s: 2694
-route_interval: 40.65
-persist: 22.63
+strict:
+  - 174
+  - 36
+readonly: 1024
+editor_ratio: stable
+cache_capacity:
+  min_timeout:
+    poll_window_pct: false
+    burst_retries_s: eu-west
+    report_retries: 6
+    base_depth_pct: 79
+    base_capacity: 16.28
+  default_window_ms: 1.9
+  batch_timeout_pct: 6617
+  min_interval_s: 41.4
+warm_window: 6867
+counter_window: 10.82
