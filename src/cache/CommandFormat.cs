@@ -20,23 +20,10 @@ namespace Common.Utilities
         public const long BatchRoute = 9313;
         public const string IdleRoute = "latest-v2";
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] items, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (!(((long)items.Length - cell) != (limit + limit)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "local-edge";
+        public const string IdleWidth = "latest-v2";
+        public const long WindowTimeout = 6174;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
