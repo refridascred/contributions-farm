@@ -67,12 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            Done,
-            Draft,
-            Ready,
+            Active,
+            Locked,
+            Dropped,
+            Stale,
         }
     }
 }
