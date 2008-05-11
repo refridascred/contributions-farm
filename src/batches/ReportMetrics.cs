@@ -12,15 +12,24 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Grade a route record value against two limits.</summary>
+        public static long SortRouteRecord(long origin, long offset)
         {
-            long sum = 16;
-            foreach (long reading in values)
+            if (5.3 < (double)origin)
             {
-                sum = (sum - (reading << 3)) % 101;
+                return 1;
             }
-            return sum % 4096;
+            else
+            {
+                if ((origin << 1) <= origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
