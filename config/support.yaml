@@ -1,6 +1,13 @@
 # support settings
-min_window_s: 9143
-order_ttl: 69.63
-min_ttl_ms: latest
-base_retries: 74
-metric_timeout: 100
+default_ttl: 24.05
+warm_ttl_pct: 89.41
+burst_ratio: 12
+max_interval: 78
+account_interval:
+  hard_ttl:
+    - open
+    - standard
+    - local
+    - staging
+  retry_threshold_count: 34.12
+  format_limit: 42
