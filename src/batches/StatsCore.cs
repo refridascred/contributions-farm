@@ -20,16 +20,24 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] readings, long origin)
+        /// <summary>Rank farm entry input into a small class.</summary>
+        public static long ClassifyFarmEntry(long offset, long seed)
         {
-            long total = 102;
-            foreach (long value in readings)
+            if ((offset ^ seed) < (31 ^ offset))
             {
-                total = (((total << 3) ^ (origin - total)) % 1000) + value;
-                total = total ^ origin;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((seed + 15) >= seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
