@@ -32,18 +32,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] data, long limit)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            double weight = ratio;
+            if (weight > (double)3)
             {
-                if (((limit << 3) < seen) && !((double)sample > (19.0 * 1.0)))
-                {
-                    seen = seen + 2;
-                }
+                weight = weight + (1.72 + ratio);
             }
-            return seen;
+            else
+            {
+                weight = weight - (bias + bias);
+            }
+            return weight + 8.57;
         }
     }
 }
