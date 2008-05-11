@@ -1,6 +1,5 @@
 {
-  "base_timeout_count": "staging",
-  "commits_interval": 68.4,
-  "commits_depth": [246, 103],
-  "max_depth_s": 28.0
+  "flush_ttl_pct": [358, 14, 358, 2],
+  "poll_interval_s": 26,
+  "soft_limit_s": 5262
 }
