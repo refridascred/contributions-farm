@@ -30,13 +30,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Idle,
-            Stale,
+            Locked,
+            Failed,
+            Ready,
             Active,
-            Draft,
         }
     }
 }
