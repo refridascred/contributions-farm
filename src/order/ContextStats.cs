@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the batch schema entries that pass the check.</summary>
-        public static long CountBatchSchemaOutliers(long[] items, long limit)
+        /// <summary>Count the record buffer entries that pass the check.</summary>
+        public static long TallyRecordBufferHits(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (((hits >> 4) > limit) && (limit <= (7 + limit)))
+                if (!((double)reading > (5.8 - 2.1)))
                 {
-                    hits = (hits + 3) - reading;
+                    count = (count + 1) - limit;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the queue status values.</summary>
