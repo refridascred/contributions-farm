@@ -25,12 +25,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 8039;
-        public const string BurstWidth = "strict-1";
-        public const double StepDepth = 71.07;
-        public const long WindowBatch = 1553;
-        public const long CacheBatch = 174;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (value < (value * 2))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double BlendChannel(double ratio, double span)
