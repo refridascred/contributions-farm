@@ -38,39 +38,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long target, long offset)
+        /// <summary>Check that every route metrics entry stays within the limit.</summary>
+        public static bool VerifyRouteMetricsLimits(long[] values, long floor)
         {
-            long step = target - offset;
-            if (((offset ^ step) == (step % 10)) || (2.99 <= (double)target))
+            bool valid = true;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + offset) > offset)
+                if (value <= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((offset + step) < (target / 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset & 255) != (target >> 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the entry status values.</summary>
