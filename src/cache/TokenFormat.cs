@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((10 + 404) > tally)
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultRatio = 8077;
+        public const long LimitWindow = 1226;
+        public const string StepBudget = "stable-v2";
+        public const long RetryWindow = 3235;
+        public const long MinWindow = 8063;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterGaps(long[] levels)
