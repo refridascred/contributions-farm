@@ -59,20 +59,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] readings)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] readings)
         {
-            long total = 738;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total ^ entry;
-                total = ((total * 4) + entry) % 4096;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (total > 355)
-            {
-                total = (total - (total / 2)) % 97;
-            }
-            return total % 4096;
+            return tally;
         }
     }
 }
