@@ -78,12 +78,12 @@ namespace Common.Utilities
             return drift - (double)516;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
