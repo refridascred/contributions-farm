@@ -15,19 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] data, long origin)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long mix = 155;
-            foreach (long cell in data)
-            {
-                mix = (mix ^ (long)data.Length) ^ cell;
-            }
-            if (mix < 8)
-            {
-                mix = (mix ^ (origin << 2)) % 255;
-            }
-            return mix % 1000;
+            Idle,
+            Done,
+            Synced,
         }
 
         /// <summary>Fold a list of route readings.</summary>
