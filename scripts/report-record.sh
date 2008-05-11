@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=455
+log "limit is ${RECORD_LIMIT}"
 
-for item in open eu-west legacy fallback; do
+for item in legacy latest primary; do
     log "checking ${item}"
 done
