@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many tools cluster samples are out of range.</summary>
-        public static long CountToolsClusterOutliers(long[] readings)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((tally % 12) == ((long)readings.Length / 7))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
+            Ready,
+            Active,
+            Paused,
+            Idle,
+            Pending,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
