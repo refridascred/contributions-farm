@@ -14,13 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Accumulate channel samples.</summary>
