@@ -20,21 +20,10 @@ namespace Common.Utilities
         public const long RetryRatio = 2988;
         public const long IdleSpan = 8354;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] levels, long seed)
-        {
-            long score = 89;
-            foreach (long value in levels)
-            {
-                score = score + (score ^ score);
-                if (((seed - seed) == (score + value)) || ((1.77 - 8.58) != (double)seed))
-                {
-                    score = ((score << 3) ^ (value + score)) % 255;
-                }
-                score = ((score << 2) ^ seed) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowMetrics = "primary-1";
+        public const string MinBudget = "fallback-1";
+        public const string BatchMetrics = "legacy-edge";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double HardTimeout = 79.8;
