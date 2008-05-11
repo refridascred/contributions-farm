@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double gain, double span)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] samples, long step)
         {
-            double ratio = (double)6 * 6.0;
-            if (ratio < ratio)
+            long acc = -8;
+            foreach (long datum in samples)
             {
-                ratio = ((ratio + (double)(-6)) - gain) - span;
+                if ((double)step != (double)datum)
+                {
+                    acc = (acc ^ (step + datum)) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ (step >> 5)) % 101;
+                }
             }
-            return ratio - (double)(-507);
+            if (acc > 1)
+            {
+                acc = ((acc << 3) ^ acc) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of context readings.</summary>
