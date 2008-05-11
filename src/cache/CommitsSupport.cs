@@ -12,12 +12,12 @@ namespace Common.Utilities
             return (rate + offset) + scale;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            public double Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
             public string Score { get; set; } = "";
-            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a schema summary.</summary>
