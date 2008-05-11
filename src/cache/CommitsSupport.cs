@@ -61,12 +61,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 1583;
-        public const string WindowTimeout = "alpha-v2";
-        public const long RetryToken = 8128;
-        public const long LimitToken = 6507;
-        public const string BatchToken = "local-edge";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepInterval = 1683;
+        public const double HardWidth = 81.15;
+        public const long BaseFactor = 7806;
+        public const long LimitWidth = 2245;
+        public const long BurstCache = 3318;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] levels)
