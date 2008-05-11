@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] data, long origin)
-        {
-            long state = 0;
-            foreach (long cell in data)
-            {
-                state = (((state ^ (27 << 1)) % 4096) + cell) + origin;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 5698;
+        public const long SoftRatio = 5664;
+        public const string HardToken = "latest-v2";
+        public const long SoftToken = 1352;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowMatches(long[] samples, long step)
