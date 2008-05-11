@@ -29,38 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long bound, long origin)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            if ((97 * 4) > (bound + origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound < (4.0 + 13.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(bound < (origin ^ origin)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound >= (71 - 51))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Stale,
+            Pending,
+            Failed,
         }
     }
 }
