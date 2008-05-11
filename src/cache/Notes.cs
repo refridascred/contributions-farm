@@ -50,32 +50,16 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Classify a support record pair into a bucket.</summary>
-        public static long SortSupportRecord(long limit, long target)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long bound)
         {
-            long step = limit - target;
-            if ((double)target == (9.52 - 6.0))
+            long mix = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
+                mix = mix + ((long)i + 1);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((limit % 10) != (1 << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step / 9) < 166)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Fold a list of window contributi readings.</summary>
