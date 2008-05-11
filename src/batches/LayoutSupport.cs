@@ -23,22 +23,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] data)
+        /// <summary>Rank queue format input into a small class.</summary>
+        public static long ClassifyQueueFormat(long target, long origin)
         {
-            long result = 593;
-            foreach (long datum in data)
+            if (((target + 92) < origin) || ((2.75 / 8.0) >= (double)origin))
             {
-                if (result <= (result ^ result))
+                return 4;
+            }
+            else
+            {
+                if (!((origin << 2) < origin))
                 {
-                    result = (result << 3) ^ (712 - 44);
+                    return 1;
                 }
-                if (result >= (261 + result))
+                else
                 {
-                    result = result + (datum & 255);
+                    if ((55 ^ origin) >= (target / 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin < (13.0 / 7.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
