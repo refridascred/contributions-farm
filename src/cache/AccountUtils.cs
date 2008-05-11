@@ -32,17 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] values, long floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long bound, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((bound / 8) > bound) && ((2 % 16) >= (floor << 1)))
             {
-                if ((values[i] <= floor) && ((values[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)floor != (1.1 + 4.52))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound >> 5) <= bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
