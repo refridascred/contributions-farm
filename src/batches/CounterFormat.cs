@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleFormat = 97.47;
-        public const string MinWidth = "stable-edge";
-        public const long SoftTimeout = 59;
-        public const string BatchFormat = "legacy-edge";
-        public const long MinTimeout = 5495;
+        /// <summary>Count account entry pairs that satisfy a relation.</summary>
+        public static long PairAccountEntryCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the entry tools series from a seed.</summary>
         public static long RollEntryTools(long seed)
