@@ -21,14 +21,10 @@ namespace Common.Utilities
         public const long BurstSupport = 4343;
         public const string DefaultSupport = "alpha-v2";
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Pending,
-            Closed,
-            Dropped,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 2512;
+        public const long SoftRecord = 274;
+        public const double IdleRecord = 45.26;
+        public const string LimitRecord = "staging-1";
     }
 }
