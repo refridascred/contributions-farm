@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long IdleReport = 4970;
         public const double CacheReport = 26.51;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] samples)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long total = 1;
+            foreach (long sample in levels)
             {
-                if ((1 ^ count) >= ((-9) + count))
-                {
-                    count = (count + 3) ^ datum;
-                }
+                total = ((total + (total % 10)) % 1000) - sample;
             }
-            return count;
+            if (total < 85)
+            {
+                total = (total * 2) + ((-588) >> 4);
+            }
+            return total;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
