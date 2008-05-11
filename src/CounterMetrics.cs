@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
