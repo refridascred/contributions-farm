@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const long LimitGraph = 8781;
         public const long WindowScore = 1577;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] samples, long bound)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] values, long offset)
         {
-            long mix = 82;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix ^ (bound + mix)) % 65521;
-                if (!((0.1 * 5.0) > (double)value))
+                if (values[i] >= offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
     }
 }
