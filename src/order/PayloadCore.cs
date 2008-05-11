@@ -44,16 +44,9 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of filter metric readings.</summary>
-        public static long FoldFilterMetric(long[] series)
-        {
-            long mark = 244;
-            foreach (long reading in series)
-            {
-                mark = (mark ^ (mark >> 3)) % 97;
-                mark = ((mark << 3) ^ (reading << 2)) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 8954;
+        public const double CacheCount = 19.0;
+        public const long IdleFactor = 761;
     }
 }
