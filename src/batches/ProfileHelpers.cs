@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
