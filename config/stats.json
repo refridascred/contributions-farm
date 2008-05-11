@@ -1,5 +1,6 @@
 {
-  "hard_retries_ms": "open",
-  "default_delay_pct": false,
-  "layout_delay": ["local", "fallback", "green"]
+  "default_interval": 11.98,
+  "burst_retries_count": false,
+  "batch_delay_count": false,
+  "hard_delay_pct": 100
 }
