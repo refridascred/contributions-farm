@@ -33,19 +33,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every cache stream entry stays within the limit.</summary>
-        public static bool VerifyCacheStreamRange(long[] levels, long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
