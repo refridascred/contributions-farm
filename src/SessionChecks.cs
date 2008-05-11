@@ -30,39 +30,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long floor, long offset)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double weight, double floor)
         {
-            long cur = floor - offset;
-            if (floor > (offset >> 4))
+            double load = (double)((-308) / 2);
+            if (load > (weight * 0.94))
             {
-                return 4;
+                load = (load + weight) + floor;
             }
             else
             {
-                if ((floor - floor) == (floor % 12))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)offset < 18.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset > (cur - offset)) || ((double)cur != (9.4 * 1.76)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                load = load + (double)5;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + (double)(-4);
         }
     }
 }
