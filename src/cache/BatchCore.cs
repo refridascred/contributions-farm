@@ -33,22 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] readings)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (((entry % 24) < (entry / 9)) || ((count << 2) != (count / 9)))
+                if ((486 - cell) > (floor & 7))
                 {
-                    count = count + 1;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
