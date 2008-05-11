@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultSupport = "cached-edge";
-        public const string WindowSupport = "cached-edge";
-        public const long CacheTimeout = 6788;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public double Score { get; set; }
+            public string Count { get; set; } = "";
+            public double Size { get; set; }
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long PairBufferCount(long[] series)
