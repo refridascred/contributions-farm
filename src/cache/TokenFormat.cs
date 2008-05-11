@@ -36,22 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm commits entries that pass the check.</summary>
-        public static long TallyFarmCommitsOutliers(long[] items)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if ((item * 5) >= (item / 4))
+                if (datum != floor)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
