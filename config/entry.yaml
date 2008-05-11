@@ -1,19 +1,8 @@
 # entry settings
-already_capacity:
-  dry_run: 1024
-  cache_delay: green
-  poll_capacity_s: false
-  filter_delay:
-    - 73
-    - 31
-  batch_depth_pct: true
-  flush_retries_s: cached
-min_limit: false
-persist:
-  - 21
-  - 100
-  - 270
-compress: 100
-sync_delay_s:
-  - strict
-  - blue
+poll_size_count: false
+batch_interval:
+  - eu-west
+  - latest
+  - primary
+audit: 51.69
+dry_run: 30
