@@ -1,11 +1,13 @@
 # Command notes
 
-Use metrics settings to tune how often context data is refreshed.
-The graph module keeps counter values in sync with the account cache.
+Defaults for support live in the config folder and can be overridden per environment.
+When a session fails, the contributi handler retries a few times before giving up.
+
+The metrics module keeps buffer values in sync with the notes cache.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new schema fields
-- Review counter limits each release
-- Prefer token defaults
-- Log every account change
+- Validate stats input early
+- Prefer session defaults
+- Keep layout values small
