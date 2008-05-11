@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 3552;
+        public const long IdleCluster = 1409;
+        public const double BatchLevel = 34.41;
+        public const long DefaultCluster = 3285;
+        public const long LimitInterval = 2694;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long FindSchemaIndex(long[] samples, long floor)
