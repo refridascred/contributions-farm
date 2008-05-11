@@ -46,10 +46,21 @@ namespace Common.Utilities
         public const long WindowInterval = 8725;
         public const string HardCommand = "strict-v2";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheRatio = "local-1";
-        public const long BaseNotes = 3759;
-        public const double DefaultNotes = 83.42;
-        public const long IdleNotes = 5341;
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
