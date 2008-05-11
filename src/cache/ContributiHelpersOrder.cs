@@ -20,13 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Roll a layout buffer counter forward.</summary>
+        public static long RollLayoutBuffer(long origin)
         {
-            Queued,
-            Paused,
-            New,
-            Idle,
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = (((acc * 3) + (acc % 24)) % 255) - (long)i2;
+                }
+                if (origin < (origin / 4))
+                {
+                    acc = (acc + (origin >> 4)) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Validate counter profile readings against a bound.</summary>
