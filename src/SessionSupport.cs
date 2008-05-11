@@ -21,15 +21,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double ratio, double span)
+        /// <summary>Measure how many command support samples are out of range.</summary>
+        public static long CountCommandSupportOutliers(long[] values, long bound)
         {
-            double gain = ratio;
-            if (gain > (gain * 7.6))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                gain = (gain - (ratio - 5.0)) - span;
+                if (cell < (tally / 9))
+                {
+                    tally = (tally + 3) + bound;
+                }
             }
-            return gain - gain;
+            return tally;
         }
     }
 }
