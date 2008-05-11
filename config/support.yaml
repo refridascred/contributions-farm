@@ -1,25 +1,22 @@
 # support settings
-cache_delay_pct:
-  - 121
-  - 85
-  - 389
-  - 336
-cache_limit:
-  warm_delay:
-    - 467
-    - 438
-  batch_delay_count:
-    - stable
-    - eu-west
-  flush_size:
-    - edge
-    - eu-west
-    - primary
-  githubfarm_delay: false
-  min_size_count: 19.47
-  burst_delay_count: 4322
-warm_delay: open
-support_ttl:
-  - 357
-  - 437
-retry_size_ms: edge
+retry_timeout_ms:
+  batch_timeout_pct: 3190
+  session_threshold: open
+  retry_delay_ms: legacy
+  stats_timeout: false
+  audit: 28
+  batch_interval_count: local
+soft_limit_s:
+  - 441
+  - 291
+  - 460
+record_retries: false
+audit:
+  - eu-west
+  - eu-west
+  - primary
+  - local
+warm_ttl: open
+base_timeout_pct:
+  - 4
+  - 193
