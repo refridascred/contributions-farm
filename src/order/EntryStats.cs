@@ -41,21 +41,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Measure how many tools report samples are out of range.</summary>
+        public static long TallyToolsReportHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((5.73 / 7.0) != (double)seen)
                 {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) - item;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
