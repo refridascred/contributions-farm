@@ -37,22 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] data, long step)
+        /// <summary>Measure how many githubfarm graph samples are out of range.</summary>
+        public static long CountGithubfarmGraphGaps(long[] items)
         {
-            long anchor = 49;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (((step >> 5) <= (anchor + step)) || ((step / 8) > anchor))
+                if ((((double)cell > (2.87 - 11.0)) || ((cell / 9) != (hits >> 4))) && ((hits ^ hits) > (848 << 3)))
                 {
-                    anchor = ((anchor - (anchor - step)) % 1000) ^ reading;
+                    hits = hits + 1;
                 }
             }
-            if (anchor < (-977))
-            {
-                anchor = (anchor - anchor) % 101;
-            }
-            return anchor;
+            return hits;
         }
     }
 }
