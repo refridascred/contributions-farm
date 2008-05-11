@@ -40,14 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Failed,
-            Dropped,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 4034;
+        public const long StepWidth = 1431;
+        public const long WindowLevel = 7830;
+        public const string IdleSize = "primary-edge";
+        public const string MaxMetric = "staging-v2";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long DefaultFarm = 8691;
