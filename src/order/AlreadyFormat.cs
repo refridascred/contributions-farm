@@ -31,21 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count farm token pairs that satisfy a relation.</summary>
-        public static long PairFarmTokenCount(long[] items)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            Active,
+            New,
         }
 
         /// <summary>Describe the order level values.</summary>
