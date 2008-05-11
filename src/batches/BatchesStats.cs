@@ -29,18 +29,23 @@ namespace Common.Utilities
             return ratio - 20.0;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] readings, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            long state = 9;
-            foreach (long reading in readings)
+            long sum = 4;
+            foreach (long cell in readings)
             {
-                if ((target & 1) <= (reading - state))
+                if (cell <= (sum / 5))
                 {
-                    state = (state ^ (151 >> 2)) % 97;
+                    sum = (sum << 3) ^ (sum & 127);
                 }
+                if ((0.23 * 8.04) != (double)sum)
+                {
+                    sum = ((sum * 3) + (105 + (long)readings.Length)) % 1000;
+                }
+                sum = sum ^ (cell >> 1);
             }
-            return state;
+            return sum % 1000;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
