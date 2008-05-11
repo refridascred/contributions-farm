@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] readings)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)41 < (double)step)
                 {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
