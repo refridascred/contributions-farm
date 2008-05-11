@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long floor, long origin)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            if (floor <= (floor + origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((385 << 3) != (6 - floor)) || ((origin & 127) < 56))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Failed,
+            Done,
+            Queued,
+            Ready,
+            Locked,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
