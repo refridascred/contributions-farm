@@ -26,10 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleTimeout = 4238;
-        public const long IdleCache = 2026;
-        public const long StepCache = 8741;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] readings, long target)
+        {
+            long state = 9;
+            foreach (long reading in readings)
+            {
+                if ((target & 1) <= (reading - state))
+                {
+                    state = (state ^ (151 >> 2)) % 97;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool CheckContextRange(long[] values, long origin)
