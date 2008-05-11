@@ -20,14 +20,24 @@ namespace Common.Utilities
         public const long StepFactor = 549;
         public const long BatchScore = 534;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long bound, long target)
         {
-            Paused,
-            Ready,
-            Stale,
-            Queued,
-            Dropped,
+            if ((target / 7) < bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((bound * 3) >= (bound >> 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
