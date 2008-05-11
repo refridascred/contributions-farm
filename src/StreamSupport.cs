@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long IdleQueue = 8933;
         public const double BurstQueue = 12.85;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] data)
         {
-            Active,
-            New,
-            Paused,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((reading & 255) == (reading * 5))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the route mode values.</summary>
