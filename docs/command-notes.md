@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-A tools that stays idle for too long is moved to the checks list.
+Keep cluster and token names short and lowercase.
+The notes module keeps schema values in sync with the metric cache.
+Each token is validated before it reaches the commits queue.
 
 ## Guidelines
 
-- Keep cluster values small
-- Prefer report defaults
-- Validate report input early
-- Review filter limits each release
+- Log every route change
+- Document new commits fields
+- Review metric limits each release
