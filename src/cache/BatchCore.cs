@@ -13,37 +13,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a buffer queue value against two limits.</summary>
-        public static long BucketBufferQueue(long seed, long floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long origin, long bound)
         {
-            long bound = seed - floor;
-            if (!(seed >= bound))
+            if ((double)bound >= (double)origin)
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if (bound > (bound & 1))
+                if ((origin + 8) > origin)
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)bound == (0.6 + 7.76))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((bound >> 4) >= (floor - floor)) || ((bound - floor) == (bound + floor)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
