@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] samples, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (2 > (datum & 15))
+                if (((reading << 2) >= (611 ^ reading)) && ((381 + count) >= (reading + reading)))
                 {
-                    hits = (hits + 3) - target;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Locate a metric format reading by value.</summary>
