@@ -30,12 +30,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double weight, double offset)
         {
-            Dropped,
-            Queued,
-            Synced,
+            double mean = weight;
+            if (mean >= weight)
+            {
+                mean = (mean + (double)0) + offset;
+            }
+            else
+            {
+                mean = mean - 8.7;
+            }
+            return mean + (weight - 9.0);
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
