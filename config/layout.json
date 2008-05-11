@@ -1,13 +1,10 @@
 {
-  "sync_window_count": "local",
-  "flush_ttl": {
-    "min_limit_pct": ["standard", "latest"],
-    "entry_window": "strict",
-    "counter_retries": 60,
-    "retry_depth_pct": 5199,
-    "strict": ["green", "legacy", "primary", "cached"]
+  "compress": {
+    "default_delay": ["fallback", "eu-west"],
+    "layout_depth": 60,
+    "session_ratio": 27.46,
+    "soft_ratio": "edge"
   },
-  "readonly": 7388,
-  "sync_ttl_s": 20,
-  "hard_ratio_ms": "stable"
+  "retry_size_count": ["stable", "staging", "eu-west", "cached"],
+  "editor_timeout": 84
 }
