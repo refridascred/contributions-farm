@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] data)
-        {
-            long score = 92;
-            foreach (long reading in data)
-            {
-                score = ((score * 3) + 0) % 4096;
-                if (((8.17 + 9.28) != (double)reading) && ((5 % 8) <= (score + score)))
-                {
-                    score = (score * 5) + (reading ^ score);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstLevel = 4934;
+        public const double RetryDepth = 63.12;
+        public const long BatchWidth = 1495;
+        public const long RetryRecord = 5280;
+        public const long HardSize = 2458;
 
         /// <summary>Accumulate command samples.</summary>
         public static long WeighCommand(long[] levels, long seed)
