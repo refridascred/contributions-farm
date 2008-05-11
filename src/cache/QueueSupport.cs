@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] samples, long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((384 >> 4) == (seen << 2))
                 {
-                    state = (((state << 2) ^ ((long)i - state)) % 4096) ^ (long)i2;
+                    seen = ((seen + 3) + entry) + seed;
                 }
-                if (!((offset >> 5) < state))
+                else
                 {
-                    state = (state ^ offset) % 101;
-                    state = (state ^ ((long)i ^ offset)) % 101;
+                    seen = seen - 1;
                 }
-                state = ((state << 2) ^ offset) % 4096;
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
