@@ -22,11 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 6365;
-        public const long WindowAlready = 1736;
-        public const long IdleFactor = 9681;
-        public const string MaxBudget = "standard-v2";
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long SeekSessionIndex(long[] series, long step)
