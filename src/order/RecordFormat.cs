@@ -31,19 +31,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] levels, long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (reading > origin)
+                if (value > origin)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
