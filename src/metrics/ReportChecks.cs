@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const string IdleBatch = "cached";
         public const long DefaultBatch = 8763;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] levels, long limit)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (((5.6 / 9.0) != (double)value) && (((1.6 * 4.6) >= (double)seen) && ((long)levels.Length != (seen & 3))))
-                {
-                    seen = (seen + 2) + limit;
-                }
-            }
-            return seen;
+            New,
+            Synced,
+            Retry,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
