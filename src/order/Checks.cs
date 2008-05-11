@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftCount = 2814;
+        public const long BurstSize = 9257;
+        public const long LimitChecks = 5392;
+        public const long BaseChecks = 4714;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string LimitBatches = "primary-v2";
