@@ -37,14 +37,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Paused,
-            Pending,
-            Active,
-            Ready,
-            Stale,
+            public long Size { get; set; }
+            public double Owner { get; set; }
+            public double Count { get; set; }
+            public long Score { get; set; }
         }
     }
 }
