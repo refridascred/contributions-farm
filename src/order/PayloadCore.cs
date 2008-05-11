@@ -31,12 +31,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowBatches = "strict-v2";
-        public const double SoftBudget = 77.17;
-        public const double RetryBatches = 54.35;
-        public const long RetryRatio = 8426;
-        public const long BaseTimeout = 7335;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] samples)
+        {
+            long total = 457;
+            foreach (long sample in samples)
+            {
+                total = ((total - (total + 6)) % 101) ^ sample;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Fold a list of filter metric readings.</summary>
         public static long FoldFilterMetric(long[] series)
