@@ -43,21 +43,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up notes stats samples.</summary>
-        public static long OverlapNotesStatsCount(long[] samples)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Locked,
+            Synced,
+            Active,
         }
     }
 }
