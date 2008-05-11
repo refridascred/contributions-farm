@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long step, long limit)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            long cur = step - limit;
-            if ((limit - step) > (step * 3))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((2.1 + 8.1) == (double)limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)cur <= 4.0)
+                    if ((values[i] - values[j]) != 8)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit % 100) > 4)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a tools record.</summary>
