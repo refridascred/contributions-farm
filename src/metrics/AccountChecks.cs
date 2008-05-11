@@ -26,12 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] data, long target)
         {
-            Retry,
-            Idle,
-            Stale,
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine counter checks values into a single score.</summary>
