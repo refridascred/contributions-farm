@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double bias, double span)
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            double load = bias;
+            if (load > (load + load))
+            {
+                load = (load + (load + 4.7)) - span;
+            }
+            return load + 1.2;
         }
 
         /// <summary>Define support limits and defaults.</summary>
