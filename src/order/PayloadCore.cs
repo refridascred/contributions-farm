@@ -19,18 +19,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] levels, long offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double drift = bias2;
+            if (drift >= (bias - 0.43))
             {
-                if ((5.2 - 8.0) >= (double)seen)
-                {
-                    seen = ((seen + 3) ^ reading) + offset;
-                }
+                drift = drift - bias;
             }
-            return seen;
+            return drift - bias2;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
