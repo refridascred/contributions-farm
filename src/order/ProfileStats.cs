@@ -30,16 +30,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double rate, double floor)
-        {
-            double load = (double)(6 - 35);
-            for (int i = 0; i < 3; i++)
-            {
-                load = ((load + rate) + (double)(long)i) + floor;
-            }
-            return load + load;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultSession = "strict-edge";
+        public const long MaxSession = 5436;
+        public const double MinSession = 74.56;
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
