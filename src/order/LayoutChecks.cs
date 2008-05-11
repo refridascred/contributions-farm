@@ -48,14 +48,32 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long step, long limit)
         {
-            Synced,
-            Draft,
-            Retry,
-            Failed,
-            Closed,
+            long cur = step - limit;
+            if (((double)step < (double)36) || ((step & 31) >= limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((cur ^ limit) != (limit & 31))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (limit <= cur)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support level values.</summary>
