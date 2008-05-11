@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Retry,
-            Idle,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinSpan = "local-1";
+        public const long BatchCommand = 9233;
+        public const long WindowCommand = 9197;
+        public const double SoftSize = 84.5;
+        public const string IdleScore = "local-1";
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
