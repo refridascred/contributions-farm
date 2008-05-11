@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Failed,
-            Done,
-            Queued,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 1560;
+        public const long BatchInterval = 703;
+        public const double HardMetrics = 97.81;
+        public const long MaxMetrics = 9720;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long CountBatchGaps(long[] data)
