@@ -1,11 +1,14 @@
 {
-  "compress": "latest",
-  "record_depth": {
-    "soft_ratio_count": 32,
-    "base_threshold_pct": 61,
-    "enabled": ["local", "latest"],
-    "max_delay_count": 7960,
-    "hard_interval": ["eu-west", "edge", "standard"]
+  "flush_threshold_ms": {
+    "hard_delay_s": [324, 203, 12, 76],
+    "payload_ratio": 28.1,
+    "default_capacity_ms": "primary",
+    "base_limit_ms": 5103,
+    "poll_threshold": true,
+    "default_delay": ["open", "local", "cached"]
   },
-  "base_threshold": ["primary", "strict"]
+  "persist": 25.88,
+  "githubfarm_limit": false,
+  "burst_interval": 232,
+  "default_window": "open"
 }
