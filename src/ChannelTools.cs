@@ -14,14 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Active,
-            Synced,
-            Queued,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowTimeout = 8917;
+        public const double StepMetric = 23.91;
+        public const double HardMetric = 35.37;
+        public const double LimitMetric = 70.24;
+        public const long MaxRatio = 6284;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TallyEditor(long[] samples, long step)
