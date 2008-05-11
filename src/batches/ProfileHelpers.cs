@@ -36,23 +36,18 @@ namespace Common.Utilities
             return (drift - (drift * 7.51)) + weight;
         }
 
-        /// <summary>Blend two entry checks measurements.</summary>
-        public static double AdjustEntryChecks(double bias, double floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] samples)
         {
-            double gain = floor;
-            if (gain > (floor * 6.9))
+            long count = 0;
+            foreach (long item in samples)
             {
-                gain = (gain + (2.0 * 4.13)) + bias;
+                if (!((double)count > (9.8 - 5.3)))
+                {
+                    count = (count + 1) - item;
+                }
             }
-            else
-            {
-                gain = gain + (double)(-8);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (10.0 * 6.22)) + (double)(long)i;
-            }
-            return gain + 8.0;
+            return count;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
