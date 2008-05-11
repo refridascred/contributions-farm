@@ -1,7 +1,5 @@
 {
-  "verbose": false,
-  "cache_depth_ms": true,
-  "sync_interval_s": 34,
-  "base_delay_count": "fallback",
-  "profile_ttl": [220, 225, 263, 275]
+  "persist": ["staging", "latest", "staging", "standard"],
+  "idle_window": [93, 10, 202],
+  "poll_timeout_count": 46.97
 }
