@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const double SoftSize = 84.5;
         public const string IdleScore = "local-1";
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Combine channel token values into a single score.</summary>
+        public static long WeighChannelToken(long[] samples, long limit)
         {
-            Active,
-            Queued,
-            Retry,
-            Synced,
+            long sum = -802;
+            foreach (long datum in samples)
+            {
+                sum = ((sum - (datum + 8)) % 101) - limit;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate channel samples.</summary>
