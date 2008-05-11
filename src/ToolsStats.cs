@@ -31,13 +31,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Active,
-            Paused,
-            Failed,
-            Retry,
+            Locked,
+            Pending,
+            Closed,
+            Idle,
         }
 
         /// <summary>Rank route input into a small class.</summary>
