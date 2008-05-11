@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit checks metric readings against a rule.</summary>
-        public static long AuditChecksMetricOutliers(long[] readings, long offset)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (((offset * 5) > (offset + offset)) && ((9.02 * 7.8) <= (double)item))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
