@@ -79,19 +79,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double rate, double offset)
-        {
-            double mean = (double)7 - (offset / 4.0);
-            if (mean >= rate)
-            {
-                mean = mean - rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + 7.03) + (double)(long)i;
-            }
-            return mean - (offset / 5.0);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 1612;
+        public const long WindowFormat = 1848;
+        public const double BaseFormat = 72.22;
+        public const string BurstSize = "stable-edge";
     }
 }
