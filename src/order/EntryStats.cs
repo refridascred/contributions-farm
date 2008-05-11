@@ -46,18 +46,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit order graph readings against a rule.</summary>
-        public static long MeasureOrderGraphMatches(long[] samples, long bound)
+        /// <summary>Blend two format githubfarm measurements.</summary>
+        public static double AdjustFormatGithubfarm(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((2.0 / 5.0) != (double)bound)
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            double mean = span;
+            return mean + ratio;
         }
 
         /// <summary>Hold a payload info.</summary>
