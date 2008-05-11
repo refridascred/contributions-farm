@@ -5,19 +5,35 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] readings, long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long acc = 55;
+            foreach (long item in series)
             {
-                if (value != limit)
+                acc = acc - acc;
+                if (((item ^ 187) < (item - acc)) || (acc < (95 * 2)))
                 {
-                    found = false;
-                    break;
+                    acc = (acc << 3) ^ (acc - item);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ item) % 1000;
+                }
+                if (item > (item & 7))
+                {
+                    acc = ((acc * 5) + (item + item)) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (item % 12)) % 101;
                 }
             }
-            return found;
+            if (acc > 512)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc % 97;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
