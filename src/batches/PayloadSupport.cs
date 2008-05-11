@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long MaxInterval = 5027;
         public const double CacheReport = 34.74;
 
-        /// <summary>Match up editor route samples.</summary>
-        public static long CompareEditorRouteCount(long[] levels)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample <= step)
                 {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
