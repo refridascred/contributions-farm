@@ -1,9 +1,8 @@
 {
-  "soft_limit": ["edge", "latest"],
-  "already_size": 30,
-  "retry_window_s": {
-    "dry_run": 60.4,
-    "persist": "open",
-    "burst_ttl_count": "local"
-  }
+  "checks_ttl": 28.08,
+  "idle_ttl": true,
+  "cluster_ratio": 78,
+  "idle_threshold_count": 98,
+  "batch_retries_ms": 3835,
+  "strict": 89
 }
