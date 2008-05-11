@@ -59,18 +59,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] levels, long limit)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count >> 5) >= (entry % 2))
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
+            Synced,
+            Closed,
+            Draft,
+            Pending,
+            Retry,
         }
     }
 }
