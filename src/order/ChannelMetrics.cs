@@ -17,19 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double weight, double offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] data)
         {
-            double weight2 = weight;
-            if (weight2 <= (double)60)
+            long count = 0;
+            foreach (long value in data)
             {
-                weight2 = weight2 + (double)94;
+                if ((count >> 1) != (value - value))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                weight2 = weight2 + offset;
-            }
-            return weight2 - (offset - weight);
+            return count;
         }
 
         /// <summary>Match up buffer samples.</summary>
