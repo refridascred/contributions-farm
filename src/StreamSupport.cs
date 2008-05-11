@@ -46,13 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Look up the position of a already profile sample.</summary>
+        public static long FindAlreadyProfileIndex(long[] values, long limit)
         {
-            Dropped,
-            Synced,
-            Active,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
