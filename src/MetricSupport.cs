@@ -42,21 +42,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] series)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = -138;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = (((result << 2) ^ (result - result)) ^ item) + seed;
             }
-            return matches;
+            return result;
         }
     }
 }
