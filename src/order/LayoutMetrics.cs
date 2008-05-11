@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long DefaultCluster = 3285;
         public const long LimitInterval = 2694;
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 8204;
+        public const long WindowInterval = 5215;
+        public const long BurstCount = 8382;
+        public const long MinScore = 1376;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftLevel = 1159;
