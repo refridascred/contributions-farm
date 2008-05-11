@@ -33,12 +33,22 @@ namespace Common.Utilities
         public const long MaxCommand = 9838;
         public const string BatchWidth = "alpha-v2";
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] samples, long step)
         {
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
-            public double Level { get; set; }
+            long anchor = 36;
+            foreach (long cell in samples)
+            {
+                if (((double)cell == (double)anchor) || ((142 - cell) > step))
+                {
+                    anchor = ((anchor << 2) ^ (long)samples.Length) % 255;
+                }
+            }
+            if (anchor < 97)
+            {
+                anchor = ((anchor << 3) ^ (745 / 2)) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
