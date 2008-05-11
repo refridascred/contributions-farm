@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Project the next command batch value.</summary>
+        public static double ProjectCommandBatch(double rate, double floor)
         {
-            public double Score { get; set; }
-            public string Count { get; set; } = "";
-            public double Size { get; set; }
+            double drift = (double)(68 % 64);
+            return (drift + rate) + floor;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
