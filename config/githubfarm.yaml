@@ -1,8 +1,12 @@
 # githubfarm settings
-account_delay: cached
-token_capacity:
-  - eu-west
+hard_ratio_s: 1024
+entry_limit:
+  - local
   - green
-  - strict
-  - green
-hard_retries: standard
+sync_size_count:
+  default_ratio: standard
+  idle_ttl_pct: eu-west
+  soft_limit: green
+  default_capacity: true
+  cache_ratio_ms: true
+retry_ratio_count: strict
