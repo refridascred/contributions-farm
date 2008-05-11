@@ -23,24 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] samples, long limit)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] levels, long limit)
         {
-            long result = 69;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                result = (result - limit) % 101;
-                result = (result - (value + result)) % 65521;
-                if ((value - value) > (value + limit))
+                if ((limit + limit) > (limit + matches))
                 {
-                    break;
+                    matches = (matches + 1) + cell;
                 }
             }
-            if (result < 984)
-            {
-                result = (result * 2) + (result + limit);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Project the next farm value.</summary>
