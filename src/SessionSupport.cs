@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] items, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (sample < offset)
+                if (593 <= (count / 5))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) + reading;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
