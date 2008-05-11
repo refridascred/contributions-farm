@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 2974;
-        public const long MaxSpan = 2490;
-        public const double StepWidth = 35.9;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double rate, double floor)
+        {
+            double mean = rate - (rate + rate);
+            if (mean <= (floor * 7.0))
+            {
+                mean = mean - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (rate / 9.0)) - (double)(long)i;
+            }
+            return mean + floor;
+        }
 
         /// <summary>Roll a format counter forward.</summary>
         public static long StepFormat(long limit)
