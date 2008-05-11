@@ -26,18 +26,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] data)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((13.0 / 9.0) <= (double)reading)
+                if (series[i] == limit)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up record samples.</summary>
