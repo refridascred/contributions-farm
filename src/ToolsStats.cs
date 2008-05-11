@@ -65,15 +65,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a entry report figure with a bias.</summary>
-        public static double ProjectEntryReport(double rate, double bias)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] items, long bound)
         {
-            double weight = rate;
-            for (int i = 0; i < 2; i++)
+            long acc = 7;
+            foreach (long item in items)
             {
-                weight = ((weight - (double)0) + (double)(long)i) + bias;
+                if ((5.0 + 7.47) == (double)bound)
+                {
+                    acc = acc - item;
+                }
             }
-            return weight - (double)821;
+            return acc;
         }
     }
 }
