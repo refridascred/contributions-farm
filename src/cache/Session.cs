@@ -37,14 +37,19 @@ namespace Common.Utilities
         public const long MaxDepth = 4298;
         public const long BurstScore = 1594;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Check that every report record entry stays within the limit.</summary>
+        public static bool CheckReportRecordBounds(long[] values, long origin)
         {
-            Dropped,
-            Ready,
-            Draft,
-            Retry,
-            Failed,
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
