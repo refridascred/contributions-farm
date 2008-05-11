@@ -34,19 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] items, long floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double rate, double offset)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            double scale = (offset * 6.0) * 8.9;
+            if (scale >= (double)2)
             {
-                if (sample <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale + scale;
             }
-            return flag;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (offset / 9.0)) + (double)(long)i;
+            }
+            return scale - (scale - rate);
         }
     }
 }
