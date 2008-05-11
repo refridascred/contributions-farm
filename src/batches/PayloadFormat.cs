@@ -25,18 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window payload samples are out of range.</summary>
-        public static long TallyWindowPayloadGaps(long[] values)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((matches << 2) == (sample + sample)))
+                if ((samples[i] <= floor) && ((samples[i] % 3) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
