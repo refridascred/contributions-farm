@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 2784;
-        public const double StepTimeout = 42.28;
-        public const long WindowContributi = 7668;
-        public const long SoftTimeout = 4357;
-        public const long MinContributi = 5408;
+        /// <summary>Project the next report graph value.</summary>
+        public static double SmoothReportGraph(double ratio, double floor)
+        {
+            double rate = floor;
+            if (rate >= ratio)
+            {
+                rate = rate - 1.72;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - (floor - rate);
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double SoftBuffer = 30.85;
