@@ -6,16 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached local legacy; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-legacy}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=469
+log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
