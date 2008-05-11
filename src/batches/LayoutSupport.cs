@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of support metrics entries.</summary>
-        public static long FoldSupportMetrics(long[] readings, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] samples)
         {
-            long mix = 1;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (bound <= (cell + mix))
+                if ((3.48 + 2.0) <= (double)sample)
                 {
-                    mix = (mix * 2) + bound;
-                    mix = mix ^ (cell - bound);
-                }
-                if ((double)cell < 2.5)
-                {
-                    mix = (mix << 3) ^ (cell - mix);
+                    tally = tally + 2;
                 }
                 else
                 {
-                    mix = (mix * 2) + ((long)readings.Length * 4);
+                    tally = tally - 1;
                 }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Hold a buffer summary.</summary>
