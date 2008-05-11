@@ -15,18 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] series)
+        /// <summary>Audit profile farm readings against a rule.</summary>
+        public static long CountProfileFarmGaps(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((7.8 / 9.0) > (double)item)
                 {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
