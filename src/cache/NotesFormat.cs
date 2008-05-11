@@ -12,13 +12,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            New,
-            Idle,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitSize = 23.03;
+        public const string IdleChecks = "legacy-v2";
+        public const string MaxChecks = "alpha-v2";
+        public const long BaseSpan = 17;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
