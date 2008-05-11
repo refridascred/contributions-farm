@@ -71,19 +71,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] series, long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (item >= target)
+                if (((double)entry < (double)287) || (((24 / 2) >= (entry + limit)) && ((limit % 64) >= tally)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
