@@ -1,5 +1,13 @@
 {
-  "schema_ttl": "green",
-  "min_depth_ms": 94.09,
-  "soft_limit_s": 95.46
+  "batch_window_count": {
+    "idle_interval_pct": 5518,
+    "strict": true,
+    "soft_ratio_ms": 27.01
+  },
+  "sync_timeout_count": {
+    "graph_limit": 10,
+    "sync_depth": 1024,
+    "contributi_ratio": ["strict", "edge"]
+  },
+  "checks_ttl": ["standard", "edge", "edge", "green"]
 }
