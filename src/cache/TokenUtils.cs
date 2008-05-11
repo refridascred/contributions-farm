@@ -16,26 +16,17 @@ namespace Common.Utilities
             return ratio - (6.0 - offset);
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] values, long origin)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long seed)
         {
-            long sum = 2;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((origin / 2) == (4 >> 4))
+                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
                 {
-                    sum = sum ^ (origin - entry);
-                }
-                else
-                {
-                    sum = (sum - (origin + origin)) % 1000;
+                    return (long)i;
                 }
             }
-            if (sum > 2)
-            {
-                sum = (sum * 3) + origin;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
