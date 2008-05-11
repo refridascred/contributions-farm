@@ -12,15 +12,12 @@ namespace Common.Utilities
             return (rate + offset) + scale;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double ratio, double span)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            double mean = span;
-            if (mean < ratio)
-            {
-                mean = mean - (mean + ratio);
-            }
-            return mean - (ratio / 6.0);
+            public double Token { get; set; }
+            public string Score { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a schema summary.</summary>
