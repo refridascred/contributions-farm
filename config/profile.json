@@ -1,8 +1,15 @@
 {
-  "verbose": "latest",
-  "stream_window": 80,
-  "batch_capacity_s": 60.69,
-  "batch_window": 100,
-  "farm_threshold": 2222,
-  "hard_limit": "green"
+  "dry_run": false,
+  "sync_limit_s": 7311,
+  "payload_delay": {
+    "max_limit_count": {
+      "batch_limit_s": 7684,
+      "schema_ttl": true,
+      "flush_depth": false
+    },
+    "compress": 2,
+    "batch_limit": "standard",
+    "hard_size_ms": "standard"
+  },
+  "poll_ratio_s": 30
 }
