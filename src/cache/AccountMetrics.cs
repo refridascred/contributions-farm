@@ -12,17 +12,31 @@ namespace Common.Utilities
         public const double StepSize = 34.66;
         public const long DefaultWidth = 5725;
 
-        /// <summary>Locate a stream channel reading by value.</summary>
-        public static long FindStreamChannelIndex(long[] readings, long bound)
+        /// <summary>Rank contributi profile input into a small class.</summary>
+        public static long ClassifyContributiProfile(long offset, long offset2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((offset2 >= offset) && ((double)offset <= (5.4 + 5.1)))
             {
-                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((1.0 * 6.1) >= (double)offset)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset < (8.12 * 8.2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
