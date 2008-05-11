@@ -1,13 +1,14 @@
 # githubfarm settings
-checks_capacity: 76.14
-format_timeout: latest
-default_window_ms: true
-persist:
-  - cached
-  - latest
-  - legacy
-default_capacity_count:
-  - 470
-  - 402
-  - 151
-  - 494
+flush_retries_ms: primary
+min_capacity: green
+idle_threshold_s: false
+burst_retries_pct:
+  dry_run: true
+  min_timeout_count:
+    retry_depth: 87
+    dry_run: 4397
+    persist: 35
+    min_size: edge
+    audit: 7271
+  audit: 1024
+  default_interval: 31.44
