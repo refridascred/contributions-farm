@@ -1,6 +1,5 @@
 # githubfarm settings
-base_ratio: 1044
-sync_capacity_count: false
-idle_interval_s: false
-warm_depth: 87.98
-base_capacity_count: 30
+retry_interval_s: false
+idle_window_count: true
+cache_depth_count: 22
+warm_delay_ms: true
