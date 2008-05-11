@@ -50,15 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] levels, long seed)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long result = -138;
-            foreach (long item in levels)
-            {
-                result = (((result << 2) ^ (result - result)) ^ item) + seed;
-            }
-            return result;
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
     }
 }
