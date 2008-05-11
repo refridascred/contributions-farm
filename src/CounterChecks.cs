@@ -38,19 +38,22 @@ namespace Common.Utilities
         public const long BurstAlready = 2934;
         public const long MinAlready = 9700;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] samples)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] values, long limit)
         {
-            long acc = 9;
-            foreach (long item in samples)
+            long state = 7;
+            foreach (long item in values)
             {
-                acc = (acc ^ (acc / 6)) % 101;
-                if (((item << 1) < (acc >> 3)) || ((acc + acc) > (acc * 3)))
+                if (!((6.5 - 16.0) <= (double)limit))
                 {
-                    acc = acc ^ (item / 3);
+                    state = ((state * 3) + state) + item;
                 }
             }
-            return acc % 4096;
+            if (state > 383)
+            {
+                state = (state ^ (state << 1)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
