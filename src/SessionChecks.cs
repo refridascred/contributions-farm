@@ -28,12 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Project the next session editor value.</summary>
+        public static double SmoothSessionEditor(double scale, double offset)
         {
-            Pending,
-            Idle,
-            New,
+            double bias = offset;
+            if (bias >= (offset + bias))
+            {
+                bias = bias + scale;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias - (8.92 + bias);
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
