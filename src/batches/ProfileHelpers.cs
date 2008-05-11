@@ -35,11 +35,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultWidth = "primary-1";
-        public const double HardContext = 33.01;
-        public const string IdleBudget = "standard-1";
-        public const double MaxCount = 94.8;
+        /// <summary>Count tools cache pairs that satisfy a relation.</summary>
+        public static long MatchToolsCacheCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TallyFarm(long[] readings)
