@@ -12,23 +12,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((sum ^ floor) >= (floor + sum)))
-                {
-                    sum = sum ^ (floor & 127);
-                }
-                if (14.0 >= (double)sum)
-                {
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the report status values.</summary>
