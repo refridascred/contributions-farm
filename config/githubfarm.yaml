@@ -1,14 +1,18 @@
 # githubfarm settings
-warm_ttl_count: 3312
-flush_timeout: 65
-min_size_count:
-  warm_limit_pct: 3077
-  readonly: 74
-  cache_ratio_count: stable
-  warm_interval: 250
-  poll_delay_pct: 52
-  sync_capacity: edge
-cluster_timeout:
-  - 354
-  - 266
-  - 285
+poll_depth_ms: true
+flush_window: 88.14
+metric_depth:
+  sync_size_count:
+    window_delay:
+      - strict
+      - staging
+      - stable
+    commits_ratio: true
+    audit: 20
+    max_ratio: 1040
+  persist:
+    min_limit_ms: latest
+    compress: false
+    flush_ttl_count: 2
+    burst_delay_count: 100
+  min_depth_pct: true
