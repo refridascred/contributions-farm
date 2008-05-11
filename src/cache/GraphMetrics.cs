@@ -62,10 +62,14 @@ namespace Common.Utilities
             return mean + (double)46;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitCounter = 64.03;
-        public const double BaseInterval = 55.68;
-        public const string SoftCounter = "alpha";
-        public const long CacheCounter = 230;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Dropped,
+            Done,
+            Ready,
+            Retry,
+            New,
+        }
     }
 }
