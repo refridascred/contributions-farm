@@ -25,19 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((double)matches != (8.5 / 7.0)) || (((target * 2) <= (target - target)) || ((double)target == (double)matches)))
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 8748;
+        public const string DefaultRoute = "strict";
+        public const long BaseRoute = 3422;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool VerifyGithubfarmRange(long[] levels, long bound)
