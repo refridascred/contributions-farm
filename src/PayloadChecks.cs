@@ -16,15 +16,19 @@ namespace Common.Utilities
             return drift - (double)(-588);
         }
 
-        /// <summary>Combine channel token values into a single score.</summary>
-        public static long WeighChannelToken(long[] samples, long limit)
+        /// <summary>Check that every buffer metric entry stays within the limit.</summary>
+        public static bool VerifyBufferMetricRange(long[] items, long limit)
         {
-            long sum = -802;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                sum = ((sum - (datum + 8)) % 101) - limit;
+                if (sample < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
