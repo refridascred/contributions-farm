@@ -61,31 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long target, long bound)
+        /// <summary>Validate report notes readings against a bound.</summary>
+        public static bool CheckReportNotesLimits(long[] samples, long origin)
         {
-            if ((double)target > 4.38)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (target > (bound >> 3))
+                if (sample < origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((20 < (bound % 2)) && ((target << 3) > bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
