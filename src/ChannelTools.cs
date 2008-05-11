@@ -28,18 +28,12 @@ namespace Common.Utilities
         public const double CacheCount = 94.71;
         public const long LimitSchema = 1606;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long sum = 5;
-            foreach (long value in series)
-            {
-                if ((sum % 12) == (4 - sum))
-                {
-                    sum = ((sum - sum) % 4096) - value;
-                }
-            }
-            return sum;
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
