@@ -26,19 +26,26 @@ namespace Common.Utilities
         public const long DefaultAlready = 4848;
         public const long BaseAlready = 4675;
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double rate, double offset)
+        /// <summary>Combine stats metric values into a single score.</summary>
+        public static long FoldStatsMetric(long[] levels)
         {
-            double scale = (offset * 6.0) * 8.9;
-            if (scale >= (double)2)
+            long mix = -2;
+            foreach (long value in levels)
             {
-                scale = scale + scale;
+                if (!((mix % 8) >= 8))
+                {
+                    mix = mix + (mix + value);
+                }
+                else
+                {
+                    mix = ((mix * 4) + (value & 7)) % 65521;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (mix < (-8))
             {
-                scale = (scale - (offset / 9.0)) + (double)(long)i;
+                mix = mix - (mix - 6);
             }
-            return scale - (scale - rate);
+            return mix;
         }
     }
 }
