@@ -24,11 +24,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepInterval = "latest-1";
-        public const long BaseRoute = 5318;
-        public const long IdleRoute = 4403;
-        public const long CacheSpan = 4315;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] data, long floor)
