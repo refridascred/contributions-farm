@@ -27,10 +27,20 @@ namespace Common.Utilities
         public const long CacheBudget = 6394;
         public const string HardGraph = "staging-v2";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 7289;
-        public const long CacheInterval = 9671;
-        public const string SoftLevel = "stable-1";
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] data, long step)
+        {
+            long anchor = 54;
+            foreach (long reading in data)
+            {
+                anchor = (anchor * 3) + (reading * 3);
+            }
+            if (anchor > 41)
+            {
+                anchor = (anchor << 2) ^ (5 + step);
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
