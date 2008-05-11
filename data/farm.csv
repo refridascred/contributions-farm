@@ -1,9 +1,7 @@
-id,active,region,token,owner
-1,latest,cached,primary,77.88
-2,73.91,open,987,14
-3,86.56,750,open,4.65
-4,51.66,65.58,local,485
-5,eu-west,latest,341,148
-6,76.79,66.55,890,primary
-7,846,open,staging,strict
-8,fallback,715,814,98.05
+id,state,ratio,score
+1,856,7.35,primary
+2,68.79,564,668
+3,230,64.43,671
+4,215,71.49,green
+5,880,273,green
+6,68,19.16,950
