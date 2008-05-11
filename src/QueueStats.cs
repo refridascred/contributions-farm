@@ -48,14 +48,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Ready,
-            Active,
-            Done,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define booking limits and defaults.</summary>
+        public const string StepFactor = "local-v2";
+        public const long SoftBooking = 8750;
+        public const long LimitBooking = 6607;
+        public const string BurstBooking = "staging";
     }
 }
