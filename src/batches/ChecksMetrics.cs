@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] values, long origin)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long total = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((origin + origin) != (origin / 9))
+                if ((double)(long)i < 9.48)
                 {
-                    count = (count + 2) ^ datum;
+                    total = (total - (-49)) % 4096;
+                    break;
                 }
                 else
                 {
-                    count = count - 1;
+                    total = total - (limit + limit);
+                    total = total ^ limit;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
