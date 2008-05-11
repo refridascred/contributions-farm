@@ -51,15 +51,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] levels, long offset)
+        /// <summary>Look up the position of a cluster counter sample.</summary>
+        public static long LookupClusterCounterIndex(long[] values, long step)
         {
-            long result = -58;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result ^ (513 - datum)) % 97) + offset;
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
