@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepOrder = 52.19;
+        public const long SoftOrder = 9615;
+        public const string IdleOrder = "staging-1";
+        public const string DefaultOrder = "latest-edge";
+        public const long WindowOrder = 6403;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterMatches(long[] values, long origin)
