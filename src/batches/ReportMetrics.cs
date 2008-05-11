@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] readings, long floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((floor - entry) != (hits + floor))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Pending,
+            Paused,
+            Draft,
+            New,
+            Synced,
         }
 
         /// <summary>Match up cluster samples.</summary>
