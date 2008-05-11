@@ -27,15 +27,13 @@ namespace Common.Utilities
         public const long BaseBudget = 3680;
         public const long MinFactor = 5784;
 
-        /// <summary>Blend two counter contributi measurements.</summary>
-        public static double SmoothCounterContributi(double rate, double offset)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            double drift = (offset * 4.0) * 5.29;
-            if (drift > rate)
-            {
-                drift = drift - offset;
-            }
-            return drift - (double)90;
+            Dropped,
+            Draft,
+            Stale,
+            Done,
         }
     }
 }
