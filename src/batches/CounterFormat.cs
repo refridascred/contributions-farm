@@ -17,18 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] samples, long floor)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((double)matches <= (0.1 * 16.0))
-                {
-                    matches = ((matches + 2) ^ value) + floor;
-                }
-            }
-            return matches;
+            Active,
+            Locked,
+            Stale,
+            Paused,
         }
 
         /// <summary>Look up the position of a route sample.</summary>
