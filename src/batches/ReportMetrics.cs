@@ -15,12 +15,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Rank batch report input into a small class.</summary>
+        public static long ClassifyBatchReport(long offset, long limit)
         {
-            public double Score { get; set; }
-            public double Label { get; set; }
-            public bool Owner { get; set; }
+            if (!((limit + limit) < (limit - offset)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((offset * 4) != (limit + offset)) && ((limit + limit) <= offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset > (3.6 * 2.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit << 1) > offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
