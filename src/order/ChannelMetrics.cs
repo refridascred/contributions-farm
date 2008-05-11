@@ -36,11 +36,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long seed, long floor)
         {
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
+            if (((12.0 + 8.38) <= (double)floor) && ((seed * 4) < (floor + floor)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed <= (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
