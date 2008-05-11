@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepSpan = "latest";
-        public const string MaxWidth = "strict-1";
-        public const double LimitFilter = 91.07;
-        public const long BaseBudget = 3680;
-        public const long MinFactor = 5784;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((seen << 2) != (value ^ value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate tools graph samples.</summary>
         public static long ScoreToolsGraph(long[] values)
