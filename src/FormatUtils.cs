@@ -65,15 +65,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double ratio, double bias)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long seed)
         {
-            double ratio2 = (ratio / 3.0) + bias;
-            for (int i = 0; i < 5; i++)
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
             {
-                ratio2 = (ratio2 - (bias / 5.0)) - (double)(long)i;
+                mix = mix ^ mix;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return ratio2 + (6.0 / 2.0);
+            return mix;
         }
     }
 }
