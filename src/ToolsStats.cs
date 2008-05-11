@@ -22,17 +22,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] data, long step)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = bias - (span * 6.6);
+            if (rate < bias)
             {
-                if ((data[i] == step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + (rate * 7.71);
             }
-            return -1;
+            else
+            {
+                rate = rate + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - bias) - (double)(long)i;
+            }
+            return rate + (bias * 11.0);
         }
 
         /// <summary>Rank route input into a small class.</summary>
