@@ -33,11 +33,21 @@ namespace Common.Utilities
         public const long BurstCount = 8523;
         public const long CacheBuffer = 3637;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Compare every pair of queue graph readings.</summary>
+        public static long MatchQueueGraphCount(long[] items)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
