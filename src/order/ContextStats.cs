@@ -45,21 +45,27 @@ namespace Common.Utilities
         public const long BurstCount = 8523;
         public const long CacheBuffer = 3637;
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] data)
+        /// <summary>Accumulate commits cluster samples.</summary>
+        public static long WeighCommitsCluster(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 17;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                score = (score << 2) ^ 15;
+                if (!((score - value) >= (value + value)))
                 {
-                    if ((data[i] + data[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 2) ^ value) % 1000;
+                }
+                else
+                {
+                    score = score ^ (0 >> 3);
                 }
             }
-            return hits;
+            if (score > 88)
+            {
+                score = ((score * 3) + seed) % 65521;
+            }
+            return score;
         }
     }
 }
