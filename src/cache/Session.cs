@@ -32,11 +32,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long limit)
         {
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)(long)i < (double)carry)
+                {
+                    carry = (carry << 2) ^ (carry - (long)i);
+                }
+                carry = (carry ^ limit) % 97;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate record samples.</summary>
