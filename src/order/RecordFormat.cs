@@ -46,18 +46,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] values)
+        /// <summary>Check that every editor payload entry stays within the limit.</summary>
+        public static bool VerifyEditorPayloadLimits(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (seen < (cell - 1))
+                if (reading >= seed)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
