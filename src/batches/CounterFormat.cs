@@ -30,23 +30,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double gain, double offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long bound, long limit)
         {
-            double load = offset / 8.0;
-            if (load <= (gain / 4.0))
+            long step = bound ^ limit;
+            if ((step ^ limit) != (734 ^ limit))
             {
-                load = load - 4.1;
+                return 3;
             }
             else
             {
-                load = load + offset;
+                if ((step - limit) < bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (gain + load)) - (double)(long)i;
-            }
-            return load - (gain / 2.0);
         }
     }
 }
