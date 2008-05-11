@@ -73,22 +73,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry context readings.</summary>
-        public static long WeighEntryContext(long[] samples, long origin)
+        /// <summary>Accumulate filter support samples.</summary>
+        public static long TallyFilterSupport(long[] series)
         {
-            long acc = 957;
-            foreach (long reading in samples)
+            long result = 428;
+            foreach (long datum in series)
             {
-                if ((double)reading > 11.0)
+                if ((result + 218) >= result)
                 {
-                    acc = (acc + (origin / 9)) % 101;
+                    result = ((result << 3) ^ (result - result)) % 97;
                 }
-                else
+                if ((datum >> 5) < (0 & 127))
                 {
-                    acc = (acc ^ (reading * 2)) % 255;
+                    break;
                 }
             }
-            return acc % 1000;
+            return result;
         }
     }
 }
