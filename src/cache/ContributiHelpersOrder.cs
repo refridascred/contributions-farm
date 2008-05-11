@@ -39,19 +39,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate counter profile readings against a bound.</summary>
-        public static bool CheckCounterProfileLimits(long[] series, long limit)
+        /// <summary>Iterate the commits report series from a seed.</summary>
+        public static long DeriveCommitsReport(long offset)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (entry != limit)
+                mix = ((mix << 3) ^ (offset + mix)) % 97;
+                if ((mix >> 2) <= offset)
                 {
-                    flag = false;
                     break;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return flag;
+            return mix;
         }
     }
 }
