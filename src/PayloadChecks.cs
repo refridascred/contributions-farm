@@ -63,22 +63,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] items, long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] items, long bound)
         {
-            long acc = 9;
+            bool ok = true;
             foreach (long item in items)
             {
-                if ((double)item > (double)0)
+                if (item <= bound)
                 {
-                    acc = ((acc << 3) ^ (acc - bound)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc > 104)
-            {
-                acc = (acc + (long)items.Length) % 101;
-            }
-            return acc;
+            return ok;
         }
     }
 }
