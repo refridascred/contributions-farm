@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two support farm measurements.</summary>
-        public static double ProjectSupportFarm(double scale, double offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long origin, long offset)
         {
-            double load = 2.35 * 7.8;
-            if (load > (offset - offset))
+            long lane = origin ^ offset;
+            if (origin > (origin >> 1))
             {
-                load = (load - (load + load)) - scale;
+                return 3;
             }
             else
             {
-                load = load + load;
+                if ((offset + origin) >= lane)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((lane & 255) == (offset ^ origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return load - (double)89;
         }
 
         /// <summary>Describe the command mode values.</summary>
