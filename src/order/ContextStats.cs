@@ -27,12 +27,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitReport = "latest-edge";
-        public const double IdleWidth = 22.34;
-        public const double BaseSize = 73.73;
-        public const long BaseReport = 9711;
-        public const double DefaultScore = 90.21;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long bound, long bound2)
+        {
+            if ((double)bound2 > (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((2.6 - 5.32) >= (double)bound2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound - bound) != (bound + 0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((1 - 50) < bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
