@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 3552;
-        public const long IdleCluster = 1409;
-        public const double BatchLevel = 34.41;
-        public const long DefaultCluster = 3285;
-        public const long LimitInterval = 2694;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] samples, long floor)
+        {
+            long total = 1;
+            foreach (long reading in samples)
+            {
+                if ((reading & 255) >= (110 + reading))
+                {
+                    total = total - (reading % 24);
+                }
+                if ((floor - total) >= (total + floor))
+                {
+                    total = ((total << 3) ^ (total - 198)) % 255;
+                }
+                else
+                {
+                    total = total + (reading - 45);
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadBounds(long[] items, long step)
