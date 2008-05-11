@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 5698;
-        public const long SoftRatio = 5664;
-        public const string HardToken = "latest-v2";
-        public const long SoftToken = 1352;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 92.95;
+        public const string WindowMetrics = "strict-edge";
+        public const double StepScore = 67.94;
+        public const long StepCount = 9647;
+        public const double BurstScore = 75.35;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowMatches(long[] samples, long step)
