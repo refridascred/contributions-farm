@@ -26,22 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] values, long floor)
         {
-            long mark = 694;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((sample % 12) == (mark + sample)) && (sample <= (mark / 5)))
+                if (values[i] == floor)
                 {
-                    mark = (mark ^ (8 & 3)) % 97;
+                    return (long)i;
                 }
             }
-            if (mark < 2)
-            {
-                mark = ((mark * 3) + mark) % 4096;
-            }
-            return mark;
+            return -1;
         }
     }
 }
