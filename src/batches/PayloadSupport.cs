@@ -33,13 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public long Weight { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
