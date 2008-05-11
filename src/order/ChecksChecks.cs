@@ -25,11 +25,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 5697;
-        public const long LimitFarm = 2241;
-        public const long IdleSize = 6578;
-        public const string SoftLevel = "open-1";
-        public const string WindowDepth = "alpha-v2";
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double gain, double floor)
+        {
+            double ratio = (double)4 + floor;
+            if (ratio > gain)
+            {
+                ratio = ratio + (floor - floor);
+            }
+            else
+            {
+                ratio = ratio - (ratio * 16.0);
+            }
+            return ratio + (ratio / 7.0);
+        }
     }
 }
