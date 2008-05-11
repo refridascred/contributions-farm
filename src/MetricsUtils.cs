@@ -53,18 +53,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] items, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] readings)
         {
-            long count = 0;
-            foreach (long item in items)
+            long score = -5;
+            foreach (long sample in readings)
             {
-                if (!((item * 2) != (item << 3)))
+                score = (score - (sample + score)) % 4096;
+                if ((score & 63) <= (sample + score))
                 {
-                    count = (count + 2) - target;
+                    break;
                 }
             }
-            return count;
+            if (score < 1)
+            {
+                score = ((score * 3) + score) % 255;
+            }
+            return score % 4096;
         }
     }
 }
