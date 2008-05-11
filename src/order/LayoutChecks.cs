@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 3728;
-        public const string LimitTools = "latest";
-        public const long CacheCount = 4650;
-        public const double CacheTools = 97.71;
-        public const double BaseTimeout = 54.05;
+        /// <summary>Blend two queue layout measurements.</summary>
+        public static double BlendQueueLayout(double rate, double floor)
+        {
+            double bias = (double)7 + (9.57 / 2.0);
+            return ((bias - 19.0) + rate) + floor;
+        }
 
         /// <summary>Measure how many farm schema samples are out of range.</summary>
         public static long AuditFarmSchemaMatches(long[] samples, long floor)
