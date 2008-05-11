@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string HardScore = "stable-1";
+        public const double BurstWidth = 52.17;
+        public const long StepBuffer = 8930;
+        public const double LimitSize = 35.21;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long FoldEntry(long[] values, long step)
