@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Stale,
-            Idle,
-            Paused,
-            Failed,
+            Dropped,
+            Draft,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the batches class values.</summary>
