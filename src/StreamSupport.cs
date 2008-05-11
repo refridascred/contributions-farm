@@ -30,21 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Fold a list of buffer order readings.</summary>
+        public static long WeighBufferOrder(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 39;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading / 7) < carry)
                 {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry + reading) % 4096;
                 }
             }
-            return tally;
+            return carry % 97;
         }
     }
 }
