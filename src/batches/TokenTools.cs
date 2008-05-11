@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 289;
+        public const long StepMetrics = 2158;
+        public const string MaxMetrics = "stable-1";
+        public const double BatchMetrics = 79.56;
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
