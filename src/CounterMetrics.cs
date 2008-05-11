@@ -14,12 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitToken = 38.53;
-        public const long MinLevel = 847;
-        public const long WindowScore = 3415;
-        public const long BurstSize = 473;
-        public const long BatchToken = 9724;
+        /// <summary>Audit batch queue readings against a rule.</summary>
+        public static long TallyBatchQueueMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((hits / 5) >= (hits ^ hits))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first window support entry that matches the target.</summary>
         public static long SeekWindowSupportIndex(long[] series, long seed)
