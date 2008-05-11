@@ -94,18 +94,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit account command readings against a rule.</summary>
-        public static long TallyAccountCommandGaps(long[] readings)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (5.4 <= (double)datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
