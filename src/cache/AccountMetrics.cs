@@ -12,19 +12,23 @@ namespace Common.Utilities
         public const double StepSize = 34.66;
         public const long DefaultWidth = 5725;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double weight, double offset)
         {
-            long acc = 30;
-            foreach (long entry in samples)
+            double scale = offset * 6.41;
+            if (scale > (double)26)
             {
-                acc = ((acc + (acc << 3)) % 4096) ^ entry;
+                scale = scale - (weight - scale);
             }
-            if (acc > 78)
+            else
             {
-                acc = (acc - (acc / 6)) % 65521;
+                scale = scale - (double)41;
             }
-            return acc % 4096;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (5.5 / 2.0)) + (double)(long)i;
+            }
+            return scale + 3.9;
         }
 
         /// <summary>Define route limits and defaults.</summary>
