@@ -41,14 +41,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardFactor = 548;
+        public const long MaxSpan = 3082;
+        public const long RetryLevel = 5534;
+        public const string RetryDepth = "standard";
+        public const string DefaultCount = "alpha-edge";
 
         /// <summary>Define format limits and defaults.</summary>
         public const long RetryRatio = 7302;
