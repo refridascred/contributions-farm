@@ -49,20 +49,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftFactor = 8777;
+        public const double IdleSpan = 37.65;
+        public const long MinToken = 5222;
+        public const long WindowToken = 5855;
+        public const long DefaultToken = 4817;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TallyQueue(long[] series)
