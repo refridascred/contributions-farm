@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double rate, double floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            double load = floor - rate;
-            if (load >= load)
-            {
-                load = load + (load - floor);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (double)3) + (double)(long)i;
-            }
-            return load - (rate * 2.5);
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
