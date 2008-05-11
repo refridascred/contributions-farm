@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] items)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long offset)
         {
-            long state = 35;
-            foreach (long cell in items)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((cell % 64) != (state + state))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    state = (state + (cell - state)) % 97;
+                    state = (((state << 2) ^ ((long)i - state)) % 4096) ^ (long)i2;
                 }
-                else
+                if (!((offset >> 5) < state))
                 {
-                    state = ((state * 2) + (state + state)) % 255;
+                    state = (state ^ offset) % 101;
+                    state = (state ^ ((long)i ^ offset)) % 101;
                 }
-            }
-            if (state > (-200))
-            {
-                state = state - (state + state);
+                state = ((state << 2) ^ offset) % 4096;
+                state = ((state * 4) + (long)i) % 1000;
             }
             return state;
         }
