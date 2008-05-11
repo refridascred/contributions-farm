@@ -23,18 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] values, long bound)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (!((item + seen) > (seen - bound)) || !(bound < (bound * 2)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Failed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
