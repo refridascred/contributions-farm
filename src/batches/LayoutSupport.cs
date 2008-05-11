@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Digest a series of support metrics entries.</summary>
+        public static long FoldSupportMetrics(long[] readings, long bound)
         {
-            Draft,
-            Retry,
-            Stale,
+            long mix = 1;
+            foreach (long cell in readings)
+            {
+                if (bound <= (cell + mix))
+                {
+                    mix = (mix * 2) + bound;
+                    mix = mix ^ (cell - bound);
+                }
+                if ((double)cell < 2.5)
+                {
+                    mix = (mix << 3) ^ (cell - mix);
+                }
+                else
+                {
+                    mix = (mix * 2) + ((long)readings.Length * 4);
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
