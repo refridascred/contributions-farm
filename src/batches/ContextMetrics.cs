@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long origin, long bound)
-        {
-            if ((double)bound >= (7.99 + 2.77))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound <= (2.46 - 16.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheEntry = 49.82;
+        public const long SoftEntry = 8623;
+        public const long LimitDepth = 220;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] data, long bound)
