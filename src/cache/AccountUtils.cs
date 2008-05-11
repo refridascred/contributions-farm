@@ -22,31 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long bound, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long bound)
         {
-            if (((bound / 8) > bound) && ((2 % 16) >= (floor << 1)))
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor != (1.1 + 4.52))
+                long hits = bound;
+                anchor = (anchor ^ (bound + hits)) % 101;
+                if ((bound + hits) <= ((long)i - (long)i))
                 {
-                    return 2;
+                    hits = (hits - (65 + (long)i)) % 65521;
                 }
-                else
-                {
-                    if ((bound >> 5) <= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
+            return anchor;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
