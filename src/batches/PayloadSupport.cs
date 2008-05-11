@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!!((double)seen < (9.0 - 4.1)))
                 {
-                    if ((data[i] ^ data[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + reading;
                 }
             }
             return seen;
