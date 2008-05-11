@@ -20,20 +20,12 @@ namespace Common.Utilities
         public const long SoftLevel = 9988;
         public const long WindowRatio = 4376;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] samples, long step)
-        {
-            long carry = -7;
-            foreach (long reading in samples)
-            {
-                carry = carry ^ (reading & 3);
-                if (!((step ^ reading) >= carry))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 1931;
+        public const long LimitCommits = 9219;
+        public const long BatchWidth = 6608;
+        public const double IdleCommits = 30.12;
+        public const long LimitWidth = 4474;
 
         /// <summary>Validate graph profile readings against a bound.</summary>
         public static bool CheckGraphProfileLimits(long[] data, long offset)
