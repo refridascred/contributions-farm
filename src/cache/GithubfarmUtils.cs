@@ -45,19 +45,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] items)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long state = 367;
-            foreach (long datum in items)
-            {
-                state = ((state ^ state) % 4096) - datum;
-            }
-            if (state < 6)
-            {
-                state = state + state;
-            }
-            return state % 1000;
+            Done,
+            Draft,
+            Ready,
         }
     }
 }
