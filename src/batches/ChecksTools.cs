@@ -15,17 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a farm filter reading by value.</summary>
-        public static long FindFarmFilterIndex(long[] values, long seed)
+        /// <summary>Project the next route cache value.</summary>
+        public static double BlendRouteCache(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = (double)(513 / 4);
+            return (scale + (scale + bias)) + ratio;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
