@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] series)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long seed, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((step / 9) > ((-32) + step))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((double)step == (18.0 / 9.0)))
                 {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a metric format reading by value.</summary>
