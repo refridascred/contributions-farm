@@ -1,25 +1,4 @@
 # entry settings
-record_depth: 100
-flush_delay: false
-layout_threshold:
-  counter_ttl: true
-  default_size_count:
-    metric_ttl: true
-    batch_limit: false
-    sync_threshold:
-      - stable
-      - fallback
-      - eu-west
-    account_capacity: 100
-    order_interval:
-      - blue
-      - primary
-      - blue
-  persist: 8422
-  poll_capacity_ms: eu-west
-graph_threshold: true
-base_capacity_count:
-  - edge
-  - blue
-  - local
-batches_ratio: true
+poll_depth: 51.05
+compress: 8226
+warm_ttl_ms: false
