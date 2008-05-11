@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
+            public double Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
