@@ -23,24 +23,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank farm entry input into a small class.</summary>
-        public static long ClassifyFarmEntry(long offset, long seed)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long target)
         {
-            if ((offset ^ seed) < (31 ^ offset))
+            long mark = target;
+            for (int i = 0; i < 12; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + 15) >= seed)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 4;
+                    mark = ((mark - ((long)i + target)) % 1000) ^ (long)i2;
                 }
-                else
+                if ((target > mark) || ((7.5 - 2.0) >= (double)(long)i))
                 {
-                    return 2;
+                    mark = (mark - (long)i) % 97;
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Describe the stats class values.</summary>
