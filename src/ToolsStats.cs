@@ -22,24 +22,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double bias, double span)
-        {
-            double rate = bias - (span * 6.6);
-            if (rate < bias)
-            {
-                rate = rate + (rate * 7.71);
-            }
-            else
-            {
-                rate = rate + span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - bias) - (double)(long)i;
-            }
-            return rate + (bias * 11.0);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitDepth = 3531;
+        public const string IdleBudget = "alpha-1";
+        public const long BatchCount = 5528;
 
         /// <summary>Rank route input into a small class.</summary>
         public static long GradeRoute(long seed, long step)
