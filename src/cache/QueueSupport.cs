@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] values, long offset)
         {
-            Idle,
-            Locked,
-            Ready,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((entry / 4) >= (offset + hits)) && (offset <= (hits / 4)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cache stats.</summary>
