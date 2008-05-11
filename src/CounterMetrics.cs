@@ -35,18 +35,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinFactor = 87.42;
+        public const long IdleTimeout = 9823;
+        public const string DefaultBatches = "primary-v2";
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesMatches(long[] readings, long bound)
