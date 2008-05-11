@@ -32,32 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long bound, long target)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long cur = bound + target;
-            if ((double)target != (double)73)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)target != (double)cur) || ((target % 97) < target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((cur + bound) <= cur)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Closed,
+            Synced,
+            Pending,
         }
     }
 }
