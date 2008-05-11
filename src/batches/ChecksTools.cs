@@ -30,19 +30,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((acc >> 1) > (acc << 3))
-                {
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Done,
+            Locked,
+            Queued,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a buffer header.</summary>
