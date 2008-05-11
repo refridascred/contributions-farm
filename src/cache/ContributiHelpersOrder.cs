@@ -20,15 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] samples, long origin)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] samples, long target)
         {
-            long result = -720;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((((result << 2) ^ result) % 1000) + sample) + origin;
+                if ((samples[i] < target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate counter profile readings against a bound.</summary>
