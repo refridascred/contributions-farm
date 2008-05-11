@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] readings, long step)
+        /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
+        public static bool CheckContributiMetricsBounds(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((double)41 < (double)step)
+                if (value < target)
                 {
-                    seen = (seen + 2) + datum;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
