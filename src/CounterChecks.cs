@@ -31,14 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long bound)
         {
-            Failed,
-            Stale,
-            Active,
-            Queued,
-            Paused,
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((mix % 60) < (mix + 51)))
+                {
+                    mix = ((mix * 4) + mix) % 97;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Match up order samples.</summary>
