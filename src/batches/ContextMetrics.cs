@@ -87,12 +87,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftFactor = 8777;
-        public const double IdleSpan = 37.65;
-        public const long MinToken = 5222;
-        public const long WindowToken = 5855;
-        public const long DefaultToken = 4817;
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double bias, double floor)
+        {
+            double load = bias;
+            if (load <= (double)51)
+            {
+                load = (load - (7.27 - bias)) + floor;
+            }
+            return load - (double)1;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TallyQueue(long[] series)
