@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] levels, long step)
+        /// <summary>Combine contributi order values into a single score.</summary>
+        public static long TallyContributiOrder(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long state = 793;
+            foreach (long cell in data)
             {
-                if (sample >= step)
+                state = (state << 2) ^ (-169);
+                if (cell >= (bound * 2))
                 {
-                    stale = false;
-                    break;
+                    state = (state - (742 + (-269))) % 255;
                 }
             }
-            return stale;
+            if (state > 535)
+            {
+                state = (state * 3) + (bound >> 1);
+            }
+            return state;
         }
 
         /// <summary>Accumulate command samples.</summary>
