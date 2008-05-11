@@ -31,13 +31,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] values, long floor)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((((long)values.Length << 2) != (reading % 12)) && ((748 >> 4) > (reading << 3)))
+                {
+                    matches = (matches + 2) - floor;
+                }
+            }
+            return matches;
         }
     }
 }
