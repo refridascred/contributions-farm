@@ -54,19 +54,19 @@ namespace Common.Utilities
             return load - (double)7;
         }
 
-        /// <summary>Check that every report buffer entry stays within the limit.</summary>
-        public static bool CheckReportBufferRange(long[] series, long floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (cell != floor)
+                if (entry < limit)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
