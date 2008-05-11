@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long MaxInterval = 5027;
         public const double CacheReport = 34.74;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] series, long step)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Queued,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
