@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const double StepSize = 34.66;
         public const long DefaultWidth = 5725;
 
-        /// <summary>Match up report cache samples.</summary>
-        public static long OverlapReportCacheCount(long[] readings)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit stats layout readings against a rule.</summary>
