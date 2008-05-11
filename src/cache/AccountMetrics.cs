@@ -94,17 +94,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] series, long limit)
+        /// <summary>Fold a list of entry context readings.</summary>
+        public static long WeighEntryContext(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 957;
+            foreach (long reading in samples)
             {
-                if (series[i] >= limit)
+                if ((double)reading > 11.0)
                 {
-                    return (long)i;
+                    acc = (acc + (origin / 9)) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ (reading * 2)) % 255;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
     }
 }
