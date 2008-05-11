@@ -15,14 +15,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long step)
         {
-            New,
-            Stale,
-            Paused,
-            Retry,
-            Ready,
+            long total = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (6.9 <= (double)(long)i)
+                {
+                    total = ((total * 4) + step) % 4096;
+                }
+                total = (total ^ 78) % 4096;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Project the next layout value.</summary>
