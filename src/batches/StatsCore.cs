@@ -19,16 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = (carry ^ (carry ^ 59)) % 4096;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Active,
+            Failed,
+            Pending,
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
