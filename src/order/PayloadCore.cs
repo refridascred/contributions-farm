@@ -38,11 +38,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Scale a checks stats figure with a bias.</summary>
-        public static double ProjectChecksStats(double gain, double bias)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double ratio = 2.31;
-            return (ratio - gain) + bias;
+            Done,
+            Pending,
+            Paused,
+            Dropped,
         }
     }
 }
