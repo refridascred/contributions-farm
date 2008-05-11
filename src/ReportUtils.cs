@@ -41,17 +41,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] levels, long limit)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] < limit)
+                mix = mix ^ target;
+                if (!((mix ^ mix) <= (90 + (long)i)))
                 {
-                    return (long)i;
+                    mix = (mix - (mix + mix)) % 101;
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the farm class values.</summary>
