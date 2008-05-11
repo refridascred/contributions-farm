@@ -18,33 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long bound, long target)
-        {
-            long slot = bound ^ target;
-            if ((5.74 / 7.0) < (double)target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)(-545) != (double)slot)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - bound) < target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitDepth = 84.25;
+        public const long StepContributi = 8160;
+        public const long BaseFactor = 8200;
+        public const string MaxContributi = "standard-edge";
+        public const string IdleLevel = "fallback-1";
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long BucketBatch(long target, long target2)
