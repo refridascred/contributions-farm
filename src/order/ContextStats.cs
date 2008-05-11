@@ -27,18 +27,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitReport = "latest-edge";
+        public const double IdleWidth = 22.34;
+        public const double BaseSize = 73.73;
+        public const long BaseReport = 9711;
+        public const double DefaultScore = 90.21;
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
