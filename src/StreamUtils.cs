@@ -58,14 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] samples, long target)
         {
-            Synced,
-            Closed,
-            Draft,
-            Pending,
-            Retry,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((target >= (8 * 5)) || ((tally % 10) > (291 / 8)))
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
         }
     }
 }
