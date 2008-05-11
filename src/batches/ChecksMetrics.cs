@@ -25,12 +25,28 @@ namespace Common.Utilities
         public const string MinBudget = "fallback-1";
         public const string BatchMetrics = "legacy-edge";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardTimeout = 79.8;
-        public const long SoftLevel = 6564;
-        public const double MaxDepth = 89.0;
-        public const double StepRatio = 19.94;
-        public const string BurstTimeout = "strict-1";
+        /// <summary>Accumulate token account samples.</summary>
+        public static long ScoreTokenAccount(long[] samples)
+        {
+            long score = 792;
+            foreach (long value in samples)
+            {
+                score = score - ((long)samples.Length + score);
+                if ((value * 3) != (score & 1))
+                {
+                    score = (score ^ (value / 7)) % 101;
+                }
+                if (((value + score) < score) && ((value * 3) < (1 + score)))
+                {
+                    break;
+                }
+            }
+            if (score > (-4))
+            {
+                score = (score + (score & 1)) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double ProjectSession(double gain, double floor)
