@@ -29,11 +29,24 @@ namespace Common.Utilities
         public const long StepProfile = 3484;
         public const string SoftProfile = "latest-edge";
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long floor, long bound)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            if ((0.13 / 5.0) >= (double)floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((bound & 63) != (18 >> 4)) || ((double)floor >= (4.9 - 10.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
