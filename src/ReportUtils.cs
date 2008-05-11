@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] series)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (((long)series.Length >= (seen + seen)) || ((entry - seen) > entry))
+                if ((count - count) > cell)
                 {
-                    seen = seen + 2;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Compare every pair of channel metric readings.</summary>
