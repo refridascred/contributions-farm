@@ -1,24 +1,6 @@
 {
-  "audit": true,
-  "soft_timeout_count": 1588,
-  "soft_ratio": {
-    "githubfarm_delay": "blue",
-    "route_delay": "edge",
-    "sync_retries": {
-      "default_size": true,
-      "soft_timeout_pct": "local",
-      "flush_delay_s": 53.93,
-      "window_depth": 1024
-    },
-    "default_delay_s": "edge"
-  },
-  "account_interval": {
-    "persist": ["green", "fallback", "strict"],
-    "min_window_s": "legacy",
-    "command_ttl": 17.52,
-    "profile_depth": 97.87,
-    "base_capacity": 100
-  },
-  "retry_interval": "open",
-  "dry_run": [312, 389, 36, 255]
+  "batch_timeout_s": 54.24,
+  "audit": 47.56,
+  "hard_timeout": true,
+  "default_timeout_pct": 27.05
 }
