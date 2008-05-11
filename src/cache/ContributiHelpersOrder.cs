@@ -28,11 +28,11 @@ namespace Common.Utilities
         public const string DefaultCount = "alpha-edge";
         public const double BaseCount = 35.09;
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double scale, double offset)
         {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
+            double bias = scale;
+            return (bias + bias) + offset;
         }
     }
 }
