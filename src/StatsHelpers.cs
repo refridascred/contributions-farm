@@ -64,12 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheSize = 3360;
-        public const long MinFactor = 3065;
-        public const double WindowReport = 36.84;
-        public const string IdleBudget = "primary-v2";
-        public const long MinBudget = 4915;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] readings, long origin)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)origin < (double)datum)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TotalStream(long[] data, long target)
