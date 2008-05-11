@@ -51,23 +51,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double weight, double floor)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            double load = (double)((-308) / 2);
-            if (load > (weight * 0.94))
-            {
-                load = (load + weight) + floor;
-            }
-            else
-            {
-                load = load + (double)5;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + (double)(-4);
+            public double Label { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
