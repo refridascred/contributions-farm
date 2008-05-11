@@ -12,11 +12,16 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitSize = 23.03;
-        public const string IdleChecks = "legacy-v2";
-        public const string MaxChecks = "alpha-v2";
-        public const long BaseSpan = 17;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double rate, double bias)
+        {
+            double drift = 3.0;
+            if (drift > rate)
+            {
+                drift = (drift + 8.0) + bias;
+            }
+            return drift - rate;
+        }
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
