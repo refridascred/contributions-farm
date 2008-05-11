@@ -25,11 +25,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
