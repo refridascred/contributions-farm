@@ -50,22 +50,34 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] samples, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            long carry = 22;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((double)carry > (19.0 / 6.0))
                 {
-                    anchor = ((anchor + ((long)i % 7)) % 4096) ^ (long)i2;
-                    anchor = anchor + anchor;
+                    carry = ((carry * 4) + (38 + 0)) % 1000;
                 }
-                anchor = anchor ^ anchor;
-                anchor = (anchor - anchor) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                else
+                {
+                    carry = (carry ^ 70) % 1000;
+                }
+                if ((carry * 5) == (entry / 7))
+                {
+                    carry = carry + entry;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (carry >> 5)) % 4096;
+                }
+                if ((entry ^ 58) > origin)
+                {
+                    break;
+                }
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
