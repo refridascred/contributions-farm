@@ -40,12 +40,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 2784;
-        public const double SoftContext = 79.41;
-        public const long SoftDepth = 2008;
-        public const double MinWidth = 19.39;
-        public const long StepContext = 2972;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] levels, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum > 4.49)
+                {
+                    matches = (matches + 2) - origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a stream layout figure with a bias.</summary>
         public static double BlendStreamLayout(double gain, double floor)
