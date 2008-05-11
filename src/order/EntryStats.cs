@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitBatch = 9.1;
-        public const long MaxBatch = 7;
-        public const long MinBatch = 2488;
-        public const long RetryBatch = 8515;
-        public const long WindowScore = 4405;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] values)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((value % 24) >= (value % 100))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long SeriesCluster(long seed)
