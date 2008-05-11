@@ -27,14 +27,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double scale, double bias)
         {
-            Draft,
-            Ready,
-            Queued,
-            Done,
-            Stale,
+            double bias2 = 2.6 * 1.04;
+            return ((bias2 + (bias2 * 6.66)) + scale) + bias;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
