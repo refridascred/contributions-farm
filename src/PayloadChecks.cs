@@ -52,13 +52,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] items, long bound)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] items, long offset)
         {
             bool ok = true;
-            foreach (long item in items)
+            foreach (long reading in items)
             {
-                if (item <= bound)
+                if (reading >= offset)
                 {
                     ok = false;
                     break;
