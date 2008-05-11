@@ -14,12 +14,23 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Digest a series of stats farm entries.</summary>
+        public static long TallyStatsFarm(long[] data, long origin)
         {
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
-            public string Total { get; set; } = "";
+            long score = 267;
+            foreach (long datum in data)
+            {
+                score = (score << 2) ^ (89 + 2);
+                if (((datum + score) >= (datum + origin)) && ((double)datum <= (5.2 / 5.0)))
+                {
+                    score = score - (score - origin);
+                }
+                else
+                {
+                    score = score ^ (7 << 2);
+                }
+            }
+            return score;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
