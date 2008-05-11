@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] readings, long floor)
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the batches state values.</summary>
