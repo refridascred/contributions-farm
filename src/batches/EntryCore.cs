@@ -37,11 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long offset, long target)
         {
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
+            long edge = offset ^ target;
+            if ((offset > (edge / 7)) || (offset < (edge % 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset > (edge & 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset >> 4) > (-50))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count channel checks pairs that satisfy a relation.</summary>
