@@ -21,15 +21,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double rate, double bias)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long origin)
         {
-            double ratio = (12.0 * 11.0) - (rate - rate);
-            if (ratio <= ratio)
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
             {
-                ratio = ratio + (1.96 + ratio);
+                mark = (mark << 3) ^ ((long)i - mark);
+                if (mark >= (mark + mark))
+                {
+                    mark = mark - (long)i;
+                }
+                mark = (mark + mark) % 65521;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return ratio - (bias + rate);
+            return mark;
         }
     }
 }
