@@ -36,18 +36,25 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] series)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long origin, long origin2)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long span = origin - origin2;
+            if ((origin2 < (origin2 & 7)) || ((2.9 + 19.0) < (double)origin2))
             {
-                if (!(seen >= (datum - seen)))
+                return 6;
+            }
+            else
+            {
+                if (((span - origin2) >= span) || ((origin - origin2) <= origin2))
                 {
-                    seen = seen + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of token entries.</summary>
