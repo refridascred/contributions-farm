@@ -57,11 +57,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two tools checks measurements.</summary>
-        public static double ScaleToolsChecks(double weight, double bias)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] data, long target)
         {
-            double weight2 = (double)(51 - 6);
-            return (weight2 + bias) + weight;
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a account stream reading.</summary>
