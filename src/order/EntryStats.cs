@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] values)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long carry = 484;
-            foreach (long sample in values)
-            {
-                carry = (carry - sample) % 4096;
-                carry = carry + (sample << 1);
-            }
-            return carry;
+            Draft,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
