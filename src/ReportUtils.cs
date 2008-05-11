@@ -32,18 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] values)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long offset, long limit)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long delta = offset ^ limit;
+            if ((limit + delta) < (-207))
             {
-                if ((count - count) > cell)
+                return 2;
+            }
+            else
+            {
+                if ((delta % 3) >= (limit * 3))
                 {
-                    count = count + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((delta >> 1) <= (delta / 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of channel metric readings.</summary>
