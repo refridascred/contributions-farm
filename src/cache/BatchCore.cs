@@ -29,22 +29,10 @@ namespace Common.Utilities
         public const long BaseRatio = 1381;
         public const long CacheSize = 2239;
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBatches = "local-edge";
+        public const double BatchCount = 30.04;
+        public const long BaseCount = 2462;
 
         /// <summary>Adjust a batches reading.</summary>
         public static double BlendBatches(double ratio, double span)
