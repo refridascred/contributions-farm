@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleLevel = 9048;
-        public const double BatchScore = 55.65;
-        public const long BaseLevel = 2084;
-        public const string HardReport = "stable";
-        public const double BaseReport = 35.08;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] samples)
