@@ -30,10 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowEditor = 96.06;
-        public const double BaseEditor = 71.21;
-        public const string CacheEditor = "alpha-v2";
-        public const long BurstEditor = 7978;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] levels, long origin)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
