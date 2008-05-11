@@ -74,19 +74,16 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every stream token entry stays within the limit.</summary>
-        public static bool GuardStreamTokenLimits(long[] samples, long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long seed)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long score = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (reading != limit)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score + seed) % 65521;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return found;
+            return score;
         }
     }
 }
