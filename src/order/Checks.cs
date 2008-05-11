@@ -25,11 +25,15 @@ namespace Common.Utilities
             return weight + ratio;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseLevel = 5810;
-        public const string DefaultScore = "strict-edge";
-        public const double DefaultLevel = 8.72;
-        public const string DefaultRecord = "stable-v2";
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Paused,
+            Draft,
+            Ready,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long FindQueueIndex(long[] levels, long origin)
