@@ -1,20 +1,6 @@
 {
-  "schema_interval": 3.11,
-  "cache_size": 9.2,
-  "min_threshold_ms": {
-    "schema_window": {
-      "route_size": false,
-      "stream_depth": false,
-      "enabled": 12.3,
-      "buffer_interval": 96.56,
-      "batch_ratio_pct": 100,
-      "stats_timeout": false
-    },
-    "counter_capacity": "green",
-    "burst_window_ms": 500,
-    "contributi_timeout": 19
-  },
-  "hard_interval_count": ["open", "edge"],
-  "metrics_window": "local",
-  "queue_ratio": 5137
+  "contributi_retries": [310, 437, 292],
+  "enabled": 55.86,
+  "soft_capacity_ms": true,
+  "verbose": 60
 }
