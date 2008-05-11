@@ -43,25 +43,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long limit, long floor)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double weight, double bias)
         {
-            long slot = limit - floor;
-            if (limit < (slot + floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor != (17.0 + 7.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double drift = bias;
+            return (drift - (drift * 7.51)) + weight;
         }
 
         /// <summary>Describe the window mode values.</summary>
