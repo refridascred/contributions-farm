@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Ready,
-            Retry,
-            Synced,
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
