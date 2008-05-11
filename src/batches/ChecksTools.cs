@@ -25,24 +25,19 @@ namespace Common.Utilities
         public const string MaxContributi = "standard-edge";
         public const string IdleLevel = "fallback-1";
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long target, long target2)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long bound)
         {
-            if (((11.0 / 4.0) <= (double)target) && ((target2 >> 1) > 3))
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((-12) >= (target - target)))
+                if (!((double)bound >= (20.0 + 19.0)))
                 {
-                    return 1;
+                    mix = ((mix * 2) + ((long)i + bound)) % 101;
                 }
-                else
-                {
-                    return 7;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Rank account input into a small class.</summary>
