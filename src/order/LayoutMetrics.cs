@@ -36,10 +36,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftLevel = 1159;
-        public const long BaseScore = 7811;
-        public const long BurstSize = 8716;
-        public const long MaxBatch = 8157;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
