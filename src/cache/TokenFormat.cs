@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Active,
-            New,
-            Failed,
-            Dropped,
-            Paused,
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a queue payload sample.</summary>
