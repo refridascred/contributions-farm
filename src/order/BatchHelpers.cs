@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix * 4) + 8;
+                mix = (mix - (-46)) % 65521;
+                mix = mix - 863;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Match up layout samples.</summary>
