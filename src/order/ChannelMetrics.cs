@@ -32,32 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long step, long seed)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] samples, long bound)
         {
-            long delta = step + seed;
-            if (delta >= 939)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (7.85 < (double)step)
+                if (samples[i] <= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed - 6) > 4)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
