@@ -49,23 +49,18 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double rate, double span)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] values)
         {
-            double drift = (double)(701 + 46);
-            if (drift > drift)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                drift = (drift - (double)430) - span;
+                if (seen < (cell - 1))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                drift = drift - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (double)512;
+            return seen;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
