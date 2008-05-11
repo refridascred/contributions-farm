@@ -79,31 +79,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a cluster support value against two limits.</summary>
-        public static long RankClusterSupport(long floor, long limit)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double rate, double offset)
         {
-            if ((floor >> 1) > floor)
+            double mean = (double)7 - (offset / 4.0);
+            if (mean >= rate)
             {
-                return 3;
+                mean = mean - rate;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((limit % 100) >= (floor + limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit & 1) >= (limit - 689))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mean = (mean + 7.03) + (double)(long)i;
             }
+            return mean - (offset / 5.0);
         }
     }
 }
