@@ -25,15 +25,11 @@ namespace Common.Utilities
         public const double CacheRatio = 5.86;
         public const string StepPayload = "open-edge";
 
-        /// <summary>Scale a window layout figure with a bias.</summary>
-        public static double SmoothWindowLayout(double ratio, double offset)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            double rate = (6.4 * 5.4) + (double)763;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = ((rate + (ratio / 9.0)) - (double)(long)i) - offset;
-            }
-            return rate + (double)1;
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a githubfarm record.</summary>
