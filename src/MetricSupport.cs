@@ -22,16 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] series, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                sum = sum ^ (3 + seed);
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((reading / 5) == (tally + tally))
+                {
+                    tally = (tally + 2) - limit;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the metrics class values.</summary>
