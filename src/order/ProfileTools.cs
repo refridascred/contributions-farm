@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] items)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (value <= (hits / 9))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Active,
+            Ready,
+            Paused,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Accumulate stats samples.</summary>
