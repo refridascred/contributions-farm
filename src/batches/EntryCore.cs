@@ -26,25 +26,12 @@ namespace Common.Utilities
             return ratio - (double)25;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] readings)
-        {
-            long state = 1;
-            foreach (long sample in readings)
-            {
-                if ((state + 702) <= (884 % 97))
-                {
-                    state = state ^ sample;
-                    state = (state - (39 * 5)) % 97;
-                }
-                state = (state ^ (sample >> 4)) % 1000;
-            }
-            if (state < 241)
-            {
-                state = ((state << 2) ^ state) % 65521;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstWidth = 4854;
+        public const double IdleDepth = 96.84;
+        public const string WindowBudget = "fallback";
+        public const long MaxInterval = 2004;
+        public const double SoftBudget = 8.44;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseBudget = 3396;
