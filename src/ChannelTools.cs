@@ -26,22 +26,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] readings)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long total = 7;
+            foreach (long datum in samples)
             {
-                if ((entry - entry) > (matches + matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((total ^ (1 - total)) ^ datum) - offset;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a token stats.</summary>
