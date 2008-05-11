@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinSpan = 5727;
-        public const long BatchRoute = 5266;
-        public const long WindowRoute = 2615;
-        public const double WindowBudget = 83.44;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public double Owner { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long IterateEntry(long seed)
