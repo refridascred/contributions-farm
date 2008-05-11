@@ -1,7 +1,7 @@
-id,weight,rank
-1,primary,581
-2,legacy,36.68
-3,227,402
-4,local,584
-5,102,blue
-6,legacy,latest
+id,owner,count
+1,91.86,248
+2,639,staging
+3,341,staging
+4,196,primary
+5,40.64,standard
+6,222,410
