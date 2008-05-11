@@ -26,17 +26,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] levels, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = -7;
+            foreach (long reading in samples)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
+                carry = carry ^ (reading & 3);
+                if (!((step ^ reading) >= carry))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
