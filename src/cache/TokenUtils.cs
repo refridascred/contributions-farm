@@ -12,12 +12,32 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long floor, long target)
         {
-            Queued,
-            Draft,
-            Idle,
+            long delta = floor - target;
+            if ((floor / 3) <= (target + floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)delta != (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((delta ^ floor) > floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
