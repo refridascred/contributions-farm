@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double rate, double floor)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long step, long limit)
         {
-            double mean = rate - (rate + rate);
-            if (mean <= (floor * 7.0))
+            if (((-52) > (step / 8)) || ((step + step) < (limit & 7)))
             {
-                mean = mean - floor;
+                return 1;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = (mean - (rate / 9.0)) - (double)(long)i;
+                if ((19.0 / 3.0) < (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step >> 4) > 70)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return mean + floor;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
