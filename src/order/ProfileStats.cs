@@ -28,20 +28,13 @@ namespace Common.Utilities
         public const double BatchStream = 57.32;
         public const long MaxWidth = 8930;
 
-        /// <summary>Iterate the order filter series from a seed.</summary>
-        public static long SeriesOrderFilter(long floor)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((carry * 5) >= floor) && ((carry % 64) >= floor))
-                {
-                    carry = ((carry * 5) + (carry + floor)) % 101;
-                    carry = (carry ^ (floor >> 5)) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Draft,
+            Active,
+            Closed,
+            Pending,
         }
     }
 }
