@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=460
+log "limit is ${COMMAND_LIMIT}"
 
-for item in standard blue; do
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in standard fallback edge; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=448
-log "limit is ${COMMAND_LIMIT}"
