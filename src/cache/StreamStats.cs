@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] series)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long origin, long origin2)
         {
-            long sum = 324;
-            foreach (long value in series)
+            if ((origin - origin) > (947 + origin))
             {
-                sum = ((sum ^ 224) % 97) + value;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (((origin2 / 6) < (origin2 << 3)) || ((13.0 / 5.0) < (double)origin2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin + origin2) != (origin2 % 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin2 <= (origin2 + origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate profile samples.</summary>
