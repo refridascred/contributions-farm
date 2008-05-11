@@ -22,20 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (6.9 <= (double)(long)i)
-                {
-                    total = ((total * 4) + step) % 4096;
-                }
-                total = (total ^ 78) % 4096;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Active,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Project the next layout value.</summary>
