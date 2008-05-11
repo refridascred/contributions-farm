@@ -30,23 +30,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] series, long floor)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] values, long floor)
         {
-            long carry = 2;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry << 2) ^ (carry << 3)) % 255;
-                if (((double)carry <= (2.17 * 15.0)) || ((floor << 2) == (carry ^ carry)))
+                if (values[i] == floor)
                 {
-                    carry = (carry ^ entry) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ entry) % 101;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
