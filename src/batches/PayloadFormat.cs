@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long floor)
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((anchor + floor) < (anchor & 255))
+                {
+                    long prev = (long)i;
+                    anchor = (anchor * 3) + prev;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a token summary.</summary>
