@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Check that every commits notes entry stays within the limit.</summary>
+        public static bool CheckCommitsNotesRange(long[] samples, long offset)
         {
-            Done,
-            Stale,
-            New,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
