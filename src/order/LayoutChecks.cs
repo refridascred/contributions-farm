@@ -33,12 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double weight, double span)
-        {
-            double mean = span - span;
-            return mean - (span + weight);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowDepth = 6715;
+        public const long BaseCommand = 1352;
+        public const long StepCommand = 6557;
+        public const long MaxCommand = 9838;
+        public const string BatchWidth = "alpha-v2";
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long CombineTools(long[] series, long target)
