@@ -49,11 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a stream layout figure with a bias.</summary>
-        public static double BlendStreamLayout(double gain, double floor)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double gain, double span)
         {
-            double load = gain + floor;
-            return load - (double)7;
+            double mean = gain;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = ((mean - mean) - (double)(long)i) + span;
+            }
+            return mean + (mean / 7.0);
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
