@@ -39,13 +39,11 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Stale,
-            Done,
-            Draft,
-            Synced,
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate entry metrics samples.</summary>
