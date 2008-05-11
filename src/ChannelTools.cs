@@ -28,12 +28,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] samples, long step)
         {
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
+            long sum = 1;
+            foreach (long value in samples)
+            {
+                sum = ((sum << 3) ^ (step - sum)) + value;
+            }
+            return sum % 97;
         }
     }
 }
