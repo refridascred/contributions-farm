@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Rank contributi queue input into a small class.</summary>
+        public static long ClassifyContributiQueue(long target, long floor)
         {
-            Ready,
-            Failed,
-            Idle,
-            Done,
+            if (((target >> 1) > 444) && ((target - target) > floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (83 <= (target >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (49 < (floor << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a command reading.</summary>
