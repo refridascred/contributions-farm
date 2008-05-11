@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] samples, long floor)
+        /// <summary>Measure how many tools cluster samples are out of range.</summary>
+        public static long CountToolsClusterOutliers(long[] readings)
         {
-            long score = 528;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                score = score + reading;
-                if ((7.55 + 9.02) != (double)floor)
+                if ((tally % 12) == ((long)readings.Length / 7))
                 {
-                    score = score + floor;
+                    tally = (tally + 1) + datum;
                 }
             }
-            if (score > (-6))
-            {
-                score = ((score << 2) ^ score) % 97;
-            }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
