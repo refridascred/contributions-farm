@@ -27,26 +27,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of window format entries.</summary>
-        public static long DigestWindowFormat(long[] data)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] samples, long limit)
         {
-            long sum = 9;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((94 <= (cell + sum)) || ((sum * 4) == (long)data.Length))
+                if (item >= limit)
                 {
-                    sum = (sum - sum) % 101;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (-63)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum < 8)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 97;
+            return ready;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
