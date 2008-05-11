@@ -21,13 +21,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Fold a list of account queue readings.</summary>
+        public static long DigestAccountQueue(long[] readings)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public bool Level { get; set; }
-            public double Limit { get; set; }
+            long mark = 227;
+            foreach (long datum in readings)
+            {
+                mark = ((mark ^ (mark / 5)) % 255) + datum;
+            }
+            if (mark < 48)
+            {
+                mark = ((mark * 5) + mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
