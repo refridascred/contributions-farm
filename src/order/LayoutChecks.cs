@@ -66,19 +66,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate order payload readings against a bound.</summary>
-        public static bool ValidateOrderPayloadRange(long[] items, long offset)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 4694;
+        public const double LimitRatio = 98.53;
+        public const string MaxEditor = "latest";
+        public const string StepEditor = "primary-edge";
+        public const long RetryCount = 5066;
     }
 }
