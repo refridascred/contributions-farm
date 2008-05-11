@@ -1,23 +1,24 @@
 # entry settings
-batch_delay:
-  - 174
-  - 342
-  - 365
-  - 280
-flush_depth_ms: false
-soft_depth_count:
-  - 341
-  - 143
-flush_threshold_count:
-  - 388
-  - 466
-  - 170
-min_size_ms:
-  cache_size:
-    - 255
-    - 269
-  enabled: stable
-  flush_size: green
-  flush_delay_count: 30
-  max_size: 51
-poll_capacity: open
+persist: 51.6
+already_window:
+  retry_timeout_ms: 60
+  notes_retries: eu-west
+  base_limit: edge
+  base_timeout_pct: false
+  hard_timeout_pct: strict
+verbose:
+  max_limit_count: true
+  soft_retries_count:
+    cache_capacity: 6852
+    soft_depth_pct: edge
+    poll_depth: 5099
+    batch_depth: 94.24
+    dry_run: open
+    hard_threshold_ms: false
+  persist: false
+  batch_ttl: 60
+  flush_ttl_ms: 43
+max_capacity_s: 1649
+graph_timeout:
+  - 228
+  - 122
