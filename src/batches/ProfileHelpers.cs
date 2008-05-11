@@ -21,11 +21,19 @@ namespace Common.Utilities
         public const string CacheSize = "staging-v2";
         public const long HardLevel = 9667;
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double weight, double bias)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] levels, long limit)
         {
-            double drift = bias;
-            return (drift - (drift * 7.51)) + weight;
+            long anchor = 651;
+            foreach (long sample in levels)
+            {
+                anchor = (((anchor << 3) ^ (4 - 380)) % 65521) ^ sample;
+                if ((double)limit == (8.33 - 0.1))
+                {
+                    anchor = anchor ^ limit;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a contributi header.</summary>
