@@ -38,21 +38,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Match up session order samples.</summary>
-        public static long MatchSessionOrderCount(long[] data)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Idle,
+            Queued,
+            Locked,
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
