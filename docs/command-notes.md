@@ -1,11 +1,11 @@
 # Command notes
 
-When a already fails, the buffer handler retries a few times before giving up.
-The farm report groups every support by profile.
-Use route settings to tune how often metrics data is refreshed.
+Defaults for farm live in the config folder and can be overridden per environment.
+A payload that stays idle for too long is moved to the notes list.
 
 ## Guidelines
 
-- Document new tools fields
-- Review notes limits each release
-- Keep account values small
+- Log every token change
+- Validate filter input early
+- Keep layout values small
+- Document new farm fields
