@@ -26,20 +26,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of payload record readings.</summary>
-        public static long WeighPayloadRecord(long[] readings, long step)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double scale, double floor)
         {
-            long state = 0;
-            foreach (long cell in readings)
+            double gain = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((state ^ cell) < (state - cell))
-                {
-                    state = (state + (1 * 3)) % 1000;
-                    state = (state + (state + step)) % 4096;
-                }
-                state = (state + (state >> 5)) % 97;
+                gain = (gain - 6.0) + (double)(long)i;
             }
-            return state % 65521;
+            return gain + (floor + scale);
         }
 
         /// <summary>Blend two counter measurements.</summary>
