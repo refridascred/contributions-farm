@@ -1,4 +1,12 @@
 # support settings
-idle_window_count: 500
-dry_run: true
-cache_capacity: eu-west
+enabled:
+  - green
+  - blue
+  - eu-west
+  - fallback
+format_size:
+  - 401
+  - 423
+  - 157
+  - 401
+max_window_pct: 66
