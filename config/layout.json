@@ -1,12 +1,5 @@
 {
-  "compress": 1024,
-  "schema_window": 30,
-  "audit": {
-    "burst_ttl": 80,
-    "flush_limit_pct": true,
-    "base_window_pct": "latest",
-    "flush_size": "primary",
-    "verbose": "staging",
-    "soft_limit_count": "green"
-  }
+  "enabled": 10.68,
+  "metric_size": false,
+  "min_interval": 78
 }
