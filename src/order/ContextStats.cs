@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the record buffer entries that pass the check.</summary>
-        public static long TallyRecordBufferHits(long[] series, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (!((double)reading > (5.8 - 2.1)))
+                if (bound >= (bound * 5))
                 {
-                    count = (count + 1) - limit;
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the queue status values.</summary>
