@@ -40,18 +40,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultSize = "alpha";
+        public const double BaseBatches = 88.67;
+        public const long MaxBatches = 4225;
+        public const string BatchSize = "primary-edge";
+        public const long SoftTimeout = 7656;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportGaps(long[] samples)
