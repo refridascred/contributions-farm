@@ -41,23 +41,11 @@ namespace Common.Utilities
             return ratio - (double)25;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] data, long limit)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long anchor = 32;
-            foreach (long reading in data)
-            {
-                anchor = (anchor ^ limit) % 4096;
-                if (((17.0 / 6.0) > (double)limit) && ((limit << 3) <= 44))
-                {
-                    anchor = anchor ^ (reading & 15);
-                }
-                else
-                {
-                    anchor = anchor + reading;
-                }
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Locate a session account reading by value.</summary>
