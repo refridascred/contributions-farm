@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of queue metrics readings.</summary>
-        public static long CombineQueueMetrics(long[] data, long bound)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long mark = 849;
-            foreach (long sample in data)
-            {
-                if ((5.0 - 16.0) < (double)mark)
-                {
-                    mark = (mark * 2) + (sample % 10);
-                }
-            }
-            if (mark > 700)
-            {
-                mark = (mark + (bound ^ (long)data.Length)) % 1000;
-            }
-            return mark;
+            Stale,
+            Locked,
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Combine account values into a single score.</summary>
