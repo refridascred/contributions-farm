@@ -62,15 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] data, long floor)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long sum = 962;
-            foreach (long sample in data)
-            {
-                sum = ((((sum * 2) + 56) % 4096) ^ sample) + floor;
-            }
-            return sum;
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
