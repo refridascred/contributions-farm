@@ -1,4 +1,11 @@
 # support settings
-sync_depth: cached
-hard_ttl: 76.61
-notes_threshold: true
+batch_window: 80
+compress: latest
+farm_ratio:
+  batches_timeout: 46
+  farm_depth: cached
+  account_threshold:
+    - open
+    - stable
+    - staging
+editor_ttl: 6280
