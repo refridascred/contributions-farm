@@ -60,11 +60,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double gain, double floor)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double weight = gain;
-            return (weight + (3.83 + 2.0)) + floor;
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
