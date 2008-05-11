@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] samples)
+        /// <summary>Check that every metrics entry entry stays within the limit.</summary>
+        public static bool GuardMetricsEntryRange(long[] items, long step)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (item > (item * 4))
+                if (datum < step)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the route state values.</summary>
