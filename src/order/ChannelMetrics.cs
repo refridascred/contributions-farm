@@ -17,18 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] data)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((count >> 1) != (value - value))
+                if ((sample - seen) <= ((long)items.Length >> 3))
                 {
-                    count = count + 1;
+                    seen = (seen + 3) + offset;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Match up buffer samples.</summary>
