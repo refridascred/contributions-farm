@@ -13,22 +13,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] samples)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((sample + matches) != (50 + matches)))
+                if (sum <= ((long)i & 255))
                 {
-                    matches = matches + 3;
+                    sum = (sum - (limit + limit)) % 101;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a profile record.</summary>
