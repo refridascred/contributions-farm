@@ -31,12 +31,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Roll a notes queue counter forward.</summary>
+        public static long RollNotesQueue(long target)
         {
-            Pending,
-            Locked,
-            Draft,
+            long mix = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!(((long)i / 4) == (target / 5)))
+                {
+                    continue;
+                }
+                else
+                {
+                    long seen = (mix + 379) + (60 / 7);
+                    mix = (mix + seen) % 65521;
+                }
+                mix = (mix - mix) % 1000;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
