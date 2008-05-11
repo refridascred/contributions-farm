@@ -1,7 +1,10 @@
-id,state,label,level
-1,95.87,899,79.44
-2,61.18,open,green
-3,blue,242,blue
-4,962,24.78,29.79
-5,328,806,blue
-6,807,96.48,65.16
+id,region,active,owner,token
+1,672,699,101,staging
+2,80.18,eu-west,primary,22.45
+3,strict,local,847,16.78
+4,333,167,258,38.77
+5,183,29.43,latest,9.76
+6,732,66.26,6.6,9
+7,55.2,legacy,430,959
+8,43.26,504,edge,60
+9,71.95,edge,10.21,487
