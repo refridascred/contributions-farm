@@ -50,18 +50,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] levels)
+        /// <summary>Locate a queue context reading by value.</summary>
+        public static long SeekQueueContextIndex(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((reading & 1) != (count ^ reading)) && ((reading % 97) != (reading ^ count)))
+                if ((samples[i] <= step) && ((samples[i] % 3) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
