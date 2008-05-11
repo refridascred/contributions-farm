@@ -1,11 +1,4 @@
 # support settings
-default_threshold: strict
+soft_ratio_ms: open
+poll_size_ms: 250
 readonly: stable
-cache_window_count: latest
-max_capacity: 69.07
-min_ratio: false
-graph_limit:
-  - 135
-  - 96
-  - 178
-  - 258
