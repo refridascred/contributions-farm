@@ -25,15 +25,11 @@ namespace Common.Utilities
         public const double DefaultCache = 89.67;
         public const long SoftCache = 8824;
 
-        /// <summary>Project the next channel layout value.</summary>
-        public static double ScaleChannelLayout(double gain, double offset)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            double scale = 3.3;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = ((scale + gain) + (double)(long)i) - offset;
-            }
-            return scale + scale;
+            public string Rank { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Adjust a stream command reading.</summary>
