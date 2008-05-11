@@ -28,10 +28,20 @@ namespace Common.Utilities
         public const double BatchStream = 57.32;
         public const long MaxWidth = 8930;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 1200;
-        public const long IdleFactor = 5934;
-        public const string LimitInterval = "standard-edge";
-        public const long BatchCommits = 3274;
+        /// <summary>Iterate the order filter series from a seed.</summary>
+        public static long SeriesOrderFilter(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((carry * 5) >= floor) && ((carry % 64) >= floor))
+                {
+                    carry = ((carry * 5) + (carry + floor)) % 101;
+                    carry = (carry ^ (floor >> 5)) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
