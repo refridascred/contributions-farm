@@ -41,21 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of queue graph readings.</summary>
-        public static long MatchQueueGraphCount(long[] items)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
