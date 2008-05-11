@@ -1,5 +1,18 @@
 {
-  "persist": ["staging", "latest", "staging", "standard"],
-  "idle_window": [93, 10, 202],
-  "poll_timeout_count": 46.97
+  "hard_threshold_s": {
+    "soft_limit_count": ["staging", "green", "open", "cached"],
+    "stream_capacity": true,
+    "notes_size": "blue",
+    "min_limit": {
+      "soft_depth": ["eu-west", "cached"],
+      "verbose": "fallback",
+      "hard_size": true,
+      "min_timeout_ms": "primary"
+    },
+    "idle_capacity_count": false
+  },
+  "readonly": 36.44,
+  "command_depth": "edge",
+  "enabled": 74,
+  "farm_interval": 30
 }
