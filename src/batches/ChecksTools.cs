@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Closed,
+            Stale,
+            Idle,
             Done,
             New,
-            Retry,
-            Synced,
+            Locked,
         }
 
         /// <summary>Combine session values into a single score.</summary>
