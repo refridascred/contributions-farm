@@ -1,12 +1,6 @@
 {
-  "cache_size_ms": {
-    "verbose": false,
-    "cache_threshold_s": "standard",
-    "base_window": false,
-    "route_ttl": "stable"
-  },
-  "default_threshold_s": 9.85,
-  "enabled": "standard",
-  "audit": "fallback",
-  "account_delay": "stable"
+  "retry_depth_pct": 7.84,
+  "default_retries_pct": ["blue", "blue", "eu-west"],
+  "enabled": "eu-west",
+  "support_timeout": 6045
 }
