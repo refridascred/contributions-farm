@@ -12,28 +12,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] data, long origin)
-        {
-            long score = 5;
-            foreach (long reading in data)
-            {
-                if ((score + origin) >= (5 & 255))
-                {
-                    score = (score * 3) + (83 + origin);
-                    break;
-                }
-                if ((double)score <= (double)reading)
-                {
-                    score = (score + reading) % 65521;
-                }
-                else
-                {
-                    score = ((score * 2) + (reading << 3)) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSize = 6625;
+        public const double LimitWidth = 91.77;
+        public const long BaseSize = 1504;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
