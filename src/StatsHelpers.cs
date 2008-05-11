@@ -20,14 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Iterate the support schema series from a seed.</summary>
+        public static long SeriesSupportSchema(long target)
         {
-            Failed,
-            Ready,
-            Idle,
-            Closed,
-            Queued,
+            long sum = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(target <= 60))
+                {
+                    break;
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = (sum ^ (sum + sum)) + (long)i2;
+                    sum = (sum * 3) + (sum - sum);
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Locate a already reading by value.</summary>
