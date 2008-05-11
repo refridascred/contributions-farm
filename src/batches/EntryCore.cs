@@ -60,13 +60,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Locate a session account reading by value.</summary>
+        public static long LocateSessionAccountIndex(long[] series, long step)
         {
-            Failed,
-            Paused,
-            Pending,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
