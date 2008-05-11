@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const string BatchFormat = "legacy-edge";
         public const long MinTimeout = 5495;
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] samples, long bound)
         {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
