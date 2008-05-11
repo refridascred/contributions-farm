@@ -36,11 +36,11 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Adjust a stream command reading.</summary>
+        public static double AdjustStreamCommand(double gain, double span)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            double rate = gain - gain;
+            return (rate + (double)604) + span;
         }
 
         /// <summary>Adjust a profile reading.</summary>
