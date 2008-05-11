@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many editor record samples are out of range.</summary>
-        public static long TallyEditorRecordMatches(long[] readings)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((3 - value) >= (tally - tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Pending,
+            Done,
+            Synced,
+            Paused,
         }
 
         /// <summary>Check that every window tools entry stays within the limit.</summary>
