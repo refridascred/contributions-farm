@@ -61,18 +61,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] data, long origin)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((((1 + datum) <= (seen << 3)) || ((double)(long)data.Length < (double)seen)) && (seen >= ((long)data.Length + datum)))
-                {
-                    seen = (seen + 3) + origin;
-                }
-            }
-            return seen;
+            Queued,
+            Stale,
+            Pending,
+            Ready,
         }
     }
 }
