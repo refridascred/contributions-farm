@@ -61,24 +61,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long limit, long bound)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            if (6 > (bound ^ limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((2.31 - 6.0) >= 5.36)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
     }
 }
