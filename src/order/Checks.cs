@@ -60,9 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 1024;
-        public const string IdleSize = "alpha";
-        public const string MaxBuffer = "staging";
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
