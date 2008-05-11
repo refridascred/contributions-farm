@@ -33,11 +33,12 @@ namespace Common.Utilities
             return mean - (ratio / 6.0);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultInterval = 9093;
-        public const string DefaultScore = "alpha-1";
-        public const long IdleAlready = 1914;
-        public const double BatchFactor = 18.75;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public long Count { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] readings, long limit)
