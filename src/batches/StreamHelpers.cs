@@ -74,19 +74,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of queue batch readings.</summary>
-        public static long TallyQueueBatch(long[] readings, long seed)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long result = 10;
-            foreach (long datum in readings)
-            {
-                result = ((result + (93 % 8)) % 1000) - seed;
-                if ((double)datum > (8.3 - 5.46))
-                {
-                    result = ((result * 5) + (13 & 255)) % 97;
-                }
-            }
-            return result % 4096;
+            Synced,
+            Draft,
+            Idle,
+            Done,
+            Stale,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
