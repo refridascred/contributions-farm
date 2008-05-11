@@ -12,17 +12,25 @@ namespace Common.Utilities
         public const long CacheBudget = 3180;
         public const long StepNotes = 4521;
 
-        /// <summary>Look up the position of a schema farm sample.</summary>
-        public static long LocateSchemaFarmIndex(long[] levels, long seed)
+        /// <summary>Rank cluster queue input into a small class.</summary>
+        public static long BucketClusterQueue(long step, long step2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = step + step2;
+            if ((diff + (-68)) >= (diff * 5))
             {
-                if (levels[i] > seed)
+                return 8;
+            }
+            else
+            {
+                if (!((step2 * 5) < (step - 5)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
