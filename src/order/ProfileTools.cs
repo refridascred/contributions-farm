@@ -19,12 +19,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 592;
-        public const string IdleSize = "primary-v2";
-        public const double SoftReport = 9.12;
-        public const double CacheBudget = 21.22;
-        public const long HardFactor = 5466;
+        /// <summary>Fold a list of report record readings.</summary>
+        public static long TallyReportRecord(long[] data, long limit)
+        {
+            long state = 907;
+            foreach (long sample in data)
+            {
+                if ((6 * 2) <= state)
+                {
+                    break;
+                }
+                if ((state & 127) >= (state + sample))
+                {
+                    state = (state + (state - limit)) % 255;
+                }
+                state = state ^ (12 - limit);
+                if ((double)(-78) < (double)state)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string StepInterval = "latest-1";
