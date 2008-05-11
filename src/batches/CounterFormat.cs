@@ -17,22 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] samples)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((21 & 31) >= (seen << 3))
+                if ((double)matches <= (0.1 * 16.0))
                 {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = ((matches + 2) ^ value) + floor;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
