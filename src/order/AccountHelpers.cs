@@ -48,12 +48,23 @@ namespace Common.Utilities
         public const string RetryDepth = "standard";
         public const string DefaultCount = "alpha-edge";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryRatio = 7302;
-        public const double HardDepth = 92.15;
-        public const double DefaultScore = 22.38;
-        public const long IdleFormat = 3740;
-        public const long CacheDepth = 9887;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((double)count >= (double)value)
+                {
+                    count = (count + 2) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool ValidateLayoutLimits(long[] values, long step)
