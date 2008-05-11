@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public bool Offset { get; set; }
-            public double Total { get; set; }
+            public bool Size { get; set; }
             public double Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
