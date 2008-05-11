@@ -44,12 +44,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitBudget = 5416;
-        public const string MaxInterval = "primary";
-        public const long WindowInterval = 6101;
-        public const long BatchLevel = 9785;
-        public const string BaseCache = "alpha-v2";
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long SortLayout(long target, long bound)
