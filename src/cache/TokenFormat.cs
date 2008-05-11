@@ -36,18 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch already entries that pass the check.</summary>
-        public static long AuditBatchAlreadyMatches(long[] items, long origin)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((tally - tally) < (item + item))
-                {
-                    tally = (tally + 2) - origin;
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            Dropped,
+            Retry,
+            Pending,
         }
     }
 }
