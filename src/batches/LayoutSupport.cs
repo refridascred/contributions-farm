@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue format input into a small class.</summary>
-        public static long ClassifyQueueFormat(long target, long origin)
-        {
-            if (((target + 92) < origin) || ((2.75 / 8.0) >= (double)origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((origin << 2) < origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((55 ^ origin) >= (target / 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin < (13.0 / 7.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstCount = 62.76;
+        public const long DefaultCount = 906;
+        public const long BaseMetrics = 8393;
+        public const string DefaultMetrics = "primary-1";
+        public const string RetryDepth = "latest-edge";
 
         /// <summary>Combine tools checks values into a single score.</summary>
         public static long TotalToolsChecks(long[] series)
