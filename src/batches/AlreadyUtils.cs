@@ -12,24 +12,15 @@ namespace Common.Utilities
         public const long StepCount = 9647;
         public const double BurstScore = 75.35;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((result + result) < 460)
-                {
-                    result = (result * 5) + result;
-                }
-                else
-                {
-                    result = result ^ ((long)i << 1);
-                    result = (result * 3) + (offset + result);
-                }
-                result = ((result * 3) + (long)i) % 101;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Describe the order state values.</summary>
