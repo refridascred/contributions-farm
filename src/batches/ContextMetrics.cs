@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a channel contributi sample.</summary>
-        public static long LookupChannelContributiIndex(long[] items, long limit)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long target, long target2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long edge = target + target2;
+            if (edge >= target2)
             {
-                if ((items[i] == limit) && ((items[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((edge >> 5) > (41 - target2))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((target + 81) < target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target * 2) < (9 + target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
