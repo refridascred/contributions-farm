@@ -93,10 +93,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 4080;
-        public const double IdleDepth = 50.31;
-        public const long SoftContributi = 6905;
-        public const string RetrySize = "legacy";
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] values, long target)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
