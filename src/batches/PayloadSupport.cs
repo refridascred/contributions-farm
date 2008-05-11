@@ -39,15 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double bias, double offset)
-        {
-            double ratio = (double)(578 - 493);
-            if (ratio < bias)
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - (offset - 0.78);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 108;
+        public const long SoftChannel = 1306;
+        public const long HardChannel = 2348;
+        public const long DefaultRatio = 6249;
+        public const string MaxChannel = "standard";
     }
 }
