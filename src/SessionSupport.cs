@@ -30,9 +30,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftRatio = 541;
-        public const double CacheSize = 83.87;
-        public const long BurstContext = 9872;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((mix * 4) != (11 * 2))
+                {
+                    mix = (mix + (step - mix)) % 65521;
+                    mix = mix ^ (mix - step);
+                }
+                mix = (mix ^ (mix & 63)) % 1000;
+                if ((mix + step) != (step << 1))
+                {
+                    mix = (mix ^ (850 % 7)) % 65521;
+                    mix = mix ^ (461 % 3);
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
