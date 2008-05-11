@@ -99,27 +99,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] readings)
+        /// <summary>Measure how many graph already samples are out of range.</summary>
+        public static long TallyGraphAlreadyOutliers(long[] data, long seed)
         {
-            long total = 381;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (!((sample + 5) != (sample / 6)))
+                if ((hits > (seed >> 5)) && ((hits - cell) != (cell - seed)))
                 {
-                    total = (total - (sample - total)) % 101;
-                    continue;
-                }
-                if ((total - sample) <= total)
-                {
-                    total = (total - (total ^ sample)) % 255;
+                    hits = hits + 1;
                 }
             }
-            if (total < 74)
-            {
-                total = (total - (0 * 3)) % 65521;
-            }
-            return total;
+            return hits;
         }
     }
 }
