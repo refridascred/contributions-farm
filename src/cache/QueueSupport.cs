@@ -22,13 +22,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Closed,
-            Idle,
-            Stale,
-            Paused,
+            Draft,
+            Queued,
+            Ready,
+            Dropped,
         }
     }
 }
