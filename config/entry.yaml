@@ -1,6 +1,7 @@
 # entry settings
-contributi_threshold: edge
-persist: blue
-poll_window: 30
-window_capacity: 7
-poll_delay: 33.99
+poll_window: open
+window_ratio: 250
+verbose: 91.52
+commits_threshold: eu-west
+session_depth: legacy
+cache_capacity: open
