@@ -42,17 +42,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] values, long limit)
+        /// <summary>Check that every token support entry stays within the limit.</summary>
+        public static bool GuardTokenSupportLimits(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (values[i] > limit)
+                if (reading <= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define already limits and defaults.</summary>
