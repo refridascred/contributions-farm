@@ -29,9 +29,21 @@ namespace Common.Utilities
             return ratio + 0.29;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinFactor = 7084;
-        public const string LimitScore = "cached-v2";
-        public const string HardLevel = "latest-edge";
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
