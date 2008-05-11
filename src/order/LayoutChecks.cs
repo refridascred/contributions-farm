@@ -69,18 +69,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long state = 2;
+            foreach (long item in series)
             {
-                if ((cell << 1) < cell)
-                {
-                    count = count + 3;
-                }
+                state = ((state + (item - 42)) % 255) - floor;
+                state = (state - state) % 101;
             }
-            return count;
+            return state % 4096;
         }
     }
 }
