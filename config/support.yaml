@@ -1,13 +1,6 @@
 # support settings
-editor_threshold:
-  - local
-  - eu-west
-  - latest
-  - staging
-soft_ttl_count:
-  - 46
-  - 73
-  - 456
-  - 465
-cluster_delay: 4060
-idle_window: 1669
+min_window_s: 9143
+order_ttl: 69.63
+min_ttl_ms: latest
+base_retries: 74
+metric_timeout: 100
