@@ -1,38 +1,14 @@
 # githubfarm settings
-graph_ratio: true
-default_ttl_pct: 500
-warm_capacity_ms:
-  - 54
-  - 237
-  - 26
-soft_ttl_pct:
-  - blue
-  - strict
-  - local
-  - primary
-readonly:
-  enabled:
-    retry_interval_count: green
-    record_retries:
-      - 306
-      - 73
-      - 405
-    default_delay: 42.22
-    metric_ttl: true
-    min_timeout_s: 6327
-  strict:
-    - 1
-    - 401
-    - 489
-  channel_capacity: 90.15
-  soft_timeout_s: blue
-  notes_retries: 26.73
-  dry_run:
-    record_depth: blue
-    metrics_delay:
-      - 398
-      - 154
-      - 225
-    verbose: 62
-    poll_timeout_ms: 4448
-    idle_timeout_s: false
+audit: 24.02
+warm_depth_ms:
+  cache_interval_count: false
+  default_capacity:
+    soft_window: 55
+    githubfarm_timeout: 2781
+    verbose: 71.08
+    flush_limit_count: 42.33
+    format_limit: false
+  compress: 4751
+  route_ttl: 96.07
+order_capacity: 100
+base_ratio_count: 100
