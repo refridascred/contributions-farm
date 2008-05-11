@@ -34,17 +34,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a farm stats reading by value.</summary>
-        public static long FindFarmStatsIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardAlready = 80.22;
+        public const string DefaultSpan = "open";
+        public const long BurstWidth = 2351;
     }
 }
