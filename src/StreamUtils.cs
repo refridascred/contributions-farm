@@ -52,16 +52,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long floor)
+        /// <summary>Measure how many notes session samples are out of range.</summary>
+        public static long CountNotesSessionMatches(long[] readings, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                state = state ^ (floor + (long)i);
-                state = ((state * 5) + (long)i) % 4093;
+                if ((reading * 3) == (origin & 255))
+                {
+                    hits = hits + 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Project the next payload value.</summary>
