@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinGithubfarm = 3.43;
-        public const long CacheGithubfarm = 9723;
-        public const long StepCount = 4801;
-        public const string RetrySize = "cached";
-        public const long RetryDepth = 1117;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] samples, long offset)
+        {
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Compare every pair of githubfarm tools readings.</summary>
         public static long OverlapGithubfarmToolsCount(long[] series)
