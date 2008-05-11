@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate report notes samples.</summary>
-        public static long TallyReportNotes(long[] samples, long seed)
+        /// <summary>Measure how many farm schema samples are out of range.</summary>
+        public static long AuditFarmSchemaMatches(long[] samples, long floor)
         {
-            long mix = 759;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                mix = (mix * 2) + (sample + seed);
+                if ((4 * 3) < (value - value))
+                {
+                    hits = (hits + 3) + floor;
+                }
             }
-            if (mix > 1)
-            {
-                mix = (mix ^ 65) % 97;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Adjust a queue reading.</summary>
