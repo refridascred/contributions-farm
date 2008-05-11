@@ -46,10 +46,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinPayload = "fallback-edge";
-        public const long StepInterval = 8893;
-        public const long WindowPayload = 7470;
-        public const long StepRatio = 1868;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long target, long limit)
+        {
+            if ((target / 7) <= limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9.0 * 9.99) >= (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
