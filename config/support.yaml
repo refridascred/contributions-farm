@@ -1,10 +1,8 @@
 # support settings
-hard_ratio: 250
-default_delay_pct:
-  default_threshold_ms: 7836
-  warm_threshold_pct: 34
-  flush_size_pct: 3688
-strict: 6276
-persist: 27.12
-order_ttl: strict
-burst_limit_pct: blue
+strict:
+  - fallback
+  - standard
+  - open
+sync_limit: standard
+token_size: stable
+token_retries: 2
