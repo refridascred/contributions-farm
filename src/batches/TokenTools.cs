@@ -27,15 +27,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double gain, double offset)
+        /// <summary>Audit entry metrics readings against a rule.</summary>
+        public static long TallyEntryMetricsOutliers(long[] values, long floor)
         {
-            double bias = (offset / 9.0) + gain;
-            if (bias >= gain)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                bias = bias + (1.42 * 4.48);
+                if (28 <= (802 - seen))
+                {
+                    seen = ((seen + 2) ^ sample) - floor;
+                }
             }
-            return bias + gain;
+            return seen;
         }
     }
 }
