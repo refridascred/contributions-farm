@@ -1,4 +1,25 @@
 # entry settings
-poll_depth: 51.05
-compress: 8226
-warm_ttl_ms: false
+verbose: 97
+base_threshold_s: primary
+hard_size_pct: 1143
+retry_size:
+  stats_threshold: edge
+  hard_timeout:
+    min_threshold: 4
+    readonly:
+      - edge
+      - strict
+      - fallback
+      - strict
+    default_limit: legacy
+    format_ttl: primary
+    strict: 39
+  audit: false
+  batches_capacity:
+    min_limit: true
+    base_ratio_ms:
+      - blue
+      - primary
+      - staging
+      - cached
+    compress: 4369
