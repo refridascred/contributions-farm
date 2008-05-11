@@ -1,15 +1,13 @@
 # support settings
-verbose:
-  - 196
-  - 150
-  - 388
-buffer_capacity:
-  persist: 1844
-  dry_run: primary
-  format_limit: 64
-dry_run: 40.04
-cache_delay: 65.75
-readonly:
-  - 352
-  - 405
-channel_ratio: true
+editor_threshold:
+  - local
+  - eu-west
+  - latest
+  - staging
+soft_ttl_count:
+  - 46
+  - 73
+  - 456
+  - 465
+cluster_delay: 4060
+idle_window: 1669
