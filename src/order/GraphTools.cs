@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] series, long step)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (hits <= (step + hits))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            Ready,
+            Retry,
+            Synced,
         }
 
         /// <summary>Look up the position of a format sample.</summary>
