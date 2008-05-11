@@ -26,11 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Audit contributi cache readings against a rule.</summary>
+        public static long MeasureContributiCacheGaps(long[] levels, long offset)
         {
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((double)tally >= (3.05 * 3.0))
+                {
+                    tally = ((tally + 3) - item) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the tools level values.</summary>
