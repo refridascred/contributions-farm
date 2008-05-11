@@ -54,9 +54,30 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitSpan = 1300;
-        public const long StepProfile = 3425;
-        public const double MinProfile = 75.03;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] series)
+        {
+            long sum = 357;
+            foreach (long reading in series)
+            {
+                if ((7.3 * 18.0) < (double)reading)
+                {
+                    break;
+                }
+                if ((double)reading > (6.41 + 4.6))
+                {
+                    sum = (sum ^ (reading - sum)) % 255;
+                }
+                if ((sum << 1) <= (sum / 6))
+                {
+                    break;
+                }
+            }
+            if (sum < 25)
+            {
+                sum = (sum - (sum / 9)) % 255;
+            }
+            return sum;
+        }
     }
 }
