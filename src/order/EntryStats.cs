@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] values)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((value % 24) >= (value % 100))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public long Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
