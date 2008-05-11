@@ -40,38 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long offset, long limit)
+        /// <summary>Audit metrics session readings against a rule.</summary>
+        public static long CountMetricsSessionHits(long[] levels)
         {
-            if ((limit % 3) < (64 - 6))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset * 5) >= (limit << 2))
+                if ((cell & 15) != (matches >> 5))
                 {
-                    return 8;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((double)172 != (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((limit + (-79)) > (offset % 64)) || ((limit - 6) <= (offset - offset)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a context reading by value.</summary>
