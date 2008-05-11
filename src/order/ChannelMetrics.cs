@@ -14,12 +14,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] data)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            long state = -66;
+            foreach (long reading in data)
+            {
+                state = (state << 2) ^ state;
+                state = state ^ (reading % 64);
+            }
+            return state;
         }
 
         /// <summary>Hold a route options.</summary>
