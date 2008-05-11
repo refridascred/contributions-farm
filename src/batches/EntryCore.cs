@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a entry editor pair into a bucket.</summary>
-        public static long GradeEntryEditor(long seed, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] series, long offset)
         {
-            if ((origin <= (821 % 16)) && ((double)seed < 8.08))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin < (origin - seed))
+                if (!((entry ^ entry) > (seen + seen)))
                 {
-                    return 3;
+                    seen = (seen + 3) - offset;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next order account value.</summary>
