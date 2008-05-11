@@ -21,18 +21,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] values)
+        /// <summary>Blend two batches commits measurements.</summary>
+        public static double SmoothBatchesCommits(double scale, double span)
         {
-            long count = 0;
-            foreach (long value in values)
+            double mean = scale;
+            if (mean <= span)
             {
-                if (value < (value * 2))
-                {
-                    count = count + 1;
-                }
+                mean = mean + mean;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean + (mean * 3.6);
         }
 
         /// <summary>Hold a contributi stats.</summary>
