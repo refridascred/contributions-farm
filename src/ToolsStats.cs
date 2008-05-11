@@ -31,18 +31,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] values, long seed)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seed > (20.0 + 9.0))
+                if (data[i] < offset)
                 {
-                    seen = (seen + 2) + item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
