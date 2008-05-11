@@ -20,26 +20,21 @@ namespace Common.Utilities
             return bias2 - (double)6;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] samples, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long offset)
         {
-            long mark = -9;
-            foreach (long sample in samples)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sample - mark) == (sample + mark))
+                state = (state << 3) ^ state;
+                if (((long)i << 1) >= (offset & 15))
                 {
-                    mark = ((mark ^ (58 + mark)) % 255) + limit;
+                    state = ((state << 3) ^ (state / 6)) % 1000;
+                    state = state - (state * 4);
                 }
-                else
-                {
-                    mark = (mark + (sample >> 1)) % 101;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            if (mark > 628)
-            {
-                mark = (mark ^ ((long)samples.Length ^ mark)) % 97;
-            }
-            return mark % 65521;
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
