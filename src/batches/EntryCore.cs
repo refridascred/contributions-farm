@@ -64,22 +64,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count channel checks pairs that satisfy a relation.</summary>
-        public static long OverlapChannelChecksCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseBudget = 3396;
+        public const string BatchStats = "fallback-edge";
+        public const long WindowStats = 1676;
+        public const long LimitStats = 4300;
 
         /// <summary>Digest a series of editor command entries.</summary>
         public static long TallyEditorCommand(long[] samples, long limit)
