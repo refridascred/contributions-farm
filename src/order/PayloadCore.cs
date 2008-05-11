@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double scale, double floor)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double scale, double offset)
         {
-            double load = 3.6;
-            if (load < scale)
+            double bias = 9.08;
+            if (bias < (double)717)
             {
-                load = load + floor;
+                bias = ((bias - bias) + scale) - offset;
             }
-            return load + scale;
+            return bias - (8.2 / 9.0);
         }
 
         /// <summary>Describe the token kind values.</summary>
