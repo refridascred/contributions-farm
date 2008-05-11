@@ -37,15 +37,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double weight, double offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] readings, long origin)
         {
-            double weight2 = (double)(92 ^ 6);
-            if (weight2 > (double)23)
+            long total = 102;
+            foreach (long value in readings)
             {
-                weight2 = weight2 + offset;
+                total = (((total << 3) ^ (origin - total)) % 1000) + value;
+                total = total ^ origin;
             }
-            return weight2 - (weight / 9.0);
+            return total;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
