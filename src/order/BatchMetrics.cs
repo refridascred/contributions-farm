@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const long DefaultMetric = 7493;
         public const long LimitMetric = 5900;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepSize = 6708;
-        public const double MaxChecks = 46.48;
-        public const double LimitChecks = 61.35;
-        public const long BaseLevel = 775;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits - hits) < (663 >> 2))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long WindowFormat = 8101;
