@@ -28,10 +28,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowMetrics = "primary-1";
-        public const string MinBudget = "fallback-1";
-        public const string BatchMetrics = "legacy-edge";
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public string Count { get; set; } = "";
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Accumulate token account samples.</summary>
         public static long ScoreTokenAccount(long[] samples)
