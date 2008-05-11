@@ -50,13 +50,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
