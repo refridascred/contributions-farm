@@ -40,12 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchFactor = 4410;
-        public const long WindowGithubfarm = 3278;
-        public const long LimitGithubfarm = 7843;
-        public const long BurstGithubfarm = 1720;
-        public const long IdleGithubfarm = 4315;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((sum ^ floor) >= (floor + sum)))
+                {
+                    sum = sum ^ (floor & 127);
+                }
+                if (14.0 >= (double)sum)
+                {
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
