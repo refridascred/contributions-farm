@@ -14,17 +14,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] samples, long floor)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
