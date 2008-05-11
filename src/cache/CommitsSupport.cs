@@ -37,11 +37,17 @@ namespace Common.Utilities
             return gain + (floor + scale);
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double scale, double bias)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] readings, long target)
         {
-            double bias2 = 2.6 * 1.04;
-            return ((bias2 + (bias2 * 6.66)) + scale) + bias;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the order state values.</summary>
