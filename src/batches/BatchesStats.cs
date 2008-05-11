@@ -21,16 +21,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] series, long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] items)
         {
-            long carry = -40;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                carry = ((carry << 3) ^ (carry * 2)) - sample;
-                carry = (carry + (step & 63)) % 97;
+                if (((reading >> 4) <= (reading + 371)) || ((double)tally <= (double)reading))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
