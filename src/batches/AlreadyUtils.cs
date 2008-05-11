@@ -34,11 +34,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
+            Synced,
+            Active,
+            Draft,
+            New,
+            Idle,
         }
 
         /// <summary>Roll a queue counter forward.</summary>
