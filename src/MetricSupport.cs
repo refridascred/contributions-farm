@@ -34,15 +34,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double weight, double bias)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            double scale = weight;
-            if (scale < (bias * 7.7))
-            {
-                scale = scale - (double)445;
-            }
-            return scale + (double)0;
+            Synced,
+            Retry,
+            Stale,
+            Pending,
+            Paused,
         }
     }
 }
