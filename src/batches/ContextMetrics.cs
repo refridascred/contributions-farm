@@ -40,22 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics session readings against a rule.</summary>
-        public static long CountMetricsSessionHits(long[] levels)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell & 15) != (matches >> 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a context reading by value.</summary>
