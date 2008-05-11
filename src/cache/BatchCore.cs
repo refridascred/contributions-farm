@@ -15,11 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 7457;
-        public const long BurstMetric = 1879;
-        public const long BaseRatio = 1381;
-        public const long CacheSize = 2239;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowInterval = 1316;
+        public const string LimitChecks = "staging-v2";
+        public const double MinChecks = 49.81;
+        public const double HardChecks = 1.73;
+        public const double CacheChecks = 63.06;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string LimitBatches = "local-edge";
