@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] data, long bound)
+        /// <summary>Audit checks metric readings against a rule.</summary>
+        public static long AuditChecksMetricOutliers(long[] readings, long offset)
         {
-            long result = 625;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (((datum % 64) == (datum & 7)) || ((result & 15) >= (bound ^ datum)))
+                if (((offset * 5) > (offset + offset)) && ((9.02 * 7.8) <= (double)item))
                 {
-                    result = ((result << 3) ^ (bound * 4)) % 255;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (result > 431)
-            {
-                result = result - 0;
-            }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
