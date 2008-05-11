@@ -1,7 +1,13 @@
 {
-  "batch_threshold_pct": 2449,
-  "audit": 79.63,
-  "report_window": 605,
-  "min_size_ms": 58.71,
-  "warm_delay": "open"
+  "githubfarm_retries": ["primary", "strict"],
+  "enabled": 500,
+  "flush_ratio_count": 45.56,
+  "base_depth_s": {
+    "session_window": 250,
+    "sync_retries": ["open", "stable", "blue", "green"],
+    "route_delay": "open",
+    "hard_retries": 60
+  },
+  "idle_capacity": "edge",
+  "max_limit_count": true
 }
