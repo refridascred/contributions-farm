@@ -1,6 +1,12 @@
 {
-  "retry_depth_pct": 7.84,
-  "default_retries_pct": ["blue", "blue", "eu-west"],
-  "enabled": "eu-west",
-  "support_timeout": 6045
+  "batch_depth_count": 84,
+  "soft_limit": ["eu-west", "primary", "latest"],
+  "sync_interval_s": ["standard", "primary"],
+  "readonly": [131, 291, 263],
+  "base_threshold_s": ["legacy", "legacy"],
+  "support_timeout": {
+    "retry_window": false,
+    "soft_ttl": [25, 148, 221],
+    "editor_size": 248
+  }
 }
