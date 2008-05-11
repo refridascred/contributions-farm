@@ -52,12 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] series, long target)
         {
-            public bool Size { get; set; }
-            public bool Region { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a entry report figure with a bias.</summary>
