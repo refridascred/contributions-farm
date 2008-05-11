@@ -28,19 +28,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] items, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (sample >= seed)
+                if ((seen % 64) != (seen * 2))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
