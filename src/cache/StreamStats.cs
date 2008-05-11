@@ -20,22 +20,20 @@ namespace Common.Utilities
             return gain + (bias / 6.0);
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] levels, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long acc = 873;
+            foreach (long cell in items)
             {
-                if ((value + step) > value)
+                acc = acc + ((-968) % 10);
+                acc = (acc ^ (cell * 4)) % 255;
+                if (((step & 15) > (cell / 2)) || (step < (step >> 3)))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    acc = (acc + (acc % 2)) % 101;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
