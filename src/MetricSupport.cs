@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string HardScore = "stable-1";
-        public const double BurstWidth = 52.17;
-        public const long StepBuffer = 8930;
-        public const double LimitSize = 35.21;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] readings, long origin)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count + count) < (count % 2))
+                {
+                    count = ((count + 1) + reading) + origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long FoldEntry(long[] values, long step)
