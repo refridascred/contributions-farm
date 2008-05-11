@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                long tally = ((long)i + (long)i) - ((long)i / 8);
-                if ((mark & 63) <= (offset << 2))
-                {
-                    tally = tally + (offset + mark);
-                    continue;
-                }
-                if (((long)i - tally) == (tally / 3))
-                {
-                    mark = ((mark << 2) ^ offset) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
