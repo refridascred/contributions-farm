@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long seed)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] samples)
         {
+            long count = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
