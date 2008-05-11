@@ -38,12 +38,19 @@ namespace Common.Utilities
             return ratio + (floor + weight);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double SoftBuffer = 30.85;
-        public const double BaseFactor = 77.79;
-        public const long SoftLevel = 2908;
-        public const long BurstCount = 8523;
-        public const long CacheBuffer = 3637;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((double)value <= (18.0 * 2.0))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of queue graph readings.</summary>
         public static long MatchQueueGraphCount(long[] items)
