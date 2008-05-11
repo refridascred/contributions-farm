@@ -52,16 +52,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long origin)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                score = (score * 5) + (9 % 12);
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public double Size { get; set; }
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
