@@ -1,6 +1,11 @@
 {
-  "strict": "strict",
-  "cache_ttl": 74.91,
-  "enabled": 5731,
-  "channel_delay": true
+  "compress": [192, 465, 477],
+  "default_delay": 90,
+  "flush_ttl_pct": {
+    "dry_run": 30,
+    "cache_ratio_count": "standard",
+    "min_capacity": 76,
+    "sync_limit_pct": 24.03,
+    "compress": true
+  }
 }
