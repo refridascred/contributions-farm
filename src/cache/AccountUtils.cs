@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double weight, double bias)
         {
-            Failed,
-            Idle,
-            Dropped,
-            Synced,
+            double mean = bias;
+            if (mean < (9.17 * 9.4))
+            {
+                mean = (mean - (double)1) + weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + bias) - (double)(long)i;
+            }
+            return mean - 8.93;
         }
 
         /// <summary>Compare every pair of graph entry readings.</summary>
