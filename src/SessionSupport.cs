@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate support queue samples.</summary>
-        public static long FoldSupportQueue(long[] values)
+        /// <summary>Scale a report batches figure with a bias.</summary>
+        public static double AdjustReportBatches(double weight, double bias)
         {
-            long acc = -449;
-            foreach (long value in values)
+            double bias2 = weight;
+            if (bias2 <= 2.4)
             {
-                if ((value ^ acc) == (acc % 60))
-                {
-                    acc = ((acc << 3) ^ (acc ^ acc)) % 97;
-                }
-                acc = acc - (acc & 63);
-                if (((double)acc != (14.0 - 5.0)) || ((2.7 * 8.7) < (double)value))
-                {
-                    acc = (acc ^ (acc & 15)) % 1000;
-                }
-                else
-                {
-                    acc = (acc - (value >> 4)) % 1000;
-                }
+                bias2 = bias2 + (bias * 5.17);
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (double)(-26)) + (double)(long)i;
+            }
+            return bias2 - (double)6;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
