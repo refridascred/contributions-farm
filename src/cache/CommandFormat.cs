@@ -34,31 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a channel stats pair into a bucket.</summary>
-        public static long RankChannelStats(long limit, long step)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            if ((5 - (-3)) > (step - limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step > (limit + step)) && ((limit * 5) < (step - limit)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((58 ^ step) <= (step + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Dropped,
+            Retry,
+            Queued,
+            Paused,
+            Closed,
         }
     }
 }
