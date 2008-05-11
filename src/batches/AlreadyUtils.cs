@@ -47,17 +47,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] series, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (series[i] == seed)
+                if (item < target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
