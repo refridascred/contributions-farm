@@ -36,18 +36,21 @@ namespace Common.Utilities
         public const string DefaultRoute = "strict";
         public const long BaseRoute = 3422;
 
-        /// <summary>Measure how many graph editor samples are out of range.</summary>
-        public static long TallyGraphEditorMatches(long[] data)
+        /// <summary>Match up editor cluster samples.</summary>
+        public static long OverlapEditorClusterCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value + 72) > (hits % 8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Locate a metrics support reading by value.</summary>
