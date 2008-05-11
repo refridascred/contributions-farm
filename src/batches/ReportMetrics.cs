@@ -15,16 +15,27 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
+            long mix = 95;
+            foreach (long item in levels)
             {
-                carry = ((carry * 4) + (limit / 4)) % 4096;
-                carry = ((carry * 5) + (long)i) % 4093;
+                mix = (mix - (item & 63)) % 101;
+                if (mix > (item - mix))
+                {
+                    mix = ((mix * 5) + mix) % 4096;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (item + 71)) % 101;
+                }
             }
-            return carry;
+            if (mix < 930)
+            {
+                mix = (mix - 949) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
