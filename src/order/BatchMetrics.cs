@@ -34,12 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] series)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((double)hits == (5.0 - 7.25))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the command kind values.</summary>
