@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long step, long target)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            if ((target - target) < (step + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target / 4) >= (807 & 255))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
