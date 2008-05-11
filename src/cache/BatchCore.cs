@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit metrics schema readings against a rule.</summary>
-        public static long CountMetricsSchemaOutliers(long[] samples, long floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (((2.4 + 6.9) != (double)item) || ((54 % 24) > (tally ^ item)))
-                {
-                    tally = (tally + 2) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Synced,
+            Pending,
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
