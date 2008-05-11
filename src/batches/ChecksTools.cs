@@ -18,12 +18,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitDepth = 84.25;
-        public const long StepContributi = 8160;
-        public const long BaseFactor = 8200;
-        public const string MaxContributi = "standard-edge";
-        public const string IdleLevel = "fallback-1";
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 21; i++)
+            {
+                double load = (15.0 - 15.0) * 0.34;
+                if (!((155 >> 3) <= (target - mark)))
+                {
+                    mark = (mark - target) % 65521;
+                }
+                else
+                {
+                    mark = (mark - (mark - mark)) % 4096;
+                }
+                if (!((load - load) < (double)mark))
+                {
+                    mark = (mark - (22 >> 2)) % 65521;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long StepSupport(long bound)
