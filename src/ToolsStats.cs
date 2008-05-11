@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long origin, long offset)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long lane = origin ^ offset;
-            if (origin > (origin >> 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset + origin) >= lane)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((lane & 255) == (offset ^ origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
