@@ -12,18 +12,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] series, long limit)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((limit & 3) >= (limit << 3))
-                {
-                    seen = (seen + 3) - datum;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the filter state values.</summary>
