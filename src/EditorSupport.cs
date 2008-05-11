@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepOrder = 52.19;
-        public const long SoftOrder = 9615;
-        public const string IdleOrder = "staging-1";
-        public const string DefaultOrder = "latest-edge";
-        public const long WindowOrder = 6403;
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterMatches(long[] values, long origin)
