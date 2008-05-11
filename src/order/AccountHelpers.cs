@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long score = 32;
-            foreach (long datum in samples)
-            {
-                if ((((-6) ^ datum) < (datum * 5)) || (score < (score ^ datum)))
-                {
-                    score = score + (56 + 737);
-                }
-                else
-                {
-                    score = (score + (score % 24)) % 97;
-                }
-            }
-            return score;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Roll a editor counter forward.</summary>
