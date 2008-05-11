@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the command cache entries that pass the check.</summary>
-        public static long TallyCommandCacheHits(long[] series)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long bound)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((datum + matches) != (datum << 3))
+                if (!((double)bound < (4.0 + 13.0)))
                 {
-                    matches = matches + 3;
+                    result = (result * 3) + (result + 9);
                 }
+                if (((767 + result) != (5 + (long)i)) || ((double)bound >= (9.4 * 9.81)))
+                {
+                    result = (result ^ 579) % 97;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Measure how many farm schema samples are out of range.</summary>
