@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] values, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] data, long bound)
         {
-            long sum = 798;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                sum = ((sum + bound) % 4096) + entry;
-                if (!((double)sum != (double)121))
+                if ((double)bound >= (3.41 / 8.0))
                 {
-                    break;
+                    count = (count + 3) ^ value;
                 }
             }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Audit editor notes readings against a rule.</summary>
