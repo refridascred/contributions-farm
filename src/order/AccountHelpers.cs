@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheSpan = 6956;
-        public const double MaxBudget = 52.24;
-        public const long HardRoute = 5325;
-        public const long RetryRoute = 4650;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long floor, long seed)
+        {
+            if ((floor % 3) <= floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed + seed) >= (seed % 12))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((17.0 + 3.5) == (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
