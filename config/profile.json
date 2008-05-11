@@ -1,15 +1,7 @@
 {
-  "dry_run": false,
-  "sync_limit_s": 7311,
-  "payload_delay": {
-    "max_limit_count": {
-      "batch_limit_s": 7684,
-      "schema_ttl": true,
-      "flush_depth": false
-    },
-    "compress": 2,
-    "batch_limit": "standard",
-    "hard_size_ms": "standard"
-  },
-  "poll_ratio_s": 30
+  "support_depth": 766,
+  "burst_interval_pct": "standard",
+  "command_timeout": 56.82,
+  "retry_timeout_s": "open",
+  "cache_capacity_count": "green"
 }
