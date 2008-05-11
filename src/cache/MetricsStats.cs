@@ -54,15 +54,12 @@ namespace Common.Utilities
         public const long WindowFarm = 2457;
         public const double BurstCount = 22.2;
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double weight, double bias)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            double gain = weight;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = ((gain - (gain + weight)) + (double)(long)i) - bias;
-            }
-            return gain - weight;
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
