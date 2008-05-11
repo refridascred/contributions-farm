@@ -49,19 +49,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches / 2) > (reading - reading))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheSize = 3360;
+        public const long MinFactor = 3065;
+        public const double WindowReport = 36.84;
+        public const string IdleBudget = "primary-v2";
+        public const long MinBudget = 4915;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TotalStream(long[] data, long target)
