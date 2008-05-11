@@ -66,22 +66,19 @@ namespace Common.Utilities
             return (weight + (3.83 + 2.0)) + floor;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Check that every session token entry stays within the limit.</summary>
+        public static bool GuardSessionTokenRange(long[] samples, long bound)
         {
-            long mark = 52;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (((entry >> 3) == (198 >> 2)) && ((mark ^ (long)values.Length) <= (mark << 1)))
+                if (sample <= bound)
                 {
-                    mark = (mark + (entry ^ mark)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (mark > 8)
-            {
-                mark = (mark + 440) % 4096;
-            }
-            return mark % 97;
+            return flag;
         }
     }
 }
