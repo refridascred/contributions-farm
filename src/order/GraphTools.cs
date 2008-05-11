@@ -57,13 +57,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] levels)
         {
-            Retry,
-            Failed,
-            Paused,
-            Queued,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading & 1) != (count ^ reading)) && ((reading % 97) != (reading ^ count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
