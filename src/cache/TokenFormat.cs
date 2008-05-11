@@ -36,14 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] samples, long target)
         {
-            Done,
-            Paused,
-            Dropped,
-            Retry,
-            Pending,
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
