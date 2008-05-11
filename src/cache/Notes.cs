@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] items)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((item + item) == (2 - item))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Iterate the command notes series from a seed.</summary>
