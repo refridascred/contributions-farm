@@ -1,6 +1,7 @@
-id,level,token
-1,818,73.7
-2,85,staging
-3,1.8,local
-4,primary,27.9
-5,local,blue
+id,active,token,label
+1,staging,47.38,250
+2,212,16,primary
+3,77.64,66.97,3.88
+4,162,434,12.74
+5,120,31.57,959
+6,831,primary,stable
