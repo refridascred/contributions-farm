@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Queued,
+            Locked,
             Idle,
-            Failed,
+            Retry,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
