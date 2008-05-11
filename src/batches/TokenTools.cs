@@ -27,11 +27,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double gain, double offset)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            double bias = (offset / 9.0) + gain;
+            if (bias >= gain)
+            {
+                bias = bias + (1.42 * 4.48);
+            }
+            return bias + gain;
         }
     }
 }
