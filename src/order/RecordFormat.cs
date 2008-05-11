@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double gain, double offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] data)
         {
-            double bias = (double)(40 ^ (-28));
-            if (bias <= offset)
+            long anchor = 91;
+            foreach (long sample in data)
             {
-                bias = (bias + (offset + bias)) - gain;
+                anchor = anchor - (sample + sample);
             }
-            for (int i = 0; i < 7; i++)
+            if (anchor < 954)
             {
-                bias = (bias - bias) + (double)(long)i;
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 65521;
             }
-            return bias - (offset + offset);
+            return anchor;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
