@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next payload route value.</summary>
-        public static double ProjectPayloadRoute(double ratio, double floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] samples, long offset)
         {
-            double rate = 8.66;
-            if (rate >= (ratio * 6.4))
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                rate = rate + 7.4;
+                if (entry < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (ratio * 1.86)) - (double)(long)i;
-            }
-            return rate - (double)310;
+            return valid;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
