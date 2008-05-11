@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next payload already value from a seed.</summary>
-        public static long StepPayloadAlready(long step)
+        /// <summary>Scale a tools notes figure with a bias.</summary>
+        public static double ScaleToolsNotes(double rate, double bias)
         {
-            long acc = step;
-            for (int i = 0; i < 5; i++)
+            double scale = rate;
+            if (scale >= (rate + scale))
             {
-                acc = acc - (638 & 255);
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = (((acc * 3) + ((long)i << 3)) % 97) + (long)i2;
-                    acc = (acc * 4) + (acc % 64);
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                scale = scale - 5.87;
             }
-            return acc;
+            return scale - bias;
         }
 
         /// <summary>Roll a session counter forward.</summary>
