@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] readings, long limit)
         {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public double Level { get; set; }
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a counter info.</summary>
