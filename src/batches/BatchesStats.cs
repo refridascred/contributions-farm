@@ -25,14 +25,10 @@ namespace Common.Utilities
         public const long BatchDepth = 7475;
         public const long RetryScore = 5611;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Stale,
-            Pending,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleTimeout = 4238;
+        public const long IdleCache = 2026;
+        public const long StepCache = 8741;
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
