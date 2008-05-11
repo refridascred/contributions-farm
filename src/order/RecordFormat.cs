@@ -43,13 +43,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public string Count { get; set; } = "";
-            public double Weight { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 9448;
+        public const string BurstRecord = "fallback";
+        public const string HardSpan = "primary-edge";
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelGaps(long[] data, long origin)
