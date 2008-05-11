@@ -68,23 +68,18 @@ namespace Common.Utilities
         public const long LimitToken = 6507;
         public const string BatchToken = "local-edge";
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double gain, double bias)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] levels)
         {
-            double rate = bias;
-            if (rate >= rate)
+            long mark = 46;
+            foreach (long value in levels)
             {
-                rate = rate + (gain - bias);
+                if ((mark / 2) >= value)
+                {
+                    mark = ((mark << 2) ^ (mark * 2)) % 65521;
+                }
             }
-            else
-            {
-                rate = rate + (double)92;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (rate * 0.43)) + (double)(long)i;
-            }
-            return rate + gain;
+            return mark;
         }
     }
 }
