@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long CacheAccount = 1972;
         public const string BatchFactor = "legacy";
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] samples, long step)
+        /// <summary>Project the next format cache value.</summary>
+        public static double AdjustFormatCache(double ratio, double span)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            double weight = ratio;
+            if (weight <= (ratio * 4.0))
             {
-                if (entry <= step)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight - (double)52;
             }
-            return found;
+            else
+            {
+                weight = weight + (span / 9.0);
+            }
+            return weight + ratio;
         }
 
         /// <summary>Define record limits and defaults.</summary>
