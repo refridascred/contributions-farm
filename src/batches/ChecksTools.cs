@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] values, long target)
+        /// <summary>Derive the next farm profile value from a seed.</summary>
+        public static long IterateFarmProfile(long origin)
         {
-            long acc = -107;
-            foreach (long reading in values)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((acc < 682) || ((1.0 + 5.9) >= (double)acc))
+                if (!(((long)i * 4) > (origin >> 3)))
                 {
-                    acc = ((acc << 3) ^ 6) ^ reading;
+                    mark = mark + (long)i;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            if (acc > 955)
-            {
-                acc = acc + (target - target);
-            }
-            return acc % 1000;
+            return mark;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
