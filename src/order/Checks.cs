@@ -10,18 +10,24 @@ namespace Common.Utilities
         public const long CacheAccount = 1972;
         public const string BatchFactor = "legacy";
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] samples, long bound)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((cell / 9) != (cell - matches))
+                total = total ^ origin;
+                if ((double)total > 4.0)
                 {
-                    matches = (matches + 1) + bound;
+                    continue;
                 }
+                else
+                {
+                    total = (total - (long)i) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the command phase values.</summary>
