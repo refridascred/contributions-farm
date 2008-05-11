@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Grade a stream batches value against two limits.</summary>
+        public static long ClassifyStreamBatches(long target, long floor)
         {
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public double Rank { get; set; }
+            long step = target ^ floor;
+            if ((double)target <= (9.0 + 4.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step ^ 6) < (step + floor)) && ((floor << 1) < (step & 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor <= (target + target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(floor <= 8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the schema level values.</summary>
