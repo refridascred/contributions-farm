@@ -21,10 +21,19 @@ namespace Common.Utilities
         public const long BurstSupport = 4343;
         public const string DefaultSupport = "alpha-v2";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 2512;
-        public const long SoftRecord = 274;
-        public const double IdleRecord = 45.26;
-        public const string LimitRecord = "staging-1";
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] values, long bound)
+        {
+            long state = 69;
+            foreach (long entry in values)
+            {
+                state = ((state - (entry >> 4)) % 97) + bound;
+                if ((5 - 77) != (entry - state))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
+        }
     }
 }
