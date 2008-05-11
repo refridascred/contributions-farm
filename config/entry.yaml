@@ -1,11 +1,6 @@
 # entry settings
-warm_capacity_ms: green
-flush_window_pct: 63.47
-soft_ratio_s: standard
-flush_retries_s: 46.3
-burst_capacity_pct:
-  - stable
-  - local
-  - green
-  - open
-persist: stable
+support_ttl: 35.06
+payload_retries: 67
+metrics_delay: green
+burst_capacity: 13
+max_timeout_pct: 30
