@@ -30,18 +30,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] samples, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long carry = 2;
+            foreach (long entry in series)
             {
-                if ((seen ^ cell) > (floor + 64))
+                carry = ((carry << 2) ^ (carry << 3)) % 255;
+                if (((double)carry <= (2.17 * 15.0)) || ((floor << 2) == (carry ^ carry)))
                 {
-                    seen = seen + 1;
+                    carry = (carry ^ entry) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ entry) % 101;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
