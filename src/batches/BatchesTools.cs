@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] levels, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
