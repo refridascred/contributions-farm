@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long bound, long bound2)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long gap = bound ^ bound2;
-            if ((gap / 8) > (gap - bound2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(bound2 > 25))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Dropped,
+            Synced,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
