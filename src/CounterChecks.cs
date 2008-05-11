@@ -69,9 +69,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitMetric = 21.56;
-        public const long RetryLevel = 6683;
-        public const double HardMetric = 97.7;
+        /// <summary>Validate checks payload readings against a bound.</summary>
+        public static bool CheckChecksPayloadLimits(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
