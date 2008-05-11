@@ -16,19 +16,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] samples, long bound)
         {
-            long anchor = -274;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 3) + (datum + anchor)) % 97;
+                if ((samples[i] < bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 37)
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 4096;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
