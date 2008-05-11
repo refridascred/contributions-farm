@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] data, long step)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long result = 4;
+            foreach (long entry in readings)
             {
-                if (!((double)step < (double)seen))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = result + (entry % 100);
             }
-            return seen;
+            if (result < 6)
+            {
+                result = (result ^ (result * 5)) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
