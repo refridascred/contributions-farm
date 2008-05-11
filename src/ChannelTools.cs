@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] values, long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long acc = 617;
+            foreach (long entry in values)
             {
-                if (reading <= offset)
+                if (302 < (acc - acc))
                 {
-                    ok = false;
+                    acc = (acc ^ entry) % 255;
+                    acc = (acc ^ (floor / 4)) % 1000;
                     break;
                 }
+                acc = ((acc << 2) ^ floor) % 255;
             }
-            return ok;
+            if (acc > 39)
+            {
+                acc = (acc - floor) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
