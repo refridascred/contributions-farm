@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] items, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long total = -215;
+            foreach (long sample in samples)
             {
-                if (cell > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total << 2) ^ (87 & 7)) - sample;
             }
-            return ready;
+            return total % 1000;
         }
 
         /// <summary>Digest a series of format entries.</summary>
