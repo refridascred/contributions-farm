@@ -12,16 +12,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] data)
         {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                carry = (carry * 4) + (carry - (long)i);
-                carry = ((carry * 4) + (long)i) % 65521;
+                if ((entry & 7) >= (hits + entry))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the cache mode values.</summary>
