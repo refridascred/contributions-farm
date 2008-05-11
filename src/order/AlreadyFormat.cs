@@ -46,14 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] items, long target)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Stale,
-            Idle,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the order level values.</summary>
