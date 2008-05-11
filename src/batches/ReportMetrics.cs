@@ -19,13 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] series)
         {
-            New,
-            Dropped,
-            Synced,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a command stats.</summary>
