@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const long CacheBudget = 6394;
         public const string HardGraph = "staging-v2";
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] data, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] levels, long seed)
         {
-            long anchor = 54;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor * 3) + (reading * 3);
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 41)
-            {
-                anchor = (anchor << 2) ^ (5 + step);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Roll a route counter forward.</summary>
