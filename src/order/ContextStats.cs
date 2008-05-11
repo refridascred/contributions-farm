@@ -19,19 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next report graph value.</summary>
-        public static double SmoothReportGraph(double ratio, double floor)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double weight, double floor)
         {
-            double rate = floor;
-            if (rate >= ratio)
+            double ratio = weight - (18.0 / 5.0);
+            if (ratio > 4.3)
             {
-                rate = rate - 1.72;
+                ratio = ratio + (8.0 * 7.8);
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                rate = rate - (double)(long)i;
+                ratio = ratio + floor;
             }
-            return rate - (floor - rate);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (floor - floor)) + (double)(long)i;
+            }
+            return ratio + (floor + weight);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
