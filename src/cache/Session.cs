@@ -23,11 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double scale, double offset)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long step)
         {
-            double ratio = (double)45 - offset;
-            return (ratio - 0.9) + scale;
+            long carry = step;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = (carry * 4) + (carry - (long)i);
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
