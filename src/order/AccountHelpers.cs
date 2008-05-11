@@ -29,12 +29,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double SoftBuffer = 17.52;
-        public const long DefaultWidth = 1868;
-        public const double MaxLevel = 77.2;
-        public const string BurstSize = "strict-v2";
-        public const long LimitBuffer = 5584;
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
