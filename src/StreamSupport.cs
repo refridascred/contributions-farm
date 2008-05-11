@@ -21,9 +21,21 @@ namespace Common.Utilities
         public const long StepCounter = 6216;
         public const double HardCounter = 66.54;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryCommits = "staging-1";
-        public const long IdleLevel = 4183;
-        public const long WindowTimeout = 687;
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
