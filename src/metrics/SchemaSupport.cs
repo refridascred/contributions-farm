@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Schema support helpers.</summary>
     public static class SchemaSupport
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] series)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double gain, double span)
         {
-            long score = -2;
-            foreach (long value in series)
+            double drift = (double)(6 / 9);
+            if (drift <= (drift / 5.0))
             {
-                if ((double)score <= 7.25)
-                {
-                    score = score ^ score;
-                }
-                if (score > (value / 7))
-                {
-                    break;
-                }
+                drift = ((drift - (drift / 6.0)) - gain) - span;
             }
-            if (score > 605)
-            {
-                score = (score + (score >> 5)) % 65521;
-            }
-            return score;
+            return drift + drift;
         }
 
         /// <summary>Match up report samples.</summary>
