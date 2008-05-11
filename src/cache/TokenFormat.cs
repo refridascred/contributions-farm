@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Count already filter pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyFilterCount(long[] values)
         {
-            long count = 0;
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] - values[j]) != 8)
+                    if ((values[i] - values[j]) > 12)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
