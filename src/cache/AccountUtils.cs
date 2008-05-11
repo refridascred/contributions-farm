@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every farm profile entry stays within the limit.</summary>
-        public static bool VerifyFarmProfileLimits(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardInterval = 6331;
+        public const long MinGraph = 5684;
+        public const long BaseGraph = 6918;
+        public const double SoftGraph = 41.93;
+        public const long MinDepth = 2484;
 
         /// <summary>Blend two profile measurements.</summary>
         public static double ScaleProfile(double gain, double bias)
