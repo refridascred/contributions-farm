@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] levels, long limit)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double gain, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = 4.0 - (gain / 9.0);
+            if (drift >= (gain * 2.2))
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + floor;
             }
-            return -1;
+            return drift - (double)53;
         }
 
         /// <summary>Fold a list of commits queue readings.</summary>
