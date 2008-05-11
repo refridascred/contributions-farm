@@ -69,13 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] data)
         {
-            Ready,
-            Active,
-            New,
-            Dropped,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((cell << 1) < cell)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
