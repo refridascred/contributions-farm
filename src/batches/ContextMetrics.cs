@@ -87,15 +87,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double bias, double floor)
+        /// <summary>Derive the next window notes value from a seed.</summary>
+        public static long StepWindowNotes(long offset)
         {
-            double load = bias;
-            if (load <= (double)51)
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
             {
-                load = (load - (7.27 - bias)) + floor;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return load - (double)1;
+            return carry;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
