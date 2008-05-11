@@ -1,9 +1,25 @@
 # support settings
-metric_size: latest
-stream_capacity: true
-filter_timeout: eu-west
-poll_capacity_pct: legacy
-queue_retries:
-  - open
-  - latest
-context_size: 100
+cache_delay_pct:
+  - 121
+  - 85
+  - 389
+  - 336
+cache_limit:
+  warm_delay:
+    - 467
+    - 438
+  batch_delay_count:
+    - stable
+    - eu-west
+  flush_size:
+    - edge
+    - eu-west
+    - primary
+  githubfarm_delay: false
+  min_size_count: 19.47
+  burst_delay_count: 4322
+warm_delay: open
+support_ttl:
+  - 357
+  - 437
+retry_size_ms: edge
