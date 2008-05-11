@@ -23,11 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
