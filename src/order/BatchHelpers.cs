@@ -36,19 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] readings, long origin)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
