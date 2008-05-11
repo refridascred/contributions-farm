@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] series, long limit)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long bound)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (5 >= limit)
-                {
-                    hits = (hits + 3) + entry;
-                }
+                acc = acc + (bound + bound);
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Rank record input into a small class.</summary>
