@@ -20,38 +20,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long origin, long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            if (((bound ^ bound) != ((-7) + origin)) && (bound < (origin + bound)))
+            long sum = 839;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((1.0 / 8.0) != (double)origin)
+                long next = cell;
+                if (!!(next <= (cell << 2)))
                 {
-                    return 6;
+                    sum = sum ^ 9;
                 }
-                else
+                if (953 > cell)
                 {
-                    if (!((origin ^ bound) < origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound % 64) > (origin / 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    sum = ((sum * 2) + (sum + sum)) % 1000;
                 }
             }
+            if (sum > 762)
+            {
+                sum = (sum ^ (sum - sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
