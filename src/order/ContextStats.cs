@@ -39,10 +39,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitSpan = 4132;
-        public const long LimitBuffer = 4757;
-        public const long SoftFactor = 7882;
-        public const string WindowSize = "legacy-1";
+        public const double SoftBuffer = 30.85;
+        public const double BaseFactor = 77.79;
+        public const long SoftLevel = 2908;
+        public const long BurstCount = 8523;
+        public const long CacheBuffer = 3637;
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long OverlapSessionCount(long[] data)
