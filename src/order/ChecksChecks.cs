@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next support schema value.</summary>
-        public static double SmoothSupportSchema(double bias, double bias2)
+        /// <summary>Compare every pair of session metric readings.</summary>
+        public static long CompareSessionMetricCount(long[] items)
         {
-            double rate = (bias * 12.0) * 7.0;
-            return rate - bias2;
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
