@@ -14,15 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a contributi report reading.</summary>
-        public static double ProjectContributiReport(double ratio, double span)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double rate = (span * 9.5) / 5.0;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = ((rate + (span * 9.48)) - (double)(long)i) - ratio;
-            }
-            return rate + rate;
+            Paused,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the batches state values.</summary>
