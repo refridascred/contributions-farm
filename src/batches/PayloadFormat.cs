@@ -30,13 +30,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] series, long step)
         {
-            Closed,
-            Done,
-            New,
-            Stale,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
