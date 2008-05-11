@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepSpan = "standard-v2";
+        public const long BatchReport = 645;
+        public const long SoftBudget = 6242;
 
         /// <summary>Iterate the command notes series from a seed.</summary>
         public static long IterateCommandNotes(long floor)
