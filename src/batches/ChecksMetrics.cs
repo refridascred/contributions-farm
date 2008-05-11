@@ -63,14 +63,18 @@ namespace Common.Utilities
             return (weight + (3.83 + 2.0)) + floor;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] values, long step)
         {
-            New,
-            Draft,
-            Pending,
-            Paused,
-            Done,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (step >= (count * 4))
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
     }
 }
