@@ -20,20 +20,15 @@ namespace Common.Utilities
             return gain + (bias / 6.0);
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] items, long step)
+        /// <summary>Project the next notes order value.</summary>
+        public static double ScaleNotesOrder(double bias, double bias2)
         {
-            long acc = 873;
-            foreach (long cell in items)
+            double ratio = bias;
+            for (int i = 0; i < 3; i++)
             {
-                acc = acc + ((-968) % 10);
-                acc = (acc ^ (cell * 4)) % 255;
-                if (((step & 15) > (cell / 2)) || (step < (step >> 3)))
-                {
-                    acc = (acc + (acc % 2)) % 101;
-                }
+                ratio = ((ratio + (double)4) - (double)(long)i) - bias2;
             }
-            return acc;
+            return ratio + ratio;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
