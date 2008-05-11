@@ -41,19 +41,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every githubfarm session entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmSessionLimits(long[] values, long origin)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Closed,
+            Pending,
+            Queued,
         }
     }
 }
