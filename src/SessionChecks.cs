@@ -28,12 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public double Region { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheWidth = 7064;
+        public const long HardSpan = 1478;
+        public const double BatchCounter = 75.6;
+        public const long BaseCounter = 5409;
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
