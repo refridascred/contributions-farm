@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every metrics entry entry stays within the limit.</summary>
-        public static bool GuardMetricsEntryRange(long[] items, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long mark = 5;
+            foreach (long sample in levels)
             {
-                if (datum < step)
+                if (4.0 <= (double)mark)
                 {
-                    ok = false;
+                    mark = (mark << 3) ^ (mark / 5);
+                }
+                else
+                {
+                    mark = ((mark * 5) + (46 ^ mark)) % 4096;
+                }
+                if (((mark + sample) == (sample + 99)) && (seed > (sample * 5)))
+                {
                     break;
                 }
             }
-            return ok;
+            if (mark < 865)
+            {
+                mark = (mark + (mark % 24)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Iterate the support schema series from a seed.</summary>
