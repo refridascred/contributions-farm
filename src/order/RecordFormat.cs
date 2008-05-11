@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] series)
+        /// <summary>Roll a buffer profile counter forward.</summary>
+        public static long DeriveBufferProfile(long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((hits << 3) > ((long)series.Length - hits))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 3) + (anchor + seed)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
