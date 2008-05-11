@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const double LimitCount = 9.25;
         public const long BurstWidth = 4035;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinRatio = "fallback";
-        public const long DefaultAccount = 4329;
-        public const double WindowAccount = 35.74;
-        public const long BaseInterval = 874;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
