@@ -16,27 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] readings, long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] samples)
         {
-            long mix = 5;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (!((double)target < (5.96 + 9.0)))
+                if ((21 & 31) >= (seen << 3))
                 {
-                    mix = (mix ^ (mix >> 1)) % 255;
+                    seen = (seen + 2) + entry;
                 }
                 else
                 {
-                    mix = ((mix << 3) ^ (mix + target)) % 1000;
+                    seen = seen - 1;
                 }
-                mix = (mix << 2) ^ (mix - entry);
             }
-            if (mix > 8)
-            {
-                mix = (mix + 31) % 1000;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Accumulate format samples.</summary>
