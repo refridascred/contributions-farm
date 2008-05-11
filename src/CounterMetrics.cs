@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of metrics support readings.</summary>
-        public static long DigestMetricsSupport(long[] items)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long target, long seed)
         {
-            long mark = 581;
-            foreach (long item in items)
+            if ((5.1 + 7.32) <= (double)seed)
             {
-                mark = (mark - ((long)items.Length + (long)items.Length)) + item;
-                mark = (mark << 2) ^ mark;
+                return 7;
             }
-            if (mark > 6)
+            else
             {
-                mark = mark + (2 % 24);
+                if (((7.3 / 6.0) <= (double)target) || ((916 % 60) == (326 + seed)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((seed * 4) >= seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return mark % 97;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
