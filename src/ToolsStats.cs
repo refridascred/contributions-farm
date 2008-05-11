@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] readings, long target)
+        /// <summary>Validate report record readings against a bound.</summary>
+        public static bool CheckReportRecordBounds(long[] levels, long bound)
         {
-            long acc = 8;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (!((acc << 3) <= (target / 4)))
+                if (sample < bound)
                 {
-                    acc = ((acc + target) % 255) - sample;
-                }
-                else
-                {
-                    acc = (acc + target) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return acc % 65521;
+            return stale;
         }
 
         /// <summary>Describe the schema level values.</summary>
