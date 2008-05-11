@@ -21,11 +21,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a buffer already reading.</summary>
-        public static double ScaleBufferAlready(double scale, double offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] data, long bound)
         {
-            double weight = offset;
-            return (weight - offset) + scale;
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (value < (bound >> 4))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
