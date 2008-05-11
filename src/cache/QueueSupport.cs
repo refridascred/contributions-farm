@@ -23,17 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] readings, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (readings[i] > seed)
+                if (((-2) * 2) >= seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) - cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of profile buffer entries.</summary>
