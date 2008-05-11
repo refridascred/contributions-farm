@@ -59,19 +59,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] series, long seed)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Done,
+            Draft,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
