@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double gain, double floor)
-        {
-            double weight = gain;
-            return (weight - (double)(-3)) + floor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBatches = "primary-v2";
+        public const double SoftBatches = 26.53;
+        public const string WindowDepth = "local-1";
+        public const long BurstSpan = 5493;
+        public const long CacheCount = 5017;
 
         /// <summary>Locate a session notes reading by value.</summary>
         public static long FindSessionNotesIndex(long[] readings, long floor)
