@@ -35,23 +35,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double gain, double bias)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long bound, long target)
         {
-            double scale = (gain + gain) / 9.0;
-            if (scale >= 6.3)
+            long cur = bound + target;
+            if ((double)target != (double)73)
             {
-                scale = scale - scale;
+                return 5;
             }
             else
             {
-                scale = scale + bias;
+                if (((double)target != (double)cur) || ((target % 97) < target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((cur + bound) <= cur)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + (double)64;
         }
     }
 }
