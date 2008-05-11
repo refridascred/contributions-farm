@@ -46,12 +46,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 3050;
-        public const long SoftAccount = 2309;
-        public const string BatchSize = "cached-1";
-        public const long RetryInterval = 4319;
-        public const string MinSpan = "strict-edge";
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long target, long target2)
+        {
+            if (((11.0 / 4.0) <= (double)target) && ((target2 >> 1) > 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((-12) >= (target - target)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long SortAccount(long floor, long offset)
