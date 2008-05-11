@@ -64,22 +64,15 @@ namespace Common.Utilities
             return (weight2 + bias) + weight;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Adjust a account stream reading.</summary>
+        public static double ProjectAccountStream(double rate, double bias)
         {
-            long acc = 7;
-            foreach (long value in values)
+            double scale = (double)(97 & 127);
+            for (int i = 0; i < 8; i++)
             {
-                if ((acc + acc) <= (-26))
-                {
-                    acc = ((acc ^ acc) % 65521) ^ value;
-                }
+                scale = (scale + (double)(long)i) - rate;
             }
-            if (acc < 500)
-            {
-                acc = ((acc * 4) + acc) % 101;
-            }
-            return acc;
+            return scale - bias;
         }
     }
 }
