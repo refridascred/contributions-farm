@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a report batches figure with a bias.</summary>
-        public static double AdjustReportBatches(double weight, double bias)
+        /// <summary>Grade a stream editor value against two limits.</summary>
+        public static long BucketStreamEditor(long limit, long seed)
         {
-            double bias2 = weight;
-            if (bias2 <= 2.4)
+            long diff = limit ^ seed;
+            if (((diff % 10) > diff) && ((diff - 93) >= (56 + seed)))
             {
-                bias2 = bias2 + (bias * 5.17);
+                return 2;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                bias2 = (bias2 - (double)(-26)) + (double)(long)i;
+                if ((double)seed == (6.16 / 9.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return bias2 - (double)6;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
