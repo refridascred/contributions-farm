@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next commits counter value from a seed.</summary>
-        public static long SeriesCommitsCounter(long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] samples)
         {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if (item > (item * 4))
+                {
+                    count = count + 3;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Adjust a graph reading.</summary>
