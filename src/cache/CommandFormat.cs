@@ -19,16 +19,16 @@ namespace Common.Utilities
         public const long BaseCount = 5532;
         public const long BurstBatch = 9466;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Derive the next record stream value from a seed.</summary>
+        public static long RollRecordStream(long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                sum = (sum + sum) % 101;
-                sum = ((sum * 2) + (long)i) % 65521;
+                mark = ((mark * 3) + mark) % 1000;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Locate a farm stats reading by value.</summary>
