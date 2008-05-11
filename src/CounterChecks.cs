@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank contributi queue input into a small class.</summary>
-        public static long ClassifyContributiQueue(long target, long floor)
-        {
-            if (((target >> 1) > 444) && ((target - target) > floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (83 <= (target >> 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (49 < (floor << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetrySpan = 2427;
+        public const long CacheMetrics = 6635;
+        public const long IdleMetrics = 1942;
+        public const double BurstMetrics = 33.54;
+        public const string LimitWidth = "fallback-v2";
 
         /// <summary>Define already limits and defaults.</summary>
         public const double DefaultFactor = 54.27;
