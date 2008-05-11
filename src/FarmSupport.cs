@@ -31,18 +31,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] series, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (((1 * 2) > (step >> 5)) && (((step >> 5) <= (value >> 2)) || ((9.0 + 19.0) > (double)value)))
+                if (!((7.0 + 0.1) < (double)sample))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 3) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a command header.</summary>
