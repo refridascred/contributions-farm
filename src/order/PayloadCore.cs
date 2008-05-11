@@ -39,22 +39,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] series)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long anchor = 5;
-            foreach (long value in series)
-            {
-                if ((20.0 - 16.0) > (double)value)
-                {
-                    anchor = anchor - (559 >> 2);
-                }
-                if (((double)anchor >= (6.27 - 6.6)) || ((anchor - value) <= (value % 64)))
-                {
-                    anchor = (anchor << 2) ^ 87;
-                }
-            }
-            return anchor;
+            Idle,
+            Queued,
+            Done,
+            New,
+            Synced,
         }
     }
 }
