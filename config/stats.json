@@ -1,6 +1,6 @@
 {
-  "default_ttl": 120,
-  "default_size_ms": [382, 290, 101, 258],
-  "stream_capacity": 3348,
-  "hard_ratio_s": "legacy"
+  "strict": [440, 349, 363, 268],
+  "verbose": "local",
+  "readonly": "open",
+  "flush_depth_pct": "primary"
 }
