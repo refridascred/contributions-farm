@@ -76,21 +76,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up window context samples.</summary>
-        public static long CompareWindowContextCount(long[] levels)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (carry <= (17 + offset))
                 {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry + (long)i;
+                    carry = ((carry << 2) ^ ((long)i / 2)) % 65521;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
