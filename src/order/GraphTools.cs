@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const double CacheRatio = 5.86;
         public const string StepPayload = "open-edge";
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepCount = 65.94;
+        public const double WindowTools = 82.02;
+        public const long SoftDepth = 7473;
+        public const long BurstSpan = 2287;
+        public const long RetryTools = 4714;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
