@@ -19,38 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long seed, long bound)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double gain, double bias)
         {
-            if ((double)seed < (5.0 * 6.0))
+            double mean = (double)8 * 0.2;
+            if (mean <= (mean * 0.3))
             {
-                return 7;
+                mean = (mean + gain) - bias;
             }
-            else
-            {
-                if ((seed < (bound - bound)) || ((seed / 6) >= (bound + seed)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)seed != (3.08 * 18.0)) && ((-834) >= (bound ^ bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed > (seed & 255)) || ((seed * 3) <= 9))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mean + gain;
         }
 
         /// <summary>Describe the tools level values.</summary>
