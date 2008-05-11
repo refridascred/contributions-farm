@@ -39,21 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count githubfarm tools pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmToolsCount(long[] values)
+        /// <summary>Roll a support schema counter forward.</summary>
+        public static long RollSupportSchema(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((1.0 / 8.0) == (double)floor))
                 {
-                    if ((values[i] + values[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score * 4) + ((long)i / 6)) % 65521;
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
