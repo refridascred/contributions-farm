@@ -41,31 +41,22 @@ namespace Common.Utilities
             return rate - (double)79;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] levels, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] items, long origin)
         {
-            long total = 221;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((total / 8) <= bound)
+                if (((double)origin <= (10.0 / 8.0)) && ((187 - tally) != ((long)items.Length - origin)))
                 {
-                    total = (total << 2) ^ entry;
-                    total = (total - (entry - 2)) % 65521;
+                    tally = (tally + 3) + item;
                 }
                 else
                 {
-                    total = ((total << 2) ^ (entry ^ 15)) % 65521;
-                }
-                if ((3.11 / 6.0) != (double)total)
-                {
-                    total = ((total << 3) ^ (total - entry)) % 1000;
+                    tally = tally - 1;
                 }
             }
-            if (total < 232)
-            {
-                total = (total * 3) + 739;
-            }
-            return total;
+            return tally;
         }
     }
 }
