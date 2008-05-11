@@ -57,19 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] data, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long mix = 54;
+            foreach (long cell in levels)
             {
-                if (value != target)
+                if (938 < cell)
                 {
-                    ready = false;
-                    break;
+                    mix = (((mix << 2) ^ (mix * 5)) % 101) - bound;
                 }
             }
-            return ready;
+            return mix % 97;
         }
 
         /// <summary>Adjust a account stream reading.</summary>
