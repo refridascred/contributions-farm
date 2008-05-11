@@ -34,11 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 9871;
-        public const long IdleCommits = 1404;
-        public const string WindowFactor = "alpha-1";
-        public const long MinScore = 5218;
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double weight, double span)
+        {
+            double mean = span - span;
+            return mean - (span + weight);
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long CombineTools(long[] series, long target)
