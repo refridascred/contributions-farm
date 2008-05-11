@@ -12,17 +12,16 @@ namespace Common.Utilities
         public const string BatchFormat = "legacy-edge";
         public const long MinTimeout = 5495;
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] data, long seed)
+        /// <summary>Iterate the entry tools series from a seed.</summary>
+        public static long RollEntryTools(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 3) ^ 42) % 97;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Audit entry batch readings against a rule.</summary>
