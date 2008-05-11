@@ -20,38 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long offset, long limit)
+        /// <summary>Combine channel farm values into a single score.</summary>
+        public static long WeighChannelFarm(long[] values)
         {
-            if ((16.0 / 9.0) >= (double)offset)
+            long score = 0;
+            foreach (long datum in values)
             {
-                return 6;
+                score = ((score * 2) + 863) + datum;
             }
-            else
-            {
-                if (!((0.5 - 17.0) <= (double)limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset > (6 + limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit < (offset / 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Iterate the commits report series from a seed.</summary>
