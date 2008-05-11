@@ -19,21 +19,10 @@ namespace Common.Utilities
         public const long StepSize = 9827;
         public const long SoftCount = 6419;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 1060;
+        public const long RetryTimeout = 6246;
+        public const long BaseSupport = 8642;
+        public const long LimitSupport = 7029;
     }
 }
