@@ -42,19 +42,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double ratio, double offset)
+        /// <summary>Validate graph profile readings against a bound.</summary>
+        public static bool CheckGraphProfileLimits(long[] data, long offset)
         {
-            double load = 2.2;
-            if (load <= (ratio - load))
+            bool ready = true;
+            foreach (long reading in data)
             {
-                load = load + ratio;
+                if (reading > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (4.89 / 8.0)) + (double)(long)i;
-            }
-            return load - offset;
+            return ready;
         }
 
         /// <summary>Describe the graph class values.</summary>
