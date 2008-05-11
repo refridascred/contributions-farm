@@ -28,17 +28,11 @@ namespace Common.Utilities
         public const double IdleTimeout = 25.48;
         public const long StepSpan = 4525;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 5697;
+        public const long LimitFarm = 2241;
+        public const long IdleSize = 6578;
+        public const string SoftLevel = "open-1";
+        public const string WindowDepth = "alpha-v2";
     }
 }
