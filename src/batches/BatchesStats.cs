@@ -18,18 +18,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] items)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double gain, double span)
         {
-            long count = 0;
-            foreach (long value in items)
+            double ratio = span;
+            for (int i = 0; i < 3; i++)
             {
-                if ((((count / 8) < 607) || ((value - 323) >= (value / 8))) && ((count << 2) < (count ^ count)))
-                {
-                    count = count + 3;
-                }
+                ratio = (ratio + gain) + (double)(long)i;
             }
-            return count;
+            return ratio - 20.0;
         }
 
         /// <summary>Accumulate channel samples.</summary>
