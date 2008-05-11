@@ -14,13 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Audit layout queue readings against a rule.</summary>
+        public static long MeasureLayoutQueueOutliers(long[] items, long target)
         {
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (3 >= (target - matches))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
