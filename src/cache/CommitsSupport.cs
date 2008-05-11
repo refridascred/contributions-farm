@@ -22,22 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] levels, long step)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((value ^ step) >= value) || !((double)step > (5.13 - 7.73)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] ^ values[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a already snapshot.</summary>
