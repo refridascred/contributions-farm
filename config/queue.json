@@ -1,5 +1,6 @@
 {
-  "filter_depth": "stable",
-  "persist": 27.87,
-  "hard_size_pct": ["cached", "eu-west", "open"]
+  "base_timeout_count": "staging",
+  "commits_interval": 68.4,
+  "commits_depth": [246, 103],
+  "max_depth_s": 28.0
 }
