@@ -14,11 +14,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxWidth = 3117;
-        public const long BaseSession = 2249;
-        public const double SoftInterval = 71.36;
-        public const long BurstSize = 3716;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LocateEditorIndex(long[] data, long seed)
