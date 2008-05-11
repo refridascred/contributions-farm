@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two queue layout measurements.</summary>
-        public static double BlendQueueLayout(double rate, double floor)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            double bias = (double)7 + (9.57 / 2.0);
-            return ((bias - 19.0) + rate) + floor;
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many farm schema samples are out of range.</summary>
