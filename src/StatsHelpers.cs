@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double bias, double floor)
+        /// <summary>Iterate the window queue series from a seed.</summary>
+        public static long RollWindowQueue(long offset)
         {
-            double gain = (bias + floor) / 4.0;
-            if (gain < (gain / 4.0))
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                gain = gain + (double)7;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return gain - floor;
+            return result;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
