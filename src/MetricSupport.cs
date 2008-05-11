@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Blend two stream metric measurements.</summary>
+        public static double BlendStreamMetric(double rate, double bias)
         {
-            Idle,
-            Queued,
-            Closed,
-            Synced,
-            Paused,
+            double bias2 = (bias * 8.3) / 3.0;
+            return (bias2 + bias2) + rate;
         }
 
         /// <summary>Fold a list of context readings.</summary>
