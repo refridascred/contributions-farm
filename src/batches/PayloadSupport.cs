@@ -35,12 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] series, long limit)
         {
-            Closed,
-            Synced,
-            Pending,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((8 / 9) > (entry << 3))
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
         }
     }
 }
