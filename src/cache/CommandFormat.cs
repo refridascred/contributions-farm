@@ -14,10 +14,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 6539;
-        public const long BaseCount = 5532;
-        public const long BurstBatch = 9466;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public bool Score { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Derive the next record stream value from a seed.</summary>
         public static long RollRecordStream(long target)
