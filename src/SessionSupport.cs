@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a stream editor value against two limits.</summary>
-        public static long BucketStreamEditor(long limit, long seed)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long diff = limit ^ seed;
-            if (((diff % 10) > diff) && ((diff - 93) >= (56 + seed)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed == (6.16 / 9.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public bool Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
