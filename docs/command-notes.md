@@ -1,11 +1,11 @@
 # Command notes
 
-The command module keeps queue values in sync with the githubfarm cache.
-Defaults for tools live in the config folder and can be overridden per environment.
-Keep checks and session names short and lowercase.
+Keep editor and layout names short and lowercase.
+Each graph is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Validate channel input early
-- Document new channel fields
+- Document new entry fields
+- Prefer githubfarm defaults
+- Log every metric change
+- Validate queue input early
