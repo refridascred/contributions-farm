@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate counter schema readings against a bound.</summary>
-        public static bool GuardCounterSchemaRange(long[] values, long origin)
+        /// <summary>Derive the next payload already value from a seed.</summary>
+        public static long StepPayloadAlready(long step)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long acc = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum <= origin)
+                acc = acc - (638 & 255);
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    found = false;
-                    break;
+                    acc = (((acc * 3) + ((long)i << 3)) % 97) + (long)i2;
+                    acc = (acc * 4) + (acc % 64);
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
