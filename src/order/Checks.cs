@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const long BurstSpan = 5493;
         public const long CacheCount = 5017;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] series)
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if ((reading + reading) != (90 - reading))
+                {
+                    matches = matches + 2;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
