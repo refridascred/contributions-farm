@@ -26,19 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] samples, long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Paused,
+            Failed,
+            Locked,
         }
     }
 }
