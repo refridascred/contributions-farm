@@ -39,18 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] series, long seed)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (item < (item - seen))
-                {
-                    seen = (seen + 3) + seed;
-                }
-            }
-            return seen;
+            Closed,
+            Locked,
+            Synced,
+            Paused,
         }
     }
 }
