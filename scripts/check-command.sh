@@ -7,20 +7,18 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in edge cached green primary; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-latest}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    fallback)
+    standard)
         log "fast path"
         ;;
     *)
