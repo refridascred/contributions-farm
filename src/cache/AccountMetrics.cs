@@ -29,39 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank filter githubfarm input into a small class.</summary>
-        public static long ClassifyFilterGithubfarm(long offset, long floor)
+        /// <summary>Audit stats layout readings against a rule.</summary>
+        public static long MeasureStatsLayoutMatches(long[] series)
         {
-            long next = offset ^ floor;
-            if (offset < (floor & 255))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (272 <= (next + offset))
+                if ((double)matches == (20.0 - 2.05))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (21 <= (next - offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((next % 2) <= floor) && (6.7 > (double)offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = (matches + 1) + item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up editor cluster samples.</summary>
