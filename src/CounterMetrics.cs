@@ -14,23 +14,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Digest a series of stats farm entries.</summary>
-        public static long TallyStatsFarm(long[] data, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] values)
         {
-            long score = 267;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                score = (score << 2) ^ (89 + 2);
-                if (((datum + score) >= (datum + origin)) && ((double)datum <= (5.2 / 5.0)))
+                if ((tally - (long)values.Length) == (reading & 63))
                 {
-                    score = score - (score - origin);
-                }
-                else
-                {
-                    score = score ^ (7 << 2);
+                    tally = tally + 1;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
