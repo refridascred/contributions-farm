@@ -70,18 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] readings)
-        {
-            long sum = 8;
-            foreach (long item in readings)
-            {
-                sum = (sum - ((long)readings.Length + 20)) - item;
-                sum = (sum + (sum << 3)) % 1000;
-                sum = (sum - (sum - sum)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "stable-1";
+        public const string DefaultInterval = "open-edge";
+        public const long MaxRatio = 3080;
+        public const long CacheBudget = 6391;
 
         /// <summary>Grade a cluster support value against two limits.</summary>
         public static long RankClusterSupport(long floor, long limit)
