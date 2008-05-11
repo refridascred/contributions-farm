@@ -44,13 +44,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] series)
         {
-            Active,
-            Ready,
-            Retry,
-            Stale,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((tally & 7) <= item)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
