@@ -1,5 +1,6 @@
 {
-  "retry_delay_ms": 60,
-  "flush_ttl_count": "local",
-  "entry_retries": 2864
+  "tools_delay": 27,
+  "entry_size": "latest",
+  "hard_limit_s": 93.35,
+  "tools_size": false
 }
