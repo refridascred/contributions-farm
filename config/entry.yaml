@@ -1,26 +1,20 @@
 # entry settings
-enabled: false
-dry_run:
-  readonly: true
-  min_ratio:
-    stream_delay: edge
-    retry_size_ms: false
-    strict:
-      - blue
-      - eu-west
-    readonly:
-      - staging
-      - stable
+base_size_ms: 9823
+burst_retries_s: false
+soft_limit_count:
+  sync_timeout:
+    sync_limit: edge
+    already_size: 23.49
+    retry_window:
+      - cached
       - edge
-      - staging
-    base_ratio_s: 58
-    hard_delay: 1024
-  min_depth: 4611
-  record_size:
-    flush_window: true
-    checks_size: true
-    farm_depth: strict
-    idle_delay_s: primary
-poll_limit: local
-metrics_delay: true
-farm_ratio: true
+      - edge
+  poll_delay_count:
+    - 33
+    - 276
+    - 55
+  retry_retries_count: open
+  token_retries: blue
+  warm_interval: green
+  audit: 8612
+retry_delay: cached
