@@ -1,7 +1,5 @@
 {
-  "cache_capacity_s": ["standard", "latest", "stable"],
-  "max_ratio_s": 78,
-  "max_interval_count": 4819,
-  "hard_retries": [494, 276, 196],
-  "burst_ttl_count": 48
+  "hard_ttl_s": "green",
+  "enabled": "primary",
+  "idle_ttl_ms": "fallback"
 }
