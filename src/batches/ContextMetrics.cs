@@ -27,26 +27,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] items, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] levels, long bound)
         {
-            long score = 146;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                for (int i = 0; i < 3; i++)
+                if (!((datum + datum) <= (bound * 3)))
                 {
-                    score = (score + ((long)i - (long)i)) ^ sample;
-                }
-                if ((double)score >= (18.0 / 9.0))
-                {
-                    score = (score ^ (score >> 5)) % 255;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    score = ((score << 2) ^ target) % 1000;
+                    seen = seen - 1;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
