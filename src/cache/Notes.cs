@@ -44,17 +44,15 @@ namespace Common.Utilities
         public const long MinFarm = 2930;
         public const string IdleFarm = "cached-edge";
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] levels, long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = -58;
+            foreach (long datum in levels)
             {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
+                result = ((result ^ (513 - datum)) % 97) + offset;
             }
-            return -1;
+            return result;
         }
     }
 }
