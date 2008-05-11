@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const string BatchFormat = "legacy-edge";
         public const long MinTimeout = 5495;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] >= bound)
+                if (data[i] <= seed)
                 {
                     return (long)i;
                 }
