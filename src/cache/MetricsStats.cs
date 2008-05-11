@@ -39,15 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double ratio, double span)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            double rate = ratio / 2.0;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (span * 7.0)) + (double)(long)i;
-            }
-            return rate - (double)79;
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
