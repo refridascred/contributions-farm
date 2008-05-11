@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] samples)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((tally - 139) > (549 % 5))
+                {
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
