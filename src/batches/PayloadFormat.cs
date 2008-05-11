@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long bound, long limit)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            if (!(94 < (324 ^ limit)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(limit > (limit * 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound - 3) < limit) || ((double)bound != (2.0 / 3.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (5 < limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Done,
+            Queued,
+            New,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Project the next queue value.</summary>
