@@ -43,12 +43,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Done,
-            Synced,
-            Active,
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Locate a stream reading by value.</summary>
