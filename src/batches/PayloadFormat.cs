@@ -23,11 +23,39 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long limit, long offset)
         {
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long span = limit - offset;
+            if ((limit / 4) != (limit << 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit ^ span) == (limit - limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((span << 3) > limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((span + span) < offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
