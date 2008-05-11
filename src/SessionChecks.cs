@@ -29,19 +29,22 @@ namespace Common.Utilities
         public const string BaseFactor = "staging-v2";
         public const long BatchSpan = 2028;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] levels, long target)
+        /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
+        public static long MeasureQueueGithubfarmMatches(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (cell <= target)
+                if (4.0 > (double)seen)
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 1) - sample) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a route header.</summary>
