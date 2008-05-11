@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
