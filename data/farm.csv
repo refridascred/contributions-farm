@@ -1,7 +1,10 @@
-id,owner,count
-1,91.86,248
-2,639,staging
-3,341,staging
-4,196,primary
-5,40.64,standard
-6,222,410
+id,weight,rank,count
+1,latest,957,2.32
+2,849,536,946
+3,53.68,913,edge
+4,194,cached,42.47
+5,11.57,95.03,92.07
+6,266,680,open
+7,fallback,29.32,92.14
+8,44.53,195,open
+9,865,11,primary
