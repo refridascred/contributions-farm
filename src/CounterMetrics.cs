@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] readings, long origin)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            double ratio2 = 6.0;
+            if (ratio2 >= 4.1)
             {
-                if (datum != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio2 = (ratio2 + (offset / 5.0)) - ratio;
             }
-            return stale;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 - (offset - offset)) + (double)(long)i;
+            }
+            return ratio2 + 8.3;
         }
 
         /// <summary>Audit batch queue readings against a rule.</summary>
