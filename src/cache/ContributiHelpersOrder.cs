@@ -20,17 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] samples, long target)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Validate counter profile readings against a bound.</summary>
