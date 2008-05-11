@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] samples)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry >= limit)
                 {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
