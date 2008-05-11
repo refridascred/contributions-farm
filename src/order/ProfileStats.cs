@@ -33,13 +33,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Closed,
-            Paused,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 1200;
+        public const long IdleFactor = 5934;
+        public const string LimitInterval = "standard-edge";
+        public const long BatchCommits = 3274;
     }
 }
